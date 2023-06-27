@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-06-23 11:42+0000\n"
+"POT-Creation-Date: 2023-06-27 12:06+0000\n"
 "PO-Revision-Date: 2023-06-26 04:43+0000\n"
 "Last-Translator: maboroshin <maboroshin@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -36,8 +36,8 @@ msgstr ""
 #: src/remmina_file_editor.c:1120 src/remmina_file_editor.c:1243
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2814
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
-#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:84
-#: data/ui/remmina_unlock.glade:109
+#: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:68
+#: data/ui/remmina_unlock.glade:98
 msgid "Password"
 msgstr "パスワード"
 
@@ -271,7 +271,7 @@ msgstr ""
 "で編集できる「カスタム」端末の配色が含まれています。"
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:33
-#: data/ui/remmina_passwd.glade:19 data/ui/remmina_unlock.glade:43
+#: data/ui/remmina_passwd.glade:21 data/ui/remmina_unlock.glade:44
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -1596,7 +1596,8 @@ msgstr "メモ"
 #: src/remmina_file_editor.c:1460
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr "(%s: %i)と表示されました。設定「%s」は、「value」や「gfe」がNULLなので検証で"
+msgstr ""
+"(%s: %i)と表示されました。設定「%s」は、「value」や「gfe」がNULLなので検証で"
 "きません！"
 
 #: src/remmina_file_editor.c:1464
@@ -2186,8 +2187,9 @@ msgstr "RDP サーバー “%s” のアドレスが見つかりませんでし�
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
-msgstr "RDP サーバー “%s” に TLS "
-"で接続できませんでした。詳細は端末からデバッグを追跡して確認してください。"
+msgstr ""
+"RDP サーバー “%s” に TLS で接続できませんでした。詳細は端末からデバッグを追跡"
+"して確認してください。"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2254
@@ -2195,7 +2197,8 @@ msgstr "RDP サーバー “%s” に TLS "
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
-msgstr "RDP サーバー \"%s\" への接続を確立できません。「セキュリティプロトコルのネゴ"
+msgstr ""
+"RDP サーバー \"%s\" への接続を確立できません。「セキュリティプロトコルのネゴ"
 "シエーション」を確認してください。"
 
 #: plugins/rdp/rdp_plugin.c:2262
@@ -2226,8 +2229,9 @@ msgstr "サーバー “%s” が接続を拒否しました。"
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr "リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s\""
-" のアクセスを拒否しました。"
+msgstr ""
+"リモートデスクトップゲートウェイ \"%s\" はポリシーにより、ユーザー \"%s\\%s"
+"\" のアクセスを拒否しました。"
 
 #: plugins/rdp/rdp_plugin.c:2290
 #, c-format
@@ -2452,8 +2456,8 @@ msgid ""
 msgstr ""
 "ネットワーク接続形式に基づいたパフォーマンスの最適化:\n"
 "自動検出の使用を推奨します。\n"
-"\"自動検出\" が失敗した場合、一覧から最も適切なオプションを選択してください。"
-"\n"
+"\"自動検出\" が失敗した場合、一覧から最も適切なオプションを選択してくださ"
+"い。\n"
 
 #: plugins/rdp/rdp_plugin.c:2772
 msgid ""
@@ -4080,7 +4084,7 @@ msgstr "選択基準"
 msgid "Confirm password"
 msgstr "パスワードの確認"
 
-#: data/ui/remmina_mpc.glade:271
+#: data/ui/remmina_mpc.glade:271 data/ui/remmina_passwd.glade:6
 msgid "Set new password"
 msgstr "新しいパスワードを設定"
 
@@ -4130,15 +4134,11 @@ msgstr "ゲートウェイのドメイン\\ユーザー名"
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>マルチパスワードチェンジャー</span>"
 
-#: data/ui/remmina_passwd.glade:33
+#: data/ui/remmina_passwd.glade:35
 msgid "OK"
 msgstr "OK"
 
-#: data/ui/remmina_passwd.glade:60
-msgid "Set Primary Password"
-msgstr "マスターパスワードを設定"
-
-#: data/ui/remmina_passwd.glade:101
+#: data/ui/remmina_passwd.glade:85
 msgid "Verify password"
 msgstr "パスワードの確認"
 
@@ -4991,17 +4991,20 @@ msgstr "端末"
 msgid "Remmina Preferences"
 msgstr "Remmina の設定"
 
-#: data/ui/remmina_unlock.glade:56
-msgid "Unlock"
-msgstr "ロックを解除"
-
-#: data/ui/remmina_unlock.glade:85
+#: data/ui/remmina_unlock.glade:30
 msgid "Unlock Remmina"
 msgstr "Remmina のロックを解除"
 
-#: data/ui/remmina_unlock.glade:120
+#: data/ui/remmina_unlock.glade:57
+msgid "Unlock"
+msgstr "ロックを解除"
+
+#: data/ui/remmina_unlock.glade:109
 msgid "Master password"
 msgstr "マスターパスワード"
+
+#~ msgid "Set Primary Password"
+#~ msgstr "マスターパスワードを設定"
 
 #~ msgid "Options"
 #~ msgstr "オプション"
