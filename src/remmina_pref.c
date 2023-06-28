@@ -221,7 +221,7 @@ void remmina_pref_init(void)
 {
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
-	gchar *remmina_dir;
+	gchar *remmina_dir, *remmina_pref_path, *user_config_path;
 	const gchar *filename = "remmina.pref";
 	const gchar *colors_filename = "remmina.colors";
 	g_autofree gchar *remmina_colors_file = NULL;
@@ -239,10 +239,10 @@ void remmina_pref_init(void)
 	remmina_dir = g_build_path("/", g_get_home_dir(), legacy, NULL);
 	if (g_file_test(remmina_dir, G_FILE_TEST_IS_DIR)) {
 		dir = g_dir_open(remmina_dir, 0, NULL);
-		remmina_pref_file_do_copy(
-			g_build_path("/", remmina_dir, filename, NULL),
-			g_build_path("/", g_get_user_config_dir(),
-				     "remmina", filename, NULL));
+		remmina_pref_path = g_build_path("/", remmina_dir, filename, NULL);
+		user_config_path = g_build_path("/", g_get_user_config_dir(),
+				     "remmina", filename, NULL);
+		remmina_pref_file_do_copy(remmina_pref_path, user_config_path);
 		g_dir_close(dir);
 	}
 
@@ -255,14 +255,17 @@ void remmina_pref_init(void)
 		if (g_file_test(remmina_dir, G_FILE_TEST_IS_DIR)) {
 			dir = g_dir_open(remmina_dir, 0, NULL);
 			while ((filename = g_dir_read_name(dir)) != NULL) {
-				remmina_pref_file_do_copy(
-					g_build_path("/", remmina_dir, filename, NULL),
-					g_build_path("/", g_get_user_config_dir(),
-						     "remmina", filename, NULL));
+				remmina_pref_path = g_build_path("/", remmina_dir, filename, NULL);
+				user_config_path = g_build_path("/", g_get_user_config_dir(),
+							"remmina", filename, NULL);
+				remmina_pref_file_do_copy(remmina_pref_path, user_config_path);
 			}
 			g_free(remmina_dir), remmina_dir = NULL;
 		}
 	}
+
+	g_free(remmina_pref_path);
+	g_free(user_config_path);
 
 	/* The last case we use  the home ~/.config/remmina */
 	if (remmina_dir != NULL)
@@ -275,6 +278,8 @@ void remmina_pref_init(void)
 	remmina_colors_file = g_strdup_printf("%s/%s", remmina_dir, colors_filename);
 
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remmina_dir);
+
+	g_free(remmina_dir);
 
 	gkeyfile = g_key_file_new();
 
