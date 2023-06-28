@@ -1962,6 +1962,7 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata;
 	gint flags;
+	gdouble aspect_ratio;
 
 	gpdata = g_new0(RemminaPluginVncData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
@@ -1974,7 +1975,19 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 
 	gpdata->drawing_area = gtk_drawing_area_new();
 	gtk_widget_show(gpdata->drawing_area);
-	gtk_container_add(GTK_CONTAINER(gp), gpdata->drawing_area);
+
+	aspect_ratio = remmina_plugin_service->file_get_double(remminafile, "aspect_ratio", 0);
+	if (aspect_ratio > 0){
+		GtkWidget* aspectframe = gtk_aspect_frame_new(NULL, 0, 0, aspect_ratio, FALSE);
+
+		gtk_frame_set_shadow_type(aspectframe, GTK_SHADOW_NONE);
+		gtk_widget_show(aspectframe);
+		gtk_container_add(aspectframe, gpdata->drawing_area);
+		gtk_container_add(GTK_CONTAINER(gp), aspectframe);
+	}
+	else{
+		gtk_container_add(GTK_CONTAINER(gp), gpdata->drawing_area);
+	}
 
 	gtk_widget_add_events(
 		gpdata->drawing_area,
