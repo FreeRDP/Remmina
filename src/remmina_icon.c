@@ -276,7 +276,12 @@ static void remmina_icon_save_autostart_file(GKeyFile *gkeyfile)
 	gsize length;
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
-	g_file_set_contents(remmina_icon.autostart_file, content, length, NULL);
+	if (remmina_icon.autostart_file != NULL) {
+		g_file_set_contents(remmina_icon.autostart_file, content, length, NULL);
+	}
+	else {
+		REMMINA_WARNING("Cannot save remmina icon autostart file. Uncheck Preferences -> Applet -> No Tray Icon to recreate it.");
+	}
 	g_free(content);
 }
 
@@ -430,7 +435,14 @@ gboolean remmina_icon_is_autostart(void)
 	gboolean b;
 
 	gkeyfile = g_key_file_new();
-	g_key_file_load_from_file(gkeyfile, remmina_icon.autostart_file, G_KEY_FILE_NONE, NULL);
+
+	if (remmina_icon.autostart_file != NULL) {
+		g_key_file_load_from_file(gkeyfile, remmina_icon.autostart_file, G_KEY_FILE_NONE, NULL);
+	}
+	else {
+		REMMINA_WARNING("Cannot load remmina icon autostart file. Uncheck Preferences -> Applet -> No Tray Icon to recreate it.");
+	}
+
 	b = !g_key_file_get_boolean(gkeyfile, "Desktop Entry", "Hidden", NULL);
 	g_key_file_free(gkeyfile);
 	return b;
@@ -442,19 +454,24 @@ void remmina_icon_set_autostart(gboolean autostart)
 	GKeyFile *gkeyfile;
 	gboolean b;
 
-	gkeyfile = g_key_file_new();
-	g_key_file_load_from_file(gkeyfile, remmina_icon.autostart_file, G_KEY_FILE_NONE, NULL);
-	b = !g_key_file_get_boolean(gkeyfile, "Desktop Entry", "Hidden", NULL);
-	if (b != autostart) {
-		g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", !autostart);
-		/* Refresh it in case translation is updated */
-		// TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
-		// TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment", _("Connect to remote desktops through the applet menu"));
-		remmina_icon_save_autostart_file(gkeyfile);
+	if (remmina_icon.autostart_file != NULL) {
+		gkeyfile = g_key_file_new();
+		g_key_file_load_from_file(gkeyfile, remmina_icon.autostart_file, G_KEY_FILE_NONE, NULL);
+		b = !g_key_file_get_boolean(gkeyfile, "Desktop Entry", "Hidden", NULL);
+		if (b != autostart) {
+			g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", !autostart);
+			/* Refresh it in case translation is updated */
+			// TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+			g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
+			// TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
+			g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment", _("Connect to remote desktops through the applet menu"));
+			remmina_icon_save_autostart_file(gkeyfile);
+			g_key_file_free(gkeyfile);
+		}
 	}
-	g_key_file_free(gkeyfile);
+	else {
+		REMMINA_WARNING("Cannot load remmina icon autostart file. Uncheck Preferences -> Applet -> No Tray Icon to recreate it.");
+	}
 }
 
 #else
