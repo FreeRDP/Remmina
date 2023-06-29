@@ -220,6 +220,7 @@ typedef struct _RemminaPluginService {
 	gchar *       (*file_get_secret)(RemminaFile * remminafile, const gchar *setting);
 	void (*file_set_int)(RemminaFile *remminafile, const gchar *setting, gint value);
 	gint (*file_get_int)(RemminaFile *remminafile, const gchar *setting, gint default_value);
+	gdouble (*file_get_double)(RemminaFile *remminafile, const gchar *setting, gdouble default_value);
 	void (*file_unsave_passwords)(RemminaFile *remminafile);
 
 	void (*pref_set_value)(const gchar *key, const gchar *value);

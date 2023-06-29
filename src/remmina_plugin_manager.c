@@ -229,6 +229,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_file_get_secret,
 	remmina_file_set_int,
 	remmina_file_get_int,
+	remmina_file_get_double,
 	remmina_file_unsave_passwords,
 
 	remmina_pref_set_value,

@@ -914,7 +914,7 @@ static GtkWidget *remmina_file_editor_create_double(RemminaFileEditor *gfe,
 	return widget;
 }
 
-gdouble remmina_file_get_double(RemminaFile *remminafile, const gchar *setting, gfloat default_value);
+
 
 static void remmina_file_editor_create_settings(RemminaFileEditor *gfe, GtkWidget *grid,
 						const RemminaProtocolSetting *settings)

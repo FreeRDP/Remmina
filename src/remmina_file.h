@@ -95,6 +95,7 @@ gchar *remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
 gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value);
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value);
+gdouble remmina_file_get_double(RemminaFile *remminafile, const gchar *setting, gdouble default_value);
 void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar *key, const gchar *value);
 gboolean remmina_file_remove_key(RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_state(RemminaFile *remminafile, const gchar *setting, const gchar *value);
