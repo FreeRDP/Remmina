@@ -2060,6 +2060,13 @@ static gchar vnciport_tooltip[] =
 	   "    Remmina, e.g. with x11vnc:\n"
 	   "    x11vnc -display :0 -connect 192.168.1.36:8888");
 
+static gchar aspect_ratio_tooltip[] =
+	N_("Lock the aspect ratio when dynamic resolution is enabled:\n"
+	   "\n"
+	   "  • The aspect ratio should be entered as a decimal number, e.g. 1.777\n"
+	   "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
+	   "  • The default value of 0 does not enforce any aspect ratio");	   
+
 static gchar vncencodings_tooltip[] =
 	N_("Overriding the pre-set VNC encoding quality:\n"
 	   "\n"
@@ -2121,6 +2128,7 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "encodings",		 N_("Override pre-set VNC encodings"),	        FALSE, NULL, vncencodings_tooltip },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "aspect_ratio",		 N_("Dynamic resolution enforced aspec ratio"),	        FALSE, NULL, aspect_ratio_tooltip },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "tightencoding", N_("Force tight encoding"),			TRUE, NULL, N_("Enabling this may help when the remote desktop looks scrambled") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablesmoothscrolling", N_("Disable smooth scrolling"),		FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"),		TRUE,  NULL, NULL },
