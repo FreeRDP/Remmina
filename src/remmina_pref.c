@@ -244,6 +244,8 @@ void remmina_pref_init(void)
 				     "remmina", filename, NULL);
 		remmina_pref_file_do_copy(remmina_pref_path, user_config_path);
 		g_dir_close(dir);
+		g_free(remmina_pref_path);
+		g_free(user_config_path);
 	}
 
 	/* /usr/local/etc/remmina */
@@ -259,14 +261,14 @@ void remmina_pref_init(void)
 				user_config_path = g_build_path("/", g_get_user_config_dir(),
 							"remmina", filename, NULL);
 				remmina_pref_file_do_copy(remmina_pref_path, user_config_path);
+				g_free(remmina_pref_path);
+				g_free(user_config_path);
 			}
 			g_free(remmina_dir), remmina_dir = NULL;
+			g_dir_close(dir);
 		}
 	}
-
-	g_free(remmina_pref_path);
-	g_free(user_config_path);
-
+	
 	/* The last case we use  the home ~/.config/remmina */
 	if (remmina_dir != NULL)
 		g_free(remmina_dir), remmina_dir = NULL;
