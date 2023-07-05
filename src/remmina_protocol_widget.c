@@ -736,7 +736,7 @@ gboolean remmina_protocol_widget_map_event(RemminaProtocolWidget *gp)
 gboolean remmina_protocol_widget_unmap_event(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	if (!gp->priv->plugin->get_plugin_screenshot) {
+	if (!gp->priv->plugin->unmap_event) {
 		REMMINA_DEBUG("Unmap plugin function not implemented");
 		return FALSE;
 	}
