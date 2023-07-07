@@ -58,6 +58,7 @@
 #include <cairo/cairo.h>
 #endif
 #include <freerdp/addin.h>
+#include <freerdp/assistance.h>
 #include <freerdp/settings.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
@@ -1374,6 +1375,44 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		if (access(datapath, W_OK) == 0)
 			freerdp_settings_set_string(rfi->settings, FreeRDP_ConfigPath, datapath);
 	g_free(datapath);
+
+
+
+
+
+
+	if (remmina_plugin_service->file_get_int(remminafile, "assistance_mode", FALSE)){
+		rdpAssistanceFile* file = freerdp_assistance_file_new();
+		if (!file)
+			REMMINA_PLUGIN_DEBUG("Failed to get file");
+
+		status = freerdp_assistance_parse_file(file, "", "");
+
+		if (status < 0)
+			REMMINA_PLUGIN_DEBUG("Failed to get status");;
+
+		if (!freerdp_assistance_populate_settings_from_assistance_file(file, rfi->settings))
+			REMMINA_PLUGIN_DEBUG("Failed to populate");
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #if defined(PROXY_TYPE_IGNORE)
 	if (!remmina_plugin_service->file_get_int(remminafile, "useproxyenv", FALSE) ? TRUE : FALSE) {
@@ -2896,6 +2935,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "websockets",		    N_("Enable Gateway websockets support"),		 TRUE,	NULL,		  NULL														 },
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "no-suppress",	    N_("Update framebuffer even when not visible"),	TRUE,	NULL																 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "assistance_mode",	    N_("Attempt to connect in assistnace mode"),	TRUE,	NULL																 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,		  NULL														 }
 };
 
