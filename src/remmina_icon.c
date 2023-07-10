@@ -133,42 +133,48 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 	TRACE_CALL(__func__);
 	GtkWidget *menuitem;
 
-	menuitem = gtk_menu_item_new_with_label(_("Open Main Window"));
-	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_main), NULL);
 
-	menuitem = gtk_menu_item_new_with_mnemonic(_("_Preferences"));
-	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_preferences), NULL);
-
-	menuitem = gtk_menu_item_new_with_mnemonic(_("_About"));
-	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_about), NULL);
+#ifdef HAVE_LIBAVAHI_CLIENT
 
 	menuitem = gtk_separator_menu_item_new();
 	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
 
-#ifdef HAVE_LIBAVAHI_CLIENT
 	menuitem = gtk_check_menu_item_new_with_label(_("Enable Service Discovery"));
 	if (remmina_pref.applet_enable_avahi)
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem), TRUE);
 	gtk_widget_show(menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(remmina_icon_enable_avahi), NULL);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
+
+
+#endif
 
 	menuitem = gtk_separator_menu_item_new();
 	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-#endif
+	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
 
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_Quit"));
 	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_exec_exitremmina), NULL);
+
+	menuitem = gtk_menu_item_new_with_mnemonic(_("_About"));
+	gtk_widget_show(menuitem);
+	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
+	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_about), NULL);
+
+	menuitem = gtk_menu_item_new_with_mnemonic(_("_Preferences"));
+	gtk_widget_show(menuitem);
+	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
+	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_preferences), NULL);
+
+	menuitem = gtk_menu_item_new_with_label(_("Open Main Window"));
+	gtk_widget_show(menuitem);
+	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
+	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_main), NULL);
+
+
 }
 
 static void remmina_icon_on_launch_item(RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem, gpointer data)
@@ -259,13 +265,14 @@ remmina_icon_populate_menu(void)
 
 		remmina_applet_menu_set_hide_count(REMMINA_APPLET_MENU(menu), remmina_pref.applet_hide_count);
 		remmina_applet_menu_populate(REMMINA_APPLET_MENU(menu));
-		remmina_icon_populate_extra_menu_item(menu);
+		
 
 		menuitem = gtk_separator_menu_item_new();
 		gtk_widget_show(menuitem);
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 
 		remmina_icon_populate_additional_menu_item(menu);
+		remmina_icon_populate_extra_menu_item(menu);
 	}
 }
 
