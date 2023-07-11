@@ -58,6 +58,7 @@
 #include <cairo/cairo.h>
 #endif
 #include <freerdp/addin.h>
+#include <freerdp/assistance.h>
 #include <freerdp/settings.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
@@ -1374,6 +1375,36 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		if (access(datapath, W_OK) == 0)
 			freerdp_settings_set_string(rfi->settings, FreeRDP_ConfigPath, datapath);
 	g_free(datapath);
+
+	if (remmina_plugin_service->file_get_int(remminafile, "assistance_mode", 0)){
+		rdpAssistanceFile* file = freerdp_assistance_file_new();
+		if (!file){
+			REMMINA_PLUGIN_DEBUG("Failed to allocate Assistance File structure");
+			return FALSE;
+		}
+		
+		if (remmina_plugin_service->file_get_string(remminafile, "assistance_file") == NULL || 
+				remmina_plugin_service->file_get_string(remminafile, "assistance_pass") == NULL ){
+
+			REMMINA_PLUGIN_DEBUG("Assistance File and Password are not set while Assistance Mode is enabled");
+			return FALSE;
+		}
+
+		status = freerdp_assistance_parse_file(file, 
+			remmina_plugin_service->file_get_string(remminafile, "assistance_file"), 
+			remmina_plugin_service->file_get_string(remminafile, "assistance_pass"));
+
+		if (status < 0){
+			REMMINA_PLUGIN_DEBUG("Failed to Parse Assistance File");
+			return FALSE;
+		}
+			
+
+		if (!freerdp_assistance_populate_settings_from_assistance_file(file, rfi->settings))
+			REMMINA_PLUGIN_DEBUG("Failed to populate settings from Assistance File");
+			return FALSE;
+	}
+
 
 #if defined(PROXY_TYPE_IGNORE)
 	if (!remmina_plugin_service->file_get_int(remminafile, "useproxyenv", FALSE) ? TRUE : FALSE) {
@@ -2871,6 +2902,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "vc",			    N_("Static virtual channel"),			 FALSE, NULL,		  N_("<channel>[,<options>]")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "rdp2tcp",		    N_("TCP redirection"),				 FALSE, NULL,		  N_("/PATH/TO/rdp2tcp")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "rdp_reconnect_attempts", N_("Reconnect attempts number"),			 FALSE, NULL,		  N_("The maximum number of reconnect attempts upon an RDP disconnect (default: 20)")				 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_ASSISTANCE,	  "assistance_mode",	    N_("Attempt to connect in assistnace mode"),	TRUE,	NULL																 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "preferipv6",		    N_("Prefer IPv6 AAAA record over IPv4 A record"),	 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,		  NULL														 },
