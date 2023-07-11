@@ -460,6 +460,8 @@ const gchar *remmina_plugin_manager_get_canonical_setting_name(const RemminaProt
 			return "password";
 		if (setting->type == REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION)
 			return "resolution";
+		if (setting->type == REMMINA_PROTOCOL_SETTING_TYPE_ASSISTANCE)
+			return "assistance_mode";
 		return "missing_setting_name_into_plugin_RemminaProtocolSetting";
 	}
 	return setting->name;
