@@ -1378,18 +1378,31 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "assistance_mode", 0)){
 		rdpAssistanceFile* file = freerdp_assistance_file_new();
-		if (!file)
-			REMMINA_PLUGIN_DEBUG("Failed to get file");
+		if (!file){
+			REMMINA_PLUGIN_DEBUG("Failed to allocate Assistance File structure");
+			return FALSE;
+		}
+		
+		if (remmina_plugin_service->file_get_string(remminafile, "assistance_file") == NULL || 
+				remmina_plugin_service->file_get_string(remminafile, "assistance_pass") == NULL ){
+
+			REMMINA_PLUGIN_DEBUG("Assistance File and Password are not set while Assistance Mode is enabled");
+			return FALSE;
+		}
 
 		status = freerdp_assistance_parse_file(file, 
 			remmina_plugin_service->file_get_string(remminafile, "assistance_file"), 
 			remmina_plugin_service->file_get_string(remminafile, "assistance_pass"));
 
-		if (status < 0)
-			REMMINA_PLUGIN_DEBUG("Failed to get status");;
+		if (status < 0){
+			REMMINA_PLUGIN_DEBUG("Failed to Parse Assistance File");
+			return FALSE;
+		}
+			
 
 		if (!freerdp_assistance_populate_settings_from_assistance_file(file, rfi->settings))
-			REMMINA_PLUGIN_DEBUG("Failed to populate");
+			REMMINA_PLUGIN_DEBUG("Failed to populate settings from Assistance File");
+			return FALSE;
 	}
 
 
