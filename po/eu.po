@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-07-10 13:47+0000\n"
+"POT-Creation-Date: 2023-07-11 13:14+0000\n"
 "PO-Revision-Date: 2023-05-01 12:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -27,8 +27,8 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1699 src/remmina_protocol_widget.c:1718
-#: src/remmina_file_editor.c:1120 src/remmina_file_editor.c:1243
-#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2814
+#: src/remmina_file_editor.c:1203 src/remmina_file_editor.c:1326
+#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2845
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:68
 #: data/ui/remmina_unlock.glade:98
@@ -37,24 +37,24 @@ msgid "Password"
 msgstr "Pasahitza"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1121 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1204 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 #, fuzzy
 msgid "SSH identity file"
 msgstr "SSH identitate fitxategia"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1122
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1205
 #: src/remmina_ssh_plugin.c:1396
 msgid "SSH agent"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1123
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1206
 #: src/remmina_ssh_plugin.c:1397
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "Gako publikoa (automatikoa)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1124
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1207
 #: src/remmina_ssh_plugin.c:1398
 msgid "Kerberos (GSSAPI)"
 msgstr ""
@@ -79,8 +79,8 @@ msgid "Connect via SSH from a new terminal"
 msgstr "Konektatu SSH bidez terminal berri batetik"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1237 src/remmina_ssh_plugin.c:1504
-#: plugins/rdp/rdp_plugin.c:2813 plugins/vnc/vnc_plugin.c:2099
+#: src/remmina_file_editor.c:1320 src/remmina_ssh_plugin.c:1504
+#: plugins/rdp/rdp_plugin.c:2844 plugins/vnc/vnc_plugin.c:2099
 #: plugins/vnc/vnc_plugin.c:2111 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
 #: data/ui/remmina_mpc.glade:122
@@ -88,12 +88,12 @@ msgstr "Konektatu SSH bidez terminal berri batetik"
 msgid "Username"
 msgstr "Erabiltzaile izena"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1228
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1311
 #: src/remmina_ssh_plugin.c:1503
 msgid "Authentication type"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1261
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1344
 #: src/remmina_ssh_plugin.c:1510
 msgid "Password to unlock private key"
 msgstr ""
@@ -129,7 +129,7 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2010
+#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2104
 #, fuzzy
 msgid "Protocol"
 msgstr "Protokoloa"
@@ -163,34 +163,34 @@ msgstr "Sekretua"
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:529 data/ui/remmina_main.glade:330
+#: src/remmina_plugin_manager.c:531 data/ui/remmina_main.glade:330
 #, fuzzy
 msgid "Plugins"
 msgstr "Pluginak"
 
-#: src/remmina_plugin_manager.c:529 src/remmina_message_panel.c:455
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:245
+#: src/remmina_plugin_manager.c:531 src/remmina_message_panel.c:455
+#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:251
 #, fuzzy
 msgid "_OK"
 msgstr "_Ados"
 
-#: src/remmina_plugin_manager.c:547 src/remmina_file_editor.c:1942
+#: src/remmina_plugin_manager.c:549 src/remmina_file_editor.c:2036
 #: data/ui/remmina_main.glade:457
 #, fuzzy
 msgid "Name"
 msgstr "Izena"
 
-#: src/remmina_plugin_manager.c:553
+#: src/remmina_plugin_manager.c:555
 #, fuzzy
 msgid "Type"
 msgstr "Mota"
 
-#: src/remmina_plugin_manager.c:559
+#: src/remmina_plugin_manager.c:561
 #, fuzzy
 msgid "Description"
 msgstr "Deskripzioa"
 
-#: src/remmina_plugin_manager.c:565
+#: src/remmina_plugin_manager.c:567
 #, fuzzy
 msgid "Version"
 msgstr "Bertsioa"
@@ -253,12 +253,12 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<bat ere ez>"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:532
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:559
 #, fuzzy
 msgid "Resolutions"
 msgstr "Bereizmenak"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:532
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:559
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "Konfiguratu bereizmen erabilgarriak"
@@ -318,7 +318,7 @@ msgstr "Bai"
 msgid "No"
 msgstr "Ez"
 
-#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2815
+#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2846
 #: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
@@ -330,8 +330,8 @@ msgid "Save password"
 msgstr "Gorde pasahitza"
 
 #: src/remmina_message_panel.c:460 src/remmina_message_panel.c:632
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:244
-#: src/remmina_file_editor.c:1816 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:250
+#: src/remmina_file_editor.c:1910 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
@@ -829,7 +829,7 @@ msgstr "Gora"
 msgid "Go to parent folder"
 msgstr "Joan karpeta gurasora"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2908
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2940
 #: plugins/vnc/vnc_plugin.c:2155
 #, fuzzy
 msgid "Refresh"
@@ -876,7 +876,7 @@ msgstr "Tamaina"
 msgid "User"
 msgstr "Erabiltzailea"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1967
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2061
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 #, fuzzy
 msgid "Group"
@@ -891,12 +891,12 @@ msgstr "Baimenak"
 msgid "Modified"
 msgstr ""
 
-#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2690
+#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2721
 #, fuzzy
 msgid "Remote"
 msgstr "Urrunekoa"
 
-#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2689
+#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2720
 #, fuzzy
 msgid "Local"
 msgstr "Lokala"
@@ -1028,8 +1028,8 @@ msgstr "%i atakan entzuten sarrerako %s konexio baten zain…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Autentifikazioak huts egin du. Birkonektatzen saiatzen…"
 
-#: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:436
-#: src/remmina_file_editor.c:1193 data/ui/remmina_main.glade:509
+#: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:463
+#: src/remmina_file_editor.c:1276 data/ui/remmina_main.glade:509
 #, fuzzy
 msgid "Server"
 msgstr "Zerbitzaria"
@@ -1358,7 +1358,7 @@ msgstr ""
 msgid "Import"
 msgstr "Inportatu"
 
-#: src/remmina_main.c:1262 src/remmina_file_editor.c:1824
+#: src/remmina_main.c:1262 src/remmina_file_editor.c:1918
 #, fuzzy
 msgid "_Save"
 msgstr "Gorde"
@@ -1505,147 +1505,151 @@ msgstr ""
 "• zerbitzaria[:ataka]\n"
 "• erabiltzaile-izena@zerbitzaria:ataka (SSH protokoloa soilik)</big>"
 
-#: src/remmina_file_editor.c:164
+#: src/remmina_file_editor.c:170
 msgid "Input is invalid."
 msgstr ""
 
-#: src/remmina_file_editor.c:242
+#: src/remmina_file_editor.c:248
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
 msgstr "Aukeratu urruneko mahaigainaren zerbitzari bat"
 
-#: src/remmina_file_editor.c:460
+#: src/remmina_file_editor.c:487
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Arakatu sarea '%s' zerbitzaria aurkitzeko"
 
-#: src/remmina_file_editor.c:568
+#: src/remmina_file_editor.c:595
 #, fuzzy
 msgid "Resolution"
 msgstr "Bereizmena"
 
-#: src/remmina_file_editor.c:575
+#: src/remmina_file_editor.c:602
 #, fuzzy
 msgid "Use initial window size"
 msgstr "Erabili hasierako leiho tamaina"
 
-#: src/remmina_file_editor.c:579
+#: src/remmina_file_editor.c:606
 #, fuzzy
 msgid "Use client resolution"
 msgstr "Erabili bezeroaren bereizmena"
 
-#: src/remmina_file_editor.c:590 src/remmina_file_editor.c:1173
+#: src/remmina_file_editor.c:617 src/remmina_file_editor.c:1256
 #, fuzzy
 msgid "Custom"
 msgstr "Pertsonalizatua"
 
-#: src/remmina_file_editor.c:956
+#: src/remmina_file_editor.c:658
+msgid "Assistance Mode"
+msgstr ""
+
+#: src/remmina_file_editor.c:1039
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "Teklatuaren mapa"
 
-#: src/remmina_file_editor.c:1083
+#: src/remmina_file_editor.c:1166
 #, fuzzy
 msgid "Behavior"
 msgstr "Portaera"
 
-#: src/remmina_file_editor.c:1086
+#: src/remmina_file_editor.c:1169
 msgid "Execute a Command"
 msgstr ""
 
-#: src/remmina_file_editor.c:1090
+#: src/remmina_file_editor.c:1173
 msgid "Before connecting"
 msgstr "Konexioko"
 
-#: src/remmina_file_editor.c:1092
+#: src/remmina_file_editor.c:1175
 msgid "command %h %u %t %U %p %g --option"
 msgstr ""
 
-#: src/remmina_file_editor.c:1097
+#: src/remmina_file_editor.c:1180
 msgid "After connecting"
 msgstr "Konexioko"
 
-#: src/remmina_file_editor.c:1099
+#: src/remmina_file_editor.c:1182
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr ""
 
-#: src/remmina_file_editor.c:1103
+#: src/remmina_file_editor.c:1186
 msgid "Start-up"
 msgstr "Hasi"
 
-#: src/remmina_file_editor.c:1106
+#: src/remmina_file_editor.c:1189
 msgid "Auto-start this profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1110
+#: src/remmina_file_editor.c:1193
 #, fuzzy
 #| msgid "Remote Connection Profile"
 msgid "Connection profile security"
 msgstr "Gehitu konexio profil berria"
 
-#: src/remmina_file_editor.c:1113
+#: src/remmina_file_editor.c:1196
 msgid "Require password to connect or edit the profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1146
+#: src/remmina_file_editor.c:1229
 msgid "SSH Tunnel"
 msgstr ""
 
-#: src/remmina_file_editor.c:1147
+#: src/remmina_file_editor.c:1230
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "Gaitu SSH tunela"
 
-#: src/remmina_file_editor.c:1154
+#: src/remmina_file_editor.c:1237
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "Atzera-begizta helbide bidezko tunela"
 
-#: src/remmina_file_editor.c:1164
+#: src/remmina_file_editor.c:1247
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "Zerbitzari berdina %i atakan"
 
-#: src/remmina_file_editor.c:1214 plugins/rdp/rdp_plugin.c:2859
+#: src/remmina_file_editor.c:1297 plugins/rdp/rdp_plugin.c:2890
 msgid "Start-up path"
 msgstr "Abioko bide-izena"
 
-#: src/remmina_file_editor.c:1223
+#: src/remmina_file_editor.c:1306
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "SSH autentifikazioa"
 
-#: src/remmina_file_editor.c:1250
+#: src/remmina_file_editor.c:1333
 #, fuzzy
 msgid "SSH private key file"
 msgstr "SSH gako pribatuaren fitxategia"
 
-#: src/remmina_file_editor.c:1256 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1339 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "SSH ziurtagiri-fitxategia"
 
-#: src/remmina_file_editor.c:1313
+#: src/remmina_file_editor.c:1396
 #, fuzzy
 msgid "Basic"
 msgstr "Oinarrizkoa"
 
-#: src/remmina_file_editor.c:1319
+#: src/remmina_file_editor.c:1402
 #, fuzzy
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: src/remmina_file_editor.c:1330 data/ui/remmina_main.glade:523
+#: src/remmina_file_editor.c:1413 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "Oharrak"
 
-#: src/remmina_file_editor.c:1460
+#: src/remmina_file_editor.c:1543
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 
-#: src/remmina_file_editor.c:1464
+#: src/remmina_file_editor.c:1547
 #, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1653,64 +1657,64 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1468 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1551 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 #, fuzzy
 msgid "Internal error."
 msgstr "Barne-errorea"
 
-#: src/remmina_file_editor.c:1700 src/remmina_file_editor.c:1736
-#: src/remmina_file_editor.c:1757 src/remmina_file_editor.c:1780
+#: src/remmina_file_editor.c:1794 src/remmina_file_editor.c:1830
+#: src/remmina_file_editor.c:1851 src/remmina_file_editor.c:1874
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
 msgstr "Ezin izan da SFTP saioa sortu: %s"
 
-#: src/remmina_file_editor.c:1724
+#: src/remmina_file_editor.c:1818
 #, fuzzy
 msgid "Default settings saved."
 msgstr "Ezarpen lehenetsiak gordeta."
 
-#: src/remmina_file_editor.c:1814
+#: src/remmina_file_editor.c:1908
 msgid "Remote Connection Profile"
 msgstr "Gehitu konexio profil berria"
 
-#: src/remmina_file_editor.c:1820
+#: src/remmina_file_editor.c:1914
 msgid "Save as Default"
 msgstr ""
 
-#: src/remmina_file_editor.c:1821
+#: src/remmina_file_editor.c:1915
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 
-#: src/remmina_file_editor.c:1829 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1923 data/ui/remmina_main.glade:161
 #, fuzzy
 msgid "Connect"
 msgstr "Konektatu"
 
-#: src/remmina_file_editor.c:1832
+#: src/remmina_file_editor.c:1926
 msgid "_Save and Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1956
+#: src/remmina_file_editor.c:2050
 #, fuzzy
 msgid "Quick Connect"
 msgstr "Konexio azkarra"
 
-#: src/remmina_file_editor.c:1980
+#: src/remmina_file_editor.c:2074
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Erabili '%s' azpitalde mugatzaile gisa"
 
-#: src/remmina_file_editor.c:1985 data/ui/remmina_main.glade:493
+#: src/remmina_file_editor.c:2079 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
-#: src/remmina_file_editor.c:1999
+#: src/remmina_file_editor.c:2093
 msgid "Label1,Label2"
 msgstr ""
 
-#: src/remmina_file_editor.c:2071 src/remmina_file_editor.c:2090
+#: src/remmina_file_editor.c:2165 src/remmina_file_editor.c:2184
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Ezin izan da \"%s\" fitxategia ireki."
@@ -2033,25 +2037,25 @@ msgstr ""
 msgid "<Choose a quality level to edit…>"
 msgstr ""
 
-#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2664
+#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2695
 #: plugins/vnc/vnc_plugin.c:2042
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "Baxua (azkarrena)"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2696
 #: plugins/vnc/vnc_plugin.c:2041
 #, fuzzy
 msgid "Medium"
 msgstr "Tartekoa"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2666
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2697
 #: plugins/vnc/vnc_plugin.c:2039
 #, fuzzy
 msgid "Good"
 msgstr "Ona"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2667
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2698
 #: plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "Best (slowest)"
@@ -2147,7 +2151,7 @@ msgstr ""
 msgid "Input device settings"
 msgstr "Sarrerako gailuen ezarpenak"
 
-#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2820
+#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2851
 #: plugins/vnc/vnc_plugin.c:2133
 msgid "Disable smooth scrolling"
 msgstr ""
@@ -2157,89 +2161,89 @@ msgstr ""
 msgid "General settings"
 msgstr "Ezarpen orokorrak"
 
-#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2873
+#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2904
 msgid "Reconnect attempts number"
 msgstr ""
 
-#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2873
+#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2904
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:789 plugins/rdp/rdp_plugin.c:854
+#: plugins/rdp/rdp_plugin.c:790 plugins/rdp/rdp_plugin.c:855
 msgid "Enter RDP authentication credentials"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:862
+#: plugins/rdp/rdp_plugin.c:863
 msgid "Enter RDP gateway authentication credentials"
 msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:1043
+#: plugins/rdp/rdp_plugin.c:1044
 #, c-format
 msgid "Disconnected from %s via RDP"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2195
+#: plugins/rdp/rdp_plugin.c:2226
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2202
+#: plugins/rdp/rdp_plugin.c:2233
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2209
+#: plugins/rdp/rdp_plugin.c:2240
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2216
+#: plugins/rdp/rdp_plugin.c:2247
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2222
+#: plugins/rdp/rdp_plugin.c:2253
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2230
+#: plugins/rdp/rdp_plugin.c:2261
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2238
+#: plugins/rdp/rdp_plugin.c:2269
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2243
+#: plugins/rdp/rdp_plugin.c:2274
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Ezin izan da \"%s\" RDP zerbitzarira konektatu."
 
-#: plugins/rdp/rdp_plugin.c:2246
+#: plugins/rdp/rdp_plugin.c:2277
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Ezin izan da aurkitu \"%s\" RDP zerbitzariaren helbidea."
 
-#: plugins/rdp/rdp_plugin.c:2250
+#: plugins/rdp/rdp_plugin.c:2281
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
@@ -2247,7 +2251,7 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2254
+#: plugins/rdp/rdp_plugin.c:2285
 #, fuzzy, c-format
 #| msgid ""
 #| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
@@ -2259,189 +2263,189 @@ msgstr ""
 "Ezin izan da RDP zerbitzarira konexioa ezarri. Egiaztatu \"Segurtasun "
 "protokoloaren negoziazioa\" \"%s\"."
 
-#: plugins/rdp/rdp_plugin.c:2262
+#: plugins/rdp/rdp_plugin.c:2293
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Ezin izan da \"%s\" RDP zerbitzarira konektatu."
 
-#: plugins/rdp/rdp_plugin.c:2265
+#: plugins/rdp/rdp_plugin.c:2296
 msgid "Could not start libfreerdp-gdi."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2268
+#: plugins/rdp/rdp_plugin.c:2299
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2275
+#: plugins/rdp/rdp_plugin.c:2306
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2280
+#: plugins/rdp/rdp_plugin.c:2311
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2290
+#: plugins/rdp/rdp_plugin.c:2321
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Ezin izan da \"%s\" RDP zerbitzarira konektatu."
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2664
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2665
 msgid "GFX AVC444 (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2666
 msgid "GFX AVC420 (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2667
 msgid "GFX RFX (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2637
+#: plugins/rdp/rdp_plugin.c:2668
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2669
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2639 plugins/vnc/vnc_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2670 plugins/vnc/vnc_plugin.c:2030
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "Benetako kolorea (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2640
+#: plugins/rdp/rdp_plugin.c:2671
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Benetako kolorea (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2641 plugins/vnc/vnc_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2672 plugins/vnc/vnc_plugin.c:2031
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "Kolore altua (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2673
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Kolore altua (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2643 plugins/vnc/vnc_plugin.c:2032
+#: plugins/rdp/rdp_plugin.c:2674 plugins/vnc/vnc_plugin.c:2032
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 kolore (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:610
+#: plugins/rdp/rdp_plugin.c:2705 data/ui/remmina_preferences.glade:610
 #, fuzzy
 msgid "None"
 msgstr "Bat ere ez"
 
-#: plugins/rdp/rdp_plugin.c:2675
+#: plugins/rdp/rdp_plugin.c:2706
 msgid "Auto-detect"
 msgstr "Autodetektatu"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2707
 #, fuzzy
 msgid "Modem"
 msgstr "modema"
 
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_plugin.c:2708
 msgid "Low performance broadband"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2678
+#: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Satellite"
 msgstr "Satelitea"
 
-#: plugins/rdp/rdp_plugin.c:2679
+#: plugins/rdp/rdp_plugin.c:2710
 msgid "High performance broadband"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2680
+#: plugins/rdp/rdp_plugin.c:2711
 msgid "WAN"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2712
 #, fuzzy
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2688 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2719 plugins/spice/spice_plugin.c:637
 #: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Off"
 msgstr "Desgaituta"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2728
 msgid "Automatic negotiation"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2729
 #, fuzzy
 msgid "NLA protocol security"
 msgstr "NLA segurtasun protokoloa"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid "TLS protocol security"
 msgstr "TLS segurtasun protokoloa"
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2731
 #, fuzzy
 msgid "RDP protocol security"
 msgstr "RDP segurtasun protokoloa"
 
-#: plugins/rdp/rdp_plugin.c:2701
+#: plugins/rdp/rdp_plugin.c:2732
 msgid "NLA extended protocol security"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2715 plugins/spice/spice_plugin.c:618
+#: plugins/rdp/rdp_plugin.c:2746 plugins/spice/spice_plugin.c:618
 #: plugins/spice/spice_plugin.c:636
 #, fuzzy
 msgid "Default"
 msgstr "Lehenetsia"
 
-#: plugins/rdp/rdp_plugin.c:2716
+#: plugins/rdp/rdp_plugin.c:2747
 msgid "0 — Windows 7 compatible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2748
 msgid "1"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2718
+#: plugins/rdp/rdp_plugin.c:2749
 msgid "2"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_plugin.c:2750
 msgid "3"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2720
+#: plugins/rdp/rdp_plugin.c:2751
 msgid "4"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_plugin.c:2752
 msgid "5"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2757
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2760
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2452,7 +2456,7 @@ msgid ""
 "    SCardGetDeviceTypeId()"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2737
+#: plugins/rdp/rdp_plugin.c:2768
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2463,7 +2467,7 @@ msgid ""
 "  • sys:alsa"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2746
+#: plugins/rdp/rdp_plugin.c:2777
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2474,7 +2478,7 @@ msgid ""
 "  • sys:alsa"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2787
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2482,21 +2486,21 @@ msgid ""
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2762
+#: plugins/rdp/rdp_plugin.c:2793
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2767
+#: plugins/rdp/rdp_plugin.c:2798
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2803
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2510,7 +2514,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2815
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2522,307 +2526,311 @@ msgid ""
 "\n"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2816 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2847 plugins/spice/spice_plugin.c:679
 #, fuzzy
 msgid "Share folder"
 msgstr "Partekatu karpeta"
 
-#: plugins/rdp/rdp_plugin.c:2817
+#: plugins/rdp/rdp_plugin.c:2848
 msgid "Restricted admin mode"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2818
+#: plugins/rdp/rdp_plugin.c:2849
 #, fuzzy
 #| msgid "Password"
 msgid "Password hash"
 msgstr "Pasahitza"
 
-#: plugins/rdp/rdp_plugin.c:2818
+#: plugins/rdp/rdp_plugin.c:2849
 msgid "Restricted admin mode password hash"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2819
+#: plugins/rdp/rdp_plugin.c:2850
 msgid "Left-handed mouse support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2819
+#: plugins/rdp/rdp_plugin.c:2850
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2821
+#: plugins/rdp/rdp_plugin.c:2852
 msgid "Enable multi monitor"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2822
+#: plugins/rdp/rdp_plugin.c:2853
 msgid "Span screen over multiple monitors"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2823
+#: plugins/rdp/rdp_plugin.c:2854
 #, fuzzy
 msgid "List monitor IDs"
 msgstr "Monitore ID-en zerrenda"
 
-#: plugins/rdp/rdp_plugin.c:2825 plugins/vnc/vnc_plugin.c:2101
+#: plugins/rdp/rdp_plugin.c:2856 plugins/vnc/vnc_plugin.c:2101
 #: plugins/vnc/vnc_plugin.c:2113 plugins/gvnc/gvnc_plugin.c:848
 #, fuzzy
 msgid "Colour depth"
 msgstr "Kolore-sakonera"
 
-#: plugins/rdp/rdp_plugin.c:2826
+#: plugins/rdp/rdp_plugin.c:2857
 msgid "Network connection type"
 msgstr "Konexioko"
 
-#: plugins/rdp/rdp_plugin.c:2842 plugins/vnc/vnc_plugin.c:2102
+#: plugins/rdp/rdp_plugin.c:2873 plugins/vnc/vnc_plugin.c:2102
 #: plugins/vnc/vnc_plugin.c:2114
 #, fuzzy
 msgid "Quality"
 msgstr "Kalitatea"
 
-#: plugins/rdp/rdp_plugin.c:2843
+#: plugins/rdp/rdp_plugin.c:2874
 msgid "Security protocol negotiation"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2844
+#: plugins/rdp/rdp_plugin.c:2875
 msgid "Gateway transport type"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2845
+#: plugins/rdp/rdp_plugin.c:2876
 #, fuzzy
 msgid "TLS Security Level"
 msgstr "Segurtasuna"
 
-#: plugins/rdp/rdp_plugin.c:2846
+#: plugins/rdp/rdp_plugin.c:2877
 msgid "FreeRDP log level"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2847
+#: plugins/rdp/rdp_plugin.c:2878
 msgid "FreeRDP log filters"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2847
+#: plugins/rdp/rdp_plugin.c:2878
 msgid "tag:level[,tag:level[,…]]"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2848
+#: plugins/rdp/rdp_plugin.c:2879
 msgid "Audio output mode"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2849
+#: plugins/rdp/rdp_plugin.c:2880
 msgid "Redirect local audio output"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2850
+#: plugins/rdp/rdp_plugin.c:2881
 msgid "Redirect local microphone"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2851
+#: plugins/rdp/rdp_plugin.c:2882
 #, fuzzy
 msgid "Connection timeout in ms"
 msgstr "Konexioaren denbora-muga milisegundotan"
 
-#: plugins/rdp/rdp_plugin.c:2852
+#: plugins/rdp/rdp_plugin.c:2883
 msgid "Remote Desktop Gateway server"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2853
+#: plugins/rdp/rdp_plugin.c:2884
 msgid "Remote Desktop Gateway username"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2854
+#: plugins/rdp/rdp_plugin.c:2885
 msgid "Remote Desktop Gateway password"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2886
 msgid "Remote Desktop Gateway domain"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2856
+#: plugins/rdp/rdp_plugin.c:2887
 #, fuzzy
 msgid "Client name"
 msgstr "Bezeroaren izena"
 
-#: plugins/rdp/rdp_plugin.c:2857
+#: plugins/rdp/rdp_plugin.c:2888
 msgid "Client build"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2858
+#: plugins/rdp/rdp_plugin.c:2889
 msgid "Start-up program"
 msgstr "Abioko programa"
 
-#: plugins/rdp/rdp_plugin.c:2860
+#: plugins/rdp/rdp_plugin.c:2891
 msgid "Load balance info"
 msgstr ""
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2862
+#: plugins/rdp/rdp_plugin.c:2893
 msgid "Override printer drivers"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2862
+#: plugins/rdp/rdp_plugin.c:2893
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2863
+#: plugins/rdp/rdp_plugin.c:2894
 msgid "USB device redirection"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2864
+#: plugins/rdp/rdp_plugin.c:2895
 msgid "Local serial name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2864
+#: plugins/rdp/rdp_plugin.c:2895
 msgid "COM1, COM2, etc."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2865
+#: plugins/rdp/rdp_plugin.c:2896
 msgid "Local serial driver"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2865
+#: plugins/rdp/rdp_plugin.c:2896
 #, fuzzy
 msgid "Serial"
 msgstr "Serial:"
 
-#: plugins/rdp/rdp_plugin.c:2866
+#: plugins/rdp/rdp_plugin.c:2897
 msgid "Local serial path"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2866
+#: plugins/rdp/rdp_plugin.c:2897
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2867
+#: plugins/rdp/rdp_plugin.c:2898
 msgid "Local parallel name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2868
+#: plugins/rdp/rdp_plugin.c:2899
 msgid "Local parallel device"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2869
+#: plugins/rdp/rdp_plugin.c:2900
 msgid "Name of smart card"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2870
+#: plugins/rdp/rdp_plugin.c:2901
 msgid "Dynamic virtual channel"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2870 plugins/rdp/rdp_plugin.c:2871
+#: plugins/rdp/rdp_plugin.c:2901 plugins/rdp/rdp_plugin.c:2902
 msgid "<channel>[,<options>]"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2871
+#: plugins/rdp/rdp_plugin.c:2902
 msgid "Static virtual channel"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2872
+#: plugins/rdp/rdp_plugin.c:2903
 #, fuzzy
 msgid "TCP redirection"
 msgstr "TCP berbideraketa"
 
-#: plugins/rdp/rdp_plugin.c:2872
+#: plugins/rdp/rdp_plugin.c:2903
 msgid "/PATH/TO/rdp2tcp"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2874
+#: plugins/rdp/rdp_plugin.c:2905
+msgid "Attempt to connect in assistnace mode"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2906
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2875
+#: plugins/rdp/rdp_plugin.c:2907
 msgid "Share printers"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2876
+#: plugins/rdp/rdp_plugin.c:2908
 msgid "Share serial ports"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2877
+#: plugins/rdp/rdp_plugin.c:2909
 msgid "(SELinux) permissive mode for serial ports"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2878
+#: plugins/rdp/rdp_plugin.c:2910
 msgid "Share parallel ports"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2879
+#: plugins/rdp/rdp_plugin.c:2911
 msgid "Share a smart card"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2880 plugins/vnc/vnc_plugin.c:2138
+#: plugins/rdp/rdp_plugin.c:2912 plugins/vnc/vnc_plugin.c:2138
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Desgaitu arbelaren sinkronizazioa"
 
-#: plugins/rdp/rdp_plugin.c:2881
+#: plugins/rdp/rdp_plugin.c:2913
 msgid "Ignore certificate"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2882
+#: plugins/rdp/rdp_plugin.c:2914
 msgid "Use the old license workflow"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2882
+#: plugins/rdp/rdp_plugin.c:2914
 msgid "It disables CAL and hwId is set to 0"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2883 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2915 plugins/spice/spice_plugin.c:704
 #: plugins/vnc/vnc_plugin.c:2134 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2884
+#: plugins/rdp/rdp_plugin.c:2916
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Erantsi kontsolari (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2885
+#: plugins/rdp/rdp_plugin.c:2917
 msgid "Turn off fast-path"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2886
+#: plugins/rdp/rdp_plugin.c:2918
 msgid "Server detection using Remote Desktop Gateway"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2888
+#: plugins/rdp/rdp_plugin.c:2920
 msgid "Use system proxy settings"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2890
+#: plugins/rdp/rdp_plugin.c:2922
 msgid "Turn off automatic reconnection"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2891
+#: plugins/rdp/rdp_plugin.c:2923
 msgid "Relax order checks"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2892
+#: plugins/rdp/rdp_plugin.c:2924
 msgid "Glyph cache"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2893
+#: plugins/rdp/rdp_plugin.c:2925
 msgid "Enable multitransport protocol (UDP)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2893
+#: plugins/rdp/rdp_plugin.c:2925
 msgid "Using the UDP protocol may improve performance"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2894
+#: plugins/rdp/rdp_plugin.c:2926
 msgid "Use base credentials for gateway too"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2896
+#: plugins/rdp/rdp_plugin.c:2928
 msgid "Enable Gateway websockets support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2898
+#: plugins/rdp/rdp_plugin.c:2930
 msgid "Update framebuffer even when not visible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2907 plugins/spice/spice_plugin.c:707
+#: plugins/rdp/rdp_plugin.c:2939 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2140
 #: plugins/vnc/vnc_plugin.c:2153 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
@@ -2830,27 +2838,27 @@ msgstr ""
 msgid "View only"
 msgstr "Ikusi soilik"
 
-#: plugins/rdp/rdp_plugin.c:2912 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2944 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2157
 msgid "Send Ctrl+Alt+Delete"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2925
+#: plugins/rdp/rdp_plugin.c:2957
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Urruneko Mahaigain Protokoloa"
 
-#: plugins/rdp/rdp_plugin.c:2950
+#: plugins/rdp/rdp_plugin.c:2982
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP fitxategi kudeatzailea"
 
-#: plugins/rdp/rdp_plugin.c:2965
+#: plugins/rdp/rdp_plugin.c:2997
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "RDP - Hobespenak"
 
-#: plugins/rdp/rdp_plugin.c:3018
+#: plugins/rdp/rdp_plugin.c:3050
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "Esportatu konexioa Windows-eko .rdp fitxategi formatua erabiliz"

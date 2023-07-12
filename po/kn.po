@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-07-10 13:47+0000\n"
+"POT-Creation-Date: 2023-07-11 13:14+0000\n"
 "PO-Revision-Date: 2023-02-04 06:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Kannada <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -24,8 +24,8 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1699 src/remmina_protocol_widget.c:1718
-#: src/remmina_file_editor.c:1120 src/remmina_file_editor.c:1243
-#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2814
+#: src/remmina_file_editor.c:1203 src/remmina_file_editor.c:1326
+#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2845
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:68
 #: data/ui/remmina_unlock.glade:98
@@ -34,25 +34,25 @@ msgid "Password"
 msgstr "ಗುಪ್ತಪದ (ಪಾಸ್ ವರ್ಡ್)"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1121 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1204 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 #, fuzzy
 msgid "SSH identity file"
 msgstr "ಎಸ್.ಎಸ್.ಎಚ್ ಗುರುತಿನ ಫೈಲ್"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1122
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1205
 #: src/remmina_ssh_plugin.c:1396
 #, fuzzy
 msgid "SSH agent"
 msgstr "ಎಸ್.ಎಸ್.ಎಚ್ ಏಜೆಂಟ್"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1123
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1206
 #: src/remmina_ssh_plugin.c:1397
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "ಸಾರ್ವಜನಿಕ ಕೀಲಿ (ಸ್ವಯಂಚಾಲಿತ)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1124
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1207
 #: src/remmina_ssh_plugin.c:1398
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -78,8 +78,8 @@ msgid "Connect via SSH from a new terminal"
 msgstr "ಹೊಸ ಟರ್ಮಿನಲ್ ನಿಂದ ಎಸ್ ಎಸ್ ಎಚ್ ಮೂಲಕ ಸಂಪರ್ಕಿಸು"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1237 src/remmina_ssh_plugin.c:1504
-#: plugins/rdp/rdp_plugin.c:2813 plugins/vnc/vnc_plugin.c:2099
+#: src/remmina_file_editor.c:1320 src/remmina_ssh_plugin.c:1504
+#: plugins/rdp/rdp_plugin.c:2844 plugins/vnc/vnc_plugin.c:2099
 #: plugins/vnc/vnc_plugin.c:2111 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
 #: data/ui/remmina_mpc.glade:122
@@ -87,13 +87,13 @@ msgstr "ಹೊಸ ಟರ್ಮಿನಲ್ ನಿಂದ ಎಸ್ ಎಸ್ ಎ�
 msgid "Username"
 msgstr "ಬಳಕೆದಾರಹೆಸರು"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1228
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1311
 #: src/remmina_ssh_plugin.c:1503
 #, fuzzy
 msgid "Authentication type"
 msgstr "ದೃಢೀಕರಣ ಪ್ರಕಾರ"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1261
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1344
 #: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Password to unlock private key"
@@ -129,7 +129,7 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2010
+#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2104
 #, fuzzy
 msgid "Protocol"
 msgstr "ಪ್ರೊಟೋಕಾಲ್"
@@ -163,34 +163,34 @@ msgstr "ರಹಸ್ಯ"
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:529 data/ui/remmina_main.glade:330
+#: src/remmina_plugin_manager.c:531 data/ui/remmina_main.glade:330
 #, fuzzy
 msgid "Plugins"
 msgstr "ಪ್ಲಗಿನ್ ಗಳು"
 
-#: src/remmina_plugin_manager.c:529 src/remmina_message_panel.c:455
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:245
+#: src/remmina_plugin_manager.c:531 src/remmina_message_panel.c:455
+#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:251
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:547 src/remmina_file_editor.c:1942
+#: src/remmina_plugin_manager.c:549 src/remmina_file_editor.c:2036
 #: data/ui/remmina_main.glade:457
 #, fuzzy
 msgid "Name"
 msgstr "ಹೆಸರು"
 
-#: src/remmina_plugin_manager.c:553
+#: src/remmina_plugin_manager.c:555
 #, fuzzy
 msgid "Type"
 msgstr "ಬಗೆ"
 
-#: src/remmina_plugin_manager.c:559
+#: src/remmina_plugin_manager.c:561
 #, fuzzy
 msgid "Description"
 msgstr "ವಿವರಣೆ"
 
-#: src/remmina_plugin_manager.c:565
+#: src/remmina_plugin_manager.c:567
 #, fuzzy
 msgid "Version"
 msgstr "ಆವೃತ್ತಿ"
@@ -255,12 +255,12 @@ msgstr "ಮೆಟಾ+"
 msgid "<None>"
 msgstr "<None>"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:532
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:559
 #, fuzzy
 msgid "Resolutions"
 msgstr "ನಿರ್ಣಯಗಳು"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:532
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:559
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "ಲಭ್ಯವಿರುವ ನಿರ್ಣಯಗಳನ್ನು ಸಂರಚಿಸಿ"
@@ -325,7 +325,7 @@ msgstr "ಸರಿ"
 msgid "No"
 msgstr "ಇಲ್ಲ"
 
-#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2815
+#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2846
 #: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
@@ -337,8 +337,8 @@ msgid "Save password"
 msgstr "ಪಾಸ್ ವರ್ಡ್ ಉಳಿಸಿ"
 
 #: src/remmina_message_panel.c:460 src/remmina_message_panel.c:632
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:244
-#: src/remmina_file_editor.c:1816 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:250
+#: src/remmina_file_editor.c:1910 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
@@ -910,7 +910,7 @@ msgstr "ಅಪ್"
 msgid "Go to parent folder"
 msgstr "ಪೋಷಕ ಫೋಲ್ಡರ್ ಗೆ ಹೋಗಿ"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2908
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2940
 #: plugins/vnc/vnc_plugin.c:2155
 #, fuzzy
 msgid "Refresh"
@@ -957,7 +957,7 @@ msgstr "ಗಾತ್ರ"
 msgid "User"
 msgstr "ಬಳಕೆದಾರ"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:1967
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2061
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 #, fuzzy
 msgid "Group"
@@ -972,12 +972,12 @@ msgstr "ಅನುಮತಿಗಳು"
 msgid "Modified"
 msgstr ""
 
-#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2690
+#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2721
 #, fuzzy
 msgid "Remote"
 msgstr "ದೂರ"
 
-#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2689
+#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2720
 #, fuzzy
 msgid "Local"
 msgstr "ಲೋಕಲ್"
@@ -1115,8 +1115,8 @@ msgstr "ಒಳಬರುವ [ಎಕ್ಸ್37ಎಕ್ಸ್] ಸಂಪರ್ಕ
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "ದೃಢೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ಮರುಸಂಪರ್ಕ ಪ್ರಯತ್ನಿಸಲು…"
 
-#: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:436
-#: src/remmina_file_editor.c:1193 data/ui/remmina_main.glade:509
+#: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:463
+#: src/remmina_file_editor.c:1276 data/ui/remmina_main.glade:509
 #, fuzzy
 msgid "Server"
 msgstr "ಸರ್ವರ್"
@@ -1466,7 +1466,7 @@ msgstr ""
 msgid "Import"
 msgstr "ಆಮದು ಮಾಡು"
 
-#: src/remmina_main.c:1262 src/remmina_file_editor.c:1824
+#: src/remmina_main.c:1262 src/remmina_file_editor.c:1918
 #, fuzzy
 msgid "_Save"
 msgstr "ಉಳಿಸಿ (_S)"
@@ -1627,158 +1627,162 @@ msgstr ""
 "• ಸರ್ವರ್[:p ಯೋರ್ಟ್]\n"
 "• username@server[:p ಯೋರ್ಟ್] (ಎಸ್ಎಸ್ಎಚ್ ಪ್ರೊಟೋಕಾಲ್ ಮಾತ್ರ)[ಎಕ್ಸ್92ಎಕ್ಸ್]"
 
-#: src/remmina_file_editor.c:164
+#: src/remmina_file_editor.c:170
 #, fuzzy
 msgid "Input is invalid."
 msgstr "ಇನ್ ಪುಟ್ ಅಮಾನ್ಯವಾಗಿದೆ."
 
-#: src/remmina_file_editor.c:242
+#: src/remmina_file_editor.c:248
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
 msgstr "ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಸರ್ವರ್ ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/remmina_file_editor.c:460
+#: src/remmina_file_editor.c:487
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "[ಎಕ್ಸ್29ಎಕ್ಸ್] ಸರ್ವರ್ ಹುಡುಕಲು ನೆಟ್ವರ್ಕ್ ಬ್ರೌಸ್ ಮಾಡಿ"
 
-#: src/remmina_file_editor.c:568
+#: src/remmina_file_editor.c:595
 #, fuzzy
 msgid "Resolution"
 msgstr "ರೆಸಲ್ಯೂಶನ್"
 
-#: src/remmina_file_editor.c:575
+#: src/remmina_file_editor.c:602
 #, fuzzy
 msgid "Use initial window size"
 msgstr "ಆರಂಭಿಕ ವಿಂಡೋ ಗಾತ್ರಬಳಸಿ"
 
-#: src/remmina_file_editor.c:579
+#: src/remmina_file_editor.c:606
 #, fuzzy
 msgid "Use client resolution"
 msgstr "ಕ್ಲೈಂಟ್ ರೆಸಲ್ಯೂಶನ್ ಬಳಸಿ"
 
-#: src/remmina_file_editor.c:590 src/remmina_file_editor.c:1173
+#: src/remmina_file_editor.c:617 src/remmina_file_editor.c:1256
 #, fuzzy
 msgid "Custom"
 msgstr "ಕಸ್ಟಮ್"
 
-#: src/remmina_file_editor.c:956
+#: src/remmina_file_editor.c:658
+msgid "Assistance Mode"
+msgstr ""
+
+#: src/remmina_file_editor.c:1039
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "ಕೀಲಿಮಣೆ ಮ್ಯಾಪಿಂಗ್"
 
-#: src/remmina_file_editor.c:1083
+#: src/remmina_file_editor.c:1166
 #, fuzzy
 msgid "Behavior"
 msgstr "ವರ್ತನೆ"
 
-#: src/remmina_file_editor.c:1086
+#: src/remmina_file_editor.c:1169
 #, fuzzy
 msgid "Execute a Command"
 msgstr "ಆದೇಶ ಕಾರ್ಯಗತಗೊಳಿಸು"
 
-#: src/remmina_file_editor.c:1090
+#: src/remmina_file_editor.c:1173
 #, fuzzy
 msgid "Before connecting"
 msgstr "ಸಂಪರ್ಕಿಸುವ ಮೊದಲು"
 
-#: src/remmina_file_editor.c:1092
+#: src/remmina_file_editor.c:1175
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "ಆದೇಶ %ಎಚ್ %ಯು %t %A %p %g --ಆಯ್ಕೆ"
 
-#: src/remmina_file_editor.c:1097
+#: src/remmina_file_editor.c:1180
 #, fuzzy
 msgid "After connecting"
 msgstr "ಸಂಪರ್ಕಿಸಿದ ನಂತರ"
 
-#: src/remmina_file_editor.c:1099
+#: src/remmina_file_editor.c:1182
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/ಪಥ/ದಿಂದ/ಆದೇಶ -ಆಯ್ಕೆ1 ಆರ್ಗ್ %ಎಚ್ %ಯು %T -ಆಯ್ಕೆ2 %ಯು %p %g"
 
-#: src/remmina_file_editor.c:1103
+#: src/remmina_file_editor.c:1186
 #, fuzzy
 msgid "Start-up"
 msgstr "ಸ್ಟಾರ್ಟ್-ಅಪ್"
 
-#: src/remmina_file_editor.c:1106
+#: src/remmina_file_editor.c:1189
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "ಈ ಪ್ರೊಫೈಲ್ ಅನ್ನು ಸ್ವಯಂ-ಪ್ರಾರಂಭಿಸಿ"
 
-#: src/remmina_file_editor.c:1110
+#: src/remmina_file_editor.c:1193
 #, fuzzy
 msgid "Connection profile security"
 msgstr "ಹೊಸ ಸಂಪರ್ಕ ಪ್ರೊಫೈಲ್"
 
-#: src/remmina_file_editor.c:1113
+#: src/remmina_file_editor.c:1196
 msgid "Require password to connect or edit the profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1146
+#: src/remmina_file_editor.c:1229
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "ಎಸ್.ಎಸ್.ಎಚ್ ಸುರಂಗ"
 
-#: src/remmina_file_editor.c:1147
+#: src/remmina_file_editor.c:1230
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "ಎಸ್ ಎಸ್ ಎಚ್ ಸುರಂಗವನ್ನು ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸಿ"
 
-#: src/remmina_file_editor.c:1154
+#: src/remmina_file_editor.c:1237
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "ಲೂಪ್ ಬ್ಯಾಕ್ ವಿಳಾಸದ ಮೂಲಕ ಸುರಂಗ"
 
-#: src/remmina_file_editor.c:1164
+#: src/remmina_file_editor.c:1247
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "ಪೋರ್ಟ್ ನಲ್ಲಿ ಅದೇ ಸರ್ವರ್ [ಎಕ್ಸ್ 20ಎಕ್ಸ್]"
 
-#: src/remmina_file_editor.c:1214 plugins/rdp/rdp_plugin.c:2859
+#: src/remmina_file_editor.c:1297 plugins/rdp/rdp_plugin.c:2890
 #, fuzzy
 msgid "Start-up path"
 msgstr "ಸ್ಟಾರ್ಟ್-ಅಪ್ ಹಾದಿ"
 
-#: src/remmina_file_editor.c:1223
+#: src/remmina_file_editor.c:1306
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "ಎಸ್.ಎಸ್.ಎಚ್ ದೃಢೀಕರಣ"
 
-#: src/remmina_file_editor.c:1250
+#: src/remmina_file_editor.c:1333
 #, fuzzy
 msgid "SSH private key file"
 msgstr "ಎಸ್.ಎಸ್.ಎಚ್ ಖಾಸಗಿ ಕೀ ಫೈಲ್"
 
-#: src/remmina_file_editor.c:1256 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1339 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "ಎಸ್.ಎಸ್.ಎಚ್ ಪ್ರಮಾಣಪತ್ರ ಫೈಲ್"
 
-#: src/remmina_file_editor.c:1313
+#: src/remmina_file_editor.c:1396
 #, fuzzy
 msgid "Basic"
 msgstr "ಮೂಲ"
 
-#: src/remmina_file_editor.c:1319
+#: src/remmina_file_editor.c:1402
 #, fuzzy
 msgid "Advanced"
 msgstr "ಸುಧಾರಿತ"
 
-#: src/remmina_file_editor.c:1330 data/ui/remmina_main.glade:523
+#: src/remmina_file_editor.c:1413 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "ಟಿಪ್ಪಣಿಗಳು"
 
-#: src/remmina_file_editor.c:1460
+#: src/remmina_file_editor.c:1543
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "([ಎಕ್ಸ್1ಎಕ್ಸ್]: [ಎಕ್ಸ್5ಎಕ್ಸ್]): 'ಮೌಲ್ಯ' ಅಥವಾ 'ಜಿಎಫ್ಇ' ಶೂನ್ಯವಾಗಿರುವುದರಿಂದ ಸೆಟ್ಟಿಂಗ್ "
 "'[ಎಕ್ಸ್34ಎಕ್ಸ್]] ಅನ್ನು ಮೌಲ್ಯೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!"
 
-#: src/remmina_file_editor.c:1464
+#: src/remmina_file_editor.c:1547
 #, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1788,67 +1792,67 @@ msgstr ""
 "ಶೂನ್ಯವಾಗಿರುವುದರಿಂದ ಬಳಕೆದಾರರ ಇನ್ ಪುಟ್ ಅನ್ನು ಮೌಲ್ಯೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1468 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1551 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 #, fuzzy
 msgid "Internal error."
 msgstr "ಆಂತರಿಕ ದೋಷ."
 
-#: src/remmina_file_editor.c:1700 src/remmina_file_editor.c:1736
-#: src/remmina_file_editor.c:1757 src/remmina_file_editor.c:1780
+#: src/remmina_file_editor.c:1794 src/remmina_file_editor.c:1830
+#: src/remmina_file_editor.c:1851 src/remmina_file_editor.c:1874
 #, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "ಬಳಕೆದಾರರ ಇನ್ ಪುಟ್ ಅನ್ನು ಪ್ರಮಾಣೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. [ಎಕ್ಸ್30ಎಕ್ಸ್]"
 
-#: src/remmina_file_editor.c:1724
+#: src/remmina_file_editor.c:1818
 #, fuzzy
 msgid "Default settings saved."
 msgstr "ಡೀಫಾಲ್ಟ್ ಸೆಟ್ಟಿಂಗ್ ಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ."
 
-#: src/remmina_file_editor.c:1814
+#: src/remmina_file_editor.c:1908
 #, fuzzy
 msgid "Remote Connection Profile"
 msgstr "ರಿಮೋಟ್ ಕನೆಕ್ಷನ್ ಪ್ರೊಫೈಲ್"
 
-#: src/remmina_file_editor.c:1820
+#: src/remmina_file_editor.c:1914
 #, fuzzy
 msgid "Save as Default"
 msgstr "ಡೀಫಾಲ್ಟ್ ಆಗಿ ಉಳಿಸು"
 
-#: src/remmina_file_editor.c:1821
+#: src/remmina_file_editor.c:1915
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "ಎಲ್ಲಾ ಹೊಸ ಸಂಪರ್ಕ ಪ್ರೊಫೈಲ್ ಗಳಿಗೆ ಪ್ರಸ್ತುತ ಸೆಟ್ಟಿಂಗ್ ಗಳನ್ನು ಡೀಫಾಲ್ಟ್ ಆಗಿ ಬಳಸಿ"
 
-#: src/remmina_file_editor.c:1829 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1923 data/ui/remmina_main.glade:161
 #, fuzzy
 msgid "Connect"
 msgstr "ಸಂಪರ್ಕಿಸಿ"
 
-#: src/remmina_file_editor.c:1832
+#: src/remmina_file_editor.c:1926
 #, fuzzy
 msgid "_Save and Connect"
 msgstr "_Save ಮತ್ತು ಸಂಪರ್ಕಿಸು"
 
-#: src/remmina_file_editor.c:1956
+#: src/remmina_file_editor.c:2050
 #, fuzzy
 msgid "Quick Connect"
 msgstr "ತ್ವರಿತ ಸಂಪರ್ಕ"
 
-#: src/remmina_file_editor.c:1980
+#: src/remmina_file_editor.c:2074
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "'[ಎಕ್ಸ್5ಎಕ್ಸ್]' ಅನ್ನು ಉಪಸಮೂಹ ಡಿಲಿಮಿಟರ್ ಆಗಿ ಬಳಸಿ"
 
-#: src/remmina_file_editor.c:1985 data/ui/remmina_main.glade:493
+#: src/remmina_file_editor.c:2079 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
-#: src/remmina_file_editor.c:1999
+#: src/remmina_file_editor.c:2093
 msgid "Label1,Label2"
 msgstr ""
 
-#: src/remmina_file_editor.c:2071 src/remmina_file_editor.c:2090
+#: src/remmina_file_editor.c:2165 src/remmina_file_editor.c:2184
 #, fuzzy, c-format
 msgid "Could not find the file “%s”."
 msgstr "ಫೈಲ್ ಅನ್ನು ಹುಡುಕಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ \"[ಎಕ್ಸ್ 25ಎಕ್ಸ್]\"."
@@ -2218,25 +2222,25 @@ msgstr "<ಸೆಟ್ ಮಾಡಿಲ್ಲ>"
 msgid "<Choose a quality level to edit…>"
 msgstr "<ಸಂಪಾದಿಸಲು ಗುಣಮಟ್ಟದ ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ...>"
 
-#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2664
+#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2695
 #: plugins/vnc/vnc_plugin.c:2042
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "ಕಳಪೆ (ವೇಗದ)"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2696
 #: plugins/vnc/vnc_plugin.c:2041
 #, fuzzy
 msgid "Medium"
 msgstr "ಮಾದ್ಯಮ"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2666
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2697
 #: plugins/vnc/vnc_plugin.c:2039
 #, fuzzy
 msgid "Good"
 msgstr "ಒಳ್ಳೆಯದು"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2667
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2698
 #: plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "Best (slowest)"
@@ -2338,7 +2342,7 @@ msgstr "ಡೆಸ್ಕ್ ಟಾಪ್ ಓರಿಯೆಂಟೇಶನ್"
 msgid "Input device settings"
 msgstr "ಇನ್ ಪುಟ್ ಸಾಧನ ಸೆಟ್ಟಿಂಗ್ ಗಳು"
 
-#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2820
+#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2851
 #: plugins/vnc/vnc_plugin.c:2133
 #, fuzzy
 msgid "Disable smooth scrolling"
@@ -2349,34 +2353,34 @@ msgstr "ನಯವಾದ ಸ್ಕ್ರಾಲಿಂಗ್ ನಿಷ್ಕ್ರ�
 msgid "General settings"
 msgstr "ಸಾಮಾನ್ಯ ಸೆಟ್ಟಿಂಗ್ ಗಳು"
 
-#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2873
+#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2904
 #, fuzzy
 msgid "Reconnect attempts number"
 msgstr "ಪ್ರಯತ್ನಗಳ ಸಂಖ್ಯೆಯನ್ನು ಮರುಸಂಪರ್ಕಿಸು"
 
-#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2873
+#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2904
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr "ಆರ್ ಡಿಪಿ ಸಂಪರ್ಕ ಕಡಿತದ ಮೇಲೆ ಮರುಸಂಪರ್ಕಪ್ರಯತ್ನಗಳ ಗರಿಷ್ಠ ಸಂಖ್ಯೆ (ಡೀಫಾಲ್ಟ್: 20)"
 
-#: plugins/rdp/rdp_plugin.c:789 plugins/rdp/rdp_plugin.c:854
+#: plugins/rdp/rdp_plugin.c:790 plugins/rdp/rdp_plugin.c:855
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "ಆರ್ ಡಿಪಿ ದೃಢೀಕರಣ ರುಜುವಾತುಗಳನ್ನು ನಮೂದಿಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:862
+#: plugins/rdp/rdp_plugin.c:863
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "ಆರ್ ಡಿಪಿ ಗೇಟ್ ವೇ ದೃಢೀಕರಣ ರುಜುವಾತುಗಳನ್ನು ನಮೂದಿಸಿ"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:1043
+#: plugins/rdp/rdp_plugin.c:1044
 #, c-format
 msgid "Disconnected from %s via RDP"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2195
+#: plugins/rdp/rdp_plugin.c:2226
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2385,7 +2389,7 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ \"[ಎಕ್ಸ್33ಎಕ್ಸ್]\" ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.\n"
 "ಖಾತೆ ಲಾಕ್ ಔಟ್ ಆಗಿದೆ."
 
-#: plugins/rdp/rdp_plugin.c:2202
+#: plugins/rdp/rdp_plugin.c:2233
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2394,7 +2398,7 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ \"[ಎಕ್ಸ್33ಎಕ್ಸ್]\" ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.\n"
 "ಖಾತೆ ಅವಧಿ ಮುಗಿದಿದೆ."
 
-#: plugins/rdp/rdp_plugin.c:2209
+#: plugins/rdp/rdp_plugin.c:2240
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2403,7 +2407,7 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ \"[ಎಕ್ಸ್33ಎಕ್ಸ್]\" ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.\n"
 "ಪಾಸ್ ವರ್ಡ್ ಅವಧಿ ಮೀರಿದೆ."
 
-#: plugins/rdp/rdp_plugin.c:2216
+#: plugins/rdp/rdp_plugin.c:2247
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2412,7 +2416,7 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ \"[ಎಕ್ಸ್33ಎಕ್ಸ್]\" ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.\n"
 "ಖಾತೆ ನಿಷ್ಕ್ರಿಯಗೊಂಡಿದೆ."
 
-#: plugins/rdp/rdp_plugin.c:2222
+#: plugins/rdp/rdp_plugin.c:2253
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2421,7 +2425,7 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ \"[ಎಕ್ಸ್33ಎಕ್ಸ್]\" ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.\n"
 "ಸಾಕಷ್ಟು ಬಳಕೆದಾರ ಸವಲತ್ತುಗಳು ಇಲ್ಲ."
 
-#: plugins/rdp/rdp_plugin.c:2230
+#: plugins/rdp/rdp_plugin.c:2261
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2430,7 +2434,7 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ \"[ಎಕ್ಸ್33ಎಕ್ಸ್]\" ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.\n"
 "ಖಾತೆ ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ."
 
-#: plugins/rdp/rdp_plugin.c:2238
+#: plugins/rdp/rdp_plugin.c:2269
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2439,17 +2443,17 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ \"[ಎಕ್ಸ್33ಎಕ್ಸ್]\" ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.\n"
 "ಸಂಪರ್ಕಿಸುವ ಮೊದಲು ಬಳಕೆದಾರ ಪಾಸ್ ವರ್ಡ್ ಬದಲಿಸಿ."
 
-#: plugins/rdp/rdp_plugin.c:2243
+#: plugins/rdp/rdp_plugin.c:2274
 #, fuzzy, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ ಗೆ ಕಳೆದುಹೋದ ಸಂಪರ್ಕ \"[ಎಕ್ಸ್35ಎಕ್ಸ್]\"."
 
-#: plugins/rdp/rdp_plugin.c:2246
+#: plugins/rdp/rdp_plugin.c:2277
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ ಗೆ ವಿಳಾಸವನ್ನು ಹುಡುಕಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ \"[ಎಕ್ಸ್47ಎಕ್ಸ್]\"."
 
-#: plugins/rdp/rdp_plugin.c:2250
+#: plugins/rdp/rdp_plugin.c:2281
 #, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
@@ -2459,7 +2463,7 @@ msgstr ""
 "ಸರ್ವರ್ ಸಾಮಾನ್ಯ Tಎಲ್ಎಸ್ ಆವೃತ್ತಿಯನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ ಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2254
+#: plugins/rdp/rdp_plugin.c:2285
 #, fuzzy, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
@@ -2468,17 +2472,17 @@ msgstr ""
 "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ ಗೆ ಸಂಪರ್ಕವನ್ನು ಸ್ಥಾಪಿಸಲು ಅಸಮರ್ಥವಾಗಿದೆ \"[ಎಕ್ಸ್52ಎಕ್ಸ್]\". \"ಭದ್ರತಾ "
 "ಶಿಷ್ಟಾಚಾರ ಸಮಾಲೋಚನೆ\" ಪರಿಶೀಲಿಸಿ."
 
-#: plugins/rdp/rdp_plugin.c:2262
+#: plugins/rdp/rdp_plugin.c:2293
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "ಆರ್ ಡಿಪಿ ಸರ್ವರ್ ಗೆ ಸಂಪರ್ಕಪಡಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ \"[ಎಕ್ಸ್34ಎಕ್ಸ್]\"."
 
-#: plugins/rdp/rdp_plugin.c:2265
+#: plugins/rdp/rdp_plugin.c:2296
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "ಲಿಬ್ಫ್ರೀರ್ಡ್ಪ್-ಗ್ಡಿಯನ್ನು ಪ್ರಾರಂಭಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: plugins/rdp/rdp_plugin.c:2268
+#: plugins/rdp/rdp_plugin.c:2299
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2488,12 +2492,12 @@ msgstr ""
 "ನಿಮ್ಮ ಲಿಬ್ಫ್ರೀರ್ಡ್ಪ್ ಎಚ್.264 ಅನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು Aವಿಸಿ ಯೇತರ ಬಣ್ಣದ ಡೆಪ್ತ್ "
 "ಸೆಟ್ಟಿಂಗ್ ಬಳಸಿ."
 
-#: plugins/rdp/rdp_plugin.c:2275
+#: plugins/rdp/rdp_plugin.c:2306
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "\"[ಎಕ್ಸ್5ಎಕ್ಸ್]\" ಸರ್ವರ್ ಸಂಪರ್ಕವನ್ನು ನಿರಾಕರಿಸಿತು."
 
-#: plugins/rdp/rdp_plugin.c:2280
+#: plugins/rdp/rdp_plugin.c:2311
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2502,173 +2506,173 @@ msgstr ""
 "ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಗೇಟ್ ವೇ \"[ಎಕ್ಸ್28ಎಕ್ಸ್]\" ಬಳಕೆದಾರನಿಗೆ \"[ಎಕ್ಸ್49ಎಕ್ಸ್]\\[ಎಕ್ಸ್52ಎಕ್ಸ್]] "
 "\" ನೀತಿಯಿಂದಾಗಿ ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಿತು."
 
-#: plugins/rdp/rdp_plugin.c:2290
+#: plugins/rdp/rdp_plugin.c:2321
 #, fuzzy, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "\"[ಎಕ್ಸ್23ಎಕ್ಸ್]\" ಆರ್ ಡಿಪಿ ಸರ್ವರ್ ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."
 
-#: plugins/rdp/rdp_plugin.c:2633
+#: plugins/rdp/rdp_plugin.c:2664
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "ಸ್ವಯಂಚಾಲಿತ (32 ಬಿಪಿಪಿ) (ಸರ್ವರ್ ತನ್ನ ಅತ್ಯುತ್ತಮ ಸ್ವರೂಪವನ್ನು ಆಯ್ಕೆ ಮಾಡುತ್ತದೆ)"
 
-#: plugins/rdp/rdp_plugin.c:2634
+#: plugins/rdp/rdp_plugin.c:2665
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GPTAP44 (32 PP)"
 
-#: plugins/rdp/rdp_plugin.c:2635
+#: plugins/rdp/rdp_plugin.c:2666
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GPTAP420 (32 PP)"
 
-#: plugins/rdp/rdp_plugin.c:2636
+#: plugins/rdp/rdp_plugin.c:2667
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GPTAM (32 PP)"
 
-#: plugins/rdp/rdp_plugin.c:2637
+#: plugins/rdp/rdp_plugin.c:2668
 #, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GPTAM PP ಪ್ರೋಗ್ರೆಸ್ಸಿವ್ (32 ಬಿಪಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2638
+#: plugins/rdp/rdp_plugin.c:2669
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "ರಿಮೋಟ್ ಎಫ್ ಎಕ್ಸ್ (32 ಬಿಪಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2639 plugins/vnc/vnc_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2670 plugins/vnc/vnc_plugin.c:2030
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "ನಿಜವಾದ ಬಣ್ಣ (32 ಬಿಪಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2640
+#: plugins/rdp/rdp_plugin.c:2671
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "ನಿಜವಾದ ಬಣ್ಣ (24 ಬಿಪಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2641 plugins/vnc/vnc_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2672 plugins/vnc/vnc_plugin.c:2031
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "ಅಧಿಕ ಬಣ್ಣ (16 ಬಿಪಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2642
+#: plugins/rdp/rdp_plugin.c:2673
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "ಅಧಿಕ ಬಣ್ಣ (15 ಬಿಪಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2643 plugins/vnc/vnc_plugin.c:2032
+#: plugins/rdp/rdp_plugin.c:2674 plugins/vnc/vnc_plugin.c:2032
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 ಬಣ್ಣಗಳು (8 ಬಿಪಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2674 data/ui/remmina_preferences.glade:610
+#: plugins/rdp/rdp_plugin.c:2705 data/ui/remmina_preferences.glade:610
 #, fuzzy
 msgid "None"
 msgstr "ಯಾವುದೂ ಇಲ್ಲ"
 
-#: plugins/rdp/rdp_plugin.c:2675
+#: plugins/rdp/rdp_plugin.c:2706
 #, fuzzy
 msgid "Auto-detect"
 msgstr "ಸ್ವಯಂ-ಪತ್ತೆ"
 
-#: plugins/rdp/rdp_plugin.c:2676
+#: plugins/rdp/rdp_plugin.c:2707
 #, fuzzy
 msgid "Modem"
 msgstr "ಮೊಡೆಮ್"
 
-#: plugins/rdp/rdp_plugin.c:2677
+#: plugins/rdp/rdp_plugin.c:2708
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "ಕಡಿಮೆ ಕಾರ್ಯಕ್ಷಮತೆ ಬ್ರಾಡ್ ಬ್ಯಾಂಡ್"
 
-#: plugins/rdp/rdp_plugin.c:2678
+#: plugins/rdp/rdp_plugin.c:2709
 #, fuzzy
 msgid "Satellite"
 msgstr "ಉಪಗ್ರಹ"
 
-#: plugins/rdp/rdp_plugin.c:2679
+#: plugins/rdp/rdp_plugin.c:2710
 #, fuzzy
 msgid "High performance broadband"
 msgstr "ಉನ್ನತ ಕಾರ್ಯಕ್ಷಮತೆ ಬ್ರಾಡ್ ಬ್ಯಾಂಡ್"
 
-#: plugins/rdp/rdp_plugin.c:2680
+#: plugins/rdp/rdp_plugin.c:2711
 #, fuzzy
 msgid "WAN"
 msgstr "ವಾನ್"
 
-#: plugins/rdp/rdp_plugin.c:2681
+#: plugins/rdp/rdp_plugin.c:2712
 #, fuzzy
 msgid "LAN"
 msgstr "ಲ್ಯಾನ್"
 
-#: plugins/rdp/rdp_plugin.c:2688 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2719 plugins/spice/spice_plugin.c:637
 #: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Off"
 msgstr "ಆರಿಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2728
 #, fuzzy
 msgid "Automatic negotiation"
 msgstr "ಸ್ವಯಂಚಾಲಿತ ಸಮಾಲೋಚನೆ"
 
-#: plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_plugin.c:2729
 #, fuzzy
 msgid "NLA protocol security"
 msgstr "ಎನ್ ಎಲ್ ಎ ಪ್ರೊಟೋಕಾಲ್ ಭದ್ರತೆ"
 
-#: plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_plugin.c:2730
 #, fuzzy
 msgid "TLS protocol security"
 msgstr "TTಎಲ್ಎಸ್ ಪ್ರೊಟೋಕಾಲ್ ಭದ್ರತೆ"
 
-#: plugins/rdp/rdp_plugin.c:2700
+#: plugins/rdp/rdp_plugin.c:2731
 #, fuzzy
 msgid "RDP protocol security"
 msgstr "ಆರ್ ಡಿಪಿ ಪ್ರೊಟೋಕಾಲ್ ಭದ್ರತೆ"
 
-#: plugins/rdp/rdp_plugin.c:2701
+#: plugins/rdp/rdp_plugin.c:2732
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "ಎನ್ ಎಲ್ ಎ ವಿಸ್ತರಿತ ಪ್ರೊಟೋಕಾಲ್ ಭದ್ರತೆ"
 
-#: plugins/rdp/rdp_plugin.c:2715 plugins/spice/spice_plugin.c:618
+#: plugins/rdp/rdp_plugin.c:2746 plugins/spice/spice_plugin.c:618
 #: plugins/spice/spice_plugin.c:636
 #, fuzzy
 msgid "Default"
 msgstr "ಪೂರ್ವನಿಯೋಜಿತ"
 
-#: plugins/rdp/rdp_plugin.c:2716
+#: plugins/rdp/rdp_plugin.c:2747
 msgid "0 — Windows 7 compatible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2717
+#: plugins/rdp/rdp_plugin.c:2748
 msgid "1"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2718
+#: plugins/rdp/rdp_plugin.c:2749
 msgid "2"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_plugin.c:2750
 msgid "3"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2720
+#: plugins/rdp/rdp_plugin.c:2751
 msgid "4"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_plugin.c:2752
 msgid "5"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2726
+#: plugins/rdp/rdp_plugin.c:2757
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (ವಿಂಡೋಸ್ ಎಕ್ಸ್ ಪಿ), 7601 (ವಿಂಡೋಸ್ ವಿಸ್ಟಾ/7), 9600 (ವಿಂಡೋಸ್ 8 ಮತ್ತು ಹೊಸ)"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2760
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2686,7 +2690,7 @@ msgstr ""
 "ಕೌಂಟ್() • >= 7065: ವಿಂಡೋಸ್ 8 ಮತ್ತು ಹೊಸ: ಎಸ್ ಕಾರ್ಡ್ ಗೆಟ್ ರೀಡರ್ ಐಕಾನ್(),\n"
 "    ಎಸ್ ಕಾರ್ಡ್ ಗೆಟ್ ಸಾಧನಪ್ರಕಾರ()"
 
-#: plugins/rdp/rdp_plugin.c:2737
+#: plugins/rdp/rdp_plugin.c:2768
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2705,7 +2709,7 @@ msgstr ""
 "  • ಸಿಸ್:ಓಎಸ್ಎಸ್,ದೇವ್:1,ಸ್ವರೂಪ:1\n"
 "  • ಸಿಸ್:ಅಲ್ಸಾ"
 
-#: plugins/rdp/rdp_plugin.c:2746
+#: plugins/rdp/rdp_plugin.c:2777
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2724,7 +2728,7 @@ msgstr ""
 "  • ಸಿಸ್:ಓಎಸ್ಎಸ್,ದೇವ್:1,ಸ್ವರೂಪ:1\n"
 "  • ಸಿಸ್:ಅಲ್ಸಾ"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2787
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2737,7 +2741,7 @@ msgstr ""
 "  • ಆಟೋ\n"
 "  • ಐಡಿ:054ಸೆ:0268#4669:6ಇ6ಬಿ,ಆಡ್ರ್:04:0ಸೆ"
 
-#: plugins/rdp/rdp_plugin.c:2762
+#: plugins/rdp/rdp_plugin.c:2793
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2748,7 +2752,7 @@ msgstr ""
 "ಸಂಪರ್ಕ ಟೈಮ್ ಔಟ್ ಅನ್ನು ಸರಿಹೊಂದಿಸುತ್ತದೆ. ನಿಮ್ಮ ಸಂಪರ್ಕಸಮಯಗಳು ಹೊರಗೆ ಇದ್ದರೆ ಬಳಸಿ.\n"
 "ಗರಿಷ್ಠ ಮೌಲ್ಯ600000 mm (10 ನಿಮಿಷಗಳು).\n"
 
-#: plugins/rdp/rdp_plugin.c:2767
+#: plugins/rdp/rdp_plugin.c:2798
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2759,7 +2763,7 @@ msgstr ""
 "ಸ್ವಯಂ ಪತ್ತೆ ಯನ್ನು ಬಳಸಲು ಸಲಹೆ ನೀಡಲಾಗುತ್ತದೆ.\n"
 "\"ಸ್ವಯಂ-ಪತ್ತೆ\" ವಿಫಲವಾದರೆ, ಪಟ್ಟಿಯಲ್ಲಿ ಅತ್ಯಂತ ಸೂಕ್ತವಾದ ಆಯ್ಕೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.\n"
 
-#: plugins/rdp/rdp_plugin.c:2772
+#: plugins/rdp/rdp_plugin.c:2803
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2784,7 +2788,7 @@ msgstr ""
 "  • 270 (ಭಾವಚಿತ್ರ ವನ್ನು ಫ್ಲಿಪ್ ಮಾಡಲಾಗಿದೆ)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:2815
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2805,165 +2809,165 @@ msgstr ""
 "  • ಹಾಟ್ ಪ್ಲಗ್,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2816 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2847 plugins/spice/spice_plugin.c:679
 #, fuzzy
 msgid "Share folder"
 msgstr "ಫೋಲ್ಡರ್ ಹಂಚಿಕೊಳ್ಳಿ"
 
-#: plugins/rdp/rdp_plugin.c:2817
+#: plugins/rdp/rdp_plugin.c:2848
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "ನಿರ್ಬಂಧಿತ ಅಡ್ಮಿನ್ ಮೋಡ್"
 
-#: plugins/rdp/rdp_plugin.c:2818
+#: plugins/rdp/rdp_plugin.c:2849
 #, fuzzy
 msgid "Password hash"
 msgstr "ಪಾಸ್ ವರ್ಡ್ ಹ್ಯಾಶ್"
 
-#: plugins/rdp/rdp_plugin.c:2818
+#: plugins/rdp/rdp_plugin.c:2849
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "ನಿರ್ಬಂಧಿತ ಅಡ್ಮಿನ್ ಮೋಡ್ ಪಾಸ್ ವರ್ಡ್ ಹ್ಯಾಶ್"
 
-#: plugins/rdp/rdp_plugin.c:2819
+#: plugins/rdp/rdp_plugin.c:2850
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "ಎಡಗೈ ಮೌಸ್ ಬೆಂಬಲ"
 
-#: plugins/rdp/rdp_plugin.c:2819
+#: plugins/rdp/rdp_plugin.c:2850
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "ಎಡಗೈ ಮೌಸ್ ಬೆಂಬಲಕ್ಕಾಗಿ ಎಡ ಮತ್ತು ಬಲ ಮೌಸ್ ಬಟನ್ ಗಳನ್ನು ವಿನಿಮಯ ಮಾಡಿ"
 
-#: plugins/rdp/rdp_plugin.c:2821
+#: plugins/rdp/rdp_plugin.c:2852
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "ಬಹು ಮಾನಿಟರ್ ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸು"
 
-#: plugins/rdp/rdp_plugin.c:2822
+#: plugins/rdp/rdp_plugin.c:2853
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "ಬಹು ಮಾನಿಟರ್ ಗಳ ಮೇಲೆ ಪರದೆಯನ್ನು ಸ್ಪ್ಯಾನ್ ಮಾಡು"
 
-#: plugins/rdp/rdp_plugin.c:2823
+#: plugins/rdp/rdp_plugin.c:2854
 #, fuzzy
 msgid "List monitor IDs"
 msgstr "ಮಾನಿಟರ್ ಐಡಿಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ"
 
-#: plugins/rdp/rdp_plugin.c:2825 plugins/vnc/vnc_plugin.c:2101
+#: plugins/rdp/rdp_plugin.c:2856 plugins/vnc/vnc_plugin.c:2101
 #: plugins/vnc/vnc_plugin.c:2113 plugins/gvnc/gvnc_plugin.c:848
 #, fuzzy
 msgid "Colour depth"
 msgstr "ಬಣ್ಣದ ಆಳ"
 
-#: plugins/rdp/rdp_plugin.c:2826
+#: plugins/rdp/rdp_plugin.c:2857
 #, fuzzy
 msgid "Network connection type"
 msgstr "ನೆಟ್ವರ್ಕ್ ಸಂಪರ್ಕ ಪ್ರಕಾರ"
 
-#: plugins/rdp/rdp_plugin.c:2842 plugins/vnc/vnc_plugin.c:2102
+#: plugins/rdp/rdp_plugin.c:2873 plugins/vnc/vnc_plugin.c:2102
 #: plugins/vnc/vnc_plugin.c:2114
 #, fuzzy
 msgid "Quality"
 msgstr "ಗುಣಮಟ್ಟ"
 
-#: plugins/rdp/rdp_plugin.c:2843
+#: plugins/rdp/rdp_plugin.c:2874
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "ಭದ್ರತಾ ಪ್ರೊಟೋಕಾಲ್ ಸಂಧಾನ"
 
-#: plugins/rdp/rdp_plugin.c:2844
+#: plugins/rdp/rdp_plugin.c:2875
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "ಗೇಟ್ ವೇ ಸಾರಿಗೆ ಪ್ರಕಾರ"
 
-#: plugins/rdp/rdp_plugin.c:2845
+#: plugins/rdp/rdp_plugin.c:2876
 #, fuzzy
 msgid "TLS Security Level"
 msgstr "ಭದ್ರತೆ"
 
-#: plugins/rdp/rdp_plugin.c:2846
+#: plugins/rdp/rdp_plugin.c:2877
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "ಫ್ರೀಆರ್ ಡಿಪಿ ಲಾಗ್ ಹಂತ"
 
-#: plugins/rdp/rdp_plugin.c:2847
+#: plugins/rdp/rdp_plugin.c:2878
 #, fuzzy
 msgid "FreeRDP log filters"
 msgstr "ಫ್ರೀಆರ್ ಡಿಪಿ ಲಾಗ್ ಫಿಲ್ಟರ್ ಗಳು"
 
-#: plugins/rdp/rdp_plugin.c:2847
+#: plugins/rdp/rdp_plugin.c:2878
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "ಟ್ಯಾಗ್:ಹಂತ[,ಟ್ಯಾಗ್:ಹಂತ[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2848
+#: plugins/rdp/rdp_plugin.c:2879
 #, fuzzy
 msgid "Audio output mode"
 msgstr "ಆಡಿಯೋ ಔಟ್ ಪುಟ್ ಮೋಡ್"
 
-#: plugins/rdp/rdp_plugin.c:2849
+#: plugins/rdp/rdp_plugin.c:2880
 #, fuzzy
 msgid "Redirect local audio output"
 msgstr "ಸ್ಥಳೀಯ ಆಡಿಯೋ ಔಟ್ ಪುಟ್ ಅನ್ನು ಮರುನಿರ್ದೇಶಿಸುವುದು"
 
-#: plugins/rdp/rdp_plugin.c:2850
+#: plugins/rdp/rdp_plugin.c:2881
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "ಸ್ಥಳೀಯ ಮೈಕ್ರೊಫೋನ್ ಅನ್ನು ಮರುನಿರ್ದೇಶಿಸುವುದು"
 
-#: plugins/rdp/rdp_plugin.c:2851
+#: plugins/rdp/rdp_plugin.c:2882
 #, fuzzy
 msgid "Connection timeout in ms"
 msgstr "Ma"
 
-#: plugins/rdp/rdp_plugin.c:2852
+#: plugins/rdp/rdp_plugin.c:2883
 #, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಗೇಟ್ ವೇ ಸರ್ವರ್"
 
-#: plugins/rdp/rdp_plugin.c:2853
+#: plugins/rdp/rdp_plugin.c:2884
 #, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಗೇಟ್ ವೇ ಬಳಕೆದಾರ ಹೆಸರು"
 
-#: plugins/rdp/rdp_plugin.c:2854
+#: plugins/rdp/rdp_plugin.c:2885
 #, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಗೇಟ್ ವೇ ಪಾಸ್ ವರ್ಡ್"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2886
 #, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಗೇಟ್ ವೇ ಡೊಮೇನ್"
 
-#: plugins/rdp/rdp_plugin.c:2856
+#: plugins/rdp/rdp_plugin.c:2887
 #, fuzzy
 msgid "Client name"
 msgstr "ಕ್ಲೈಂಟ್ ಹೆಸರು"
 
-#: plugins/rdp/rdp_plugin.c:2857
+#: plugins/rdp/rdp_plugin.c:2888
 #, fuzzy
 msgid "Client build"
 msgstr "ಕ್ಲೈಂಟ್ ನಿರ್ಮಾಣ"
 
-#: plugins/rdp/rdp_plugin.c:2858
+#: plugins/rdp/rdp_plugin.c:2889
 #, fuzzy
 msgid "Start-up program"
 msgstr "ಸ್ಟಾರ್ಟ್-ಅಪ್ ಪ್ರೋಗ್ರಾಂ"
 
-#: plugins/rdp/rdp_plugin.c:2860
+#: plugins/rdp/rdp_plugin.c:2891
 #, fuzzy
 msgid "Load balance info"
 msgstr "ಸಮತೋಲನ ಮಾಹಿತಿಯನ್ನು ಲೋಡ್ ಮಾಡಿ"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2862
+#: plugins/rdp/rdp_plugin.c:2893
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "ಮುದ್ರಕ ಡ್ರೈವರ್ ಗಳನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತದೆ"
 
-#: plugins/rdp/rdp_plugin.c:2862
+#: plugins/rdp/rdp_plugin.c:2893
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
@@ -2972,198 +2976,202 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\"ಸ್ಯಾಮ್ ಸಂಗ್ ಸಿಎಲ್ಎಕ್ಸ್-3300 ಸರಣಿ ಪಿಎಸ್\";\" ಕ್ಯಾನನ್ "
 "ಎಂಎಫ್410\"ಕ್ಯಾನನ್ ಎಂಎಫ್410 ಸರಣಿ ಯುಎಫ್ಆರ್ ಐ\""
 
-#: plugins/rdp/rdp_plugin.c:2863
+#: plugins/rdp/rdp_plugin.c:2894
 #, fuzzy
 msgid "USB device redirection"
 msgstr "ಯುಎಸ್ ಬಿ ಸಾಧನ ಮರುನಿರ್ದೇಶನ"
 
-#: plugins/rdp/rdp_plugin.c:2864
+#: plugins/rdp/rdp_plugin.c:2895
 #, fuzzy
 msgid "Local serial name"
 msgstr "ಸ್ಥಳೀಯ ಸೀರಿಯಲ್ ಹೆಸರು"
 
-#: plugins/rdp/rdp_plugin.c:2864
+#: plugins/rdp/rdp_plugin.c:2895
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "ಕಾಂ1, ಕಾಂ2, ಇತ್ಯಾದಿ."
 
-#: plugins/rdp/rdp_plugin.c:2865
+#: plugins/rdp/rdp_plugin.c:2896
 #, fuzzy
 msgid "Local serial driver"
 msgstr "ಸ್ಥಳೀಯ ಸರಣಿ ಚಾಲಕ"
 
-#: plugins/rdp/rdp_plugin.c:2865
+#: plugins/rdp/rdp_plugin.c:2896
 #, fuzzy
 msgid "Serial"
 msgstr "ಸೀರಿಯಲ್"
 
-#: plugins/rdp/rdp_plugin.c:2866
+#: plugins/rdp/rdp_plugin.c:2897
 #, fuzzy
 msgid "Local serial path"
 msgstr "ಸ್ಥಳೀಯ ಸರಣಿ ಮಾರ್ಗ"
 
-#: plugins/rdp/rdp_plugin.c:2866
+#: plugins/rdp/rdp_plugin.c:2897
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/ದೇವ್/ಟಿಟಿಎಸ್0, /ದೇವ್/ಟಿಟಿಎಸ್1, ಇತ್ಯಾದಿ."
 
-#: plugins/rdp/rdp_plugin.c:2867
+#: plugins/rdp/rdp_plugin.c:2898
 #, fuzzy
 msgid "Local parallel name"
 msgstr "ಸ್ಥಳೀಯ ಸಮಾನಾಂತರ ಹೆಸರು"
 
-#: plugins/rdp/rdp_plugin.c:2868
+#: plugins/rdp/rdp_plugin.c:2899
 #, fuzzy
 msgid "Local parallel device"
 msgstr "ಸ್ಥಳೀಯ ಸಮಾನಾಂತರ ಸಾಧನ"
 
-#: plugins/rdp/rdp_plugin.c:2869
+#: plugins/rdp/rdp_plugin.c:2900
 #, fuzzy
 msgid "Name of smart card"
 msgstr "ಸ್ಮಾರ್ಟ್ ಕಾರ್ಡ್ ಹೆಸರು"
 
-#: plugins/rdp/rdp_plugin.c:2870
+#: plugins/rdp/rdp_plugin.c:2901
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "ಡೈನಾಮಿಕ್ ವರ್ಚುವಲ್ ಚಾನೆಲ್"
 
-#: plugins/rdp/rdp_plugin.c:2870 plugins/rdp/rdp_plugin.c:2871
+#: plugins/rdp/rdp_plugin.c:2901 plugins/rdp/rdp_plugin.c:2902
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2871
+#: plugins/rdp/rdp_plugin.c:2902
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "ಸ್ಥಿರ ವರ್ಚುವಲ್ ಚಾನೆಲ್"
 
-#: plugins/rdp/rdp_plugin.c:2872
+#: plugins/rdp/rdp_plugin.c:2903
 #, fuzzy
 msgid "TCP redirection"
 msgstr "TP ಮರುನಿರ್ದೇಶನ"
 
-#: plugins/rdp/rdp_plugin.c:2872
+#: plugins/rdp/rdp_plugin.c:2903
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/PAT/TAT/TAP2TP"
 
-#: plugins/rdp/rdp_plugin.c:2874
+#: plugins/rdp/rdp_plugin.c:2905
+msgid "Attempt to connect in assistnace mode"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2906
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "ಐಪಿವಿ4 ಗಿಂತ ಐಪಿವಿ6 ಎಎಎಎ ದಾಖಲೆಯನ್ನು ಆದ್ಯತೆ ನೀಡಿ ಒಂದು ದಾಖಲೆ"
 
-#: plugins/rdp/rdp_plugin.c:2875
+#: plugins/rdp/rdp_plugin.c:2907
 #, fuzzy
 msgid "Share printers"
 msgstr "ಮುದ್ರಕಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ"
 
-#: plugins/rdp/rdp_plugin.c:2876
+#: plugins/rdp/rdp_plugin.c:2908
 #, fuzzy
 msgid "Share serial ports"
 msgstr "ಸರಣಿ ಪೋರ್ಟ್ ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ"
 
-#: plugins/rdp/rdp_plugin.c:2877
+#: plugins/rdp/rdp_plugin.c:2909
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(ಎಸ್ಇಲಿನಕ್ಸ್) ಸೀರಿಯಲ್ ಪೋರ್ಟ್ ಗಳಿಗೆ ಅನುಮತಿಸುವ ಮೋಡ್"
 
-#: plugins/rdp/rdp_plugin.c:2878
+#: plugins/rdp/rdp_plugin.c:2910
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "ಸಮಾನಾಂತರ ಪೋರ್ಟ್ ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ"
 
-#: plugins/rdp/rdp_plugin.c:2879
+#: plugins/rdp/rdp_plugin.c:2911
 #, fuzzy
 msgid "Share a smart card"
 msgstr "ಸ್ಮಾರ್ಟ್ ಕಾರ್ಡ್ ಹಂಚಿಕೊಳ್ಳಿ"
 
-#: plugins/rdp/rdp_plugin.c:2880 plugins/vnc/vnc_plugin.c:2138
+#: plugins/rdp/rdp_plugin.c:2912 plugins/vnc/vnc_plugin.c:2138
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "ಕ್ಲಿಪ್ ಬೋರ್ಡ್ ಸಿಂಕ್ ಆಫ್ ಮಾಡಿ"
 
-#: plugins/rdp/rdp_plugin.c:2881
+#: plugins/rdp/rdp_plugin.c:2913
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "ಪ್ರಮಾಣಪತ್ರ ವನ್ನು ಕಡೆಗಣಿಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:2882
+#: plugins/rdp/rdp_plugin.c:2914
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "ಹಳೆಯ ಪರವಾನಗಿ ಕಾರ್ಯಹರಿವನ್ನು ಬಳಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:2882
+#: plugins/rdp/rdp_plugin.c:2914
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "ಇದು ಸಿಎಎಲ್ ಅನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುತ್ತದೆ ಮತ್ತು ಎಚ್ ವೈಐಡಿಯನ್ನು 0 ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ"
 
-#: plugins/rdp/rdp_plugin.c:2883 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2915 plugins/spice/spice_plugin.c:704
 #: plugins/vnc/vnc_plugin.c:2134 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 #, fuzzy
 msgid "Forget passwords after use"
 msgstr "ಬಳಸಿದ ನಂತರ ಪಾಸ್ ವರ್ಡ್ ಗಳನ್ನು ಮರೆತುಬಿಡಿ"
 
-#: plugins/rdp/rdp_plugin.c:2884
+#: plugins/rdp/rdp_plugin.c:2916
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "ಕನ್ಸೋಲ್ ಗೆ ಲಗತ್ತಿಸಿ (2003/2003 ಆರ್ 2)"
 
-#: plugins/rdp/rdp_plugin.c:2885
+#: plugins/rdp/rdp_plugin.c:2917
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "ಫಾಸ್ಟ್-ಪಾತ್ ಆಫ್ ಮಾಡಿ"
 
-#: plugins/rdp/rdp_plugin.c:2886
+#: plugins/rdp/rdp_plugin.c:2918
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಗೇಟ್ ವೇ ಬಳಸಿ ಸರ್ವರ್ ಪತ್ತೆ"
 
-#: plugins/rdp/rdp_plugin.c:2888
+#: plugins/rdp/rdp_plugin.c:2920
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "ಸಿಸ್ಟಂ ಪ್ರಾಕ್ಸಿ ಸೆಟ್ಟಿಂಗ್ ಗಳನ್ನು ಬಳಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:2890
+#: plugins/rdp/rdp_plugin.c:2922
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "ಸ್ವಯಂಚಾಲಿತ ಮರುಸಂಪರ್ಕವನ್ನು ಆಫ್ ಮಾಡಿ"
 
-#: plugins/rdp/rdp_plugin.c:2891
+#: plugins/rdp/rdp_plugin.c:2923
 #, fuzzy
 msgid "Relax order checks"
 msgstr "ಆರ್ಡರ್ ಚೆಕ್ ಗಳನ್ನು ಸಡಿಲಗೊಳಿಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:2892
+#: plugins/rdp/rdp_plugin.c:2924
 #, fuzzy
 msgid "Glyph cache"
 msgstr "ಗ್ಲಿಫ್ ಕ್ಯಾಶ್"
 
-#: plugins/rdp/rdp_plugin.c:2893
+#: plugins/rdp/rdp_plugin.c:2925
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "ಬಹುಸಾರಿಗೆ ಪ್ರೊಟೋಕಾಲ್ ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸು (ಯುಡಿಪಿ)"
 
-#: plugins/rdp/rdp_plugin.c:2893
+#: plugins/rdp/rdp_plugin.c:2925
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "ಯುಡಿಪಿ ಪ್ರೊಟೋಕಾಲ್ ಬಳಸುವುದರಿಂದ ಕಾರ್ಯಕ್ಷಮತೆ ಸುಧಾರಿಸಬಹುದು"
 
-#: plugins/rdp/rdp_plugin.c:2894
+#: plugins/rdp/rdp_plugin.c:2926
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "ಗೇಟ್ ವೇಗೂ ಮೂಲ ರುಜುವಾತುಗಳನ್ನು ಬಳಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:2896
+#: plugins/rdp/rdp_plugin.c:2928
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "ಗೇಟ್ ವೇ ವೆಬ್ ಸಾಕೆಟ್ ಗಳ ಬೆಂಬಲವನ್ನು ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸು"
 
-#: plugins/rdp/rdp_plugin.c:2898
+#: plugins/rdp/rdp_plugin.c:2930
 msgid "Update framebuffer even when not visible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2907 plugins/spice/spice_plugin.c:707
+#: plugins/rdp/rdp_plugin.c:2939 plugins/spice/spice_plugin.c:707
 #: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2140
 #: plugins/vnc/vnc_plugin.c:2153 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
@@ -3171,28 +3179,28 @@ msgstr ""
 msgid "View only"
 msgstr "ಮಾತ್ರ ವೀಕ್ಷಿಸಿ"
 
-#: plugins/rdp/rdp_plugin.c:2912 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2944 plugins/spice/spice_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:2157
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "ಕಳುಹಿಸು Ttt0+At+ಅಳಿಸು"
 
-#: plugins/rdp/rdp_plugin.c:2925
+#: plugins/rdp/rdp_plugin.c:2957
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "ಆರ್ ಡಿಪಿ - ರಿಮೋಟ್ ಡೆಸ್ಕ್ ಟಾಪ್ ಪ್ರೊಟೋಕಾಲ್"
 
-#: plugins/rdp/rdp_plugin.c:2950
+#: plugins/rdp/rdp_plugin.c:2982
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "ಆರ್ ಡಿಪಿ - ಆರ್ ಡಿಪಿ ಫೈಲ್ ಹ್ಯಾಂಡ್ಲರ್"
 
-#: plugins/rdp/rdp_plugin.c:2965
+#: plugins/rdp/rdp_plugin.c:2997
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "ಆರ್ ಡಿಪಿ - ಆದ್ಯತೆಗಳು"
 
-#: plugins/rdp/rdp_plugin.c:3018
+#: plugins/rdp/rdp_plugin.c:3050
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "ವಿಂಡೋಸ್ .ಆರ್ ಡಿಪಿ ಫೈಲ್ ಸ್ವರೂಪದಲ್ಲಿ ಸಂಪರ್ಕ ರಫ್ತು ಮಾಡಿ"
