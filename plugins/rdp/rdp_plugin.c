@@ -1400,9 +1400,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		}
 			
 
-		if (!freerdp_assistance_populate_settings_from_assistance_file(file, rfi->settings))
+		if (!freerdp_assistance_populate_settings_from_assistance_file(file, rfi->settings)){
 			REMMINA_PLUGIN_DEBUG("Could not populate settings from assistance file");
 			return FALSE;
+		}		
 	}
 
 
