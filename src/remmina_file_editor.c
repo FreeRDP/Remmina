@@ -376,7 +376,6 @@ static void remmina_file_editor_assistance_enabled_check_on_toggled(GtkToggleBut
 								    RemminaFileEditor *gfe)
 {
 	TRACE_CALL(__func__);
-	RemminaFileEditorPriv *priv = gfe->priv;
 	gboolean enabled = TRUE;
 
 	if (gfe->priv->assistance_toggle) {
@@ -650,16 +649,14 @@ static void remmina_file_editor_create_assistance(RemminaFileEditor *gfe, const 
 {
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
-	int assistance_mode;
 
-	assistance_mode = remmina_file_get_int(gfe->priv->remmina_file, "assistance_mode", 0);
 
 
 	widget = gtk_toggle_button_new_with_label(_("Assistance Mode"));
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
-	gtk_toggle_button_set_active(widget, remmina_file_get_int(gfe->priv->remmina_file, "assistance_mode", 0));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_file_get_int(gfe->priv->remmina_file, "assistance_mode", 0));
 	gfe->priv->assistance_toggle = widget;
 	g_signal_connect(widget, "toggled", G_CALLBACK(remmina_file_editor_assistance_enabled_check_on_toggled), gfe);
 
@@ -1764,8 +1761,8 @@ static GError *remmina_file_editor_update(RemminaFileEditor *	gfe,
 
 	if (priv->assistance_toggle){
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->assistance_toggle))) {
-			remmina_file_set_string(priv->remmina_file, "assistance_file", gtk_entry_get_text(priv->assistance_file));
-			remmina_file_set_string(priv->remmina_file, "assistance_pass", gtk_entry_get_text(priv->assistance_password));
+			remmina_file_set_string(priv->remmina_file, "assistance_file", gtk_entry_get_text(GTK_ENTRY(priv->assistance_file)));
+			remmina_file_set_string(priv->remmina_file, "assistance_pass", gtk_entry_get_text(GTK_ENTRY(priv->assistance_password)));
 			remmina_file_set_int(priv->remmina_file, "assistance_mode", 1);
 		}else{
 			remmina_file_set_int(priv->remmina_file, "assistance_mode", 0);

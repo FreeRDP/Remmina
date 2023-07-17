@@ -1915,7 +1915,6 @@ static gboolean remmina_plugin_vnc_on_size_allocate(GtkWidget *widget, GtkAlloca
 		sprintf(str, "DEBUG: %d x %d", alloc->width, alloc->height);
 		TRACE_CALL(str);
 		if (gpdata->client){
-			rfbClient *cl;
 			SendExtDesktopSize(gpdata->client, alloc->width, alloc->height);
 		}
 	}
@@ -1980,9 +1979,9 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 	if (aspect_ratio > 0){
 		GtkWidget* aspectframe = gtk_aspect_frame_new(NULL, 0, 0, aspect_ratio, FALSE);
 
-		gtk_frame_set_shadow_type(aspectframe, GTK_SHADOW_NONE);
+		gtk_frame_set_shadow_type(GTK_FRAME(aspectframe), GTK_SHADOW_NONE);
 		gtk_widget_show(aspectframe);
-		gtk_container_add(aspectframe, gpdata->drawing_area);
+		gtk_container_add(GTK_CONTAINER(aspectframe), gpdata->drawing_area);
 		gtk_container_add(GTK_CONTAINER(gp), aspectframe);
 	}
 	else{
