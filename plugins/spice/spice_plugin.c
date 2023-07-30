@@ -52,10 +52,8 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChan
 static void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_display_ready_cb(GObject *, GParamSpec *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_update_scale_mode(RemminaProtocolWidget *);
-static gboolean remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *gp, gint fd) __attribute__ ((unused));
-static gboolean remmina_plugin_spice_channel_open_fd(SpiceChannel *, int with_tls, RemminaProtocolWidget *) __attribute__ ((unused));
-//static gboolean remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *gp, gint fd);
-//static gboolean remmina_plugin_spice_channel_open_fd(SpiceChannel *, int with_tls, RemminaProtocolWidget *);
+static void remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *);
+static void remmina_plugin_spice_channel_open_fd(RemminaProtocolWidget *, SpiceChannel *);
 
 void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *);
 #ifdef SPICE_GTK_CHECK_VERSION
@@ -85,31 +83,27 @@ gchar* str_replace(const gchar *string, const gchar *search, const gchar *replac
 	return str;
 }
 
-static gboolean
-remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *gp, int fd)
+static void
+remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
-
-	g_return_val_if_fail(gpdata != NULL, FALSE);
-
-	REMMINA_PLUGIN_DEBUG("Opening spice session for FD: %d", fd);
-	return spice_session_open_fd(gpdata->session, fd);
+	gint fd = remmina_plugin_service->open_unix_sock(gpdata->unixPath);
+	REMMINA_PLUGIN_DEBUG("Opening spice session with FD: %d -> %s", fd, gpdata->unixPath);
+	spice_session_open_fd(gpdata->session, fd);
 }
 
-static gboolean
-remmina_plugin_spice_channel_open_fd(SpiceChannel *channel, int with_tls G_GNUC_UNUSED, RemminaProtocolWidget *gp)
+static void
+remmina_plugin_spice_channel_open_fd(RemminaProtocolWidget *gp, SpiceChannel *channel)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
-	g_return_val_if_fail(gpdata != NULL, FALSE);
 
 	gint id, type;
-
 	g_object_get(channel, "channel-id", &id, "channel-type", &type, NULL);
-	REMMINA_PLUGIN_DEBUG ("Opening channel %p %s %d with FD: %d", channel, g_type_name(G_OBJECT_TYPE(channel)), id, gpdata->fd);
-
-	return spice_channel_open_fd(channel, gpdata->fd);
+	gint fd = remmina_plugin_service->open_unix_sock(gpdata->unixPath);
+	REMMINA_PLUGIN_DEBUG ("Opening channel %p %s %d with FD: %d -> %s", channel, g_type_name(G_OBJECT_TYPE(channel)), id, fd, gpdata->unixPath);
+	spice_channel_open_fd(channel, fd);
 }
 
 static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
@@ -161,23 +155,20 @@ static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	/**-START- UNIX socket
-	* if(strstr(g_strdup(tunnel), "unix:///") != NULL) {
-	* 	REMMINA_PLUGIN_DEBUG("Tunnel contain unix:// -> %s", tunnel);
-	* 	gchar *val = str_replace (tunnel, "unix://", "");
-	* 	REMMINA_PLUGIN_DEBUG("tunnel after cleaning = %s", val);
-	* 	//gchar *val = g_strdup(remmina_plugin_service->file_get_string(remminafile, "server"));
-	* 	g_object_set(gpdata->session, "unix-path", val, NULL);
-	* 	gint fd = remmina_plugin_service->open_unix_sock(val);
-	* 	REMMINA_PLUGIN_DEBUG("Unix socket fd: %d", fd);
-	* 	gpdata->fd = fd;
-	* 	if (fd > 0)
-	* 		remmina_plugin_spice_session_open_fd (gp, fd);
-	* 	g_free(val);
-	*
-	* } else {
-	*/
-
+	/**-START- UNIX socket */
+	if(strstr(g_strdup(tunnel), "unix:///") != NULL) {
+		REMMINA_PLUGIN_DEBUG("Tunnel contain unix:// -> %s", tunnel);
+		gchar *val = str_replace(tunnel, "unix://", "");
+		REMMINA_PLUGIN_DEBUG("tunnel after cleaning = %s", val);
+		g_object_set(gpdata->session, "unix-path", val, NULL);
+		gpdata->isUnix = TRUE;
+		gint fd = remmina_plugin_service->open_unix_sock(val);
+		REMMINA_PLUGIN_DEBUG("Unix socket fd: %d", fd);
+		gpdata->unixPath = g_strdup(val);
+		if (fd > 0)
+			remmina_plugin_spice_session_open_fd(gp);
+		g_free(val);
+	} else {
 
 		remmina_plugin_service->get_server_port(tunnel,
 				XSPICE_DEFAULT_PORT,
@@ -185,6 +176,7 @@ static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 				&port);
 
 		g_object_set(gpdata->session, "host", host, NULL);
+		gpdata->isUnix = FALSE;
 		g_free(host);
 		g_free(tunnel);
 
@@ -204,7 +196,8 @@ static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 		}
 
 		spice_session_connect(gpdata->session);
-	/** } -END- UNIX socket */
+	}
+	/** -END- UNIX socket */
 
 	/*
 	 * FIXME: Add a waiting loop until the g_signal "channel-event" occurs.
@@ -262,6 +255,9 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 
 	g_return_if_fail(gpdata != NULL);
 
+	if(gpdata->isUnix) {
+		remmina_plugin_spice_channel_open_fd(gp, channel);
+	}
 	/**
 	* g_signal_connect(channel,
 	*	"open-fd",
@@ -373,22 +369,34 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 {
 	TRACE_CALL(__func__);
 
-	gchar *server = NULL;
-	gint port;
+	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+	gchar *serverOption = g_strdup(remmina_plugin_service->file_get_string(remminafile, "server"));
+	gchar *message = NULL;
+	gchar *server = NULL;
+
+	if(gpdata->isUnix) {
+		gchar *val = str_replace(serverOption, "unix://", "");
+		message = g_strdup_printf("Unix socket server %s", val);
+		g_free(val), val = NULL;
+	} else {
+		gint port;
+		RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+		remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
 			XSPICE_DEFAULT_PORT,
 			&server,
 			&port);
+		message = g_strdup_printf("TCP server %s:%d", server, port);
+	}
 
 	switch (event) {
 	case SPICE_CHANNEL_CLOSED:
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from the SPICE server “%s”."), server);
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from the SPICE %s."), message);
 		remmina_plugin_spice_close_connection(gp);
-		REMMINA_PLUGIN_AUDIT(_("Disconnected from %s:%d via SPICE"), server, port);
+		REMMINA_PLUGIN_AUDIT(_("Disconnected from %s via SPICE"), message);
 		break;
 	case SPICE_CHANNEL_OPENED:
-		REMMINA_PLUGIN_AUDIT(_("Connected to %s:%d via SPICE"), server, port);
+		REMMINA_PLUGIN_AUDIT(_("Connected to %s via SPICE"), message);
 		break;
 	case SPICE_CHANNEL_ERROR_AUTH:
 		if (remmina_plugin_spice_ask_auth(gp)) {
@@ -413,6 +421,8 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 		break;
 	}
 	g_free(server), server = NULL;
+	g_free(message), message = NULL;
+	g_free(serverOption), message = NULL;
 }
 
 void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *channel, RemminaProtocolWidget *gp)
