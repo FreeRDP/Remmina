@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-07-31 12:30+0000\n"
-"PO-Revision-Date: 2023-07-15 11:47+0000\n"
+"PO-Revision-Date: 2023-07-31 19:05+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -937,7 +937,7 @@ msgstr "Conectando con «%s»…"
 #: src/remmina_protocol_widget.c:931 src/remmina_protocol_widget.c:1115
 #, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "Conectando con «%s» mediante SSH…"
+msgstr "Conectando a \"%s\" mediante SSH…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1179
@@ -965,7 +965,7 @@ msgstr "No se pudo ejecutar la orden. %s"
 #: src/remmina_protocol_widget.c:1315
 #, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "Conectando con «%s» mediante SSH…"
+msgstr "Conectando a %s mediante SSH…"
 
 #: src/remmina_protocol_widget.c:1717
 msgid "Type in SSH username and password."
@@ -2907,22 +2907,19 @@ msgid "Enter SPICE password"
 msgstr "Proporcione la contraseña de SPICE"
 
 #: plugins/spice/spice_plugin.c:394
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "Desconectado del servidor SPICE «%s»."
+msgstr "Desconectado del SPICE %s."
 
 #: plugins/spice/spice_plugin.c:396
-#, fuzzy, c-format
-#| msgid "Disconnected from %s:%d via SPICE"
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Se desconectó de %s:%d a través de SPICE"
+msgstr "Desconectado de %s a través de SPICE"
 
 #: plugins/spice/spice_plugin.c:399
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via SPICE"
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "Se conectó con %s:%d mediante SPICE"
+msgstr "Conectado a %s mediante SPICE"
 
 #: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
@@ -4305,7 +4302,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:205
 msgid "<big>Take part</big>"
-msgstr "<big>Contribuir</big>"
+msgstr "<big>Participa</big>"
 
 #. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
 #: data/ui/remmina_news.glade:231
@@ -4326,7 +4323,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:251
 msgid "<big>Contribute</big>"
-msgstr "<big>Contribuir</big>"
+msgstr "<big>Contribuye</big>"
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
