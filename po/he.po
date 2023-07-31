@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-07-17 15:41+0000\n"
+"POT-Creation-Date: 2023-07-31 12:30+0000\n"
 "PO-Revision-Date: 2023-05-26 13:49+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1894,7 +1894,7 @@ msgstr "איתור טקסט"
 msgid "_Find text"
 msgstr "_איתור טקסט"
 
-#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:686
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 msgid "User password"
 msgstr "סיסמת משתמש"
@@ -2391,7 +2391,7 @@ msgstr "אינטרנט"
 msgid "LAN"
 msgstr "רשת מקומית"
 
-#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:647
 #: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Off"
@@ -2422,8 +2422,8 @@ msgstr "אבטחת פרוטוקול RDP"
 msgid "NLA extended protocol security"
 msgstr "אבטחת פרוטוקול NLA מורחבת"
 
-#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:618
-#: plugins/spice/spice_plugin.c:636
+#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:628
+#: plugins/spice/spice_plugin.c:646
 msgid "Default"
 msgstr "ברירת מחדל"
 
@@ -2593,7 +2593,7 @@ msgstr ""
 "  • ‎hotplug,*‎\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:689
 msgid "Share folder"
 msgstr "שיתוף תיקייה"
 
@@ -2879,7 +2879,7 @@ msgstr "להשתמש בתצורת הרישיון הישנה"
 msgid "It disables CAL and hwId is set to 0"
 msgstr "האפשרות הזאת משביתה את CAL וה־hwId מוגדר ל־0"
 
-#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:714
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
@@ -2943,15 +2943,15 @@ msgstr "הפעלת תמיכה ב־websockets בשער הגישה"
 msgid "Update framebuffer even when not visible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:707
-#: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2139
+#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:717
+#: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 #, fuzzy
 msgid "View only"
 msgstr "צפייה בלבד"
 
-#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:727
 #: plugins/vnc/vnc_plugin.c:2156
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
@@ -3013,96 +3013,99 @@ msgstr "העברה הושלמה"
 msgid "The %s file has been transferred"
 msgstr "הקובץ %s הועבר"
 
-#: plugins/spice/spice_plugin.c:351
+#: plugins/spice/spice_plugin.c:347
 msgid "Enter SPICE password"
 msgstr "נא להקליד סיסמה ל־SPICE"
 
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
+#: plugins/spice/spice_plugin.c:394
+#, fuzzy, c-format
+#| msgid "Disconnected from the SPICE server “%s”."
+msgid "Disconnected from the SPICE %s."
 msgstr "מנותק משרת SPICE‏ „%s”."
 
-#: plugins/spice/spice_plugin.c:388
-#, c-format
-msgid "Disconnected from %s:%d via SPICE"
+#: plugins/spice/spice_plugin.c:396
+#, fuzzy, c-format
+#| msgid "Disconnected from %s:%d via SPICE"
+msgid "Disconnected from %s via SPICE"
 msgstr "מנותק מ־%s:%d דרך SPICE"
 
-#: plugins/spice/spice_plugin.c:391
-#, c-format
-msgid "Connected to %s:%d via SPICE"
+#: plugins/spice/spice_plugin.c:399
+#, fuzzy, c-format
+#| msgid "Connected to %s:%d via SPICE"
+msgid "Connected to %s via SPICE"
 msgstr "מחובר אל %s:%d דרך SPICE"
 
-#: plugins/spice/spice_plugin.c:403
+#: plugins/spice/spice_plugin.c:411
 #, fuzzy
 msgid "TLS connection error."
 msgstr "שגיאת חיבור TLS."
 
-#: plugins/spice/spice_plugin.c:409
+#: plugins/spice/spice_plugin.c:417
 #, fuzzy
 msgid "Connection to the SPICE server dropped."
 msgstr "ההתחברות לשרת ה־SPICE נקטעה."
 
-#: plugins/spice/spice_plugin.c:638
+#: plugins/spice/spice_plugin.c:648
 #, fuzzy
 msgid "Auto GLZ"
 msgstr "GLZ אוטומטי"
 
-#: plugins/spice/spice_plugin.c:639
+#: plugins/spice/spice_plugin.c:649
 #, fuzzy
 msgid "Auto LZ"
 msgstr "LZ אוטומטי"
 
-#: plugins/spice/spice_plugin.c:652
+#: plugins/spice/spice_plugin.c:662
 #, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr "להשבית שכבת על של וידאו אם הוא לא מוצג כראוי.\n"
 
-#: plugins/spice/spice_plugin.c:677
+#: plugins/spice/spice_plugin.c:687
 #, fuzzy
 msgid "Use TLS encryption"
 msgstr "להשתמש בהצפנת TLS"
 
-#: plugins/spice/spice_plugin.c:678
+#: plugins/spice/spice_plugin.c:688
 #, fuzzy
 msgid "Server CA certificate"
 msgstr "אישור CA של השרת"
 
-#: plugins/spice/spice_plugin.c:696
+#: plugins/spice/spice_plugin.c:706
 #, fuzzy
 msgid "Preferred video codec"
 msgstr "מפענח וידאו מועדף"
 
-#: plugins/spice/spice_plugin.c:697
+#: plugins/spice/spice_plugin.c:707
 #, fuzzy
 msgid "Turn off GStreamer overlay"
 msgstr "כיבוי שכבת על של GStreamer"
 
-#: plugins/spice/spice_plugin.c:700
+#: plugins/spice/spice_plugin.c:710
 #, fuzzy
 msgid "Preferred image compression"
 msgstr "דחיסת תמונה מועדפת"
 
-#: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
+#: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 msgid "No clipboard sync"
 msgstr "השבתת סנכרון לוח הגזירים"
 
-#: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
 #, fuzzy
 msgid "Enable audio channel"
 msgstr "הפעלת ערוץ שמע"
 
-#: plugins/spice/spice_plugin.c:706
+#: plugins/spice/spice_plugin.c:716
 #, fuzzy
 msgid "Share smart card"
 msgstr "שיתוף כרטיס חכם"
 
-#: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
+#: plugins/spice/spice_plugin.c:728 plugins/spice/spice_plugin_usb.c:51
 #, fuzzy
 msgid "Select USB devices for redirection"
 msgstr "נא לבחור התקני USB להפניה"
 
-#: plugins/spice/spice_plugin.c:729
+#: plugins/spice/spice_plugin.c:739
 #, fuzzy
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr ""

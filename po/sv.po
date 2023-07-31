@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-07-17 15:41+0000\n"
+"POT-Creation-Date: 2023-07-31 12:30+0000\n"
 "PO-Revision-Date: 2023-05-01 12:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1906,7 +1906,7 @@ msgstr "Finn text"
 msgid "_Find text"
 msgstr "_Finn text"
 
-#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:686
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 msgid "User password"
 msgstr "Användarlösenord"
@@ -2392,7 +2392,7 @@ msgstr "WAN"
 msgid "LAN"
 msgstr "Lokalnät"
 
-#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:647
 #: data/ui/remmina_preferences.glade:646
 msgid "Off"
 msgstr "Av"
@@ -2417,8 +2417,8 @@ msgstr "Flikar efter protokoll"
 msgid "NLA extended protocol security"
 msgstr "NLA utökad protokollsäkerhet"
 
-#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:618
-#: plugins/spice/spice_plugin.c:636
+#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:628
+#: plugins/spice/spice_plugin.c:646
 msgid "Default"
 msgstr "Standard"
 
@@ -2586,7 +2586,7 @@ msgstr ""
 "  - hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:689
 msgid "Share folder"
 msgstr "Dela mapp"
 
@@ -2839,7 +2839,7 @@ msgstr "Använd arbetesflöd frän gammal licens"
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Det stänger av CAL, och hwld sättas till 0"
 
-#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:714
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
@@ -2895,14 +2895,14 @@ msgstr "Aktivera stöd för Gateway websockets"
 msgid "Update framebuffer even when not visible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:707
-#: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2139
+#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:717
+#: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 msgid "View only"
 msgstr "Visa endast"
 
-#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:727
 #: plugins/vnc/vnc_plugin.c:2156
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Skicka Ctrl+Alt+Delete"
@@ -2957,91 +2957,92 @@ msgstr "Överföring fullfört"
 msgid "The %s file has been transferred"
 msgstr "%s-filen har inte blivit överförd"
 
-#: plugins/spice/spice_plugin.c:351
+#: plugins/spice/spice_plugin.c:347
 msgid "Enter SPICE password"
 msgstr "Lösenord för SSH"
 
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "Frånkopplad från SPICE-servern %s."
-
-#: plugins/spice/spice_plugin.c:388
+#: plugins/spice/spice_plugin.c:394
 #, fuzzy, c-format
 #| msgid "Disconnected from the SPICE server “%s”."
-msgid "Disconnected from %s:%d via SPICE"
+msgid "Disconnected from the SPICE %s."
 msgstr "Frånkopplad från SPICE-servern %s."
 
-#: plugins/spice/spice_plugin.c:391
+#: plugins/spice/spice_plugin.c:396
+#, fuzzy, c-format
+#| msgid "Disconnected from the SPICE server “%s”."
+msgid "Disconnected from %s via SPICE"
+msgstr "Frånkopplad från SPICE-servern %s."
+
+#: plugins/spice/spice_plugin.c:399
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
-msgid "Connected to %s:%d via SPICE"
+msgid "Connected to %s via SPICE"
 msgstr "Ansluter till %s via SSH…"
 
-#: plugins/spice/spice_plugin.c:403
+#: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
 msgstr "TLS-anslutningsfel."
 
-#: plugins/spice/spice_plugin.c:409
+#: plugins/spice/spice_plugin.c:417
 msgid "Connection to the SPICE server dropped."
 msgstr "Uppkoppling till SPICE-tjäner misslyckades."
 
-#: plugins/spice/spice_plugin.c:638
+#: plugins/spice/spice_plugin.c:648
 #, fuzzy
 msgid "Auto GLZ"
 msgstr "Auto GLZ"
 
-#: plugins/spice/spice_plugin.c:639
+#: plugins/spice/spice_plugin.c:649
 #, fuzzy
 msgid "Auto LZ"
 msgstr "Auto LZ"
 
-#: plugins/spice/spice_plugin.c:652
+#: plugins/spice/spice_plugin.c:662
 #, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr "Inaktivera videoöverlagring om videor inte visas korrekt.\n"
 
-#: plugins/spice/spice_plugin.c:677
+#: plugins/spice/spice_plugin.c:687
 msgid "Use TLS encryption"
 msgstr "Använd TLS-kryptering"
 
-#: plugins/spice/spice_plugin.c:678
+#: plugins/spice/spice_plugin.c:688
 msgid "Server CA certificate"
 msgstr "Serverns CA-certifikat"
 
-#: plugins/spice/spice_plugin.c:696
+#: plugins/spice/spice_plugin.c:706
 #, fuzzy
 #| msgid "Prefered video codec"
 msgid "Preferred video codec"
 msgstr "Inställning"
 
-#: plugins/spice/spice_plugin.c:697
+#: plugins/spice/spice_plugin.c:707
 msgid "Turn off GStreamer overlay"
 msgstr "Inaktivera serverns inmatning"
 
-#: plugins/spice/spice_plugin.c:700
+#: plugins/spice/spice_plugin.c:710
 #, fuzzy
 msgid "Preferred image compression"
 msgstr "Föredragen bildkomprimering"
 
-#: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
+#: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 msgid "No clipboard sync"
 msgstr "Inaktivera synkronisering av urklipp"
 
-#: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
 msgstr "Aktivera ljudkanal"
 
-#: plugins/spice/spice_plugin.c:706
+#: plugins/spice/spice_plugin.c:716
 msgid "Share smart card"
 msgstr "Del smartkort"
 
-#: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
+#: plugins/spice/spice_plugin.c:728 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
 msgstr "Välj USB-enheter för vidarebefordran"
 
-#: plugins/spice/spice_plugin.c:729
+#: plugins/spice/spice_plugin.c:739
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - Enkel protokoll for oberoende datamaskinsmiljö"
 

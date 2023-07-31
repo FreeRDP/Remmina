@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-07-17 15:41+0000\n"
+"POT-Creation-Date: 2023-07-31 12:30+0000\n"
 "PO-Revision-Date: 2023-02-04 06:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/remmina/remmina/th/"
@@ -1984,7 +1984,7 @@ msgstr "ค้นหาข้อความ"
 msgid "_Find text"
 msgstr "_Findข้อความ"
 
-#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:686
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 #, fuzzy
 msgid "User password"
@@ -2506,7 +2506,7 @@ msgstr "ซีด"
 msgid "LAN"
 msgstr "แลน"
 
-#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:647
 #: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Off"
@@ -2534,8 +2534,8 @@ msgstr "โปรโตคอลความปลอดภัย RDP"
 msgid "NLA extended protocol security"
 msgstr "NLA ขยายการรักษาความปลอดภัยของโพรโทคอล"
 
-#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:618
-#: plugins/spice/spice_plugin.c:636
+#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:628
+#: plugins/spice/spice_plugin.c:646
 msgid "Default"
 msgstr "ค่าเริ่มต้น"
 
@@ -2704,7 +2704,7 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:689
 #, fuzzy
 msgid "Share folder"
 msgstr "ใช้โฟลเดอร์ร่วมกัน"
@@ -2993,7 +2993,7 @@ msgstr "ใช้ลําดับงานลิขสิทธิ์เก่
 msgid "It disables CAL and hwId is set to 0"
 msgstr "ปิดการใช้งาน CAL และ hwId ถูกตั้งค่าเป็น 0"
 
-#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:714
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
@@ -3058,15 +3058,15 @@ msgstr "เปิดใช้งานการสนับสนุน websocke
 msgid "Update framebuffer even when not visible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:707
-#: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2139
+#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:717
+#: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 #, fuzzy
 msgid "View only"
 msgstr "ดูอย่างเดียว"
 
-#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:727
 #: plugins/vnc/vnc_plugin.c:2156
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
@@ -3129,100 +3129,101 @@ msgstr "การถ่ายโอนเสร็จสมบูรณ์"
 msgid "The %s file has been transferred"
 msgstr "แฟ้ม %s ได้ถูกถ่ายโอนแล้ว"
 
-#: plugins/spice/spice_plugin.c:351
+#: plugins/spice/spice_plugin.c:347
 msgid "Enter SPICE password"
 msgstr "ใส่รหัสผ่าน SPICE"
 
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
-msgstr "ตัดการเชื่อมต่อจากเซิร์ฟเวอร์ SPICE \"%s\" แล้ว"
-
-#: plugins/spice/spice_plugin.c:388
+#: plugins/spice/spice_plugin.c:394
 #, fuzzy, c-format
 #| msgid "Disconnected from the SPICE server “%s”."
-msgid "Disconnected from %s:%d via SPICE"
+msgid "Disconnected from the SPICE %s."
+msgstr "ตัดการเชื่อมต่อจากเซิร์ฟเวอร์ SPICE \"%s\" แล้ว"
+
+#: plugins/spice/spice_plugin.c:396
+#, fuzzy, c-format
+#| msgid "Disconnected from the SPICE server “%s”."
+msgid "Disconnected from %s via SPICE"
 msgstr "การเชื่อมต่อ SSH tunnel ไปยังปลายทางล้มเหลว: %s"
 
-#: plugins/spice/spice_plugin.c:391
+#: plugins/spice/spice_plugin.c:399
 #, fuzzy, c-format
 #| msgid "Connecting to %s via SSH…"
-msgid "Connected to %s:%d via SPICE"
+msgid "Connected to %s via SPICE"
 msgstr "เชื่อมต่อไปยัง '%s'…"
 
-#: plugins/spice/spice_plugin.c:403
+#: plugins/spice/spice_plugin.c:411
 #, fuzzy
 msgid "TLS connection error."
 msgstr "ข้อผิดพลาดในการเชื่อมต่อ TLS"
 
-#: plugins/spice/spice_plugin.c:409
+#: plugins/spice/spice_plugin.c:417
 #, fuzzy
 msgid "Connection to the SPICE server dropped."
 msgstr "การเชื่อมต่อไปยังเซิร์ฟเวอร์ SPICE ลดลง"
 
-#: plugins/spice/spice_plugin.c:638
+#: plugins/spice/spice_plugin.c:648
 #, fuzzy
 msgid "Auto GLZ"
 msgstr "GLZ อัตโนมัติ"
 
-#: plugins/spice/spice_plugin.c:639
+#: plugins/spice/spice_plugin.c:649
 #, fuzzy
 msgid "Auto LZ"
 msgstr "LZ อัตโนมัติ"
 
-#: plugins/spice/spice_plugin.c:652
+#: plugins/spice/spice_plugin.c:662
 #, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr "ปิดใช้งานการซ้อนทับวิดีโอหากวิดีโอแสดงไม่ถูกต้อง\n"
 
-#: plugins/spice/spice_plugin.c:677
+#: plugins/spice/spice_plugin.c:687
 #, fuzzy
 msgid "Use TLS encryption"
 msgstr "ใช้การเข้ารหัส TLS"
 
-#: plugins/spice/spice_plugin.c:678
+#: plugins/spice/spice_plugin.c:688
 #, fuzzy
 msgid "Server CA certificate"
 msgstr "ใบรับรองเซิร์ฟเวอร์ CA"
 
-#: plugins/spice/spice_plugin.c:696
+#: plugins/spice/spice_plugin.c:706
 #, fuzzy
 #| msgid "Prefered video codec"
 msgid "Preferred video codec"
 msgstr "ปรับแต่ง"
 
-#: plugins/spice/spice_plugin.c:697
+#: plugins/spice/spice_plugin.c:707
 #, fuzzy
 msgid "Turn off GStreamer overlay"
 msgstr "ปิดการซ้อนทับ GStreamer"
 
-#: plugins/spice/spice_plugin.c:700
+#: plugins/spice/spice_plugin.c:710
 #, fuzzy
 msgid "Preferred image compression"
 msgstr "การบีบอัดภาพที่ต้องการ"
 
-#: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
+#: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 #, fuzzy
 msgid "No clipboard sync"
 msgstr "ไม่มีการซิงค์คลิปบอร์ด"
 
-#: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
 #, fuzzy
 msgid "Enable audio channel"
 msgstr "เปิดใช้งานช่องสัญญาณเสียง"
 
-#: plugins/spice/spice_plugin.c:706
+#: plugins/spice/spice_plugin.c:716
 #, fuzzy
 msgid "Share smart card"
 msgstr "แชร์สมาร์ทการ์ด"
 
-#: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
+#: plugins/spice/spice_plugin.c:728 plugins/spice/spice_plugin_usb.c:51
 #, fuzzy
 msgid "Select USB devices for redirection"
 msgstr "เลือกอุปกรณ์ USB สําหรับการเปลี่ยนเส้นทาง"
 
-#: plugins/spice/spice_plugin.c:729
+#: plugins/spice/spice_plugin.c:739
 #, fuzzy
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - โปรโตคอลอย่างง่ายสําหรับสภาพแวดล้อมระบบคอมพิวเตอร์อิสระ"

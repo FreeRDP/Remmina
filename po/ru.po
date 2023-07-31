@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-07-17 15:41+0000\n"
+"POT-Creation-Date: 2023-07-31 12:30+0000\n"
 "PO-Revision-Date: 2023-07-13 12:49+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1891,7 +1891,7 @@ msgstr "Найти текст"
 msgid "_Find text"
 msgstr "_Найти текст"
 
-#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:686
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 msgid "User password"
 msgstr "Пароль пользователя"
@@ -2350,7 +2350,7 @@ msgstr "Глобальная компьютерная сеть (WAN)"
 msgid "LAN"
 msgstr "Локальная компьютерная сеть(LAN)"
 
-#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:647
 #: data/ui/remmina_preferences.glade:646
 msgid "Off"
 msgstr "Выключен"
@@ -2375,8 +2375,8 @@ msgstr "Безопасность по протоколу RDP"
 msgid "NLA extended protocol security"
 msgstr "Безопасность по расширенному протоколу NLA"
 
-#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:618
-#: plugins/spice/spice_plugin.c:636
+#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:628
+#: plugins/spice/spice_plugin.c:646
 msgid "Default"
 msgstr "По умолчанию"
 
@@ -2540,7 +2540,7 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:689
 msgid "Share folder"
 msgstr "Общая папка"
 
@@ -2782,7 +2782,7 @@ msgstr "Использовать старый документооборот л�
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Это отключит CAL и установит hwId в 0"
 
-#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:714
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
@@ -2836,14 +2836,14 @@ msgstr "Включить поддержку вебсокетами шлюза"
 msgid "Update framebuffer even when not visible"
 msgstr "Обновлять буфер кадров, даже если он не виден"
 
-#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:707
-#: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2139
+#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:717
+#: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 msgid "View only"
 msgstr "Только просмотр"
 
-#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:727
 #: plugins/vnc/vnc_plugin.c:2156
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Послать Ctrl+Alt+Delete"
@@ -2897,83 +2897,86 @@ msgstr "Передача завершена"
 msgid "The %s file has been transferred"
 msgstr "Файл %s был передан"
 
-#: plugins/spice/spice_plugin.c:351
+#: plugins/spice/spice_plugin.c:347
 msgid "Enter SPICE password"
 msgstr "Введите SPICE пароль"
 
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
+#: plugins/spice/spice_plugin.c:394
+#, fuzzy, c-format
+#| msgid "Disconnected from the SPICE server “%s”."
+msgid "Disconnected from the SPICE %s."
 msgstr "Отключен от SPICE сервера \"%s\"."
 
-#: plugins/spice/spice_plugin.c:388
-#, c-format
-msgid "Disconnected from %s:%d via SPICE"
+#: plugins/spice/spice_plugin.c:396
+#, fuzzy, c-format
+#| msgid "Disconnected from %s:%d via SPICE"
+msgid "Disconnected from %s via SPICE"
 msgstr "Отключен от %s:%d через SPICE"
 
-#: plugins/spice/spice_plugin.c:391
-#, c-format
-msgid "Connected to %s:%d via SPICE"
+#: plugins/spice/spice_plugin.c:399
+#, fuzzy, c-format
+#| msgid "Connected to %s:%d via SPICE"
+msgid "Connected to %s via SPICE"
 msgstr "Подключен к %s:%d через SPICE"
 
-#: plugins/spice/spice_plugin.c:403
+#: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
 msgstr "Ошибка соединения TLS."
 
-#: plugins/spice/spice_plugin.c:409
+#: plugins/spice/spice_plugin.c:417
 msgid "Connection to the SPICE server dropped."
 msgstr "Подключение к SPICE серверу прервано."
 
-#: plugins/spice/spice_plugin.c:638
+#: plugins/spice/spice_plugin.c:648
 msgid "Auto GLZ"
 msgstr "Авто GLZ"
 
-#: plugins/spice/spice_plugin.c:639
+#: plugins/spice/spice_plugin.c:649
 msgid "Auto LZ"
 msgstr "Авто LZ"
 
-#: plugins/spice/spice_plugin.c:652
+#: plugins/spice/spice_plugin.c:662
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr "Отключить наложение видео если видео отображается неправильно.\n"
 
-#: plugins/spice/spice_plugin.c:677
+#: plugins/spice/spice_plugin.c:687
 msgid "Use TLS encryption"
 msgstr "Использовать шифрование TLS"
 
-#: plugins/spice/spice_plugin.c:678
+#: plugins/spice/spice_plugin.c:688
 msgid "Server CA certificate"
 msgstr "Сертификат сервера ЦС"
 
-#: plugins/spice/spice_plugin.c:696
+#: plugins/spice/spice_plugin.c:706
 msgid "Preferred video codec"
 msgstr "Предпочитаемый видеокодек"
 
-#: plugins/spice/spice_plugin.c:697
+#: plugins/spice/spice_plugin.c:707
 msgid "Turn off GStreamer overlay"
 msgstr "Отключить ввод на сервере"
 
-#: plugins/spice/spice_plugin.c:700
+#: plugins/spice/spice_plugin.c:710
 msgid "Preferred image compression"
 msgstr "Предпочитаемое сжатие изображения"
 
-#: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
+#: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 msgid "No clipboard sync"
 msgstr "Отключить синхронизацию буфера обмена"
 
-#: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
 msgstr "Включить аудио канал"
 
-#: plugins/spice/spice_plugin.c:706
+#: plugins/spice/spice_plugin.c:716
 msgid "Share smart card"
 msgstr "Сделать смарт-карту общедоступной"
 
-#: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
+#: plugins/spice/spice_plugin.c:728 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
 msgstr "Выберите USB-устройства для перенаправления"
 
-#: plugins/spice/spice_plugin.c:729
+#: plugins/spice/spice_plugin.c:739
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - Простой протокол для независимых вычислительных сред"
 

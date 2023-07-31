@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-07-17 15:41+0000\n"
+"POT-Creation-Date: 2023-07-31 12:30+0000\n"
 "PO-Revision-Date: 2023-07-15 03:53+0000\n"
 "Last-Translator: Eric <hamburger2048@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1827,7 +1827,7 @@ msgstr "查找文本"
 msgid "_Find text"
 msgstr "查找文本(_F)"
 
-#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:676
+#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:686
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 msgid "User password"
 msgstr "用户密码"
@@ -2275,7 +2275,7 @@ msgstr "WAN"
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:637
+#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:647
 #: data/ui/remmina_preferences.glade:646
 msgid "Off"
 msgstr "关"
@@ -2300,8 +2300,8 @@ msgstr "RDP协议安全"
 msgid "NLA extended protocol security"
 msgstr "NLA 扩展协议安全"
 
-#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:618
-#: plugins/spice/spice_plugin.c:636
+#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:628
+#: plugins/spice/spice_plugin.c:646
 msgid "Default"
 msgstr "默认值"
 
@@ -2462,7 +2462,7 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:679
+#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:689
 msgid "Share folder"
 msgstr "共享目录"
 
@@ -2701,7 +2701,7 @@ msgstr "使用旧的许可证工作流程"
 msgid "It disables CAL and hwId is set to 0"
 msgstr "它禁用 CAL，并将 hwId 设置为 0"
 
-#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:704
+#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:714
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
@@ -2755,14 +2755,14 @@ msgstr "启用网关 websockets 支持"
 msgid "Update framebuffer even when not visible"
 msgstr "即使不可见时也更新帧缓存"
 
-#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:707
-#: plugins/spice/spice_plugin.c:715 plugins/vnc/vnc_plugin.c:2139
+#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:717
+#: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 msgid "View only"
 msgstr "仅查看"
 
-#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:727
 #: plugins/vnc/vnc_plugin.c:2156
 msgid "Send Ctrl+Alt+Delete"
 msgstr "发送 Ctrl+Alt+Delete"
@@ -2816,83 +2816,86 @@ msgstr "传输完成"
 msgid "The %s file has been transferred"
 msgstr "文件 %s 已传输"
 
-#: plugins/spice/spice_plugin.c:351
+#: plugins/spice/spice_plugin.c:347
 msgid "Enter SPICE password"
 msgstr "输入 SPICE 密码"
 
-#: plugins/spice/spice_plugin.c:386
-#, c-format
-msgid "Disconnected from the SPICE server “%s”."
+#: plugins/spice/spice_plugin.c:394
+#, fuzzy, c-format
+#| msgid "Disconnected from the SPICE server “%s”."
+msgid "Disconnected from the SPICE %s."
 msgstr "从 SPICE 服务器 \"“%s”断开连接。"
 
-#: plugins/spice/spice_plugin.c:388
-#, c-format
-msgid "Disconnected from %s:%d via SPICE"
+#: plugins/spice/spice_plugin.c:396
+#, fuzzy, c-format
+#| msgid "Disconnected from %s:%d via SPICE"
+msgid "Disconnected from %s via SPICE"
 msgstr "已通过 SPICE 断开了与 %s:%d 的连接"
 
-#: plugins/spice/spice_plugin.c:391
-#, c-format
-msgid "Connected to %s:%d via SPICE"
+#: plugins/spice/spice_plugin.c:399
+#, fuzzy, c-format
+#| msgid "Connected to %s:%d via SPICE"
+msgid "Connected to %s via SPICE"
 msgstr "已通过 SPICE 连接到 %s:%d"
 
-#: plugins/spice/spice_plugin.c:403
+#: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
 msgstr "TLS 连接错误。"
 
-#: plugins/spice/spice_plugin.c:409
+#: plugins/spice/spice_plugin.c:417
 msgid "Connection to the SPICE server dropped."
 msgstr "与 SPICE 服务器的连接断开。"
 
-#: plugins/spice/spice_plugin.c:638
+#: plugins/spice/spice_plugin.c:648
 msgid "Auto GLZ"
 msgstr "自动 GLZ"
 
-#: plugins/spice/spice_plugin.c:639
+#: plugins/spice/spice_plugin.c:649
 msgid "Auto LZ"
 msgstr "自动 LZ"
 
-#: plugins/spice/spice_plugin.c:652
+#: plugins/spice/spice_plugin.c:662
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr "如果视频显示不正常，请禁用视频叠加。\n"
 
-#: plugins/spice/spice_plugin.c:677
+#: plugins/spice/spice_plugin.c:687
 msgid "Use TLS encryption"
 msgstr "使用 TLS 加密"
 
-#: plugins/spice/spice_plugin.c:678
+#: plugins/spice/spice_plugin.c:688
 msgid "Server CA certificate"
 msgstr "服务器 CA 证书"
 
-#: plugins/spice/spice_plugin.c:696
+#: plugins/spice/spice_plugin.c:706
 msgid "Preferred video codec"
 msgstr "首选视频编解码器"
 
-#: plugins/spice/spice_plugin.c:697
+#: plugins/spice/spice_plugin.c:707
 msgid "Turn off GStreamer overlay"
 msgstr "禁止 Gstreamer 叠加"
 
-#: plugins/spice/spice_plugin.c:700
+#: plugins/spice/spice_plugin.c:710
 msgid "Preferred image compression"
 msgstr "首选图像压缩"
 
-#: plugins/spice/spice_plugin.c:703 plugins/spice/spice_plugin.c:716
+#: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 msgid "No clipboard sync"
 msgstr "禁用剪贴板同步"
 
-#: plugins/spice/spice_plugin.c:705 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
 msgstr "启用音频通道"
 
-#: plugins/spice/spice_plugin.c:706
+#: plugins/spice/spice_plugin.c:716
 msgid "Share smart card"
 msgstr "共享智能卡"
 
-#: plugins/spice/spice_plugin.c:718 plugins/spice/spice_plugin_usb.c:51
+#: plugins/spice/spice_plugin.c:728 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
 msgstr "选择 USB 设备以转发"
 
-#: plugins/spice/spice_plugin.c:729
+#: plugins/spice/spice_plugin.c:739
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - 独立计算环境的简单协议"
 
