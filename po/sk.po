@@ -8,13 +8,14 @@
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # shoothub <reloadshoot@gmail.com>, 2021.
 # menom <menom1@protonmail.com>, 2022, 2023.
+# Milan Šalka <salka.milan@googlemail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-07-31 12:30+0000\n"
-"PO-Revision-Date: 2023-07-16 12:04+0000\n"
-"Last-Translator: menom <menom1@protonmail.com>\n"
+"PO-Revision-Date: 2023-08-09 20:48+0000\n"
+"Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
 "Language: sk\n"
@@ -772,7 +773,7 @@ msgstr "Zadajte formát pre 'widthxheight'."
 
 #: src/remmina_public.c:656
 msgid "Change security settings"
-msgstr "Nastavenia kvality"
+msgstr "Nastavenia zabezpečenia"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:53
@@ -785,7 +786,8 @@ msgstr ""
 "  Roland Turcan https://launchpad.net/~info-rotursoft\n"
 "  Vic https://launchpad.net/~llyzs\n"
 "  Ľudovít Lučenič https://launchpad.net/~llucenic\n"
-"  Dušan Kazik <prescott66@gmail.com>"
+"  Dušan Kazik <prescott66@gmail.com>\n"
+"  Jose Riha <jose1711@gmail.com>"
 
 #: src/remmina_ftp_client.c:409
 msgid "Choose download location"
@@ -1021,7 +1023,7 @@ msgstr "Najskôr nainštalujte zásuvný modul protokolu %s."
 #: src/remmina_ssh.c:744
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "Nepodarilo sa overiť totožnosť pomocou hesla SSH. %s"
+msgstr "Nepodarilo sa overiť totožnosť pomocou TOTP/OTP/2FA. %s"
 
 #: src/remmina_ssh.c:803 src/remmina_ssh.c:1184
 #, c-format
@@ -1059,7 +1061,7 @@ msgstr "Nepodarilo sa overiť totožnosť pomocou certifikátu SSH. %s"
 
 #: src/remmina_ssh.c:877
 msgid "SSH identity file not selected."
-msgstr "Súbor s kľúčom SSH zatiaľ nebol nastavený."
+msgstr "Súbor s kľúčom SSH zatiaľ nebol vybraný."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:888
@@ -1091,7 +1093,7 @@ msgstr "Verejný kľúč SSH bol zmenený!"
 #: src/remmina_ssh.c:1219
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "Nepodarilo sa overiť totožnosť pomocou verejného kľúča SSH. %s"
+msgstr "Nepodarilo sa overiť totožnosť pomocou vstupu z klávesnice. %s"
 
 #: src/remmina_ssh.c:1321
 #, c-format
@@ -1154,7 +1156,7 @@ msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:1513
 msgid "Enter TOTP/OTP/2FA code"
-msgstr "Zadajte kód TOTP/OTP/2FA"
+msgstr "Zadajte TOTP/OTP/2FA kód"
 
 #: src/remmina_ssh.c:1543 src/remmina_ssh.c:1569
 msgid "SSH tunnel credentials"
@@ -1166,7 +1168,7 @@ msgstr "Poverenia SSH"
 
 #: src/remmina_ssh.c:1620
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr "Interaktívne prihlásenie pomocou klávesnice, TOTP/OTP/2FA"
+msgstr "Vstup z klávesnice, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1900
@@ -1902,7 +1904,7 @@ msgstr ""
 "  • %U je nahradený menom používateľa SSH\n"
 "  • %p je nahradený názvom profilu aplikácie Remmina\n"
 "  • %g je nahradený názvom skupiny profilu aplikácie Remmina\n"
-"  • %d je nahradený miestnym dátumom a časom vo formáte iso8601\n"
+"  • %d je nahradený miestnym dátumom a časom vo formáte ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1539
 msgid "Terminal colour scheme"
@@ -2089,7 +2091,7 @@ msgstr "Nastavenia vstupného zariadenia"
 #: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2852
 #: plugins/vnc/vnc_plugin.c:2132
 msgid "Disable smooth scrolling"
-msgstr "Vypnúť plynulé posúvanie"
+msgstr "Vypnutie plynulého posúvania"
 
 #: plugins/rdp/rdp_settings.c:667
 msgid "General settings"
@@ -2872,22 +2874,19 @@ msgid "Enter SPICE password"
 msgstr "Zadajte heslo pre SPICE"
 
 #: plugins/spice/spice_plugin.c:394
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "Odpojené zo servera SPICE „%s“."
+msgstr "Odpojenie od SPICE %s."
 
 #: plugins/spice/spice_plugin.c:396
-#, fuzzy, c-format
-#| msgid "Disconnected from %s:%d via SPICE"
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Odpojený od %s:%d prostredníctvom SPICE"
+msgstr "Odpojenie od %s cez SPICE"
 
 #: plugins/spice/spice_plugin.c:399
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via SPICE"
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "Pripojený k %s:%d prostredníctvom SPICE"
+msgstr "Pripojený k %s prostredníctvom SPICE"
 
 #: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
@@ -2907,7 +2906,7 @@ msgstr "Automatické LZ"
 
 #: plugins/spice/spice_plugin.c:662
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "Zakázať prekladanie videa, ak nie sú videá zobrazované správne.\n"
+msgstr "Zakázať video overlay, ak nie sú videá zobrazené korektne.\n"
 
 #: plugins/spice/spice_plugin.c:687
 msgid "Use TLS encryption"
@@ -3110,7 +3109,7 @@ msgstr "Ignorovať správy vzdialeného zvončeka"
 
 #: plugins/vnc/vnc_plugin.c:2135 plugins/vnc/vnc_plugin.c:2153
 msgid "Prevent local interaction on the server"
-msgstr "Zabrániť miestnej interakcii na serveri"
+msgstr "Zabrániť lokálnej interakcii na serveri"
 
 #: plugins/vnc/vnc_plugin.c:2136
 msgid "Show remote cursor"
@@ -3118,7 +3117,7 @@ msgstr "Zobraziť vzdialený kurzor"
 
 #: plugins/vnc/vnc_plugin.c:2138
 msgid "Turn off encryption"
-msgstr "Použiť šifrovanie TLS"
+msgstr "Vypnúť šifrovanie TLS"
 
 #: plugins/vnc/vnc_plugin.c:2155
 msgid "Open Chat…"
