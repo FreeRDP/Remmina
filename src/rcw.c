@@ -2308,8 +2308,12 @@ static void rcw_toolbar_grab(GtkToolItem *toggle, RemminaConnectionWindow *cnnwi
 
 	capture = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle));
 	
-	if (capture && cnnobj->connected) {
+	if (cnnobj->connected){
 		remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab", capture);
+	}
+
+	if (capture && cnnobj->connected) {
+		
 #if DEBUG_KB_GRABBING
 		printf("DEBUG_KB_GRABBING: Grabbing for button\n");
 #endif
