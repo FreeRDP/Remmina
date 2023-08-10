@@ -2129,6 +2129,8 @@ static void rcw_toolbar_duplicate(GtkToolItem *toggle, RemminaConnectionWindow *
 		return;
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
+	remmina_file_save(cnnobj->remmina_file);
+
 	remmina_exec_command(REMMINA_COMMAND_CONNECT, cnnobj->remmina_file->filename);
 }
 
