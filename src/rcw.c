@@ -2129,8 +2129,6 @@ static void rcw_toolbar_duplicate(GtkToolItem *toggle, RemminaConnectionWindow *
 		return;
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
-	remmina_file_save(cnnobj->remmina_file);
-
 	remmina_exec_command(REMMINA_COMMAND_CONNECT, cnnobj->remmina_file->filename);
 }
 
@@ -2307,9 +2305,8 @@ static void rcw_toolbar_grab(GtkToolItem *toggle, RemminaConnectionWindow *cnnwi
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	capture = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle));
-	
+	remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab", capture);
 	if (capture && cnnobj->connected) {
-		remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab", capture);
 #if DEBUG_KB_GRABBING
 		printf("DEBUG_KB_GRABBING: Grabbing for button\n");
 #endif
