@@ -18,7 +18,7 @@
   </object>
   <object class="GtkDialog" id="KeyChooserDialog">
     <property name="width_request">250</property>
-    <property name="height_request">100</property>
+    <property name="height_request">200</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Choose a new key</property>
     <property name="resizable">False</property>
@@ -33,6 +33,7 @@
           <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
+            <property name="halign">center</property>
             <child>
               <object class="GtkButton" id="button_remove">
                 <property name="label">button</property>
@@ -71,6 +72,44 @@
           </packing>
         </child>
         <child>
+          <object class="GtkGrid" id="dialog-grid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="row-spacing">5</property>
+            <property name="column-spacing">7</property>
+            <child>
+              <object class="GtkLabel" id="label_option_key_modifier">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="tooltip-text" translatable="yes">Allow key modifiers</property>
+                <property name="halign">center</property>
+                <property name="margin-start">18</property>
+                <property name="margin-end">6</property>
+                <property name="label" translatable="yes">Allow key modifiers</property>
+                <property name="justify">right</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="switch_option_key_modifier">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin-end">18</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+        <child>
           <object class="GtkEventBox" id="eventbox_key_chooser">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -86,7 +125,7 @@
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
