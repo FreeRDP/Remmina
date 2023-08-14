@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-08-11 17:07+0000\n"
-"PO-Revision-Date: 2023-08-13 18:47+0000\n"
+"PO-Revision-Date: 2023-08-14 05:49+0000\n"
 "Last-Translator: Justin Song <mcsong@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
@@ -1011,10 +1011,8 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "SSH 비밀번호로 인증할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:830 src/remmina_ssh.c:897
-#, fuzzy
-#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgid "No saved SSH password supplied. Asking user to enter it."
-msgstr "SSH 열쇠글이 저장되어 있지 않습니다. 유저의 입력을 요청합니다."
+msgstr "저장된 SSH 비밀번호가 없습니다. 사용자에게 입력을 요청합니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:835 src/remmina_ssh.c:876 src/remmina_ssh.c:902
@@ -1293,8 +1291,6 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
 
 #: src/remmina_main.c:1021
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
 msgstr "선택한 파일을 삭제 하시겠습니까?"
 
@@ -1496,7 +1492,7 @@ msgstr "사용자 정의"
 
 #: src/remmina_file_editor.c:655
 msgid "Assistance Mode"
-msgstr ""
+msgstr "지원 모드"
 
 #: src/remmina_file_editor.c:1036
 msgid "Keyboard mapping"
@@ -2685,7 +2681,7 @@ msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2906
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "지원 모드에서 연결 시도"
 
 #: plugins/rdp/rdp_plugin.c:2907
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2779,7 +2775,7 @@ msgstr "게이트웨이 웹소켓 지원 활성화"
 
 #: plugins/rdp/rdp_plugin.c:2931
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "보이지 않는 경우에도 프레임 버퍼 업데이트"
 
 #: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:717
 #: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
@@ -2847,22 +2843,19 @@ msgid "Enter SPICE password"
 msgstr "SPICE 비밀번호 입력"
 
 #: plugins/spice/spice_plugin.c:394
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "SPICE 서버 \"%s\"와 연결이 끊어졌습니다."
+msgstr "SPICE \"%s\"와 연결이 끊어졌습니다."
 
 #: plugins/spice/spice_plugin.c:396
-#, fuzzy, c-format
-#| msgid "Disconnected from %s:%d via SPICE"
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "SPICE를 통해 %s:%d에서 연결 해제됨"
+msgstr "SPICE로 연결한 %s 에서 연결 해제됨"
 
 #: plugins/spice/spice_plugin.c:399
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via SPICE"
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "SPICE를 통해 %s:%d에 연결됨"
+msgstr "SPICE로 %s 에 연결됨"
 
 #: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
@@ -3025,6 +3018,11 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"동적 해상도를 활성화한 경우 화면 비율을 잠급니다:\n"
+"\n"
+"   • 화면비율은 10진수로 입력해야 합니다. 예로, 1.777\n"
+"   • 16:9는 대략 1.7777에 해당하고, 4:3은 대략 1.333에 해당합니다.\n"
+"   • 기본값 0은 가로세로 비율을 적용하지 않습니다."
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3062,7 +3060,7 @@ msgstr "사전 설정된 VNC 인코딩 재정의"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "동적 해상도 화면 비율 적용"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
@@ -3188,7 +3186,7 @@ msgstr "비동기 실행"
 
 #: plugins/exec/exec_plugin.c:299
 msgid "Kill process on disconnect"
-msgstr ""
+msgstr "연결 해제 시 프로세스 종료"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
@@ -3293,11 +3291,8 @@ msgid "Visible"
 msgstr "보임"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr ""
-"유효한 `DialogData` 또는 `sessions_list`를 검색할 수 없습니다! 중단 중…"
+msgstr "유효한 `DialogData` 또는 `sessions_list`를 검색할 수 없습니다! 중단중…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
@@ -3325,10 +3320,8 @@ msgid "Unknown property '%i'"
 msgstr "알 수 없는 속성 '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
-msgstr "세션 선택도구 대화상자의 하위 GtkTreeView를 찾을 수 없습니다."
+msgstr "세션 선택 대화상자의 하위 GtkTreeView를 찾을 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
@@ -3347,10 +3340,8 @@ msgstr ""
 "수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
-msgstr "현재 선택된 행(세션)을 가져올 수 없습니다!"
+msgstr "현재 선택(세션)을 가져올 수 없습니다!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3429,22 +3420,21 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "'custom_data' 매개변수가 완전히 초기화되지 않았습니다!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "X2Go 세션을 시작할 수 없습니다."
+msgstr ""
+"X2Go 세션 '%s'을 종료할 수 없습니다:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "오류가 발생했습니다."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
-msgstr "세션 선택도구 대화상자에서 세션 ID를 가져올 수 없습니다."
+msgstr "세션 선택 대화상자에서 세션 ID를 가져올 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
@@ -3466,20 +3456,15 @@ msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLI가 예기치 않게 종료되었습니다. 이제 이 연결이 닫힙니다."
 
 #: plugins/x2go/x2go_plugin.c:1666
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and PyHoca-CLI's output for possible "
-#| "errors. Also ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable and you're using the "
 "right credentials."
 msgstr ""
-"필요한 하위 프로세스 'pyhoca-cli'가 예기치 않게 중지되었습니다.\n"
-"프로필 설정과 PyHoca-CLI의 출력에서 가능한 오류를 확인하십시오. 또한 원격 서"
-"버에 연결할 수 있는지 확인하십시오."
+"필요한 자식 프로세스 'pyhoca-cli'가 예기치 않게 중지되었습니다.\n"
+"프로필 설정과 PyHoca-CLI의 출력에서 가능한 오류를 확인하십시오. 또한 원격 "
+"서버에 연결할 수 있는지 확인하십시오."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
@@ -3490,28 +3475,19 @@ msgid "Could not save new credentials."
 msgstr "새 자격 증명을 저장할 수 없습니다."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
-msgstr ""
-"새 자격 증명을 저장하는 동안 오류가 발생했습니다. 's_password' 또는 "
-"'_username' 문자열이 설정되지 않았습니다."
+msgstr "새 자격 증명을 저장하지 못 했습니다: 's_password' 또는 '_username' 문자열이 "
+"입력되지 않았습니다."
 
 #: plugins/x2go/x2go_plugin.c:1758
-#, fuzzy
-#| msgid "Password to unlock private key"
 msgid "Enter password to unlock the SSH key:"
-msgstr "개인 키 잠금을 해제하기 위한 비밀번호"
+msgstr "SSH 키 해제 비밀번호 입력:"
 
 #: plugins/x2go/x2go_plugin.c:1769
-#, fuzzy
-#| msgid "Authentication cancelled. Aborting…"
 msgid "Password input cancelled. Aborting…"
-msgstr "인증이 취소되었습니다. 중단 중…"
+msgstr "비밀번호 입력이 취소되었습니다. 중단중…"
 
 #: plugins/x2go/x2go_plugin.c:1800
 msgid ""
@@ -3530,22 +3506,15 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "인증이 취소되었습니다. 중단 중…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
-msgstr ""
-"PyHoca-CLI의 --list-sessions 옵션의 출력을 구문 분석할 수 없습니다. 지금 새 "
-"세션을 만드는 중입니다."
+msgstr "PyHoca-CLI의 --list-sessions 옵션 출력을 확인할 수 없습니다. 새 세션을 "
+"만드는 중입니다."
 
 #: plugins/x2go/x2go_plugin.c:2086
-#, fuzzy
-#| msgid "Couldn't allocate enough memory!"
 msgid "Could not allocate enough memory!"
-msgstr "충분한 메모리를 할당할 수 없습니다!"
+msgstr "필요한 메모리를 할당할 수 없습니다!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
@@ -3606,10 +3575,8 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "DPI 설정이 범위를 벗어났습니다. 프로필 설정에서 조정하십시오."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start X2Go session."
 msgid "Could not start X2Go session…"
-msgstr "X2Go 세션을 시작할 수 없습니다."
+msgstr "X2Go 세션을 시작할 수 없습니다…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
@@ -3621,18 +3588,13 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "PyHoca-CLI (%i)를 시작할 수 없음: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
 "used for now."
 msgstr ""
-"PyHoca-CLI의 명령줄 기능을 가져올 수 없습니다. 이는 너무 오래되었거나 설치되"
-"지 않았음을 나타냅니다. 현재는 오래된 제한된 기능 설정이 사용됩니다."
+"PyHoca-CLI의 명령줄 기능을 실행할 수 없습니다. 너무 오래되었거나 설치되지 "
+"않았음을 나타냅니다. 현재 이전의 제한된 기능만 사용할 수 있습니다."
 
 #: plugins/x2go/x2go_plugin.c:2708
 msgid ""
@@ -3825,10 +3787,8 @@ msgstr ""
 "특정 해상도(인치당 도트 수)로 세션을 시작합니다. 20~400 사이여야 합니다."
 
 #: plugins/x2go/x2go_plugin.c:3420
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "Your private key"
-msgstr "SSH 개인 키 파일"
+msgstr "개인 키"
 
 #: plugins/x2go/x2go_plugin.c:3460
 msgid "X2Go plugin loaded."
@@ -4269,7 +4229,7 @@ msgstr "새 키 선택"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "키 수정 허용"
 
 #: data/ui/remmina_key_chooser.glade:121
 msgid "Please press the new key…"
@@ -4519,10 +4479,8 @@ msgid "Confirm before closing multiple tabs"
 msgstr "여러 탭을 닫기 전에 확인하기"
 
 #: data/ui/remmina_preferences.glade:500
-#, fuzzy
-#| msgid "General settings"
 msgid "General"
-msgstr "일반 설정"
+msgstr "일반"
 
 #: data/ui/remmina_preferences.glade:525
 msgid "Always show tabs"
@@ -4597,14 +4555,12 @@ msgid ""
 msgstr "GTK 테마가 다크 모드를 포함한 경우, 설정한 테마 대신 사용됩니다."
 
 #: data/ui/remmina_preferences.glade:705
-#, fuzzy
-#| msgid "Always show tabs"
 msgid "Always show notes"
-msgstr "항상 탭 표시"
+msgstr "계속 노트 보여주기"
 
 #: data/ui/remmina_preferences.glade:709
 msgid "Add a column displaying any notes associated with a connection."
-msgstr ""
+msgstr "연결과 관련된 메모를 보여주는 컬럼을 추가합니다."
 
 #: data/ui/remmina_preferences.glade:729
 msgid "“Grab all keyboard events” status colour"
@@ -4793,17 +4749,13 @@ msgid "Require to modify"
 msgstr "수정하려면 필요"
 
 #: data/ui/remmina_preferences.glade:1733
-#, fuzzy
-#| msgid "Enter your Remmina password to connect"
 msgid "Enter your Remmina password to view passwords"
-msgstr "연결하려면 Remmina 비밀번호 입력"
+msgstr "비밀번호를 보려면 레미나 비밀번호를 입력하세요"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1737
-#, fuzzy
-#| msgid "Set new password"
 msgid "Require to view passwords"
-msgstr "새 비밀번호 설정"
+msgstr "비밀번호를 보기위해서 필요합니다"
 
 #: data/ui/remmina_preferences.glade:1793
 msgid "Encryption"
