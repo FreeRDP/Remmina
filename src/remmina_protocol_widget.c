@@ -69,6 +69,7 @@ struct _RemminaProtocolWidgetPriv {
 
 	gboolean		has_error;
 	gchar *			error_message;
+	gboolean		user_disconnect;
 	/* ssh_tunnels is an array of RemminaSSHTunnel*
 	 * the 1st one is the "main" tunnel, other tunnels are used for example in sftp commands */
 	GPtrArray *		ssh_tunnels;
@@ -234,6 +235,7 @@ static void remmina_protocol_widget_init(RemminaProtocolWidget *gp)
 
 	priv = g_new0(RemminaProtocolWidgetPriv, 1);
 	gp->priv = priv;
+	gp->priv->user_disconnect = FALSE;
 	gp->priv->closed = TRUE;
 	gp->priv->ssh_tunnels = g_ptr_array_new();
 
@@ -341,12 +343,11 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget *gp)
 	remmina_protocol_widget_open_connection_real(gp);
 }
 
-static gboolean conn_closed(gpointer data)
-{
+static gboolean conn_closed_real(gpointer data, int button){
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
 
-#ifdef HAVE_LIBSSH
+	#ifdef HAVE_LIBSSH
 	/* This will close all tunnels */
 	remmina_protocol_widget_close_all_tunnels(gp);
 #endif
@@ -355,11 +356,35 @@ static gboolean conn_closed(gpointer data)
 	/* Notify listeners (usually rcw) that the connection is closed */
 	g_signal_emit_by_name(G_OBJECT(gp), "disconnect");
 	return G_SOURCE_REMOVE;
+
+}
+
+static gboolean conn_closed(gpointer data)
+{
+	TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
+
+	if (!gp->priv->user_disconnect && !gp->priv->has_error){
+		const char* msg = "Plugin Disconnected";
+		if (gp->priv->has_error){
+			msg = remmina_protocol_widget_get_error_message(gp);
+			remmina_protocol_widget_set_error(gp, NULL);
+		}
+		gp->priv->user_disconnect = FALSE;
+		RemminaMessagePanel* mp = remmina_message_panel_new();
+		remmina_message_panel_setup_message(mp, msg, (RemminaMessagePanelCallback)conn_closed_real, gp);
+		rco_show_message_panel(gp->cnnobj, mp);
+	}
+	else{
+		conn_closed_real(gp, 0);
+	}
+
 }
 
 void remmina_protocol_widget_signal_connection_closed(RemminaProtocolWidget *gp)
 {
-	/* Plugin told us that it closed the connection,
+	/* User told us that they closed the connection,
+	 * or the connection was closed with a known error,
 	 * add async event to main thread to complete our close tasks */
 	TRACE_CALL(__func__);
 	gp->priv->closed = TRUE;
@@ -490,6 +515,7 @@ void remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp)
 		g_signal_emit_by_name(G_OBJECT(gp), "disconnect");
 		return;
 	}
+	gp->priv->user_disconnect = TRUE;
 
 	/* Ask the plugin to close, async.
 	 *      The plugin will emit a "disconnect" signal on gp to call our
