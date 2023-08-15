@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-08-11 17:07+0000\n"
+"POT-Creation-Date: 2023-08-15 13:53+0000\n"
 "PO-Revision-Date: 2023-06-26 04:43+0000\n"
 "Last-Translator: maboroshin <maboroshin@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -32,7 +32,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
-#: src/remmina_protocol_widget.c:1699 src/remmina_protocol_widget.c:1718
+#: src/remmina_protocol_widget.c:1725 src/remmina_protocol_widget.c:1744
 #: src/remmina_file_editor.c:1200 src/remmina_file_editor.c:1323
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2846
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
@@ -74,7 +74,7 @@ msgstr "すべてのファイルを上書き"
 msgid "Resume all file transfers"
 msgstr "中断したすべてのファイル転送を再開"
 
-#: src/remmina_sftp_plugin.c:327 src/remmina_protocol_widget.c:283
+#: src/remmina_sftp_plugin.c:327 src/remmina_protocol_widget.c:285
 msgid "Connect via SSH from a new terminal"
 msgstr "新しい端末から SSH で接続"
 
@@ -890,126 +890,126 @@ msgstr "ローカル"
 msgid "Progress"
 msgstr "進捗"
 
-#: src/remmina_protocol_widget.c:293 src/remmina_ssh_plugin.c:841
+#: src/remmina_protocol_widget.c:295 src/remmina_ssh_plugin.c:841
 #: src/remmina_ssh_plugin.c:1479
 msgid "Open SFTP transfer…"
 msgstr "SFTP 転送を開く…"
 
-#: src/remmina_protocol_widget.c:325
+#: src/remmina_protocol_widget.c:327
 msgid "Executing external commands…"
 msgstr "外部コマンドの実行…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:333
+#: src/remmina_protocol_widget.c:335
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "“%s” に接続中…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:931 src/remmina_protocol_widget.c:1115
+#: src/remmina_protocol_widget.c:957 src/remmina_protocol_widget.c:1141
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "SSH で “%s” に接続中…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1179
+#: src/remmina_protocol_widget.c:1205
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "ポート %i で SSH 接続を待ち受け中…"
 
-#: src/remmina_protocol_widget.c:1232
+#: src/remmina_protocol_widget.c:1258
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "“%s” コマンドは SSH サーバー上で利用できません。"
 
-#: src/remmina_protocol_widget.c:1237
+#: src/remmina_protocol_widget.c:1263
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr ""
 "SSH サーバー上で “%s” コマンドを実行できませんでした (ステータス = %i)。"
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1245
+#: src/remmina_protocol_widget.c:1271
 #, c-format
 msgid "Could not run command. %s"
 msgstr "コマンドを実行できませんでした: %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1315
+#: src/remmina_protocol_widget.c:1341
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "SSH で %s に接続中…"
 
-#: src/remmina_protocol_widget.c:1717
+#: src/remmina_protocol_widget.c:1743
 msgid "Type in SSH username and password."
 msgstr "SSH のユーザー名とパスワードを入力してください。"
 
-#: src/remmina_protocol_widget.c:1772 src/remmina_protocol_widget.c:1804
+#: src/remmina_protocol_widget.c:1798 src/remmina_protocol_widget.c:1830
 msgid "Fingerprint automatically accepted"
 msgstr "フィンガープリントを自動的に受け入れました"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1780
+#: src/remmina_protocol_widget.c:1806
 msgid "Certificate details:"
 msgstr "証明書の詳細:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1782 src/remmina_protocol_widget.c:1814
+#: src/remmina_protocol_widget.c:1808 src/remmina_protocol_widget.c:1840
 msgid "Subject:"
 msgstr "発行先:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1784 src/remmina_protocol_widget.c:1816
+#: src/remmina_protocol_widget.c:1810 src/remmina_protocol_widget.c:1842
 msgid "Issuer:"
 msgstr "発行者:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1786
+#: src/remmina_protocol_widget.c:1812
 msgid "Fingerprint:"
 msgstr "フィンガープリント:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1788
+#: src/remmina_protocol_widget.c:1814
 msgid "Accept certificate?"
 msgstr "証明書を受け入れますか?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1812
+#: src/remmina_protocol_widget.c:1838
 msgid "The certificate changed! Details:"
 msgstr "証明書が変更されました。詳細:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1818
+#: src/remmina_protocol_widget.c:1844
 msgid "Old fingerprint:"
 msgstr "古いフィンガープリント:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1820
+#: src/remmina_protocol_widget.c:1846
 msgid "New fingerprint:"
 msgstr "新しいフィンガープリント:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1822
+#: src/remmina_protocol_widget.c:1848
 msgid "Accept changed certificate?"
 msgstr "変更された証明書を受け入れますか?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1965
+#: src/remmina_protocol_widget.c:1991
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "ポート %i への %s 接続を待ち受け中…"
 
-#: src/remmina_protocol_widget.c:1990
+#: src/remmina_protocol_widget.c:2016
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "認証できませんでした。再接続しています…"
 
-#: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:462
+#: src/remmina_protocol_widget.c:2079 src/remmina_file_editor.c:462
 #: src/remmina_file_editor.c:1273 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr "サーバー"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2071
+#: src/remmina_protocol_widget.c:2097
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "最初に %s プロトコルプラグインをインストールしてください。"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-08-11 17:07+0000\n"
+"POT-Creation-Date: 2023-08-15 13:53+0000\n"
 "PO-Revision-Date: 2023-07-13 15:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -25,7 +25,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
-#: src/remmina_protocol_widget.c:1699 src/remmina_protocol_widget.c:1718
+#: src/remmina_protocol_widget.c:1725 src/remmina_protocol_widget.c:1744
 #: src/remmina_file_editor.c:1200 src/remmina_file_editor.c:1323
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2846
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
@@ -67,7 +67,7 @@ msgstr "Zamijeni sve datoteke"
 msgid "Resume all file transfers"
 msgstr "Nastavi sve prijenose datoteka"
 
-#: src/remmina_sftp_plugin.c:327 src/remmina_protocol_widget.c:283
+#: src/remmina_sftp_plugin.c:327 src/remmina_protocol_widget.c:285
 msgid "Connect via SSH from a new terminal"
 msgstr "Poveži putem SSH-a iz novog terminala"
 
@@ -889,125 +889,125 @@ msgstr "Lokalno"
 msgid "Progress"
 msgstr "Napredak"
 
-#: src/remmina_protocol_widget.c:293 src/remmina_ssh_plugin.c:841
+#: src/remmina_protocol_widget.c:295 src/remmina_ssh_plugin.c:841
 #: src/remmina_ssh_plugin.c:1479
 msgid "Open SFTP transfer…"
 msgstr "Otvori SFTP prijenos…"
 
-#: src/remmina_protocol_widget.c:325
+#: src/remmina_protocol_widget.c:327
 msgid "Executing external commands…"
 msgstr "Pokretanje vanjskih naredbi…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
-#: src/remmina_protocol_widget.c:333
+#: src/remmina_protocol_widget.c:335
 #, c-format
 msgid "Connecting to “%s”…"
 msgstr "Povezivanje na “%s”…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
-#: src/remmina_protocol_widget.c:931 src/remmina_protocol_widget.c:1115
+#: src/remmina_protocol_widget.c:957 src/remmina_protocol_widget.c:1141
 #, c-format
 msgid "Connecting to “%s” via SSH…"
 msgstr "Povezivanje na “%s” putem SSH…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
-#: src/remmina_protocol_widget.c:1179
+#: src/remmina_protocol_widget.c:1205
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
 msgstr "Čekanje dolaznog SSH povezivanja na ulazu %i…"
 
-#: src/remmina_protocol_widget.c:1232
+#: src/remmina_protocol_widget.c:1258
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
 msgstr "“%s” naredba nije dostupna na SSH poslužitelju."
 
-#: src/remmina_protocol_widget.c:1237
+#: src/remmina_protocol_widget.c:1263
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
 msgstr "Neuspjelo pokretanje “%s” naredbe na SSH poslužitelju (stanje = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:1245
+#: src/remmina_protocol_widget.c:1271
 #, c-format
 msgid "Could not run command. %s"
 msgstr "Nemoguće pokretanje naredbe. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
-#: src/remmina_protocol_widget.c:1315
+#: src/remmina_protocol_widget.c:1341
 #, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Povezivanje s %s putem SSH…"
 
-#: src/remmina_protocol_widget.c:1717
+#: src/remmina_protocol_widget.c:1743
 msgid "Type in SSH username and password."
 msgstr "Upišite SSH korisničko ime i lozinku."
 
-#: src/remmina_protocol_widget.c:1772 src/remmina_protocol_widget.c:1804
+#: src/remmina_protocol_widget.c:1798 src/remmina_protocol_widget.c:1830
 msgid "Fingerprint automatically accepted"
 msgstr "Otisak prsta je automatski prihvaćen"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1780
+#: src/remmina_protocol_widget.c:1806
 msgid "Certificate details:"
 msgstr "Pojedinosti vjerodajnice:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1782 src/remmina_protocol_widget.c:1814
+#: src/remmina_protocol_widget.c:1808 src/remmina_protocol_widget.c:1840
 msgid "Subject:"
 msgstr "Predmet:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1784 src/remmina_protocol_widget.c:1816
+#: src/remmina_protocol_widget.c:1810 src/remmina_protocol_widget.c:1842
 msgid "Issuer:"
 msgstr "Izdavač:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1786
+#: src/remmina_protocol_widget.c:1812
 msgid "Fingerprint:"
 msgstr "Otisak:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1788
+#: src/remmina_protocol_widget.c:1814
 msgid "Accept certificate?"
 msgstr "Prihvati vjerodajnicu?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1812
+#: src/remmina_protocol_widget.c:1838
 msgid "The certificate changed! Details:"
 msgstr "Vjerodajnica promijenjena! Pojedinosti:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1818
+#: src/remmina_protocol_widget.c:1844
 msgid "Old fingerprint:"
 msgstr "Stari otisak:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1820
+#: src/remmina_protocol_widget.c:1846
 msgid "New fingerprint:"
 msgstr "Novi otisak:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1822
+#: src/remmina_protocol_widget.c:1848
 msgid "Accept changed certificate?"
 msgstr "Prihvati promijenjenu vjerodajnicu?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1965
+#: src/remmina_protocol_widget.c:1991
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Osluškivanje na ulazu %i za dolazno %s povezivanje…"
 
-#: src/remmina_protocol_widget.c:1990
+#: src/remmina_protocol_widget.c:2016
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Neuspjela ovjera. Pokušaj ponovnog povezivanja…"
 
-#: src/remmina_protocol_widget.c:2053 src/remmina_file_editor.c:462
+#: src/remmina_protocol_widget.c:2079 src/remmina_file_editor.c:462
 #: src/remmina_file_editor.c:1273 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr "Poslužitelj"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2071
+#: src/remmina_protocol_widget.c:2097
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Prvo instalirajte %s priključak protokola."
