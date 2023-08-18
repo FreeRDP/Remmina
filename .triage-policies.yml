@@ -19,22 +19,6 @@ resource_rules:
             {{author}} This issue was closed due to not being updated for a long time. Please re-open it if still relevant.
             CC {{assignees}}
 
-      - name: New issue disclaimer
-        conditions:
-          date:
-            attribute: created_at
-            condition: newer_than
-            interval_type: days
-            interval: 7
-          state: opened
-          no_additional_labels: true
-        limits:
-          most_recent: 50
-        actions:
-          comment: |
-            {{author}} the Remmina project is looking for new developers.
-            We hope someone will take care of your problem in a short time, or you may considering helping out to solve this issue.
-
       - name: Unlabelled after 8 days
         conditions:
           date:
@@ -50,7 +34,7 @@ resource_rules:
           labels:
             - needs attention
           comment: |
-            {{author}} This issue has gone unlabelled for 30 days. It needs somone to label it.
+            {{author}} This issue has gone unlabelled for 8 days. It needs somone to label it.
           summarize:
             title: |
               #{resource[:type].capitalize} require labels
