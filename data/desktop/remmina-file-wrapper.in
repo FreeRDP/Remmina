@@ -24,9 +24,11 @@ set -o nounset                                  # Treat unset variables as an er
 USRBIN="$(dirname "$(readlink -f "${0}")")"
 REMMINA="@REMMINA_BINARY_PATH@"
 
-if [[ ! -f "$REMMINA" ]] ; then
+if [[ ! -f "$REMMINA" ]]; then
     REMMINA="${USRBIN}/remmina"
-else
+fi
+
+if [[ ! -f "$REMMINA" ]]; then
     REMMINA="remmina"
 fi
 
