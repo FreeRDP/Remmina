@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # Serdar Sağlam <teknomobil@yandex.com>, 2019.
-# Sabri Ünal <libreajans@gmail.com>, 2019, 2021, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2019, 2021, 2022, 2023.
 # Oguz Ersen <oguzersen@protonmail.com>, 2019.
 # Serdar Sağlam <teknomobil@msn.com>, 2019, 2020, 2021.
 # Ömer Çakmak <faruk.omer.cakmak@gmail.com>, 2019.
@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-08-15 13:53+0000\n"
-"PO-Revision-Date: 2023-06-13 16:51+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"PO-Revision-Date: 2023-08-21 01:57+0000\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -1504,7 +1504,7 @@ msgstr "Özel"
 
 #: src/remmina_file_editor.c:655
 msgid "Assistance Mode"
-msgstr ""
+msgstr "Yardım Kipi"
 
 #: src/remmina_file_editor.c:1036
 msgid "Keyboard mapping"
@@ -2702,7 +2702,7 @@ msgstr "/SISTEM/YOLU/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2906
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "Yardım kipinde bağlanmayı dene"
 
 #: plugins/rdp/rdp_plugin.c:2907
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2864,22 +2864,19 @@ msgid "Enter SPICE password"
 msgstr "SPICE parolasını girin"
 
 #: plugins/spice/spice_plugin.c:394
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "“%s” SPICE sunucusuyla bağlantı kesildi."
+msgstr "“%s” SPICE ile bağlantı kesildi."
 
 #: plugins/spice/spice_plugin.c:396
-#, fuzzy, c-format
-#| msgid "Disconnected from %s:%d via SPICE"
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "SPICE ile %s:%d'den bağlantı kesildi"
+msgstr "SPICE ile %s'den bağlantı kesildi"
 
 #: plugins/spice/spice_plugin.c:399
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via SPICE"
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "SPICE ile %s:%d'ye bağlanıldı"
+msgstr "SPICE ile %s'ye bağlanıldı"
 
 #: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
@@ -3043,6 +3040,12 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"Dinamik çözünürlük etkinleştirildiğinde en boy oranını kilitle:\n"
+"\n"
+"   • En boy oranı ondalık sayı olarak girilmelidir, ör. 1.777\n"
+"   • 16:9 kabaca 1,7777'ye karşılık gelir, 4:3 kabaca 1,333'e karşılık "
+"gelir\n"
+"   • Varsayılan değer olan 0, herhangi bir en boy oranını zorlamaz"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3080,7 +3083,7 @@ msgstr "Önceden tanımlı VNC kodlamalarını görmezden gel"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "Dinamik çözünürlük zorunlu en boy oranı"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
@@ -4260,7 +4263,7 @@ msgstr "Yeni tuş seç"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "Tuş düzenleyicilere izin ver"
 
 #: data/ui/remmina_key_chooser.glade:121
 msgid "Please press the new key…"
