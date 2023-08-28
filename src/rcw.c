@@ -93,6 +93,7 @@ struct _RemminaConnectionWindowPriv {
 	GtkWidget *					overlay;
 	GtkWidget *					revealer;
 	GtkWidget *					overlay_ftb_overlay;
+	GtkWidget *					overlay_ftb_fr;
 
 	GtkWidget *					floating_toolbar_label;
 	gdouble						floating_toolbar_opacity;
@@ -194,6 +195,7 @@ static GtkWidget *rco_create_tab_label(RemminaConnectionObject *cnnobj);
 void rcw_grab_focus(RemminaConnectionWindow *cnnwin);
 static GtkWidget *rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode);
 static void rcw_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement);
+static void rco_update_toolbar(RemminaConnectionObject *cnnobj);
 static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin);
 static GtkWidget *rcw_append_new_page(RemminaConnectionWindow *cnnwin, RemminaConnectionObject *cnnobj);
 
@@ -2323,6 +2325,8 @@ static void rcw_toolbar_grab(GtkToolItem *toggle, RemminaConnectionWindow *cnnwi
 	} else {
 		rcw_kp_ungrab(cnnobj->cnnwin);
 	}
+
+	rco_update_toolbar(cnnobj);
 }
 
 static GtkWidget *
@@ -2734,11 +2738,15 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 		}
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
-			if (remmina_pref_get_boolean("grab_color_switch"))
-				format = g_strconcat("<span bgcolor=\"", bg, "\" size=\"large\"><b>(G:ON) - \%s</b></span>", NULL);
-			else
-				format = "<big><b>(G:ON) - \%s</b></big>";
+			if (remmina_pref_get_boolean("grab_color_switch")) {
+				gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_NORMAL, &rgba);
+				format = g_strconcat("<span bgcolor=\"", bg, "\" size=\"large\"><b>(G: ON) - \%s</b></span>", NULL);
+			} else {
+				gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_NORMAL, NULL);
+				format = "<big><b>(G: ON) - \%s</b></big>";
+			}
 		} else {
+			gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_NORMAL, NULL);
 			format = "<big><b>(G:OFF) - \%s</b></big>";
 		}
 		gchar *markup;
@@ -3856,6 +3864,10 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 		priv->overlay_ftb_overlay = NULL;
 		priv->revealer = NULL;
 	}
+	if (priv->overlay_ftb_fr != NULL) {
+		gtk_widget_destroy(priv->overlay_ftb_fr);
+		priv->overlay_ftb_fr = NULL;
+	}
 
 	rcw_create_floating_toolbar(cnnwin, priv->fss_view_mode);
 
@@ -3896,6 +3908,7 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 	GtkWidget *fr;
 
 	fr = gtk_frame_new(NULL);
+	priv->overlay_ftb_fr = fr;
 	gtk_container_add(GTK_CONTAINER(priv->overlay_ftb_overlay), fr);
 	gtk_container_add(GTK_CONTAINER(fr), vbox);
 
