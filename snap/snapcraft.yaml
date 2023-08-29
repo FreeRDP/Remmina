@@ -21,6 +21,7 @@ slots:
 
 environment:
   SSH_AUTH_SOCK:    "${SNAP_DATA}/ssh-agent.socket"
+  SNAP_USER_DATA:   "${SNAP_REAL_HOME}/snap/${SNAP_NAME}/current"
 
 apps:
   remmina:
