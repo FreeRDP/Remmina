@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.3.9\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-08-28 15:19+0000\n"
+"POT-Creation-Date: 2023-09-04 12:35+0000\n"
 "PO-Revision-Date: 2023-02-04 06:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/remmina/remmina/hi/"
@@ -23,7 +23,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1725 src/remmina_protocol_widget.c:1744
 #: src/remmina_file_editor.c:1200 src/remmina_file_editor.c:1323
-#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2846
+#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2872
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:68
 #: data/ui/remmina_unlock.glade:98
@@ -75,7 +75,7 @@ msgstr "एक नए टर्मिनल से एसएसएच के म
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:330
 #: src/remmina_file_editor.c:1317 src/remmina_ssh_plugin.c:1504
-#: plugins/rdp/rdp_plugin.c:2845 plugins/vnc/vnc_plugin.c:2098
+#: plugins/rdp/rdp_plugin.c:2871 plugins/vnc/vnc_plugin.c:2098
 #: plugins/vnc/vnc_plugin.c:2110 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
 #: data/ui/remmina_mpc.glade:122
@@ -315,12 +315,12 @@ msgstr "बंद करे"
 msgid "Yes"
 msgstr "हाँ"
 
-#: src/remmina_message_panel.c:267
+#: src/remmina_message_panel.c:267 plugins/rdp/rdp_plugin.c:2755
 #, fuzzy
 msgid "No"
 msgstr "नहीं"
 
-#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2847
+#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2873
 #: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
@@ -899,7 +899,7 @@ msgstr "ऊपर"
 msgid "Go to parent folder"
 msgstr "मूल फ़ोल्डर पे जाय."
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2941
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2969
 #: plugins/vnc/vnc_plugin.c:2154
 #, fuzzy
 msgid "Refresh"
@@ -961,12 +961,12 @@ msgstr "अनुमतियाँ"
 msgid "Modified"
 msgstr ""
 
-#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2722
+#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2737
 #, fuzzy
 msgid "Remote"
 msgstr "बेमिलनसार"
 
-#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2721
+#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2736
 #, fuzzy
 msgid "Local"
 msgstr "लोकल"
@@ -1722,7 +1722,7 @@ msgstr "लूपबैक पते के माध्यम से सुर�
 msgid "Same server at port %i"
 msgstr "बंदरगाह पर एक ही सर्वर %i"
 
-#: src/remmina_file_editor.c:1294 plugins/rdp/rdp_plugin.c:2891
+#: src/remmina_file_editor.c:1294 plugins/rdp/rdp_plugin.c:2917
 #, fuzzy
 msgid "Start-up path"
 msgstr "स्टार्ट-अप पथ"
@@ -2188,25 +2188,25 @@ msgstr "< सेट नहीं>"
 msgid "<Choose a quality level to edit…>"
 msgstr "< संपादित करने के लिए एक गुणवत्ता स्तर को कूस... >"
 
-#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2696
+#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2711
 #: plugins/vnc/vnc_plugin.c:2041
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "गरीब (सबसे तेज)"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2712
 #: plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "Medium"
 msgstr "मध्य"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2698
+#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2713
 #: plugins/vnc/vnc_plugin.c:2038
 #, fuzzy
 msgid "Good"
 msgstr "अच्छा"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2699
+#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2714
 #: plugins/vnc/vnc_plugin.c:2039
 #, fuzzy
 msgid "Best (slowest)"
@@ -2309,7 +2309,7 @@ msgstr "डेस्कटॉप ओरिएंटेशन"
 msgid "Input device settings"
 msgstr "इनपुट डिवाइस सेटिंग्स"
 
-#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2852
+#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2878
 #: plugins/vnc/vnc_plugin.c:2132
 #, fuzzy
 msgid "Disable smooth scrolling"
@@ -2320,34 +2320,34 @@ msgstr "चिकनी स्क्रॉल को अक्षम करे�
 msgid "General settings"
 msgstr "सामान्य सेटिंग्स"
 
-#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2905
+#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2931
 #, fuzzy
 msgid "Reconnect attempts number"
 msgstr "प्रयास संख्या को फिर से कनेक्ट करें"
 
-#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2905
+#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2931
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr "आरडीपी डिस्कनेक्ट पर पुनः कनेक्ट प्रयासों की अधिकतम संख्या (डिफ़ॉल्ट: 20)"
 
-#: plugins/rdp/rdp_plugin.c:790 plugins/rdp/rdp_plugin.c:855
+#: plugins/rdp/rdp_plugin.c:793 plugins/rdp/rdp_plugin.c:858
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "आरडीपी प्रमाणीकरण साख दर्ज करें"
 
-#: plugins/rdp/rdp_plugin.c:863
+#: plugins/rdp/rdp_plugin.c:866
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "आरडीपी गेटवे प्रमाणीकरण साख दर्ज करें"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:1044
+#: plugins/rdp/rdp_plugin.c:1059
 #, c-format
 msgid "Disconnected from %s via RDP"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2227
+#: plugins/rdp/rdp_plugin.c:2242
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2356,7 +2356,7 @@ msgstr ""
 "आरडीपी सर्वर \"%s\" का उपयोग नहीं कर सका।\n"
 "खाता बंद कर दिया गया है।"
 
-#: plugins/rdp/rdp_plugin.c:2234
+#: plugins/rdp/rdp_plugin.c:2249
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2365,7 +2365,7 @@ msgstr ""
 "आरडीपी सर्वर \"%s\" का उपयोग नहीं कर सका।\n"
 "खाता समाप्त हो गया।"
 
-#: plugins/rdp/rdp_plugin.c:2241
+#: plugins/rdp/rdp_plugin.c:2256
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2374,7 +2374,7 @@ msgstr ""
 "आरडीपी सर्वर \"%s\" का उपयोग नहीं कर सका।\n"
 "पासवर्ड की अवधि समाप्त हो गई।"
 
-#: plugins/rdp/rdp_plugin.c:2248
+#: plugins/rdp/rdp_plugin.c:2263
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2383,7 +2383,7 @@ msgstr ""
 "आरडीपी सर्वर \"%s\" का उपयोग नहीं कर सका।\n"
 "खाता अक्षम।"
 
-#: plugins/rdp/rdp_plugin.c:2254
+#: plugins/rdp/rdp_plugin.c:2269
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2392,7 +2392,7 @@ msgstr ""
 "आरडीपी सर्वर \"%s\" का उपयोग नहीं कर सका।\n"
 "अपर्याप्त उपयोगकर्ता विशेषाधिकार।"
 
-#: plugins/rdp/rdp_plugin.c:2262
+#: plugins/rdp/rdp_plugin.c:2277
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2401,7 +2401,7 @@ msgstr ""
 "आरडीपी सर्वर \"%s\" का उपयोग नहीं कर सका।\n"
 "खाता प्रतिबंधित।"
 
-#: plugins/rdp/rdp_plugin.c:2270
+#: plugins/rdp/rdp_plugin.c:2285
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2410,17 +2410,17 @@ msgstr ""
 "आरडीपी सर्वर \"%s\" का उपयोग नहीं कर सका।\n"
 "कनेक्ट करने से पहले यूजर पासवर्ड बदलें।"
 
-#: plugins/rdp/rdp_plugin.c:2275
+#: plugins/rdp/rdp_plugin.c:2290
 #, fuzzy, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "आरडीपी सर्वर से कनेक्शन खो दिया \"%s\" ।"
 
-#: plugins/rdp/rdp_plugin.c:2278
+#: plugins/rdp/rdp_plugin.c:2293
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "आरडीपी सर्वर \"%s\" के लिए पता नहीं मिल सका।"
 
-#: plugins/rdp/rdp_plugin.c:2282
+#: plugins/rdp/rdp_plugin.c:2297
 #, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
@@ -2430,7 +2430,7 @@ msgstr ""
 "जांच करें जो एक सामान्य टीएलएस संस्करण का समर्थन करता है।"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2286
+#: plugins/rdp/rdp_plugin.c:2301
 #, fuzzy, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
@@ -2439,17 +2439,17 @@ msgstr ""
 "आरडीपी सर्वर \"%s के लिए एक कनेक्शन स्थापित करने में असमर्थ। \"सुरक्षा प्रोटोकॉल बातचीत"
 "\" की जांच करें।"
 
-#: plugins/rdp/rdp_plugin.c:2294
+#: plugins/rdp/rdp_plugin.c:2309
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "आरडीपी सर्वर \"%s से कनेक्ट नहीं कर सकते।"
 
-#: plugins/rdp/rdp_plugin.c:2297
+#: plugins/rdp/rdp_plugin.c:2312
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "लिब्बरहेड़ी-जीडीआई शुरू नहीं कर सके।"
 
-#: plugins/rdp/rdp_plugin.c:2300
+#: plugins/rdp/rdp_plugin.c:2315
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2458,12 +2458,12 @@ msgstr ""
 "आपने सर्वर \"%s\" के लिए H.264 GFX मोड का अनुरोध किया, लेकिन आपका लिब्रीर्ड्प H.264 "
 "का समर्थन नहीं करता है। कृपया एक गैर-एवीसी रंग गहराई सेटिंग का उपयोग करें।"
 
-#: plugins/rdp/rdp_plugin.c:2307
+#: plugins/rdp/rdp_plugin.c:2322
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "\"%s\" सर्वर ने कनेक्शन से इनकार कर दिया।"
 
-#: plugins/rdp/rdp_plugin.c:2312
+#: plugins/rdp/rdp_plugin.c:2327
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2472,173 +2472,189 @@ msgstr ""
 "रिमोट डेस्कटॉप गेटवे \"%s\" ने उपयोगकर्ता को नीति के कारण \"%s\\%s\" एक्सेस से वंचित कर "
 "दिया।"
 
-#: plugins/rdp/rdp_plugin.c:2322
+#: plugins/rdp/rdp_plugin.c:2337
 #, fuzzy, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "\"%s\" आरडीपी सर्वर से कनेक्ट नहीं कर सकते।"
 
-#: plugins/rdp/rdp_plugin.c:2665
+#: plugins/rdp/rdp_plugin.c:2680
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "स्वचालित (32 बीपीपी) (सर्वर इसका सबसे अच्छा प्रारूप चुनता है)"
 
-#: plugins/rdp/rdp_plugin.c:2666
+#: plugins/rdp/rdp_plugin.c:2681
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "जीएफएक्स एवीसी 444 (32 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2667
+#: plugins/rdp/rdp_plugin.c:2682
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "जीएफएक्स एवीसी 420 (32 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2668
+#: plugins/rdp/rdp_plugin.c:2683
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "जीएफएक्स आरएफएक्स (32 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2669
+#: plugins/rdp/rdp_plugin.c:2684
 #, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "जीएफएक्स आरएफएक्स प्रोग्रेसिव (32 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2670
+#: plugins/rdp/rdp_plugin.c:2685
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "रिमोटएफएक्स (32 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2671 plugins/vnc/vnc_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2686 plugins/vnc/vnc_plugin.c:2029
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "असली रंग (32 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2672
+#: plugins/rdp/rdp_plugin.c:2687
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "असली रंग (24 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2673 plugins/vnc/vnc_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2688 plugins/vnc/vnc_plugin.c:2030
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "उच्च रंग (16 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2674
+#: plugins/rdp/rdp_plugin.c:2689
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "उच्च रंग (15 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2675 plugins/vnc/vnc_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2690 plugins/vnc/vnc_plugin.c:2031
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 रंग (8 बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2706 data/ui/remmina_preferences.glade:610
+#: plugins/rdp/rdp_plugin.c:2721 data/ui/remmina_preferences.glade:610
 #, fuzzy
 msgid "None"
 msgstr "कोई नहीं"
 
-#: plugins/rdp/rdp_plugin.c:2707
+#: plugins/rdp/rdp_plugin.c:2722
 #, fuzzy
 msgid "Auto-detect"
 msgstr "ऑटो का पता लगाने"
 
-#: plugins/rdp/rdp_plugin.c:2708
+#: plugins/rdp/rdp_plugin.c:2723
 #, fuzzy
 msgid "Modem"
 msgstr "मॉडेम"
 
-#: plugins/rdp/rdp_plugin.c:2709
+#: plugins/rdp/rdp_plugin.c:2724
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "कम प्रदर्शन ब्रॉडबैंड"
 
-#: plugins/rdp/rdp_plugin.c:2710
+#: plugins/rdp/rdp_plugin.c:2725
 #, fuzzy
 msgid "Satellite"
 msgstr "उपग्रह"
 
-#: plugins/rdp/rdp_plugin.c:2711
+#: plugins/rdp/rdp_plugin.c:2726
 #, fuzzy
 msgid "High performance broadband"
 msgstr "उच्च प्रदर्शन ब्रॉडबैंड"
 
-#: plugins/rdp/rdp_plugin.c:2712
+#: plugins/rdp/rdp_plugin.c:2727
 #, fuzzy
 msgid "WAN"
 msgstr "वैन"
 
-#: plugins/rdp/rdp_plugin.c:2713
+#: plugins/rdp/rdp_plugin.c:2728
 #, fuzzy
 msgid "LAN"
 msgstr "लैन"
 
-#: plugins/rdp/rdp_plugin.c:2720 plugins/spice/spice_plugin.c:647
+#: plugins/rdp/rdp_plugin.c:2735 plugins/spice/spice_plugin.c:647
 #: data/ui/remmina_preferences.glade:646
 #, fuzzy
 msgid "Off"
 msgstr "बंद"
 
-#: plugins/rdp/rdp_plugin.c:2729
+#: plugins/rdp/rdp_plugin.c:2744
 #, fuzzy
 msgid "Automatic negotiation"
 msgstr "स्वचालित बातचीत"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2745
 #, fuzzy
 msgid "NLA protocol security"
 msgstr "एनएलए प्रोटोकॉल सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2746
 #, fuzzy
 msgid "TLS protocol security"
 msgstr "टीएलएस प्रोटोकॉल सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2747
 #, fuzzy
 msgid "RDP protocol security"
 msgstr "आरडीपी प्रोटोकॉल सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2733
+#: plugins/rdp/rdp_plugin.c:2748
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "NLA ने बढ़ाई प्रोटोकॉल सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2747 plugins/spice/spice_plugin.c:628
+#: plugins/rdp/rdp_plugin.c:2756
+msgid "Every 1 min"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2757
+msgid "Every 3 min"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2758
+msgid "Every 5 min"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2759
+msgid "Every 10 min"
+msgstr ""
+
+#: plugins/rdp/rdp_plugin.c:2773 plugins/spice/spice_plugin.c:628
 #: plugins/spice/spice_plugin.c:646
 #, fuzzy
 msgid "Default"
 msgstr "डिफॉल्ट"
 
-#: plugins/rdp/rdp_plugin.c:2748
+#: plugins/rdp/rdp_plugin.c:2774
 msgid "0 — Windows 7 compatible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2749
+#: plugins/rdp/rdp_plugin.c:2775
 msgid "1"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2750
+#: plugins/rdp/rdp_plugin.c:2776
 msgid "2"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2751
+#: plugins/rdp/rdp_plugin.c:2777
 msgid "3"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2778
 msgid "4"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2779
 msgid "5"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2758
+#: plugins/rdp/rdp_plugin.c:2784
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (विंडोज एक्सपी), 7601 (विंडोज विस्टा/7), 9600 (विंडोज 8 और नए)"
 
-#: plugins/rdp/rdp_plugin.c:2761
+#: plugins/rdp/rdp_plugin.c:2787
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2656,7 +2672,7 @@ msgstr ""
 "= 7065: विंडोज 8 और नया: SCardGetGetReaderIcon (),\n"
 "    SCardGetDeviceTypeId ()"
 
-#: plugins/rdp/rdp_plugin.c:2769
+#: plugins/rdp/rdp_plugin.c:2795
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2675,7 +2691,7 @@ msgstr ""
 "  • sys:oss, देव:1, प्रारूप: 1\n"
 "  • sys: alsa"
 
-#: plugins/rdp/rdp_plugin.c:2778
+#: plugins/rdp/rdp_plugin.c:2804
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2694,7 +2710,7 @@ msgstr ""
 "  • sys:oss, देव:1, प्रारूप: 1\n"
 "  • sys: alsa"
 
-#: plugins/rdp/rdp_plugin.c:2788
+#: plugins/rdp/rdp_plugin.c:2814
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2707,7 +2723,7 @@ msgstr ""
 "  • ऑटो\n"
 "  • id:054c:0268#4669:6e6b, addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2794
+#: plugins/rdp/rdp_plugin.c:2820
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2718,7 +2734,7 @@ msgstr ""
 "कनेक्शन मध्यांतर समायोजित करता है। यदि आपका कनेक्शन समय से बाहर है तो उपयोग करें।\n"
 "सबसे ज्यादा संभव वैल्यू 600000 एमएस (10 मिनट) है।\n"
 
-#: plugins/rdp/rdp_plugin.c:2799
+#: plugins/rdp/rdp_plugin.c:2825
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2729,7 +2745,7 @@ msgstr ""
 "ऑटो-डिटेक्शन का उपयोग करने की सलाह दी जाती है।\n"
 "यदि \"ऑटो-डिटेक्ट\" विफल रहता है, तो सूची में सबसे उपयुक्त विकल्प चुनें।\n"
 
-#: plugins/rdp/rdp_plugin.c:2804
+#: plugins/rdp/rdp_plugin.c:2830
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2754,7 +2770,7 @@ msgstr ""
 "  • 270 (पोर्ट्रेट फ़्लिप)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2816
+#: plugins/rdp/rdp_plugin.c:2842
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2775,165 +2791,165 @@ msgstr ""
 "  • हॉटप्लग,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2848 plugins/spice/spice_plugin.c:689
+#: plugins/rdp/rdp_plugin.c:2874 plugins/spice/spice_plugin.c:689
 #, fuzzy
 msgid "Share folder"
 msgstr "शेयर फ़ोल्डर"
 
-#: plugins/rdp/rdp_plugin.c:2849
+#: plugins/rdp/rdp_plugin.c:2875
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "प्रतिबंधित व्यवस्थापक मोड"
 
-#: plugins/rdp/rdp_plugin.c:2850
+#: plugins/rdp/rdp_plugin.c:2876
 #, fuzzy
 msgid "Password hash"
 msgstr "पासवर्ड हैश"
 
-#: plugins/rdp/rdp_plugin.c:2850
+#: plugins/rdp/rdp_plugin.c:2876
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "प्रतिबंधित व्यवस्थापक मोड पासवर्ड हैश"
 
-#: plugins/rdp/rdp_plugin.c:2851
+#: plugins/rdp/rdp_plugin.c:2877
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "बाएं हाथ माउस समर्थन"
 
-#: plugins/rdp/rdp_plugin.c:2851
+#: plugins/rdp/rdp_plugin.c:2877
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "बाएं हाथ माउस समर्थन के लिए बाएं और दाएं माउस बटन स्वैप करें"
 
-#: plugins/rdp/rdp_plugin.c:2853
+#: plugins/rdp/rdp_plugin.c:2879
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "मल्टी मॉनिटर सक्षम"
 
-#: plugins/rdp/rdp_plugin.c:2854
+#: plugins/rdp/rdp_plugin.c:2880
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "कई मॉनिटर पर स्पैन स्क्रीन"
 
-#: plugins/rdp/rdp_plugin.c:2855
+#: plugins/rdp/rdp_plugin.c:2881
 #, fuzzy
 msgid "List monitor IDs"
 msgstr "सूची मॉनिटर टीडीएस"
 
-#: plugins/rdp/rdp_plugin.c:2857 plugins/vnc/vnc_plugin.c:2100
+#: plugins/rdp/rdp_plugin.c:2883 plugins/vnc/vnc_plugin.c:2100
 #: plugins/vnc/vnc_plugin.c:2112 plugins/gvnc/gvnc_plugin.c:848
 #, fuzzy
 msgid "Colour depth"
 msgstr "रंग गहराई"
 
-#: plugins/rdp/rdp_plugin.c:2858
+#: plugins/rdp/rdp_plugin.c:2884
 #, fuzzy
 msgid "Network connection type"
 msgstr "नेटवर्क कनेक्शन प्रकार"
 
-#: plugins/rdp/rdp_plugin.c:2874 plugins/vnc/vnc_plugin.c:2101
+#: plugins/rdp/rdp_plugin.c:2900 plugins/vnc/vnc_plugin.c:2101
 #: plugins/vnc/vnc_plugin.c:2113
 #, fuzzy
 msgid "Quality"
 msgstr "गुणवत्ता"
 
-#: plugins/rdp/rdp_plugin.c:2875
+#: plugins/rdp/rdp_plugin.c:2901
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "सुरक्षा प्रोटोकॉल बातचीत"
 
-#: plugins/rdp/rdp_plugin.c:2876
+#: plugins/rdp/rdp_plugin.c:2902
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "गेटवे परिवहन प्रकार"
 
-#: plugins/rdp/rdp_plugin.c:2877
+#: plugins/rdp/rdp_plugin.c:2903
 #, fuzzy
 msgid "TLS Security Level"
 msgstr "सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2878
+#: plugins/rdp/rdp_plugin.c:2904
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "फ्रीआरपीपी लॉग लेवल"
 
-#: plugins/rdp/rdp_plugin.c:2879
+#: plugins/rdp/rdp_plugin.c:2905
 #, fuzzy
 msgid "FreeRDP log filters"
 msgstr "फ्रीआरपी लॉग फिल्टर"
 
-#: plugins/rdp/rdp_plugin.c:2879
+#: plugins/rdp/rdp_plugin.c:2905
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "टैग:स्तर [,टैग:स्तर [,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2880
+#: plugins/rdp/rdp_plugin.c:2906
 #, fuzzy
 msgid "Audio output mode"
 msgstr "ऑडियो आउटपुट मोड"
 
-#: plugins/rdp/rdp_plugin.c:2881
+#: plugins/rdp/rdp_plugin.c:2907
 #, fuzzy
 msgid "Redirect local audio output"
 msgstr "स्थानीय ऑडियो आउटपुट को रीडायरेक्ट करें"
 
-#: plugins/rdp/rdp_plugin.c:2882
+#: plugins/rdp/rdp_plugin.c:2908
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "स्थानीय माइक्रोफोन को रीडायरेक्ट करें"
 
-#: plugins/rdp/rdp_plugin.c:2883
+#: plugins/rdp/rdp_plugin.c:2909
 #, fuzzy
 msgid "Connection timeout in ms"
 msgstr "एमएस में कनेक्शन मध्यांतर"
 
-#: plugins/rdp/rdp_plugin.c:2884
+#: plugins/rdp/rdp_plugin.c:2910
 #, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "रिमोट डेस्कटॉप गेटवे सर्वर"
 
-#: plugins/rdp/rdp_plugin.c:2885
+#: plugins/rdp/rdp_plugin.c:2911
 #, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "रिमोट डेस्कटॉप गेटवे उपयोगकर्ता नाम"
 
-#: plugins/rdp/rdp_plugin.c:2886
+#: plugins/rdp/rdp_plugin.c:2912
 #, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "रिमोट डेस्कटॉप गेटवे पासवर्ड"
 
-#: plugins/rdp/rdp_plugin.c:2887
+#: plugins/rdp/rdp_plugin.c:2913
 #, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "रिमोट डेस्कटॉप गेटवे डोमेन"
 
-#: plugins/rdp/rdp_plugin.c:2888
+#: plugins/rdp/rdp_plugin.c:2914
 #, fuzzy
 msgid "Client name"
 msgstr "ग्राहक का नाम"
 
-#: plugins/rdp/rdp_plugin.c:2889
+#: plugins/rdp/rdp_plugin.c:2915
 #, fuzzy
 msgid "Client build"
 msgstr "ग्राहक का निर्माण"
 
-#: plugins/rdp/rdp_plugin.c:2890
+#: plugins/rdp/rdp_plugin.c:2916
 #, fuzzy
 msgid "Start-up program"
 msgstr "स्टार्ट-अप कार्यक्रम"
 
-#: plugins/rdp/rdp_plugin.c:2892
+#: plugins/rdp/rdp_plugin.c:2918
 #, fuzzy
 msgid "Load balance info"
 msgstr "लोड बैलेंस की जानकारी"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2894
+#: plugins/rdp/rdp_plugin.c:2920
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "प्रिंटर ड्राइवरों को ओवरराइड करें"
 
-#: plugins/rdp/rdp_plugin.c:2894
+#: plugins/rdp/rdp_plugin.c:2920
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
@@ -2942,202 +2958,207 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\": \"सैमसंग CLX-३३०० श्रृंखला पीएस\";\" कैनन MF410\": "
 "\"कैनन MF410 श्रृंखला UFR द्वितीय\""
 
-#: plugins/rdp/rdp_plugin.c:2895
+#: plugins/rdp/rdp_plugin.c:2921
 #, fuzzy
 msgid "USB device redirection"
 msgstr "यूएसबी डिवाइस रीडायरेक्शन"
 
-#: plugins/rdp/rdp_plugin.c:2896
+#: plugins/rdp/rdp_plugin.c:2922
 #, fuzzy
 msgid "Local serial name"
 msgstr "स्थानीय धारावाहिक नाम"
 
-#: plugins/rdp/rdp_plugin.c:2896
+#: plugins/rdp/rdp_plugin.c:2922
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, आदि"
 
-#: plugins/rdp/rdp_plugin.c:2897
+#: plugins/rdp/rdp_plugin.c:2923
 #, fuzzy
 msgid "Local serial driver"
 msgstr "स्थानीय सीरियल ड्राइवर"
 
-#: plugins/rdp/rdp_plugin.c:2897
+#: plugins/rdp/rdp_plugin.c:2923
 #, fuzzy
 msgid "Serial"
 msgstr "धारावाहिक"
 
-#: plugins/rdp/rdp_plugin.c:2898
+#: plugins/rdp/rdp_plugin.c:2924
 #, fuzzy
 msgid "Local serial path"
 msgstr "स्थानीय धारावाहिक पथ"
 
-#: plugins/rdp/rdp_plugin.c:2898
+#: plugins/rdp/rdp_plugin.c:2924
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/देव/ttyS0, /देव/ttyS1, आदि ।"
 
-#: plugins/rdp/rdp_plugin.c:2899
+#: plugins/rdp/rdp_plugin.c:2925
 #, fuzzy
 msgid "Local parallel name"
 msgstr "स्थानीय समानांतर नाम"
 
-#: plugins/rdp/rdp_plugin.c:2900
+#: plugins/rdp/rdp_plugin.c:2926
 #, fuzzy
 msgid "Local parallel device"
 msgstr "स्थानीय समानांतर डिवाइस"
 
-#: plugins/rdp/rdp_plugin.c:2901
+#: plugins/rdp/rdp_plugin.c:2927
 #, fuzzy
 msgid "Name of smart card"
 msgstr "स्मार्ट कार्ड का नाम"
 
-#: plugins/rdp/rdp_plugin.c:2902
+#: plugins/rdp/rdp_plugin.c:2928
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "डायनेमिक वर्चुअल चैनल"
 
-#: plugins/rdp/rdp_plugin.c:2902 plugins/rdp/rdp_plugin.c:2903
+#: plugins/rdp/rdp_plugin.c:2928 plugins/rdp/rdp_plugin.c:2929
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<channel> [,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2903
+#: plugins/rdp/rdp_plugin.c:2929
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "स्टेटिक वर्चुअल चैनल"
 
-#: plugins/rdp/rdp_plugin.c:2904
+#: plugins/rdp/rdp_plugin.c:2930
 #, fuzzy
 msgid "TCP redirection"
 msgstr "टीसीपी पुनर्निर्देशन"
 
-#: plugins/rdp/rdp_plugin.c:2904
+#: plugins/rdp/rdp_plugin.c:2930
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/पाथ/टू/आरडीपी2टीसीपी"
 
-#: plugins/rdp/rdp_plugin.c:2906
+#: plugins/rdp/rdp_plugin.c:2932
+#, fuzzy
+msgid "Move mouse when connection is idle"
+msgstr "रिमोट कनेक्शन प्रोफाइल"
+
+#: plugins/rdp/rdp_plugin.c:2934
 msgid "Attempt to connect in assistance mode"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2907
+#: plugins/rdp/rdp_plugin.c:2935
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 एक रिकॉर्ड पर IPv6 AAAA रिकॉर्ड पसंद करते हैं"
 
-#: plugins/rdp/rdp_plugin.c:2908
+#: plugins/rdp/rdp_plugin.c:2936
 #, fuzzy
 msgid "Share printers"
 msgstr "शेयर प्रिंटर"
 
-#: plugins/rdp/rdp_plugin.c:2909
+#: plugins/rdp/rdp_plugin.c:2937
 #, fuzzy
 msgid "Share serial ports"
 msgstr "सीरियल पोर्ट साझा करें"
 
-#: plugins/rdp/rdp_plugin.c:2910
+#: plugins/rdp/rdp_plugin.c:2938
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) धारावाहिक बंदरगाहों के लिए स्वतंत्र मोड"
 
-#: plugins/rdp/rdp_plugin.c:2911
+#: plugins/rdp/rdp_plugin.c:2939
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "समानांतर बंदरगाहों को साझा करें"
 
-#: plugins/rdp/rdp_plugin.c:2912
+#: plugins/rdp/rdp_plugin.c:2940
 #, fuzzy
 msgid "Share a smart card"
 msgstr "एक स्मार्ट कार्ड साझा करें"
 
-#: plugins/rdp/rdp_plugin.c:2913 plugins/vnc/vnc_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:2941 plugins/vnc/vnc_plugin.c:2137
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "क्लिपबोर्ड सिंक बंद करें"
 
-#: plugins/rdp/rdp_plugin.c:2914
+#: plugins/rdp/rdp_plugin.c:2942
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "प्रमाण पत्र पर ध्यान न दें"
 
-#: plugins/rdp/rdp_plugin.c:2915
+#: plugins/rdp/rdp_plugin.c:2943
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "पुराने लाइसेंस वर्कफ़्लो का उपयोग करें"
 
-#: plugins/rdp/rdp_plugin.c:2915
+#: plugins/rdp/rdp_plugin.c:2943
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "यह सीएएल को अक्षम करता है और एचडब्ल्यूआईडी 0 पर सेट है"
 
-#: plugins/rdp/rdp_plugin.c:2916 plugins/spice/spice_plugin.c:714
+#: plugins/rdp/rdp_plugin.c:2944 plugins/spice/spice_plugin.c:714
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 #, fuzzy
 msgid "Forget passwords after use"
 msgstr "उपयोग के बाद पासवर्ड भूल जाओ"
 
-#: plugins/rdp/rdp_plugin.c:2917
+#: plugins/rdp/rdp_plugin.c:2945
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "सांत्वना के लिए देते है (2003/2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2918
+#: plugins/rdp/rdp_plugin.c:2946
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "फास्ट-पाथ बंद करें"
 
-#: plugins/rdp/rdp_plugin.c:2919
+#: plugins/rdp/rdp_plugin.c:2947
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "रिमोट डेस्कटॉप गेटवे का उपयोग करके सर्वर डिटेक्शन"
 
-#: plugins/rdp/rdp_plugin.c:2921
+#: plugins/rdp/rdp_plugin.c:2949
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "सिस्टम प्रॉक्सी सेटिंग्स का उपयोग करें"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:2951
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "स्वचालित पुनर्कनेक्शन बंद करें"
 
-#: plugins/rdp/rdp_plugin.c:2924
+#: plugins/rdp/rdp_plugin.c:2952
 #, fuzzy
 msgid "Relax order checks"
 msgstr "आदेश की जांच आराम"
 
-#: plugins/rdp/rdp_plugin.c:2925
+#: plugins/rdp/rdp_plugin.c:2953
 #, fuzzy
 msgid "Glyph cache"
 msgstr "ग्लिफ कैश"
 
-#: plugins/rdp/rdp_plugin.c:2926
+#: plugins/rdp/rdp_plugin.c:2954
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "मल्टीट्रांसपोर्ट प्रोटोकॉल (यूडीपी) सक्षम करें"
 
-#: plugins/rdp/rdp_plugin.c:2926
+#: plugins/rdp/rdp_plugin.c:2954
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "यूडीपी प्रोटोकॉल का उपयोग करने से प्रदर्शन में सुधार हो सकता है"
 
-#: plugins/rdp/rdp_plugin.c:2927
+#: plugins/rdp/rdp_plugin.c:2955
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "गेटवे के लिए बेस क्रेडेंशियल्स का भी इस्तेमाल करें"
 
-#: plugins/rdp/rdp_plugin.c:2929
+#: plugins/rdp/rdp_plugin.c:2957
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "गेटवे वेबसॉक्स समर्थन सक्षम करें"
 
-#: plugins/rdp/rdp_plugin.c:2931
+#: plugins/rdp/rdp_plugin.c:2959
 msgid "Update framebuffer even when not visible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2940 plugins/spice/spice_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:2968 plugins/spice/spice_plugin.c:717
 #: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
@@ -3145,28 +3166,28 @@ msgstr ""
 msgid "View only"
 msgstr "केवल देखिये"
 
-#: plugins/rdp/rdp_plugin.c:2945 plugins/spice/spice_plugin.c:727
+#: plugins/rdp/rdp_plugin.c:2973 plugins/spice/spice_plugin.c:727
 #: plugins/vnc/vnc_plugin.c:2156
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "सीटीआरएल+ऑल्ट+डिलीट भेजें"
 
-#: plugins/rdp/rdp_plugin.c:2958
+#: plugins/rdp/rdp_plugin.c:2986
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "आरडीपी - रिमोट डेस्कटॉप प्रोटोकॉल"
 
-#: plugins/rdp/rdp_plugin.c:2983
+#: plugins/rdp/rdp_plugin.c:3011
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "आरडीपी - आरडीपी फाइल हैंडलर"
 
-#: plugins/rdp/rdp_plugin.c:2998
+#: plugins/rdp/rdp_plugin.c:3026
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "आरडीपी - प्राथमिकताएं"
 
-#: plugins/rdp/rdp_plugin.c:3051
+#: plugins/rdp/rdp_plugin.c:3079
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "विंडोज .rdp फ़ाइल प्रारूप में निर्यात कनेक्शन"
@@ -3177,7 +3198,7 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "पुनर्कनेक्शन का प्रयास %d%d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1158
+#: plugins/rdp/rdp_event.c:1179
 #, fuzzy, c-format
 msgid "Connected to %s via RDP"
 msgstr "एसएसएच के माध्यम से %s से कनेक्ट करना …"
