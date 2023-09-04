@@ -300,10 +300,12 @@ set(WITH_LIBRARY_VERSIONING "ON")
 
 message(STATUS "Remmina version: ${Remmina_VERSION}")
 
-include(GetGitRevisionDescription)
-git_get_exact_tag(REMMINA_GIT_REVISION --tags --always)
-if(${REMMINA_GIT_REVISION} STREQUAL "n/a")
-  git_rev_parse(REMMINA_GIT_REVISION --short)
+if (NOT DEFINED REMMINA_GIT_REVISION)
+  include(GetGitRevisionDescription)
+  git_get_exact_tag(REMMINA_GIT_REVISION --tags --always)
+  if(NOT ${REMMINA_GIT_REVISION} STREQUAL "n/a")
+    git_rev_parse(REMMINA_GIT_REVISION --short)
+  endif()
 endif()
 
 message(STATUS "Git Revision: ${REMMINA_GIT_REVISION}")
