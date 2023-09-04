@@ -53,5 +53,6 @@ int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget *gp, RemminaPlu
 void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui);
 gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp);
 gboolean remmina_rdp_event_on_unmap(RemminaProtocolWidget *gp);
+void remmina_rdp_mouse_jitter(RemminaProtocolWidget *gp);
 
 G_END_DECLS

@@ -380,6 +380,8 @@ struct rf_context {
 	GAsyncQueue *		event_queue;
 	gint			event_pipe[2];
 	HANDLE			event_handle;
+	UINT16         	last_x;
+	UINT16         	last_y;
 
 	rfClipboard		clipboard;
 

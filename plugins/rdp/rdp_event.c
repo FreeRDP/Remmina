@@ -558,11 +558,30 @@ static void remmina_rdp_event_reverse_translate_pos_reverse(RemminaProtocolWidge
 	}
 }
 
+void remmina_rdp_mouse_jitter(RemminaProtocolWidget *gp){
+	TRACE_CALL(__func__);
+	RemminaPluginRdpEvent rdp_event = { 0 };
+	RemminaFile *remminafile;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
+		return;
+
+	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
+	rdp_event.mouse_event.flags = PTR_FLAGS_MOVE;
+	rdp_event.mouse_event.extended = FALSE;
+	rdp_event.mouse_event.x = rfi->last_x;
+	rdp_event.mouse_event.y = rfi->last_y;
+	remmina_rdp_event_event_push(gp, &rdp_event);
+}
+
 static gboolean remmina_rdp_event_on_motion(GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	RemminaFile *remminafile;
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
@@ -573,6 +592,8 @@ static gboolean remmina_rdp_event_on_motion(GtkWidget *widget, GdkEventMotion *e
 	rdp_event.mouse_event.extended = FALSE;
 
 	remmina_rdp_event_translate_pos(gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
+	rfi->last_x = rdp_event.mouse_event.x;
+	rfi->last_y = rdp_event.mouse_event.y;
 	remmina_rdp_event_event_push(gp, &rdp_event);
 
 	return TRUE;
