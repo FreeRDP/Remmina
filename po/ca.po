@@ -7,7 +7,7 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2022, 2023.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
-# Ecron <ecron_89@hotmail.com>, 2020, 2021.
+# Ecron <ecron_89@hotmail.com>, 2020, 2021, 2023.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 # BennyBeat <bennybeat@gmail.com>, 2020, 2021.
 # Gil Obradors <gil.obradors@gmail.com>, 2021.
@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-09-04 12:35+0000\n"
-"PO-Revision-Date: 2023-06-26 10:30+0000\n"
-"Last-Translator: Quim <quim@eccit.com>\n"
+"PO-Revision-Date: 2023-09-06 11:00+0000\n"
+"Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -2873,9 +2873,8 @@ msgid "Use base credentials for gateway too"
 msgstr "Utilitza les credencials base també per la porta d'enllaç"
 
 #: plugins/rdp/rdp_plugin.c:2957
-#, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr "Habilita el suport de websockets de passarel·la"
+msgstr "Habilita la compatibilitat amb els programes web de passarel·la"
 
 #: plugins/rdp/rdp_plugin.c:2959
 msgid "Update framebuffer even when not visible"
@@ -2953,16 +2952,14 @@ msgid "Disconnected from the SPICE %s."
 msgstr "S'ha desconnectat del servidor SPICE «%s»."
 
 #: plugins/spice/spice_plugin.c:396
-#, fuzzy, c-format
-#| msgid "Disconnected from %s:%d via SPICE"
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Desconnectat de %s:%d mitjançant SPICE"
+msgstr "Desconnectat de %s mitjançant SPICE"
 
 #: plugins/spice/spice_plugin.c:399
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via SPICE"
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "Connectat a %s:%d mitjançant SPICE"
+msgstr "Connectat a %s mitjançant SPICE"
 
 #: plugins/spice/spice_plugin.c:411
 msgid "TLS connection error."
@@ -3012,7 +3009,7 @@ msgstr "Compressió d'imatge preferida"
 #: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 msgid "No clipboard sync"
-msgstr "Desactiva la sincronització del porta-retalls"
+msgstr "No hi ha sincronització del porta-retalls"
 
 #: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
@@ -3089,7 +3086,6 @@ msgid "Disconnected from %s:%d via VNC"
 msgstr "Desconnectat de %s:%d mitjançant VNC"
 
 #: plugins/vnc/vnc_plugin.c:2046
-#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -3100,12 +3096,13 @@ msgid ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
 "Connecta't al VNC mitjançant un repetidor:\n"
-"  • El camp del servidor ha de contenir l'ID del repetidor, per exemple, "
-"ID:123456789\n"
-"  • El camp repetidor s'ha d'establir al repetidor IP i port, com ara:\n"
+"  • El camp del servidor ha de contenir l'ID del repetidor, per exemple ID:"
+"123456789\n"
+"  • El camp repetidor s'ha d'establir a la IP i al port del repetidor, com "
+"ara:\n"
 "    10.10.10.12:5901\n"
-"  • Des del servidor VNC remot, us connectareu a\n"
-"    el repetidor, per exemple, amb x11vnc:\n"
+"  • Des del servidor VNC remot, us connectareu al\n"
+"    repetidor, per exemple amb x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:2055
@@ -3720,22 +3717,17 @@ msgstr ""
 "L'opció DPI està fora de límits. Ajusteu-lo a la configuració del perfil."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session…"
-msgstr "No s'ha pogut iniciar la sessió X2Go."
+msgstr "No s'ha pogut iniciar la sessió X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
 msgstr "No s'ha pogut iniciar la sessió X2Go."
 
 #: plugins/x2go/x2go_plugin.c:2584
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "No s'ha pogut iniciar El PiHoca-CLI (%i): '%s'"
+msgstr "No s'ha pogut iniciar el PyHoca-CLI (%i): «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2699
 #, fuzzy
@@ -3749,53 +3741,46 @@ msgstr ""
 "s'utilitzarà un antic conjunt limitat de característiques."
 
 #: plugins/x2go/x2go_plugin.c:2708
-#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
 "No s'han pogut analitzar les característiques de la línia d'ordres del "
-"PyHoca-CLI. S'està utilitzant un conjunt de funcions limitat per ara."
+"PyHoca-CLI. S'està utilitzant un conjunt de funcions limitat de moment."
 
 #: plugins/x2go/x2go_plugin.c:2714
-#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr ""
 "S'han recuperat les següents característiques de la línia d'ordres PyHoca-"
 "CLI:"
 
 #: plugins/x2go/x2go_plugin.c:2722
-#, fuzzy, c-format
+#, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr "Característica disponible[%i]: '%s'"
+msgstr "Característica disponible[%i]: «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2747
-#, fuzzy, c-format
-#| msgid "Connecting to %s via SSH…"
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "S’està connectant a «%s» mitjançant SSH…"
+msgstr "Connectat a %s:%d mitjançant X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2841
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
 msgstr "No s'ha pogut obrir el X11 DISPLAY."
 
 #: plugins/x2go/x2go_plugin.c:2881
-#, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "S'està esperant que aparegui la finestra de l'agent X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2907
-#, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "S'està esperant que PyHoca-CLI mostri la finestra de la sessió…"
 
 #: plugins/x2go/x2go_plugin.c:2958
-#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr ""
-"No ha aparegut cap finestra de sessió X2Go. Alguna cosa ha anat malament…"
+"No ha aparegut cap finestra de sessió de l'X2Go. Alguna cosa ha anat "
+"malament…"
 
 #: plugins/x2go/x2go_plugin.c:3077
 #, fuzzy
@@ -3803,17 +3788,15 @@ msgid "RemminaProtocolWidget* gp is 'NULL'!"
 msgstr "Error intern: RemminaProtocolWidget* gp és NULL!"
 
 #: plugins/x2go/x2go_plugin.c:3098
-#, fuzzy, c-format
-#| msgid ""
-#| "The protocol “%s” is unavailable because GtkSocket only works under X.Org."
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"El protocol %s no està disponible perquè GtkSocket només funciona sota X.org"
+"El protocol %s no està disponible perquè el GtkSocket només funciona sota X."
+"org"
 
 #: plugins/x2go/x2go_plugin.c:3107
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr "No s' ha pogut inicialitzar el pthread. Torna al mode sense fils…"
+msgstr "No s'ha pogut inicialitzar el pthread. Torna al mode sense fils…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3824,9 +3807,9 @@ msgstr "No s' ha pogut inicialitzar el pthread. Torna al mode sense fils…"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:3150 plugins/x2go/x2go_plugin.c:3168
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
-msgstr "%s i '%s'"
+msgstr "%s i «%s»"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3835,90 +3818,79 @@ msgstr "%s i '%s'"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:3155 plugins/x2go/x2go_plugin.c:3173
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s' "
-msgstr "%s'%s' "
+msgstr "%s«%s» "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:3160
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s', "
-msgstr "%s'%s', "
+msgstr "%s«%s», "
 
 #: plugins/x2go/x2go_plugin.c:3199
-#, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "Les dades de validació no són vàlides a la matriu de protocolSettings!"
+msgstr "Les dades de validació no són vàlides al vector de ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:3214 plugins/x2go/x2go_plugin.c:3279
-#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr "Les dades de validació de la matriu protocolSettings no són vàlides!"
+msgstr "Les dades de validació del vector de ProtocolSettings no són vàlides!"
 
 #: plugins/x2go/x2go_plugin.c:3223
 msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:3241
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
 msgstr "Els valors permesos són %s."
 
 #: plugins/x2go/x2go_plugin.c:3243
-#, fuzzy, c-format
+#, c-format
 msgid "The only allowed value is '%s'."
-msgstr "L'únic valor permès és '%s'."
+msgstr "L'únic valor permès és «%s»."
 
 #: plugins/x2go/x2go_plugin.c:3290
-#, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "El límit inferior no és un enter vàlid!"
 
 #: plugins/x2go/x2go_plugin.c:3295
-#, fuzzy
 msgid "The lower limit is too high!"
 msgstr "El límit inferior és massa alt!"
 
 #: plugins/x2go/x2go_plugin.c:3300
-#, fuzzy
 msgid "The lower limit is too low!"
 msgstr "El límit inferior és massa baix!"
 
 #: plugins/x2go/x2go_plugin.c:3305 plugins/x2go/x2go_plugin.c:3335
 #: plugins/x2go/x2go_plugin.c:3355
-#, fuzzy
 msgid "Something unknown went wrong."
-msgstr "Ha fallat alguna cosa"
+msgstr "Alguna cosa desconeguda ha anat malament."
 
 #: plugins/x2go/x2go_plugin.c:3310 plugins/x2go/x2go_plugin.c:3340
-#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr "Comproveu la matriu RemminaProtocolSetting per possibles errors."
+msgstr "Comproveu el vector RemminaProtocolSetting per possibles errors."
 
 #: plugins/x2go/x2go_plugin.c:3320
-#, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "El límit superior no és un enter vàlid!"
 
 #: plugins/x2go/x2go_plugin.c:3325
-#, fuzzy
 msgid "The upper limit is too high!"
 msgstr "El límit superior és massa alt!"
 
 #: plugins/x2go/x2go_plugin.c:3330
-#, fuzzy
 msgid "The upper limit is too low!"
 msgstr "El límit superior és massa baix!"
 
 #: plugins/x2go/x2go_plugin.c:3350
-#, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "L'entrada no és un enter vàlid!"
 
 #: plugins/x2go/x2go_plugin.c:3352 plugins/x2go/x2go_plugin.c:3369
-#, fuzzy, c-format
+#, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "L'entrada ha de ser un nombre entre %i i %i."
 
@@ -3929,60 +3901,46 @@ msgid "Startup program"
 msgstr "Programa d’inici"
 
 #: plugins/x2go/x2go_plugin.c:3400
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "Quina ordre s'ha d' executar després de crear la sessió X2Go?"
+msgstr "Quina ordre s'hauria d'executar després de crear la sessió X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:3402
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Disposició del teclat (automàtica)"
 
 #: plugins/x2go/x2go_plugin.c:3403
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Tipus de teclat (automàtic)"
 
 #: plugins/x2go/x2go_plugin.c:3404
-#, fuzzy
-#| msgid "Turn on Java support"
 msgid "Audio support"
-msgstr "Assistència tècnica d'àudio"
+msgstr "Compatibilitat d'àudio"
 
 #: plugins/x2go/x2go_plugin.c:3406
-#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr "El sistema de so del servidor X2Go (per defecte: 'pols')."
+msgstr "El sistema de so del servidor X2Go (predefinit: «pulse»)."
 
 #: plugins/x2go/x2go_plugin.c:3409
-#, fuzzy
-#| msgid "USB redirection error"
 msgid "Clipboard direction"
 msgstr "Direcció del porta-retalls"
 
 #: plugins/x2go/x2go_plugin.c:3411
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
-"En quina direcció s'ha de copiar el contingut del porta-retalls? (per "
-"defecte: \"tots dos\")."
+"En quina direcció s'hauria de copiar el contingut del porta-retalls? "
+"(predefinit: «ambdues»)."
 
 #: plugins/x2go/x2go_plugin.c:3415
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
-msgstr "Resolució DPI"
+msgstr "Resolució PPP"
 
 #: plugins/x2go/x2go_plugin.c:3416
-#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
-"Sessió de llançament amb una resolució específica (en punts per polzada). Ha "
-"de tenir entre 20 i 400 anys."
+"Inicia una sessió amb una resolució específica (en punts per polzada). Ha de "
+"ser d'entre 20 i 400."
 
 #: plugins/x2go/x2go_plugin.c:3420
 #, fuzzy
@@ -3991,36 +3949,28 @@ msgid "Your private key"
 msgstr "Contrasenya de la clau privada SSH"
 
 #: plugins/x2go/x2go_plugin.c:3460
-#, fuzzy
 msgid "X2Go plugin loaded."
 msgstr "S'ha carregat el connector X2Go."
 
 #: plugins/x2go/x2go_plugin.h:43
-#, fuzzy
 msgid "X2Go - Launch an X2Go session"
 msgstr "X2Go - Inicia una sessió X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-#, fuzzy
-#| msgid "Remmina VNC Plugin"
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina el connector VNC per al GNOME i el KVM"
+msgstr "Connector Remmina VNC per al GNOME i el KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:476
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Tipus d'autenticació no admès %u"
 
 #: plugins/gvnc/gvnc_plugin.c:488
-#, fuzzy, c-format
-#| msgid "Authentication type"
+#, c-format
 msgid "Authentication failure: %s"
 msgstr "Error d'autenticació: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:819
-#, fuzzy
-#| msgid "Use system proxy settings"
 msgid "Use server settings"
 msgstr "Utilitza la configuració del servidor"
 
@@ -4037,53 +3987,39 @@ msgid "High colour (16 bits)"
 msgstr "Qualitat alta (16 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
 msgstr "Color baix (8 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
 msgstr "Color ultra baix (3 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:847
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
 msgstr "Contrasenya VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:849
-#, fuzzy
-#| msgid "SSH compression"
 msgid "Use JPEG Compression"
 msgstr "Utilitza la compressió JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:849
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
-msgstr "Pot ser que això no funcioni en tots els servidors VNC"
+msgstr "Podria no funcionar en tots els servidors VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:850
-#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr "Habilita el depurador GTK-VNC"
+msgstr "Habilita la depuració GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:870
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
 msgstr "Connexió compartida"
 
 #: plugins/gvnc/gvnc_plugin.c:870
-#, fuzzy
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
-"Si el servidor ha d'intentar compartir l'escriptori deixant connectats "
+"Si el servidor hauria d'intentar compartir l'escriptori deixant connectats "
 "altres clients"
 
 #: plugins/gvnc/gvnc_plugin.c:880
@@ -4093,10 +4029,8 @@ msgid "Send Ctrl+Alt+_Del"
 msgstr "Envia un Ctrl+Alt+Supr"
 
 #: plugins/gvnc/gvnc_plugin.c:881
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Envia Control+Alt+_Backspace"
+msgstr "Envia Ctrl+Alt+_Retrocés"
 
 #: plugins/gvnc/gvnc_plugin.c:882
 msgid "Send Ctrl+Alt+_F1"
@@ -4147,20 +4081,16 @@ msgid "Send Ctrl+Alt+_F12"
 msgstr "Envia un Ctrl+Alt+_F12"
 
 #: plugins/gvnc/gvnc_plugin.c:895
-#, fuzzy
 msgid "Reboot remote host"
 msgstr "Reinicia l'amfitrió remot"
 
 #: plugins/gvnc/gvnc_plugin.c:896
-#, fuzzy
 msgid "Reset remote host (hard reboot)"
 msgstr "Reinicialitza l'amfitrió remot (reinici dur)"
 
 #: plugins/gvnc/gvnc_plugin.c:897
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Tanca l'amfitrió remot"
+msgstr "Apaga l'amfitrió remot"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -4688,10 +4618,8 @@ msgid "Remmina data folder"
 msgstr "Carpeta de dades del Remmina"
 
 #: data/ui/remmina_preferences.glade:297
-#, fuzzy
-#| msgid "Choose a folder to save screenshots from Remmina in."
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Trieu una carpeta per desar perfils de connexió de Remmina."
+msgstr "Trieu una carpeta on desar perfils de connexió de Remmina."
 
 #: data/ui/remmina_preferences.glade:315
 msgid "Remember last view for each connection"
@@ -4783,7 +4711,6 @@ msgstr "Visor a pantalla completa"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:595
-#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "Agrupament de pestanyes"
@@ -4821,12 +4748,10 @@ msgid "Hide the search bar shown in the main window"
 msgstr "Amaga la barra de cerca a la finestra principal"
 
 #: data/ui/remmina_preferences.glade:688
-#, fuzzy
 msgid "Prefer dark theme"
 msgstr "Prefereix un tema fosc"
 
 #: data/ui/remmina_preferences.glade:692
-#, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
@@ -4859,12 +4784,10 @@ msgstr ""
 "Remmina ( en pantalla completa)."
 
 #: data/ui/remmina_preferences.glade:757
-#, fuzzy
-#| msgid "“Grab all keyboard events” status colour"
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
-"Habilita/inhabilita el color d'estat \"Agafa totes les incidències del teclat"
-"\""
+"Habilita/inhabilita el color d'estat «Agafa tots els esdeveniments del "
+"teclat»"
 
 #: data/ui/remmina_preferences.glade:820
 msgid "Appearance"
@@ -5113,10 +5036,8 @@ msgid "Scrollback lines"
 msgstr "Línies de desplaçament cap enrere"
 
 #: data/ui/remmina_preferences.glade:1988
-#, fuzzy
-#| msgid "Shortcut for copying to clipboard"
 msgid "Shortcuts for copying and pasting"
-msgstr "Dreceres per copiar i enganxar"
+msgstr "Dreceres per a copiar i enganxar"
 
 #: data/ui/remmina_preferences.glade:2001
 msgid "Select all shortcuts"
@@ -5252,16 +5173,12 @@ msgid "Foreground colour"
 msgstr "Color de primer pla"
 
 #: data/ui/remmina_preferences.glade:2471
-#, fuzzy
-#| msgid "Increase font size"
 msgid "Increase and decrease font size"
-msgstr "Augmentar i disminuir la mida del tipus de lletra"
+msgstr "Augmentar i disminuir la mida de la lletra"
 
 #: data/ui/remmina_preferences.glade:2501
-#, fuzzy
-#| msgid "Search text"
 msgid "Search text shortcut"
-msgstr "Cerca drecera de text"
+msgstr "Drecera de la cerca de text"
 
 #: data/ui/remmina_preferences.glade:2532
 #: data/ui/remmina_preferences.glade:2547
