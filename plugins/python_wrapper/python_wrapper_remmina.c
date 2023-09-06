@@ -1024,11 +1024,11 @@ static PyObject* remmina_public_get_server_port_wrapper(PyObject* self, PyObject
 {
 	TRACE_CALL(__func__);
 
-	static char* kwlist[] = { "server", "defaultport", "host", "port", NULL };
+	static char* kwlist[] = { "server", "defaultport", NULL };
 	gchar* server;
 	gint defaultport;
 
-	if (PyArg_ParseTupleAndKeywords(args, kwargs, "slsl", kwlist, &server, &defaultport) && server)
+	if (PyArg_ParseTupleAndKeywords(args, kwargs, "sl", kwlist, &server, &defaultport) && server)
 	{
 		gchar* host;
 		gint port;
