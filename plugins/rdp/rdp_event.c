@@ -592,8 +592,11 @@ static gboolean remmina_rdp_event_on_motion(GtkWidget *widget, GdkEventMotion *e
 	rdp_event.mouse_event.extended = FALSE;
 
 	remmina_rdp_event_translate_pos(gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
-	rfi->last_x = rdp_event.mouse_event.x;
-	rfi->last_y = rdp_event.mouse_event.y;
+	if (rfi != NULL){
+		rfi->last_x = rdp_event.mouse_event.x;
+		rfi->last_y = rdp_event.mouse_event.y;
+	}
+	
 	remmina_rdp_event_event_push(gp, &rdp_event);
 
 	return TRUE;

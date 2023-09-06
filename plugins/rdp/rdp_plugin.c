@@ -2466,6 +2466,8 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	rfi->is_reconnecting = false;
 	rfi->stop_reconnecting_requested = false;
 	rfi->user_cancelled = FALSE;
+	rfi->last_x = 0;
+	rfi->last_y = 0;
 
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 
