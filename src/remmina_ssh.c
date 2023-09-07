@@ -2336,7 +2336,8 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	gint ret;
 	struct sockaddr_in sin;
 
-	t1 = t2 = g_date_time_new_now_local();
+	t1 = g_date_time_new_now_local();
+	t2 = g_date_time_new_now_local();
 
 	switch (tunnel->tunnel_type) {
 	case REMMINA_SSH_TUNNEL_OPEN:
@@ -2464,10 +2465,8 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 					REMMINA_DEBUG("Polling tunnel channels");
 						channel = ssh_channel_accept_forward(REMMINA_SSH(tunnel)->session, 0, &tunnel->port);
 					if (channel == NULL)
-						t2 = t1;
+						t2 = g_date_time_new_now_local();
 				}
-				g_date_time_unref(t1);
-				g_date_time_unref(t2);
 			}
 
 			if (channel) {
