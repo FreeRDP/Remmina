@@ -374,9 +374,10 @@ static gboolean conn_closed(gpointer data)
 		RemminaMessagePanel* mp = remmina_message_panel_new();
 		remmina_message_panel_setup_message(mp, msg, (RemminaMessagePanelCallback)conn_closed_real, gp);
 		rco_show_message_panel(gp->cnnobj, mp);
+		return G_SOURCE_REMOVE;
 	}
 	else{
-		conn_closed_real(gp, 0);
+		return conn_closed_real(gp, 0);
 	}
 
 }
