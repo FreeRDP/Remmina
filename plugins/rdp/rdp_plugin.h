@@ -195,6 +195,7 @@ struct remmina_plugin_rdp_event {
 			BOOL	extended;
 			UINT8	key_code;
 			UINT32	unicode_code;
+			BOOL	extended1;
 		} key_event;
 		struct {
 			UINT16	flags;

@@ -210,7 +210,8 @@ static void remmina_rdp_event_release_key(RemminaProtocolWidget *gp, RemminaPlug
 
 			if (rdp_event_2.key_event.key_code == rdp_event.key_event.key_code &&
 			    rdp_event_2.key_event.unicode_code == rdp_event.key_event.unicode_code &&
-			    rdp_event_2.key_event.extended == rdp_event.key_event.extended) {
+			    rdp_event_2.key_event.extended == rdp_event.key_event.extended &&
+				rdp_event_2.key_event.extended1 == rdp_event.key_event.extended1) {
 				g_array_remove_index_fast(rfi->pressed_keys, i);
 				break;
 			}
@@ -793,6 +794,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
 	rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? false : true);
 	rdp_event.key_event.extended = false;
+	rdp_event.key_event.extended1 = false;
 
 	switch (event->keyval) {
 	case GDK_KEY_Pause:
@@ -803,15 +805,19 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 		 */
 		rdp_event.key_event.key_code = 0x1D;
 		rdp_event.key_event.up = false;
+		rdp_event.key_event.extended1 = TRUE;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		rdp_event.key_event.key_code = 0x45;
 		rdp_event.key_event.up = false;
+		rdp_event.key_event.extended1 = FALSE;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		rdp_event.key_event.key_code = 0x1D;
 		rdp_event.key_event.up = true;
+		rdp_event.key_event.extended1 = TRUE;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		rdp_event.key_event.key_code = 0x45;
 		rdp_event.key_event.up = true;
+		rdp_event.key_event.extended1 = FALSE;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 		break;
 
@@ -831,6 +837,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 			if (scancode) {
 				rdp_event.key_event.key_code = scancode & 0xFF;
 				rdp_event.key_event.extended = scancode & 0x100;
+				rdp_event.key_event.extended1 = FALSE;
 				remmina_rdp_event_event_push(gp, &rdp_event);
 				keypress_list_add(gp, rdp_event);
 			}
@@ -851,7 +858,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 			    ) {
 				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
 				rdp_event.key_event.key_code = scancode & 0xFF;
-				rdp_event.key_event.extended = scancode & 0x100;
+				rdp_event.key_event.extended1 = FALSE;
 				if (rdp_event.key_event.key_code) {
 					remmina_rdp_event_event_push(gp, &rdp_event);
 					keypress_list_add(gp, rdp_event);
@@ -860,6 +867,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 				rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE;
 				rdp_event.key_event.unicode_code = unicode_keyval;
 				rdp_event.key_event.extended = false;
+				rdp_event.key_event.extended1 = FALSE;
 				remmina_rdp_event_event_push(gp, &rdp_event);
 				keypress_list_add(gp, rdp_event);
 			}
