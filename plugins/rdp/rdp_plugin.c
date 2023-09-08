@@ -232,7 +232,13 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 		time(&last_time); //update last user interaction time
 		switch (event->type) {
 		case REMMINA_RDP_EVENT_TYPE_SCANCODE:
-			flags = event->key_event.extended ? KBD_FLAGS_EXTENDED : 0;
+			
+			if (event->key_event.extended1){
+				flags = KBD_FLAGS_EXTENDED1;
+			}
+			else{
+				flags = event->key_event.extended ? KBD_FLAGS_EXTENDED : 0;
+			}
 			flags |= event->key_event.up ? KBD_FLAGS_RELEASE : KBD_FLAGS_DOWN;
 			input->KeyboardEvent(input, flags, event->key_event.key_code);
 			break;
