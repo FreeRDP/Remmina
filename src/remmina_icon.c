@@ -157,7 +157,7 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_Quit"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_prepend(GTK_MENU_SHELL(menu), menuitem);
-	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_exec_exitremmina), NULL);
+	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_exec_exitremmina_one_confirm), NULL);
 
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_About"));
 	gtk_widget_show(menuitem);
