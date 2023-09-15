@@ -1,3 +1,38 @@
+## v.1.4.32
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.31...v1.4.32)
+
+* [REM2916] Added option to kill async process started by exec plugin on tab close [!2501](https://gitlab.com/Remmina/Remmina/merge_requests/2501) *@myheroyuki*
+* Fix search bar toggle behavior [!2503](https://gitlab.com/Remmina/Remmina/merge_requests/2503) *@myheroyuki*
+* Fix memory leaks [!2504](https://gitlab.com/Remmina/Remmina/merge_requests/2504) *@bhatman1441*
+* [REM-2920] Password visibility can now be toggled on remmina_message_panels [!2505](https://gitlab.com/Remmina/Remmina/merge_requests/2505) *@myheroyuki*
+* Remove SSH file paths from remmina file when unchecking box in profile edit [!2506](https://gitlab.com/Remmina/Remmina/merge_requests/2506) *@bhatman1441*
+* Solved issue #2910 - Added support for IPv6 with fallback to IPv4 for ssh [!2507](https://gitlab.com/Remmina/Remmina/merge_requests/2507) *@scoulondre*
+* Fix UI bugs in Remmina Preferences set new password [!2508](https://gitlab.com/Remmina/Remmina/merge_requests/2508) *@bhatman1441*
+* Fix memory leaks and change GTK critical errors to remmina warnings for null icon autostart file [!2509](https://gitlab.com/Remmina/Remmina/merge_requests/2509) *@bhatman1441*
+* [REM-2926] Added ability to set a fixed aspect ratio for vnc connections when... [!2511](https://gitlab.com/Remmina/Remmina/merge_requests/2511) *@myheroyuki*
+* Fix snap crash [!2512](https://gitlab.com/Remmina/Remmina/merge_requests/2512) *@bhatman1441*
+* [REM-2936] Fix crash related to unmap events [!2513](https://gitlab.com/Remmina/Remmina/merge_requests/2513) *@myheroyuki*
+* [REM-2938] Improved ordering of tray icon menu items [!2514](https://gitlab.com/Remmina/Remmina/merge_requests/2514) *@myheroyuki*
+* Fix memory leaks in remmina_plugin_manager_init with g_free and g_ptr_array_free [!2515](https://gitlab.com/Remmina/Remmina/merge_requests/2515) *@bhatman1441*
+* Remote assistance [!2516](https://gitlab.com/Remmina/Remmina/merge_requests/2516) *@myheroyuki*
+* Spelling: Various strings for assistance mode [!2517](https://gitlab.com/Remmina/Remmina/merge_requests/2517) *@kingu*
+* Fix some compiler warnings [!2518](https://gitlab.com/Remmina/Remmina/merge_requests/2518) *@myheroyuki*
+* Ability to SPICE connect to unix domain socket [!2519](https://gitlab.com/Remmina/Remmina/merge_requests/2519) *@BobbyTheBuilder*
+* update multi monitor icon [!2520](https://gitlab.com/Remmina/Remmina/merge_requests/2520) *@jtmoree*
+* Save toggle options when duplicating connection [!2521](https://gitlab.com/Remmina/Remmina/merge_requests/2521) *@myheroyuki*
+* Rem 2954 [!2522](https://gitlab.com/Remmina/Remmina/merge_requests/2522) *@myheroyuki*
+* New feature: Allow user to specify use of modifiers when changing key preferences [!2523](https://gitlab.com/Remmina/Remmina/merge_requests/2523) *@bhatman1441*
+* [REM-2914] Alert user of unexpected disconnect instead of immediately closing the connection window [!2524](https://gitlab.com/Remmina/Remmina/merge_requests/2524) *@myheroyuki*
+* Fix Remmina not using `@REMMINA_BINARY_PATH@` [!2525](https://gitlab.com/Remmina/Remmina/merge_requests/2525) *@Enzime*
+* Highlight top bar when `Grab all keyboard events` is enabled [!2526](https://gitlab.com/Remmina/Remmina/merge_requests/2526) *@toliak*
+* Snapcraft: Allow remmina preferences file to point to symlinked `current` directory [!2527](https://gitlab.com/Remmina/Remmina/merge_requests/2527) *@bhatman1441*
+* [REM-2850] Add ability to automatically move mouse to keep RDP connections alive [!2528](https://gitlab.com/Remmina/Remmina/merge_requests/2528) *@myheroyuki*
+* Allow user to set REMMINA_GIT_REVISION [!2529](https://gitlab.com/Remmina/Remmina/merge_requests/2529) *@yurivict*
+* Remove unnecessary parameters from remmina_public_get_server_port_wrapper [!2530](https://gitlab.com/Remmina/Remmina/merge_requests/2530) *@bhatman1441*
+* Fix freeze that occurs when loading in python modules properly [!2531](https://gitlab.com/Remmina/Remmina/merge_requests/2531) *@myheroyuki*
+* [REM-1923] Fix handling of pause break key for RDP connections [!2532](https://gitlab.com/Remmina/Remmina/merge_requests/2532) *@myheroyuki*
+* [REM-2971] When quiting Remmina from the system tray the are you sure prompt now functions properly [!2533](https://gitlab.com/Remmina/Remmina/merge_requests/2533) *@myheroyuki*
+
 ## v.1.4.31
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.30...v1.4.31)
 
