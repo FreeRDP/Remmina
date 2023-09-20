@@ -647,6 +647,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.shortcutkey_scale = GDK_KEY_s;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_clipboard", NULL))
+		remmina_pref.shortcutkey_clipboard = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_clipboard", NULL);
+	else
+		remmina_pref.shortcutkey_clipboard = GDK_KEY_b;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_viewonly", NULL))
 		remmina_pref.shortcutkey_viewonly = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_viewonly", NULL);
 	else
@@ -874,6 +879,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_nexttab", remmina_pref.shortcutkey_nexttab);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_prevtab", remmina_pref.shortcutkey_prevtab);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_scale", remmina_pref.shortcutkey_scale);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_clipboard", remmina_pref.shortcutkey_clipboard);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_grab", remmina_pref.shortcutkey_grab);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_multimon", remmina_pref.shortcutkey_multimon);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_viewonly", remmina_pref.shortcutkey_viewonly);

@@ -319,6 +319,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.shortcutkey_prevtab = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_switch_tab_left));
 	remmina_pref.shortcutkey_nexttab = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_switch_tab_right));
 	remmina_pref.shortcutkey_scale = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_scaled));
+	remmina_pref.shortcutkey_clipboard = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_clipboard));
 	remmina_pref.shortcutkey_multimon = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_multimon));
 	remmina_pref.shortcutkey_grab = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_grab_keyboard));
 	remmina_pref.shortcutkey_screenshot = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_screenshot));
@@ -534,6 +535,7 @@ static void remmina_pref_dialog_init(void)
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_switch_tab_left, remmina_pref.shortcutkey_prevtab);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_switch_tab_right, remmina_pref.shortcutkey_nexttab);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_scaled, remmina_pref.shortcutkey_scale);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_clipboard, remmina_pref.shortcutkey_clipboard);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_multimon, remmina_pref.shortcutkey_multimon);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_grab_keyboard, remmina_pref.shortcutkey_grab);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_screenshot, remmina_pref.shortcutkey_screenshot);
@@ -756,6 +758,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->button_keyboard_switch_tab_left = GTK_BUTTON(GET_OBJECT("button_keyboard_switch_tab_left"));
 	remmina_pref_dialog->button_keyboard_switch_tab_right = GTK_BUTTON(GET_OBJECT("button_keyboard_switch_tabright"));
 	remmina_pref_dialog->button_keyboard_scaled = GTK_BUTTON(GET_OBJECT("button_keyboard_scaled"));
+	remmina_pref_dialog->button_keyboard_clipboard = GTK_BUTTON(GET_OBJECT("button_keyboard_clipboard"));
 	remmina_pref_dialog->button_keyboard_grab_keyboard = GTK_BUTTON(GET_OBJECT("button_keyboard_grab_keyboard"));
 	remmina_pref_dialog->button_keyboard_multimon = GTK_BUTTON(GET_OBJECT("button_keyboard_multimon"));
 	remmina_pref_dialog->button_keyboard_screenshot = GTK_BUTTON(GET_OBJECT("button_keyboard_screenshot"));
