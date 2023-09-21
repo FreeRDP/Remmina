@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-15 14:21+0000\n"
+"POT-Creation-Date: 2023-09-21 11:20+0000\n"
 "PO-Revision-Date: 2023-02-04 06:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/remmina/remmina/th/"
@@ -268,17 +268,17 @@ msgid "Configure the keystrokes"
 msgstr "กําหนดค่าการกดแป้นพิมพ์"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:479
+#: src/remmina_pref_dialog.c:480
 #, fuzzy
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "จําเป็นต้องมี libsodium >= 1.9.0 เพื่อใช้รหัสผ่านหลัก"
 
-#: src/remmina_pref_dialog.c:813
+#: src/remmina_pref_dialog.c:816
 #, fuzzy
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "การเลือกแฟ้มระบายสีเทอร์มินัลจะแทนที่แฟ้ม: "
 
-#: src/remmina_pref_dialog.c:817
+#: src/remmina_pref_dialog.c:820
 #, fuzzy
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
@@ -296,7 +296,7 @@ msgstr "ยกเลิก"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2708
+#: data/ui/remmina_preferences.glade:2742
 msgid "Close"
 msgstr "ปิด"
 
@@ -496,20 +496,20 @@ msgstr "ย่อหน้าต่าง"
 msgid "Disconnect"
 msgstr "ตัดการเชื่อมต่อ"
 
-#: src/rcw.c:4433
+#: src/rcw.c:4437
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "แฟ้ม \"%s\" เสียหาย ไม่สามารถอ่านได้ หรือหาไม่พบ"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4507
+#: src/rcw.c:4511
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4651
+#: src/rcw.c:4655
 #, fuzzy
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
@@ -518,7 +518,7 @@ msgstr "คําเตือน: ปลั๊กอินนี้ต้อง�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4657
+#: src/rcw.c:4661
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -527,7 +527,7 @@ msgid ""
 "available-in-a-Wayland-session"
 msgstr ""
 
-#: src/rcw.c:4671
+#: src/rcw.c:4675
 #, fuzzy
 #| msgid "Open Main Window"
 msgid "Open in web browser"
@@ -4624,8 +4624,8 @@ msgstr "อนุญาตให้ Remmina เปิดแฟ้ม .rdp แล
 #: data/ui/remmina_news.glade:157
 #, fuzzy
 msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 msgstr ""
 "ดึงข่าวจาก <a href=\"https://remmina.org\" title=\"Remmina news site\">remmina."
 "org</a> (*)"
@@ -4649,15 +4649,15 @@ msgstr "<big> เข้าร่วม</big>"
 #, fuzzy
 msgid ""
 "<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b>You have our gratitude in choosing copylefted libre software, <a "
+"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">donations also make us happy</a>, and further help improve "
 "Remmina.</b>\n"
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> คุณมีความกตัญญูของเราในการเลือกซอฟต์แวร์ libre copylefted การบริจาค <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b> คุณมีความกตัญญูของเราในการเลือกซอฟต์แวร์ libre copylefted การบริจาค <a "
+"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">ยังทําให้เรามีความสุข</a> และช่วยปรับปรุง Remmina ต่อไป </b>\n"
 "</span>\n"
 
@@ -5156,156 +5156,165 @@ msgstr "แสดง/ซ่อนแถบเครื่องมือ"
 msgid "View-only mode"
 msgstr "โหมดดูอย่างเดียว"
 
-#: data/ui/remmina_preferences.glade:1365
+#: data/ui/remmina_preferences.glade:1359
+#, fuzzy
+msgid "Send clipboard as keystrokes"
+msgstr "ส่งเนื้อหาของคลิปบอร์ดเป็นการกดแป้นพิมพ์"
+
+#: data/ui/remmina_preferences.glade:1369
+msgid "Send-clipboard"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1399
 #, fuzzy
 msgid "Keyboard"
 msgstr "แป้นพิมพ์"
 
-#: data/ui/remmina_preferences.glade:1396
+#: data/ui/remmina_preferences.glade:1430
 #, fuzzy
 msgid "Local SSH port"
 msgstr "พอร์ต SSH เฉพาะที่"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1454
 #, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "แยกวิเคราะห์ ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1444
+#: data/ui/remmina_preferences.glade:1478
 #, fuzzy
 msgid "No logging at all"
 msgstr "ไม่มีการบันทึกเลย"
 
-#: data/ui/remmina_preferences.glade:1445
+#: data/ui/remmina_preferences.glade:1479
 #, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "เงื่อนไขหรือคําเตือนที่หายาก"
 
-#: data/ui/remmina_preferences.glade:1446
+#: data/ui/remmina_preferences.glade:1480
 #, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "จุดเข้าใช้งานที่สามารถเข้าถึงได้ด้วย API"
 
-#: data/ui/remmina_preferences.glade:1447
+#: data/ui/remmina_preferences.glade:1481
 #, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "ข้อมูลโปรโตคอลระดับล่างระดับแพ็คเก็ต"
 
-#: data/ui/remmina_preferences.glade:1448
+#: data/ui/remmina_preferences.glade:1482
 #, fuzzy
 msgid "Function entering and leaving"
 msgstr "ฟังก์ชันการป้อนและการออก"
 
-#: data/ui/remmina_preferences.glade:1465
+#: data/ui/remmina_preferences.glade:1499
 #, fuzzy
 msgid "SSH log level"
 msgstr "ระดับบันทึก SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1536
+#: data/ui/remmina_preferences.glade:1570
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "วินาทีของการเชื่อมต่อที่ไม่ได้ใช้งานก่อนที่จะส่งโพรบแบบ keepalive TCP"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1552
+#: data/ui/remmina_preferences.glade:1586
 #, fuzzy
 msgid "Seconds between each keepalive probe."
 msgstr "วินาทีระหว่างหัววัดแบบ keepalive แต่ละโพรบ"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1568
+#: data/ui/remmina_preferences.glade:1602
 #, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "จํานวนโพรบแบบ keepalive ที่ส่งผ่านการเชื่อมต่อ TCP ก่อนที่จะหลุด"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1584
+#: data/ui/remmina_preferences.glade:1618
 #, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr "จํานวนมิลลิวินาทีที่จะพยายามยอมรับข้อมูลก่อนที่จะปิดการเชื่อมต่อ TCP ที่สอดคล้องกันบังคับให้ทํา"
 
-#: data/ui/remmina_preferences.glade:1610
+#: data/ui/remmina_preferences.glade:1644
 #, fuzzy
 msgid "SSH options"
 msgstr "ตัวเลือก SSH"
 
-#: data/ui/remmina_preferences.glade:1627
+#: data/ui/remmina_preferences.glade:1661
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1639
+#: data/ui/remmina_preferences.glade:1673
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1678
 #, fuzzy
 msgid "Remmina password"
 msgstr "รหัสผ่านผู้ใช้"
 
-#: data/ui/remmina_preferences.glade:1655
+#: data/ui/remmina_preferences.glade:1689
 msgid "Use secret key authentication for some widgets"
 msgstr "ใช้การยืนยันตัวตนด้วยกุญแจลับสำหรับวิดเจ็ตบางตัว"
 
-#: data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_preferences.glade:1709
 msgid "Valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1686
+#: data/ui/remmina_preferences.glade:1720
 msgid "Number of seconds to keep password valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1691
+#: data/ui/remmina_preferences.glade:1725
 msgid "timeout in seconds (default 300)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1737
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
 msgstr "รหัสผ่าน %s"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1707
+#: data/ui/remmina_preferences.glade:1741
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
 msgstr "รหัสผ่าน %s"
 
-#: data/ui/remmina_preferences.glade:1718
+#: data/ui/remmina_preferences.glade:1752
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1722
+#: data/ui/remmina_preferences.glade:1756
 msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1733
+#: data/ui/remmina_preferences.glade:1767
 #, fuzzy
 #| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to view passwords"
 msgstr "รหัสผ่าน %s"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1737
+#: data/ui/remmina_preferences.glade:1771
 #, fuzzy
 #| msgid "Set new password"
 msgid "Require to view passwords"
 msgstr "ตั้งรหัสผ่านใหม่"
 
-#: data/ui/remmina_preferences.glade:1793
+#: data/ui/remmina_preferences.glade:1827
 #, fuzzy
 #| msgid "Description"
 msgid "Encryption"
 msgstr "คำบรรยาย"
 
-#: data/ui/remmina_preferences.glade:1804
+#: data/ui/remmina_preferences.glade:1838
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5316,74 +5325,74 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1813
+#: data/ui/remmina_preferences.glade:1847
 msgid "Intermediate (+64 MiB RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1814
+#: data/ui/remmina_preferences.glade:1848
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1815
+#: data/ui/remmina_preferences.glade:1849
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1865
 #, fuzzy
 msgid "Auditing log"
 msgstr "แก้ไขการตั้งค่า"
 
-#: data/ui/remmina_preferences.glade:1856
+#: data/ui/remmina_preferences.glade:1890
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "ยอมรับลายนิ้วมือและใบรับรองทั้งหมดโดยอัตโนมัติ"
 
-#: data/ui/remmina_preferences.glade:1861
+#: data/ui/remmina_preferences.glade:1895
 #, fuzzy
 msgid "Trust all certificates"
 msgstr "เชื่อถือลายนิ้วมือและใบรับรองทั้งหมด"
 
-#: data/ui/remmina_preferences.glade:1896
+#: data/ui/remmina_preferences.glade:1930
 #, fuzzy
 msgid "Security"
 msgstr "การรักษาความปลอดภัย"
 
-#: data/ui/remmina_preferences.glade:1927
+#: data/ui/remmina_preferences.glade:1961
 #, fuzzy
 msgid "Terminal font"
 msgstr "แบบอักษรของเทอร์มินัล"
 
-#: data/ui/remmina_preferences.glade:1940
+#: data/ui/remmina_preferences.glade:1974
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "เลื่อนบรรทัดกลับ"
 
-#: data/ui/remmina_preferences.glade:1988
+#: data/ui/remmina_preferences.glade:2022
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "ทางลัดสําหรับการคัดลอกและวาง"
 
-#: data/ui/remmina_preferences.glade:2001
+#: data/ui/remmina_preferences.glade:2035
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "เลือกทางลัดทั้งหมด"
 
-#: data/ui/remmina_preferences.glade:2014
-#: data/ui/remmina_preferences.glade:2031
-#: data/ui/remmina_preferences.glade:2484
-#: data/ui/remmina_preferences.glade:2514
-#: data/ui/remmina_preferences.glade:2648
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2048
+#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2518
+#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2682
+#: data/ui/remmina_preferences.glade:2699
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(คีย์โฮสต์+)"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2083
 #, fuzzy
 msgid "Use default system font"
 msgstr "ใช้แบบอักษรของระบบเริ่มต้น"
 
-#: data/ui/remmina_preferences.glade:2074
+#: data/ui/remmina_preferences.glade:2108
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5392,16 +5401,16 @@ msgstr ""
 "การเลือก \"SGR 1\" ยังสลับเป็นสีพาเล็ท 8 สีแรกที่สดใส "
 "(นอกเหนือจากการทําให้ข้อความเป็นตัวหนา)"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2124
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2104
+#: data/ui/remmina_preferences.glade:2138
 #, fuzzy
 msgid "Colour theme"
 msgstr "ธีมสี"
 
-#: data/ui/remmina_preferences.glade:2115
+#: data/ui/remmina_preferences.glade:2149
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5410,159 +5419,159 @@ msgstr ""
 "เลือกแฟ้มแบบแผนชุดสี มักจะมีอยู่ใน/usr/แบ่งปัน/remmina/รูปแบบของ https://github.com/"
 "mbadolato/iTerm2-Color-Schemes มีรายละเอียดเพิ่มเติม"
 
-#: data/ui/remmina_preferences.glade:2119
+#: data/ui/remmina_preferences.glade:2153
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "เลือกไฟล์ระบายสีเทอร์มินัล"
 
-#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2168
 #, fuzzy
 msgid "Bright colours"
 msgstr "สีสันสดใส"
 
-#: data/ui/remmina_preferences.glade:2148
+#: data/ui/remmina_preferences.glade:2182
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "เลือกสีดําอ่อน"
 
-#: data/ui/remmina_preferences.glade:2162
+#: data/ui/remmina_preferences.glade:2196
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "เลือกสีแดงอ่อน"
 
-#: data/ui/remmina_preferences.glade:2176
+#: data/ui/remmina_preferences.glade:2210
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "เลือกสีเขียวสดใส"
 
-#: data/ui/remmina_preferences.glade:2190
+#: data/ui/remmina_preferences.glade:2224
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "เลือกสีเหลืองสดใส"
 
-#: data/ui/remmina_preferences.glade:2204
+#: data/ui/remmina_preferences.glade:2238
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "เลือกสีฟ้าสดใส"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2252
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "เลือกสีสีม่วงแดงอ่อน"
 
-#: data/ui/remmina_preferences.glade:2232
+#: data/ui/remmina_preferences.glade:2266
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "เลือกสีฟ้าอ่อน"
 
-#: data/ui/remmina_preferences.glade:2246
+#: data/ui/remmina_preferences.glade:2280
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "เลือกสีขาวอ่อน"
 
-#: data/ui/remmina_preferences.glade:2260
+#: data/ui/remmina_preferences.glade:2294
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "เลือกสีดํา"
 
-#: data/ui/remmina_preferences.glade:2274
+#: data/ui/remmina_preferences.glade:2308
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "เลือกสีแดง"
 
-#: data/ui/remmina_preferences.glade:2288
+#: data/ui/remmina_preferences.glade:2322
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "เลือกสีเขียว"
 
-#: data/ui/remmina_preferences.glade:2302
+#: data/ui/remmina_preferences.glade:2336
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "เลือกสีเหลือง"
 
-#: data/ui/remmina_preferences.glade:2316
+#: data/ui/remmina_preferences.glade:2350
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "เลือกสีฟ้า"
 
-#: data/ui/remmina_preferences.glade:2330
+#: data/ui/remmina_preferences.glade:2364
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "เลือกสีสีม่วงแดง"
 
-#: data/ui/remmina_preferences.glade:2344
+#: data/ui/remmina_preferences.glade:2378
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "เลือกสีฟ้า"
 
-#: data/ui/remmina_preferences.glade:2358
+#: data/ui/remmina_preferences.glade:2392
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "เลือกสีขาว"
 
-#: data/ui/remmina_preferences.glade:2371
+#: data/ui/remmina_preferences.glade:2405
 #, fuzzy
 msgid "Normal colours"
 msgstr "สีปกติ"
 
-#: data/ui/remmina_preferences.glade:2384
-#: data/ui/remmina_preferences.glade:2399
+#: data/ui/remmina_preferences.glade:2418
+#: data/ui/remmina_preferences.glade:2433
 #, fuzzy
 msgid "Cursor colour"
 msgstr "สีเคอร์เซอร์"
 
-#: data/ui/remmina_preferences.glade:2413
-#: data/ui/remmina_preferences.glade:2428
+#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2462
 #, fuzzy
 msgid "Background colour"
 msgstr "สีพื้นหลัง"
 
-#: data/ui/remmina_preferences.glade:2444
-#: data/ui/remmina_preferences.glade:2458
+#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2492
 #, fuzzy
 msgid "Foreground colour"
 msgstr "สีพื้นหน้า"
 
-#: data/ui/remmina_preferences.glade:2471
+#: data/ui/remmina_preferences.glade:2505
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "เพิ่มและลดขนาดแบบอักษร"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2535
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "ทางลัดการค้นหาข้อความ"
 
-#: data/ui/remmina_preferences.glade:2532
-#: data/ui/remmina_preferences.glade:2547
+#: data/ui/remmina_preferences.glade:2566
+#: data/ui/remmina_preferences.glade:2581
 #, fuzzy
 msgid "Bold colour"
 msgstr "ตัวหนา"
 
-#: data/ui/remmina_preferences.glade:2561
-#: data/ui/remmina_preferences.glade:2602
+#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2636
 #, fuzzy
 msgid "Highlight colour"
 msgstr "เน้นสี"
 
-#: data/ui/remmina_preferences.glade:2574
-#: data/ui/remmina_preferences.glade:2618
+#: data/ui/remmina_preferences.glade:2608
+#: data/ui/remmina_preferences.glade:2652
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "เน้นสีพื้นหน้า"
 
-#: data/ui/remmina_preferences.glade:2587
-#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2668
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "สีพื้นหน้าของเคอร์เซอร์"
 
-#: data/ui/remmina_preferences.glade:2690
+#: data/ui/remmina_preferences.glade:2724
 #, fuzzy
 msgid "Terminal"
 msgstr "สถานีปลายทาง"
 
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2738
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "การกําหนดลักษณะ Remmina"
@@ -5666,12 +5675,12 @@ msgstr "รหัสผ่านหลัก"
 #, fuzzy
 #~ msgid ""
 #~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonymous</a></b> statistics. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonymous</a></b> statistics. (*)"
 #~ msgstr ""
 #~ "ส่ง <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">ไม่ระบุชื่อ</a></b> สถิติ. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">ไม่ระบุชื่อ</a></b> สถิติ. (*)"
 
 #, fuzzy
 #~ msgid "Send anonymous statistics"

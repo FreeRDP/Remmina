@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-15 14:21+0000\n"
+"POT-Creation-Date: 2023-09-21 11:20+0000\n"
 "PO-Revision-Date: 2023-05-01 12:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -250,15 +250,15 @@ msgid "Configure the keystrokes"
 msgstr "Määritä näppäimistön painikkeet"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:479
+#: src/remmina_pref_dialog.c:480
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium >= 1.9.0 vaaditaan ensisijaisen salasanan käyttämiseen"
 
-#: src/remmina_pref_dialog.c:813
+#: src/remmina_pref_dialog.c:816
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Valitse päätteen väritystiedosto"
 
-#: src/remmina_pref_dialog.c:817
+#: src/remmina_pref_dialog.c:820
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -276,7 +276,7 @@ msgstr "Peruuta"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2708
+#: data/ui/remmina_preferences.glade:2742
 msgid "Close"
 msgstr "Sulje"
 
@@ -461,14 +461,14 @@ msgstr "Pienennä ikkuna"
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
-#: src/rcw.c:4433
+#: src/rcw.c:4437
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "Tiedosto \"%s\" on vioittunut, sitä ei voi lukea tai sitä ei löydy."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4507
+#: src/rcw.c:4511
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -476,7 +476,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4651
+#: src/rcw.c:4655
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -486,7 +486,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4657
+#: src/rcw.c:4661
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -500,7 +500,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4671
+#: src/rcw.c:4675
 msgid "Open in web browser"
 msgstr "Avaa verkkoselaimessa"
 
@@ -4288,11 +4288,11 @@ msgstr "Salli Remminan avata automaattisesti .rdp- ja .remmina-tiedostot."
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:157
 msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 msgstr ""
-"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.orgista</a> (*)"
+"Nouda uutiset <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.orgista</a> (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4312,8 +4312,8 @@ msgstr "<big>Osallistu</big>"
 #: data/ui/remmina_news.glade:231
 msgid ""
 "<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b>You have our gratitude in choosing copylefted libre software, <a "
+"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">donations also make us happy</a>, and further help improve "
 "Remmina.</b>\n"
 "</span>\n"
@@ -4756,57 +4756,67 @@ msgstr "Näytä/piilota työkalurivi"
 msgid "View-only mode"
 msgstr "Vain katselu -tila"
 
-#: data/ui/remmina_preferences.glade:1365
+#: data/ui/remmina_preferences.glade:1359
+#, fuzzy
+#| msgid "Send clipboard content as keystrokes"
+msgid "Send clipboard as keystrokes"
+msgstr "Leikepöydän sisällön lähettäminen näppäinpainalluksina"
+
+#: data/ui/remmina_preferences.glade:1369
+msgid "Send-clipboard"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1399
 msgid "Keyboard"
 msgstr "Näppäimistö"
 
-#: data/ui/remmina_preferences.glade:1396
+#: data/ui/remmina_preferences.glade:1430
 msgid "Local SSH port"
 msgstr "Paikallinen SSH-portti"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1454
 msgid "Parse ~/.ssh/config"
 msgstr "Jäsennä ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1444
+#: data/ui/remmina_preferences.glade:1478
 msgid "No logging at all"
 msgstr "Ei lokiin kirjaamista lainkaan"
 
-#: data/ui/remmina_preferences.glade:1445
+#: data/ui/remmina_preferences.glade:1479
 msgid "Rare conditions or warnings"
 msgstr "Harvinaiset olosuhteet tai varoitukset"
 
-#: data/ui/remmina_preferences.glade:1446
+#: data/ui/remmina_preferences.glade:1480
 msgid "API-accessible entrypoints"
 msgstr "Sovellusrajapinnassa käytettävissä olevat pääsypisteet"
 
-#: data/ui/remmina_preferences.glade:1447
+#: data/ui/remmina_preferences.glade:1481
 msgid "Lower level protocol info, packet level"
 msgstr "Matalan tason protokollatiedot, paketitaso"
 
-#: data/ui/remmina_preferences.glade:1448
+#: data/ui/remmina_preferences.glade:1482
 msgid "Function entering and leaving"
 msgstr "Funktion saapuminen ja poistuminen"
 
-#: data/ui/remmina_preferences.glade:1465
+#: data/ui/remmina_preferences.glade:1499
 msgid "SSH log level"
 msgstr "SSH-lokitaso"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1536
+#: data/ui/remmina_preferences.glade:1570
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
 "Yhteyden tyhjäkäynnin sekunnit ennen kuin TCP:n pidä hengissä -luotaimet "
 "(Keep Alive) on lähetetty."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1552
+#: data/ui/remmina_preferences.glade:1586
 msgid "Seconds between each keepalive probe."
 msgstr ""
 "Sekunnit jokaisen pidättävän pidä hengissä (Keep Alive) -luotaimen välillä."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1568
+#: data/ui/remmina_preferences.glade:1602
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
@@ -4814,7 +4824,7 @@ msgstr ""
 "kuin yhteys hylätään."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1584
+#: data/ui/remmina_preferences.glade:1618
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -4822,11 +4832,11 @@ msgstr ""
 "Millisekuntien määrä datan tunnistamisen yrittämiseksi, ennen kuin vastaava "
 "TCP-yhteys suljetaan väkisin."
 
-#: data/ui/remmina_preferences.glade:1610
+#: data/ui/remmina_preferences.glade:1644
 msgid "SSH options"
 msgstr "SSH-asetukset"
 
-#: data/ui/remmina_preferences.glade:1627
+#: data/ui/remmina_preferences.glade:1661
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
@@ -4834,69 +4844,69 @@ msgstr ""
 "Aika sekunteina, ennen kuin Remmina lukitsee istunnon ja kysyy salasanaa "
 "uudelleen. Oletusarvo: 300 sekuntia."
 
-#: data/ui/remmina_preferences.glade:1639
+#: data/ui/remmina_preferences.glade:1673
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 "Aseta ja käytä salaista avainta Remminan suojaamiseksi luvattomalta käytöltä."
 
-#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1678
 msgid "Remmina password"
 msgstr "Remmina salasana"
 
-#: data/ui/remmina_preferences.glade:1655
+#: data/ui/remmina_preferences.glade:1689
 msgid "Use secret key authentication for some widgets"
 msgstr "Käytä yksityisen avaimen todennusta joillekin widgeteille"
 
-#: data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_preferences.glade:1709
 msgid "Valid for"
 msgstr "Voimassa"
 
-#: data/ui/remmina_preferences.glade:1686
+#: data/ui/remmina_preferences.glade:1720
 msgid "Number of seconds to keep password valid for"
 msgstr "Kuinka monta sekuntia salasanaa pidetään voimassa"
 
-#: data/ui/remmina_preferences.glade:1691
+#: data/ui/remmina_preferences.glade:1725
 msgid "timeout in seconds (default 300)"
 msgstr "aikakatkaisu sekunteina (oletus 300)"
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1737
 msgid "Enter your Remmina password to connect"
 msgstr "Syötä Remmina-salasanasi yhteyden muodostamiseksi"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1707
+#: data/ui/remmina_preferences.glade:1741
 msgid "Require to connect"
 msgstr "Yhteyden muodostaminen edellyttää"
 
-#: data/ui/remmina_preferences.glade:1718
+#: data/ui/remmina_preferences.glade:1752
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 "Luominen, muokkaaminen, kopioiminen ja poistaminen edellyttävät Remmina-"
 "salasanaa"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1722
+#: data/ui/remmina_preferences.glade:1756
 msgid "Require to modify"
 msgstr "Vaatii muokkaamista"
 
-#: data/ui/remmina_preferences.glade:1733
+#: data/ui/remmina_preferences.glade:1767
 #, fuzzy
 #| msgid "Enter your Remmina password to connect"
 msgid "Enter your Remmina password to view passwords"
 msgstr "Syötä Remmina-salasanasi yhteyden muodostamiseksi"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1737
+#: data/ui/remmina_preferences.glade:1771
 #, fuzzy
 #| msgid "Set new password"
 msgid "Require to view passwords"
 msgstr "Aseta uusi salasana"
 
-#: data/ui/remmina_preferences.glade:1793
+#: data/ui/remmina_preferences.glade:1827
 msgid "Encryption"
 msgstr "Salaus"
 
-#: data/ui/remmina_preferences.glade:1804
+#: data/ui/remmina_preferences.glade:1838
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4908,71 +4918,72 @@ msgid ""
 msgstr ""
 "Näitä salausmenetelmiä Remmina käyttää salasanojen tallentamiseen.\n"
 "\n"
-"\"Heikko\"-menetelmää lukuun ottamatta kaikkia muita suositellaan, \"Keystore"
-"\" on oletusarvo, koska se integroituu KDE/Plasman ja GNOMEn kanssa.\n"
+"\"Heikko\"-menetelmää lukuun ottamatta kaikkia muita suositellaan, "
+"\"Keystore\" on oletusarvo, koska se integroituu KDE/Plasman ja GNOMEn "
+"kanssa.\n"
 "\n"
-"\"Keskitaso\" ei käytä yhtä paljon muistia tai prosessoritehoa, ja \"Herkkä"
-"\" on turvallisempi, mutta käyttää +1 GiB RAM-muistia ja paljon "
+"\"Keskitaso\" ei käytä yhtä paljon muistia tai prosessoritehoa, ja "
+"\"Herkkä\" on turvallisempi, mutta käyttää +1 GiB RAM-muistia ja paljon "
 "prosessorijaksoja. "
 
-#: data/ui/remmina_preferences.glade:1813
+#: data/ui/remmina_preferences.glade:1847
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "Keskitaso (+64 MiB RAM)"
 
-#: data/ui/remmina_preferences.glade:1814
+#: data/ui/remmina_preferences.glade:1848
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "Vahva (+256 MiB, ~2009 CPU)"
 
-#: data/ui/remmina_preferences.glade:1815
+#: data/ui/remmina_preferences.glade:1849
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "Herkkä (+1 GiB, ~2014 CPU)"
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1865
 msgid "Auditing log"
 msgstr "Tarkastusloki"
 
-#: data/ui/remmina_preferences.glade:1856
+#: data/ui/remmina_preferences.glade:1890
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Hyväksy kaikki sormenjäljet ja varmenteet automaattisesti"
 
-#: data/ui/remmina_preferences.glade:1861
+#: data/ui/remmina_preferences.glade:1895
 msgid "Trust all certificates"
 msgstr "Luota kaikkiin varmenteisiin"
 
-#: data/ui/remmina_preferences.glade:1896
+#: data/ui/remmina_preferences.glade:1930
 msgid "Security"
 msgstr "Turvallisuus"
 
-#: data/ui/remmina_preferences.glade:1927
+#: data/ui/remmina_preferences.glade:1961
 msgid "Terminal font"
 msgstr "Päätteen fontti"
 
-#: data/ui/remmina_preferences.glade:1940
+#: data/ui/remmina_preferences.glade:1974
 msgid "Scrollback lines"
 msgstr "Vieritysrivit"
 
-#: data/ui/remmina_preferences.glade:1988
+#: data/ui/remmina_preferences.glade:2022
 msgid "Shortcuts for copying and pasting"
 msgstr "Pikanäppäimet leikepöydälle kopioimiseksi ja liittämiseksi"
 
-#: data/ui/remmina_preferences.glade:2001
+#: data/ui/remmina_preferences.glade:2035
 msgid "Select all shortcuts"
 msgstr "Valitse kaikki -pikanäppäin"
 
-#: data/ui/remmina_preferences.glade:2014
-#: data/ui/remmina_preferences.glade:2031
-#: data/ui/remmina_preferences.glade:2484
-#: data/ui/remmina_preferences.glade:2514
-#: data/ui/remmina_preferences.glade:2648
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2048
+#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2518
+#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2682
+#: data/ui/remmina_preferences.glade:2699
 msgid "(Host key+)"
 msgstr "(Host key +) (esim. oikea CTRL + )"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2083
 msgid "Use default system font"
 msgstr "Käytä järjestelmän oletusfonttia"
 
-#: data/ui/remmina_preferences.glade:2074
+#: data/ui/remmina_preferences.glade:2108
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4980,15 +4991,15 @@ msgstr ""
 "\"SGR 1\":n valitseminen vaihtaa myös kahdeksan ensimmäisen paletin värin "
 "kirkkaita vastaavia (tekstin lihavoinnin lisäksi)."
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2124
 msgid "Show bold text in bright colors"
 msgstr "Näytä lihavoitu teksti kirkkain värein"
 
-#: data/ui/remmina_preferences.glade:2104
+#: data/ui/remmina_preferences.glade:2138
 msgid "Colour theme"
 msgstr "Väriteema"
 
-#: data/ui/remmina_preferences.glade:2115
+#: data/ui/remmina_preferences.glade:2149
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4997,130 +5008,130 @@ msgstr ""
 "theme. Lisätietoja on saatavilla osoitteesta https://github.com/mbadolato/"
 "iTerm2-Color-Schemes."
 
-#: data/ui/remmina_preferences.glade:2119
+#: data/ui/remmina_preferences.glade:2153
 msgid "Pick a terminal colouring file"
 msgstr "Valitse päätteen väritystiedosto"
 
-#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2168
 msgid "Bright colours"
 msgstr "Kirkkaat värit"
 
-#: data/ui/remmina_preferences.glade:2148
+#: data/ui/remmina_preferences.glade:2182
 msgid "Pick a light black colour"
 msgstr "Valitse vaalean mustan väri"
 
-#: data/ui/remmina_preferences.glade:2162
+#: data/ui/remmina_preferences.glade:2196
 msgid "Pick a light red colour"
 msgstr "Valitse vaaleanpunainen väri"
 
-#: data/ui/remmina_preferences.glade:2176
+#: data/ui/remmina_preferences.glade:2210
 msgid "Pick a bright green colour"
 msgstr "Valitse kirkkaanvihreä väri"
 
-#: data/ui/remmina_preferences.glade:2190
+#: data/ui/remmina_preferences.glade:2224
 msgid "Pick a bright yellow colour"
 msgstr "Valitse kirkkaankeltainen väri"
 
-#: data/ui/remmina_preferences.glade:2204
+#: data/ui/remmina_preferences.glade:2238
 msgid "Pick a bright blue colour"
 msgstr "Valitse kirkkaansininen väri"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2252
 msgid "Pick a light magenta colour"
 msgstr "Valitse vaalean magentan väri"
 
-#: data/ui/remmina_preferences.glade:2232
+#: data/ui/remmina_preferences.glade:2266
 msgid "Pick a light cyan colour"
 msgstr "Valitse vaalean syaanin väri"
 
-#: data/ui/remmina_preferences.glade:2246
+#: data/ui/remmina_preferences.glade:2280
 msgid "Pick a light white colour"
 msgstr "Valitse vaalean valkoinen väri"
 
-#: data/ui/remmina_preferences.glade:2260
+#: data/ui/remmina_preferences.glade:2294
 msgid "Pick a black colour"
 msgstr "Valitse musta väri"
 
-#: data/ui/remmina_preferences.glade:2274
+#: data/ui/remmina_preferences.glade:2308
 msgid "Pick a red colour"
 msgstr "Valitse punainen väri"
 
-#: data/ui/remmina_preferences.glade:2288
+#: data/ui/remmina_preferences.glade:2322
 msgid "Pick a green colour"
 msgstr "Valitse vihreä väri"
 
-#: data/ui/remmina_preferences.glade:2302
+#: data/ui/remmina_preferences.glade:2336
 msgid "Pick a yellow colour"
 msgstr "Valitse keltainen väri"
 
-#: data/ui/remmina_preferences.glade:2316
+#: data/ui/remmina_preferences.glade:2350
 msgid "Pick a blue colour"
 msgstr "Valitse sininen väri"
 
-#: data/ui/remmina_preferences.glade:2330
+#: data/ui/remmina_preferences.glade:2364
 msgid "Pick a magenta colour"
 msgstr "Valitse magenta väri"
 
-#: data/ui/remmina_preferences.glade:2344
+#: data/ui/remmina_preferences.glade:2378
 msgid "Pick a cyan colour"
 msgstr "Valitse syaani väri"
 
-#: data/ui/remmina_preferences.glade:2358
+#: data/ui/remmina_preferences.glade:2392
 msgid "Pick a white colour"
 msgstr "Valitse valkoinen väri"
 
-#: data/ui/remmina_preferences.glade:2371
+#: data/ui/remmina_preferences.glade:2405
 msgid "Normal colours"
 msgstr "Normaalit värit"
 
-#: data/ui/remmina_preferences.glade:2384
-#: data/ui/remmina_preferences.glade:2399
+#: data/ui/remmina_preferences.glade:2418
+#: data/ui/remmina_preferences.glade:2433
 msgid "Cursor colour"
 msgstr "Kohdistimen väri"
 
-#: data/ui/remmina_preferences.glade:2413
-#: data/ui/remmina_preferences.glade:2428
+#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2462
 msgid "Background colour"
 msgstr "Taustan väri"
 
-#: data/ui/remmina_preferences.glade:2444
-#: data/ui/remmina_preferences.glade:2458
+#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2492
 msgid "Foreground colour"
 msgstr "Edustan väri"
 
-#: data/ui/remmina_preferences.glade:2471
+#: data/ui/remmina_preferences.glade:2505
 msgid "Increase and decrease font size"
 msgstr "Suurenna ja pienennä fontin kokoa"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2535
 msgid "Search text shortcut"
 msgstr "Etsi tekstiä -pikanäppäin"
 
-#: data/ui/remmina_preferences.glade:2532
-#: data/ui/remmina_preferences.glade:2547
+#: data/ui/remmina_preferences.glade:2566
+#: data/ui/remmina_preferences.glade:2581
 msgid "Bold colour"
 msgstr "Normaalit värit"
 
-#: data/ui/remmina_preferences.glade:2561
-#: data/ui/remmina_preferences.glade:2602
+#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2636
 msgid "Highlight colour"
 msgstr "Korosta väri"
 
-#: data/ui/remmina_preferences.glade:2574
-#: data/ui/remmina_preferences.glade:2618
+#: data/ui/remmina_preferences.glade:2608
+#: data/ui/remmina_preferences.glade:2652
 msgid "Highlight foreground colour"
 msgstr "Korosta edustaväri"
 
-#: data/ui/remmina_preferences.glade:2587
-#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2668
 msgid "Cursor foreground colour"
 msgstr "Kohdistimen etualan väri"
 
-#: data/ui/remmina_preferences.glade:2690
+#: data/ui/remmina_preferences.glade:2724
 msgid "Terminal"
 msgstr "Pääte"
 
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2738
 msgid "Remmina Preferences"
 msgstr "Remminan asetukset"
 
@@ -5253,12 +5264,12 @@ msgstr "Pääsalasana"
 
 #~ msgid ""
 #~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonymous</a></b> statistics. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonymous</a></b> statistics. (*)"
 #~ msgstr ""
 #~ "Lähetä <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonyymeja</a></b> tilastoja. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonyymeja</a></b> tilastoja. (*)"
 
 #~ msgid "Send anonymous statistics"
 #~ msgstr "Lähetä anonyymeja tilastoja"

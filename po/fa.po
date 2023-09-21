@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.4.5\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-15 14:21+0000\n"
+"POT-Creation-Date: 2023-09-21 11:20+0000\n"
 "PO-Revision-Date: 2023-06-06 10:51+0000\n"
 "Last-Translator: Yasin Bakhtiar <yasinbakhtiar521@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -248,15 +248,15 @@ msgid "Configure the keystrokes"
 msgstr "کلیدها را پیکربندی کنید."
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:479
+#: src/remmina_pref_dialog.c:480
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "برای استفاده رمزعبور اصلی libsodium> = 1.9.0 مورد نیاز است."
 
-#: src/remmina_pref_dialog.c:813
+#: src/remmina_pref_dialog.c:816
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "انتخاب یک فایل terminal coloring که جایگزین فایل می‌شود: "
 
-#: src/remmina_pref_dialog.c:817
+#: src/remmina_pref_dialog.c:820
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -273,7 +273,7 @@ msgstr "لغو"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2708
+#: data/ui/remmina_preferences.glade:2742
 msgid "Close"
 msgstr "بستن"
 
@@ -461,14 +461,14 @@ msgstr "کم کردن ابعاد صفحه تا جای ممکن"
 msgid "Disconnect"
 msgstr "قطع اتصال"
 
-#: src/rcw.c:4433
+#: src/rcw.c:4437
 #, fuzzy, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "فایل \"%s\" خراب شده، غیرقابل خواندن است، یا یافت نمی شود."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4507
+#: src/rcw.c:4511
 #, fuzzy
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
@@ -477,7 +477,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4651
+#: src/rcw.c:4655
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -485,7 +485,7 @@ msgstr "هشدار: این پلاگین نیاز به GtkSocket دارد , ام�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4657
+#: src/rcw.c:4661
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -500,7 +500,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4671
+#: src/rcw.c:4675
 msgid "Open in web browser"
 msgstr "باز کردن در مرورگر"
 
@@ -4554,11 +4554,11 @@ msgstr "اجازه دادن به  Remmina برای خودکار باز کردن 
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:157
 msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 msgstr ""
-"بروزرسانی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"بروزرسانی اخبار از <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4579,8 +4579,8 @@ msgstr "<big> بخش</big>"
 #, fuzzy
 msgid ""
 "<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b>You have our gratitude in choosing copylefted libre software, <a "
+"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">donations also make us happy</a>, and further help improve "
 "Remmina.</b>\n"
 "</span>\n"
@@ -5079,65 +5079,75 @@ msgstr "نمایش/ مخفی کردن نوار ابزار"
 msgid "View-only mode"
 msgstr "حالت فقط مشاهده"
 
-#: data/ui/remmina_preferences.glade:1365
+#: data/ui/remmina_preferences.glade:1359
+#, fuzzy
+#| msgid "Send clipboard content as keystrokes"
+msgid "Send clipboard as keystrokes"
+msgstr "ارسال محتوای کلیپ بورد با فشار دادن یک کلید"
+
+#: data/ui/remmina_preferences.glade:1369
+msgid "Send-clipboard"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1399
 #, fuzzy
 msgid "Keyboard"
 msgstr "صفحه‌کلید"
 
-#: data/ui/remmina_preferences.glade:1396
+#: data/ui/remmina_preferences.glade:1430
 #, fuzzy
 msgid "Local SSH port"
 msgstr "پورت محلی SSH"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1454
 #, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "تجزیه ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1444
+#: data/ui/remmina_preferences.glade:1478
 #, fuzzy
 msgid "No logging at all"
 msgstr "بدون ورود به سیستم در همه"
 
-#: data/ui/remmina_preferences.glade:1445
+#: data/ui/remmina_preferences.glade:1479
 #, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "شرایط نادر یا هشدارها"
 
-#: data/ui/remmina_preferences.glade:1446
+#: data/ui/remmina_preferences.glade:1480
 #, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "نقاط ورودی قابل دسترسی API"
 
-#: data/ui/remmina_preferences.glade:1447
+#: data/ui/remmina_preferences.glade:1481
 #, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "اطلاعات پروتکل سطح پایین تر، سطح بسته"
 
-#: data/ui/remmina_preferences.glade:1448
+#: data/ui/remmina_preferences.glade:1482
 #, fuzzy
 msgid "Function entering and leaving"
 msgstr "تابع ورود و خروج"
 
-#: data/ui/remmina_preferences.glade:1465
+#: data/ui/remmina_preferences.glade:1499
 #, fuzzy
 msgid "SSH log level"
 msgstr "سطح ورود به سیستم SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1536
+#: data/ui/remmina_preferences.glade:1570
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "ثانیه ها بی کار بودن اتصال قبل از ارسال پروب های نگه دارنده TCP."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1552
+#: data/ui/remmina_preferences.glade:1586
 #, fuzzy
 msgid "Seconds between each keepalive probe."
 msgstr "ثانیه ها بین هر کاوشگر نگه داشتنی."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1568
+#: data/ui/remmina_preferences.glade:1602
 #, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
@@ -5146,7 +5156,7 @@ msgstr ""
 "است."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1584
+#: data/ui/remmina_preferences.glade:1618
 #, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
@@ -5155,82 +5165,82 @@ msgstr ""
 "مقدار میلی ثانیه برای تلاش برای اذعان به داده ها قبل از بستن اتصال TCP "
 "مربوطه به زور."
 
-#: data/ui/remmina_preferences.glade:1610
+#: data/ui/remmina_preferences.glade:1644
 #, fuzzy
 msgid "SSH options"
 msgstr "گزینه های SSH"
 
-#: data/ui/remmina_preferences.glade:1627
+#: data/ui/remmina_preferences.glade:1661
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1639
+#: data/ui/remmina_preferences.glade:1673
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1678
 #, fuzzy
 #| msgid "User password"
 msgid "Remmina password"
 msgstr "رمزعبور کاربر"
 
-#: data/ui/remmina_preferences.glade:1655
+#: data/ui/remmina_preferences.glade:1689
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "استفاده از احراز هویت کلید مخفی برای برخی از ویجت ها"
 
-#: data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_preferences.glade:1709
 msgid "Valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1686
+#: data/ui/remmina_preferences.glade:1720
 msgid "Number of seconds to keep password valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1691
+#: data/ui/remmina_preferences.glade:1725
 msgid "timeout in seconds (default 300)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1737
 #, fuzzy
 msgid "Enter your Remmina password to connect"
 msgstr "رمز عبور امن و قوی در KWallet"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1707
+#: data/ui/remmina_preferences.glade:1741
 #, fuzzy
 msgid "Require to connect"
 msgstr "رمز عبور امن و قوی در KWallet"
 
-#: data/ui/remmina_preferences.glade:1718
+#: data/ui/remmina_preferences.glade:1752
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1722
+#: data/ui/remmina_preferences.glade:1756
 msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1733
+#: data/ui/remmina_preferences.glade:1767
 #, fuzzy
 msgid "Enter your Remmina password to view passwords"
 msgstr "رمز عبور امن و قوی در KWallet"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1737
+#: data/ui/remmina_preferences.glade:1771
 #, fuzzy
 msgid "Require to view passwords"
 msgstr "تنظیم رمز عبور جدید"
 
-#: data/ui/remmina_preferences.glade:1793
+#: data/ui/remmina_preferences.glade:1827
 #, fuzzy
 #| msgid "Description"
 msgid "Encryption"
 msgstr "توضیحات"
 
-#: data/ui/remmina_preferences.glade:1804
+#: data/ui/remmina_preferences.glade:1838
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5241,74 +5251,74 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1813
+#: data/ui/remmina_preferences.glade:1847
 msgid "Intermediate (+64 MiB RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1814
+#: data/ui/remmina_preferences.glade:1848
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1815
+#: data/ui/remmina_preferences.glade:1849
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1865
 #, fuzzy
 msgid "Auditing log"
 msgstr "ویرایش تنظیمات"
 
-#: data/ui/remmina_preferences.glade:1856
+#: data/ui/remmina_preferences.glade:1890
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "گواهینامه تغییر یافته را قبول دارید؟"
 
-#: data/ui/remmina_preferences.glade:1861
+#: data/ui/remmina_preferences.glade:1895
 #, fuzzy
 #| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
 msgstr "گواهینامه تغییر یافته را قبول دارید؟"
 
-#: data/ui/remmina_preferences.glade:1896
+#: data/ui/remmina_preferences.glade:1930
 #, fuzzy
 msgid "Security"
 msgstr "امنیت"
 
-#: data/ui/remmina_preferences.glade:1927
+#: data/ui/remmina_preferences.glade:1961
 #, fuzzy
 msgid "Terminal font"
 msgstr "فونت ترمینال"
 
-#: data/ui/remmina_preferences.glade:1940
+#: data/ui/remmina_preferences.glade:1974
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "خطوط اسکرول بک"
 
-#: data/ui/remmina_preferences.glade:1988
+#: data/ui/remmina_preferences.glade:2022
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "میانبر برای کپی و خمیر کردن"
 
-#: data/ui/remmina_preferences.glade:2001
+#: data/ui/remmina_preferences.glade:2035
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "همه میانبرها را انتخاب کنید"
 
-#: data/ui/remmina_preferences.glade:2014
-#: data/ui/remmina_preferences.glade:2031
-#: data/ui/remmina_preferences.glade:2484
-#: data/ui/remmina_preferences.glade:2514
-#: data/ui/remmina_preferences.glade:2648
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2048
+#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2518
+#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2682
+#: data/ui/remmina_preferences.glade:2699
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(کلید میزبان+)"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2083
 #, fuzzy
 msgid "Use default system font"
 msgstr "استفاده از فونت سیستم پیش فرض"
 
-#: data/ui/remmina_preferences.glade:2074
+#: data/ui/remmina_preferences.glade:2108
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5317,16 +5327,16 @@ msgstr ""
 "انتخاب \"SGR 1\" نیز به همتایان روشن از 8 رنگ پالت اول سوئیچ (علاوه بر ساخت "
 "متن جسورانه)."
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2124
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2104
+#: data/ui/remmina_preferences.glade:2138
 #, fuzzy
 msgid "Colour theme"
 msgstr "تم رنگ"
 
-#: data/ui/remmina_preferences.glade:2115
+#: data/ui/remmina_preferences.glade:2149
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5335,160 +5345,160 @@ msgstr ""
 "یک پرونده طرح رنگی را انتخاب کنید. معمولا در دسترس / usr / سهم / remmina / "
 "تم. https://github.com/mbadolato/iTerm2-Color-Schemes جزئیات بیشتری دارد."
 
-#: data/ui/remmina_preferences.glade:2119
+#: data/ui/remmina_preferences.glade:2153
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "انتخاب یک فایل رنگ آمیزی ترمینال"
 
-#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2168
 #, fuzzy
 msgid "Bright colours"
 msgstr "رنگ های روشن"
 
-#: data/ui/remmina_preferences.glade:2148
+#: data/ui/remmina_preferences.glade:2182
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "انتخاب رنگ سیاه و سفید روشن"
 
-#: data/ui/remmina_preferences.glade:2162
+#: data/ui/remmina_preferences.glade:2196
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "انتخاب رنگ قرمز روشن"
 
-#: data/ui/remmina_preferences.glade:2176
+#: data/ui/remmina_preferences.glade:2210
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "انتخاب رنگ سبز روشن"
 
-#: data/ui/remmina_preferences.glade:2190
+#: data/ui/remmina_preferences.glade:2224
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "انتخاب رنگ زرد روشن"
 
-#: data/ui/remmina_preferences.glade:2204
+#: data/ui/remmina_preferences.glade:2238
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "انتخاب رنگ آبی روشن"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2252
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "انتخاب رنگ magenta نور"
 
-#: data/ui/remmina_preferences.glade:2232
+#: data/ui/remmina_preferences.glade:2266
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "انتخاب رنگ سیان نور"
 
-#: data/ui/remmina_preferences.glade:2246
+#: data/ui/remmina_preferences.glade:2280
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "انتخاب رنگ سفید روشن"
 
-#: data/ui/remmina_preferences.glade:2260
+#: data/ui/remmina_preferences.glade:2294
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "انتخاب رنگ سیاه و سفید"
 
-#: data/ui/remmina_preferences.glade:2274
+#: data/ui/remmina_preferences.glade:2308
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "انتخاب رنگ قرمز"
 
-#: data/ui/remmina_preferences.glade:2288
+#: data/ui/remmina_preferences.glade:2322
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "انتخاب رنگ سبز"
 
-#: data/ui/remmina_preferences.glade:2302
+#: data/ui/remmina_preferences.glade:2336
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "انتخاب رنگ زرد"
 
-#: data/ui/remmina_preferences.glade:2316
+#: data/ui/remmina_preferences.glade:2350
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "انتخاب رنگ آبی"
 
-#: data/ui/remmina_preferences.glade:2330
+#: data/ui/remmina_preferences.glade:2364
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "انتخاب رنگ magenta"
 
-#: data/ui/remmina_preferences.glade:2344
+#: data/ui/remmina_preferences.glade:2378
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "انتخاب رنگ cyan"
 
-#: data/ui/remmina_preferences.glade:2358
+#: data/ui/remmina_preferences.glade:2392
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "انتخاب رنگ سفید"
 
-#: data/ui/remmina_preferences.glade:2371
+#: data/ui/remmina_preferences.glade:2405
 #, fuzzy
 msgid "Normal colours"
 msgstr "رنگ های معمولی"
 
-#: data/ui/remmina_preferences.glade:2384
-#: data/ui/remmina_preferences.glade:2399
+#: data/ui/remmina_preferences.glade:2418
+#: data/ui/remmina_preferences.glade:2433
 #, fuzzy
 msgid "Cursor colour"
 msgstr "رنگ نفرین کننده"
 
-#: data/ui/remmina_preferences.glade:2413
-#: data/ui/remmina_preferences.glade:2428
+#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2462
 #, fuzzy
 msgid "Background colour"
 msgstr "رنگ پس زمینه"
 
-#: data/ui/remmina_preferences.glade:2444
-#: data/ui/remmina_preferences.glade:2458
+#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2492
 #, fuzzy
 msgid "Foreground colour"
 msgstr "رنگ پیش زمینه"
 
-#: data/ui/remmina_preferences.glade:2471
+#: data/ui/remmina_preferences.glade:2505
 #, fuzzy
 #| msgid "Increase font size"
 msgid "Increase and decrease font size"
 msgstr "افزایش و کاهش اندازه فونت"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2535
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "جستجوی میانبر متن"
 
-#: data/ui/remmina_preferences.glade:2532
-#: data/ui/remmina_preferences.glade:2547
+#: data/ui/remmina_preferences.glade:2566
+#: data/ui/remmina_preferences.glade:2581
 #, fuzzy
 msgid "Bold colour"
 msgstr "رنگ پررنگ"
 
-#: data/ui/remmina_preferences.glade:2561
-#: data/ui/remmina_preferences.glade:2602
+#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2636
 #, fuzzy
 msgid "Highlight colour"
 msgstr "رنگ برجسته"
 
-#: data/ui/remmina_preferences.glade:2574
-#: data/ui/remmina_preferences.glade:2618
+#: data/ui/remmina_preferences.glade:2608
+#: data/ui/remmina_preferences.glade:2652
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "برجسته رنگ پیش زمینه"
 
-#: data/ui/remmina_preferences.glade:2587
-#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2668
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "رنگ پیش زمینه نفرین کننده"
 
-#: data/ui/remmina_preferences.glade:2690
+#: data/ui/remmina_preferences.glade:2724
 #, fuzzy
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2738
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "ترجیحات Remmina"
@@ -5620,12 +5630,12 @@ msgstr "رمز عبور استاد"
 #, fuzzy
 #~ msgid ""
 #~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonymous</a></b> statistics. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonymous</a></b> statistics. (*)"
 #~ msgstr ""
 #~ "<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonymous</a></b> آمار ارسال کنید. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonymous</a></b> آمار ارسال کنید. (*)"
 
 #, fuzzy
 #~ msgid "Send anonymous statistics"

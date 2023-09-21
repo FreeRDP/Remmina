@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-15 14:21+0000\n"
+"POT-Creation-Date: 2023-09-21 11:20+0000\n"
 "PO-Revision-Date: 2023-09-08 12:45+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
@@ -251,15 +251,15 @@ msgid "Configure the keystrokes"
 msgstr "Configure the keystrokes"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:479
+#: src/remmina_pref_dialog.c:480
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium >= 1.9.0 is required to use master password"
 
-#: src/remmina_pref_dialog.c:813
+#: src/remmina_pref_dialog.c:816
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Pick a terminal colouring file"
 
-#: src/remmina_pref_dialog.c:817
+#: src/remmina_pref_dialog.c:820
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -277,7 +277,7 @@ msgstr "Cancel"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2708
+#: data/ui/remmina_preferences.glade:2742
 msgid "Close"
 msgstr "Close"
 
@@ -463,14 +463,14 @@ msgstr "Minimize window"
 msgid "Disconnect"
 msgstr "Disconnect"
 
-#: src/rcw.c:4433
+#: src/rcw.c:4437
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "The file ‘%s’ is corrupted, unreadable, or could not be found."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4507
+#: src/rcw.c:4511
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -478,7 +478,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4651
+#: src/rcw.c:4655
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -488,7 +488,7 @@ msgstr ""
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4657
+#: src/rcw.c:4661
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -502,7 +502,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4671
+#: src/rcw.c:4675
 msgid "Open in web browser"
 msgstr "Open in web browser"
 
@@ -4231,11 +4231,11 @@ msgstr "Allow Remmina to automatically open .rdp and .remmina files."
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:157
 msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 msgstr ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 
 #: data/ui/remmina_news.glade:169
 msgid "Receives updated news from remmina.org"
@@ -4255,15 +4255,15 @@ msgstr "<big>Take part</big>"
 #: data/ui/remmina_news.glade:231
 msgid ""
 "<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b>You have our gratitude in choosing copylefted libre software, <a "
+"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">donations also make us happy</a>, and further help improve "
 "Remmina.</b>\n"
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b>You have our gratitude in choosing copylefted libre software, <a "
+"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "‘blblblblblb’\">donations also make us happy</a>, and further help improve "
 "Remmina.</b>\n"
 "</span>\n"
@@ -4686,61 +4686,71 @@ msgstr "Show/hide toolbar"
 msgid "View-only mode"
 msgstr "View-only mode"
 
-#: data/ui/remmina_preferences.glade:1365
+#: data/ui/remmina_preferences.glade:1359
+#, fuzzy
+#| msgid "Send clipboard content as keystrokes"
+msgid "Send clipboard as keystrokes"
+msgstr "Send clipboard content as keystrokes"
+
+#: data/ui/remmina_preferences.glade:1369
+msgid "Send-clipboard"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1399
 msgid "Keyboard"
 msgstr "Keyboard"
 
-#: data/ui/remmina_preferences.glade:1396
+#: data/ui/remmina_preferences.glade:1430
 msgid "Local SSH port"
 msgstr "Local SSH port"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1454
 msgid "Parse ~/.ssh/config"
 msgstr "Parse ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1444
+#: data/ui/remmina_preferences.glade:1478
 msgid "No logging at all"
 msgstr "No logging at all"
 
-#: data/ui/remmina_preferences.glade:1445
+#: data/ui/remmina_preferences.glade:1479
 msgid "Rare conditions or warnings"
 msgstr "Rare conditions or warnings"
 
-#: data/ui/remmina_preferences.glade:1446
+#: data/ui/remmina_preferences.glade:1480
 msgid "API-accessible entrypoints"
 msgstr "API-accessible entrypoints"
 
-#: data/ui/remmina_preferences.glade:1447
+#: data/ui/remmina_preferences.glade:1481
 msgid "Lower level protocol info, packet level"
 msgstr "Lower level protocol info, packet level"
 
-#: data/ui/remmina_preferences.glade:1448
+#: data/ui/remmina_preferences.glade:1482
 msgid "Function entering and leaving"
 msgstr "Function entering and leaving"
 
-#: data/ui/remmina_preferences.glade:1465
+#: data/ui/remmina_preferences.glade:1499
 msgid "SSH log level"
 msgstr "SSH log level"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1536
+#: data/ui/remmina_preferences.glade:1570
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "Seconds of connection idleness before TCP keepalive probes are sent."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1552
+#: data/ui/remmina_preferences.glade:1586
 msgid "Seconds between each keepalive probe."
 msgstr "Seconds between each keepalive probe."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1568
+#: data/ui/remmina_preferences.glade:1602
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1584
+#: data/ui/remmina_preferences.glade:1618
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -4748,11 +4758,11 @@ msgstr ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 
-#: data/ui/remmina_preferences.glade:1610
+#: data/ui/remmina_preferences.glade:1644
 msgid "SSH options"
 msgstr "SSH options"
 
-#: data/ui/remmina_preferences.glade:1627
+#: data/ui/remmina_preferences.glade:1661
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
@@ -4760,62 +4770,62 @@ msgstr ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 
-#: data/ui/remmina_preferences.glade:1639
+#: data/ui/remmina_preferences.glade:1673
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr "Set and use a secret key to protect Remmina from unauthorized use."
 
-#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1678
 msgid "Remmina password"
 msgstr "Remmina password"
 
-#: data/ui/remmina_preferences.glade:1655
+#: data/ui/remmina_preferences.glade:1689
 msgid "Use secret key authentication for some widgets"
 msgstr "Use secret key authentication for some widgets"
 
-#: data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_preferences.glade:1709
 msgid "Valid for"
 msgstr "Valid for"
 
-#: data/ui/remmina_preferences.glade:1686
+#: data/ui/remmina_preferences.glade:1720
 msgid "Number of seconds to keep password valid for"
 msgstr "Number of seconds to keep password valid for"
 
-#: data/ui/remmina_preferences.glade:1691
+#: data/ui/remmina_preferences.glade:1725
 msgid "timeout in seconds (default 300)"
 msgstr "Timeout in seconds (default 300)"
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1737
 msgid "Enter your Remmina password to connect"
 msgstr "Enter your Remmina password to connect"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1707
+#: data/ui/remmina_preferences.glade:1741
 msgid "Require to connect"
 msgstr "Require to connect"
 
-#: data/ui/remmina_preferences.glade:1718
+#: data/ui/remmina_preferences.glade:1752
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr "Creation, editing, copying, and deletions require the Remmina password"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1722
+#: data/ui/remmina_preferences.glade:1756
 msgid "Require to modify"
 msgstr "Require to modify"
 
-#: data/ui/remmina_preferences.glade:1733
+#: data/ui/remmina_preferences.glade:1767
 msgid "Enter your Remmina password to view passwords"
 msgstr "Enter your Remmina password to view passwords"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1737
+#: data/ui/remmina_preferences.glade:1771
 msgid "Require to view passwords"
 msgstr "Require to view passwords"
 
-#: data/ui/remmina_preferences.glade:1793
+#: data/ui/remmina_preferences.glade:1827
 msgid "Encryption"
 msgstr "Encryption"
 
-#: data/ui/remmina_preferences.glade:1804
+#: data/ui/remmina_preferences.glade:1838
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4833,64 +4843,64 @@ msgstr ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 
-#: data/ui/remmina_preferences.glade:1813
+#: data/ui/remmina_preferences.glade:1847
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "Intermediate (+64 MiB RAM)"
 
-#: data/ui/remmina_preferences.glade:1814
+#: data/ui/remmina_preferences.glade:1848
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "Strong (+256 MiB, ~2009 CPU)"
 
-#: data/ui/remmina_preferences.glade:1815
+#: data/ui/remmina_preferences.glade:1849
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "Sensitive (+1 GiB, ~2014 CPU)"
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1865
 msgid "Auditing log"
 msgstr "Auditing log"
 
-#: data/ui/remmina_preferences.glade:1856
+#: data/ui/remmina_preferences.glade:1890
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Automatically accept all fingerprints and certificates"
 
-#: data/ui/remmina_preferences.glade:1861
+#: data/ui/remmina_preferences.glade:1895
 msgid "Trust all certificates"
 msgstr "Trust all certificates"
 
-#: data/ui/remmina_preferences.glade:1896
+#: data/ui/remmina_preferences.glade:1930
 msgid "Security"
 msgstr "Security"
 
-#: data/ui/remmina_preferences.glade:1927
+#: data/ui/remmina_preferences.glade:1961
 msgid "Terminal font"
 msgstr "Terminal font"
 
-#: data/ui/remmina_preferences.glade:1940
+#: data/ui/remmina_preferences.glade:1974
 msgid "Scrollback lines"
 msgstr "Scrollback lines"
 
-#: data/ui/remmina_preferences.glade:1988
+#: data/ui/remmina_preferences.glade:2022
 msgid "Shortcuts for copying and pasting"
 msgstr "Shortcuts for copying and pasting"
 
-#: data/ui/remmina_preferences.glade:2001
+#: data/ui/remmina_preferences.glade:2035
 msgid "Select all shortcuts"
 msgstr "Select all shortcuts"
 
-#: data/ui/remmina_preferences.glade:2014
-#: data/ui/remmina_preferences.glade:2031
-#: data/ui/remmina_preferences.glade:2484
-#: data/ui/remmina_preferences.glade:2514
-#: data/ui/remmina_preferences.glade:2648
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2048
+#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2518
+#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2682
+#: data/ui/remmina_preferences.glade:2699
 msgid "(Host key+)"
 msgstr "(Host key+)"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2083
 msgid "Use default system font"
 msgstr "Use default system font"
 
-#: data/ui/remmina_preferences.glade:2074
+#: data/ui/remmina_preferences.glade:2108
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4898,15 +4908,15 @@ msgstr ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2124
 msgid "Show bold text in bright colors"
 msgstr "Show bold text in bright colours"
 
-#: data/ui/remmina_preferences.glade:2104
+#: data/ui/remmina_preferences.glade:2138
 msgid "Colour theme"
 msgstr "Colour theme"
 
-#: data/ui/remmina_preferences.glade:2115
+#: data/ui/remmina_preferences.glade:2149
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4914,130 +4924,130 @@ msgstr ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 
-#: data/ui/remmina_preferences.glade:2119
+#: data/ui/remmina_preferences.glade:2153
 msgid "Pick a terminal colouring file"
 msgstr "Pick a terminal colouring file"
 
-#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2168
 msgid "Bright colours"
 msgstr "Bright colours"
 
-#: data/ui/remmina_preferences.glade:2148
+#: data/ui/remmina_preferences.glade:2182
 msgid "Pick a light black colour"
 msgstr "Pick a light black colour"
 
-#: data/ui/remmina_preferences.glade:2162
+#: data/ui/remmina_preferences.glade:2196
 msgid "Pick a light red colour"
 msgstr "Pick a light red colour"
 
-#: data/ui/remmina_preferences.glade:2176
+#: data/ui/remmina_preferences.glade:2210
 msgid "Pick a bright green colour"
 msgstr "Pick a bright green colour"
 
-#: data/ui/remmina_preferences.glade:2190
+#: data/ui/remmina_preferences.glade:2224
 msgid "Pick a bright yellow colour"
 msgstr "Pick a bright yellow colour"
 
-#: data/ui/remmina_preferences.glade:2204
+#: data/ui/remmina_preferences.glade:2238
 msgid "Pick a bright blue colour"
 msgstr "Pick a bright blue colour"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2252
 msgid "Pick a light magenta colour"
 msgstr "Pick a light magenta colour"
 
-#: data/ui/remmina_preferences.glade:2232
+#: data/ui/remmina_preferences.glade:2266
 msgid "Pick a light cyan colour"
 msgstr "Pick a light cyan colour"
 
-#: data/ui/remmina_preferences.glade:2246
+#: data/ui/remmina_preferences.glade:2280
 msgid "Pick a light white colour"
 msgstr "Pick a light white colour"
 
-#: data/ui/remmina_preferences.glade:2260
+#: data/ui/remmina_preferences.glade:2294
 msgid "Pick a black colour"
 msgstr "Pick a black colour"
 
-#: data/ui/remmina_preferences.glade:2274
+#: data/ui/remmina_preferences.glade:2308
 msgid "Pick a red colour"
 msgstr "Pick a red colour"
 
-#: data/ui/remmina_preferences.glade:2288
+#: data/ui/remmina_preferences.glade:2322
 msgid "Pick a green colour"
 msgstr "Pick a green colour"
 
-#: data/ui/remmina_preferences.glade:2302
+#: data/ui/remmina_preferences.glade:2336
 msgid "Pick a yellow colour"
 msgstr "Pick a yellow colour"
 
-#: data/ui/remmina_preferences.glade:2316
+#: data/ui/remmina_preferences.glade:2350
 msgid "Pick a blue colour"
 msgstr "Pick a blue colour"
 
-#: data/ui/remmina_preferences.glade:2330
+#: data/ui/remmina_preferences.glade:2364
 msgid "Pick a magenta colour"
 msgstr "Pick a magenta colour"
 
-#: data/ui/remmina_preferences.glade:2344
+#: data/ui/remmina_preferences.glade:2378
 msgid "Pick a cyan colour"
 msgstr "Pick a cyan colour"
 
-#: data/ui/remmina_preferences.glade:2358
+#: data/ui/remmina_preferences.glade:2392
 msgid "Pick a white colour"
 msgstr "Pick a white colour"
 
-#: data/ui/remmina_preferences.glade:2371
+#: data/ui/remmina_preferences.glade:2405
 msgid "Normal colours"
 msgstr "Normal colours"
 
-#: data/ui/remmina_preferences.glade:2384
-#: data/ui/remmina_preferences.glade:2399
+#: data/ui/remmina_preferences.glade:2418
+#: data/ui/remmina_preferences.glade:2433
 msgid "Cursor colour"
 msgstr "Cursor colour"
 
-#: data/ui/remmina_preferences.glade:2413
-#: data/ui/remmina_preferences.glade:2428
+#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2462
 msgid "Background colour"
 msgstr "Background colour"
 
-#: data/ui/remmina_preferences.glade:2444
-#: data/ui/remmina_preferences.glade:2458
+#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2492
 msgid "Foreground colour"
 msgstr "Foreground colour"
 
-#: data/ui/remmina_preferences.glade:2471
+#: data/ui/remmina_preferences.glade:2505
 msgid "Increase and decrease font size"
 msgstr "Increase and decrease font size"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2535
 msgid "Search text shortcut"
 msgstr "Search text shortcut"
 
-#: data/ui/remmina_preferences.glade:2532
-#: data/ui/remmina_preferences.glade:2547
+#: data/ui/remmina_preferences.glade:2566
+#: data/ui/remmina_preferences.glade:2581
 msgid "Bold colour"
 msgstr "Normal colours"
 
-#: data/ui/remmina_preferences.glade:2561
-#: data/ui/remmina_preferences.glade:2602
+#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2636
 msgid "Highlight colour"
 msgstr "Highlight colour"
 
-#: data/ui/remmina_preferences.glade:2574
-#: data/ui/remmina_preferences.glade:2618
+#: data/ui/remmina_preferences.glade:2608
+#: data/ui/remmina_preferences.glade:2652
 msgid "Highlight foreground colour"
 msgstr "Highlight foreground colour"
 
-#: data/ui/remmina_preferences.glade:2587
-#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2668
 msgid "Cursor foreground colour"
 msgstr "Cursor foreground colour"
 
-#: data/ui/remmina_preferences.glade:2690
+#: data/ui/remmina_preferences.glade:2724
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2738
 msgid "Remmina Preferences"
 msgstr "Remmina Preferences"
 
@@ -5148,12 +5158,12 @@ msgstr "Master password"
 #, fuzzy
 #~ msgid ""
 #~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonymous</a></b> statistics. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonymous</a></b> statistics. (*)"
 #~ msgstr ""
 #~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonymous</a></b> statistics. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonymous</a></b> statistics. (*)"
 
 #, fuzzy
 #~ msgid "Send anonymous statistics"

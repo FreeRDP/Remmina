@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-15 14:21+0000\n"
+"POT-Creation-Date: 2023-09-21 11:20+0000\n"
 "PO-Revision-Date: 2023-09-14 02:30+0000\n"
 "Last-Translator: Eric <hamburger2048@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -252,15 +252,15 @@ msgid "Configure the keystrokes"
 msgstr "配置键盘监听"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:479
+#: src/remmina_pref_dialog.c:480
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "要使用主密码，libsodium 版本须至少为 1.9.0"
 
-#: src/remmina_pref_dialog.c:813
+#: src/remmina_pref_dialog.c:816
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "选择一个终端配色文件替换该文件： "
 
-#: src/remmina_pref_dialog.c:817
+#: src/remmina_pref_dialog.c:820
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -277,7 +277,7 @@ msgstr "取消"
 #: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2708
+#: data/ui/remmina_preferences.glade:2742
 msgid "Close"
 msgstr "关闭"
 
@@ -458,14 +458,14 @@ msgstr "最小化窗口"
 msgid "Disconnect"
 msgstr "断开"
 
-#: src/rcw.c:4433
+#: src/rcw.c:4437
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr "文件“%s” 已损坏，无法读取或未找到。"
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
-#: src/rcw.c:4507
+#: src/rcw.c:4511
 msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -473,7 +473,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4651
+#: src/rcw.c:4655
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
@@ -481,7 +481,7 @@ msgstr "警告：此插件需要 GtkSocket，但此功能在 Wayland 会话中�
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
-#: src/rcw.c:4657
+#: src/rcw.c:4661
 msgid ""
 "Plugins relying on GtkSocket can't run in a Wayland session.\n"
 "For more info and a possible workaround, please visit the Remmina wiki at:\n"
@@ -495,7 +495,7 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 
-#: src/rcw.c:4671
+#: src/rcw.c:4675
 msgid "Open in web browser"
 msgstr "在浏览器中打开"
 
@@ -4168,8 +4168,8 @@ msgstr "允许 Remmina 自动打开.rdp 和 .remmina 文件。"
 #. The star (*) is a reference to privacy consent
 #: data/ui/remmina_news.glade:157
 msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news site"
-"\">remmina.org</a> (*)"
+"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a> (*)"
 msgstr ""
 "从<a href=\"https://remmina.org\" title=\"Remmina 新闻站点\">remmina.org</a> "
 "(*)获取新闻"
@@ -4190,8 +4190,8 @@ msgstr "<big>参加</big>"
 #: data/ui/remmina_news.glade:231
 msgid ""
 "<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a href="
-"\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
+"<b>You have our gratitude in choosing copylefted libre software, <a "
+"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
 "“blblblblblb”\">donations also make us happy</a>, and further help improve "
 "Remmina.</b>\n"
 "</span>\n"
@@ -4613,132 +4613,142 @@ msgstr "显示/隐藏工具栏"
 msgid "View-only mode"
 msgstr "仅查看模式"
 
-#: data/ui/remmina_preferences.glade:1365
+#: data/ui/remmina_preferences.glade:1359
+#, fuzzy
+#| msgid "Send clipboard content as keystrokes"
+msgid "Send clipboard as keystrokes"
+msgstr "以击键方式发送剪贴板内容"
+
+#: data/ui/remmina_preferences.glade:1369
+msgid "Send-clipboard"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1399
 msgid "Keyboard"
 msgstr "键盘"
 
-#: data/ui/remmina_preferences.glade:1396
+#: data/ui/remmina_preferences.glade:1430
 msgid "Local SSH port"
 msgstr "本地 SSH 端口"
 
-#: data/ui/remmina_preferences.glade:1420
+#: data/ui/remmina_preferences.glade:1454
 msgid "Parse ~/.ssh/config"
 msgstr "解析 ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1444
+#: data/ui/remmina_preferences.glade:1478
 msgid "No logging at all"
 msgstr "全部不记录"
 
-#: data/ui/remmina_preferences.glade:1445
+#: data/ui/remmina_preferences.glade:1479
 msgid "Rare conditions or warnings"
 msgstr "罕见情况或告警"
 
-#: data/ui/remmina_preferences.glade:1446
+#: data/ui/remmina_preferences.glade:1480
 msgid "API-accessible entrypoints"
 msgstr "API可访问的入口"
 
-#: data/ui/remmina_preferences.glade:1447
+#: data/ui/remmina_preferences.glade:1481
 msgid "Lower level protocol info, packet level"
 msgstr "低层协议信息，数据包层"
 
-#: data/ui/remmina_preferences.glade:1448
+#: data/ui/remmina_preferences.glade:1482
 msgid "Function entering and leaving"
 msgstr "进入和离开的功能"
 
-#: data/ui/remmina_preferences.glade:1465
+#: data/ui/remmina_preferences.glade:1499
 msgid "SSH log level"
 msgstr "SSH 日志级别"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1536
+#: data/ui/remmina_preferences.glade:1570
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "在 TCP 开始发送 keepalive 探测之前，连接需要保持空闲的时间。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1552
+#: data/ui/remmina_preferences.glade:1586
 msgid "Seconds between each keepalive probe."
 msgstr "各个 keepalive 探测器之间的时间（以秒为单位）。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1568
+#: data/ui/remmina_preferences.glade:1602
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "丢弃连接之前 TCP 应发送的最大 keepalive 探测数。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1584
+#: data/ui/remmina_preferences.glade:1618
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr "强制关闭相应的TCP连接之前尝试确认数据的毫秒数。"
 
-#: data/ui/remmina_preferences.glade:1610
+#: data/ui/remmina_preferences.glade:1644
 msgid "SSH options"
 msgstr "SSH 选项"
 
-#: data/ui/remmina_preferences.glade:1627
+#: data/ui/remmina_preferences.glade:1661
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
 "Remmina 锁定会话并再次要求输入密码的时间(以秒为单位)。默认值为 300 秒。"
 
-#: data/ui/remmina_preferences.glade:1639
+#: data/ui/remmina_preferences.glade:1673
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr "设置并使用一个密钥来防止别人未经授权使用 Remina。"
 
-#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1678
 msgid "Remmina password"
 msgstr "Remmina 密码"
 
-#: data/ui/remmina_preferences.glade:1655
+#: data/ui/remmina_preferences.glade:1689
 msgid "Use secret key authentication for some widgets"
 msgstr "对某些小部件使用密钥身份验证"
 
-#: data/ui/remmina_preferences.glade:1675
+#: data/ui/remmina_preferences.glade:1709
 msgid "Valid for"
 msgstr "有效时间"
 
-#: data/ui/remmina_preferences.glade:1686
+#: data/ui/remmina_preferences.glade:1720
 msgid "Number of seconds to keep password valid for"
 msgstr "密码有效期（单位：秒）"
 
-#: data/ui/remmina_preferences.glade:1691
+#: data/ui/remmina_preferences.glade:1725
 msgid "timeout in seconds (default 300)"
 msgstr "超时时间（单位：秒，默认值300）"
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1737
 msgid "Enter your Remmina password to connect"
 msgstr "输入 Remmina 密码才能连接"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1707
+#: data/ui/remmina_preferences.glade:1741
 msgid "Require to connect"
 msgstr "需要密码才能连接"
 
-#: data/ui/remmina_preferences.glade:1718
+#: data/ui/remmina_preferences.glade:1752
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr "创建、编辑、复制和删除操作需要使用 Remmina 密码"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1722
+#: data/ui/remmina_preferences.glade:1756
 msgid "Require to modify"
 msgstr "需要密码才能修改"
 
-#: data/ui/remmina_preferences.glade:1733
+#: data/ui/remmina_preferences.glade:1767
 msgid "Enter your Remmina password to view passwords"
 msgstr "输入 Remmina 密码查看密码"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1737
+#: data/ui/remmina_preferences.glade:1771
 msgid "Require to view passwords"
 msgstr "这是查看密码所必须的"
 
-#: data/ui/remmina_preferences.glade:1793
+#: data/ui/remmina_preferences.glade:1827
 msgid "Encryption"
 msgstr "加密"
 
-#: data/ui/remmina_preferences.glade:1804
+#: data/ui/remmina_preferences.glade:1838
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4756,79 +4766,79 @@ msgstr ""
 "“中等”是安全性和所需内存/CPU 之间的最佳平衡，但如果你需要一个非常安全的方法，"
 "你应该选择“敏感”等级，但该方法会使用超过 1 GB 的内存和许多的 CPU 周期。 "
 
-#: data/ui/remmina_preferences.glade:1813
+#: data/ui/remmina_preferences.glade:1847
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "中等强度 (+64 MiB 内存）"
 
-#: data/ui/remmina_preferences.glade:1814
+#: data/ui/remmina_preferences.glade:1848
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "强 （+256 MB, ~2009 年的 CPU）"
 
-#: data/ui/remmina_preferences.glade:1815
+#: data/ui/remmina_preferences.glade:1849
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "敏感（+1 GB, ~2014 年 CPU）"
 
-#: data/ui/remmina_preferences.glade:1831
+#: data/ui/remmina_preferences.glade:1865
 msgid "Auditing log"
 msgstr "审计日志"
 
-#: data/ui/remmina_preferences.glade:1856
+#: data/ui/remmina_preferences.glade:1890
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "自动接受所有指纹和证书"
 
-#: data/ui/remmina_preferences.glade:1861
+#: data/ui/remmina_preferences.glade:1895
 msgid "Trust all certificates"
 msgstr "信任所有证书"
 
-#: data/ui/remmina_preferences.glade:1896
+#: data/ui/remmina_preferences.glade:1930
 msgid "Security"
 msgstr "安全"
 
-#: data/ui/remmina_preferences.glade:1927
+#: data/ui/remmina_preferences.glade:1961
 msgid "Terminal font"
 msgstr "终端字体"
 
-#: data/ui/remmina_preferences.glade:1940
+#: data/ui/remmina_preferences.glade:1974
 msgid "Scrollback lines"
 msgstr "回滚行数"
 
-#: data/ui/remmina_preferences.glade:1988
+#: data/ui/remmina_preferences.glade:2022
 msgid "Shortcuts for copying and pasting"
 msgstr "复制和粘贴的快捷键"
 
-#: data/ui/remmina_preferences.glade:2001
+#: data/ui/remmina_preferences.glade:2035
 msgid "Select all shortcuts"
 msgstr "全选快捷键"
 
-#: data/ui/remmina_preferences.glade:2014
-#: data/ui/remmina_preferences.glade:2031
-#: data/ui/remmina_preferences.glade:2484
-#: data/ui/remmina_preferences.glade:2514
-#: data/ui/remmina_preferences.glade:2648
-#: data/ui/remmina_preferences.glade:2665
+#: data/ui/remmina_preferences.glade:2048
+#: data/ui/remmina_preferences.glade:2065
+#: data/ui/remmina_preferences.glade:2518
+#: data/ui/remmina_preferences.glade:2548
+#: data/ui/remmina_preferences.glade:2682
+#: data/ui/remmina_preferences.glade:2699
 msgid "(Host key+)"
 msgstr "(Host key+)"
 
-#: data/ui/remmina_preferences.glade:2049
+#: data/ui/remmina_preferences.glade:2083
 msgid "Use default system font"
 msgstr "使用系统默认字体"
 
-#: data/ui/remmina_preferences.glade:2074
+#: data/ui/remmina_preferences.glade:2108
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
 "选择 \"SGR 1 \"也会切换到前8种调色板颜色的明亮对应色（除了使文字变粗之外）。"
 
-#: data/ui/remmina_preferences.glade:2090
+#: data/ui/remmina_preferences.glade:2124
 msgid "Show bold text in bright colors"
 msgstr "用鲜艳颜色显示粗体文本"
 
-#: data/ui/remmina_preferences.glade:2104
+#: data/ui/remmina_preferences.glade:2138
 msgid "Colour theme"
 msgstr "配色主题"
 
-#: data/ui/remmina_preferences.glade:2115
+#: data/ui/remmina_preferences.glade:2149
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4836,130 +4846,130 @@ msgstr ""
 "选择一个配色方案文件，预安装的主题通常在 /usr/share/remmina/theme 下。请参阅 "
 "https://github.com/mbadolato/iTerm2-Color-Schemes。"
 
-#: data/ui/remmina_preferences.glade:2119
+#: data/ui/remmina_preferences.glade:2153
 msgid "Pick a terminal colouring file"
 msgstr "选择一个终端配色文件"
 
-#: data/ui/remmina_preferences.glade:2134
+#: data/ui/remmina_preferences.glade:2168
 msgid "Bright colours"
 msgstr "高亮颜色"
 
-#: data/ui/remmina_preferences.glade:2148
+#: data/ui/remmina_preferences.glade:2182
 msgid "Pick a light black colour"
 msgstr "选择亮黑色"
 
-#: data/ui/remmina_preferences.glade:2162
+#: data/ui/remmina_preferences.glade:2196
 msgid "Pick a light red colour"
 msgstr "选择亮红色"
 
-#: data/ui/remmina_preferences.glade:2176
+#: data/ui/remmina_preferences.glade:2210
 msgid "Pick a bright green colour"
 msgstr "选择亮绿色"
 
-#: data/ui/remmina_preferences.glade:2190
+#: data/ui/remmina_preferences.glade:2224
 msgid "Pick a bright yellow colour"
 msgstr "选择亮黄色"
 
-#: data/ui/remmina_preferences.glade:2204
+#: data/ui/remmina_preferences.glade:2238
 msgid "Pick a bright blue colour"
 msgstr "选择亮蓝色"
 
-#: data/ui/remmina_preferences.glade:2218
+#: data/ui/remmina_preferences.glade:2252
 msgid "Pick a light magenta colour"
 msgstr "选择亮洋红色"
 
-#: data/ui/remmina_preferences.glade:2232
+#: data/ui/remmina_preferences.glade:2266
 msgid "Pick a light cyan colour"
 msgstr "选择亮青色"
 
-#: data/ui/remmina_preferences.glade:2246
+#: data/ui/remmina_preferences.glade:2280
 msgid "Pick a light white colour"
 msgstr "选择亮白色"
 
-#: data/ui/remmina_preferences.glade:2260
+#: data/ui/remmina_preferences.glade:2294
 msgid "Pick a black colour"
 msgstr "选择黑色"
 
-#: data/ui/remmina_preferences.glade:2274
+#: data/ui/remmina_preferences.glade:2308
 msgid "Pick a red colour"
 msgstr "选择红色"
 
-#: data/ui/remmina_preferences.glade:2288
+#: data/ui/remmina_preferences.glade:2322
 msgid "Pick a green colour"
 msgstr "选择绿色"
 
-#: data/ui/remmina_preferences.glade:2302
+#: data/ui/remmina_preferences.glade:2336
 msgid "Pick a yellow colour"
 msgstr "选择黄色"
 
-#: data/ui/remmina_preferences.glade:2316
+#: data/ui/remmina_preferences.glade:2350
 msgid "Pick a blue colour"
 msgstr "选择蓝色"
 
-#: data/ui/remmina_preferences.glade:2330
+#: data/ui/remmina_preferences.glade:2364
 msgid "Pick a magenta colour"
 msgstr "选择洋红色"
 
-#: data/ui/remmina_preferences.glade:2344
+#: data/ui/remmina_preferences.glade:2378
 msgid "Pick a cyan colour"
 msgstr "选择青色"
 
-#: data/ui/remmina_preferences.glade:2358
+#: data/ui/remmina_preferences.glade:2392
 msgid "Pick a white colour"
 msgstr "选择白色"
 
-#: data/ui/remmina_preferences.glade:2371
+#: data/ui/remmina_preferences.glade:2405
 msgid "Normal colours"
 msgstr "正常颜色"
 
-#: data/ui/remmina_preferences.glade:2384
-#: data/ui/remmina_preferences.glade:2399
+#: data/ui/remmina_preferences.glade:2418
+#: data/ui/remmina_preferences.glade:2433
 msgid "Cursor colour"
 msgstr "光标颜色"
 
-#: data/ui/remmina_preferences.glade:2413
-#: data/ui/remmina_preferences.glade:2428
+#: data/ui/remmina_preferences.glade:2447
+#: data/ui/remmina_preferences.glade:2462
 msgid "Background colour"
 msgstr "背景色"
 
-#: data/ui/remmina_preferences.glade:2444
-#: data/ui/remmina_preferences.glade:2458
+#: data/ui/remmina_preferences.glade:2478
+#: data/ui/remmina_preferences.glade:2492
 msgid "Foreground colour"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:2471
+#: data/ui/remmina_preferences.glade:2505
 msgid "Increase and decrease font size"
 msgstr "增大和减小字体"
 
-#: data/ui/remmina_preferences.glade:2501
+#: data/ui/remmina_preferences.glade:2535
 msgid "Search text shortcut"
 msgstr "搜索文本快捷键"
 
-#: data/ui/remmina_preferences.glade:2532
-#: data/ui/remmina_preferences.glade:2547
+#: data/ui/remmina_preferences.glade:2566
+#: data/ui/remmina_preferences.glade:2581
 msgid "Bold colour"
 msgstr "粗体颜色"
 
-#: data/ui/remmina_preferences.glade:2561
-#: data/ui/remmina_preferences.glade:2602
+#: data/ui/remmina_preferences.glade:2595
+#: data/ui/remmina_preferences.glade:2636
 msgid "Highlight colour"
 msgstr "高亮颜色"
 
-#: data/ui/remmina_preferences.glade:2574
-#: data/ui/remmina_preferences.glade:2618
+#: data/ui/remmina_preferences.glade:2608
+#: data/ui/remmina_preferences.glade:2652
 msgid "Highlight foreground colour"
 msgstr "高亮前景色"
 
-#: data/ui/remmina_preferences.glade:2587
-#: data/ui/remmina_preferences.glade:2634
+#: data/ui/remmina_preferences.glade:2621
+#: data/ui/remmina_preferences.glade:2668
 msgid "Cursor foreground colour"
 msgstr "光标前景色"
 
-#: data/ui/remmina_preferences.glade:2690
+#: data/ui/remmina_preferences.glade:2724
 msgid "Terminal"
 msgstr "终端"
 
-#: data/ui/remmina_preferences.glade:2704
+#: data/ui/remmina_preferences.glade:2738
 msgid "Remmina Preferences"
 msgstr "Remmina 首选项"
 
@@ -5118,8 +5128,8 @@ msgstr "管控密码"
 
 #~ msgid ""
 #~ "Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-#~ "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-#~ "\">anonymous</a></b> statistics. (*)"
+#~ "remmina__stats_8c.html#details\" title=\"Remmina usage "
+#~ "statistics\">anonymous</a></b> statistics. (*)"
 #~ msgstr ""
 #~ "发送 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 #~ "remmina__stats_8c.html#details\" title=\"Remmina 使用统计\">匿名</a></b> "
