@@ -4191,6 +4191,10 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboole
 		if (i < 0)
 			i = gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook)) - 1;
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(priv->notebook), i);
+	} else if (keyval == remmina_pref.shortcutkey_clipboard && !extrahardening) {
+		if (remmina_protocol_widget_plugin_receives_keystrokes(REMMINA_PROTOCOL_WIDGET(cnnobj->proto))) {
+			remmina_protocol_widget_send_clipboard((RemminaProtocolWidget*)cnnobj->proto, G_OBJECT(cnnobj->proto));
+		}
 	} else if (keyval == remmina_pref.shortcutkey_scale && !extrahardening) {
 		if (gtk_widget_is_sensitive(GTK_WIDGET(priv->toolitem_scale))) {
 			gtk_toggle_tool_button_set_active(

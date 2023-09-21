@@ -723,7 +723,7 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 	return;
 }
 
-void remmina_protocol_widget_send_clipboard(RemminaProtocolWidget *gp, GtkMenuItem *widget)
+void remmina_protocol_widget_send_clipboard(RemminaProtocolWidget *gp, GObject*widget)
 {
 	TRACE_CALL(__func__);
 	GtkClipboard *clipboard;
