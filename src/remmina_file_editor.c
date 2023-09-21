@@ -121,6 +121,7 @@ struct _RemminaFileEditorPriv {
 	GtkWidget *		behavior_precommand_entry;
 	GtkWidget *		behavior_postcommand_entry;
 	GtkWidget *		behavior_lock_check;
+	GtkWidget *		behavior_disconnect;
 
 	GtkWidget *		ssh_tunnel_enabled_check;
 	GtkWidget *		ssh_tunnel_loopback_check;
@@ -1192,6 +1193,13 @@ static void remmina_file_editor_create_behavior_tab(RemminaFileEditor *gfe)
 	/* Autostart profile option */
 	priv->behavior_lock_check = remmina_file_editor_create_check(gfe, grid, 10, 1, _("Require password to connect or edit the profile"),
 								     remmina_file_get_int(priv->remmina_file, "profile-lock", FALSE), "profile-lock");
+
+									 /* Startup frame */
+	remmina_public_create_group(GTK_GRID(grid), _("Unexpected disconnect"), 12, 1, 2);
+
+	/* Autostart profile option */
+	priv->behavior_disconnect = remmina_file_editor_create_check(gfe, grid, 16, 1, _("Keep window from closing if not disconnected by Remmina"),
+								     remmina_file_get_int(priv->remmina_file, "disconnect-prompt", FALSE), "disconnect-prompt");
 }
 
 #ifdef HAVE_LIBSSH
@@ -1467,6 +1475,8 @@ static void remmina_file_editor_save_behavior_tab(RemminaFileEditor *gfe)
 	remmina_file_set_int(priv->remmina_file, "enable-autostart", autostart_enabled);
 	gboolean lock_enabled = (priv->behavior_lock_check ? gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->behavior_lock_check)) : FALSE);
 	remmina_file_set_int(priv->remmina_file, "profile-lock", lock_enabled);
+	gboolean disconect_prompt = (priv->behavior_disconnect ? gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->behavior_disconnect)) : FALSE);
+	remmina_file_set_int(priv->remmina_file, "disconnect-prompt", disconect_prompt);
 }
 
 static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
