@@ -1848,61 +1848,80 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 
 	// Handle the dual IPv4 / IPv6 stack
 	// Prioritize IPv6 and fallback to IPv4
+	unsigned short int success = 0;
 
 	// Run the DNS resolution 
 	// First retrieve host from the ssh->session structure
 	ssh_options_get(ssh->session, SSH_OPTIONS_HOST, &hostname);
-	// Call getaddrinfo
-        memset(&hints, 0, sizeof(hints));
-        hints.ai_family = AF_UNSPEC;
-        hints.ai_socktype = SOCK_STREAM;
-        if ((getaddrinfo(hostname, NULL, &hints, &aitop)) != 0) {
-		ssh->error = g_strdup_printf("Could not resolve hostname %s", hostname);
-		REMMINA_DEBUG(ssh->error);
+ 	// Call getaddrinfo
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_family = AF_INET6;
+	hints.ai_socktype = SOCK_STREAM;
+	if ((getaddrinfo(hostname, NULL, &hints, &aitop)) != 0) {
+		ssh->error = g_strdup_printf("Could not resolve hostname %s to IPv6", hostname);
+ 		REMMINA_DEBUG(ssh->error);
+ 	}
+	else {
+		// We have one or more IPV6 addesses now, extract them
+		ai = aitop;
+		while (ai != NULL) {
+ 			struct sockaddr_in6 *ipv6 = (struct sockaddr_in6 *)ai->ai_addr;
+ 			addr6 = &(ipv6->sin6_addr);
+			inet_ntop(AF_INET6, addr6, ipstr, sizeof ipstr);
+			ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ipstr);
+			REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv6 %s", ipstr);
+			if (ssh_connect(ssh->session)) {
+				ssh_disconnect(ssh->session);
+				REMMINA_DEBUG("IPv6 session failed");
+			} else {
+				success = 1;
+				REMMINA_DEBUG("IPv6 session success !");
+				break;
+			}
+			ai = ai->ai_next;
+ 		}
+		freeaddrinfo(aitop);
+ 	}
+	if (success == 0) {
+		// Fallback to IPv4
+		// Call getaddrinfo
+		memset(&hints, 0, sizeof(hints));
+		hints.ai_family = AF_INET;
+		hints.ai_socktype = SOCK_STREAM;
+		if ((getaddrinfo(hostname, NULL, &hints, &aitop)) != 0) {
+			ssh->error = g_strdup_printf("Could not resolve hostname %s to IPv4", hostname);
+			REMMINA_DEBUG(ssh->error);
+ 			return FALSE;
+ 		}
+		else {
+			// We have one or more IPV4 addesses now, extract them
+			ai = aitop;
+			while (ai != NULL) {
+				struct sockaddr_in *ipv4 = (struct sockaddr_in *)ai->ai_addr;
+				addr4 = &(ipv4->sin_addr);
+				inet_ntop(AF_INET, addr4, ipstr, sizeof ipstr);
+				ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ipstr);
+				REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv4 %s", ipstr);
+				if (ssh_connect(ssh->session)) {
+					ssh_disconnect(ssh->session);
+					REMMINA_DEBUG("IPv4 session failed");
+				} else {
+					success = 1;
+					REMMINA_DEBUG("IPv4 session success !");
+					break;
+				}
+				ai = ai->ai_next;
+			}
+			freeaddrinfo(aitop);
+		}
+ 	}
+	if (success == 0){
 		return FALSE;
 	}
 
-	// We have one or more addesses now, extract them
-	ai = aitop;
-	while (ai != NULL) {
-    		if (ai->ai_family == AF_INET) { // IPv4
-			struct sockaddr_in *ipv4 = (struct sockaddr_in *)ai->ai_addr;
-			addr4 = &(ipv4->sin_addr);
-		} else { // IPv6
-			struct sockaddr_in6 *ipv6 = (struct sockaddr_in6 *)ai->ai_addr;
-			addr6 = &(ipv6->sin6_addr);
-		}
-		ai = ai->ai_next;
-	}
-	freeaddrinfo(aitop);
+ 
+ #ifdef HAVE_NETINET_TCP_H
 
-	unsigned short int success6 = 0;
-	if (addr6 != NULL) {
-		// Try IPv6 first
-		inet_ntop(AF_INET6, addr6, ipstr, sizeof ipstr);
-		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ipstr);
-		REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv6 %s", ipstr);
-		if (ssh_connect(ssh->session)) {
-			ssh_disconnect(ssh->session);
-			REMMINA_DEBUG("IPv6 session failed");
-		} else {
-			success6 = 1;
-			REMMINA_DEBUG("IPv6 session success !");
-		}
-	}
-	if (success6 == 0) {
-		// Fallback to IPv4 
-		inet_ntop(AF_INET, addr4, ipstr, sizeof ipstr);
-		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ipstr);
-		REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv4 %s", ipstr);
-		if (ssh_connect(ssh->session)) {
-			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("Could not start SSH session. %s"));
-			return FALSE;
-		}
-	}
-
-#ifdef HAVE_NETINET_TCP_H
 	/* Set keepalive on SSH socket, so we can keep firewalls awaken and detect
 	 * when we loss the tunnel */
 	sshsock = ssh_get_fd(ssh->session);
