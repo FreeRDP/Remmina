@@ -1,3 +1,10 @@
+## v.1.4.33
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.32...v1.4.33)
+
+* [REM-2977] add shortcut for 'send clipboard as keystrokes' [!2535](https://gitlab.com/Remmina/Remmina/merge_requests/2535) *@myheroyuki*
+* [REM-2972] Make keeping window open on session disconnect configurable [!2537](https://gitlab.com/Remmina/Remmina/merge_requests/2537) *@myheroyuki*
+* [REM-2974] fix crash cause by using freed memory [!2536](https://gitlab.com/Remmina/Remmina/merge_requests/2536) *@myheroyuki*
+
 ## v.1.4.32
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.31...v1.4.32)
 
