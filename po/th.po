@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-21 11:20+0000\n"
+"POT-Creation-Date: 2023-09-22 12:27+0000\n"
 "PO-Revision-Date: 2023-02-04 06:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/remmina/remmina/th/"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1726 src/remmina_protocol_widget.c:1745
-#: src/remmina_file_editor.c:1200 src/remmina_file_editor.c:1323
+#: src/remmina_file_editor.c:1208 src/remmina_file_editor.c:1331
 #: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2880
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:68
@@ -34,24 +34,24 @@ msgid "Password"
 msgstr "รหัสผ่าน"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1201 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1209 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 #, fuzzy
 msgid "SSH identity file"
 msgstr "ไฟล์เอกลักษณ์ SSH"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1202
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1210
 #: src/remmina_ssh_plugin.c:1396
 #, fuzzy
 msgid "SSH agent"
 msgstr "ตัวแทน SSH"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1203
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1211
 #: src/remmina_ssh_plugin.c:1397
 msgid "Public key (automatic)"
 msgstr "กุญแจสาธารณะ (อัตโนมัติ)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1204
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1212
 #: src/remmina_ssh_plugin.c:1398
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -78,7 +78,7 @@ msgid "Connect via SSH from a new terminal"
 msgstr "เชื่อมต่อผ่าน SSH จากเทอร์มินัลใหม่"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1317 src/remmina_ssh_plugin.c:1504
+#: src/remmina_file_editor.c:1325 src/remmina_ssh_plugin.c:1504
 #: plugins/rdp/rdp_plugin.c:2879 plugins/vnc/vnc_plugin.c:2098
 #: plugins/vnc/vnc_plugin.c:2110 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
@@ -87,13 +87,13 @@ msgstr "เชื่อมต่อผ่าน SSH จากเทอร์ม�
 msgid "Username"
 msgstr "ชื่อผู้ใช้"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1308
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1316
 #: src/remmina_ssh_plugin.c:1503
 #, fuzzy
 msgid "Authentication type"
 msgstr "ประเภทของการรับรองความถูกต้อง"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1341
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1349
 #: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Password to unlock private key"
@@ -130,7 +130,7 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2101
+#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2111
 msgid "Protocol"
 msgstr "โปรโตคอล"
 
@@ -164,12 +164,12 @@ msgid "Plugins"
 msgstr "ปลั๊กอิน"
 
 #: src/remmina_plugin_manager.c:531 src/remmina_message_panel.c:455
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:251
+#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:252
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:549 src/remmina_file_editor.c:2033
+#: src/remmina_plugin_manager.c:549 src/remmina_file_editor.c:2043
 #: data/ui/remmina_main.glade:457
 msgid "Name"
 msgstr "ชื่อ"
@@ -243,11 +243,11 @@ msgstr "เมตา+"
 msgid "<None>"
 msgstr "<None>"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:558
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:559
 msgid "Resolutions"
 msgstr "ความละเอียด"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:558
+#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:559
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "กําหนดค่าความละเอียดที่มีอยู่"
@@ -321,8 +321,8 @@ msgid "Save password"
 msgstr "บันทึกรหัสผ่าน"
 
 #: src/remmina_message_panel.c:460 src/remmina_message_panel.c:632
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:250
-#: src/remmina_file_editor.c:1907 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:251
+#: src/remmina_file_editor.c:1917 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -911,7 +911,7 @@ msgstr "ขนาด"
 msgid "User"
 msgstr "ผู้ใช้"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2058
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2068
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
 msgid "Group"
 msgstr "กลุ่ม"
@@ -1057,8 +1057,8 @@ msgstr "กำลัง Listen บนพอร์ต %i สำหรับกา
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "การยืนยันตัวตนล้มเหลว กำลังพยายามเชื่อมต่อใหม่…"
 
-#: src/remmina_protocol_widget.c:2080 src/remmina_file_editor.c:462
-#: src/remmina_file_editor.c:1273 data/ui/remmina_main.glade:509
+#: src/remmina_protocol_widget.c:2080 src/remmina_file_editor.c:463
+#: src/remmina_file_editor.c:1281 data/ui/remmina_main.glade:509
 msgid "Server"
 msgstr "เซิร์ฟเวอร์"
 
@@ -1227,35 +1227,29 @@ msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "การเข้าสู่ระบบแบบโต้ตอบแป้นพิมพ์, TOTP / OTP / 2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1900
-#, c-format
-msgid "Could not start SSH session. %s"
-msgstr "ไม่สามารถเริ่มเซสชัน SSH ได้: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2300
+#: src/remmina_ssh.c:2319
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "ไม่สามารถสร้าง channel ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2311
+#: src/remmina_ssh.c:2330
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "ไม่สามารถเชื่อมต่อไปยัง SSH tunnel ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2382 src/remmina_ssh.c:2403 src/remmina_ssh.c:2412
+#: src/remmina_ssh.c:2401 src/remmina_ssh.c:2422 src/remmina_ssh.c:2431
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "ไม่สามารถขอใช้ Port forwarding ได้: %s"
 
-#: src/remmina_ssh.c:2442
+#: src/remmina_ssh.c:2461
 #, fuzzy
 msgid "The server did not respond."
 msgstr "เซิร์ฟเวอร์ไม่ตอบสนอง"
 
-#: src/remmina_ssh.c:2480
+#: src/remmina_ssh.c:2499
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
@@ -1263,86 +1257,86 @@ msgstr ""
 "หรือได้รับการเชื่อมต่อไปยังพอร์ตปัจจุบัน"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2529
+#: src/remmina_ssh.c:2548
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "ไม่สามารถเขียนไปยัง SSH channel ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2536
+#: src/remmina_ssh.c:2555
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "ไม่สามารถอ่านจาก Listening socket ของ Tunnel ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2556
+#: src/remmina_ssh.c:2575
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "ไม่สามารถโพลล์ SSH channel ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2563
+#: src/remmina_ssh.c:2582
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "ไม่สามาถอ่าน SSH channel แบบ non-blocking ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2582
+#: src/remmina_ssh.c:2601
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "ไม่สามารถส่งข้อมูลไปยัง Listening socket ของ Tunnel ได้: %s"
 
-#: src/remmina_ssh.c:2684
+#: src/remmina_ssh.c:2703
 #, fuzzy
 msgid "Assign a destination port."
 msgstr "กําหนดพอร์ตปลายทาง"
 
-#: src/remmina_ssh.c:2691
+#: src/remmina_ssh.c:2710
 #, fuzzy
 msgid "Could not create socket."
 msgstr "ไม่สามารถสร้างซ็อกเก็ตได้"
 
-#: src/remmina_ssh.c:2701
+#: src/remmina_ssh.c:2720
 #, fuzzy
 msgid "Could not bind server socket to local port."
 msgstr "ไม่สามารถผูกซ็อกเก็ตเซิร์ฟเวอร์เข้ากับพอร์ตเฉพาะที่"
 
-#: src/remmina_ssh.c:2707
+#: src/remmina_ssh.c:2726
 #, fuzzy
 msgid "Could not listen to local port."
 msgstr "ไม่สามารถพอร์ตภายในเครื่องได้"
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2717 src/remmina_ssh.c:2734 src/remmina_ssh.c:2752
+#: src/remmina_ssh.c:2736 src/remmina_ssh.c:2753 src/remmina_ssh.c:2771
 #, fuzzy
 msgid "Could not start pthread."
 msgstr "ไม่สามารถเริ่มโปรแกรมอ่าน"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2844
+#: src/remmina_ssh.c:2863
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "ไม่สามารถสร้างเซสชัน SFTP ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2849
+#: src/remmina_ssh.c:2868
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "ไม่สามารถเริ่มเซสชัน SFTP ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2941
+#: src/remmina_ssh.c:2960
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "ไม่สามารถเปิด Channel ได้: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2984
+#: src/remmina_ssh.c:3003
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "ไม่สามารถเรียกใช้ Shell ได้: %s"
 
-#: src/remmina_ssh.c:3114
+#: src/remmina_ssh.c:3133
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "ไม่สามารถสร้างอุปกรณ์ PTY ได้"
@@ -1408,7 +1402,7 @@ msgstr ""
 msgid "Import"
 msgstr "นำเข้า"
 
-#: src/remmina_main.c:1262 src/remmina_file_editor.c:1915
+#: src/remmina_main.c:1262 src/remmina_file_editor.c:1925
 msgid "_Save"
 msgstr "_บันทึก"
 
@@ -1578,147 +1572,155 @@ msgstr ""
 "• เซิร์ฟเวอร์[:p ort]\n"
 "• username@server[:p ort] (เฉพาะโปรโตคอล SSH)</big>"
 
-#: src/remmina_file_editor.c:170
+#: src/remmina_file_editor.c:171
 msgid "Input is invalid."
 msgstr ""
 
-#: src/remmina_file_editor.c:248
+#: src/remmina_file_editor.c:249
 msgid "Choose a Remote Desktop Server"
 msgstr "เลือกเซิร์ฟเวอร์เดสก์ท็อประยะไกล"
 
-#: src/remmina_file_editor.c:486
+#: src/remmina_file_editor.c:487
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "ค้นหาในเครือข่ายเพื่อหาเซิร์ฟเวอร์ %s"
 
-#: src/remmina_file_editor.c:594
+#: src/remmina_file_editor.c:595
 msgid "Resolution"
 msgstr "ความละเอียด"
 
-#: src/remmina_file_editor.c:601
+#: src/remmina_file_editor.c:602
 #, fuzzy
 msgid "Use initial window size"
 msgstr "ใช้ขนาดหน้าต่างเริ่มต้น"
 
-#: src/remmina_file_editor.c:605
+#: src/remmina_file_editor.c:606
 msgid "Use client resolution"
 msgstr "ใช้ความละเอียดของไคลเอนต์"
 
-#: src/remmina_file_editor.c:616 src/remmina_file_editor.c:1253
+#: src/remmina_file_editor.c:617 src/remmina_file_editor.c:1261
 msgid "Custom"
 msgstr "กำหนดเอง"
 
-#: src/remmina_file_editor.c:655
+#: src/remmina_file_editor.c:656
 msgid "Assistance Mode"
 msgstr ""
 
-#: src/remmina_file_editor.c:1036
+#: src/remmina_file_editor.c:1037
 msgid "Keyboard mapping"
 msgstr "การแมปแป้นพิมพ์"
 
-#: src/remmina_file_editor.c:1163
+#: src/remmina_file_editor.c:1164
 #, fuzzy
 msgid "Behavior"
 msgstr "พฤติกรรม"
 
-#: src/remmina_file_editor.c:1166
+#: src/remmina_file_editor.c:1167
 #, fuzzy
 msgid "Execute a Command"
 msgstr "ดําเนินการคําสั่ง"
 
-#: src/remmina_file_editor.c:1170
+#: src/remmina_file_editor.c:1171
 msgid "Before connecting"
 msgstr "ก่อนการเชื่อมต่อ"
 
-#: src/remmina_file_editor.c:1172
+#: src/remmina_file_editor.c:1173
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "คําสั่ง %h %u %t %u %p %g --option"
 
-#: src/remmina_file_editor.c:1177
+#: src/remmina_file_editor.c:1178
 msgid "After connecting"
 msgstr "หลังการเชื่อมต่อ"
 
-#: src/remmina_file_editor.c:1179
+#: src/remmina_file_editor.c:1180
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %t -opt2 %U %p %g"
 
-#: src/remmina_file_editor.c:1183
+#: src/remmina_file_editor.c:1184
 msgid "Start-up"
 msgstr "เมื่อเปิดโปรแกรม"
 
-#: src/remmina_file_editor.c:1186
+#: src/remmina_file_editor.c:1187
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "เริ่มต้นโปรไฟล์นี้อัตโนมัติ"
 
-#: src/remmina_file_editor.c:1190
+#: src/remmina_file_editor.c:1191
 #, fuzzy
 #| msgid "New connection profile"
 msgid "Connection profile security"
 msgstr "การเชื่อมต่อใหม่"
 
-#: src/remmina_file_editor.c:1193
+#: src/remmina_file_editor.c:1194
 msgid "Require password to connect or edit the profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1226
+#: src/remmina_file_editor.c:1198
+msgid "Unexpected disconnect"
+msgstr ""
+
+#: src/remmina_file_editor.c:1201
+msgid "Keep window from closing if not disconnected by Remmina"
+msgstr ""
+
+#: src/remmina_file_editor.c:1234
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "อุโมงค์ SSH"
 
-#: src/remmina_file_editor.c:1227
+#: src/remmina_file_editor.c:1235
 msgid "Enable SSH tunnel"
 msgstr "ใช้งาน SSH Tunnel"
 
-#: src/remmina_file_editor.c:1234
+#: src/remmina_file_editor.c:1242
 msgid "Tunnel via loopback address"
 msgstr "ใช้ Tunnel ผ่าน Loopback Address"
 
-#: src/remmina_file_editor.c:1244
+#: src/remmina_file_editor.c:1252
 #, c-format
 msgid "Same server at port %i"
 msgstr "เซิร์ฟเวอร์เดียวกันที่พอร์ต %i"
 
-#: src/remmina_file_editor.c:1294 plugins/rdp/rdp_plugin.c:2925
+#: src/remmina_file_editor.c:1302 plugins/rdp/rdp_plugin.c:2925
 msgid "Start-up path"
 msgstr "พาธเริ่มต้น"
 
-#: src/remmina_file_editor.c:1303
+#: src/remmina_file_editor.c:1311
 msgid "SSH Authentication"
 msgstr "การยืนยันตัวตนของ SSH"
 
-#: src/remmina_file_editor.c:1330
+#: src/remmina_file_editor.c:1338
 #, fuzzy
 #| msgid "SSH private key passphrase"
 msgid "SSH private key file"
 msgstr "ไฟล์คีย์ส่วนตัวของ SSH"
 
-#: src/remmina_file_editor.c:1336 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1344 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 msgid "SSH certificate file"
 msgstr "ไฟล์ใบรับรอง SSH"
 
-#: src/remmina_file_editor.c:1393
+#: src/remmina_file_editor.c:1401
 msgid "Basic"
 msgstr "เบื้องต้น"
 
-#: src/remmina_file_editor.c:1399
+#: src/remmina_file_editor.c:1407
 msgid "Advanced"
 msgstr "ขั้นสูง"
 
-#: src/remmina_file_editor.c:1410 data/ui/remmina_main.glade:523
+#: src/remmina_file_editor.c:1418 data/ui/remmina_main.glade:523
 #, fuzzy
 msgid "Notes"
 msgstr "บันทึก"
 
-#: src/remmina_file_editor.c:1540
+#: src/remmina_file_editor.c:1550
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 
-#: src/remmina_file_editor.c:1544
+#: src/remmina_file_editor.c:1554
 #, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1726,65 +1728,65 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1548 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1558 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 #, fuzzy
 msgid "Internal error."
 msgstr "ข้อผิดพลาดในการโอนย้าย"
 
-#: src/remmina_file_editor.c:1791 src/remmina_file_editor.c:1827
-#: src/remmina_file_editor.c:1848 src/remmina_file_editor.c:1871
+#: src/remmina_file_editor.c:1801 src/remmina_file_editor.c:1837
+#: src/remmina_file_editor.c:1858 src/remmina_file_editor.c:1881
 #, fuzzy, c-format
 #| msgid "Could not create SFTP session. %s"
 msgid "Couldn't validate user input. %s"
 msgstr "การสร้างวาระ SFTP ล้มเหลว: %s"
 
-#: src/remmina_file_editor.c:1815
+#: src/remmina_file_editor.c:1825
 msgid "Default settings saved."
 msgstr "บันทึกการตั้งค่าเริ่มต้นแล้ว"
 
-#: src/remmina_file_editor.c:1905
+#: src/remmina_file_editor.c:1915
 msgid "Remote Connection Profile"
 msgstr "โปรไฟล์การเชื่อมต่อระยะไกล"
 
-#: src/remmina_file_editor.c:1911
+#: src/remmina_file_editor.c:1921
 #, fuzzy
 msgid "Save as Default"
 msgstr "บันทึกเป็นค่าเริ่มต้น"
 
-#: src/remmina_file_editor.c:1912
+#: src/remmina_file_editor.c:1922
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "ใช้การตั้งค่าปัจจุบันเป็นค่าเริ่มต้นสําหรับโปรไฟล์การเชื่อมต่อใหม่ทั้งหมด"
 
-#: src/remmina_file_editor.c:1920 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1930 data/ui/remmina_main.glade:161
 #, fuzzy
 msgid "Connect"
 msgstr "เชื่อมต่อ"
 
-#: src/remmina_file_editor.c:1923
+#: src/remmina_file_editor.c:1933
 #, fuzzy
 msgid "_Save and Connect"
 msgstr "_Saveและเชื่อมต่อ"
 
-#: src/remmina_file_editor.c:2047
+#: src/remmina_file_editor.c:2057
 msgid "Quick Connect"
 msgstr "เชื่อมต่อด่วน"
 
-#: src/remmina_file_editor.c:2071
+#: src/remmina_file_editor.c:2081
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "ใช้ '%s' เป็นตัวคั่นกลุ่มย่อย"
 
-#: src/remmina_file_editor.c:2076 data/ui/remmina_main.glade:493
+#: src/remmina_file_editor.c:2086 data/ui/remmina_main.glade:493
 msgid "Labels"
 msgstr ""
 
-#: src/remmina_file_editor.c:2090
+#: src/remmina_file_editor.c:2100
 msgid "Label1,Label2"
 msgstr ""
 
-#: src/remmina_file_editor.c:2162 src/remmina_file_editor.c:2181
+#: src/remmina_file_editor.c:2172 src/remmina_file_editor.c:2191
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "ไม่สามารถค้นหาไฟล์ %s ได้"
@@ -5590,6 +5592,10 @@ msgstr "ปลดล็อก"
 #, fuzzy
 msgid "Master password"
 msgstr "รหัสผ่านหลัก"
+
+#, c-format
+#~ msgid "Could not start SSH session. %s"
+#~ msgstr "ไม่สามารถเริ่มเซสชัน SSH ได้: %s"
 
 #, fuzzy
 #~| msgid "Set new password"
