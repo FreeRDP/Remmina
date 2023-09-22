@@ -893,7 +893,7 @@ static PyObject* remmina_pref_get_value_wrapper(PyObject* self, PyObject* args, 
 		const gchar* value = python_wrapper_get_service()->pref_get_value(key);
 		if (value)
 		{
-			result = PyUnicode_FromFormat("%s", result);
+			result = PyUnicode_FromFormat("%s", value);
 		}
 	}
 
