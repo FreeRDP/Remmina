@@ -363,8 +363,8 @@ static gboolean conn_closed(gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
-
-	if (!gp->priv->user_disconnect && !gp->priv->has_error){
+	int disconnect_prompt = remmina_file_get_int(gp->priv->remmina_file, "disconnect-prompt", FALSE);
+	if (!gp->priv->user_disconnect && !gp->priv->has_error && disconnect_prompt){
 		const char* msg = "Plugin Disconnected";
 		if (gp->priv->has_error){
 			msg = remmina_protocol_widget_get_error_message(gp);
