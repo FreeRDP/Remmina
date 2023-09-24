@@ -361,17 +361,6 @@ static GtkWidget *remmina_file_editor_create_notebook_tab(RemminaFileEditor *gfe
 	return grid;
 }
 
-#ifdef HAVE_LIBSSH
-
-static void remmina_file_editor_ssh_tunnel_server_custom_radio_on_toggled(GtkToggleButton *togglebutton, RemminaFileEditor *gfe)
-{
-	TRACE_CALL(__func__);
-	gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_server_entry),
-				 gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_tunnel_enabled_check)) &&
-				 (gfe->priv->ssh_tunnel_server_custom_radio == NULL ||
-				  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_tunnel_server_custom_radio))));
-}
-
 
 static void remmina_file_editor_assistance_enabled_check_on_toggled(GtkToggleButton *togglebutton,
 								    RemminaFileEditor *gfe)
@@ -391,6 +380,18 @@ static void remmina_file_editor_assistance_enabled_check_on_toggled(GtkToggleBut
 			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->assistance_password_label), enabled);
 	}
 }
+
+#ifdef HAVE_LIBSSH
+
+static void remmina_file_editor_ssh_tunnel_server_custom_radio_on_toggled(GtkToggleButton *togglebutton, RemminaFileEditor *gfe)
+{
+	TRACE_CALL(__func__);
+	gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_server_entry),
+				 gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_tunnel_enabled_check)) &&
+				 (gfe->priv->ssh_tunnel_server_custom_radio == NULL ||
+				  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_tunnel_server_custom_radio))));
+}
+
 
 static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleButton *togglebutton,
 								    RemminaFileEditor *gfe, RemminaProtocolSSHSetting ssh_setting)
