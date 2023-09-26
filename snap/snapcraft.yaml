@@ -71,7 +71,7 @@ apps:
   ssh-agent:
     command: usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
     daemon: simple
-    adapter: none
+    # adapter: none
     plugs:
       - home
       - network-bind
@@ -123,7 +123,7 @@ parts:
       - libusb-1.0-0-dev
       - libxkbfile-dev
       - libxv-dev
-      - libavresample-dev
+        #- libavresample-dev
     stage-packages:
       - libffi7
       - libusb-1.0-0
@@ -265,7 +265,6 @@ parts:
   app:
     plugin: nil
     stage-packages:
-      - libappindicator3-1
       - libindicator3-7
       - libgdbm6
       - libavahi-ui-gtk3-0
@@ -284,15 +283,15 @@ parts:
       - libzvbi0
       - libxvidcore4
       - libusbredirhost1
-      - libx265-179
+      - libx265-199
       - libusbredirparser1
-      - libx264-155
+      - libx264-163
       - libphodav-2.0-0
       - libwebpmux3
       - libnss3
       - libwavpack1
       - libnspr4
-      - libvpx6
+      - libvpx7
       - libtwolame0
       - libtheora0
       - libspeex1
