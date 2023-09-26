@@ -1848,77 +1848,78 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 
 	// Handle the dual IPv4 / IPv6 stack
 	// Prioritize IPv6 and fallback to IPv4
-	unsigned short int success = 0;
+	if (ssh_connect(ssh->session)) {
+		unsigned short int success = 0;
 
-	// Run the DNS resolution 
-	// First retrieve host from the ssh->session structure
-	ssh_options_get(ssh->session, SSH_OPTIONS_HOST, &hostname);
- 	// Call getaddrinfo
-	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_INET6;
-	hints.ai_socktype = SOCK_STREAM;
-	if ((getaddrinfo(hostname, NULL, &hints, &aitop)) != 0) {
-		ssh->error = g_strdup_printf("Could not resolve hostname %s to IPv6", hostname);
- 		REMMINA_DEBUG(ssh->error);
- 	}
-	else {
-		// We have one or more IPV6 addesses now, extract them
-		ai = aitop;
-		while (ai != NULL) {
- 			struct sockaddr_in6 *ipv6 = (struct sockaddr_in6 *)ai->ai_addr;
- 			addr6 = &(ipv6->sin6_addr);
-			inet_ntop(AF_INET6, addr6, ipstr, sizeof ipstr);
-			ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ipstr);
-			REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv6 %s", ipstr);
-			if (ssh_connect(ssh->session)) {
-				ssh_disconnect(ssh->session);
-				REMMINA_DEBUG("IPv6 session failed");
-			} else {
-				success = 1;
-				REMMINA_DEBUG("IPv6 session success !");
-				break;
-			}
-			ai = ai->ai_next;
- 		}
-		freeaddrinfo(aitop);
- 	}
-	if (success == 0) {
-		// Fallback to IPv4
+		// Run the DNS resolution 
+		// First retrieve host from the ssh->session structure
+		ssh_options_get(ssh->session, SSH_OPTIONS_HOST, &hostname);
 		// Call getaddrinfo
 		memset(&hints, 0, sizeof(hints));
-		hints.ai_family = AF_INET;
+		hints.ai_family = AF_INET6;
 		hints.ai_socktype = SOCK_STREAM;
 		if ((getaddrinfo(hostname, NULL, &hints, &aitop)) != 0) {
-			ssh->error = g_strdup_printf("Could not resolve hostname %s to IPv4", hostname);
+			ssh->error = g_strdup_printf("Could not resolve hostname %s to IPv6", hostname);
 			REMMINA_DEBUG(ssh->error);
- 			return FALSE;
- 		}
+		}
 		else {
-			// We have one or more IPV4 addesses now, extract them
+			// We have one or more IPV6 addesses now, extract them
 			ai = aitop;
 			while (ai != NULL) {
-				struct sockaddr_in *ipv4 = (struct sockaddr_in *)ai->ai_addr;
-				addr4 = &(ipv4->sin_addr);
-				inet_ntop(AF_INET, addr4, ipstr, sizeof ipstr);
+				struct sockaddr_in6 *ipv6 = (struct sockaddr_in6 *)ai->ai_addr;
+				addr6 = &(ipv6->sin6_addr);
+				inet_ntop(AF_INET6, addr6, ipstr, sizeof ipstr);
 				ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ipstr);
-				REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv4 %s", ipstr);
+				REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv6 %s", ipstr);
 				if (ssh_connect(ssh->session)) {
 					ssh_disconnect(ssh->session);
-					REMMINA_DEBUG("IPv4 session failed");
+					REMMINA_DEBUG("IPv6 session failed");
 				} else {
 					success = 1;
-					REMMINA_DEBUG("IPv4 session success !");
+					REMMINA_DEBUG("IPv6 session success !");
 					break;
 				}
 				ai = ai->ai_next;
 			}
 			freeaddrinfo(aitop);
 		}
- 	}
-	if (success == 0){
-		return FALSE;
+		if (success == 0) {
+			// Fallback to IPv4
+			// Call getaddrinfo
+			memset(&hints, 0, sizeof(hints));
+			hints.ai_family = AF_INET;
+			hints.ai_socktype = SOCK_STREAM;
+			if ((getaddrinfo(hostname, NULL, &hints, &aitop)) != 0) {
+				ssh->error = g_strdup_printf("Could not resolve hostname %s to IPv4", hostname);
+				REMMINA_DEBUG(ssh->error);
+				return FALSE;
+			}
+			else {
+				// We have one or more IPV4 addesses now, extract them
+				ai = aitop;
+				while (ai != NULL) {
+					struct sockaddr_in *ipv4 = (struct sockaddr_in *)ai->ai_addr;
+					addr4 = &(ipv4->sin_addr);
+					inet_ntop(AF_INET, addr4, ipstr, sizeof ipstr);
+					ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ipstr);
+					REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv4 %s", ipstr);
+					if (ssh_connect(ssh->session)) {
+						ssh_disconnect(ssh->session);
+						REMMINA_DEBUG("IPv4 session failed");
+					} else {
+						success = 1;
+						REMMINA_DEBUG("IPv4 session success !");
+						break;
+					}
+					ai = ai->ai_next;
+				}
+				freeaddrinfo(aitop);
+			}
+		}
+		if (success == 0){
+			return FALSE;
+		}
 	}
-
  
  #ifdef HAVE_NETINET_TCP_H
 
