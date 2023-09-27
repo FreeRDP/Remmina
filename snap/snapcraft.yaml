@@ -123,7 +123,6 @@ parts:
       - libusb-1.0-0-dev
       - libxkbfile-dev
       - libxv-dev
-        #- libavresample-dev
     stage-packages:
       - libffi7
       - libusb-1.0-0
@@ -203,11 +202,7 @@ parts:
       - pyhoca-cli
       - xdg-utils
     stage-packages:
-      - adwaita-icon-theme
-      - dmz-cursor-theme
-      - gnome-themes-standard
       - libdouble-conversion3
-      - libgpm2
       - libgtk-vnc-2.0-0
       - libgvnc-1.0-0
       - libkf5configcore5
@@ -247,6 +242,9 @@ parts:
       snap/remmina/current/usr: usr
     stage:
       - -usr/share/fonts/**
+    prime:
+      - -usr/lib/pkgconfig
+      - -usr/include
 
     override-build: |
       set -eu
@@ -266,7 +264,6 @@ parts:
     plugin: nil
     stage-packages:
       - libindicator3-7
-      - libgdbm6
       - libavahi-ui-gtk3-0
       - libxkbfile1
       - libvncclient1
@@ -275,11 +272,8 @@ parts:
       - libspice-client-glib-2.0-8
       - libspice-client-gtk-3.0-5
       - libavutil56
-      - libopus0
       - libswresample3
-      - libpulse-mainloop-glib0
       - libcacard0
-      - libva2
       - libzvbi0
       - libxvidcore4
       - libusbredirhost1
@@ -287,32 +281,24 @@ parts:
       - libusbredirparser1
       - libx264-163
       - libphodav-2.0-0
-      - libwebpmux3
-      - libnss3
-      - libwavpack1
-      - libnspr4
-      - libvpx7
-      - libtwolame0
-      - libtheora0
-      - libspeex1
       - libsnappy1v5
       - libshine3
-      - libopenjp2-7
-      - libmp3lame0
       - libgsm1
       - libvdpau1
-      - libva-x11-2
       - libsoxr0
-      - libva-drm2
       - libnuma1
-      - libgomp1
       - libsodium23
       - libusb-1.0-0
-      - python3
+    prime:
+      - -usr/share/doc
+      - -usr/share/doc-base
+      - -usr/share/pkgconfig
+      - -usr/lib/pkgconfig
+      - -usr/lib/*/pkgconfig
   cleanup:
-    after: [freerdp, remmina, app]  # Make this part run last; list all your other parts here
+    after: [freerdp, remmina, app]  
     plugin: nil
-    build-snaps: [core20, gnome-3-38-2004, gtk-common-themes]  # List all content-snaps you're using here
+    build-snaps: [core20, gnome-42-2204, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
       set -eux
       for snap in "core22" "gnome-42-2204" "gtk-common-themes"; do  # List all content-snaps you're using here
