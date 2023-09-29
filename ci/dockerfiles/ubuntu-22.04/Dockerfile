@@ -10,11 +10,11 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
     LC_ALL=en_US.UTF-8 apt-get update -qq \
-    && apt-get install -y -qq software-properties-common python3-software-properties \
+    && apt-get install -y -qq software-properties-common python3-software-properties\
     && apt-add-repository ppa:remmina-ppa-team/remmina-next-daily -y \
     && apt-add-repository ppa:alexlarsson/flatpak -y \
     && apt-get update -qq \
-    && apt install -y -qq flatpak-builder flatpak build-essential git-core \
+    && apt install -y -qq snapcraft flatpak-builder flatpak build-essential git-core \
     cmake curl freerdp2-dev intltool libappindicator3-dev libasound2-dev \
     libavahi-ui-gtk3-dev libavcodec-dev libavresample-dev libavutil-dev \
     libcups2-dev libgcrypt20-dev libgnutls28-dev \
