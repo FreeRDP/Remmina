@@ -672,7 +672,10 @@ static void remmina_file_editor_create_assistance(RemminaFileEditor *gfe, const 
 	widget = gtk_entry_new();
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_widget_show(widget);
-	gtk_entry_set_text(GTK_ENTRY(widget), remmina_file_get_string(gfe->priv->remmina_file, "assistance_file"));
+	
+	if (remmina_file_get_string(gfe->priv->remmina_file, "assistance_file") != NULL) {
+		gtk_entry_set_text(GTK_ENTRY(widget), remmina_file_get_string(gfe->priv->remmina_file, "assistance_file"));
+	}
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, row+1, 1, 1);
 	gfe->priv->assistance_file = widget;
 
@@ -685,7 +688,10 @@ static void remmina_file_editor_create_assistance(RemminaFileEditor *gfe, const 
 	widget = gtk_entry_new();
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_widget_show(widget);
-	gtk_entry_set_text(GTK_ENTRY(widget), remmina_file_get_string(gfe->priv->remmina_file, "assistance_pass"));
+
+	if (remmina_file_get_string(gfe->priv->remmina_file, "assistance_pass") != NULL) {
+		gtk_entry_set_text(GTK_ENTRY(widget), remmina_file_get_string(gfe->priv->remmina_file, "assistance_pass"));
+	}
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, row+2, 1, 1);
 	gfe->priv->assistance_password = widget;
 
