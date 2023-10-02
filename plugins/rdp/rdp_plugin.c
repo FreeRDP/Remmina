@@ -1859,7 +1859,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
 	if (g_strcmp0(cs, "remote") == 0) {
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_RemoteConsoleAudio, TRUE);
-	} else if (g_str_has_prefix(cs, "local")) {
+	} else if (cs != NULL && g_str_has_prefix(cs, "local")) {
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_AudioPlayback, TRUE);
 		freerdp_settings_set_bool(rfi->settings, FreeRDP_AudioCapture, TRUE);
 	} else {
