@@ -68,6 +68,24 @@ resource_rules:
             {{author}} This issue is now closed due to being marked as "needinfo" with no updates for a long time. Please re-open it if still relevant.
             CC {{assignees}}
 
+      - name: Close old "waiting for feedback" policy
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: months
+            interval: 1
+          state: opened
+          labels:
+            - waiting for feedback
+        limits:
+          most_recent: 50
+        actions:
+          status: close
+          comment: |
+            {{author}} This issue is now closed due to being marked as "waiting for feedback" with no updates for a long time. Please re-open it if still relevant.
+            CC {{assignees}}
+
       - name: Close old "needs attention" policy
         conditions:
           date:
