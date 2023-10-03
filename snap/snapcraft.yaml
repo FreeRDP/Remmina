@@ -53,21 +53,6 @@ apps:
     slots:
       - dbus-daemon
 
-  winpr-makecert:
-    command: usr/bin/winpr-makecert
-
-  winpr-hash:
-    command: usr/bin/winpr-hash
-
-  xfreerdp:
-    command: usr/bin/xfreerdp
-
-  wlfreerdp:
-    command: usr/bin/wlfreerdp
-
-  pyhoca-cli:
-    command: usr/bin/pyhoca-cli
-
   ssh-agent:
     command: usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
     daemon: simple
@@ -76,12 +61,6 @@ apps:
       - home
       - network-bind
       - ssh-keys
-
-  xauth:
-    command: usr/bin/xauth
-
-  xprop:
-    command: usr/bin/xprop
 
 
 parts:
