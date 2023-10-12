@@ -1571,6 +1571,9 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 	mp = remmina_message_panel_new();
 
 	if (d->dtype == RPWDT_AUTH) {
+		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_USERNAME) {
+			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_USERNAME, d->default_username);
+		}
 		remmina_message_panel_setup_auth(mp, authpanel_mt_cb, d, d->title, d->strpasswordlabel, d->pflags);
 		remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_USERNAME, d->default_username);
 		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_DOMAIN)
