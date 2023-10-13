@@ -112,7 +112,8 @@ enum remmina_ssh_auth_result {
 	REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT,
 	REMMINA_SSH_AUTH_USERCANCEL,
 	REMMINA_SSH_AUTH_FATAL_ERROR,
-	REMMINA_SSH_AUTH_RECONNECT
+	REMMINA_SSH_AUTH_RECONNECT,
+	REMMINA_SSH_AUTH_AUTHFAILED_EMPTY_USERNAME
 };
 
 enum remmina_ssh_auth_result remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *gp, RemminaFile *remminafile);

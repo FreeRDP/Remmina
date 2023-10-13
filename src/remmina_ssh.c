@@ -878,6 +878,12 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile 
 			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 
+		// Check for empty username
+		if (ssh->user == NULL) {
+			remmina_ssh_set_error(ssh, _("No username found. Asking user to enter it."));
+			return REMMINA_SSH_AUTH_AUTHFAILED_EMPTY_USERNAME;
+		}
+
 		g_snprintf(pubkey, sizeof(pubkey), "%s.pub", ssh->privkeyfile);
 
 		/*G_FILE_TEST_EXISTS*/
@@ -1531,12 +1537,48 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	 * on a ssh connection. And the 3rd failed attempt will block the calling thread forever.
 	 * So we retry only 2 extra time authentication. */
 	for (attempt = 0;
-	     attempt < 2 && ret == REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
+	     attempt < 2 && (ret == REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT || ret == REMMINA_SSH_AUTH_AUTHFAILED_EMPTY_USERNAME);
 	     attempt++) {
 		if (ssh->error)
 			REMMINA_DEBUG("Retrying auth because %s", ssh->error);
 
 		if (remmina_ssh_auth_type == REMMINA_SSH_AUTH_PKPASSPHRASE) {
+			// If username is empty, prompt user to enter it and attempt reconnect
+			if ( ret == REMMINA_SSH_AUTH_AUTHFAILED_EMPTY_USERNAME ) {
+				current_user = g_strdup(remmina_file_get_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_username" : "username"));
+				ret = remmina_protocol_widget_panel_auth(gp,
+										(REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
+										(ssh->is_tunnel ? _("SSH tunnel private key credentials") : _("SSH private key credentials")),
+										current_user,
+										remmina_file_get_string(remminafile, pwdfkey),
+										NULL,
+										_("Password for private SSH key"));
+
+				if (ret == GTK_RESPONSE_OK) {
+					// Save username to remmina file and reset ssh error for reconnect attempt
+					// If password is empty or changed, save the new password
+					remmina_file_set_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_username" : "username", remmina_protocol_widget_get_username(gp));
+					ssh->user = remmina_protocol_widget_get_username(gp);
+					
+					g_free(current_pwd);
+					current_pwd = remmina_protocol_widget_get_password(gp);
+					save_password = remmina_protocol_widget_get_savepassword(gp);
+					if (save_password) {
+						remmina_file_set_string(remminafile, pwdfkey, current_pwd);
+					}
+					else {
+						remmina_file_set_string(remminafile, pwdfkey, NULL);
+					}
+
+					ssh->passphrase = remmina_protocol_widget_get_password(gp);
+					ssh->error = NULL;
+					return REMMINA_SSH_AUTH_RECONNECT;
+				}
+				else {
+					return REMMINA_SSH_AUTH_USERCANCEL;
+				}
+			}
+
 			ret = remmina_protocol_widget_panel_auth(gp,
 								 (disablepasswordstoring ? 0 :
 								  REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
