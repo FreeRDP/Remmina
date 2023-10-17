@@ -6,13 +6,14 @@
 # Michal Čihař <michal@cihar.com>, 2019.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 # Ragnar Stølsmark <rstolsmark@live.no>, 2021
+# "Lasse G. Dahl" <lassedahl@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-09-24 14:41+0000\n"
-"PO-Revision-Date: 2023-10-11 19:00+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2023-10-17 04:06+0000\n"
+"Last-Translator: \"Lasse G. Dahl\" <lassedahl@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
 "Language: nb\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.1\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -751,9 +752,8 @@ msgid "Disable toolbar"
 msgstr "Skru av verktøylinje"
 
 #: src/remmina.c:133
-#, fuzzy
 msgid "Enable fullscreen"
-msgstr "Rullet fullskjermsvisning"
+msgstr "Skru på fullskjermsvisning"
 
 #: src/remmina.c:134
 #, fuzzy
@@ -941,9 +941,8 @@ msgid "Up"
 msgstr "Oppover"
 
 #: src/remmina_ftp_client.c:777
-#, fuzzy
 msgid "Go to parent folder"
-msgstr "Gå til ovennevnt mappe"
+msgstr "Gå til mappen over"
 
 #: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2977
 #: plugins/vnc/vnc_plugin.c:2154
@@ -1012,9 +1011,8 @@ msgid "Remote"
 msgstr "Eksternt"
 
 #: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2744
-#, fuzzy
 msgid "Local"
-msgstr "Lokal mat"
+msgstr "Lokal"
 
 #: src/remmina_ftp_client.c:1042
 #, fuzzy
@@ -1089,9 +1087,8 @@ msgstr "Sertifikatsdetaljer:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1809 src/remmina_protocol_widget.c:1841
-#, fuzzy
 msgid "Subject:"
-msgstr "Emme:"
+msgstr "Emne:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
 #: src/remmina_protocol_widget.c:1811 src/remmina_protocol_widget.c:1843
@@ -1142,9 +1139,8 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Lytter til port nr. %i i påvente av en %s-tilkobling …"
 
 #: src/remmina_protocol_widget.c:2017
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "Kunne ikke identitetsbekrefte. Prøver å koble til på ny …"
+msgstr "Kunne ikke bekrefte identiteten. Prøver å koble til på ny …"
 
 #: src/remmina_protocol_widget.c:2080 src/remmina_file_editor.c:464
 #: src/remmina_file_editor.c:1282 data/ui/remmina_main.glade:509
@@ -1164,21 +1160,20 @@ msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Kunne ikke identitetsbekrefte med SSH-passord. %s"
 
 #: src/remmina_ssh.c:803 src/remmina_ssh.c:1184
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "Kunne ikke identitetsbekrefte med SSH-passord. %s"
+msgstr "Kunne ikke bekrefte identiteten med SSH-passord. %s"
 
 #: src/remmina_ssh.c:830 src/remmina_ssh.c:897
-#, fuzzy
 msgid "No saved SSH password supplied. Asking user to enter it."
-msgstr "Inget lagret SSH-passord angitt. Forespør bruker om å skrive det inn."
+msgstr "Lagret SSH-passord er ikke angitt. Ber bruker om å skrive det inn."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:835 src/remmina_ssh.c:876 src/remmina_ssh.c:902
 #: src/remmina_ssh.c:941 src/remmina_ssh.c:1254
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr "Kunne ikke identitetsbekrefte med offentlig SSH-nøkkel. %s"
+msgstr "Kunne ikke bekrefte identiteten med offentlig SSH-nøkkel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:844
@@ -1209,9 +1204,9 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "Kunne ikke importere offentlig SSH-nøkkel: %s"
 
 #: src/remmina_ssh.c:986
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "Kunne ikke identitetsbekrefte automatisk med offentlig SSH-nøkkel. %s"
+msgstr "Kunne ikke bekrefte identiteten automatisk med offentlig SSH-nøkkel. %s"
 
 #: src/remmina_ssh.c:1031
 #, c-format
@@ -1899,12 +1894,11 @@ msgstr "Klarte ikke å finne filen «%s»."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:494 src/remmina_file.c:540
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"Bruk av «resolution»-parameteret i Remmina-innstillingene er avleggs.\n"
+"Bruk av «resolution»-parameteret i Remmina-innstillingene er foreldet.\n"
 
 #: src/remmina_icon.c:143
 #, fuzzy
@@ -2388,11 +2382,11 @@ msgid "Reconnect attempts number"
 msgstr "Nummeret i rekken på antall nye tilkoblingsforsøk"
 
 #: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2939
-#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Maksimalt antall gjentilkoblingsforsøk ved RDP-frakobling (forvalg: 20)"
+"Maksimalt antall forsøk på å koble til på nytt ved RDP-frakobling (forvalg: "
+"20)"
 
 #: plugins/rdp/rdp_plugin.c:799 plugins/rdp/rdp_plugin.c:864
 #, fuzzy
@@ -3229,9 +3223,9 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Eksporter tilkoblingsoppsettet i Windows .rdp-filformat"
 
 #: plugins/rdp/rdp_event.c:363
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "Gjentilkoblingsforsøk %d av %d…"
+msgstr "Kobler til på nytt, forsøk %d av %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1190
