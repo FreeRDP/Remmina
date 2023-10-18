@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-09-24 14:41+0000\n"
-"PO-Revision-Date: 2023-08-14 05:49+0000\n"
-"Last-Translator: Justin Song <mcsong@gmail.com>\n"
+"PO-Revision-Date: 2023-10-18 04:00+0000\n"
+"Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
 "Language: ko\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -1257,12 +1257,12 @@ msgid "Could not create PTY device."
 msgstr "PTY 기기를 생성할 수 없습니다."
 
 #: src/remmina_exec.c:128
-#, fuzzy
-#| msgid "Are you sure you want to close this last active connection?"
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
-msgstr "이 마지막 활성 연결을 닫으시겠습니까?"
+msgstr ""
+"Remmina를 완전히 종료하시겠습니까?\n"
+" 이 작업은 모든 활성 연결을든지 닫게 됩니다."
 
 #: src/remmina_exec.c:505
 #, c-format
@@ -1542,11 +1542,11 @@ msgstr "프로필을 연결하거나 편집하려면 비밀번호가 필요합�
 
 #: src/remmina_file_editor.c:1199
 msgid "Unexpected disconnect"
-msgstr ""
+msgstr "예상치 않은 연결해제"
 
 #: src/remmina_file_editor.c:1202
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr ""
+msgstr "Remmina에 의해 연결해제 되지 않은 경우 닫히는 작업에서 창 유지하기"
 
 #: src/remmina_file_editor.c:1235
 msgid "SSH Tunnel"
@@ -2276,7 +2276,7 @@ msgstr "256 색 (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2729 data/ui/remmina_preferences.glade:610
 msgid "None"
-msgstr "<없음>"
+msgstr "없음"
 
 #: plugins/rdp/rdp_plugin.c:2730
 msgid "Auto-detect"
@@ -2333,19 +2333,19 @@ msgstr "NLA 확장 프로토콜 보안"
 
 #: plugins/rdp/rdp_plugin.c:2764
 msgid "Every 1 min"
-msgstr ""
+msgstr "1분마다"
 
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Every 3 min"
-msgstr ""
+msgstr "3분마다"
 
 #: plugins/rdp/rdp_plugin.c:2766
 msgid "Every 5 min"
-msgstr ""
+msgstr "5분마다"
 
 #: plugins/rdp/rdp_plugin.c:2767
 msgid "Every 10 min"
-msgstr ""
+msgstr "10분마다"
 
 #: plugins/rdp/rdp_plugin.c:2781 plugins/spice/spice_plugin.c:628
 #: plugins/spice/spice_plugin.c:646
@@ -2426,9 +2426,9 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
-"오디오 출력을 리다이렉션할 수 있는 옵션: \n"
+"오디오 출력의 리다이렉션에 대한 옵션: \n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
-"  [channel:<channel>] Audio output\n"
+"    [channel:<channel>] Audio output\n"
 "  • sys:pulse\n"
 "  • format:1\n"
 "  • sys:oss,dev:1,format:1\n"
@@ -2706,10 +2706,8 @@ msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:2940
-#, fuzzy
-#| msgid "Remote Connection Profile"
 msgid "Move mouse when connection is idle"
-msgstr "원격 연결 프로필"
+msgstr "연결이 유휴 상태일 때 마우스 이동하기"
 
 #: plugins/rdp/rdp_plugin.c:2942
 msgid "Attempt to connect in assistance mode"
@@ -3050,11 +3048,11 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
-"동적 해상도를 활성화한 경우 화면 비율을 잠급니다:\n"
+"동적 해상도가 활성화된 경우 화면 비율을 잠급니다:\n"
 "\n"
-"   • 화면비율은 10진수로 입력해야 합니다. 예로, 1.777\n"
-"   • 16:9는 대략 1.7777에 해당하고, 4:3은 대략 1.333에 해당합니다.\n"
-"   • 기본값 0은 가로세로 비율을 적용하지 않습니다."
+"   • 화면비율은 소수점 이하 숫자로 입력해야 합니다(예: 1.777).\n"
+"   • 16:9는 대략 1.7777에 해당하며, 4:3은 대략 1.333에 해당합니다.\n"
+"   • 기본값 0은 가로세로 비율을 적용하지 않습니다"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3692,7 +3690,7 @@ msgstr "pthread를 초기화할 수 없습니다. 스레드가 아닌 모드로 
 #: plugins/x2go/x2go_plugin.c:3150 plugins/x2go/x2go_plugin.c:3168
 #, c-format
 msgid "%sand '%s'"
-msgstr "%s와 '%s'"
+msgstr "%s 및 '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -4667,14 +4665,12 @@ msgid "View-only mode"
 msgstr "뷰 전용 모드"
 
 #: data/ui/remmina_preferences.glade:1359
-#, fuzzy
-#| msgid "Send clipboard content as keystrokes"
 msgid "Send clipboard as keystrokes"
-msgstr "클립보드 내용을 키 입력으로 보내기"
+msgstr "클립보드를 키 입력으로 보내기"
 
 #: data/ui/remmina_preferences.glade:1369
 msgid "Send-clipboard"
-msgstr ""
+msgstr "클립보드 보내기"
 
 #: data/ui/remmina_preferences.glade:1399
 msgid "Keyboard"
