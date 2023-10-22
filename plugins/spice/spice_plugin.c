@@ -53,7 +53,7 @@ static void remmina_plugin_spice_agent_connected_event_cb(SpiceChannel *, Remmin
 static void remmina_plugin_spice_display_ready_cb(GObject *, GParamSpec *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_update_scale_mode(RemminaProtocolWidget *);
 static void remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *);
-static void remmina_plugin_spice_channel_open_fd(RemminaProtocolWidget *, SpiceChannel *);
+static void remmina_plugin_spice_channel_open_fd_cb(SpiceChannel *channel, gint tls G_GNUC_UNUSED, RemminaProtocolWidget *);
 
 void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *);
 #ifdef SPICE_GTK_CHECK_VERSION
@@ -94,7 +94,7 @@ remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *gp)
 }
 
 static void
-remmina_plugin_spice_channel_open_fd(RemminaProtocolWidget *gp, SpiceChannel *channel)
+remmina_plugin_spice_channel_open_fd_cb(SpiceChannel *channel, gint tls, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
@@ -256,14 +256,8 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 	g_return_if_fail(gpdata != NULL);
 
 	if(gpdata->isUnix) {
-		remmina_plugin_spice_channel_open_fd(gp, channel);
+		g_signal_connect(channel, "open-fd", G_CALLBACK(remmina_plugin_spice_channel_open_fd_cb), gp);
 	}
-	/**
-	* g_signal_connect(channel,
-	*	"open-fd",
-	*	G_CALLBACK(remmina_plugin_spice_channel_open_fd),
-	*	gp);
-	*/
 
 	g_object_get(channel, "channel-id", &id, "channel-type", &type, NULL);
 	REMMINA_PLUGIN_DEBUG ("New spice channel %p %s %d", channel, g_type_name(G_OBJECT_TYPE(channel)), id);
