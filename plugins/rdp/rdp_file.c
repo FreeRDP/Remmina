@@ -283,25 +283,15 @@ gboolean remmina_rdp_file_export(RemminaFilePlugin *plugin, RemminaFile *remmina
 {
 	TRACE_CALL(__func__);
 	FILE *fp;
-	gchar *p;
 	gboolean ret;
 
-	p = strrchr(to_file, '.');
-
-	if (p && (g_strcmp0(p + 1, "rdp") == 0 || g_strcmp0(p + 1, "RDP") == 0))
-		p = g_strdup(to_file);
-	else
-		p = g_strdup_printf("%s.rdp", to_file);
-
-	fp = g_fopen(p, "w+");
+	fp = g_fopen(to_file, "w+");
 
 	if (fp == NULL) {
-		g_print("Failed to export %s\n", p);
-		g_free(p);
+		g_print("Failed to export %s\n", to_file);
 		return FALSE;
 	}
 
-	g_free(p);
 	ret = remmina_rdp_file_export_channel(remminafile, fp);
 	fclose(fp);
 

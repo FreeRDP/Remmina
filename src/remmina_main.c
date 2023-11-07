@@ -1312,6 +1312,7 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 						      GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), _("_Cancel"));
 		gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(chooser), TRUE);
 		remmina_set_file_chooser_filters(GTK_FILE_CHOOSER(chooser));
+		gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(chooser), TRUE);
 		export_name = g_strdup_printf("%s.rdp", remminamain->priv->selected_name);
 		gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(chooser), export_name);
 		g_free(export_name);
