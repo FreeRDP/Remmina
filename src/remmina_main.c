@@ -1244,6 +1244,20 @@ void remmina_main_on_action_tools_import(GSimpleAction *action, GVariant *param,
 	gtk_native_dialog_show(GTK_NATIVE_DIALOG(chooser));
 }
 
+static void on_export_save_response (GtkFileChooserNative *dialog, int response, RemminaFile *remminafile)
+{
+	if (response == GTK_RESPONSE_ACCEPT) {
+		RemminaFilePlugin *plugin = remmina_plugin_manager_get_export_file_handler(remminafile);
+		if (plugin){
+			gchar *path = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+			plugin->export_func(plugin, remminafile, path);
+			g_free(path);
+		}
+	}
+	remmina_file_free(remminafile);
+	gtk_native_dialog_destroy(GTK_NATIVE_DIALOG(dialog));
+}
+
 void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
@@ -1252,27 +1266,39 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 	GtkWidget *dialog;
 	GtkFileChooserNative *chooser;
 
-	if (!remminamain->priv->selected_filename)
+	if (!remminamain->priv->selected_filename) {
+		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+						_("Select the connection profile."));
+		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		gtk_widget_show(dialog);
 		return;
+	}
 
 	remminafile = remmina_file_load(remminamain->priv->selected_filename);
-	if (remminafile == NULL)
+	if (remminafile == NULL) {
+		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+						_("Remmina couldn't export."));
+		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		gtk_widget_show(dialog);
 		return;
+	}
+
 	plugin = remmina_plugin_manager_get_export_file_handler(remminafile);
 	if (plugin) {
 		chooser = gtk_file_chooser_native_new(plugin->export_hints, remminamain->window,
 						      GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), _("_Cancel"));
 		gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(chooser), TRUE);
-		if (gtk_native_dialog_run(GTK_NATIVE_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT)
-			plugin->export_func(plugin, remminafile, gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser)));
-		gtk_native_dialog_destroy(GTK_NATIVE_DIALOG(chooser));
-	} else {
+		g_signal_connect(chooser, "response", G_CALLBACK(on_export_save_response), remminafile);
+		gtk_native_dialog_show(GTK_NATIVE_DIALOG(chooser));
+	} else
+	{
+		remmina_file_free(remminafile);
 		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 						_("This protocol does not support exporting."));
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
+		return;
 	}
-	remmina_file_free(remminafile);
 }
 
 void remmina_main_on_action_application_plugins(GSimpleAction *action, GVariant *param, gpointer data)
