@@ -858,6 +858,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 			    ) {
 				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
 				rdp_event.key_event.key_code = scancode & 0xFF;
+				rdp_event.key_event.extended = scancode & 0x100;
 				rdp_event.key_event.extended1 = FALSE;
 				if (rdp_event.key_event.key_code) {
 					remmina_rdp_event_event_push(gp, &rdp_event);
