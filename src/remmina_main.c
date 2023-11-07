@@ -1231,6 +1231,27 @@ static void remmina_main_action_tools_import_on_response(GtkNativeDialog *dialog
 	gtk_native_dialog_destroy(dialog);
 }
 
+static void remmina_set_file_chooser_filters(GtkFileChooser *chooser)
+{
+	GtkFileFilter *filter;
+
+	g_return_if_fail(GTK_IS_FILE_CHOOSER(chooser));
+
+	filter = gtk_file_filter_new();
+	gtk_file_filter_set_name(filter, _("RDP Files"));
+	gtk_file_filter_add_pattern(filter, "*.rdp");
+	gtk_file_filter_add_pattern(filter, "*.rdpx");
+	gtk_file_filter_add_pattern(filter, "*.RDP");
+	gtk_file_filter_add_pattern(filter, "*.RDPX");
+	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(chooser), filter);
+
+	filter = gtk_file_filter_new();
+	gtk_file_filter_set_name(filter, _("All Files"));
+	gtk_file_filter_add_pattern(filter, "*");
+	gtk_file_chooser_add_filter(chooser, filter);
+}
+
 void remmina_main_on_action_tools_import(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
@@ -1239,6 +1260,7 @@ void remmina_main_on_action_tools_import(GSimpleAction *action, GVariant *param,
 	chooser = gtk_file_chooser_native_new(_("Import"), remminamain->window,
 					      GTK_FILE_CHOOSER_ACTION_OPEN, _("Import"), _("_Cancel"));
 	gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(chooser), TRUE);
+	remmina_set_file_chooser_filters(GTK_FILE_CHOOSER(chooser));
 	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(chooser), TRUE);
 	g_signal_connect(chooser, "response", G_CALLBACK(remmina_main_action_tools_import_on_response), NULL);
 	gtk_native_dialog_show(GTK_NATIVE_DIALOG(chooser));
@@ -1288,6 +1310,7 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 		chooser = gtk_file_chooser_native_new(plugin->export_hints, remminamain->window,
 						      GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), _("_Cancel"));
 		gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(chooser), TRUE);
+		remmina_set_file_chooser_filters(GTK_FILE_CHOOSER(chooser));
 		g_signal_connect(chooser, "response", G_CALLBACK(on_export_save_response), remminafile);
 		gtk_native_dialog_show(GTK_NATIVE_DIALOG(chooser));
 	} else
