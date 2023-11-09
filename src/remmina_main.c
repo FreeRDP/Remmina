@@ -1219,7 +1219,7 @@ static void remmina_main_import_file_list(GSList *files)
 		remmina_main_load_files();
 }
 
-static void remmina_main_action_tools_import_on_response(GtkDialog *dialog, gint response_id, gpointer user_data)
+static void remmina_main_action_tools_import_on_response(GtkNativeDialog *dialog, gint response_id, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GSList *files;
@@ -1228,19 +1228,56 @@ static void remmina_main_action_tools_import_on_response(GtkDialog *dialog, gint
 		files = gtk_file_chooser_get_filenames(GTK_FILE_CHOOSER(dialog));
 		remmina_main_import_file_list(files);
 	}
-	gtk_widget_destroy(GTK_WIDGET(dialog));
+	gtk_native_dialog_destroy(dialog);
+}
+
+static void remmina_set_file_chooser_filters(GtkFileChooser *chooser)
+{
+	GtkFileFilter *filter;
+
+	g_return_if_fail(GTK_IS_FILE_CHOOSER(chooser));
+
+	filter = gtk_file_filter_new();
+	gtk_file_filter_set_name(filter, _("RDP Files"));
+	gtk_file_filter_add_pattern(filter, "*.rdp");
+	gtk_file_filter_add_pattern(filter, "*.rdpx");
+	gtk_file_filter_add_pattern(filter, "*.RDP");
+	gtk_file_filter_add_pattern(filter, "*.RDPX");
+	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(chooser), filter);
+
+	filter = gtk_file_filter_new();
+	gtk_file_filter_set_name(filter, _("All Files"));
+	gtk_file_filter_add_pattern(filter, "*");
+	gtk_file_chooser_add_filter(chooser, filter);
 }
 
 void remmina_main_on_action_tools_import(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
-	GtkWidget *dialog;
+	GtkFileChooserNative *chooser;
 
-	dialog = gtk_file_chooser_dialog_new(_("Import"), remminamain->window, GTK_FILE_CHOOSER_ACTION_OPEN, "Import",
-					     GTK_RESPONSE_ACCEPT, NULL);
-	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
-	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(remmina_main_action_tools_import_on_response), NULL);
-	gtk_widget_show(dialog);
+	chooser = gtk_file_chooser_native_new(_("Import"), remminamain->window,
+					      GTK_FILE_CHOOSER_ACTION_OPEN, _("Import"), _("_Cancel"));
+	gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(chooser), TRUE);
+	remmina_set_file_chooser_filters(GTK_FILE_CHOOSER(chooser));
+	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(chooser), TRUE);
+	g_signal_connect(chooser, "response", G_CALLBACK(remmina_main_action_tools_import_on_response), NULL);
+	gtk_native_dialog_show(GTK_NATIVE_DIALOG(chooser));
+}
+
+static void on_export_save_response (GtkFileChooserNative *dialog, int response, RemminaFile *remminafile)
+{
+	if (response == GTK_RESPONSE_ACCEPT) {
+		RemminaFilePlugin *plugin = remmina_plugin_manager_get_export_file_handler(remminafile);
+		if (plugin){
+			gchar *path = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+			plugin->export_func(plugin, remminafile, path);
+			g_free(path);
+		}
+	}
+	remmina_file_free(remminafile);
+	gtk_native_dialog_destroy(GTK_NATIVE_DIALOG(dialog));
 }
 
 void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param, gpointer data)
@@ -1249,27 +1286,47 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 	RemminaFilePlugin *plugin;
 	RemminaFile *remminafile;
 	GtkWidget *dialog;
+	GtkFileChooserNative *chooser;
+	gchar *export_name;
 
-	if (!remminamain->priv->selected_filename)
+	if (!remminamain->priv->selected_filename) {
+		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+						_("Select the connection profile."));
+		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		gtk_widget_show(dialog);
 		return;
+	}
 
 	remminafile = remmina_file_load(remminamain->priv->selected_filename);
-	if (remminafile == NULL)
+	if (remminafile == NULL) {
+		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+						_("Remmina couldn't export."));
+		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		gtk_widget_show(dialog);
 		return;
+	}
+
 	plugin = remmina_plugin_manager_get_export_file_handler(remminafile);
 	if (plugin) {
-		dialog = gtk_file_chooser_dialog_new(plugin->export_hints, remminamain->window,
-						     GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), GTK_RESPONSE_ACCEPT, NULL);
-		if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
-			plugin->export_func(plugin, remminafile, gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
-		gtk_widget_destroy(dialog);
-	} else {
+		chooser = gtk_file_chooser_native_new(plugin->export_hints, remminamain->window,
+						      GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), _("_Cancel"));
+		gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(chooser), TRUE);
+		remmina_set_file_chooser_filters(GTK_FILE_CHOOSER(chooser));
+		gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(chooser), TRUE);
+		export_name = g_strdup_printf("%s.rdp", remminamain->priv->selected_name);
+		gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(chooser), export_name);
+		g_free(export_name);
+		g_signal_connect(chooser, "response", G_CALLBACK(on_export_save_response), remminafile);
+		gtk_native_dialog_show(GTK_NATIVE_DIALOG(chooser));
+	} else
+	{
+		remmina_file_free(remminafile);
 		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 						_("This protocol does not support exporting."));
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
+		return;
 	}
-	remmina_file_free(remminafile);
 }
 
 void remmina_main_on_action_application_plugins(GSimpleAction *action, GVariant *param, gpointer data)
