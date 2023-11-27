@@ -37,6 +37,7 @@
 #pragma once
 
 #include <glib.h>
+#include <freerdp/version.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/client/channels.h>
 #include <freerdp/client/rdpei.h>
@@ -48,8 +49,14 @@
 
 G_BEGIN_DECLS
 
-void remmina_rdp_OnChannelConnectedEventHandler(void *context, ChannelConnectedEventArgs *e);
-void remmina_rdp_OnChannelDisconnectedEventHandler(void *context, ChannelDisconnectedEventArgs *e);
+#if FREERDP_VERSION_MAJOR >= 3
+#define CONST_ARG const
+#else
+#define CONST_ARG
+#endif
+
+void remmina_rdp_OnChannelConnectedEventHandler(void *context, CONST_ARG ChannelConnectedEventArgs *e);
+void remmina_rdp_OnChannelDisconnectedEventHandler(void *context, CONST_ARG ChannelDisconnectedEventArgs *e);
 
 
 G_END_DECLS

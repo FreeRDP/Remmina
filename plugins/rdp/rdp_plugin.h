@@ -318,19 +318,15 @@ typedef struct remmina_plugin_rdp_keymap_entry {
 } RemminaPluginRdpKeymapEntry;
 
 struct rf_context {
-	rdpContext		context;
-	DEFINE_RDP_CLIENT_COMMON();
+	rdpClientContext clientContext;
 
-	RemminaProtocolWidget * protocol_widget;
+	RemminaProtocolWidget *protocol_widget;
 
 	/* main */
-	rdpSettings *		settings;
-	freerdp *		instance;
-
-	pthread_t		remmina_plugin_thread;
-	RemminaScaleMode	scale;
-	gboolean		user_cancelled;
-	gboolean		thread_cancelled;
+	pthread_t remmina_plugin_thread;
+	RemminaScaleMode scale;
+	gboolean user_cancelled;
+	gboolean thread_cancelled;
 
 	CliprdrClientContext *	cliprdr;
 	DispClientContext *	dispcontext;

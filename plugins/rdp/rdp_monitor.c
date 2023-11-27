@@ -87,10 +87,10 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	GdkRectangle tempgeom = { 0, 0, 0, 0 };
 	GdkRectangle destgeom = { 0, 0, 0, 0 };
 	rdpSettings* settings;
-	if (!rfi || !rfi->settings)
+	if (!rfi || !rfi->clientContext.context.settings)
 		return;
 
-	settings = rfi->settings;
+	settings = rfi->clientContext.context.settings;
 
 	*maxwidth = freerdp_settings_get_uint32(settings, FreeRDP_DesktopWidth);
 	*maxheight = freerdp_settings_get_uint32(settings, FreeRDP_DesktopHeight);
@@ -226,6 +226,6 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	*maxheight = destgeom.height;
 	REMMINA_PLUGIN_DEBUG("maxw and maxh: %ux%u", *maxwidth, *maxheight);
 	if (n_monitors > 1)
-		freerdp_settings_set_bool(rfi->settings, FreeRDP_SupportMonitorLayoutPdu, TRUE);
+		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_SupportMonitorLayoutPdu, TRUE);
 	*monitorids = g_strdup(buffer);
 }
