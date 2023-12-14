@@ -811,7 +811,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 	WCHAR *outbuf_wchar = NULL;
 #endif
 	GdkPixbuf *image = NULL;
-	int size = 0;
+	size_t size = 0;
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event = { 0 };
 
@@ -851,12 +851,18 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 			{
 				size = strlen((const char *)inbuf);
 				inbuf = lf2crlf(inbuf, &size);
+				{
 #if FREERDP_VERSION_MAJOR >= 3
-				size *= sizeof(WCHAR);
-				outbuf_wchar = ConvertUtf8NToWCharAlloc((const char *)inbuf, (size_t)size, NULL);
+					size_t len = 0;
+					outbuf_wchar = ConvertUtf8NToWCharAlloc((const char *)inbuf, (size_t)size, &len);
+					size = len * sizeof(WCHAR);
 #else
-				size = (ConvertToUnicode(CP_UTF8, 0, (CHAR *)inbuf, -1, (WCHAR **)&outbuf, 0)) * sizeof(WCHAR);
+					const int rc = (ConvertToUnicode(CP_UTF8, 0, (CHAR *)inbuf, -1, (WCHAR **)&outbuf, 0)) * sizeof(WCHAR);
+					size = 0;
+					if (rc >= 0)
+					size = (size_t)rc;
 #endif
+				}
 				g_free(inbuf);
 				break;
 			}
@@ -898,7 +904,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 	}
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE;
-	rdp_event.clipboard_formatdataresponse.size = size;
+	rdp_event.clipboard_formatdataresponse.size = (int)MIN(size, INT32_MAX);
 
 #if FREERDP_VERSION_MAJOR >= 3
 	// For unicode, use the wchar buffer
