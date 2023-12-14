@@ -815,6 +815,7 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 	return TRUE;
 }
 
+#if !defined(FREERDP_VERSION_MAJOR) || (FREERDP_VERSION_MAJOR < 3)
 static BOOL remmina_rdp_authenticate(freerdp *instance, char **username, char **password, char **domain)
 {
 	TRACE_CALL(__func__);
@@ -953,6 +954,166 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 
 	return true;
 }
+#else
+static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char** password,
+                                char** domain, rdp_auth_reason reason)
+{
+	TRACE_CALL(__func__);
+	gchar *s_username = NULL, *s_password = NULL, *s_domain = NULL;
+	const gchar* key_user = NULL;
+	const gchar* key_domain = NULL;
+	const gchar* key_password = NULL;
+	const gchar* key_title = NULL;
+	gint ret;
+	rfContext *rfi;
+	RemminaProtocolWidget *gp;
+	gboolean save;
+	gboolean disablepasswordstoring;
+	RemminaFile *remminafile;
+	RemminaMessagePanelFlags flags = REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD | REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_DOMAIN;
+
+	rfi = (rfContext *)instance->context;
+	gp = rfi->protocol_widget;
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+
+	FreeRDP_Settings_Keys_String cfg_key_user = FreeRDP_STRING_UNUSED;
+	FreeRDP_Settings_Keys_String cfg_key_domain = FreeRDP_STRING_UNUSED;
+	FreeRDP_Settings_Keys_String cfg_key_password = FreeRDP_STRING_UNUSED;
+	switch(reason) {
+	case AUTH_NLA:
+			case AUTH_TLS:
+			case AUTH_RDP:
+		key_title = _("Enter RDP authentication credentials");
+		key_user = "username";
+		key_domain = "domain";
+		key_password = "password";
+		cfg_key_user = FreeRDP_Username;
+		cfg_key_domain = FreeRDP_Domain;
+		cfg_key_password = FreeRDP_Password;
+		break;
+			case GW_AUTH_HTTP:
+			case GW_AUTH_RDG:
+			case GW_AUTH_RPC:
+		key_title = _("Enter RDP gateway authentication credentials");
+		key_user = "gateway_username";
+		key_domain = "gateway_domain";
+		key_password = "gateway_password";
+		cfg_key_user = FreeRDP_GatewayUsername;
+				cfg_key_domain = FreeRDP_GatewayDomain;
+				cfg_key_password = FreeRDP_GatewayPassword;
+		break;
+	case AUTH_SMARTCARD_PIN:
+		key_title = _("Enter RDP SmartCard PIN");
+		key_password = "smartcard_pin";
+		flags = 0;
+		break;
+	default:
+		// TODO: Display an error dialog informing the user that the remote requires some mechanism FreeRDP or Remmina currently do not support
+		g_fprintf(stderr, "[authentication] unsupported type %d, access denied", reason);
+		return FALSE;
+	}
+
+	if (!disablepasswordstoring)
+		flags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
+
+	ret = remmina_plugin_service->protocol_plugin_init_auth(gp, flags,
+								key_title,
+								remmina_plugin_service->file_get_string(remminafile, key_user),
+								remmina_plugin_service->file_get_string(remminafile, key_password),
+								remmina_plugin_service->file_get_string(remminafile, disablepasswordstoring ? NULL : key_domain),
+								NULL);
+	if (ret == GTK_RESPONSE_OK) {
+		if (cfg_key_user != FreeRDP_STRING_UNUSED)
+		{
+			s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
+			if (s_username)
+				freerdp_settings_set_string(rfi->clientContext.context.settings, cfg_key_user, s_username);
+			remmina_plugin_service->file_set_string(remminafile, key_user, s_username);
+		}
+
+		if (cfg_key_password != FreeRDP_STRING_UNUSED)
+		{
+			s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+			if (s_password)
+				freerdp_settings_set_string(rfi->clientContext.context.settings, cfg_key_password, s_password);
+		}
+
+		if (cfg_key_domain != FreeRDP_STRING_UNUSED) {
+			s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
+			if (s_domain)
+				freerdp_settings_set_string(rfi->clientContext.context.settings, cfg_key_domain, s_domain);
+			remmina_plugin_service->file_set_string(remminafile, key_domain, s_domain);
+		}
+
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save) {
+			// User has requested to save credentials. We put the password
+			// into remminafile->settings. It will be saved later, on successful connection, by
+			// rcw.c
+			remmina_plugin_service->file_set_string(remminafile, key_password, s_password);
+		} else {
+			remmina_plugin_service->file_set_string(remminafile, key_password, NULL);
+		}
+
+
+		if (s_username) g_free(s_username);
+		if (s_password) g_free(s_password);
+		if (s_domain) g_free(s_domain);
+
+		return TRUE;
+	} else {
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+static BOOL remmina_rdp_choose_smartcard(freerdp* instance, SmartcardCertInfo** cert_list, DWORD count,
+                                 DWORD* choice, BOOL gateway)
+{
+	// TODO: Display a simple list of smartcards/certs to choose from.
+	// See client_cli_choose_smartcard for a sample
+	return client_cli_choose_smartcard(instance, cert_list, count, choice, gateway);
+}
+
+static BOOL remmina_rdp_get_access_token(freerdp* instance, AccessTokenType tokenType, char** token,
+                                    size_t count, ...)
+{
+	// TODO: Open a (currently hard coded) URL, authenticate in a webview/browser, return the access token.
+	// See client_cli_get_access_token or sdl_webview_get_access_token for implementations
+	return client_cli_get_access_token(instance, tokenType, token, count);
+}
+
+static BOOL remmina_rdp_present_gateway_message(freerdp* instance, UINT32 type, BOOL isDisplayMandatory,
+                                           BOOL isConsentMandatory, size_t length,
+                                           const WCHAR* message)
+{
+	// TODO: Present a message to the user, usually terms of service or similar
+	// See client_cli_present_gateway_message or sdl_present_gateway_message
+	return client_cli_present_gateway_message(instance, type, isDisplayMandatory, isConsentMandatory, length, message);
+}
+
+static int remmina_rdp_logon_error_info(freerdp* instance, UINT32 data, UINT32 type)
+{
+	// TODO: Display the reason for connection termination
+	// See client_cli_logon_error_info or sdl_logon_error_info
+	return client_cli_logon_error_info(instance, data, type);
+}
+
+static SSIZE_T remmina_rdp_retry_dialog(freerdp* instance, const char* what, size_t current,
+                               void* userarg)
+{
+	// TODO:
+	// See client_common_retry_dialog or
+	return client_common_retry_dialog(instance, what, current, userarg);
+}
+
+static void remmina_rdp_post_final_disconnect(freerdp* instance)
+{
+	// Clean up resources allocated in PreConnect
+}
+#endif
 
 static DWORD remmina_rdp_verify_certificate_ex(freerdp *instance, const char *host, UINT16 port,
 						   const char *common_name, const char *subject,
@@ -1031,6 +1192,8 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 						  remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
+
+	// With FreeRDP3 only resources allocated in PostConnect and later are cleaned up here.
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
@@ -2502,14 +2665,22 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	instance->PreConnect = remmina_rdp_pre_connect;
 	instance->PostConnect = remmina_rdp_post_connect;
 	instance->PostDisconnect = remmina_rdp_post_disconnect;
-	instance->Authenticate = remmina_rdp_authenticate;
-	instance->GatewayAuthenticate = remmina_rdp_gw_authenticate;
 	//instance->VerifyCertificate = remmina_rdp_verify_certificate;
 	instance->VerifyCertificateEx = remmina_rdp_verify_certificate_ex;
 	//instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
 	instance->VerifyChangedCertificateEx = remmina_rdp_verify_changed_certificate_ex;
 #if FREERDP_VERSION_MAJOR >= 3
+	instance->AuthenticateEx = remmina_rdp_authenticate_ex;
+	instance->ChooseSmartcard = remmina_rdp_choose_smartcard;
+	instance->GetAccessToken = remmina_rdp_get_access_token;
 	instance->LoadChannels = freerdp_client_load_channels;
+	instance->PresentGatewayMessage = remmina_rdp_present_gateway_message;
+	instance->LogonErrorInfo = remmina_rdp_logon_error_info;
+	instance->RetryDialog = remmina_rdp_retry_dialog;
+    instance->PostFinalDisconnect = remmina_rdp_post_final_disconnect;
+#else
+	instance->Authenticate = remmina_rdp_authenticate;
+	instance->GatewayAuthenticate = remmina_rdp_gw_authenticate;
 #endif
 
 	instance->ContextSize = sizeof(rfContext);
