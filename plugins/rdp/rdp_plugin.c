@@ -2508,6 +2508,9 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	instance->VerifyCertificateEx = remmina_rdp_verify_certificate_ex;
 	//instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
 	instance->VerifyChangedCertificateEx = remmina_rdp_verify_changed_certificate_ex;
+#if FREERDP_VERSION_MAJOR >= 3
+	instance->LoadChannels = freerdp_client_load_channels;
+#endif
 
 	instance->ContextSize = sizeof(rfContext);
 	freerdp_context_new(instance);
