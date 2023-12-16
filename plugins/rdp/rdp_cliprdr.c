@@ -855,7 +855,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 #if FREERDP_VERSION_MAJOR >= 3
 					size_t len = 0;
 					outbuf_wchar = ConvertUtf8NToWCharAlloc((const char *)inbuf, (size_t)size, &len);
-					size = len * sizeof(WCHAR);
+					size = (len + 1) * sizeof(WCHAR);
 #else
 					const int rc = (ConvertToUnicode(CP_UTF8, 0, (CHAR *)inbuf, -1, (WCHAR **)&outbuf, 0)) * sizeof(WCHAR);
 					size = 0;
