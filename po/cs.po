@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-09-24 14:41+0000\n"
-"PO-Revision-Date: 2023-12-06 13:03+0000\n"
+"PO-Revision-Date: 2023-12-19 14:09+0000\n"
 "Last-Translator: Petr Kadlec <mormegil@centrum.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.3-dev\n"
+"X-Generator: Weblate 5.3\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -159,7 +159,6 @@ msgstr "Zásuvné moduly"
 
 #: src/remmina_plugin_manager.c:531 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_file_editor.c:252
-#, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
@@ -1276,12 +1275,12 @@ msgid "Could not create PTY device."
 msgstr "Nedaří se vytvořit zařízení pseudoterminálu."
 
 #: src/remmina_exec.c:128
-#, fuzzy
-#| msgid "Are you sure you want to close this last active connection?"
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
-msgstr "Opravdu chcete zavřít toto poslední aktivní připojení?"
+msgstr ""
+"Jste si jisti, že chcete ukončit Remminu?\n"
+" Zavřou se tím všechna aktivní spojení."
 
 #: src/remmina_exec.c:505
 #, c-format
@@ -1314,10 +1313,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Opravdu chcete „%s“ smazat?"
 
 #: src/remmina_main.c:1021
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
-msgstr "Opravdu chcete označené soubory na serveru smazat?"
+msgstr "Opravdu chcete smazat označené soubory?"
 
 #: src/remmina_main.c:1032
 msgid "Failed to delete files!"
@@ -1546,7 +1543,7 @@ msgstr "Uživatelsky určené"
 
 #: src/remmina_file_editor.c:657
 msgid "Assistance Mode"
-msgstr ""
+msgstr "Režim pomoci"
 
 #: src/remmina_file_editor.c:1038
 msgid "Keyboard mapping"
@@ -2947,7 +2944,7 @@ msgstr "Nový profil připojení"
 
 #: plugins/rdp/rdp_plugin.c:2942
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "Pokusit se připojit v režimu pomoci"
 
 #: plugins/rdp/rdp_plugin.c:2943
 #, fuzzy
@@ -3359,6 +3356,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Přepsat přednastavenou kvalitu kódování VNC:\n"
+"\n"
+"  • „Nejhorší (nejrychlejší)“ nastaví kódování na „copyrect zlib hextile raw“"
+"\n"
+"  • „Střední“ nastaví kódování na „tight zrle ultra copyrect hextile zlib "
+"corre rre raw“\n"
+"  • „Dobré“ nastaví kódování na „tight zrle ultra copyrect hextile zlib "
+"corre rre raw“\n"
+"  • „Nejlepší (nejpomalejší)“ nastaví kódování na „copyrect zrle ultra zlib "
+"hextile corre rre raw“"
 
 #: plugins/vnc/vnc_plugin.c:2097
 #, fuzzy
@@ -3372,11 +3379,11 @@ msgstr "Očekávat spojení na portu"
 
 #: plugins/vnc/vnc_plugin.c:2129
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Přepsat přednastavenou kvalitu kódování VNC"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "Vynucený poměr stran dynamického rozlišení"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
@@ -3785,7 +3792,7 @@ msgstr "parametr 'env' je buď neplatný, nebo neinicializovaný."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' označuje neexistující řádek!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
@@ -5439,9 +5446,8 @@ msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1865
-#, fuzzy
 msgid "Auditing log"
-msgstr "Upravit nastavení"
+msgstr "Auditní protokol"
 
 #: data/ui/remmina_preferences.glade:1890
 msgid "Automatically accept all fingerprints and certificates"
@@ -5690,7 +5696,6 @@ msgid "Unlock"
 msgstr "Odemknout"
 
 #: data/ui/remmina_unlock.glade:109
-#, fuzzy
 msgid "Master password"
 msgstr "Hlavní heslo"
 
