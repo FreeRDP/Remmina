@@ -301,6 +301,7 @@ typedef struct _RemminaPluginService {
 	GtkWidget *(*rcw_open_from_file_full)(RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
 	void (*show_dialog)(GtkMessageType msg, GtkButtonsType buttons, const gchar* message);
 	GtkWindow *(*get_window)(void);
+	gint (*plugin_unlock_new)(GtkWindow* parent);
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */
