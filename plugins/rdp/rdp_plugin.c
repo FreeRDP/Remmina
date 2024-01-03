@@ -981,37 +981,37 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 	FreeRDP_Settings_Keys_String cfg_key_domain = FreeRDP_STRING_UNUSED;
 	FreeRDP_Settings_Keys_String cfg_key_password = FreeRDP_STRING_UNUSED;
 	switch(reason) {
-	case AUTH_NLA:
-			case AUTH_TLS:
-			case AUTH_RDP:
-		key_title = _("Enter RDP authentication credentials");
-		key_user = "username";
-		key_domain = "domain";
-		key_password = "password";
-		cfg_key_user = FreeRDP_Username;
-		cfg_key_domain = FreeRDP_Domain;
-		cfg_key_password = FreeRDP_Password;
-		break;
-			case GW_AUTH_HTTP:
-			case GW_AUTH_RDG:
-			case GW_AUTH_RPC:
-		key_title = _("Enter RDP gateway authentication credentials");
-		key_user = "gateway_username";
-		key_domain = "gateway_domain";
-		key_password = "gateway_password";
-		cfg_key_user = FreeRDP_GatewayUsername;
-				cfg_key_domain = FreeRDP_GatewayDomain;
-				cfg_key_password = FreeRDP_GatewayPassword;
-		break;
-	case AUTH_SMARTCARD_PIN:
-		key_title = _("Enter RDP SmartCard PIN");
-		key_password = "smartcard_pin";
-		flags = 0;
-		break;
-	default:
-		// TODO: Display an error dialog informing the user that the remote requires some mechanism FreeRDP or Remmina currently do not support
-		g_fprintf(stderr, "[authentication] unsupported type %d, access denied", reason);
-		return FALSE;
+		case AUTH_NLA:
+		case AUTH_TLS:
+		case AUTH_RDP:
+			key_title = _("Enter RDP authentication credentials");
+			key_user = "username";
+			key_domain = "domain";
+			key_password = "password";
+			cfg_key_user = FreeRDP_Username;
+			cfg_key_domain = FreeRDP_Domain;
+			cfg_key_password = FreeRDP_Password;
+			break;
+		case GW_AUTH_HTTP:
+		case GW_AUTH_RDG:
+		case GW_AUTH_RPC:
+			key_title = _("Enter RDP gateway authentication credentials");
+			key_user = "gateway_username";
+			key_domain = "gateway_domain";
+			key_password = "gateway_password";
+			cfg_key_user = FreeRDP_GatewayUsername;
+			cfg_key_domain = FreeRDP_GatewayDomain;
+			cfg_key_password = FreeRDP_GatewayPassword;
+			break;
+		case AUTH_SMARTCARD_PIN:
+			key_title = _("Enter RDP SmartCard PIN");
+			key_password = "smartcard_pin";
+			flags = 0;
+			break;
+		default:
+			// TODO: Display an error dialog informing the user that the remote requires some mechanism FreeRDP or Remmina currently do not support
+			g_fprintf(stderr, "[authentication] unsupported type %d, access denied", reason);
+			return FALSE;
 	}
 
 	if (!disablepasswordstoring)
