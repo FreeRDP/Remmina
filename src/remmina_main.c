@@ -1079,13 +1079,15 @@ void remmina_main_reload_preferences()
 	GtkSettings *settings;
 	settings = gtk_settings_get_default();
 	g_object_set(settings, "gtk-application-prefer-dark-theme", remmina_pref.dark_theme, NULL);
-	if(remmina_pref.hide_searchbar){
-		gtk_toggle_button_set_active(remminamain->search_toggle, FALSE);
+	if (remminamain) {
+		if(remmina_pref.hide_searchbar){
+			gtk_toggle_button_set_active(remminamain->search_toggle, FALSE);
+		}
+		else{
+			gtk_toggle_button_set_active(remminamain->search_toggle, TRUE);
+		}
+		gtk_tree_view_column_set_visible(remminamain->column_files_list_notes, remmina_pref.always_show_notes);
 	}
-	else{
-		gtk_toggle_button_set_active(remminamain->search_toggle, TRUE);
-	}
-	gtk_tree_view_column_set_visible(remminamain->column_files_list_notes, remmina_pref.always_show_notes);
 }
 
 void remmina_main_on_action_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
