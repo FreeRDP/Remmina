@@ -73,16 +73,51 @@ flatpak:test:
     refs:
       - schedules
 snap:build:
-  image: ubuntu:22.04
+  image: registry.gitlab.com/remmina/remmina/snap:22.04
   stage: build
   script:
-  - export LC_ALL=C.UTF-8
-  - export LANG=C.UTF-8
-  - export SNAP_ARCH=amd64
-  - export SNAPCRAFT_BUILD_INFO=1
-  - apt-get -y update
-  - apt-get install -y git snapcraft
-  - SNAPCRAFT_SETUP_CORE=1 snapcraft --destructive-mode
+  - apt-get install -y git
+  - mkdir -p ~/.local/share/snapcraft/provider/launchpad
+  - echo -en "[1]\n" > ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en "consumer_key = System-wide" >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en ":" >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en " Ubuntu (ubuntu)\n" >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en "consumer_secret = \n" >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en "access_token = " >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en $LAUNCHPAD_CREDENTIALS_ACCESS_TOKEN >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en "\naccess_secret = " >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en $LAUNCHPAD_CREDENTIALS_ACCESS_SECRET >> ~/.local/share/snapcraft/provider/launchpad/credentials
+  - echo -en "\n" >> ~/.local/share/snapcraft/provider/launchpad/credentials
+
+  - snapcraft remote-build --launchpad-accept-public-upload
+
+  - |
+    if ls remmina_*_amd64.snap 1> /dev/null 2>&1; then
+      echo "amd64 snap file found"
+    else
+      echo "amd64 snap file not found"
+      cat remmina_amd64.txt
+      exit 1
+    fi
+
+  - |
+    if ls remmina_*_arm64.snap 1> /dev/null 2>&1; then
+      echo "arm64 snap file found"
+    else
+      echo "arm64 snap file not found"
+      cat remmina_arm64.txt
+      exit 1
+    fi
+
+  - |
+    if ls remmina_*_armhf.snap 1> /dev/null 2>&1; then
+      echo "armhf snap file found"
+    else
+      echo "armhf snap file not found"
+      cat remmina_armhf.txt
+      exit 1
+    fi
+
   - |
     if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
       echo $SNAPCRAFT_LOGIN | base64 --decode --ignore-garbage > snapcraft.login
@@ -90,10 +125,12 @@ snap:build:
       snapcraft upload remmina*.snap --release edge
       snapcraft logout
     fi
+  timeout: 8h 0m
   allow_failure: false
   artifacts:
     paths:
     - "./*.snap"
+    - "./remmina_*.txt"
     expire_in: 10 days
   only:
     refs:
