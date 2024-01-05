@@ -2,7 +2,7 @@
 # See https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#priority-of-environment-variables
-image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
+image: registry.gitlab.com/remmina/remmina/ubuntu:22.04
 stages:
 - test
 - build
@@ -39,15 +39,13 @@ ubuntu:devel:
     refs:
       - schedules
 flatpak:test:
-  image: registry.gitlab.com/remmina/remmina/ubuntu:20.04
+  image: registry.gitlab.com/remmina/remmina/ubuntu:22.04
   stage: test
   variables:
     BUNDLE: remmina-dev.flatpak
     FLATPAK_PPA: ppa:alexlarsson/flatpak
     FLATHUB_REPO: https://dl.flathub.org/repo/flathub.flatpakrepo
   before_script:
-  - apt-get update -qq
-  - add-apt-repository $FLATPAK_PPA -y
   - apt-get update -qq
   - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
   - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
