@@ -20,12 +20,6 @@ RUN curl -L $(curl -H 'X-Ubuntu-Series: 16' 'https://api.snapcraft.io/api/v1/sna
 RUN mkdir -p /snap/core
 RUN unsquashfs -d /snap/core/current core.snap
 
-# Grab the core18 snap (which snapcraft uses as a base) from the stable channel
-# and unpack it in the proper place.
-RUN curl -L $(curl -H 'X-Ubuntu-Series: 16' 'https://api.snapcraft.io/api/v1/snaps/details/core18' | jq '.download_url' -r) --output core18.snap
-RUN mkdir -p /snap/core18
-RUN unsquashfs -d /snap/core18/current core18.snap
-
 # Grab the core22 snap (which snapcraft uses as a base) from the stable channel
 # and unpack it in the proper place.
 RUN curl -L $(curl -H 'X-Ubuntu-Series: 16' 'https://api.snapcraft.io/api/v1/snaps/details/core22' | jq '.download_url' -r) --output core22.snap
@@ -56,7 +50,6 @@ RUN chmod +x /snap/bin/snapcraft
 # time so they can be cached.
 FROM ubuntu:$UBUNTU
 COPY --from=builder /snap/core /snap/core
-COPY --from=builder /snap/core18 /snap/core18
 COPY --from=builder /snap/core22 /snap/core22
 COPY --from=builder /snap/snapcraft /snap/snapcraft
 COPY --from=builder /snap/bin/snapcraft /snap/bin/snapcraft
