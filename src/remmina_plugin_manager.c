@@ -60,6 +60,7 @@
 #include "remmina_public.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_unlock.h"
 
 static GPtrArray* remmina_plugin_table = NULL;
 
@@ -308,6 +309,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	rcw_open_from_file_full,
 	remmina_main_show_dialog,
 	remmina_main_get_window,
+	remmina_unlock_new,
 };
 
 const char *get_filename_ext(const char *filename) {

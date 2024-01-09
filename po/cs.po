@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2023-09-24 14:41+0000\n"
-"PO-Revision-Date: 2023-05-12 18:53+0000\n"
-"Last-Translator: Štěpán Adamec <adamec@yasas.org>\n"
+"PO-Revision-Date: 2023-12-19 14:09+0000\n"
+"Last-Translator: Petr Kadlec <mormegil@centrum.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
 "Language: cs\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.3\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -159,7 +159,6 @@ msgstr "Zásuvné moduly"
 
 #: src/remmina_plugin_manager.c:531 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_file_editor.c:252
-#, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
@@ -371,6 +370,18 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
+"UPOZORNĚNÍ: Vložený text bude odeslán jako posloupnost klávesových kódů, jak "
+"by byl napsán na vaší klávesnici\n"
+"\n"
+"  • Pro nejlepší výsledky používejte stejné nastavení klávesnice na obou "
+"stranách, klientovi i serveru.\n"
+"\n"
+"  • Pokud je klientská klávesnice jiná než serverová, může přijatý text "
+"obsahovat nesprávné či chybné znaky.\n"
+"\n"
+"  • Znaky Unicode a další zvláštní znaky, které nelze přeložit na klávesové "
+"kódy místní klávesnice, nebudou na server odeslány.\n"
+"\n"
 
 #: src/rcw.c:2212
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -483,6 +494,11 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"Zásuvné moduly závisející na GtkSocketech nelze spouštět v sezení Wayland.\n"
+"Více informací a možné řešení je uvedeno na Remmina wiki na\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4675
 msgid "Open in web browser"
@@ -542,22 +558,20 @@ msgstr "SOUBOR"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:100
-#, fuzzy
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Připojit se k ploše popsané v souboru (.remmina nebo typu podporovanému "
+"Připojit se k ploše popsané v souboru (.remmina nebo typ podporovaný "
 "zásuvným modulem)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
-#, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
-"Upravit připojení k ploše popsané v souboru (.remmina nebo typu podporovaném "
+"Upravit připojení k ploše popsané v souboru (.remmina nebo typ podporovaný "
 "zásuvným modulem)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -633,10 +647,8 @@ msgid "Encrypt a password"
 msgstr "Heslo zašifrovat"
 
 #: src/remmina.c:132
-#, fuzzy
-#| msgid "Disable clipboard sync"
 msgid "Disable toolbar"
-msgstr "Nesynchronizovat obsah schránky"
+msgstr "Vypnout panel nástrojů"
 
 #: src/remmina.c:133
 msgid "Enable fullscreen"
@@ -659,7 +671,6 @@ msgstr "Zakázat ikonu v oznamovací oblasti panelu"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:364
-#, fuzzy
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
@@ -667,7 +678,9 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina nezaznamenává všechny výstupní příkazy. Chcete-li povolit "
-"podrobnější výstup, použijte jako proměnnou prostředí G_MESSAGES_DEBUG=all. "
+"podrobnější výstup, použijte jako proměnnou prostředí G_MESSAGES_DEBUG=all.\n"
+"Více informací je k dispozici na Reminna wiki na:\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:418
@@ -675,7 +688,6 @@ msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- nebo protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:421
-#, fuzzy
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -716,19 +728,19 @@ msgstr ""
 "\n"
 "Pro rychlé připojení pomocí URI:\n"
 "\n"
-"\tURI: remmina -c rdp://username@server\n"
-"\tremmina -c rdp://domain\\\\username@server\n"
-"\tremmina -c vnc://username@server\n"
-"\tremmina -c vnc://server?VncUsername=username\n"
-"\tremmina -c ssh://user@server\n"
+"\tremmina -c rdp://uživatelské-jméno@server\n"
+"\tremmina -c rdp://doména\\\\uživatelské-jméno@server\n"
+"\tremmina -c vnc://uživatelské-jméno@server\n"
+"\tremmina -c vnc://server?VncUsername=uživatelské-jméno\n"
+"\tremmina -c ssh://uživatelské-jméno@server\n"
 "\tremmina -c spice://server\n"
 "\n"
 "Rychlé připojení pomocí URI spolu se zašifrovaným heslem:\n"
 "\n"
-"\tremmina -c rdp://uživatelské jméno:zašifrované heslo@server\n"
-"\tremmina -c vnc://username:encrypted-password@server\n"
-"\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
-"password\n"
+"\tremmina -c rdp://uživatelské-jméno:zašifrované-heslo@server\n"
+"\tremmina -c vnc://uživatelské-jméno:zašifrované-heslo@server\n"
+"\tremmina -c vnc://server?VncUsername=uživatelské-jméno\\"
+"&VncPassword=zašifrované-heslo\n"
 "\n"
 "Šifrování hesla pro použití s URI:\n"
 "\n"
@@ -737,8 +749,9 @@ msgstr ""
 "Pro aktualizaci uživatelského jména a hesla a nastavení jiného režimu "
 "rozlišení profilu připojení Remmina použijte:\n"
 "\n"
-"\tremmina --update-profile /PATH/TO/FOO.remmina --set-option username --set-"
-"option resolution_mode=2 --set-option password\n"
+"\techo \"uživatelské-jméno\\n"
+"heslo\" | remmina --update-profile /CESTA/K/NĚCO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:347
 #, c-format
@@ -765,11 +778,11 @@ msgstr "Nastavení kvality"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:53
-#, fuzzy
 msgid "translator-credits"
 msgstr ""
 "Jan Novák <jan.novak@silen.org>\n"
-"Vojtěch Perník <translations@pervoj.cz>"
+"Vojtěch Perník <translations@pervoj.cz>\n"
+"Petr Kadlec <mormegil@centrum.cz>"
 
 #: src/remmina_ftp_client.c:409
 msgid "Choose download location"
@@ -864,7 +877,7 @@ msgstr "Oprávnění"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "Změněno"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2745
 msgid "Remote"
@@ -1262,12 +1275,12 @@ msgid "Could not create PTY device."
 msgstr "Nedaří se vytvořit zařízení pseudoterminálu."
 
 #: src/remmina_exec.c:128
-#, fuzzy
-#| msgid "Are you sure you want to close this last active connection?"
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
-msgstr "Opravdu chcete zavřít toto poslední aktivní připojení?"
+msgstr ""
+"Jste si jisti, že chcete ukončit Remminu?\n"
+" Zavřou se tím všechna aktivní spojení."
 
 #: src/remmina_exec.c:505
 #, c-format
@@ -1288,11 +1301,11 @@ msgstr[2] "Celkem %i položek."
 
 #: src/remmina_main.c:743
 msgid "Network status: fully online"
-msgstr ""
+msgstr "Stav sítě: plně online"
 
 #: src/remmina_main.c:746
 msgid "Network status: offline"
-msgstr ""
+msgstr "Stav sítě: offline"
 
 #: src/remmina_main.c:999
 #, c-format
@@ -1300,14 +1313,12 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Opravdu chcete „%s“ smazat?"
 
 #: src/remmina_main.c:1021
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
-msgstr "Opravdu chcete označené soubory na serveru smazat?"
+msgstr "Opravdu chcete smazat označené soubory?"
 
 #: src/remmina_main.c:1032
 msgid "Failed to delete files!"
-msgstr ""
+msgstr "Soubory se nepodařilo smazat!"
 
 #: src/remmina_main.c:1213
 #, c-format
@@ -1532,7 +1543,7 @@ msgstr "Uživatelsky určené"
 
 #: src/remmina_file_editor.c:657
 msgid "Assistance Mode"
-msgstr ""
+msgstr "Režim pomoci"
 
 #: src/remmina_file_editor.c:1038
 msgid "Keyboard mapping"
@@ -1577,15 +1588,15 @@ msgstr "Nový profil připojení"
 
 #: src/remmina_file_editor.c:1195
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "Vyžadovat heslo pro připojení nebo úpravu profilu"
 
 #: src/remmina_file_editor.c:1199
 msgid "Unexpected disconnect"
-msgstr ""
+msgstr "Neočekávané odpojení"
 
 #: src/remmina_file_editor.c:1202
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr ""
+msgstr "Bránit v zavření okna, pokud se neodpojila Remmina"
 
 #: src/remmina_file_editor.c:1235
 msgid "SSH Tunnel"
@@ -1695,11 +1706,11 @@ msgstr "Podskupiny oddělujte pomocí „%s“"
 
 #: src/remmina_file_editor.c:2087 data/ui/remmina_main.glade:493
 msgid "Labels"
-msgstr ""
+msgstr "Štítky"
 
 #: src/remmina_file_editor.c:2101
 msgid "Label1,Label2"
-msgstr ""
+msgstr "Štítek1,Štítek2"
 
 #: src/remmina_file_editor.c:2173 src/remmina_file_editor.c:2192
 #, c-format
@@ -1992,7 +2003,7 @@ msgstr "Složka pro záznam z SSH relace"
 
 #: src/remmina_ssh_plugin.c:1545
 msgid "Full path of an existing folder"
-msgstr ""
+msgstr "Úplná cesta k existujícímu adresáři"
 
 #: src/remmina_ssh_plugin.c:1546
 #, fuzzy
@@ -2021,7 +2032,7 @@ msgstr "Zvukové upozorňování terminálu"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "SSH X11 přeposílání"
 
 #: src/remmina_ssh_plugin.c:1551
 #, fuzzy
@@ -2225,7 +2236,7 @@ msgstr "Zadejte přihlašovací údaje pro bránu do RDP"
 #: plugins/rdp/rdp_plugin.c:1065
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Odpojeno od %s prostřednictvím RDP"
 
 #: plugins/rdp/rdp_plugin.c:2248
 #, c-format
@@ -2493,19 +2504,19 @@ msgstr "Zabezpečení rozšířeného protokolu NLA"
 
 #: plugins/rdp/rdp_plugin.c:2764
 msgid "Every 1 min"
-msgstr ""
+msgstr "Každou minutu"
 
 #: plugins/rdp/rdp_plugin.c:2765
 msgid "Every 3 min"
-msgstr ""
+msgstr "Každé 3 minuty"
 
 #: plugins/rdp/rdp_plugin.c:2766
 msgid "Every 5 min"
-msgstr ""
+msgstr "Každých 5 minut"
 
 #: plugins/rdp/rdp_plugin.c:2767
 msgid "Every 10 min"
-msgstr ""
+msgstr "Každých 10 minut"
 
 #: plugins/rdp/rdp_plugin.c:2781 plugins/spice/spice_plugin.c:628
 #: plugins/spice/spice_plugin.c:646
@@ -2515,27 +2526,27 @@ msgstr "Výchozí"
 
 #: plugins/rdp/rdp_plugin.c:2782
 msgid "0 — Windows 7 compatible"
-msgstr ""
+msgstr "0 — kompatibilní s Windows 7"
 
 #: plugins/rdp/rdp_plugin.c:2783
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/rdp/rdp_plugin.c:2784
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: plugins/rdp/rdp_plugin.c:2785
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: plugins/rdp/rdp_plugin.c:2786
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: plugins/rdp/rdp_plugin.c:2787
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:2792
 #, fuzzy
@@ -2933,7 +2944,7 @@ msgstr "Nový profil připojení"
 
 #: plugins/rdp/rdp_plugin.c:2942
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "Pokusit se připojit v režimu pomoci"
 
 #: plugins/rdp/rdp_plugin.c:2943
 #, fuzzy
@@ -3049,7 +3060,7 @@ msgstr "Povolení podpory webových soketů brány"
 
 #: plugins/rdp/rdp_plugin.c:2967
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Aktualizovat framebuffer i když není viditelný"
 
 #: plugins/rdp/rdp_plugin.c:2976 plugins/spice/spice_plugin.c:717
 #: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
@@ -3280,7 +3291,7 @@ msgstr "Připojování k „%s“ prostřednictvím SSH…"
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Odpojeno od %s:%d prostřednictvím VNC"
 
 #: plugins/vnc/vnc_plugin.c:2046
 #, fuzzy
@@ -3327,6 +3338,11 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"Uzamknout poměr stran, když je povoleno dynamické rozlišení:\n"
+"\n"
+"  • Poměr stran by měl být uveden jako desetinné číslo, např. 1,777\n"
+"  • 16:9 zhruba odpovídá 1,7777, 4:3 zhruba odpovídá 1.333\n"
+"  • Výchozí hodnota 0 nevynucuje žádný poměr stran"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3340,6 +3356,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Přepsat přednastavenou kvalitu kódování VNC:\n"
+"\n"
+"  • „Nejhorší (nejrychlejší)“ nastaví kódování na „copyrect zlib hextile raw“"
+"\n"
+"  • „Střední“ nastaví kódování na „tight zrle ultra copyrect hextile zlib "
+"corre rre raw“\n"
+"  • „Dobré“ nastaví kódování na „tight zrle ultra copyrect hextile zlib "
+"corre rre raw“\n"
+"  • „Nejlepší (nejpomalejší)“ nastaví kódování na „copyrect zrle ultra zlib "
+"hextile corre rre raw“"
 
 #: plugins/vnc/vnc_plugin.c:2097
 #, fuzzy
@@ -3353,11 +3379,11 @@ msgstr "Očekávat spojení na portu"
 
 #: plugins/vnc/vnc_plugin.c:2129
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Přepsat přednastavenou kvalitu kódování VNC"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "Vynucený poměr stran dynamického rozlišení"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
@@ -3508,7 +3534,7 @@ msgstr "Asynchronní vykonání"
 
 #: plugins/exec/exec_plugin.c:299
 msgid "Kill process on disconnect"
-msgstr ""
+msgstr "Při odpojení zabít proces"
 
 #: plugins/exec/exec_plugin_config.h:41
 #, fuzzy
@@ -3662,7 +3688,7 @@ msgstr "_Nový"
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:550
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Ukončování X2Go sezení může chvíli trvat."
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
 #, fuzzy, c-format
@@ -3679,6 +3705,8 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Nebyl inicializován ani jeden z parametrů „dialog“ a „treeview“! Musí být "
+"zadán alespoň jeden z nich."
 
 #: plugins/x2go/x2go_plugin.c:736
 #, fuzzy
@@ -3764,7 +3792,7 @@ msgstr "parametr 'env' je buď neplatný, nebo neinicializovaný."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath 'path' označuje neexistující řádek!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
@@ -3808,7 +3836,7 @@ msgstr "Obnovení relace: '%s'"
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Odpojeno od %s:%d prostřednictvím X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1657
 #, fuzzy
@@ -3863,6 +3891,9 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Tip: Pro rychlejší přihlašování zaškrtněte políčko „Uložit heslo“ nebo ručně "
+"zadejte své uživatelské jméno a heslo X2Go v nastavení profilu, aby se "
+"uložily."
 
 #: plugins/x2go/x2go_plugin.c:1831
 #, fuzzy
@@ -4930,7 +4961,7 @@ msgstr "Zvolte složku, do které ukládat snímky obrazovky z Remmina."
 
 #: data/ui/remmina_preferences.glade:216 data/ui/remmina_preferences.glade:302
 msgid "Select a folder"
-msgstr ""
+msgstr "Vyberte složku"
 
 #: data/ui/remmina_preferences.glade:227
 #, fuzzy
@@ -5025,7 +5056,7 @@ msgstr "Zamezit tomu, aby se snímky obrazovky dostávaly do schránky"
 
 #: data/ui/remmina_preferences.glade:448
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "Potvrzovat před zavíráním více záložek"
 
 #: data/ui/remmina_preferences.glade:500
 #, fuzzy
@@ -5131,7 +5162,7 @@ msgstr "Panely zobrazovat vždy"
 
 #: data/ui/remmina_preferences.glade:709
 msgid "Add a column displaying any notes associated with a connection."
-msgstr ""
+msgstr "Přidat sloupec zobrazující poznámky přidané k připojení."
 
 #: data/ui/remmina_preferences.glade:729
 #, fuzzy
@@ -5323,10 +5354,13 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Čas v sekundách, po kterém Remmina uzamkne sezení a znovu požádá o heslo. "
+"Výchozí: 300 sekund."
 
 #: data/ui/remmina_preferences.glade:1673
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Nastavit a používat tajný klíč chránící Remminu před nedovoleným užitím."
 
 #: data/ui/remmina_preferences.glade:1678
 #, fuzzy
@@ -5340,15 +5374,15 @@ msgstr "Použít tajný klíč pro ověřování se pro některé ovládací prv
 
 #: data/ui/remmina_preferences.glade:1709
 msgid "Valid for"
-msgstr ""
+msgstr "Platnost"
 
 #: data/ui/remmina_preferences.glade:1720
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Počet sekund, jak dlouho se heslo drží platné"
 
 #: data/ui/remmina_preferences.glade:1725
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "časový limit v sekundách (výchozí 300)"
 
 #: data/ui/remmina_preferences.glade:1737
 #, fuzzy
@@ -5363,12 +5397,12 @@ msgstr "Zabezpečené ukládání hesel v klíčence KDE"
 
 #: data/ui/remmina_preferences.glade:1752
 msgid "Creation, editing, copying, and deletions require the Remmina password"
-msgstr ""
+msgstr "Vytváření, úpravy, kopírování a mazání vyžadují heslo Remminy"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1756
 msgid "Require to modify"
-msgstr ""
+msgstr "Vyžadovat pro úpravy"
 
 #: data/ui/remmina_preferences.glade:1767
 #, fuzzy
@@ -5412,9 +5446,8 @@ msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1865
-#, fuzzy
 msgid "Auditing log"
-msgstr "Upravit nastavení"
+msgstr "Auditní protokol"
 
 #: data/ui/remmina_preferences.glade:1890
 msgid "Automatically accept all fingerprints and certificates"
@@ -5663,7 +5696,6 @@ msgid "Unlock"
 msgstr "Odemknout"
 
 #: data/ui/remmina_unlock.glade:109
-#, fuzzy
 msgid "Master password"
 msgstr "Hlavní heslo"
 
