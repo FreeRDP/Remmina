@@ -78,7 +78,7 @@ parts:
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
-    source-tag: 2.11.2
+    source-tag: 3.1.0
     source-depth: 1
     # override-build: |
     #   current_dir=$PWD
@@ -102,6 +102,10 @@ parts:
       - libusb-1.0-0-dev
       - libxkbfile-dev
       - libxv-dev
+      - libfuse3-dev
+      - libkrb5-dev
+      - libpkcs11-helper1-dev
+      - libswscale-dev
     stage-packages:
       - libffi7
       - libusb-1.0-0
@@ -206,7 +210,7 @@ parts:
       - xterm
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DWITH_FREERDP3=OFF
+      - -DWITH_FREERDP3=ON
       - -DWITH_KF5WALLET=ON
       - -DWITH_GVNC=ON
       - -DWITH_X2GO=ON
@@ -277,7 +281,7 @@ parts:
   cleanup:
     after: [freerdp, remmina, app]  
     plugin: nil
-    build-snaps: [core20, gnome-42-2204, gtk-common-themes]  # List all content-snaps you're using here
+    build-snaps: [core22, gnome-42-2204, gtk-common-themes]  # List all content-snaps you're using here
     override-prime: |
       set -eux
       for snap in "core22" "gnome-42-2204" "gtk-common-themes"; do  # List all content-snaps you're using here
