@@ -206,7 +206,6 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget *widget, gpointer data)
 static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid *grid)
 {
 	TRACE_CALL(__func__);
-	gint i;
 	gchar *s;
 	GtkTreeIter iter;
 	RDP_KEYBOARD_LAYOUT *layouts;
@@ -219,9 +218,29 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid *grid)
 
 	gtk_label_set_text(GTK_LABEL(grid->keyboard_layout_label), "-");
 
+#if FREERDP_VERSION_MAJOR >= 3
+	size_t layout_count = 0;
+	layouts = freerdp_keyboard_get_layouts(RDP_KEYBOARD_LAYOUT_TYPE_STANDARD | RDP_KEYBOARD_LAYOUT_TYPE_VARIANT, &layout_count);
+
+	for (DWORD i = 0; i < layout_count; i++) {
+		s = g_strdup_printf("%08X - %s", layouts[i].code, layouts[i].name);
+		gtk_list_store_append(grid->keyboard_layout_store, &iter);
+		gtk_list_store_set(grid->keyboard_layout_store, &iter, 0, layouts[i].code, 1, s, -1);
+
+		if (rdp_keyboard_layout == layouts[i].code)
+			gtk_combo_box_set_active(GTK_COMBO_BOX(grid->keyboard_layout_combo), i + 1);
+
+		if (keyboard_layout == layouts[i].code)
+			gtk_label_set_text(GTK_LABEL(grid->keyboard_layout_label), s);
+
+		g_free(s);
+	}
+
+	freerdp_keyboard_layouts_free(layouts, layout_count);
+#else
 	layouts = freerdp_keyboard_get_layouts(RDP_KEYBOARD_LAYOUT_TYPE_STANDARD | RDP_KEYBOARD_LAYOUT_TYPE_VARIANT);
 
-	for (i = 0; layouts[i].code; i++) {
+	for (DWORD i = 0; layouts[i].code; i++) {
 		s = g_strdup_printf("%08X - %s", layouts[i].code, layouts[i].name);
 		gtk_list_store_append(grid->keyboard_layout_store, &iter);
 		gtk_list_store_set(grid->keyboard_layout_store, &iter, 0, layouts[i].code, 1, s, -1);
@@ -236,6 +255,7 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid *grid)
 	}
 
 	freerdp_keyboard_layouts_free(layouts);
+#endif
 }
 
 static void remmina_rdp_settings_grid_load_devicescalefactor_combo(RemminaPluginRdpsetGrid *grid)

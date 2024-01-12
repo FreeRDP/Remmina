@@ -49,22 +49,7 @@ if(LIBSSH_FOUND)
     target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 
-set(FREERDP_REQUIRED_MAJOR 2)
-set(FREERDP_REQUIRED_MINOR 0)
-set(FREERDP_REQUIRED_REVISION 0)
-set(FREERDP_REQUIRED_VERSIONSTRING
-    ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
-find_package(FREERDP3)
-find_package(FREERDP)
-if(FREERDP3_FOUND)
-    add_definitions(-DWITH_FREERDP3)
-    option(WITH_FREERDP3 "Building RDP with FREERDP 3" ON)
-    set(FREERDP_REQUIRED_MAJOR 3)
-    set(FREERDP_FOUND FREERDP3_FOUND)
-    add_subdirectory(rdp)
-elseif(FREERDP_FOUND)
-    add_subdirectory(rdp)
-endif()
+add_subdirectory(rdp)
 
 # X2Go
 option(WITH_X2GO "Build X2Go plugin" OFF)

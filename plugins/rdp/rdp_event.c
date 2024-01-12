@@ -122,7 +122,7 @@ static gboolean remmina_rdp_event_on_focus_in(GtkWidget *widget, GdkEventKey *ev
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
 
-	input = rfi->instance->input;
+	input = rfi->clientContext.context.input;
 	UINT32 toggle_keys_state = 0;
 
 #if GTK_CHECK_VERSION(3, 20, 0)
@@ -437,8 +437,8 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget *
 			}
 			rdp_event.type = REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT;
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
-				const rdpMonitor *base = freerdp_settings_get_pointer(rfi->settings, FreeRDP_MonitorDefArray);
-				for (gint i = 0; i < freerdp_settings_get_uint32(rfi->settings, FreeRDP_MonitorCount); ++i) {
+				const rdpMonitor *base = freerdp_settings_get_pointer(rfi->clientContext.context.settings, FreeRDP_MonitorDefArray);
+				for (gint i = 0; i < freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_MonitorCount); ++i) {
 					const rdpMonitor *current = &base[i];
 					REMMINA_PLUGIN_DEBUG("Sending display layout n° %d", i);
 					rdp_event.monitor_layout.Flags = current->is_primary;
@@ -1186,7 +1186,7 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget *gp, RemminaPlugin
 	remmina_rdp_event_update_scale(gp);
 
 	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
-	const gchar *host = freerdp_settings_get_string (rfi->settings, FreeRDP_ServerHostname);
+	const gchar *host = freerdp_settings_get_string (rfi->clientContext.context.settings, FreeRDP_ServerHostname);
 	// TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 	REMMINA_PLUGIN_AUDIT(_("Connected to %s via RDP"), host);
 }

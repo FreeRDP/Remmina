@@ -45,6 +45,12 @@
 
 #define CLIPBOARD_TRANSFER_WAIT_TIME 6
 
+#define CB_FORMAT_HTML 0xD010
+#define CB_FORMAT_PNG 0xD011
+#define CB_FORMAT_JPEG 0xD012
+#define CB_FORMAT_GIF 0xD013
+#define CB_FORMAT_TEXTURILIST 0xD014
+
 UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
 	TRACE_CALL(__func__);
@@ -346,9 +352,15 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext *context
 
 
 	REMMINA_PLUGIN_DEBUG("gp=%p: sending ClientFormatListResponse to server", gp);
+#if FREERDP_VERSION_MAJOR >= 3
+	formatListResponse.common.msgType = CB_FORMAT_LIST_RESPONSE;
+	formatListResponse.common.msgFlags = CB_RESPONSE_OK; // Can be CB_RESPONSE_FAIL in case of error
+	formatListResponse.common.dataLen = 0;
+#else
 	formatListResponse.msgType = CB_FORMAT_LIST_RESPONSE;
 	formatListResponse.msgFlags = CB_RESPONSE_OK; // Can be CB_RESPONSE_FAIL in case of error
 	formatListResponse.dataLen = 0;
+#endif
 	rc = clipboard->context->ClientFormatListResponse(clipboard->context, &formatListResponse);
 	/* Schedule GTK event to tell GTK to change the local clipboard calling gtk_clipboard_set_with_owner
 	 * via REMMINA_RDP_UI_CLIPBOARD_SET_DATA
@@ -442,7 +454,11 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 	rfi = GET_PLUGIN_DATA(gp);
 
 	data = formatDataResponse->requestedFormatData;
+#if FREERDP_VERSION_MAJOR >= 3
+	size = formatDataResponse->common.dataLen;
+#else
 	size = formatDataResponse->dataLen;
+#endif
 
 	REMMINA_PLUGIN_DEBUG("gp=%p server FormatDataResponse received: clipboard data arrived form server.", gp);
 	gettimeofday(&now, NULL);
@@ -457,8 +473,12 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 		switch (rfi->clipboard.format) {
 		case CF_UNICODETEXT:
 		{
-			size = ConvertFromUnicode(CP_UTF8, 0, (WCHAR *)data, size / 2, (CHAR **)&output, 0, NULL, NULL);
-			crlf2lf(output, &size);
+			output =
+			g_utf16_to_utf8((const WCHAR *)data, size / sizeof(WCHAR), NULL, NULL, NULL);
+			if (output) {
+				size = strlen(output) + 1;
+				crlf2lf(output, &size);
+			}
 			break;
 		}
 
@@ -764,8 +784,13 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
 	if (result)
 		g_free(targets);
 
+#if FREERDP_VERSION_MAJOR >= 3
+	retp->pFormatList.common.msgType = CB_FORMAT_LIST;
+	retp->pFormatList.common.msgFlags = 0;
+#else
 	retp->pFormatList.msgType = CB_FORMAT_LIST;
 	retp->pFormatList.msgFlags = 0;
+#endif
 
 	return (CLIPRDR_FORMAT_LIST *)retp;
 }
@@ -782,8 +807,11 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 	GtkClipboard *gtkClipboard;
 	UINT8 *inbuf = NULL;
 	UINT8 *outbuf = NULL;
+#if FREERDP_VERSION_MAJOR >= 3
+	WCHAR *outbuf_wchar = NULL;
+#endif
 	GdkPixbuf *image = NULL;
-	int size = 0;
+	size_t size = 0;
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event = { 0 };
 
@@ -812,61 +840,83 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 	/* No data received, send nothing */
 	if (inbuf != NULL || image != NULL) {
 		switch (ui->clipboard.format) {
-		case CF_TEXT:
-		case CB_FORMAT_HTML:
-		{
-			size = strlen((char *)inbuf);
-			outbuf = lf2crlf(inbuf, &size);
-			break;
-		}
-		case CF_UNICODETEXT:
-		{
-			size = strlen((char *)inbuf);
-			inbuf = lf2crlf(inbuf, &size);
-			size = (ConvertToUnicode(CP_UTF8, 0, (CHAR *)inbuf, -1, (WCHAR **)&outbuf, 0)) * sizeof(WCHAR);
-			g_free(inbuf);
-			break;
-		}
-		case CB_FORMAT_PNG:
-		{
-			gchar *data;
-			gsize buffersize;
-			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "png", NULL, NULL);
-			outbuf = (UINT8 *)malloc(buffersize);
-			memcpy(outbuf, data, buffersize);
-			size = buffersize;
-			g_object_unref(image);
-			break;
-		}
-		case CB_FORMAT_JPEG:
-		{
-			gchar *data;
-			gsize buffersize;
-			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "jpeg", NULL, NULL);
-			outbuf = (UINT8 *)malloc(buffersize);
-			memcpy(outbuf, data, buffersize);
-			size = buffersize;
-			g_object_unref(image);
-			break;
-		}
-		case CF_DIB:
-		case CF_DIBV5:
-		{
-			gchar *data;
-			gsize buffersize;
-			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "bmp", NULL, NULL);
-			size = buffersize - 14;
-			outbuf = (UINT8 *)malloc(size);
-			memcpy(outbuf, data + 14, size);
-			g_object_unref(image);
-			break;
-		}
+			case CF_TEXT:
+			case CB_FORMAT_HTML:
+			{
+				size = strlen((char *)inbuf);
+				outbuf = lf2crlf(inbuf, (int *) &size);
+				break;
+			}
+			case CF_UNICODETEXT:
+			{
+				size = strlen((const char *)inbuf);
+				inbuf = lf2crlf(inbuf, (int *) &size);
+#if FREERDP_VERSION_MAJOR >= 3
+				size_t len = 0;
+				outbuf_wchar = ConvertUtf8NToWCharAlloc((const char *)inbuf, (size_t)size, &len);
+				size = (len + 1) * sizeof(WCHAR);
+#else
+				const int rc = (ConvertToUnicode(CP_UTF8, 0, (CHAR *)inbuf, -1, (WCHAR **)&outbuf, 0)) * sizeof(WCHAR);
+				size = 0;
+				if (rc >= 0) {
+					size = (size_t)rc;
+				}
+#endif
+				g_free(inbuf);
+				break;
+			}
+			case CB_FORMAT_PNG:
+			{
+				gchar *data;
+				gsize buffersize;
+				gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "png", NULL, NULL);
+				outbuf = (UINT8 *)malloc(buffersize);
+				memcpy(outbuf, data, buffersize);
+				size = buffersize;
+				g_object_unref(image);
+				break;
+			}
+			case CB_FORMAT_JPEG:
+			{
+				gchar *data;
+				gsize buffersize;
+				gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "jpeg", NULL, NULL);
+				outbuf = (UINT8 *)malloc(buffersize);
+				memcpy(outbuf, data, buffersize);
+				size = buffersize;
+				g_object_unref(image);
+				break;
+			}
+			case CF_DIB:
+			case CF_DIBV5:
+			{
+				gchar *data;
+				gsize buffersize;
+				gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "bmp", NULL, NULL);
+				size = buffersize - 14;
+				outbuf = (UINT8 *)malloc(size);
+				memcpy(outbuf, data + 14, size);
+				g_object_unref(image);
+				break;
+			}
 		}
 	}
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE;
-	rdp_event.clipboard_formatdataresponse.data = outbuf;
-	rdp_event.clipboard_formatdataresponse.size = size;
+	rdp_event.clipboard_formatdataresponse.size = (int)MIN(size, INT32_MAX);
+
+#if FREERDP_VERSION_MAJOR >= 3
+	// For unicode, use the wchar buffer
+	if (outbuf == NULL && outbuf_wchar != NULL) {
+		rdp_event.clipboard_formatdataresponse.data = (unsigned char *)outbuf_wchar;
+	}
+	else {
+		rdp_event.clipboard_formatdataresponse.data = (unsigned char *)outbuf;
+	}
+#else
+	rdp_event.clipboard_formatdataresponse.data = (unsigned char *)outbuf;
+#endif
+
 	remmina_rdp_event_event_push(gp, &rdp_event);
 }
 

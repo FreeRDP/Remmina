@@ -43,7 +43,7 @@
 #include <freerdp/client/cliprdr.h>
 #include <freerdp/gdi/gfx.h>
 
-void remmina_rdp_OnChannelConnectedEventHandler(void* context, ChannelConnectedEventArgs* e)
+void remmina_rdp_OnChannelConnectedEventHandler(void *context, CONST_ARG ChannelConnectedEventArgs *e)
 {
 	TRACE_CALL(__func__);
 
@@ -56,9 +56,9 @@ void remmina_rdp_OnChannelConnectedEventHandler(void* context, ChannelConnectedE
 		g_print("Unimplemented: channel %s connected but we can’t use it\n", e->name);
 		// xf_tsmf_init(xfc, (TsmfClientContext*) e->pInterface);
 	}else if (g_strcmp0(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0) {
-	   if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SoftwareGdi)) {
+		if (freerdp_settings_get_bool(rfi->clientContext.context.settings, FreeRDP_SoftwareGdi)) {
 			rfi->rdpgfxchan = TRUE;
-			gdi_graphics_pipeline_init(rfi->context.gdi, (RdpgfxClientContext*) e->pInterface);
+			gdi_graphics_pipeline_init(rfi->clientContext.context.gdi, (RdpgfxClientContext*) e->pInterface);
 	   }
 	   else
 			g_print("Unimplemented: channel %s connected but libfreerdp is in HardwareGdi mode\n", e->name);
@@ -83,14 +83,13 @@ void remmina_rdp_OnChannelConnectedEventHandler(void* context, ChannelConnectedE
 	REMMINA_PLUGIN_DEBUG("Channel %s has been opened", e->name);
 }
 
-void remmina_rdp_OnChannelDisconnectedEventHandler(void* context, ChannelDisconnectedEventArgs* e)
-{
+void remmina_rdp_OnChannelDisconnectedEventHandler(void *context, CONST_ARG ChannelDisconnectedEventArgs *e) {
 	TRACE_CALL(__func__);
 	rfContext* rfi = (rfContext*)context;
 
 	if (strcmp(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0) {
-		if (freerdp_settings_get_bool(rfi->settings, FreeRDP_SoftwareGdi))
-			gdi_graphics_pipeline_uninit(rfi->context.gdi, (RdpgfxClientContext*) e->pInterface);
+		if (freerdp_settings_get_bool(rfi->clientContext.context.settings, FreeRDP_SoftwareGdi))
+			gdi_graphics_pipeline_uninit(rfi->clientContext.context.gdi, (RdpgfxClientContext*) e->pInterface);
 	}
 	REMMINA_PLUGIN_DEBUG("Channel %s has been closed", e->name);
 
