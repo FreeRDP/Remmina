@@ -122,7 +122,9 @@ snap:build:
     if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
       echo $SNAPCRAFT_LOGIN | base64 --decode --ignore-garbage > snapcraft.login
       snapcraft login --with snapcraft.login
-      snapcraft upload remmina*.snap --release edge
+      snapcraft upload remmina*_amd64.snap --release edge
+      snapcraft upload remmina*_arm64.snap --release edge
+      snapcraft upload remmina*_armhf.snap --release edge
       snapcraft logout
     fi
   timeout: 8h 0m
