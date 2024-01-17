@@ -49,7 +49,30 @@ if(LIBSSH_FOUND)
     target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 
-add_subdirectory(rdp)
+option(WITH_FREERDP3 "Compile the RDP plugin using symbols from FreeRDP3" OFF)
+if (WITH_FREERDP3)
+    set(FREERDP_REQUIRED_VERSION 3)
+    set(FREERDP_REQUIRED_MAJOR 3)
+    set(FREERDP_REQUIRED_MINOR 0)
+    set(FREERDP_REQUIRED_REVISION 0)
+else()
+    set(FREERDP_REQUIRED_VERSION 2)
+    set(FREERDP_REQUIRED_MAJOR 2)
+    set(FREERDP_REQUIRED_MINOR 0)
+    set(FREERDP_REQUIRED_REVISION 0)
+endif()
+
+find_package(WinPR ${FREERDP_REQUIRED_VERSION} )
+find_package(FreeRDP ${FREERDP_REQUIRED_VERSION} )
+find_package(FreeRDP-Client ${FREERDP_REQUIRED_VERSION} )
+
+
+if (WinPR_FOUND AND FreeRDP_FOUND AND FreeRDP-Client_FOUND)
+    message("Enabling RDP plugin")
+    add_subdirectory(rdp)
+else()
+    message(STATUS "Disabling RDP plugin.")
+endif()
 
 # X2Go
 option(WITH_X2GO "Build X2Go plugin" OFF)
