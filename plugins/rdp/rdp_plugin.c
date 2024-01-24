@@ -2294,9 +2294,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_NumMonitorIds, g_strv_length(items));
 			REMMINA_PLUGIN_DEBUG("NumMonitorIds: %d", freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_NumMonitorIds));
 			for (i = 0; i < g_strv_length(items); i++) {
-				UINT32 *current = &base[i];
-				*current = atoi(items[i]);
-				REMMINA_PLUGIN_DEBUG("Added monitor with ID %" PRIu32, *current);
+				if (base != NULL){
+					UINT32 *current = &base[i];
+					*current = atoi(items[i]);
+					REMMINA_PLUGIN_DEBUG("Added monitor with ID %" PRIu32, *current);
+				}
 			}
 			g_free(monitorids);
 			g_strfreev(items);
