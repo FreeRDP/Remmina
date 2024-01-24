@@ -75,6 +75,8 @@ flatpak:test:
 snap:build:
   image: registry.gitlab.com/remmina/remmina/snap:22.04
   stage: build
+  before_script:
+  - apt-get update -qq
   script:
   - apt-get install -y git
   - mkdir -p ~/.local/share/snapcraft/provider/launchpad
