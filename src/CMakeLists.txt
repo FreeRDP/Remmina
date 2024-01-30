@@ -42,6 +42,8 @@ list(
   "remmina_avahi.h"
   "remmina.c"
   "remmina.h"
+  "remmina_bug_report.c"
+  "remmina_bug_report.h"
   "remmina_chat_window.c"
   "remmina_chat_window.h"
   "remmina_crypt.c"
@@ -97,6 +99,8 @@ list(
   "remmina_sftp_plugin.h"
   "remmina_sodium.c"
   "remmina_sodium.h"
+  "remmina_curl_connector.c"
+  "remmina_curl_connector.h"
   "remmina_ssh.c"
   "remmina_ssh.h"
   "remmina_ssh_plugin.c"
@@ -121,15 +125,17 @@ list(
   "remmina_mpchange.h"
   "remmina_scheduler.c"
   "remmina_scheduler.h"
-  "remmina_stats.c"
-  "remmina_stats.h"
+  "remmina_info.c"
+  "remmina_info.h"
   "resources.c")
 
 set(RESOURCE_LIST
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_about.glade
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_bug_report.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_key_chooser.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_main.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_mpc.glade
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_info.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_passwd.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_preferences.glade
     ${CMAKE_CURRENT_SOURCE_DIR}/../data/ui/remmina_search.glade
@@ -250,6 +256,14 @@ if(GTK3_FOUND)
   endif()
 endif()
 
+find_required_package(CURL)
+if(NOT CURL_FOUND)
+  message(FATAL_ERROR "libcurl not found")
+else()
+  include_directories(${CURL_INCLUDE_DIRS})
+  target_link_libraries(remmina ${CURL_LIBRARIES})
+endif()
+
 find_required_package(PCRE2)
 if(NOT PCRE2_FOUND)
   message(FATAL_ERROR "libpcre2 library not found")
@@ -264,3 +278,5 @@ install(
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/remmina
   FILES_MATCHING
   PATTERN "*.h")
+
+add_definitions(-DG_LOG_DOMAIN="remmina")

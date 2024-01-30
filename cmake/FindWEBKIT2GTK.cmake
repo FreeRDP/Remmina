@@ -33,7 +33,6 @@
 find_package(PkgConfig)
 
 if(PKG_CONFIG_FOUND)
-    #pkg_check_modules(_WEBKIT2GTK webkit2gtk-4.0)
     pkg_search_module(_WEBKIT2GTK webkit2gtk-4.1 webkit2gtk-4.0)
 endif(PKG_CONFIG_FOUND)
 
@@ -49,6 +48,7 @@ find_library(WEBKIT2GTK_LIB
     ${_WEBKIT2GTK_LIBDIR}
     ${_WEBKIT2GTK_LIBRARY_DIRS}
 )
+
 
 include(FindPackageHandleStandardArgs)
 

@@ -31,15 +31,23 @@
  *  files in the program, then also delete it here.
  *
  */
-
 #pragma once
 
 #include <glib.h>
+#include "json-glib/json-glib.h"
 
 G_BEGIN_DECLS
 
-#include "json-glib/json-glib.h"
+#define DOWNLOAD_URL "https://plugins.remmina.org/plugins/plugin_download"
+#define LIST_URL "https://plugins.remmina.org/plugins/get_list"
+#define PERIODIC_UPLOAD_URL "https://info.remmina.org/info/upload_stats"
+#define INFO_REQUEST_URL "https://info.remmina.org/info/handshake"
 
-JsonNode *remmina_stats_get_all(void);
+#define RED_TEXT(str) g_markup_printf_escaped("<span color=\"red\">%s</span>", str)
+#define GREEN_TEXT(str) g_markup_printf_escaped("<span color=\"green\">%s</span>", str)
+#define GRAY_TEXT(str) g_markup_printf_escaped("<span color=\"gray\">%s</span>", str)
+
+void remmina_curl_handshake(gpointer data);
+void remmina_curl_compose_message(gchar* body, char* type, char* url, gpointer data);
 
 G_END_DECLS

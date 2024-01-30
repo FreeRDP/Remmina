@@ -40,22 +40,46 @@
 #pragma once
 
 #include <glib.h>
+#include <gio/gio.h>
+#include <openssl/rsa.h>
+#include <openssl/evp.h>
+#include <openssl/decoder.h>
 
+#define MAX_COMPRESSED_FILE_SIZE 100000 //100kb file size max
+#define NAME_OF_DIGEST "SHA256"
+#define RSA_KEYTYPE "RSA"
+
+extern const char *remmina_RSA_PubKey_v1;
+extern const char *remmina_RSA_PubKey_v2;
+extern const char *remmina_EC_PubKey;
 G_BEGIN_DECLS
 gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
 gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);
+
 guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace);
 gchar *remmina_utils_string_strip(const gchar *s);
 
 gchar *remmina_utils_get_lang();
-const gchar *remmina_utils_get_kernel_name();
-const gchar *remmina_utils_get_kernel_release();
-const gchar *remmina_utils_get_kernel_arch();
+gchar *remmina_utils_get_kernel_name();
+gchar *remmina_utils_get_kernel_release();
+gchar *remmina_utils_get_kernel_arch();
 gchar *remmina_utils_get_lsb_id();
 gchar *remmina_utils_get_lsb_description();
 gchar *remmina_utils_get_lsb_release();
 gchar *remmina_utils_get_lsb_codename();
 GHashTable *remmina_utils_get_etc_release();
-const gchar *remmina_utils_get_os_info();
+gchar *remmina_utils_get_dev();
+gchar *remmina_utils_get_logical();
+gchar *remmina_utils_get_link();
+gchar *remmina_utils_get_python();
+gchar *remmina_utils_get_mage();
+gchar *remmina_sha256_buffer(const guchar *buffer, gssize length);
 gchar *remmina_sha1_file(const gchar *filename);
+gchar *remmina_gen_random_uuid();
+EVP_PKEY *remmina_get_pubkey(const char *keytype, const char *public_key_selection);
+gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr);
+int remmina_decompress_from_memory_to_file(guchar *source, int len, GFile* plugin_file);
+int remmina_compress_from_file_to_file(GFile *source, GFile *dest);
+gboolean remmina_verify_plugin_signature(const guchar *signature, GFile* plugin_file, size_t message_length, size_t signature_length);
+gboolean remmina_execute_plugin_signature_verification(GFile* plugin_file, size_t msg_len, const guchar *sig, size_t sig_len, EVP_PKEY* public_key);
 G_END_DECLS

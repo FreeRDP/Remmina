@@ -61,6 +61,21 @@ typedef struct _RemminaPlugin {
 	const gchar *		version;
 } RemminaPlugin;
 
+typedef struct _RemminaServerPluginResponse {
+	const gchar * name;
+	const gchar * version;
+	const gchar * file_name; 
+    /*
+     * This is the signature received directly from the server. It should be base64 encoded.
+     */
+	const guchar * signature;
+    /*
+     * This is the data received directly from the server. It should be
+     * first compressed with gzip and then base64 encoded.
+    */
+	guchar * data;
+} RemminaServerPluginResponse;
+
 typedef struct _RemminaProtocolPlugin _RemminaProtocolPlugin;
 typedef struct _RemminaProtocolPlugin {
 	RemminaPluginType		type;

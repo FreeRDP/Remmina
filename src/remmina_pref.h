@@ -236,7 +236,14 @@ typedef struct _RemminaPref {
 	RemminaColorPref	color_pref;
 
 	/* Usage stats */
-	gchar *			last_success;
+	gboolean		disable_stats;
+	gchar *			info_uid_prefix;
+
+	/* Remmina news */
+	gboolean 		disable_news;
+	gchar * 		periodic_news_last_checksum;
+
+	gboolean 		disable_tip;
 
 } RemminaPref;
 

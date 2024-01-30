@@ -38,4 +38,5 @@
 
 G_BEGIN_DECLS
 extern gboolean kioskmode;
+extern gboolean imode;
 G_END_DECLS

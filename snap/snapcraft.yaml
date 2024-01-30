@@ -178,9 +178,11 @@ parts:
       - libjson-glib-dev
       - libkf5wallet-dev
       - libsodium-dev
+      - libcurl4-openssl-dev
       - libspice-client-gtk-3.0-dev
       - libspice-protocol-dev
       - libssh-dev
+      - libssl3
       - libvncserver-dev
       - libvte-2.91-dev
       - libwebkit2gtk-4.0-dev
@@ -223,7 +225,7 @@ parts:
       - -DSNAP_BUILD=on
 
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
-      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
+      - -DCMAKE_INSTALL_PREFIX=/snap/$CRAFT_PROJECT_NAME/current/usr
 
     organize:
       snap/remmina/current/usr: usr

@@ -1,7 +1,8 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee
- * Copyright (C) 2017-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2023 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,31 +35,26 @@
  */
 
 #pragma once
+#include <gtk/gtk.h>
+#include "json-glib/json-glib.h"
 
-#include <stdarg.h>
-#include <glib.h>
+typedef struct _RemminaBugReportDialog {
+    GtkBuilder *builder;
+    GtkWidget  *dialog;
+    GtkButton  *bug_report_submit_button;
+    GtkEntry   *bug_report_name_entry;
+    GtkEntry   *bug_report_email_entry;
+    GtkEntry   *bug_report_title_entry;
+    GtkTextView *bug_report_description_textview;
+    GtkLabel   *bug_report_submit_status_label;
+    GtkCheckButton *bug_report_debug_data_check_button;
+    GtkCheckButton *bug_report_include_system_info_check_button;
+} RemminaBugReportDialog;
 
 G_BEGIN_DECLS
 
-#define LOG_FILE_NAME "remmina_log_file.log"
-#define REMMINA_INFO(fmt, ...)     _remmina_info(fmt, ## __VA_ARGS__)
-#define REMMINA_MESSAGE(fmt, ...)  _remmina_message(fmt, ## __VA_ARGS__)
-#define REMMINA_DEBUG(fmt, ...)    _remmina_debug(__func__, fmt, ## __VA_ARGS__)
-#define REMMINA_WARNING(fmt, ...)  _remmina_warning(__func__, fmt, ## __VA_ARGS__)
-#define REMMINA_AUDIT(fmt, ...)    _remmina_audit(__func__, fmt, ## __VA_ARGS__)
-#define REMMINA_ERROR(fmt, ...)    _remmina_error(__func__, fmt, ## __VA_ARGS__)
-#define REMMINA_CRITICAL(fmt, ...) _remmina_critical(__func__, fmt, ## __VA_ARGS__)
-
-void remmina_log_start(void);
-gboolean remmina_log_running(void);
-void remmina_log_print(const gchar *text);
-void _remmina_info(const gchar *fmt, ...);
-void _remmina_message(const gchar *fmt, ...);
-void _remmina_debug(const gchar *fun, const gchar *fmt, ...);
-void _remmina_warning(const gchar *fun, const gchar *fmt, ...);
-void _remmina_audit(const gchar *fun, const gchar *fmt, ...);
-void _remmina_error(const gchar *fun, const gchar *fmt, ...);
-void _remmina_critical(const gchar *fun, const gchar *fmt, ...);
-void remmina_log_printf(const gchar *fmt, ...);
+void remmina_bug_report_open(GtkWindow *parent);
+void remmina_bug_report_dialog_on_action_submit(GSimpleAction *action, GVariant *param, gpointer data);
+JsonNode *remmina_bug_report_get_all(void);
 
 G_END_DECLS

@@ -65,6 +65,12 @@ typedef struct _RemminaPrefDialog {
 	GtkSwitch *		switch_security_lock_view_passwords;
 	GtkSwitch *		switch_security_audit;
 	GtkSwitch *		switch_security_trust_all;
+	GtkSwitch *		switch_disable_news;
+	GtkSwitch *		switch_disable_stats;
+	GtkSwitch *		switch_disable_tip;
+	GtkLabel *		label_disable_news;
+	GtkLabel *		label_disable_stats;
+	GtkLabel *		label_disable_tip;
 	GtkCheckButton *	checkbutton_options_save_settings;
 	GtkCheckButton *	checkbutton_appearance_fullscreen_on_auto;
 	GtkCheckButton *	checkbutton_appearance_show_tabs;
