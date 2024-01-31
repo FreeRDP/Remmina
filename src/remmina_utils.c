@@ -965,7 +965,7 @@ int remmina_decompress_from_memory_to_file(guchar *source, int len, GFile* plugi
 		return -1;
 	}
 
-	g_output_stream_splice(f_out_stream, converted_input_stream, G_OUTPUT_STREAM_SPLICE_CLOSE_SOURCE | G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET, NULL, NULL);
+	g_output_stream_splice(G_OUTPUT_STREAM(f_out_stream), converted_input_stream, G_OUTPUT_STREAM_SPLICE_CLOSE_SOURCE | G_OUTPUT_STREAM_SPLICE_CLOSE_TARGET, NULL, NULL);
 	GFileInfo* info = g_file_query_info(plugin_file, G_FILE_ATTRIBUTE_STANDARD_SIZE, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
 	total_read = g_file_info_get_size(info);
 
@@ -1069,7 +1069,7 @@ int remmina_compress_from_file_to_file(GFile *source, GFile *dest)
 		g_free(converted);
 		return -1;
 	}
-	g_output_stream_write_all(g_output_stream, converted, total_read, bytes_written, NULL, &error);
+	g_output_stream_write_all(G_OUTPUT_STREAM(g_output_stream), converted, total_read, bytes_written, NULL, &error);
 	if (error != NULL) {
 		REMMINA_DEBUG("Error writing all bytes to file: %s", error->message);
 		g_error_free(error);

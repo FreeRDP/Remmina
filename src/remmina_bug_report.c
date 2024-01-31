@@ -316,7 +316,7 @@ JsonNode *remmina_bug_report_get_all()
 				json_node_init_string(n, "");
 			}
 			else {
-				gchar *logs_base64 = g_base64_encode(compressed_logs, com_log_length);
+				gchar *logs_base64 = g_base64_encode((guchar *)compressed_logs, com_log_length);
 				json_node_init_string(n, logs_base64);
 				g_free(logs_base64);
 			}
@@ -346,7 +346,7 @@ JsonNode *remmina_bug_report_get_all()
 		g_object_unref(g);
 
 		// Now base64 encode report data
-		enc_b = g_base64_encode(unenc_b, strlen(unenc_b));
+		enc_b = g_base64_encode((guchar *)unenc_b, strlen(unenc_b));
 		if (enc_b == NULL) {
 			g_object_unref(b_outer);
 			g_free(unenc_b);

@@ -146,7 +146,7 @@ void handle_resp(struct curl_msg * message){
 			}
 		}
 		else {
-			news_checksum = remmina_sha256_buffer(json_news_string, strlen(json_news_string));
+			news_checksum = remmina_sha256_buffer((const guchar *)json_news_string, strlen(json_news_string));
 			if (news_checksum == NULL) {
 				REMMINA_DEBUG("News checksum is NULL");
 			}

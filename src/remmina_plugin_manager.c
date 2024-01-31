@@ -617,7 +617,7 @@ JsonNode *remmina_plugin_manager_plugin_stats_get_all()
 		unenc_p = json_generator_to_data(g, NULL);
 
 
-		enc_p = g_base64_encode(unenc_p, strlen(unenc_p));
+		enc_p = g_base64_encode((guchar *)unenc_p, strlen(unenc_p));
 		if (enc_p == NULL) {
 			g_object_unref(b_outer);
 			g_object_unref(g);
