@@ -812,9 +812,13 @@ JsonNode *remmina_info_stats_get_profiles()
 
 	struct ProfilesData *pdata;
 	pdata = g_malloc0(sizeof(struct ProfilesData));
+	if (pdata == NULL) {
+		return NULL;
+	}
 
 	b = json_builder_new();
 	if (b == NULL) {
+		g_free(pdata);
 		return NULL;
 	}
 	 
@@ -1083,6 +1087,9 @@ void remmina_info_schedule()
 	sc_tdata *data;
 
 	data = g_malloc(sizeof(sc_tdata));
+	if (data == NULL) {
+		return;
+	}
 	data->send_stats = !info_disable_stats;
 
 	remmina_scheduler_setup(remmina_info_periodic_check,
@@ -1146,7 +1153,7 @@ gboolean remmina_info_show_response(gpointer user_data)
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_info_dialog->builder, NULL);
 
-	/* Show the non-modal news dialog */
+	/* Show the modal news dialog */
 	gtk_widget_show_all(GTK_WIDGET(remmina_info_dialog->dialog));
 	gtk_window_present(GTK_WINDOW(remmina_info_dialog->dialog));
 	if (parent) {

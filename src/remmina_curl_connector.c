@@ -168,12 +168,18 @@ void handle_resp(struct curl_msg * message){
 
 		if (to_show == ShowTip) {
 			RemminaInfoMessage *message = malloc(sizeof(RemminaInfoMessage));
+			if (message == NULL) {
+				return;
+			}
 			message->info_string= g_strdup(json_tip_string);
 			message->title_string= g_strdup("Tip of the Day");
 			g_idle_add(remmina_info_show_response, message);
 		}
 		else if (to_show == ShowNews) {
 			RemminaInfoMessage *message = malloc(sizeof(RemminaInfoMessage));
+			if (message == NULL) {
+				return;
+			}
 			message->info_string= g_strdup(json_news_string);
 			message->title_string= g_strdup("NEWS");
 			g_idle_add(remmina_info_show_response, message);
@@ -257,6 +263,9 @@ void remmina_curl_compose_message(gchar* body, char* type, char* url, gpointer d
 {
 	if (!imode){
 		struct curl_msg* message = (struct curl_msg*)malloc(sizeof(struct curl_msg));
+		if (message == NULL) {
+			return;
+		}
 		message->body = body;
 		message->url = url;
 		message->user_data = data;

@@ -819,6 +819,10 @@ void remmina_append_json_objects_from_response_str(JsonReader *reader, GArray* d
 		}
 		/* This is the current plugin we are building from the deserialized response string. */
 		RemminaServerPluginResponse *current_plugin = g_malloc(sizeof(RemminaServerPluginResponse));
+		if (current_plugin == NULL) {
+			plugin_array_index += 1;
+			continue;
+		}
 
 		json_reader_read_member(reader, "name");
 
@@ -826,6 +830,7 @@ void remmina_append_json_objects_from_response_str(JsonReader *reader, GArray* d
 		json_reader_end_member(reader);
 		if (g_utf8_strlen(current_plugin->name, -1) > MAX_PLUGIN_NAME_SIZE) { // -1 indicates null terminated str.
 			g_free(current_plugin);
+			plugin_array_index += 1;
 			continue; // continue attempting to deserialize the rest of the server response.
 		}
 
@@ -844,6 +849,11 @@ void remmina_append_json_objects_from_response_str(JsonReader *reader, GArray* d
 		/* Because the data is in the form \'\bdata\' and we only want data, we must remove three characters
 		and then add one more character at the end for NULL, which is (1 + total_length - 3). */
 		current_plugin->data = g_malloc(1 + g_utf8_strlen(data, -1) - 3);
+		if (current_plugin->data == NULL) {
+			g_free(current_plugin);
+			plugin_array_index += 1;
+			continue;
+		}
 
 		/* remove \'\b and \' */
 		g_strlcpy((char*)current_plugin->data, data + 2, g_utf8_strlen(data, -1) - 2);
@@ -857,6 +867,7 @@ void remmina_append_json_objects_from_response_str(JsonReader *reader, GArray* d
 		else
 		{
 			g_free(current_plugin);
+			plugin_array_index += 1;
 			continue; // continue attempting to deserialize the rest of the server response.
 		}
 		json_reader_end_member(reader);

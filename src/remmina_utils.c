@@ -261,6 +261,9 @@ guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, c
 gchar *remmina_utils_string_strip(const gchar *s)
 {
 	gchar *p = g_malloc(strlen(s) + 1);
+	if (p == NULL) {
+		return NULL;
+	}
 
 	if (p) {
 		gchar *p2 = p;
@@ -575,6 +578,9 @@ gchar *remmina_utils_get_mage()
 {
 	TRACE_CALL(__func__);
 	gchar *mage = malloc(21);
+	if (mage == NULL) {
+		return "";
+	}
 	struct stat sb;
 
 	if (stat("/etc/machine-id", &sb) == 0) {
@@ -684,6 +690,9 @@ gchar *remmina_gen_random_uuid()
 	static char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 	result = g_malloc0(15);
+	if (result == NULL) {
+		return "";
+	}
 
 	for (i = 0; i < 7; i++)
 		result[i] = alpha[randombytes_uniform(sizeof(alpha) - 1)];
@@ -752,6 +761,9 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 	maxblksz = pkeyLen - RSA_OAEP_PAD_SIZE;
 	ebufLen = (((inLen - 1) / maxblksz) + 1) * pkeyLen;
 	ebuf = g_malloc(ebufLen);
+	if (ebuf == NULL) {
+		return NULL;
+	}
 	outptr = ebuf;
 
 	ctx = EVP_PKEY_CTX_new_from_pkey(NULL, pubkey, NULL);
@@ -1024,6 +1036,13 @@ int remmina_compress_from_file_to_file(GFile *source, GFile *dest)
 
 	guint8 *converted, *current_position;
 	converted = g_malloc(sizeof(guint8) * MAX_COMPRESSED_FILE_SIZE); // 100kb file max
+	if (converted == NULL) {
+		REMMINA_DEBUG("Failed to allocate compressed file memory");
+		g_object_unref(base_stream);
+		g_object_unref(gzlib_compressor);
+		g_object_unref(converted_input_stream);
+		return -1;
+	}
 
 	current_position = converted; // Set traveling pointer
 
@@ -1054,9 +1073,18 @@ int remmina_compress_from_file_to_file(GFile *source, GFile *dest)
 		g_object_unref(gzlib_compressor);
 		g_object_unref(converted_input_stream);
 		g_free(converted);
+		return -1;
 	}
 
 	gsize *bytes_written = g_malloc(sizeof(gsize) * total_read);
+	if (bytes_written == NULL) {
+		REMMINA_DEBUG("Failed to allocate bytes written");
+		g_object_unref(base_stream);
+		g_object_unref(gzlib_compressor);
+		g_object_unref(converted_input_stream);
+		g_free(converted);
+		return -1;
+	}
 
 	GFileOutputStream *g_output_stream = g_file_append_to(dest, G_FILE_CREATE_NONE, NULL, &error);
 
