@@ -204,16 +204,7 @@ void remmina_log_print(const gchar *text)
 	IDLE_ADD(remmina_log_print_real, g_strdup(text));
 }
 
-void _remmina_info(const gchar *fmt, ...)
-{
-	TRACE_CALL(__func__);
-
-	va_list args;
-	g_autofree gchar *text;
-	va_start(args, fmt);
-	text = g_strdup_vprintf(fmt, args);
-	va_end(args);
-
+void remmina_log_file_append(gchar *text) {
 	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
 	FILE *log_file = fopen(log_filename, "a");
 	g_free(log_filename);
@@ -225,6 +216,20 @@ void _remmina_info(const gchar *fmt, ...)
 		fclose(log_file);
 		g_free(text_log);
 	}
+}
+
+void _remmina_info(const gchar *fmt, ...)
+{
+	TRACE_CALL(__func__);
+
+	va_list args;
+	g_autofree gchar *text;
+	va_start(args, fmt);
+	text = g_strdup_vprintf(fmt, args);
+	va_end(args);
+
+	// Append text to remmina_log_file.log
+	remmina_log_file_append(text);
 
 	// always appends newline
 	g_info ("%s", text);
@@ -250,17 +255,8 @@ void _remmina_message(const gchar *fmt, ...)
 	text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
-	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
-	FILE *log_file = fopen(log_filename, "a");
-	g_free(log_filename);
-
-	if (log_file != NULL)
-	{
-		gchar* text_log = g_strconcat(text, "\n", NULL);
-		fwrite(text_log, sizeof(char), strlen(text_log), log_file);
-		fclose(log_file);
-		g_free(text_log);
-	}
+	// Append text to remmina_log_file.log
+	remmina_log_file_append(text);
 
 	// always appends newline
 	g_message ("%s", text);
@@ -291,17 +287,8 @@ void _remmina_debug(const gchar *fun, const gchar *fmt, ...)
 	text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
-	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
-	FILE *log_file = fopen(log_filename, "a");
-	g_free(log_filename);
-
-	if (log_file != NULL)
-	{
-		gchar* text_log = g_strconcat(text, "\n", NULL);
-		fwrite(text_log, sizeof(char), strlen(text_log), log_file);
-		fclose(log_file);
-		g_free(text_log);
-	}
+	// Append text to remmina_log_file.log
+	remmina_log_file_append(text);
 
 	g_autofree gchar *buf = g_strconcat("(", fun, ") - ", text, NULL);
 	g_free(text);
@@ -330,17 +317,8 @@ void _remmina_warning(const gchar *fun, const gchar *fmt, ...)
 	text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
-	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
-	FILE *log_file = fopen(log_filename, "a");
-	g_free(log_filename);
-
-	if (log_file != NULL)
-	{
-		gchar* text_log = g_strconcat(text, "\n", NULL);
-		fwrite(text_log, sizeof(char), strlen(text_log), log_file);
-		fclose(log_file);
-		g_free(text_log);
-	}
+	// Append text to remmina_log_file.log
+	remmina_log_file_append(text);
 
 	g_autofree gchar *buf = g_strconcat("(", fun, ") - ", text, NULL);
 	g_free(text);
@@ -367,17 +345,8 @@ void _remmina_audit(const gchar *fun, const gchar *fmt, ...)
 	gchar *text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
-	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
-	FILE *log_file = fopen(log_filename, "a");
-	g_free(log_filename);
-
-	if (log_file != NULL)
-	{
-		gchar* text_log = g_strconcat(text, "\n", NULL);
-		fwrite(text_log, sizeof(char), strlen(text_log), log_file);
-		fclose(log_file);
-		g_free(text_log);
-	}
+	// Append text to remmina_log_file.log
+	remmina_log_file_append(text);
 
 #if GLIB_CHECK_VERSION(2,62,0)
 	GDateTime* tv = g_date_time_new_now_local();
@@ -423,17 +392,8 @@ void _remmina_error(const gchar *fun, const gchar *fmt, ...)
 	text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
-	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
-	FILE *log_file = fopen(log_filename, "a");
-	g_free(log_filename);
-
-	if (log_file != NULL)
-	{
-		gchar* text_log = g_strconcat(text, "\n", NULL);
-		fwrite(text_log, sizeof(char), strlen(text_log), log_file);
-		fclose(log_file);
-		g_free(text_log);
-	}
+	// Append text to remmina_log_file.log
+	remmina_log_file_append(text);
 
 	g_autofree gchar *buf = g_strconcat("(", fun, ") - ", text, NULL);
 	g_free(text);
@@ -462,17 +422,8 @@ void _remmina_critical(const gchar *fun, const gchar *fmt, ...)
 	text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
-	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
-	FILE *log_file = fopen(log_filename, "a");
-	g_free(log_filename);
-	
-	if (log_file != NULL)
-	{
-		gchar* text_log = g_strconcat(text, "\n", NULL);
-		fwrite(text_log, sizeof(char), strlen(text_log), log_file);
-		fclose(log_file);
-		g_free(text_log);
-	}
+	// Append text to remmina_log_file.log
+	remmina_log_file_append(text);
 
 	g_autofree gchar *buf = g_strconcat("(", fun, ") - ", text, NULL);
 	g_free(text);

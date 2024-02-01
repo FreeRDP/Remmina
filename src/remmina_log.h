@@ -53,6 +53,7 @@ G_BEGIN_DECLS
 void remmina_log_start(void);
 gboolean remmina_log_running(void);
 void remmina_log_print(const gchar *text);
+void remmina_log_file_append(gchar *text);
 void _remmina_info(const gchar *fmt, ...);
 void _remmina_message(const gchar *fmt, ...);
 void _remmina_debug(const gchar *fun, const gchar *fmt, ...);
