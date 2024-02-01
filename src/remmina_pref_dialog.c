@@ -511,7 +511,6 @@ static void remmina_pref_dialog_init(void)
 #ifdef DISABLE_STATS
 	gtk_widget_hide(GTK_WIDGET(remmina_pref_dialog->switch_disable_stats));
 	gtk_widget_hide(GTK_WIDGET(remmina_pref_dialog->label_disable_stats));
-	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_disable_stats), TRUE);
 #endif
 
 #ifdef DISABLE_TIP
