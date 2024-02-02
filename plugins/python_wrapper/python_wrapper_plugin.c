@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2014-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,10 +58,6 @@
  * An null terminated array of commands that are executed after the initialization of the Python engine. Every entry
  * represents a line of Python code.
  */
-static const char
-	* python_init_commands[] = { "import sys", "sys.path.append('" REMMINA_RUNTIME_PLUGINDIR "')", NULL // Sentinel
-};
-
 
 static const gchar* python_wrapper_supported_extensions[] = {"py", NULL};
 
@@ -200,10 +197,20 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 	python_wrapper_module_init();
 	Py_InitializeEx(0);
 
-	for (const char** ptr = python_init_commands; *ptr; ++ptr)
+	gchar* plugin_dir;
+	plugin_dir = g_build_path("/", g_get_user_config_dir(), "remmina", "plugins", NULL);
+
+	gchar* python_command = g_strdup_printf("sys.path.append('%s')", plugin_dir);
+
+	char* python_init_commands[] = { "import sys", python_command, "sys.path.append('" REMMINA_RUNTIME_PLUGINDIR "')", NULL }; // Sentinel};
+
+	for (char** ptr = python_init_commands; *ptr; ++ptr)
 	{
 		PyRun_SimpleString(*ptr);
 	}
+
+	g_free(python_command);
+	g_free(plugin_dir);
 
 	python_wrapper_protocol_widget_init();
 

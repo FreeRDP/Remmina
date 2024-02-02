@@ -4,6 +4,7 @@
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2022 Antenore Gatta, Giovanni Panozzo
  * Copyright (C) 2022-2023 Antenore Gatta, Giovanni Panozzo, Hiroyuki Tanaka
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,6 +58,7 @@
 #include "remmina_pref_dialog.h"
 #include "remmina_widget_pool.h"
 #include "remmina_plugin_manager.h"
+#include "remmina_bug_report.h"
 #include "remmina_log.h"
 #include "remmina_icon.h"
 #include "remmina_main.h"
@@ -99,6 +101,7 @@ static GActionEntry app_actions[] = {
 	{ "mpchange",	 remmina_main_on_action_application_mpchange,	 NULL, NULL, NULL },
 	{ "plugins",	 remmina_main_on_action_application_plugins,	 NULL, NULL, NULL },
 	{ "preferences", remmina_main_on_action_application_preferences, "i",  NULL, NULL },
+	{ "bug_report",  remmina_main_on_action_application_bug_report, NULL, NULL, NULL},
 	{ "dark",	 remmina_main_on_action_application_dark_theme,	 NULL, NULL, NULL },
 	{ "debug",	 remmina_main_on_action_help_debug,		 NULL, NULL, NULL },
 	{ "community",	 remmina_main_on_action_help_community,		 NULL, NULL, NULL },
@@ -855,6 +858,7 @@ void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *para
 		return;
 	GtkWidget *widget;
 
+	remmina_plugin_manager_get_available_plugins();
 	if (remmina_pref_get_boolean("use_primary_password")
 			&& remmina_pref_get_boolean("lock_edit")
 			&& remmina_unlock_new(remminamain->window) == 0)
@@ -1111,7 +1115,7 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 
 	GtkWidget *widget = remmina_pref_dialog_new(tab_num, remminamain->window);
 
-	gtk_widget_show_all(widget);	
+	gtk_widget_show(widget);	
 }
 
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data)
@@ -1334,6 +1338,7 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 void remmina_main_on_action_application_plugins(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
+	remmina_plugin_manager_get_available_plugins();
 	remmina_plugin_manager_show(remminamain->window);
 }
 
@@ -1387,6 +1392,12 @@ void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *p
 {
 	TRACE_CALL(__func__);
 	remmina_about_open(remminamain->window);
+};
+
+void remmina_main_on_action_application_bug_report(GSimpleAction *action, GVariant *param, gpointer data)
+{
+	TRACE_CALL(__func__);
+	remmina_bug_report_open(remminamain->window);
 };
 
 static gboolean is_empty(const gchar *s)

@@ -4,6 +4,7 @@
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2022 Antenore Gatta, Giovanni Panozzo
  * Copyright (C) 2022-2023 Antenore Gatta, Giovanni Panozzo, Hiroyuki Tanaka
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -115,6 +116,7 @@ void remmina_main_save_before_destroy(void);
 void remmina_main_show_dialog(GtkMessageType msg, GtkButtonsType buttons, const gchar* message);
 void remmina_main_show_warning_dialog(const gchar *message);
 void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *param, gpointer data);
+void remmina_main_on_action_application_bug_report(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_plugins(GSimpleAction *action, GVariant *param, gpointer data);

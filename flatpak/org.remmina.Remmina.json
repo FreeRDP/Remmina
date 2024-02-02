@@ -470,6 +470,21 @@
             ]
         },
         {
+            "name": "curl",
+            "buildsystem": "autotools",
+            "cleanup": [],
+            "config-opts": [
+                "--with-openssl"
+            ],
+            "sources": [
+                {
+                "type": "archive",
+                "url": "https://github.com/curl/curl/releases/download/curl-7_81_0/curl-7.81.0.tar.xz",
+                "sha256": "a067b688d1645183febc31309ec1f3cdce9213d02136b6a6de3d50f69c95a7d3"
+                }
+            ]
+        },
+        {
             "name": "freerdp",
             "buildsystem": "cmake-ninja",
             "cleanup": [],

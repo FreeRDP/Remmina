@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2017-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,6 +41,7 @@
 
 G_BEGIN_DECLS
 
+#define LOG_FILE_NAME "remmina_log_file.log"
 #define REMMINA_INFO(fmt, ...)     _remmina_info(fmt, ## __VA_ARGS__)
 #define REMMINA_MESSAGE(fmt, ...)  _remmina_message(fmt, ## __VA_ARGS__)
 #define REMMINA_DEBUG(fmt, ...)    _remmina_debug(__func__, fmt, ## __VA_ARGS__)
@@ -51,6 +53,7 @@ G_BEGIN_DECLS
 void remmina_log_start(void);
 gboolean remmina_log_running(void);
 void remmina_log_print(const gchar *text);
+void remmina_log_file_append(gchar *text);
 void _remmina_info(const gchar *fmt, ...);
 void _remmina_message(const gchar *fmt, ...);
 void _remmina_debug(const gchar *fun, const gchar *fmt, ...);

@@ -3,6 +3,7 @@
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2017-2022 Antenore Gatta, Giovanni Panozzo
  * Copyright (C) 2022-2023 Antenore Gatta, Giovanni Panozzo, Hiroyuki Tanaka
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -65,6 +66,12 @@ typedef struct _RemminaPrefDialog {
 	GtkSwitch *		switch_security_lock_view_passwords;
 	GtkSwitch *		switch_security_audit;
 	GtkSwitch *		switch_security_trust_all;
+	GtkSwitch *		switch_disable_news;
+	GtkSwitch *		switch_disable_stats;
+	GtkSwitch *		switch_disable_tip;
+	GtkLabel *		label_disable_news;
+	GtkLabel *		label_disable_stats;
+	GtkLabel *		label_disable_tip;
 	GtkCheckButton *	checkbutton_options_save_settings;
 	GtkCheckButton *	checkbutton_appearance_fullscreen_on_auto;
 	GtkCheckButton *	checkbutton_appearance_show_tabs;

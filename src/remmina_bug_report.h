@@ -1,6 +1,9 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
+ * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,13 +36,26 @@
  */
 
 #pragma once
+#include <gtk/gtk.h>
+#include "json-glib/json-glib.h"
 
-#include <glib.h>
+typedef struct _RemminaBugReportDialog {
+    GtkBuilder *builder;
+    GtkWidget  *dialog;
+    GtkButton  *bug_report_submit_button;
+    GtkEntry   *bug_report_name_entry;
+    GtkEntry   *bug_report_email_entry;
+    GtkEntry   *bug_report_title_entry;
+    GtkTextView *bug_report_description_textview;
+    GtkLabel   *bug_report_submit_status_label;
+    GtkCheckButton *bug_report_debug_data_check_button;
+    GtkCheckButton *bug_report_include_system_info_check_button;
+} RemminaBugReportDialog;
 
 G_BEGIN_DECLS
 
-#include "json-glib/json-glib.h"
-
-JsonNode *remmina_stats_get_all(void);
+void remmina_bug_report_open(GtkWindow *parent);
+void remmina_bug_report_dialog_on_action_submit(GSimpleAction *action, GVariant *param, gpointer data);
+JsonNode *remmina_bug_report_get_all(void);
 
 G_END_DECLS

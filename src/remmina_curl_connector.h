@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2016-2023 Antenore Gatta, Giovanni Panozzo
  * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
@@ -32,12 +32,23 @@
  *  files in the program, then also delete it here.
  *
  */
-
 #pragma once
 
-#include <gtk/gtk.h>
+#include <glib.h>
+#include "json-glib/json-glib.h"
 
 G_BEGIN_DECLS
-extern gboolean kioskmode;
-extern gboolean imode;
+
+#define DOWNLOAD_URL "https://plugins.remmina.org/plugins/plugin_download"
+#define LIST_URL "https://plugins.remmina.org/plugins/get_list"
+#define PERIODIC_UPLOAD_URL "https://info.remmina.org/info/upload_stats"
+#define INFO_REQUEST_URL "https://info.remmina.org/info/handshake"
+
+#define RED_TEXT(str) g_markup_printf_escaped("<span color=\"red\">%s</span>", str)
+#define GREEN_TEXT(str) g_markup_printf_escaped("<span color=\"green\">%s</span>", str)
+#define GRAY_TEXT(str) g_markup_printf_escaped("<span color=\"gray\">%s</span>", str)
+
+void remmina_curl_handshake(gpointer data);
+void remmina_curl_compose_message(gchar* body, char* type, char* url, gpointer data);
+
 G_END_DECLS

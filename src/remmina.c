@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK Remote Desktop Client
  * Copyright (C) 2014-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +32,7 @@
  *  files in the program, then also delete it here.
  *
  */
-
+#include <curl/curl.h>
 #include <gdk/gdk.h>
 
 #define G_LOG_USE_STRUCTURED
@@ -53,6 +54,7 @@
 #include "remmina_exec.h"
 #include "remmina_file_manager.h"
 #include "remmina_icon.h"
+#include "remmina_log.h"
 #include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina_plugin_manager.h"
@@ -66,6 +68,7 @@
 #include "remmina_ssh_plugin.h"
 #include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_info.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -85,6 +88,9 @@ static int gcrypt_thread_initialized = 0;
 #endif  /* HAVE_LIBGCRYPT */
 
 gboolean kioskmode;
+gboolean imode;
+gboolean disablenews;
+gboolean disablestats;
 gboolean disabletoolbar;
 gboolean fullscreen;
 gboolean extrahardening;
@@ -129,6 +135,8 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
 	{ "encrypt-password", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Encrypt a password"),												  NULL		 },
+	{ "disable-news",     0,    0,            G_OPTION_ARG_NONE,           NULL, N_("Disable news"),                                                NULL           },
+	{ "disable-stats",    0,    0,            G_OPTION_ARG_NONE,           NULL, N_("Disable stats"),                                                NULL           },
 	{ "disable-toolbar", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Disable toolbar"),												  NULL		 },
 	{ "enable-fullscreen", 0,    0,			  G_OPTION_ARG_NONE,	       NULL, N_("Enable fullscreen"),												  NULL		 },
 	{ "enable-extra-hardening", 0,    0,		  G_OPTION_ARG_NONE,	       NULL, N_("Enable extra hardening (disable closing confirmation, disable unsafe shortcut keys, hide tabs, hide search bar)"),	  NULL		 },
@@ -166,6 +174,14 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 #endif
 	opts = g_application_command_line_get_options_dict(cmdline);
 
+	if (g_variant_dict_lookup_value(opts, "disable-news", NULL)) {
+		disablenews = TRUE;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "disable-stats", NULL)) {
+		disablestats = TRUE;
+	}
+
 	if (g_variant_dict_lookup_value(opts, "disable-toolbar", NULL)) {
 		disabletoolbar = TRUE;
 	}
@@ -191,6 +207,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	}
 
 	if (g_variant_dict_lookup_value(opts, "about", NULL)) {
+		imode = TRUE;
 		remmina_exec_command(REMMINA_COMMAND_ABOUT, NULL);
 		executed = TRUE;
 	}
@@ -214,6 +231,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	}
 
 	if (g_variant_dict_lookup(opts, "edit", "^aay", &files)) {
+		imode = TRUE;
 		if (files)
 			for (gint i = 0; files[i]; i++) {
 				g_debug ("Editing file: %s", files[i]);
@@ -226,6 +244,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (g_variant_dict_lookup_value(opts, "kiosk", NULL)) {
 		kioskmode = TRUE;
+		imode = TRUE;
 		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
 		executed = TRUE;
 	}
@@ -245,6 +264,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	}
 
 	if (g_variant_dict_lookup(opts, "pref", "&s", &str)) {
+		imode = TRUE;
 		remmina_exec_command(REMMINA_COMMAND_PREF, str);
 		executed = TRUE;
 	}
@@ -281,7 +301,6 @@ static void remmina_on_startup(GApplication *app)
 	remmina_sftp_plugin_register();
 	remmina_ssh_plugin_register();
 	remmina_icon_init();
-
 	g_set_application_name("Remmina");
 	gtk_window_set_default_icon_name(REMMINA_APP_ID);
 
@@ -292,9 +311,19 @@ static void remmina_on_startup(GApplication *app)
 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
 					  REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 	g_application_hold(app);
+	remmina_info_schedule();
+
+	gchar *log_filename = g_build_filename(g_get_tmp_dir(), LOG_FILE_NAME, NULL);
+	FILE *log_file = fopen(log_filename, "w"); // Flush log file
+	g_free(log_filename);
+
+	if (log_file != NULL) {
+		fclose(log_file);
+	}
 
 	/* Check for secret plugin and service initialization and show console warnings if
 	 * something is missing */
+	remmina_plugin_manager_get_available_plugins();
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
 	if (!secret_plugin)
 		g_print("Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
@@ -363,7 +392,7 @@ int main(int argc, char *argv[])
 		 */
 		g_message(_("Remmina does not log all output statements. "
 			    "Turn on more verbose output by using "
-			    "\"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+			    "\"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 			    "More info available on the Remmina wiki at:\n"
 			    "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 		));
@@ -397,9 +426,9 @@ int main(int argc, char *argv[])
 #endif  /* !HAVE_LIBGCRYPT */
 
 	/* Initialize some Remmina parts needed also on a local instance for correct handle-local-options */
+	curl_global_init(CURL_GLOBAL_ALL);
 	remmina_pref_init();
 	remmina_file_manager_init();
-
 	remmina_plugin_manager_init();
 
 

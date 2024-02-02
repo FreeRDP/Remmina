@@ -14,7 +14,7 @@ RUN \
     && apt-add-repository ppa:remmina-ppa-team/remmina-next-daily -y \
     && apt-get update -qq \
     && apt install -y -qq flatpak-builder flatpak build-essential git-core \
-    cmake curl freerdp2-dev intltool libappindicator3-dev libasound2-dev \
+    cmake curl libcurl4-openssl-dev freerdp2-dev intltool libappindicator3-dev libasound2-dev \
     libavahi-ui-gtk3-dev libavcodec-dev libavutil-dev \
     libcups2-dev libgcrypt20-dev libgnutls28-dev \
     libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libgtk-3-dev \

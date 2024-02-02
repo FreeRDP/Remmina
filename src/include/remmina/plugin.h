@@ -3,6 +3,7 @@
  * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,6 +61,21 @@ typedef struct _RemminaPlugin {
 	const gchar *		domain;
 	const gchar *		version;
 } RemminaPlugin;
+
+typedef struct _RemminaServerPluginResponse {
+	const gchar * name;
+	const gchar * version;
+	const gchar * file_name; 
+    /*
+     * This is the signature received directly from the server. It should be base64 encoded.
+     */
+	const guchar * signature;
+    /*
+     * This is the data received directly from the server. It should be
+     * first compressed with gzip and then base64 encoded.
+    */
+	guchar * data;
+} RemminaServerPluginResponse;
 
 typedef struct _RemminaProtocolPlugin _RemminaProtocolPlugin;
 typedef struct _RemminaProtocolPlugin {

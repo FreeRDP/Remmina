@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2016-2023 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +34,7 @@
  */
 
 /**
- * @file remmina_stats.c
+ * @file remmina_info.c
  * @brief Remmina usage statistics module.
  * @author Antenore Gatta and Giovanni Panozzo
  * @date 12 Feb 2018
@@ -142,14 +143,19 @@
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
 
+
 #include "remmina.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_icon.h"
 #include "remmina_log.h"
 #include "remmina_pref.h"
+#include "remmina_curl_connector.h"
 #include "remmina_sysinfo.h"
 #include "remmina_utils.h"
+#include "remmina_scheduler.h"
+#include "remmina_public.h"
+#include "remmina_main.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_plugin_manager.h"
 
@@ -159,7 +165,14 @@
 #ifdef GDK_WINDOWING_X11
 	#include <gdk/gdkx.h>
 #endif
-#include "remmina_stats.h"
+#include "remmina_info.h"
+
+#define MAX_ENV_LEN	10000
+
+gboolean info_disable_stats = 1;
+gboolean info_disable_news = 1;
+gboolean info_disable_tip = 1;
+
 
 struct ProfilesData {
 	GHashTable *proto_count;
@@ -170,7 +183,69 @@ struct ProfilesData {
 	gchar datestr;
 };
 
-JsonNode *remmina_stats_get_os_info()
+#if !JSON_CHECK_VERSION(1, 2, 0)
+	#define json_node_unref(x) json_node_free(x)
+#endif
+
+/* Timers */
+#define INFO_PERIODIC_CHECK_1ST_MS 1000
+#define INFO_PERIODIC_CHECK_INTERVAL_MS 86400000
+
+#define PERIODIC_UPLOAD_URL "https://info.remmina.org/info/upload_stats"
+#define INFO_REQUEST_URL "https://info.remmina.org/info/handshake"
+
+ 
+static RemminaInfoDialog *remmina_info_dialog;
+#define GET_OBJ(object_name) gtk_builder_get_object(remmina_info_dialog->builder, object_name)
+
+typedef struct {
+	gboolean send_stats;
+	JsonNode *statsroot;
+} sc_tdata;
+
+JsonNode *remmina_info_stats_get_uid()
+{
+	TRACE_CALL(__func__);
+	JsonNode *r;
+	GChecksum *chs;
+	const gchar *uname, *hname;
+	const gchar *uid_suffix;
+	gchar *uid_prefix;
+	gchar *uid;
+
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread
+	 */
+
+	if (remmina_pref.info_uid_prefix == NULL || remmina_pref.info_uid_prefix[0] == 0) {
+		/* Generate a new UUID_PREFIX for this installation */
+		uid_prefix = remmina_gen_random_uuid();
+		if (remmina_pref.info_uid_prefix) {
+			g_free(remmina_pref.info_uid_prefix);
+		}
+		remmina_pref.info_uid_prefix = uid_prefix;
+		remmina_pref_save();
+	}
+
+	uname = g_get_user_name();
+	hname = g_get_host_name();
+	chs = g_checksum_new(G_CHECKSUM_SHA256);
+	g_checksum_update(chs, (const guchar *)uname, strlen(uname));
+	g_checksum_update(chs, (const guchar *)hname, strlen(hname));
+	uid_suffix = g_checksum_get_string(chs);
+
+	uid = g_strdup_printf("%s-%.10s", remmina_pref.info_uid_prefix, uid_suffix);
+	g_checksum_free(chs);
+
+	r = json_node_alloc();
+	json_node_init_string(r, uid);
+
+	g_free(uid);
+
+	return r;
+}
+
+JsonNode *remmina_info_stats_get_os_info()
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -186,15 +261,18 @@ JsonNode *remmina_stats_get_os_info()
 	gchar *codename;
 	GHashTableIter iter;
 	gchar *key, *value;
+	gchar *mage;
 
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
-
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "kernel_name");
-	kernel_name = g_strdup_printf("%s", remmina_utils_get_kernel_name());
+	kernel_name = remmina_utils_get_kernel_name();
 	if (!kernel_name || kernel_name[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {
@@ -203,7 +281,7 @@ JsonNode *remmina_stats_get_os_info()
 	g_free(kernel_name);
 
 	json_builder_set_member_name(b, "kernel_release");
-	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
+	kernel_release = remmina_utils_get_kernel_release();
 	if (!kernel_release || kernel_release[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {
@@ -212,7 +290,7 @@ JsonNode *remmina_stats_get_os_info()
 	g_free(kernel_release);
 
 	json_builder_set_member_name(b, "kernel_arch");
-	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
+	kernel_arch = remmina_utils_get_kernel_arch();
 	if (!kernel_arch || kernel_arch[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {
@@ -272,6 +350,12 @@ JsonNode *remmina_stats_get_os_info()
 		json_builder_add_null_value(b);
 	}
 
+	mage = remmina_utils_get_mage();
+	json_builder_set_member_name(b, "mage");
+	json_builder_add_string_value(b, mage);
+	g_free(mage);
+
+
 	/** @todo Add other means to identify a release name/description
 	 *        to cover as much OS as possible, like /etc/issue
 	 */
@@ -288,30 +372,98 @@ JsonNode *remmina_stats_get_os_info()
  *
  * @return a JSON Node structure containing the user’s environment.
  */
-JsonNode *remmina_stats_get_user_env()
+JsonNode *remmina_info_stats_get_user_env()
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
 	JsonNode *r;
 
 	gchar *language;
+	gchar **environment;
+	gchar **uenv;
+	gchar *str;
+	gsize env_len = 0;
 
 	language = remmina_utils_get_lang();
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
+	environment = g_get_environ();
+	uenv = environment;
+
 	json_builder_begin_object(b);
 	json_builder_set_member_name(b, "language");
-
 	json_builder_add_string_value(b, language);
+
+	gchar *safe_ptr;
+	while (*uenv && env_len <= MAX_ENV_LEN) {
+		str = strtok_r(*uenv, "=", &safe_ptr);
+		if (str != NULL) {
+			env_len += strlen(str);
+			json_builder_set_member_name(b, str);
+		}
+		str = strtok_r(NULL, "\n", &safe_ptr);
+		if (str != NULL) {
+			env_len += strlen(str);
+			json_builder_add_string_value(b, str);
+		}
+		else{
+			json_builder_add_string_value(b, "");
+		}
+		uenv++;
+	}
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	g_strfreev(environment);
+	return r;
+}
+
+JsonNode *remmina_info_stats_get_host() {
+
+	TRACE_CALL(__func__);
+	JsonBuilder *b;
+	JsonNode *r;
+
+	gchar *logical, *physical;
+
+	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
+	json_builder_begin_object(b);
+	json_builder_set_member_name(b, "host");
+	logical = remmina_utils_get_logical();
+	if (!logical || logical[0] == '\0') {
+		json_builder_add_null_value(b);
+	}
+	else {
+		json_builder_add_string_value(b, logical);
+	}
+	g_free(logical);
+
+	json_builder_set_member_name(b, "hw");
+	physical = remmina_utils_get_link();
+	if (!physical || physical[0] == '\0') {
+		json_builder_add_null_value(b);
+	}
+	else {
+		json_builder_add_string_value(b, physical);
+	}
+	g_free(physical);
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
 	g_object_unref(b);
 	return r;
-
 }
 
-JsonNode *remmina_stats_get_version()
+JsonNode *remmina_info_stats_get_version()
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -322,6 +474,9 @@ JsonNode *remmina_stats_get_version()
 	 * not on the main thread */
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
 	json_builder_begin_object(b);
 	json_builder_set_member_name(b, "version");
 	json_builder_add_string_value(b, VERSION);
@@ -353,7 +508,7 @@ JsonNode *remmina_stats_get_version()
 	return r;
 }
 
-JsonNode *remmina_stats_get_gtk_version()
+JsonNode *remmina_info_stats_get_gtk_version()
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -364,6 +519,10 @@ JsonNode *remmina_stats_get_gtk_version()
 	 */
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
 	json_builder_begin_object(b);
 	json_builder_set_member_name(b, "major");
 	json_builder_add_int_value(b, gtk_get_major_version());
@@ -375,10 +534,9 @@ JsonNode *remmina_stats_get_gtk_version()
 	r = json_builder_get_root(b);
 	g_object_unref(b);
 	return r;
-
 }
 
-JsonNode *remmina_stats_get_gtk_backend()
+JsonNode *remmina_info_stats_get_gtk_backend()
 {
 	TRACE_CALL(__func__);
 	JsonNode *r;
@@ -410,7 +568,7 @@ JsonNode *remmina_stats_get_gtk_backend()
 
 }
 
-JsonNode *remmina_stats_get_wm_name()
+JsonNode *remmina_info_stats_get_wm_name()
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -419,6 +577,10 @@ JsonNode *remmina_stats_get_wm_name()
 	gchar *wmname;
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "window_manager");
@@ -426,9 +588,7 @@ JsonNode *remmina_stats_get_wm_name()
 	/** We try to get the GNOME Shell version */
 	wmver = remmina_sysinfo_get_gnome_shell_version();
 	if (!wmver || wmver[0] == '\0') {
-		REMMINA_DEBUG("GNOME Shell not found");
 	}else {
-		REMMINA_DEBUG("GNOME Shell version: %s\n", wmver);
 		json_builder_add_string_value(b, "GNOME Shell");
 		json_builder_set_member_name(b, "gnome_shell_ver");
 		json_builder_add_string_value(b, wmver);
@@ -438,11 +598,8 @@ JsonNode *remmina_stats_get_wm_name()
 
 	wmname = remmina_sysinfo_get_wm_name();
 	if (!wmname || wmname[0] == '\0') {
-		/** When everything else fails with set the WM name to NULL **/
-		REMMINA_DEBUG("Cannot determine the window manger name");
 		json_builder_add_string_value(b, "n/a");
 	}else {
-		REMMINA_DEBUG("Window manger names %s", wmname);
 		json_builder_add_string_value(b, wmname);
 	}
 	g_free(wmname);
@@ -454,7 +611,7 @@ JsonNode *remmina_stats_get_wm_name()
 	return r;
 }
 
-JsonNode *remmina_stats_get_indicator()
+JsonNode *remmina_info_stats_get_indicator()
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -462,6 +619,10 @@ JsonNode *remmina_stats_get_indicator()
 	gboolean sni;           /** Support for StatusNotifier or AppIndicator */
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "appindicator_supported");
@@ -478,8 +639,11 @@ JsonNode *remmina_stats_get_indicator()
 		json_builder_add_int_value(b, 0);
 #endif
 	}
-	/** StatusNotifier/Appindicator NOT supported by desktop */
-	json_builder_add_int_value(b, 0);
+	else{
+		/** StatusNotifier/Appindicator NOT supported by desktop */
+		json_builder_add_int_value(b, 0);
+	}
+	
 	json_builder_set_member_name(b, "icon_is_active");
 	if (remmina_icon_is_available()) {
 		/** Remmina icon is active */
@@ -508,7 +672,7 @@ JsonNode *remmina_stats_get_indicator()
  * This is used as a callback function with remmina_file_manager_iterate.
  * @todo Move this in a separate file.
  */
-static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_data)
+static void remmina_info_profiles_get_data(RemminaFile *remminafile, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 
@@ -527,7 +691,6 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
 	//pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
 	const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
-	g_debug("%s date %s", pdata->protocol, last_success);
 
 	prof_gdate = pdata_gdate = NULL;
 	if (last_success && last_success[0] != '\0' && strlen(last_success) >= 6) {
@@ -572,32 +735,26 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 
 			/** When both date in the hash and in the profile are valid we compare the date */
 			if (prof_gdate != NULL && pdata_gdate != NULL ) {
-				g_debug("Comparing dates");
 				gint res = g_date_time_compare( pdata_gdate, prof_gdate );
 				/** If the date in the hash less than the date in the profile, we take the latter */
 				if (res < 0 ) {
-					g_debug("hash date is less than profile date. Replacing date in the hashtable");
 					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(last_success));
 				} else {
-					g_debug("profile date is less than hash date. Replacing date in the hashtable");
 					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 				}
 
 			}
 			/** If the date in the profile is NOT valid and the date in the hash is valid we keep the latter */
 			if (prof_gdate == NULL && pdata_gdate != NULL) {
-				g_debug("prof_gdate is NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}
 
 			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
 			if (prof_gdate != NULL && pdata_gdate == NULL) {
-				g_debug("pdata_gdate is NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(last_success));
 			}
 			/** If both date are NULL, we insert NULL for that protocol */
 			if ((prof_gdate == NULL && pdata_gdate == NULL) && pdata->pdatestr) {
-				g_debug("All dates are NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		} else {
@@ -611,7 +768,6 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 			}
 		}
 	}
-	g_debug("pdata set to %s protocol with last_success to %s",  pdata->protocol, pdata->pdatestr);
 	if (pdata_gdate)
 		g_date_time_unref(pdata_gdate);
 	if (prof_gdate)
@@ -641,7 +797,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
  * @return a JSON Node structure containing the protocol usage statistics.
  *
  */
-JsonNode *remmina_stats_get_profiles()
+JsonNode *remmina_info_stats_get_profiles()
 {
 	TRACE_CALL(__func__);
 
@@ -656,8 +812,16 @@ JsonNode *remmina_stats_get_profiles()
 
 	struct ProfilesData *pdata;
 	pdata = g_malloc0(sizeof(struct ProfilesData));
+	if (pdata == NULL) {
+		return NULL;
+	}
 
 	b = json_builder_new();
+	if (b == NULL) {
+		g_free(pdata);
+		return NULL;
+	}
+	 
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "profile_count");
@@ -671,9 +835,8 @@ JsonNode *remmina_stats_get_profiles()
 		(GDestroyNotify)g_free, NULL);
 
 	profiles_count = remmina_file_manager_iterate(
-		(GFunc)remmina_profiles_get_data,
+		(GFunc)remmina_info_profiles_get_data,
 		(gpointer)pdata);
-	g_debug("Number of profiles: %d", profiles_count);
 
 	json_builder_add_int_value(b, profiles_count);
 
@@ -686,11 +849,9 @@ JsonNode *remmina_stats_get_profiles()
 	g_hash_table_iter_init(&pdateiter, pdata->proto_date);
 	while (g_hash_table_iter_next(&pdateiter, &pdatekey, &pdatevalue)) {
 		s = g_strdup_printf("DATE_%s", (gchar*)pdatekey);
-		g_debug("Protocol date label: %s", s);
 		json_builder_set_member_name(b, s);
 		g_free(s);
 		json_builder_add_string_value(b, (gchar*)pdatevalue);
-		g_debug("Protocol date: %s", (gchar*)pdatevalue);
 	}
 
 	json_builder_end_object(b);
@@ -713,7 +874,7 @@ JsonNode *remmina_stats_get_profiles()
  * @return a JSON Node structure containing the secret plugin in use
  *
  */
-JsonNode *remmina_stats_get_secret_plugin()
+JsonNode *remmina_info_stats_get_secret_plugin()
 {
 	TRACE_CALL(__func__);
 
@@ -723,6 +884,10 @@ JsonNode *remmina_stats_get_secret_plugin()
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
 	json_builder_begin_object(b);
 
 	if (secret_plugin && secret_plugin->is_service_available) {
@@ -742,7 +907,7 @@ JsonNode *remmina_stats_get_secret_plugin()
  * @return a JSON Node structure containing the status of the primary password
  *
  */
-JsonNode *remmina_stats_get_primary_password_status()
+JsonNode *remmina_info_stats_get_primary_password_status()
 {
 	TRACE_CALL(__func__);
 
@@ -750,6 +915,10 @@ JsonNode *remmina_stats_get_primary_password_status()
 	JsonNode *r;
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "primary_password_status");
@@ -772,7 +941,7 @@ JsonNode *remmina_stats_get_primary_password_status()
  * @return a JSON Node structure containing the status of the primary password
  *
  */
-JsonNode *remmina_stats_get_kiosk_mode()
+JsonNode *remmina_info_stats_get_kiosk_mode()
 {
 	TRACE_CALL(__func__);
 
@@ -780,6 +949,10 @@ JsonNode *remmina_stats_get_kiosk_mode()
 	JsonNode *r;
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "kiosk_status");
@@ -796,75 +969,360 @@ JsonNode *remmina_stats_get_kiosk_mode()
 	return r;
 }
 
+JsonNode *remmina_info_stats_get_python()
+{
+	TRACE_CALL(__func__);
+	JsonBuilder *b;
+	JsonNode *r;
+	gchar *version;
+
+	version = remmina_utils_get_python();
+	b = json_builder_new();
+	if(b != NULL)
+	{
+		json_builder_begin_object(b);
+		json_builder_set_member_name(b, "version");
+		if (!version || version[0] == '\0') {
+			json_builder_add_null_value(b);
+		} else {
+			json_builder_add_string_value(b, version);
+		}
+		
+		json_builder_end_object(b);
+		r = json_builder_get_root(b);
+		g_object_unref(b);
+		return r;
+	}
+	else
+	{
+		return NULL;
+	}
+}
+
 /**
- * Get all statistics in JSON format to send periodically to the PHP server.
+ * Get all statistics in JSON format to send periodically to the server.
  * The caller should free the returned buffer with g_free()
  * @warning This function is usually executed on a dedicated thread,
  * not on the main thread.
  * @return a pointer to the JSON string.
  */
-JsonNode *remmina_stats_get_all()
+JsonNode *remmina_info_stats_get_all()
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
 	JsonNode *n;
 
 	b = json_builder_new();
+	if (b == NULL) {
+		return NULL;
+	}
+	 
 	json_builder_begin_object(b);
 
-	n = remmina_stats_get_version();
+	n = remmina_info_stats_get_uid();
+	json_builder_set_member_name(b, "UID");
+	json_builder_add_value(b, n);
+
+	n = remmina_info_stats_get_version();
 	json_builder_set_member_name(b, "REMMINAVERSION");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_os_info();
+	n = remmina_info_stats_get_os_info();
 	json_builder_set_member_name(b, "SYSTEM");
 	json_builder_add_value(b, n);
 
-	/**
-	 * The section ENVIRONMENT collect all the user’s environment related
-	 * settings.
-	 */
-	n = remmina_stats_get_user_env();
+	n = remmina_info_stats_get_user_env();
 	json_builder_set_member_name(b, "ENVIRONMENT");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_gtk_version();
+	n = remmina_info_stats_get_gtk_version();
 	json_builder_set_member_name(b, "GTKVERSION");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_gtk_backend();
+	n = remmina_info_stats_get_gtk_backend();
 	json_builder_set_member_name(b, "GTKBACKEND");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_wm_name();
+	n = remmina_info_stats_get_wm_name();
 	json_builder_set_member_name(b, "WINDOWMANAGER");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_indicator();
+	n = remmina_info_stats_get_indicator();
 	json_builder_set_member_name(b, "APPINDICATOR");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_profiles();
+	n = remmina_info_stats_get_profiles();
 	json_builder_set_member_name(b, "PROFILES");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_secret_plugin();
+	n = remmina_info_stats_get_secret_plugin();
 	json_builder_set_member_name(b, "ACTIVESECRETPLUGIN");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_primary_password_status();
+	n = remmina_info_stats_get_primary_password_status();
 	json_builder_set_member_name(b, "HASPRIMARYPASSWORD");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_kiosk_mode();
+	n = remmina_info_stats_get_kiosk_mode();
 	json_builder_set_member_name(b, "KIOSK");
 	json_builder_add_value(b, n);
 
+	n = remmina_info_stats_get_python();
+	json_builder_set_member_name(b, "PYTHON");
+	json_builder_add_value(b, n);
+
+	n = remmina_info_stats_get_host();
+	json_builder_set_member_name(b, "HOST");
+	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
 	n = json_builder_get_root(b);
 	g_object_unref(b);
 
 	return n;
+}
 
+void remmina_info_schedule()
+{
+	sc_tdata *data;
+
+	data = g_malloc(sizeof(sc_tdata));
+	if (data == NULL) {
+		return;
+	}
+	data->send_stats = !info_disable_stats;
+
+	remmina_scheduler_setup(remmina_info_periodic_check,
+			data,
+			INFO_PERIODIC_CHECK_1ST_MS,
+			INFO_PERIODIC_CHECK_INTERVAL_MS);
+}
+
+static void remmina_info_close_clicked(GtkButton *btn, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	if (remmina_info_dialog->dialog) {
+		gtk_widget_destroy(GTK_WIDGET(remmina_info_dialog->dialog));
+	}
+	remmina_info_dialog->dialog = NULL;
+	g_free(remmina_info_dialog);
+	remmina_info_dialog = NULL;
+}
+
+static gboolean remmina_info_dialog_deleted(GtkButton *btn, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	gtk_widget_destroy(GTK_WIDGET(remmina_info_dialog->dialog));
+	remmina_info_dialog->dialog = NULL;
+	g_free(remmina_info_dialog);
+	remmina_info_dialog = NULL;
+
+	return FALSE;
+}
+
+
+
+gboolean remmina_info_show_response(gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	GtkWindow * parent = remmina_main_get_window();
+	remmina_info_dialog = g_new0(RemminaInfoDialog, 1);
+	remmina_info_dialog->retval = 1;
+
+	RemminaInfoMessage *message = (RemminaInfoMessage*)user_data;
+
+	remmina_info_dialog->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_info.glade");
+	remmina_info_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_info_dialog->builder, "RemminaInfoDialog"));
+
+	remmina_info_dialog->remmina_info_text_view = GTK_TEXT_VIEW(GET_OBJ("remmina_info_text_view"));
+	remmina_info_dialog->remmina_info_label = GTK_LABEL(GET_OBJ("remmina_info_label"));
+
+	remmina_info_dialog->remmina_info_button_close = GTK_BUTTON(GET_OBJ("remmina_info_button_close"));
+	gtk_widget_set_can_default(GTK_WIDGET(remmina_info_dialog->remmina_info_button_close), TRUE);
+	gtk_widget_grab_default(GTK_WIDGET(remmina_info_dialog->remmina_info_button_close));
+
+	gtk_label_set_markup(remmina_info_dialog->remmina_info_label, message->info_string);
+
+	g_signal_connect(remmina_info_dialog->remmina_info_button_close, "clicked",
+			 G_CALLBACK(remmina_info_close_clicked), (gpointer)remmina_info_dialog);
+	g_signal_connect(remmina_info_dialog->dialog, "close",
+			 G_CALLBACK(remmina_info_close_clicked), NULL);
+	g_signal_connect(remmina_info_dialog->dialog, "delete-event",
+			 G_CALLBACK(remmina_info_dialog_deleted), NULL);
+
+	/* Connect signals */
+	gtk_builder_connect_signals(remmina_info_dialog->builder, NULL);
+
+	/* Show the modal news dialog */
+	gtk_widget_show_all(GTK_WIDGET(remmina_info_dialog->dialog));
+	gtk_window_present(GTK_WINDOW(remmina_info_dialog->dialog));
+	if (parent) {
+		gtk_window_set_transient_for(GTK_WINDOW(remmina_info_dialog->dialog), parent);
+	}
+	gtk_window_set_modal(GTK_WINDOW(remmina_info_dialog->dialog), TRUE);
+	gtk_window_set_title(GTK_WINDOW(remmina_info_dialog->dialog), message->title_string);
+	g_free(message);
+	return FALSE;
+}
+
+
+/**
+ * Post request to info server
+ * 
+ * @return gboolean 
+ */
+static gboolean remmina_info_stats_collector_done(gpointer data)
+{
+	JsonNode *n;
+	JsonGenerator *g;
+	gchar *unenc_s, *enc_s;
+	JsonBuilder *b;
+	JsonObject *o;
+	gchar *uid;
+	JsonNode *root;
+
+	root = (JsonNode *)data;
+	if (root == NULL) {
+		return G_SOURCE_REMOVE;
+	}
+
+	n = root;
+
+	if ((o = json_node_get_object(n)) == NULL) {
+		g_free(data);
+		return G_SOURCE_REMOVE;
+	}
+
+	uid = g_strdup(json_object_get_string_member(o, "UID"));
+
+	g = json_generator_new();
+	json_generator_set_root(g, n);
+	json_node_unref(n);
+	unenc_s = json_generator_to_data(g, NULL);
+	g_object_unref(g);
+
+	EVP_PKEY *remmina_pubkey = remmina_get_pubkey(RSA_KEYTYPE, remmina_RSA_PubKey_v1);
+	if (remmina_pubkey == NULL) {
+		g_free(uid);
+		g_free(unenc_s);
+		return G_SOURCE_REMOVE;
+	}
+	enc_s = remmina_rsa_encrypt_string(remmina_pubkey, unenc_s);
+	if (enc_s == NULL) {
+		g_free(uid);
+		g_free(unenc_s);
+		return G_SOURCE_REMOVE;
+	}
+	
+	b = json_builder_new();
+	if (b == NULL) {
+		return G_SOURCE_REMOVE;
+	}
+
+
+	EVP_PKEY_free(remmina_pubkey);
+	json_builder_begin_object(b);
+	json_builder_set_member_name(b, "keyversion");
+	json_builder_add_int_value(b, 1);
+	json_builder_set_member_name(b, "encdata");
+	json_builder_add_string_value(b, enc_s);
+	json_builder_set_member_name(b, "UID");
+	json_builder_add_string_value(b, uid);
+	json_builder_set_member_name(b, "news_enabled");
+	json_builder_add_int_value(b, TRUE ? 0 : 1);
+	json_builder_set_member_name(b, "stats_enabled");
+	json_builder_add_int_value(b, TRUE ? 0 : 1);
+	json_builder_set_member_name(b, "tip_enabled");
+	json_builder_add_int_value(b, TRUE ? 0 : 1);
+
+
+	json_builder_end_object(b);
+	n = json_builder_get_root(b);
+
+	g_free(unenc_s);
+	g_object_unref(b);
+	g_free(uid);
+	g_free(enc_s);
+
+	g = json_generator_new();
+	json_generator_set_root(g, n);
+	enc_s = json_generator_to_data(g, NULL);
+	g_object_unref(g);
+
+	remmina_curl_compose_message(enc_s, "POST",  PERIODIC_UPLOAD_URL, NULL);
+
+	json_node_unref(n);
+
+	return G_SOURCE_REMOVE;
+}
+
+/**
+ * Collect stats and notify when collection is done
+ * 
+ * @return gpointer
+ */
+gpointer remmina_info_stats_collector()
+{
+	JsonNode *n;
+
+	n = remmina_info_stats_get_all();
+
+	/* Stats collecting is done. Notify main thread calling
+	 * remmina_info_stats_collector_done() */
+	g_idle_add(remmina_info_stats_collector_done, n);
+
+	return NULL;
+}
+
+void remmina_info_request(gpointer data)
+{
+	// send initial handshake here, in a callback decide how to handle response
+
+	JsonNode *n;
+	JsonGenerator *g;
+	gchar *enc_s;
+	JsonBuilder *b;
+	const gchar *uid = "000000";
+
+	n = remmina_info_stats_get_uid();
+	if (n != NULL){
+		uid = json_node_get_string(n);
+	}
+
+	b = json_builder_new();
+	if (b == NULL) {
+		return;
+	}
+
+	json_builder_begin_object(b);
+	json_builder_set_member_name(b, "keyversion");
+	json_builder_add_int_value(b, 1);
+	json_builder_set_member_name(b, "UID");
+	json_builder_add_string_value(b, uid);
+	json_builder_set_member_name(b, "news_enabled");
+	json_builder_add_int_value(b, info_disable_news ? 0 : 1);
+	json_builder_set_member_name(b, "stats_enabled");
+	json_builder_add_int_value(b, info_disable_stats ? 0 : 1);
+	json_builder_set_member_name(b, "tip_enabled");
+	json_builder_add_int_value(b, info_disable_tip ? 0 : 1);
+
+
+	json_builder_end_object(b);
+	n = json_builder_get_root(b);
+
+	g_object_unref(b);
+
+
+	g = json_generator_new();
+	json_generator_set_root(g, n);
+	enc_s = json_generator_to_data(g, NULL);
+	g_object_unref(g);
+	remmina_curl_compose_message(enc_s, "POST", INFO_REQUEST_URL, NULL);
+	json_node_unref(n);
+}
+
+gboolean remmina_info_periodic_check(gpointer user_data)
+{
+	remmina_info_request(user_data);
+	return G_SOURCE_CONTINUE;
 }

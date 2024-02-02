@@ -4,6 +4,7 @@
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2022 Antenore Gatta, Giovanni Panozzo
  * Copyright (C) 2022-2023 Antenore Gatta, Giovanni Panozzo, Hiroyuki Tanaka
+ * Copyright (C) 2023-2024 Hiroyuki Tanaka, Sunil Bhat
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,6 +58,10 @@
 
 const gchar *default_resolutions = "640x480,800x600,1024x768,1152x864,1280x960,1400x1050,1920x1080";
 const gchar *default_keystrokes = "Send hello world§hello world\\n";
+
+extern gboolean info_disable_stats;
+extern gboolean info_disable_news;
+extern gboolean info_disable_tip;
 
 gchar *remmina_keymap_file;
 static GHashTable *remmina_keymap_table = NULL;
@@ -216,6 +221,9 @@ void remmina_pref_file_load_colors(GKeyFile *gkeyfile, RemminaColorPref *color_p
 			*colors[i].setting = colors[i].fallback;
 	}
 }
+
+extern gboolean disablenews;
+extern gboolean disablestats;
 
 void remmina_pref_init(void)
 {
@@ -751,8 +759,71 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.vte_shortcutkey_search_text = GDK_KEY_g;
 
-
 	remmina_pref_file_load_colors(gkeyfile, &remmina_pref.color_pref);
+
+	if (g_key_file_has_key(gkeyfile, "remmina_info", "periodic_news_last_checksum", NULL)) {
+		remmina_pref.periodic_news_last_checksum = g_key_file_get_string(gkeyfile, "remmina_info", "periodic_news_last_checksum", NULL);
+	}
+	else {
+		remmina_pref.periodic_news_last_checksum = NULL;
+	}
+
+	if (disablenews) {
+		info_disable_news = 1;
+	}
+	else if (g_key_file_has_key(gkeyfile, "remmina_info", "periodic_news_permitted", NULL)) {
+		remmina_pref.disable_news = !g_key_file_get_boolean(gkeyfile, "remmina_info", "periodic_news_permitted", NULL);
+		info_disable_news = remmina_pref.disable_news;
+	}
+	else {
+		remmina_pref.disable_news = TRUE;
+		info_disable_news = remmina_pref.disable_news;
+	}
+
+	if (disablestats) {
+		info_disable_stats = 1;
+	}
+	else if (g_key_file_has_key(gkeyfile, "remmina_info", "periodic_usage_stats_permitted", NULL)) {
+		remmina_pref.disable_stats = !g_key_file_get_boolean(gkeyfile, "remmina_info", "periodic_usage_stats_permitted", NULL);
+		info_disable_stats = remmina_pref.disable_stats;
+	}
+	else {
+		remmina_pref.disable_stats = TRUE;
+		info_disable_stats = remmina_pref.disable_stats;
+	}
+
+	if (g_key_file_has_key(gkeyfile, "remmina_info", "disable_tip", NULL)) {
+		remmina_pref.disable_tip = g_key_file_get_boolean(gkeyfile, "remmina_info", "disable_tip", NULL);
+		info_disable_tip = remmina_pref.disable_tip;
+	}
+	else {
+		remmina_pref.disable_tip = TRUE;
+		info_disable_tip = remmina_pref.disable_tip;
+	}
+
+	#ifdef DISABLE_NEWS
+	info_disable_news = 1;
+	remmina_pref.disable_news = TRUE;
+	#endif
+
+	#ifdef DISABLE_STATS
+	info_disable_stats = 1;
+	remmina_pref.disable_stats = TRUE;
+	#endif
+
+	#ifdef DISABLE_TIP
+	info_disable_tip = 1;
+	remmina_pref.disable_tip = TRUE;
+	#endif
+
+
+	if (g_key_file_has_key(gkeyfile, "remmina_info", "info_uid_prefix", NULL)) {
+		remmina_pref.info_uid_prefix = g_key_file_get_string(gkeyfile, "remmina_info", "info_uid_prefix", NULL);
+	}
+	else {
+		remmina_pref.info_uid_prefix = NULL;
+	}
+
 
 	/* If we have a color scheme file, we switch to it, GIO will merge it in the
 	 * remmina.pref file */
@@ -921,6 +992,11 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color13", remmina_pref.color_pref.color13 ? remmina_pref.color_pref.color13 : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color14", remmina_pref.color_pref.color14 ? remmina_pref.color_pref.color14 : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color15", remmina_pref.color_pref.color15 ? remmina_pref.color_pref.color15 : "");
+	g_key_file_set_boolean(gkeyfile, "remmina_info", "periodic_news_permitted", !remmina_pref.disable_news);
+	g_key_file_set_string(gkeyfile, "remmina_info", "periodic_news_last_checksum", remmina_pref.periodic_news_last_checksum ? remmina_pref.periodic_news_last_checksum: "");
+	g_key_file_set_boolean(gkeyfile, "remmina_info", "periodic_usage_stats_permitted", !remmina_pref.disable_stats);
+	g_key_file_set_string(gkeyfile, "remmina_info", "info_uid_prefix", remmina_pref.info_uid_prefix ? remmina_pref.info_uid_prefix : "");
+	g_key_file_set_boolean(gkeyfile, "remmina_info", "disable_tip", remmina_pref.disable_tip);
 
 	/* Default settings */
 	g_key_file_set_string(gkeyfile, "remmina", "name", "");
