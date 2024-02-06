@@ -30,7 +30,6 @@
         "--device=all",
         "--talk-name=ca.desrt.dconf",
         "--talk-name=org.gtk.vfs.*",
-        "--talk-name=org.freedesktop.portal.Fcitx",
         "--talk-name=org.freedesktop.Notifications",
         "--talk-name=org.freedesktop.secrets",
         "--talk-name=org.kde.StatusNotifierWatcher",
@@ -166,8 +165,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/vte.git",
-                    "tag": "0.74.0",
-                    "commit": "7fb5b2395c9e9c786c2277bc98d7e2661485fb10",
+                    "tag": "0.74.1",
+                    "commit": "eee37c871173d04387cd0004dde7f8676f390f62",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -371,10 +370,7 @@
                             "x-checker-data": {
                                 "type": "gnome",
                                 "name": "phodav",
-                                "stable-only": false,
-                                "versions": {
-                                    "<": "3"
-                                }
+                                "stable-only": false
                             }
                         }
                     ]
@@ -437,7 +433,8 @@
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_NACL:BOOL=ON",
                 "-DNACL_INCLUDE_DIR:PATH=/app/include/",
-                "-DWITH_EXAMPLES:BOOL=OFF"
+                "-DWITH_EXAMPLES:BOOL=OFF",
+                "-DWITH_GCRYPT:BOOL=ON"
             ],
             "sources": [
                 {
