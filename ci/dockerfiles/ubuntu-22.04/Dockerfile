@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 LABEL description="Bootstrap image used to build and test Remmina with Ubuntu 22.04" \
-                   maintainer="Antenore Gatta <antenore@simbiosi.org>" \
+                   maintainer="Hiroyuki Tanaka <myheroyuki@outlook.com>" \
                    vendor="Remmina Project" \
                    name="org.remmina.Remmina.images.ubuntu-22.04"
 
@@ -23,7 +23,7 @@ RUN \
     libspice-protocol-dev libssh-dev libssl-dev libsystemd-dev \
     libtelepathy-glib-dev libvncserver-dev libvte-2.91-dev libwebkit2gtk-4.0-dev \
     libx11-dev libxcursor-dev libxdamage-dev libxext-dev libxi-dev \
-    libxinerama-dev libxkbfile-dev libxkbfile-dev libxml2 libxml2-dev \
+    libxinerama-dev libxkbfile-dev libxml2 libxml2-dev \
     libxrandr-dev libxtst-dev libxv-dev python3 python3-dev wget \
     && apt-get autoremove -y \
     && apt-get clean -y
