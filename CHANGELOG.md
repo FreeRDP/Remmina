@@ -1,3 +1,31 @@
+## v1.4.34
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v.1.4.33...v1.4.34)
+
+* [REM-2981] Move ssh-unrelated code outside of HAVE_LIBSSH ifdef [!2540](https://gitlab.com/Remmina/Remmina/merge_requests/2540) *@myheroyuki*
+* [REM-2974] only attempt to resolve hostname if initial ssh_connect fails [!2542](https://gitlab.com/Remmina/Remmina/merge_requests/2542) *@myheroyuki*
+* [REM-2980] Remove flag that prevented remote audio from working with flatpak version of Remmina [!2543](https://gitlab.com/Remmina/Remmina/merge_requests/2543) *@myheroyuki*
+* [REM-2982] Update Flatpak to use GNOME runtime version 44 [!2541](https://gitlab.com/Remmina/Remmina/merge_requests/2541) *@myheroyuki*
+* initial port to core22 [!2539](https://gitlab.com/Remmina/Remmina/merge_requests/2539) *@soumyaDghosh*
+* [REM-2984] Add null check to prevent freeze when opening an rdp connection [!2545](https://gitlab.com/Remmina/Remmina/merge_requests/2545) *@myheroyuki*
+* Fix GTK critical error when editing RDP profile [!2544](https://gitlab.com/Remmina/Remmina/merge_requests/2544) *@bhatman1441*
+* Remove snap installs for broken link executables [!2546](https://gitlab.com/Remmina/Remmina/merge_requests/2546) *@bhatman1441*
+* SSH private key auth: If username is empty, prompt user to enter it [!2547](https://gitlab.com/Remmina/Remmina/merge_requests/2547) *@bhatman1441*
+* Fix Flatpak freeze on connection when importing RDP profile [!2548](https://gitlab.com/Remmina/Remmina/merge_requests/2548) *@bhatman1441*
+* Fix of some grammatic issues in German translation [!2550](https://gitlab.com/Remmina/Remmina/merge_requests/2550) *@vhhhl1*
+* [REM-3003] Re-add line removed by accident in !2532 [!2551](https://gitlab.com/Remmina/Remmina/merge_requests/2551) *@myheroyuki*
+* GtkFileChooserNative support [!2553](https://gitlab.com/Remmina/Remmina/merge_requests/2553) *@robxnano*
+* Spice UNIX socket channel initialization enhancement [!2549](https://gitlab.com/Remmina/Remmina/merge_requests/2549) *@BobbyTheBuilder*
+* Fix segfault for `remmina -p` [!2555](https://gitlab.com/Remmina/Remmina/merge_requests/2555) *@bhatman1441*
+* Add unlocking code to let plugins use passwords [!2556](https://gitlab.com/Remmina/Remmina/merge_requests/2556) *@pnowak433*
+* CI Pipeline Updates [!2557](https://gitlab.com/Remmina/Remmina/merge_requests/2557) *@bhatman1441*
+* [freerdp] update to build for stable-3.0 [!2554](https://gitlab.com/Remmina/Remmina/merge_requests/2554) *@akallabeth*
+* Allow Remmina to be built without FreeRDP [!2558](https://gitlab.com/Remmina/Remmina/merge_requests/2558) *@myheroyuki*
+* [REM-3048] Fix crash on multi-monitor with FreeRDP3 [!2559](https://gitlab.com/Remmina/Remmina/merge_requests/2559) *@myheroyuki*
+* Added developer_name to meet new flathub requirements [!2561](https://gitlab.com/Remmina/Remmina/merge_requests/2561) *@myheroyuki*
+* [New features] Bring back remmina server features with new additions [!2560](https://gitlab.com/Remmina/Remmina/merge_requests/2560) *@bhatman1441*
+* [REM-2983] compile ssh with gcrypt for flatpak builds. Also sync flatpak... [!2563](https://gitlab.com/Remmina/Remmina/merge_requests/2563) *@myheroyuki*
+* Update copyright info [!2562](https://gitlab.com/Remmina/Remmina/merge_requests/2562) *@bhatman1441*
+
 ## v.1.4.33
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.32...v1.4.33)
 
