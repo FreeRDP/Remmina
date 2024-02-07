@@ -737,8 +737,8 @@ msgstr ""
 "\n"
 "\tremmina -c rdp://felhasználónév:titkosított jelszó@szerver\n"
 "\tremmina -c vnc://felhasználónév:titkosított jelszó@szerver\n"
-"\tremmina -c vnc://server?VncUsername=felhasználónév\\&VncPassword"
-"=rejtjelezett-jelszó\n"
+"\tremmina -c vnc://server?"
+"VncUsername=felhasználónév\\&VncPassword=rejtjelezett-jelszó\n"
 "\n"
 "Jelszó titkosítása URI-val való használathoz:\n"
 "\n"
@@ -747,9 +747,9 @@ msgstr ""
 "A felhasználónév és jelszó frissítéséhez, valamint egy kapcsolati profil "
 "eltérő felbontási módjának beállításához használja:\n"
 "\n"
-"\techo \"username\\n"
-"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
-"username --set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
+"remmina --set-option username --set-option resolution_mode=2 --set-option "
+"password\n"
 
 #: src/remmina_public.c:347
 #, c-format
@@ -1462,8 +1462,8 @@ msgstr ""
 "* %p a Remmina profilnévre lesz cserélve\n"
 "* %g a Remmina profilcsoport nevére lesz cserélve\n"
 "* %d helyére a helyi dátum és idő kerül ISO-8601 formátumban\n"
-"Ne futtassa a háttérben, ha a parancsot a kapcsolódás előtt akarja futtatni."
-"\n"
+"Ne futtassa a háttérben, ha a parancsot a kapcsolódás előtt akarja "
+"futtatni.\n"
 "</big>"
 
 #: src/remmina_file_editor.c:83
@@ -2218,8 +2218,8 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"Nem sikerült kapcsolatot létesíteni a „%s” RDP-kiszolgálóval. Jelölje be a „"
-"Biztonsági protokoll egyeztetés” pontot."
+"Nem sikerült kapcsolatot létesíteni a „%s” RDP-kiszolgálóval. Jelölje be a "
+"„Biztonsági protokoll egyeztetés” pontot."
 
 #: plugins/rdp/rdp_plugin.c:2315
 #, c-format
@@ -2936,7 +2936,8 @@ msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:662
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr "Tiltja le a videó átfedést, ha a videók nem jelennek meg megfelelően.\n"
+msgstr ""
+"Tiltja le a videó átfedést, ha a videók nem jelennek meg megfelelően.\n"
 
 #: plugins/spice/spice_plugin.c:687
 msgid "Use TLS encryption"
@@ -3053,8 +3054,8 @@ msgstr ""
 "    10.10.10.12:5901\n"
 "  - A távoli VNC-kiszolgálóról a következőhöz csatlakozik\n"
 "    az átjátszóhoz, például az x11vnc segítségével:\n"
-"    123456789+10.10.10.10.12:5500: x11vnc -connect repeater=ID:123456789+10."
-"10.10.12:5500"
+"    123456789+10.10.10.10.12:5500: x11vnc -connect "
+"repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:2055
 msgid ""
@@ -3388,7 +3389,8 @@ msgstr "Ismeretlen ingatlan „%i”"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 msgid "Could not find child GtkTreeView of session chooser dialog."
-msgstr "Nem található a munkamenetválasztó párbeszédpanel gyermek: GtkTreeView."
+msgstr ""
+"Nem található a munkamenetválasztó párbeszédpanel gyermek: GtkTreeView."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
@@ -3441,7 +3443,8 @@ msgstr "Elindította a PyHoca-CLI-t a következő argumentumokkal:"
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr "A szükséges PyHoca-CLI folyamat internetkapcsolati problémába ütközött."
+msgstr ""
+"A szükséges PyHoca-CLI folyamat internetkapcsolati problémába ütközött."
 
 #: plugins/x2go/x2go_plugin.c:982
 #, c-format
@@ -3470,7 +3473,8 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1044
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "Sem az 'útvonal', sem a 'dialógus' paraméterek nincsenek inicializálva."
+msgstr ""
+"Sem az 'útvonal', sem a 'dialógus' paraméterek nincsenek inicializálva."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3612,7 +3616,8 @@ msgstr "Megszakítva"
 #: plugins/x2go/x2go_plugin.c:2178
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr "Nem talált munkamenetet a távoli gépen. Most új munkamenetet hoz létre."
+msgstr ""
+"Nem talált munkamenetet a távoli gépen. Most új munkamenetet hoz létre."
 
 #: plugins/x2go/x2go_plugin.c:2233
 msgid "Choose a session to resume:"
@@ -3828,7 +3833,8 @@ msgstr "Induló program"
 
 #: plugins/x2go/x2go_plugin.c:3400
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "Melyik parancsot kell végrehajtani az X2Go munkamenet létrehozása után?"
+msgstr ""
+"Melyik parancsot kell végrehajtani az X2Go munkamenet létrehozása után?"
 
 #: plugins/x2go/x2go_plugin.c:3402
 msgid "Keyboard Layout (auto)"
@@ -4250,8 +4256,8 @@ msgstr ""
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"kiadási napló\"><i>Látogassa meg a weboldalt a kiadási napló "
-"elolvasásához</i></a>.\n"
+"kiadási napló\"><i>Látogassa meg a weboldalt a kiadási napló elolvasásához</"
+"i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_news.glade:130
