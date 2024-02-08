@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-24 14:41+0000\n"
+"POT-Creation-Date: 2024-02-08 11:49+0000\n"
 "PO-Revision-Date: 2023-09-22 14:48+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
@@ -27,9 +27,9 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
-#: src/remmina_protocol_widget.c:1726 src/remmina_protocol_widget.c:1745
-#: src/remmina_file_editor.c:1209 src/remmina_file_editor.c:1332
-#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2880
+#: src/remmina_protocol_widget.c:1729 src/remmina_protocol_widget.c:1748
+#: src/remmina_file_editor.c:1216 src/remmina_file_editor.c:1339
+#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:3110
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:68
 #: data/ui/remmina_unlock.glade:98
@@ -37,22 +37,22 @@ msgid "Password"
 msgstr "Пароль"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1210 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1217 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 msgid "SSH identity file"
 msgstr "Файл профілю SSH"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1211
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1218
 #: src/remmina_ssh_plugin.c:1396
 msgid "SSH agent"
 msgstr "SSH-агент"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1212
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1219
 #: src/remmina_ssh_plugin.c:1397
 msgid "Public key (automatic)"
 msgstr "Відкритий ключ (автоматично)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1213
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1220
 #: src/remmina_ssh_plugin.c:1398
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
@@ -74,20 +74,20 @@ msgid "Connect via SSH from a new terminal"
 msgstr "З'єднатися за допомогою SSH з нового термінала"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1326 src/remmina_ssh_plugin.c:1504
-#: plugins/rdp/rdp_plugin.c:2879 plugins/vnc/vnc_plugin.c:2098
+#: src/remmina_file_editor.c:1333 src/remmina_ssh_plugin.c:1504
+#: plugins/rdp/rdp_plugin.c:3109 plugins/vnc/vnc_plugin.c:2098
 #: plugins/vnc/vnc_plugin.c:2110 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
 #: data/ui/remmina_mpc.glade:122
 msgid "Username"
 msgstr "Імʼя користувача"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1317
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1324
 #: src/remmina_ssh_plugin.c:1503
 msgid "Authentication type"
 msgstr "Тип автентифікації"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1350
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1357
 #: src/remmina_ssh_plugin.c:1510
 msgid "Password to unlock private key"
 msgstr "Пароль розблокування закритого ключа"
@@ -100,15 +100,15 @@ msgstr "Команда SSH-проксі"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP — Захищене передавання файлів"
 
-#: src/remmina_log.c:130
+#: src/remmina_log.c:131
 msgid "Remmina debugging window"
 msgstr "Вікно діагностики Remmina"
 
-#: src/remmina_log.c:134
+#: src/remmina_log.c:135
 msgid "Paste system info in the Remmina debugging window"
 msgstr "Вставити відомості щодо системи у вікно діагностики Remmina"
 
-#: src/remmina_log.c:155
+#: src/remmina_log.c:156
 msgid ""
 "This window can help you find connection problems.\n"
 "You can stop and start the logging at any moment using the On/Off switch.\n"
@@ -126,57 +126,83 @@ msgstr ""
 "Докладніші відомості щодо діагностики Remmina : https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2112
+#: src/remmina_plugin_manager.c:86 src/remmina_file_editor.c:2119
 msgid "Protocol"
 msgstr "Протокол"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 msgid "Entry"
 msgstr "Запис"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 msgid "File"
 msgstr "Файл"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 msgid "Tool"
 msgstr "Інструмент"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 msgid "Preference"
 msgstr "Налаштування"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 msgid "Secret"
 msgstr "Таємна фраза"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 msgid "Language Wrapper"
 msgstr "Мовна обгортка"
 
-#: src/remmina_plugin_manager.c:531 data/ui/remmina_main.glade:330
-msgid "Plugins"
-msgstr "Додатки"
+#: src/remmina_plugin_manager.c:773
+#, fuzzy
+#| msgid "Download"
+msgid "Plugin Download"
+msgstr "Отримати"
 
-#: src/remmina_plugin_manager.c:531 src/remmina_message_panel.c:455
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:252
+#: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
+#: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
+#: src/remmina_file_editor.c:253
 msgid "_OK"
 msgstr "_Гаразд"
 
-#: src/remmina_plugin_manager.c:549 src/remmina_file_editor.c:2044
-#: data/ui/remmina_main.glade:457
+#: src/remmina_plugin_manager.c:1369 data/ui/remmina_main.glade:330
+msgid "Plugins"
+msgstr "Додатки"
+
+#: src/remmina_plugin_manager.c:1369
+#, fuzzy
+#| msgid "Download"
+msgid "_Download"
+msgstr "Отримати"
+
+#: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
+#: data/ui/remmina_snap_info_dialog.glade:25
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_info.glade:49
+#: data/ui/remmina_preferences.glade:2860
+msgid "Close"
+msgstr "Закрити"
+
+#: src/remmina_plugin_manager.c:1408
+msgid "Install"
+msgstr ""
+
+#: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
+#: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
+#: data/ui/remmina_bug_report.glade:128
 msgid "Name"
 msgstr "Назва"
 
-#: src/remmina_plugin_manager.c:555
+#: src/remmina_plugin_manager.c:1426 src/remmina_plugin_manager.c:1431
 msgid "Type"
 msgstr "Тип"
 
-#: src/remmina_plugin_manager.c:561
+#: src/remmina_plugin_manager.c:1437 src/remmina_plugin_manager.c:1442
 msgid "Description"
 msgstr "Опис"
 
-#: src/remmina_plugin_manager.c:567
+#: src/remmina_plugin_manager.c:1449 src/remmina_plugin_manager.c:1454
 msgid "Version"
 msgstr "Версія"
 
@@ -229,37 +255,37 @@ msgstr "Мета+"
 msgid "<None>"
 msgstr "<Жодна>"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:560
+#: src/remmina_pref_dialog.c:95 src/remmina_file_editor.c:561
 msgid "Resolutions"
 msgstr "Роздільні здатності"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:560
+#: src/remmina_pref_dialog.c:95 src/remmina_file_editor.c:561
 msgid "Configure the available resolutions"
 msgstr "Налаштування доступних роздільних здатностей"
 
-#: src/remmina_pref_dialog.c:146
+#: src/remmina_pref_dialog.c:147
 msgid "Recent lists cleared."
 msgstr "Очищено список останніх з'єднань."
 
-#: src/remmina_pref_dialog.c:158 src/rcw.c:2073
-#: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
+#: src/remmina_pref_dialog.c:159 src/rcw.c:2073
+#: data/ui/remmina_preferences.glade:190 data/ui/remmina_preferences.glade:200
 msgid "Keystrokes"
 msgstr "Комбінації клавіш"
 
-#: src/remmina_pref_dialog.c:158
+#: src/remmina_pref_dialog.c:159
 msgid "Configure the keystrokes"
 msgstr "Налаштування комбінацій клавіш"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:480
+#: src/remmina_pref_dialog.c:483
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "Для користування основним паролем потрібна libsodium >= 1.9.0"
 
-#: src/remmina_pref_dialog.c:816
+#: src/remmina_pref_dialog.c:845
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "Вибір файла схеми розфарбування термінала замінює цей файл: "
 
-#: src/remmina_pref_dialog.c:820
+#: src/remmina_pref_dialog.c:849
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
 "“Advanced” tab of terminal connections and editable in the “Terminal” tab in "
@@ -275,22 +301,15 @@ msgstr ""
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2742
-msgid "Close"
-msgstr "Закрити"
-
 #: src/remmina_message_panel.c:260
 msgid "Yes"
 msgstr "Так"
 
-#: src/remmina_message_panel.c:267 plugins/rdp/rdp_plugin.c:2763
+#: src/remmina_message_panel.c:267 plugins/rdp/rdp_plugin.c:2993
 msgid "No"
 msgstr "Ні"
 
-#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2881
+#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:3111
 #: data/ui/remmina_mpc.glade:151
 msgid "Domain"
 msgstr "Домен"
@@ -300,8 +319,10 @@ msgid "Save password"
 msgstr "Запам'ятати пароль"
 
 #: src/remmina_message_panel.c:460 src/remmina_message_panel.c:632
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:251
-#: src/remmina_file_editor.c:1918 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_ftp_client.c:411 src/remmina_ftp_client.c:607
+#: src/remmina_main.c:1267 src/remmina_main.c:1318
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:252
+#: src/remmina_file_editor.c:1925 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
@@ -341,7 +362,7 @@ msgstr "Ви дійсно бажаєте закрити це останнє ак
 msgid "Viewport fullscreen mode"
 msgstr "Повноекранний режим"
 
-#: src/rcw.c:1451 data/ui/remmina_preferences.glade:578
+#: src/rcw.c:1451 data/ui/remmina_preferences.glade:696
 msgid "Scrolled fullscreen"
 msgstr "Повноекранний з гортанням"
 
@@ -418,8 +439,8 @@ msgstr ""
 msgid "Toggle fullscreen mode"
 msgstr "Перемкнути повноекранний режим"
 
-#: src/rcw.c:2456 data/ui/remmina_preferences.glade:1325
-#: data/ui/remmina_preferences.glade:1335
+#: src/rcw.c:2456 data/ui/remmina_preferences.glade:1443
+#: data/ui/remmina_preferences.glade:1453
 msgid "Multi monitor"
 msgstr "Декілька моніторів"
 
@@ -431,7 +452,7 @@ msgstr "Перемкнути динамічне оновлення розділ�
 msgid "Toggle scaled mode"
 msgstr "Перемкнути масштабований режим"
 
-#: src/rcw.c:2522 data/ui/remmina_preferences.glade:1059
+#: src/rcw.c:2522 data/ui/remmina_preferences.glade:1177
 msgid "Switch tab pages"
 msgstr "Перемкнути вкладку"
 
@@ -451,16 +472,16 @@ msgstr "І_нструменти"
 msgid "Tools"
 msgstr "Засоби"
 
-#: src/rcw.c:2572 data/ui/remmina_preferences.glade:1260
-#: data/ui/remmina_preferences.glade:1270
+#: src/rcw.c:2572 data/ui/remmina_preferences.glade:1378
+#: data/ui/remmina_preferences.glade:1388
 msgid "Screenshot"
 msgstr "Знімок екрана"
 
-#: src/rcw.c:2586 data/ui/remmina_preferences.glade:1167
+#: src/rcw.c:2586 data/ui/remmina_preferences.glade:1285
 msgid "Minimize window"
 msgstr "Мінімізувати вікно"
 
-#: src/rcw.c:2596 data/ui/remmina_preferences.glade:1198
+#: src/rcw.c:2596 data/ui/remmina_preferences.glade:1316
 msgid "Disconnect"
 msgstr "Відʼєднатися"
 
@@ -538,12 +559,12 @@ msgstr[1] "%d пароля змінено."
 msgstr[2] "%d паролів змінено."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:96
+#: src/remmina.c:102
 msgid "Show 'About'"
 msgstr "Показати «Про програму»"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:98
+#: src/remmina.c:104
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
@@ -551,12 +572,12 @@ msgstr ""
 "З'єднатися зі стільницею, яку описано у файлі (.remmina або суфіксом, що "
 "підтримується додатком) або підтримуваною адресою (RDP, VNC, SSH або SPICE)"
 
-#: src/remmina.c:98 src/remmina.c:100 src/remmina.c:102
+#: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
 msgstr "ФАЙЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:100
+#: src/remmina.c:106
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
@@ -565,7 +586,7 @@ msgstr ""
 "підтримку якого передбачено у додатку)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:102
+#: src/remmina.c:108
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
@@ -574,87 +595,99 @@ msgstr ""
 "типом файлів, підтримку якого передбачено у додатку)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:105
+#: src/remmina.c:111
 msgid "Start in kiosk mode"
 msgstr "Запустити в режимі кіоску"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:107
+#: src/remmina.c:113
 msgid "Create new connection profile"
 msgstr "Створити новий профіль з'єднання"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:109
+#: src/remmina.c:115
 msgid "Show preferences"
 msgstr "Показати налаштування"
 
-#: src/remmina.c:109
+#: src/remmina.c:115
 msgid "TABINDEX"
 msgstr "ІНДЕКС_ВКЛАДКИ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:122
 msgid "Quit"
 msgstr "Вийти"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:124
 msgid "Use default server name (for --new)"
 msgstr "Використовувати типову назву сервера (для --new)"
 
-#: src/remmina.c:118
+#: src/remmina.c:124
 msgid "SERVER"
 msgstr "Сервер"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:126
 msgid "Use default protocol (for --new)"
 msgstr "Використовувати типовий протокол (для --new)"
 
-#: src/remmina.c:120
+#: src/remmina.c:126
 msgid "PROTOCOL"
 msgstr "ПРОТОКОЛ"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:122
+#: src/remmina.c:128
 msgid "Start in tray"
 msgstr "Запустити у лотку"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:124
+#: src/remmina.c:130
 msgid "Show the application version"
 msgstr "Показати версію програми"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:126
+#: src/remmina.c:132
 msgid "Show version of the application and its plugins"
 msgstr "Показати версію програми та додатків до неї"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:128
+#: src/remmina.c:134
 msgid "Modify connection profile (requires --set-option)"
 msgstr "Змінити профіль з'єднання (потребує --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:130
+#: src/remmina.c:136
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 "Вкажіть одне чи більше налаштувань профілів, які буде використано з --update-"
 "profile"
 
-#: src/remmina.c:131
+#: src/remmina.c:137
 msgid "Encrypt a password"
 msgstr "Зашифрувати пароль"
 
-#: src/remmina.c:132
+#: src/remmina.c:138
+#, fuzzy
+#| msgid "Disable news notification"
+msgid "Disable news"
+msgstr "Вимкнути сповіщення щодо новин"
+
+#: src/remmina.c:139
+#, fuzzy
+#| msgid "Disable toolbar"
+msgid "Disable stats"
+msgstr "Вимкнути панель інструментів"
+
+#: src/remmina.c:140
 msgid "Disable toolbar"
 msgstr "Вимкнути панель інструментів"
 
-#: src/remmina.c:133
+#: src/remmina.c:141
 msgid "Enable fullscreen"
 msgstr "Увімкнути повноекранний режим"
 
-#: src/remmina.c:134
+#: src/remmina.c:142
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
@@ -663,7 +696,7 @@ msgstr ""
 "клавіатурні скорочення, які не є безпечними, приховати вкладки, приховати "
 "панель пошуку)"
 
-#: src/remmina.c:135
+#: src/remmina.c:143
 msgid "Disable tray icon"
 msgstr "Вимкнути піктограму лотка"
 
@@ -671,10 +704,16 @@ msgstr "Вимкнути піктограму лотка"
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:364
+#: src/remmina.c:393
+#, fuzzy
+#| msgid ""
+#| "Remmina does not log all output statements. Turn on more verbose output "
+#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+#| "More info available on the Remmina wiki at:\n"
+#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
-"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
@@ -685,11 +724,11 @@ msgstr ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:418
+#: src/remmina.c:447
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- або протокол://користувач:зашифрованийпароль@вузол:порт"
 
-#: src/remmina.c:421
+#: src/remmina.c:450
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -798,6 +837,11 @@ msgstr "Ви дійсно хочете вилучити вибрані файл�
 msgid "Choose a file to upload"
 msgstr "Виберіть файл для вивантаження"
 
+#: src/remmina_ftp_client.c:608 src/remmina_ftp_client.c:676
+#: src/remmina_ftp_client.c:793
+msgid "Upload"
+msgstr "Вивантажити"
+
 #: src/remmina_ftp_client.c:613
 msgid "Upload folder"
 msgstr "Вивантажити теку"
@@ -805,10 +849,6 @@ msgstr "Вивантажити теку"
 #: src/remmina_ftp_client.c:669 src/remmina_ftp_client.c:786
 msgid "Download"
 msgstr "Отримати"
-
-#: src/remmina_ftp_client.c:676 src/remmina_ftp_client.c:793
-msgid "Upload"
-msgstr "Вивантажити"
 
 #: src/remmina_ftp_client.c:683
 msgid "_Delete"
@@ -830,7 +870,7 @@ msgstr "Вище"
 msgid "Go to parent folder"
 msgstr "На одну теку вище"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2977
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:3207
 #: plugins/vnc/vnc_plugin.c:2154
 msgid "Refresh"
 msgstr "Оновити"
@@ -868,8 +908,8 @@ msgstr "Розмір"
 msgid "User"
 msgstr "Користувач"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2069
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2076
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:488
 msgid "Group"
 msgstr "Група"
 
@@ -881,11 +921,11 @@ msgstr "Права доступу"
 msgid "Modified"
 msgstr "Змінено"
 
-#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2745
+#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2975
 msgid "Remote"
 msgstr "Віддалений"
 
-#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2744
+#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2974
 msgid "Local"
 msgstr "Локальний"
 
@@ -942,188 +982,194 @@ msgstr "Не вдалося виконати команду. %s"
 msgid "Connecting to %s via SSH…"
 msgstr "Встановлення з'єднання з %s крізь SSH…"
 
-#: src/remmina_protocol_widget.c:1744
+#: src/remmina_protocol_widget.c:1747
 msgid "Type in SSH username and password."
 msgstr "Введіть ім'я користувача та пароль для SSH."
 
-#: src/remmina_protocol_widget.c:1799 src/remmina_protocol_widget.c:1831
+#: src/remmina_protocol_widget.c:1802 src/remmina_protocol_widget.c:1834
 msgid "Fingerprint automatically accepted"
 msgstr "Відбиток прийнято автоматично"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1807
+#: src/remmina_protocol_widget.c:1810
 msgid "Certificate details:"
 msgstr "Параметри сертифіката:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1809 src/remmina_protocol_widget.c:1841
+#: src/remmina_protocol_widget.c:1812 src/remmina_protocol_widget.c:1844
 msgid "Subject:"
 msgstr "Призначення:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1811 src/remmina_protocol_widget.c:1843
+#: src/remmina_protocol_widget.c:1814 src/remmina_protocol_widget.c:1846
 msgid "Issuer:"
 msgstr "Видавець:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1813
+#: src/remmina_protocol_widget.c:1816
 msgid "Fingerprint:"
 msgstr "Відбиток:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1815
+#: src/remmina_protocol_widget.c:1818
 msgid "Accept certificate?"
 msgstr "Прийняти сертифікат?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1839
+#: src/remmina_protocol_widget.c:1842
 msgid "The certificate changed! Details:"
 msgstr "Сертифікат змінено! Детальніше:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1845
+#: src/remmina_protocol_widget.c:1848
 msgid "Old fingerprint:"
 msgstr "Старий відбиток:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1847
+#: src/remmina_protocol_widget.c:1850
 msgid "New fingerprint:"
 msgstr "Новий відбиток:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1849
+#: src/remmina_protocol_widget.c:1852
 msgid "Accept changed certificate?"
 msgstr "Прийняти змінений сертифікат?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1992
+#: src/remmina_protocol_widget.c:1995
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Очікуємо на порту %i на вхідне з'єднання %s…"
 
-#: src/remmina_protocol_widget.c:2017
+#: src/remmina_protocol_widget.c:2020
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Не вдалося пройти розпізнавання. Ще одна спроба…"
 
-#: src/remmina_protocol_widget.c:2080 src/remmina_file_editor.c:464
-#: src/remmina_file_editor.c:1282 data/ui/remmina_main.glade:509
+#: src/remmina_protocol_widget.c:2083 src/remmina_file_editor.c:465
+#: src/remmina_file_editor.c:1289 data/ui/remmina_main.glade:518
 msgid "Server"
 msgstr "Сервер"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2098
+#: src/remmina_protocol_widget.c:2101
 #, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "Спочатку встановіть додаток протоколу %s."
 
-#: src/remmina_ssh.c:744
+#: src/remmina_ssh.c:745
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "Не вдалося пройти розпізнавання на основі TOTP, OTP або 2FA. %s"
 
-#: src/remmina_ssh.c:803 src/remmina_ssh.c:1184
+#: src/remmina_ssh.c:804 src/remmina_ssh.c:1191
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Не вдалося пройти розпізнавання за паролем SSH. %s"
 
-#: src/remmina_ssh.c:830 src/remmina_ssh.c:897
+#: src/remmina_ssh.c:831 src/remmina_ssh.c:904
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr "Не надано збереженого пароля до SSH. Просимо користувача його ввести."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:835 src/remmina_ssh.c:876 src/remmina_ssh.c:902
-#: src/remmina_ssh.c:941 src/remmina_ssh.c:1254
+#: src/remmina_ssh.c:836 src/remmina_ssh.c:877 src/remmina_ssh.c:909
+#: src/remmina_ssh.c:948 src/remmina_ssh.c:1261
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:844
+#: src/remmina_ssh.c:845
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "Не вдалося імпортувати сертифікат SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:853
+#: src/remmina_ssh.c:854
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "Не можна копіювати сертифікат SSH до закритого ключа SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:863
+#: src/remmina_ssh.c:864
 #, c-format
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "Не вдалося пройти розпізнавання з використанням сертифіката SSH. %s"
 
-#: src/remmina_ssh.c:877
+#: src/remmina_ssh.c:878
 msgid "SSH identity file not selected."
 msgstr "Не вибрано файла профілю SSH."
 
+#: src/remmina_ssh.c:884
+#, fuzzy
+#| msgid "No saved SSH password supplied. Asking user to enter it."
+msgid "No username found. Asking user to enter it."
+msgstr "Не надано збереженого пароля до SSH. Просимо користувача його ввести."
+
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:888
+#: src/remmina_ssh.c:895
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Не вдалося імпортувати відкритий ключ SSH. %s"
 
-#: src/remmina_ssh.c:986
+#: src/remmina_ssh.c:993
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
-#: src/remmina_ssh.c:1031
+#: src/remmina_ssh.c:1038
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr ""
 "Не вдалося пройти автоматичне розпізнавання за допомогою агента SSH. %s"
 
-#: src/remmina_ssh.c:1077 src/remmina_ssh.c:1364
+#: src/remmina_ssh.c:1084 src/remmina_ssh.c:1371
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Не вдалося пройти розпізнавання за допомогою SSH GSSAPI/Kerberos. %s"
 
-#: src/remmina_ssh.c:1106
+#: src/remmina_ssh.c:1113
 msgid "The public SSH key changed!"
 msgstr "Змінено відкритий ключ SSH!"
 
-#: src/remmina_ssh.c:1219
+#: src/remmina_ssh.c:1226
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "Не вдалося пройти інтерактивне розпізнавання з клавіатурою. %s"
 
-#: src/remmina_ssh.c:1321
+#: src/remmina_ssh.c:1328
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr ""
 "Не вдалося пройти автоматичне розпізнавання за відкритим ключем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1429
+#: src/remmina_ssh.c:1436
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ сервера SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1436
+#: src/remmina_ssh.c:1443
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Не вдалося отримати відкритий ключ SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1444
+#: src/remmina_ssh.c:1451
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "Не вдалося отримати контрольну суму відкритого ключа SSH. %s"
 
-#: src/remmina_ssh.c:1457
+#: src/remmina_ssh.c:1464
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Невідомий сервер. Відбиток відкритого ключа:"
 
-#: src/remmina_ssh.c:1459 src/remmina_ssh.c:1465
+#: src/remmina_ssh.c:1466 src/remmina_ssh.c:1472
 msgid "Do you trust the new public key?"
 msgstr "Ви довіряєте новому відкритому ключу?"
 
-#: src/remmina_ssh.c:1462
+#: src/remmina_ssh.c:1469
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
@@ -1133,86 +1179,98 @@ msgstr ""
 "або ж адміністратор змінив ключ. Новий відбиток відкритого ключа:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1487
+#: src/remmina_ssh.c:1494
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Не вдалося перевірити список відомих вузлів SSH. %s"
 
-#: src/remmina_ssh.c:1496
+#: src/remmina_ssh.c:1503
 msgid "SSH password"
 msgstr "Пароль SSH"
 
-#: src/remmina_ssh.c:1503 src/remmina_ssh.c:1547
+#: src/remmina_ssh.c:1510 src/remmina_ssh.c:1556 src/remmina_ssh.c:1590
 msgid "Password for private SSH key"
 msgstr "Пароль до закритого ключа SSH"
 
-#: src/remmina_ssh.c:1508
+#: src/remmina_ssh.c:1515
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:1513
+#: src/remmina_ssh.c:1520
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "Введіть код TOTP, OTP або 2FA"
 
-#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1569
+#: src/remmina_ssh.c:1552
+#, fuzzy
+#| msgid "SSH tunnel credentials"
+msgid "SSH tunnel private key credentials"
+msgstr "Реєстраційні дані SSH-тунелю"
+
+#: src/remmina_ssh.c:1552
+#, fuzzy
+#| msgid "SSH private key file"
+msgid "SSH private key credentials"
+msgstr "Файл закритого ключа SSH"
+
+#: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
 msgstr "Реєстраційні дані SSH-тунелю"
 
-#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1569
+#: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH credentials"
 msgstr "Реєстраційні дані SSH"
 
-#: src/remmina_ssh.c:1620
+#: src/remmina_ssh.c:1663
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Інтерактивний вхід з клавіатури, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2319
+#: src/remmina_ssh.c:2363
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Не вдалося створити канал. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2330
+#: src/remmina_ssh.c:2374
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Не вдалося встановити з'єднання із тунелем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2401 src/remmina_ssh.c:2422 src/remmina_ssh.c:2431
+#: src/remmina_ssh.c:2445 src/remmina_ssh.c:2466 src/remmina_ssh.c:2475
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Не вдалося надіслати запит щодо переспрямовування порту. %s"
 
-#: src/remmina_ssh.c:2461
+#: src/remmina_ssh.c:2505
 msgid "The server did not respond."
 msgstr "Сервер не відповідає."
 
-#: src/remmina_ssh.c:2499
+#: src/remmina_ssh.c:2543
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Не вдалося встановити з'єднання із локальним портом %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2548
+#: src/remmina_ssh.c:2592
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Не вдалося виконати запис до каналу SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2555
+#: src/remmina_ssh.c:2599
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Не вдалося прочитати дані з сокета очікування на дані тунелю. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2575
+#: src/remmina_ssh.c:2619
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Не вдалося опитати канал SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2582
+#: src/remmina_ssh.c:2626
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr ""
@@ -1220,57 +1278,57 @@ msgstr ""
 "блокування. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2601
+#: src/remmina_ssh.c:2645
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Не вдалося надіслати дані до сокета очікування на дані тунелю. %s"
 
-#: src/remmina_ssh.c:2703
+#: src/remmina_ssh.c:2747
 msgid "Assign a destination port."
 msgstr "Вкажіть порт призначення."
 
-#: src/remmina_ssh.c:2710
+#: src/remmina_ssh.c:2754
 msgid "Could not create socket."
 msgstr "Не вдалося створити сокет."
 
-#: src/remmina_ssh.c:2720
+#: src/remmina_ssh.c:2764
 msgid "Could not bind server socket to local port."
 msgstr "Не вдалося прив'язати сокет сервера до локального порту."
 
-#: src/remmina_ssh.c:2726
+#: src/remmina_ssh.c:2770
 msgid "Could not listen to local port."
 msgstr "Не вдалося розпочати очікування даних на локальному порту."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2736 src/remmina_ssh.c:2753 src/remmina_ssh.c:2771
+#: src/remmina_ssh.c:2780 src/remmina_ssh.c:2797 src/remmina_ssh.c:2815
 msgid "Could not start pthread."
 msgstr "Не вдалося запустити pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2863
+#: src/remmina_ssh.c:2907
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Не вдалося створити сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2868
+#: src/remmina_ssh.c:2912
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Не вдалося розпочати сеанс SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2960
+#: src/remmina_ssh.c:3004
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Не вдалося відкрити канал. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:3003
+#: src/remmina_ssh.c:3047
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Не вдалося створити запит щодо командної оболонки. %s"
 
-#: src/remmina_ssh.c:3133
+#: src/remmina_ssh.c:3177
 msgid "Could not create PTY device."
 msgstr "Не вдалося створити PTY-пристрій."
 
@@ -1287,11 +1345,11 @@ msgstr ""
 msgid "Plugin %s is not registered."
 msgstr "Додаток %s не зареєстровано."
 
-#: src/remmina_main.c:733
+#: src/remmina_main.c:736
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "Остання успішна спроба з'єднання або попередньо обчислена дата"
 
-#: src/remmina_main.c:735
+#: src/remmina_main.c:738
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
@@ -1299,28 +1357,28 @@ msgstr[0] "Усього %i запис."
 msgstr[1] "Усього %i записи."
 msgstr[2] "Усього %i записів."
 
-#: src/remmina_main.c:743
+#: src/remmina_main.c:746
 msgid "Network status: fully online"
 msgstr "Стан у мережі: повністю у мережі"
 
-#: src/remmina_main.c:746
+#: src/remmina_main.c:749
 msgid "Network status: offline"
 msgstr "Стан у мережі: поза мережею"
 
-#: src/remmina_main.c:999
+#: src/remmina_main.c:1003
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Впевнені, що бажаєте вилучити «%s»?"
 
-#: src/remmina_main.c:1021
+#: src/remmina_main.c:1025
 msgid "Are you sure you want to delete the selected files?"
 msgstr "Ви дійсно хочете вилучити вибрані файли?"
 
-#: src/remmina_main.c:1032
+#: src/remmina_main.c:1036
 msgid "Failed to delete files!"
 msgstr "Не вдалося вилучити файли!"
 
-#: src/remmina_main.c:1213
+#: src/remmina_main.c:1219
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1329,23 +1387,48 @@ msgstr ""
 "Не вдалося імпортувати:\n"
 "%s"
 
-#: src/remmina_main.c:1239 data/ui/remmina_main.glade:310
+#: src/remmina_main.c:1247
+#, fuzzy
+#| msgid "File"
+msgid "RDP Files"
+msgstr "Файл"
+
+#: src/remmina_main.c:1256
+#, fuzzy
+#| msgid "File"
+msgid "All Files"
+msgstr "Файл"
+
+#: src/remmina_main.c:1266 src/remmina_main.c:1267
+#: data/ui/remmina_main.glade:310
 msgid "Import"
 msgstr "Імпорт"
 
-#: src/remmina_main.c:1262 src/remmina_file_editor.c:1926
+#: src/remmina_main.c:1300
+#, fuzzy
+#| msgid "Create new connection profile"
+msgid "Select the connection profile."
+msgstr "Створити новий профіль з'єднання"
+
+#: src/remmina_main.c:1309
+#, fuzzy
+#| msgid "Remmina data folder"
+msgid "Remmina couldn't export."
+msgstr "Тека даних Remmina"
+
+#: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
 msgstr "З_берегти"
 
-#: src/remmina_main.c:1268
+#: src/remmina_main.c:1331
 msgid "This protocol does not support exporting."
 msgstr "У цьому протоколі не передбачено експортування."
 
-#: src/remmina_main.c:1588
+#: src/remmina_main.c:1658
 msgid "Remmina Remote Desktop Client"
 msgstr "Клієнт віддалених стільниць Remmina"
 
-#: src/remmina_main.c:1590
+#: src/remmina_main.c:1660
 msgid "Remmina Kiosk"
 msgstr "Remmina-Кіоск"
 
@@ -1428,7 +1511,7 @@ msgstr "Перезаписати"
 msgid "The following file already exists in the target folder:"
 msgstr "Вказаний нижче файл вже існує у теці призначення:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1444,7 +1527,7 @@ msgstr ""
 "• ID:ідентифікаційний номер ретранслятора\n"
 "• unix:///шлях/сокет.sock</big>"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1472,7 +1555,7 @@ msgstr ""
 "перед з'єднанням.\n"
 "</big>"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1484,144 +1567,144 @@ msgstr ""
 "• сервер[:порт]\n"
 "• користувач@сервер[:порт] (Лише для протоколу SSH )</big>"
 
-#: src/remmina_file_editor.c:171
+#: src/remmina_file_editor.c:172
 msgid "Input is invalid."
 msgstr "Некоректні вхідні дані."
 
-#: src/remmina_file_editor.c:249
+#: src/remmina_file_editor.c:250
 msgid "Choose a Remote Desktop Server"
 msgstr "Виберіть сервер віддалених стільниць"
 
-#: src/remmina_file_editor.c:488
+#: src/remmina_file_editor.c:489
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Провести огляд мережі для пошуку сервера %s"
 
-#: src/remmina_file_editor.c:596
+#: src/remmina_file_editor.c:597
 msgid "Resolution"
 msgstr "Роздільна здатність"
 
-#: src/remmina_file_editor.c:603
+#: src/remmina_file_editor.c:604
 msgid "Use initial window size"
 msgstr "Використовувати початковий розмір вікна"
 
-#: src/remmina_file_editor.c:607
+#: src/remmina_file_editor.c:608
 msgid "Use client resolution"
 msgstr "Використовувати роздільну здатність клієнта"
 
-#: src/remmina_file_editor.c:618 src/remmina_file_editor.c:1262
+#: src/remmina_file_editor.c:619 src/remmina_file_editor.c:1269
 msgid "Custom"
 msgstr "Нетиповий"
 
-#: src/remmina_file_editor.c:657
+#: src/remmina_file_editor.c:658
 msgid "Assistance Mode"
 msgstr "Режим помічника"
 
-#: src/remmina_file_editor.c:1038
+#: src/remmina_file_editor.c:1045
 msgid "Keyboard mapping"
 msgstr "Розкладка клавіатури"
 
-#: src/remmina_file_editor.c:1165
+#: src/remmina_file_editor.c:1172
 msgid "Behavior"
 msgstr "Поведінка"
 
-#: src/remmina_file_editor.c:1168
+#: src/remmina_file_editor.c:1175
 msgid "Execute a Command"
 msgstr "Виконати команду"
 
-#: src/remmina_file_editor.c:1172
+#: src/remmina_file_editor.c:1179
 msgid "Before connecting"
 msgstr "До з'єднання"
 
-#: src/remmina_file_editor.c:1174
+#: src/remmina_file_editor.c:1181
 msgid "command %h %u %t %U %p %g --option"
 msgstr "команда %h %u %t %U %p %g --параметр"
 
-#: src/remmina_file_editor.c:1179
+#: src/remmina_file_editor.c:1186
 msgid "After connecting"
 msgstr "Після з'єднання"
 
-#: src/remmina_file_editor.c:1181
+#: src/remmina_file_editor.c:1188
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/шлях/до/команди -параметр1 аргумент %h %u %t -параметр2 %U %p %g"
 
-#: src/remmina_file_editor.c:1185
+#: src/remmina_file_editor.c:1192
 msgid "Start-up"
 msgstr "Запуск"
 
-#: src/remmina_file_editor.c:1188
+#: src/remmina_file_editor.c:1195
 msgid "Auto-start this profile"
 msgstr "Автоматично запускати цей профіль"
 
-#: src/remmina_file_editor.c:1192
+#: src/remmina_file_editor.c:1199
 msgid "Connection profile security"
 msgstr "Захист профілю з'єднання"
 
-#: src/remmina_file_editor.c:1195
+#: src/remmina_file_editor.c:1202
 msgid "Require password to connect or edit the profile"
 msgstr "Для встановлення з'єднання або редагування профілю потрібен пароль"
 
-#: src/remmina_file_editor.c:1199
+#: src/remmina_file_editor.c:1206
 msgid "Unexpected disconnect"
 msgstr "Неочікуване розірвання з'єднання"
 
-#: src/remmina_file_editor.c:1202
+#: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
 msgstr "Не закривати вікно, якщо не від'єднано самою Remmina"
 
-#: src/remmina_file_editor.c:1235
+#: src/remmina_file_editor.c:1242
 msgid "SSH Tunnel"
 msgstr "SSH-тунель"
 
-#: src/remmina_file_editor.c:1236
+#: src/remmina_file_editor.c:1243
 msgid "Enable SSH tunnel"
 msgstr "Увімкнути SSH-тунель"
 
-#: src/remmina_file_editor.c:1243
+#: src/remmina_file_editor.c:1250
 msgid "Tunnel via loopback address"
 msgstr "Тунель за допомогою закільцьованої адреси"
 
-#: src/remmina_file_editor.c:1253
+#: src/remmina_file_editor.c:1260
 #, c-format
 msgid "Same server at port %i"
 msgstr "Цей же сервер на порту %i"
 
-#: src/remmina_file_editor.c:1303 plugins/rdp/rdp_plugin.c:2925
+#: src/remmina_file_editor.c:1310 plugins/rdp/rdp_plugin.c:3155
 msgid "Start-up path"
 msgstr "Шлях до програми"
 
-#: src/remmina_file_editor.c:1312
+#: src/remmina_file_editor.c:1319
 msgid "SSH Authentication"
 msgstr "Розпізнавання за допомогою SSH"
 
-#: src/remmina_file_editor.c:1339
+#: src/remmina_file_editor.c:1346
 msgid "SSH private key file"
 msgstr "Файл закритого ключа SSH"
 
-#: src/remmina_file_editor.c:1345 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1352 src/remmina_ssh_plugin.c:1508
 msgid "SSH certificate file"
 msgstr "Файл сертифіката SSH"
 
-#: src/remmina_file_editor.c:1402
+#: src/remmina_file_editor.c:1409
 msgid "Basic"
 msgstr "Основне"
 
-#: src/remmina_file_editor.c:1408
+#: src/remmina_file_editor.c:1415
 msgid "Advanced"
 msgstr "Додаткове"
 
-#: src/remmina_file_editor.c:1419 data/ui/remmina_main.glade:523
+#: src/remmina_file_editor.c:1426 data/ui/remmina_main.glade:532
 msgid "Notes"
 msgstr "Нотатки"
 
-#: src/remmina_file_editor.c:1551
+#: src/remmina_file_editor.c:1558
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): не вдалося перевірити чинність параметра «%s» оскільки «value» або "
 "«gfe» має значення NULL!"
 
-#: src/remmina_file_editor.c:1555
+#: src/remmina_file_editor.c:1562
 #, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1631,68 +1714,68 @@ msgstr ""
 "оскільки «setting_name_to_validate», «value» або «gfe» дорівнює NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1559 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1566 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 msgid "Internal error."
 msgstr "Внутрішня помилка."
 
-#: src/remmina_file_editor.c:1802 src/remmina_file_editor.c:1838
-#: src/remmina_file_editor.c:1859 src/remmina_file_editor.c:1882
+#: src/remmina_file_editor.c:1809 src/remmina_file_editor.c:1845
+#: src/remmina_file_editor.c:1866 src/remmina_file_editor.c:1889
 #, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "Введені користувачем дані є некоректними. %s"
 
-#: src/remmina_file_editor.c:1826
+#: src/remmina_file_editor.c:1833
 msgid "Default settings saved."
 msgstr "Типові налаштування збережено."
 
-#: src/remmina_file_editor.c:1916
+#: src/remmina_file_editor.c:1923
 msgid "Remote Connection Profile"
 msgstr "Профіль віддаленого з'єднання"
 
-#: src/remmina_file_editor.c:1922
+#: src/remmina_file_editor.c:1929
 msgid "Save as Default"
 msgstr "Зберегти як типовий"
 
-#: src/remmina_file_editor.c:1923
+#: src/remmina_file_editor.c:1930
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Використовувати поточні налаштування як типові для всіх нових профілів "
 "з'єднань"
 
-#: src/remmina_file_editor.c:1931 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1938 data/ui/remmina_main.glade:161
 msgid "Connect"
 msgstr "З'єднатися"
 
-#: src/remmina_file_editor.c:1934
+#: src/remmina_file_editor.c:1941
 msgid "_Save and Connect"
 msgstr "_Зберегти та з'єднатися"
 
-#: src/remmina_file_editor.c:2058
+#: src/remmina_file_editor.c:2065
 msgid "Quick Connect"
 msgstr "Швидке з'єднання"
 
-#: src/remmina_file_editor.c:2082
+#: src/remmina_file_editor.c:2089
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Використовувати «%s» як роздільник підгруп"
 
-#: src/remmina_file_editor.c:2087 data/ui/remmina_main.glade:493
+#: src/remmina_file_editor.c:2094 data/ui/remmina_main.glade:502
 msgid "Labels"
 msgstr "Мітки"
 
-#: src/remmina_file_editor.c:2101
+#: src/remmina_file_editor.c:2108
 msgid "Label1,Label2"
 msgstr "Мітка1,Мітка2"
 
-#: src/remmina_file_editor.c:2173 src/remmina_file_editor.c:2192
+#: src/remmina_file_editor.c:2180 src/remmina_file_editor.c:2199
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Не вдалося знайти файл «%s»."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
-#: src/remmina_file.c:494 src/remmina_file.c:540
+#: src/remmina_file.c:495 src/remmina_file.c:541
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
@@ -1704,7 +1787,7 @@ msgstr ""
 msgid "Enable Service Discovery"
 msgstr "Увімкнути виявлення служб"
 
-#: src/remmina_icon.c:157 data/ui/remmina_main.glade:419
+#: src/remmina_icon.c:157 data/ui/remmina_main.glade:428
 msgid "_Quit"
 msgstr "Ви_йти"
 
@@ -1879,7 +1962,7 @@ msgstr "Знайти текст"
 msgid "_Find text"
 msgstr "З_найти текст"
 
-#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:686
+#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:680
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 msgid "User password"
 msgstr "Пароль користувача"
@@ -1986,151 +2069,156 @@ msgstr "SSH — безпечна оболонка"
 msgid "Secured password storage in KWallet"
 msgstr "Безпечне сховище паролів у KWallet"
 
-#: plugins/rdp/rdp_settings.c:215
+#: plugins/rdp/rdp_settings.c:214
 msgid "<Auto-detect>"
 msgstr "<Автовиявлення>"
 
-#: plugins/rdp/rdp_settings.c:247
+#: plugins/rdp/rdp_settings.c:267
 msgid "<Not set>"
 msgstr "<Не встановлено>"
 
-#: plugins/rdp/rdp_settings.c:278
+#: plugins/rdp/rdp_settings.c:298
 msgid "<Choose a quality level to edit…>"
 msgstr "<Виберіть рівень якості для редагування...>"
 
-#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_settings.c:300 plugins/rdp/rdp_plugin.c:2949
 #: plugins/vnc/vnc_plugin.c:2041
 msgid "Poor (fastest)"
 msgstr "Низька (найшвидше)"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2720
+#: plugins/rdp/rdp_settings.c:302 plugins/rdp/rdp_plugin.c:2950
 #: plugins/vnc/vnc_plugin.c:2040
 msgid "Medium"
 msgstr "Середня"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_settings.c:304 plugins/rdp/rdp_plugin.c:2951
 #: plugins/vnc/vnc_plugin.c:2038
 msgid "Good"
 msgstr "Добра"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2722
+#: plugins/rdp/rdp_settings.c:306 plugins/rdp/rdp_plugin.c:2952
 #: plugins/vnc/vnc_plugin.c:2039
 msgid "Best (slowest)"
 msgstr "Найкраща (найповільніше)"
 
-#: plugins/rdp/rdp_settings.c:425
+#: plugins/rdp/rdp_settings.c:445
 msgid "Keyboard layout"
 msgstr "Розкладка клавіатури"
 
-#: plugins/rdp/rdp_settings.c:455
+#: plugins/rdp/rdp_settings.c:475
 msgid "Use client keyboard mapping"
 msgstr "Використовувати розкладку клавіатури клієнта"
 
-#: plugins/rdp/rdp_settings.c:466
+#: plugins/rdp/rdp_settings.c:486
 msgid "Keyboard scancode remapping"
 msgstr "Перепов'язування сканкодів клавіатури"
 
-#: plugins/rdp/rdp_settings.c:481
+#: plugins/rdp/rdp_settings.c:501
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
 "Список записів ключ=значення,… пари для переприв'язування сканкодів. "
 "Приклад: 0x56=0x29,0x29=0x56"
 
-#: plugins/rdp/rdp_settings.c:484
+#: plugins/rdp/rdp_settings.c:504
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
 msgstr "Для прив'язування сканкодів потрібен FreeRDP > 2.3.0"
 
-#: plugins/rdp/rdp_settings.c:492
+#: plugins/rdp/rdp_settings.c:512
 msgid "Quality settings"
 msgstr "Параметри якості"
 
-#: plugins/rdp/rdp_settings.c:515
+#: plugins/rdp/rdp_settings.c:535
 msgid "Wallpaper"
 msgstr "Зображення тла"
 
-#: plugins/rdp/rdp_settings.c:523
+#: plugins/rdp/rdp_settings.c:543
 msgid "Window drag"
 msgstr "Перетягування вікна"
 
-#: plugins/rdp/rdp_settings.c:530
+#: plugins/rdp/rdp_settings.c:550
 msgid "Menu animation"
 msgstr "Анімація меню"
 
-#: plugins/rdp/rdp_settings.c:538
+#: plugins/rdp/rdp_settings.c:558
 msgid "Theme"
 msgstr "Тема"
 
-#: plugins/rdp/rdp_settings.c:545
+#: plugins/rdp/rdp_settings.c:565
 msgid "Cursor shadow"
 msgstr "Тінь курсора"
 
-#: plugins/rdp/rdp_settings.c:553
+#: plugins/rdp/rdp_settings.c:573
 msgid "Cursor blinking"
 msgstr "Блимання курсора"
 
-#: plugins/rdp/rdp_settings.c:560
+#: plugins/rdp/rdp_settings.c:580
 msgid "Font smoothing"
 msgstr "Згладжування шрифту"
 
-#: plugins/rdp/rdp_settings.c:568
+#: plugins/rdp/rdp_settings.c:588
 msgid "Composition"
 msgstr "Композиція"
 
-#: plugins/rdp/rdp_settings.c:578
+#: plugins/rdp/rdp_settings.c:598
 msgid "Remote scale factor"
 msgstr "Рівень масштабування"
 
-#: plugins/rdp/rdp_settings.c:593
+#: plugins/rdp/rdp_settings.c:613
 msgid "Desktop scale factor %"
 msgstr "Рівень масштабування стільниці у %"
 
-#: plugins/rdp/rdp_settings.c:605
+#: plugins/rdp/rdp_settings.c:625
 msgid "Device scale factor %"
 msgstr "Рівень масштабування пристрою у %"
 
-#: plugins/rdp/rdp_settings.c:628
+#: plugins/rdp/rdp_settings.c:648
 msgid "Desktop orientation"
 msgstr "Орієнтація стільниці"
 
-#: plugins/rdp/rdp_settings.c:648
+#: plugins/rdp/rdp_settings.c:668
 msgid "Input device settings"
 msgstr "Параметри пристроїв введення"
 
-#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2886
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:3116
 #: plugins/vnc/vnc_plugin.c:2132
 msgid "Disable smooth scrolling"
 msgstr "Вимкнути плавне гортання"
 
-#: plugins/rdp/rdp_settings.c:667
+#: plugins/rdp/rdp_settings.c:687
 msgid "General settings"
 msgstr "Загальні налаштування"
 
-#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2939
+#: plugins/rdp/rdp_settings.c:694 plugins/rdp/rdp_plugin.c:3169
 msgid "Reconnect attempts number"
 msgstr "Кількість спроб повторного з'єднання"
 
-#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2939
+#: plugins/rdp/rdp_settings.c:707 plugins/rdp/rdp_plugin.c:3169
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
 "Максимальна кількість спроб повторно встановити з'єднання при роз'єднанні "
 "RDP (типове значення: 20)"
 
-#: plugins/rdp/rdp_plugin.c:799 plugins/rdp/rdp_plugin.c:864
+#: plugins/rdp/rdp_plugin.c:837 plugins/rdp/rdp_plugin.c:902
+#: plugins/rdp/rdp_plugin.c:987
 msgid "Enter RDP authentication credentials"
 msgstr "Введіть дані розпізнавання RDP"
 
-#: plugins/rdp/rdp_plugin.c:872
+#: plugins/rdp/rdp_plugin.c:910 plugins/rdp/rdp_plugin.c:998
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Введіть дані розпізнавання на шлюзі RDP"
 
+#: plugins/rdp/rdp_plugin.c:1007
+msgid "Enter RDP SmartCard PIN"
+msgstr ""
+
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:1065
+#: plugins/rdp/rdp_plugin.c:1269
 #, c-format
 msgid "Disconnected from %s via RDP"
 msgstr "Розірвано з'єднання з %s за допомогою RDP"
 
-#: plugins/rdp/rdp_plugin.c:2248
+#: plugins/rdp/rdp_plugin.c:2463
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2139,7 +2227,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Обліковий запис заблоковано."
 
-#: plugins/rdp/rdp_plugin.c:2255
+#: plugins/rdp/rdp_plugin.c:2470
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2148,7 +2236,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Вичерпано термін дії облікового запису."
 
-#: plugins/rdp/rdp_plugin.c:2262
+#: plugins/rdp/rdp_plugin.c:2477
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2157,7 +2245,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Вичерпано термін дії пароля."
 
-#: plugins/rdp/rdp_plugin.c:2269
+#: plugins/rdp/rdp_plugin.c:2484
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2166,7 +2254,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Обліковий запис вимкнено."
 
-#: plugins/rdp/rdp_plugin.c:2275
+#: plugins/rdp/rdp_plugin.c:2490
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2175,7 +2263,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Недостатні права доступу користувача."
 
-#: plugins/rdp/rdp_plugin.c:2283
+#: plugins/rdp/rdp_plugin.c:2498
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2184,7 +2272,7 @@ msgstr ""
 "Не вдалося отримати доступ до RDP-сервера «%s».\n"
 "Обліковий запис із обмеженим доступом."
 
-#: plugins/rdp/rdp_plugin.c:2291
+#: plugins/rdp/rdp_plugin.c:2506
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2193,17 +2281,17 @@ msgstr ""
 "Не вдалося отримати доступ до сервера RDP «%s».\n"
 "Змініть пароль перед з'єднанням."
 
-#: plugins/rdp/rdp_plugin.c:2296
+#: plugins/rdp/rdp_plugin.c:2511
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "Втрачено з'єднання із сервером RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2299
+#: plugins/rdp/rdp_plugin.c:2514
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "Не вдалося знайти адресу сервера RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2303
+#: plugins/rdp/rdp_plugin.c:2518
 #, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
@@ -2213,7 +2301,7 @@ msgstr ""
 "термінала, щоб дізнатися більше."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2307
+#: plugins/rdp/rdp_plugin.c:2522
 #, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
@@ -2222,16 +2310,16 @@ msgstr ""
 "Не вдалося встановити з'єднання із сервером RDP «%s». Перевірте, чи вказано "
 "«Узгодження протоколу захисту»."
 
-#: plugins/rdp/rdp_plugin.c:2315
+#: plugins/rdp/rdp_plugin.c:2530
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "Не вдалося встановити з'єднання із сервером RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2318
+#: plugins/rdp/rdp_plugin.c:2533
 msgid "Could not start libfreerdp-gdi."
 msgstr "Не вдалося запустити libfreerdp-gdi."
 
-#: plugins/rdp/rdp_plugin.c:2321
+#: plugins/rdp/rdp_plugin.c:2536
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2241,12 +2329,12 @@ msgstr ""
 "варіант libfreerdp не підтримує H.264. Будь ласка, скористайтеся варіантом "
 "без глибини кольорів AVC."
 
-#: plugins/rdp/rdp_plugin.c:2328
+#: plugins/rdp/rdp_plugin.c:2543
 #, c-format
 msgid "The “%s” server refused the connection."
 msgstr "Сервер «%s» відхилив з'єднання."
 
-#: plugins/rdp/rdp_plugin.c:2333
+#: plugins/rdp/rdp_plugin.c:2548
 #, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2255,162 +2343,162 @@ msgstr ""
 "Шлюз віддаленої стільниці «%s» заборонив користувачу «%s\\%s» доступ через "
 "встановлені правила."
 
-#: plugins/rdp/rdp_plugin.c:2343
+#: plugins/rdp/rdp_plugin.c:2558
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "Не вдалося встановити з'єднання із сервером RDP «%s»."
 
-#: plugins/rdp/rdp_plugin.c:2688
+#: plugins/rdp/rdp_plugin.c:2918
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Автоматично (32 біт/піксель) (Сервер вибирає найкращий формат)"
 
-#: plugins/rdp/rdp_plugin.c:2689
+#: plugins/rdp/rdp_plugin.c:2919
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2690
+#: plugins/rdp/rdp_plugin.c:2920
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2691
+#: plugins/rdp/rdp_plugin.c:2921
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2692
+#: plugins/rdp/rdp_plugin.c:2922
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX прогресивний (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2923
 msgid "RemoteFX (32 bpp)"
 msgstr "Віддалений FX (32 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2694 plugins/vnc/vnc_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2924 plugins/vnc/vnc_plugin.c:2029
 msgid "True colour (32 bpp)"
 msgstr "Справжній колір (32 біти/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#: plugins/rdp/rdp_plugin.c:2925
 msgid "True colour (24 bpp)"
 msgstr "Справжній колір (24 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2696 plugins/vnc/vnc_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2926 plugins/vnc/vnc_plugin.c:2030
 msgid "High colour (16 bpp)"
 msgstr "Якісний колір (16 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2927
 msgid "High colour (15 bpp)"
 msgstr "Якісний колір (15 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2698 plugins/vnc/vnc_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2928 plugins/vnc/vnc_plugin.c:2031
 msgid "256 colours (8 bpp)"
 msgstr "256 кольорів (8 біт/піксель)"
 
-#: plugins/rdp/rdp_plugin.c:2729 data/ui/remmina_preferences.glade:610
+#: plugins/rdp/rdp_plugin.c:2959 data/ui/remmina_preferences.glade:728
 msgid "None"
 msgstr "Нічого"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2960
 msgid "Auto-detect"
 msgstr "Автовиявлення"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2961
 msgid "Modem"
 msgstr "Модем"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2962
 msgid "Low performance broadband"
 msgstr "Низькошвидкісна широкосмугова"
 
-#: plugins/rdp/rdp_plugin.c:2733
+#: plugins/rdp/rdp_plugin.c:2963
 msgid "Satellite"
 msgstr "Супутникова"
 
-#: plugins/rdp/rdp_plugin.c:2734
+#: plugins/rdp/rdp_plugin.c:2964
 msgid "High performance broadband"
 msgstr "Високошвидкісна широкосмугова"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2965
 msgid "WAN"
 msgstr "WAN"
 
-#: plugins/rdp/rdp_plugin.c:2736
+#: plugins/rdp/rdp_plugin.c:2966
 msgid "LAN"
 msgstr "LAN"
 
-#: plugins/rdp/rdp_plugin.c:2743 plugins/spice/spice_plugin.c:647
-#: data/ui/remmina_preferences.glade:646
+#: plugins/rdp/rdp_plugin.c:2973 plugins/spice/spice_plugin.c:641
+#: data/ui/remmina_preferences.glade:764
 msgid "Off"
 msgstr "Вимкнено"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2982
 msgid "Automatic negotiation"
 msgstr "Автоматичне узгодження"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2983
 msgid "NLA protocol security"
 msgstr "Захист протоколу NLA"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2984
 msgid "TLS protocol security"
 msgstr "Захист протоколу TLS"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2985
 msgid "RDP protocol security"
 msgstr "Захист протоколу RDP"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2986
 msgid "NLA extended protocol security"
 msgstr "Розширений захист протоколу NLA"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2994
 msgid "Every 1 min"
 msgstr "Щохвилини"
 
-#: plugins/rdp/rdp_plugin.c:2765
+#: plugins/rdp/rdp_plugin.c:2995
 msgid "Every 3 min"
 msgstr "Кожні 3 хвилини"
 
-#: plugins/rdp/rdp_plugin.c:2766
+#: plugins/rdp/rdp_plugin.c:2996
 msgid "Every 5 min"
 msgstr "Кожні 5 хвилин"
 
-#: plugins/rdp/rdp_plugin.c:2767
+#: plugins/rdp/rdp_plugin.c:2997
 msgid "Every 10 min"
 msgstr "Кожні 10 хвилин"
 
-#: plugins/rdp/rdp_plugin.c:2781 plugins/spice/spice_plugin.c:628
-#: plugins/spice/spice_plugin.c:646
+#: plugins/rdp/rdp_plugin.c:3011 plugins/spice/spice_plugin.c:622
+#: plugins/spice/spice_plugin.c:640
 msgid "Default"
 msgstr "Типова"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:3012
 msgid "0 — Windows 7 compatible"
 msgstr "0 — сумісний з Windows 7"
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:3013
 msgid "1"
 msgstr "1"
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:3014
 msgid "2"
 msgstr "2"
 
-#: plugins/rdp/rdp_plugin.c:2785
+#: plugins/rdp/rdp_plugin.c:3015
 msgid "3"
 msgstr "3"
 
-#: plugins/rdp/rdp_plugin.c:2786
+#: plugins/rdp/rdp_plugin.c:3016
 msgid "4"
 msgstr "4"
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:3017
 msgid "5"
 msgstr "5"
 
-#: plugins/rdp/rdp_plugin.c:2792
+#: plugins/rdp/rdp_plugin.c:3022
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 та новіша)"
 
-#: plugins/rdp/rdp_plugin.c:2795
+#: plugins/rdp/rdp_plugin.c:3025
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -2429,7 +2517,7 @@ msgstr ""
 "  • >= 7065: Windows 8 і новіші версії: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 
-#: plugins/rdp/rdp_plugin.c:2803
+#: plugins/rdp/rdp_plugin.c:3033
 msgid ""
 "Options for redirection of audio input:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2447,7 +2535,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2812
+#: plugins/rdp/rdp_plugin.c:3042
 msgid ""
 "Options for redirection of audio output:\n"
 "  • [sys:<sys>,][dev:<dev>,][format:<format>,][rate:<rate>,]\n"
@@ -2465,7 +2553,7 @@ msgstr ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 
-#: plugins/rdp/rdp_plugin.c:2822
+#: plugins/rdp/rdp_plugin.c:3052
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2477,7 +2565,7 @@ msgstr ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
-#: plugins/rdp/rdp_plugin.c:2828
+#: plugins/rdp/rdp_plugin.c:3058
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
@@ -2488,7 +2576,7 @@ msgstr ""
 "виникають перевищення часу очікування при з'єднанні.\n"
 "Найбільшим можливим значенням є 600000 мс (10 хвилин)\n"
 
-#: plugins/rdp/rdp_plugin.c:2833
+#: plugins/rdp/rdp_plugin.c:3063
 msgid ""
 "Performance optimisations based on the network connection type:\n"
 "Using auto-detection is advised.\n"
@@ -2498,7 +2586,7 @@ msgstr ""
 "Рекомендуємо скористатися автоматичним виявленням.\n"
 "Якщо тип не вдасться виявити автоматично, виберіть належний тип зі списку.\n"
 
-#: plugins/rdp/rdp_plugin.c:2838
+#: plugins/rdp/rdp_plugin.c:3068
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
 "  • [<id>:<orientation-in-degrees>,]\n"
@@ -2523,7 +2611,7 @@ msgstr ""
 "  • 270 (книжкова перевернута)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2850
+#: plugins/rdp/rdp_plugin.c:3080
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
 "  • <name>,<fullpath>[;<name>,<fullpath>[;…]]\n"
@@ -2544,136 +2632,136 @@ msgstr ""
 "  • hotplug,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2882 plugins/spice/spice_plugin.c:689
+#: plugins/rdp/rdp_plugin.c:3112 plugins/spice/spice_plugin.c:683
 msgid "Share folder"
 msgstr "Спільна тека"
 
-#: plugins/rdp/rdp_plugin.c:2883
+#: plugins/rdp/rdp_plugin.c:3113
 msgid "Restricted admin mode"
 msgstr "Обмежений адміністративний режим"
 
-#: plugins/rdp/rdp_plugin.c:2884
+#: plugins/rdp/rdp_plugin.c:3114
 msgid "Password hash"
 msgstr "Хеш пароля"
 
-#: plugins/rdp/rdp_plugin.c:2884
+#: plugins/rdp/rdp_plugin.c:3114
 msgid "Restricted admin mode password hash"
 msgstr "Хеш пароля обмеженого адміністративного режиму"
 
-#: plugins/rdp/rdp_plugin.c:2885
+#: plugins/rdp/rdp_plugin.c:3115
 msgid "Left-handed mouse support"
 msgstr "Підтримка роботи мишею для шульги"
 
-#: plugins/rdp/rdp_plugin.c:2885
+#: plugins/rdp/rdp_plugin.c:3115
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
 "Поміняти місцями ліву і праву кнопки миші для забезпечення комфортної роботи "
 "для шульги"
 
-#: plugins/rdp/rdp_plugin.c:2887
+#: plugins/rdp/rdp_plugin.c:3117
 msgid "Enable multi monitor"
 msgstr "Увімкнути багатомоніторну конфігурацію"
 
-#: plugins/rdp/rdp_plugin.c:2888
+#: plugins/rdp/rdp_plugin.c:3118
 msgid "Span screen over multiple monitors"
 msgstr "Поділити екран між декількома моніторами"
 
-#: plugins/rdp/rdp_plugin.c:2889
+#: plugins/rdp/rdp_plugin.c:3119
 msgid "List monitor IDs"
 msgstr "Список ідентифікаторів моніторів"
 
-#: plugins/rdp/rdp_plugin.c:2891 plugins/vnc/vnc_plugin.c:2100
+#: plugins/rdp/rdp_plugin.c:3121 plugins/vnc/vnc_plugin.c:2100
 #: plugins/vnc/vnc_plugin.c:2112 plugins/gvnc/gvnc_plugin.c:848
 msgid "Colour depth"
 msgstr "Глибина кольорів"
 
-#: plugins/rdp/rdp_plugin.c:2892
+#: plugins/rdp/rdp_plugin.c:3122
 msgid "Network connection type"
 msgstr "Тип мережевого з'єднання"
 
-#: plugins/rdp/rdp_plugin.c:2908 plugins/vnc/vnc_plugin.c:2101
+#: plugins/rdp/rdp_plugin.c:3138 plugins/vnc/vnc_plugin.c:2101
 #: plugins/vnc/vnc_plugin.c:2113
 msgid "Quality"
 msgstr "Якість"
 
-#: plugins/rdp/rdp_plugin.c:2909
+#: plugins/rdp/rdp_plugin.c:3139
 msgid "Security protocol negotiation"
 msgstr "Узгодження протоколу захисту"
 
-#: plugins/rdp/rdp_plugin.c:2910
+#: plugins/rdp/rdp_plugin.c:3140
 msgid "Gateway transport type"
 msgstr "Тип передавання даних шлюзу"
 
-#: plugins/rdp/rdp_plugin.c:2911
+#: plugins/rdp/rdp_plugin.c:3141
 msgid "TLS Security Level"
 msgstr "Рівень захисту TLS"
 
-#: plugins/rdp/rdp_plugin.c:2912
+#: plugins/rdp/rdp_plugin.c:3142
 msgid "FreeRDP log level"
 msgstr "Рівень журналювання FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2913
+#: plugins/rdp/rdp_plugin.c:3143
 msgid "FreeRDP log filters"
 msgstr "Фільтри журналювання FreeRDP"
 
-#: plugins/rdp/rdp_plugin.c:2913
+#: plugins/rdp/rdp_plugin.c:3143
 msgid "tag:level[,tag:level[,…]]"
 msgstr "мітка:рівень[,мітка:рівень[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2914
+#: plugins/rdp/rdp_plugin.c:3144
 msgid "Audio output mode"
 msgstr "Режим виведення звуку"
 
-#: plugins/rdp/rdp_plugin.c:2915
+#: plugins/rdp/rdp_plugin.c:3145
 msgid "Redirect local audio output"
 msgstr "Переспрямувати локальне виведення звуку"
 
-#: plugins/rdp/rdp_plugin.c:2916
+#: plugins/rdp/rdp_plugin.c:3146
 msgid "Redirect local microphone"
 msgstr "Переспрямувати локальний мікрофон"
 
-#: plugins/rdp/rdp_plugin.c:2917
+#: plugins/rdp/rdp_plugin.c:3147
 msgid "Connection timeout in ms"
 msgstr "Час очікування на встановлення у мс"
 
-#: plugins/rdp/rdp_plugin.c:2918
+#: plugins/rdp/rdp_plugin.c:3148
 msgid "Remote Desktop Gateway server"
 msgstr "Сервер шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2919
+#: plugins/rdp/rdp_plugin.c:3149
 msgid "Remote Desktop Gateway username"
 msgstr "Користувач шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2920
+#: plugins/rdp/rdp_plugin.c:3150
 msgid "Remote Desktop Gateway password"
 msgstr "Пароль шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2921
+#: plugins/rdp/rdp_plugin.c:3151
 msgid "Remote Desktop Gateway domain"
 msgstr "Домен шлюзу віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:2922
+#: plugins/rdp/rdp_plugin.c:3152
 msgid "Client name"
 msgstr "Назва клієнта"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:3153
 msgid "Client build"
 msgstr "Номер збірки клієнта"
 
-#: plugins/rdp/rdp_plugin.c:2924
+#: plugins/rdp/rdp_plugin.c:3154
 msgid "Start-up program"
 msgstr "Запускати програму"
 
-#: plugins/rdp/rdp_plugin.c:2926
+#: plugins/rdp/rdp_plugin.c:3156
 msgid "Load balance info"
 msgstr "Інформація балансування навантаження"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2928
+#: plugins/rdp/rdp_plugin.c:3158
 msgid "Override printer drivers"
 msgstr "Перевизначення драйверів принтера"
 
-#: plugins/rdp/rdp_plugin.c:2928
+#: plugins/rdp/rdp_plugin.c:3158
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
@@ -2681,193 +2769,193 @@ msgstr ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 
-#: plugins/rdp/rdp_plugin.c:2929
+#: plugins/rdp/rdp_plugin.c:3159
 msgid "USB device redirection"
 msgstr "Переспрямовування пристрою USB"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:3160
 msgid "Local serial name"
 msgstr "Назва локального послідовного порту"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:3160
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, тощо."
 
-#: plugins/rdp/rdp_plugin.c:2931
+#: plugins/rdp/rdp_plugin.c:3161
 msgid "Local serial driver"
 msgstr "Драйвер локального послідовного порту"
 
-#: plugins/rdp/rdp_plugin.c:2931
+#: plugins/rdp/rdp_plugin.c:3161
 msgid "Serial"
 msgstr "Послідовний"
 
-#: plugins/rdp/rdp_plugin.c:2932
+#: plugins/rdp/rdp_plugin.c:3162
 msgid "Local serial path"
 msgstr "Шлях до локального послідовного порту"
 
-#: plugins/rdp/rdp_plugin.c:2932
+#: plugins/rdp/rdp_plugin.c:3162
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, тощо."
 
-#: plugins/rdp/rdp_plugin.c:2933
+#: plugins/rdp/rdp_plugin.c:3163
 msgid "Local parallel name"
 msgstr "Назва локального паралельного порту"
 
-#: plugins/rdp/rdp_plugin.c:2934
+#: plugins/rdp/rdp_plugin.c:3164
 msgid "Local parallel device"
 msgstr "Локальний паралельний пристрій"
 
-#: plugins/rdp/rdp_plugin.c:2935
+#: plugins/rdp/rdp_plugin.c:3165
 msgid "Name of smart card"
 msgstr "Назва смарт-картки"
 
-#: plugins/rdp/rdp_plugin.c:2936
+#: plugins/rdp/rdp_plugin.c:3166
 msgid "Dynamic virtual channel"
 msgstr "Динамічний віртуальний канал"
 
-#: plugins/rdp/rdp_plugin.c:2936 plugins/rdp/rdp_plugin.c:2937
+#: plugins/rdp/rdp_plugin.c:3166 plugins/rdp/rdp_plugin.c:3167
 msgid "<channel>[,<options>]"
 msgstr "<канал>[,<параметри>]"
 
-#: plugins/rdp/rdp_plugin.c:2937
+#: plugins/rdp/rdp_plugin.c:3167
 msgid "Static virtual channel"
 msgstr "Статичний віртуальний канал"
 
-#: plugins/rdp/rdp_plugin.c:2938
+#: plugins/rdp/rdp_plugin.c:3168
 msgid "TCP redirection"
 msgstr "Переспрямовування TCP"
 
-#: plugins/rdp/rdp_plugin.c:2938
+#: plugins/rdp/rdp_plugin.c:3168
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/ШЛЯХ/ДО/rdp2tcp"
 
-#: plugins/rdp/rdp_plugin.c:2940
+#: plugins/rdp/rdp_plugin.c:3170
 msgid "Move mouse when connection is idle"
 msgstr "Пересувати мишу, коли з'єднання бездіяльне"
 
-#: plugins/rdp/rdp_plugin.c:2942
+#: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
 msgstr "Спроба з'єднатися у режимі помічника"
 
-#: plugins/rdp/rdp_plugin.c:2943
+#: plugins/rdp/rdp_plugin.c:3173
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Пріоритет запису AAAA IPv6 над записом A IPv4"
 
-#: plugins/rdp/rdp_plugin.c:2944
+#: plugins/rdp/rdp_plugin.c:3174
 msgid "Share printers"
 msgstr "Зробити принтери загальнодоступними"
 
-#: plugins/rdp/rdp_plugin.c:2945
+#: plugins/rdp/rdp_plugin.c:3175
 msgid "Share serial ports"
 msgstr "Зробити послідовні порти загальнодоступними"
 
-#: plugins/rdp/rdp_plugin.c:2946
+#: plugins/rdp/rdp_plugin.c:3176
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) дозвільний режим для послідовних портів"
 
-#: plugins/rdp/rdp_plugin.c:2947
+#: plugins/rdp/rdp_plugin.c:3177
 msgid "Share parallel ports"
 msgstr "Зробити паралельні порти загальнодоступними"
 
-#: plugins/rdp/rdp_plugin.c:2948
+#: plugins/rdp/rdp_plugin.c:3178
 msgid "Share a smart card"
 msgstr "Надати доступ до смарт-картки"
 
-#: plugins/rdp/rdp_plugin.c:2949 plugins/vnc/vnc_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:3179 plugins/vnc/vnc_plugin.c:2137
 msgid "Turn off clipboard sync"
 msgstr "Вимкнути синхронізацію буферів обміну"
 
-#: plugins/rdp/rdp_plugin.c:2950
+#: plugins/rdp/rdp_plugin.c:3180
 msgid "Ignore certificate"
 msgstr "Ігнорувати сертифікат"
 
-#: plugins/rdp/rdp_plugin.c:2951
+#: plugins/rdp/rdp_plugin.c:3181
 msgid "Use the old license workflow"
 msgstr "Використовувати стару процедуру ліцензування"
 
-#: plugins/rdp/rdp_plugin.c:2951
+#: plugins/rdp/rdp_plugin.c:3181
 msgid "It disables CAL and hwId is set to 0"
 msgstr "Вимкне CAL і встановить для hwId значення 0"
 
-#: plugins/rdp/rdp_plugin.c:2952 plugins/spice/spice_plugin.c:714
+#: plugins/rdp/rdp_plugin.c:3182 plugins/spice/spice_plugin.c:708
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
 msgstr "Забути паролі після використання"
 
-#: plugins/rdp/rdp_plugin.c:2953
+#: plugins/rdp/rdp_plugin.c:3183
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Долучити до консолі (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:2954
+#: plugins/rdp/rdp_plugin.c:3184
 msgid "Turn off fast-path"
 msgstr "Вимкнути fast-path"
 
-#: plugins/rdp/rdp_plugin.c:2955
+#: plugins/rdp/rdp_plugin.c:3185
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Визначення сервера з використанням шлюзу віддалених стільниць"
 
-#: plugins/rdp/rdp_plugin.c:2957
+#: plugins/rdp/rdp_plugin.c:3187
 msgid "Use system proxy settings"
 msgstr "Використовувати системні налаштування проксі"
 
-#: plugins/rdp/rdp_plugin.c:2959
+#: plugins/rdp/rdp_plugin.c:3189
 msgid "Turn off automatic reconnection"
 msgstr "Вимкнути автоматичні перез'єднання"
 
-#: plugins/rdp/rdp_plugin.c:2960
+#: plugins/rdp/rdp_plugin.c:3190
 msgid "Relax order checks"
 msgstr "Перевірки порядку оптимізації"
 
-#: plugins/rdp/rdp_plugin.c:2961
+#: plugins/rdp/rdp_plugin.c:3191
 msgid "Glyph cache"
 msgstr "Кеш гліфів"
 
-#: plugins/rdp/rdp_plugin.c:2962
+#: plugins/rdp/rdp_plugin.c:3192
 msgid "Enable multitransport protocol (UDP)"
 msgstr "Увімкнути мультитранспортний протокол (UDP)"
 
-#: plugins/rdp/rdp_plugin.c:2962
+#: plugins/rdp/rdp_plugin.c:3192
 msgid "Using the UDP protocol may improve performance"
 msgstr "Використання протоколу UDP може підвищити швидкодію"
 
-#: plugins/rdp/rdp_plugin.c:2963
+#: plugins/rdp/rdp_plugin.c:3193
 msgid "Use base credentials for gateway too"
 msgstr "Використовувати базову реєстрацію і для шлюзу"
 
-#: plugins/rdp/rdp_plugin.c:2965
+#: plugins/rdp/rdp_plugin.c:3195
 msgid "Enable Gateway websockets support"
 msgstr "Увімкнути підтримку вебсокетів шлюзу"
 
-#: plugins/rdp/rdp_plugin.c:2967
+#: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
 msgstr "Оновлювати буфер кадрів, навіть якщо його не видно"
 
-#: plugins/rdp/rdp_plugin.c:2976 plugins/spice/spice_plugin.c:717
-#: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
+#: plugins/rdp/rdp_plugin.c:3206 plugins/spice/spice_plugin.c:711
+#: plugins/spice/spice_plugin.c:719 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 msgid "View only"
 msgstr "Лише перегляд"
 
-#: plugins/rdp/rdp_plugin.c:2981 plugins/spice/spice_plugin.c:727
+#: plugins/rdp/rdp_plugin.c:3211 plugins/spice/spice_plugin.c:721
 #: plugins/vnc/vnc_plugin.c:2156
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Надіслати Ctrl+Alt+Delete"
 
-#: plugins/rdp/rdp_plugin.c:2994
+#: plugins/rdp/rdp_plugin.c:3224
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP — Протокол віддаленої стільниці"
 
-#: plugins/rdp/rdp_plugin.c:3019
+#: plugins/rdp/rdp_plugin.c:3249
 msgid "RDP - RDP File Handler"
 msgstr "RDP — Обробник файлів RDP"
 
-#: plugins/rdp/rdp_plugin.c:3034
+#: plugins/rdp/rdp_plugin.c:3264
 msgid "RDP - Preferences"
 msgstr "RDP — Налаштування"
 
-#: plugins/rdp/rdp_plugin.c:3087
+#: plugins/rdp/rdp_plugin.c:3317
 msgid "Export connection in Windows .rdp file format"
 msgstr "Експортувати з'єднання у форматі файлів Windows .rdp"
 
@@ -2877,7 +2965,7 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "Спроба повторного з'єднання %d з %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1190
+#: plugins/rdp/rdp_event.c:1191
 #, c-format
 msgid "Connected to %s via RDP"
 msgstr "Встановлено з'єднання з %s за допомогою RDP"
@@ -2904,84 +2992,84 @@ msgstr "Передавання завершено"
 msgid "The %s file has been transferred"
 msgstr "Файл %s було передано"
 
-#: plugins/spice/spice_plugin.c:347
+#: plugins/spice/spice_plugin.c:341
 msgid "Enter SPICE password"
 msgstr "Введіть пароль SPICE"
 
-#: plugins/spice/spice_plugin.c:394
+#: plugins/spice/spice_plugin.c:388
 #, c-format
 msgid "Disconnected from the SPICE %s."
 msgstr "Від'єднано від SPICE «%s»."
 
-#: plugins/spice/spice_plugin.c:396
+#: plugins/spice/spice_plugin.c:390
 #, c-format
 msgid "Disconnected from %s via SPICE"
 msgstr "Розірвано з'єднання з %s за допомогою SPICE"
 
-#: plugins/spice/spice_plugin.c:399
+#: plugins/spice/spice_plugin.c:393
 #, c-format
 msgid "Connected to %s via SPICE"
 msgstr "Встановлено з'єднання з %s за допомогою SPICE"
 
-#: plugins/spice/spice_plugin.c:411
+#: plugins/spice/spice_plugin.c:405
 msgid "TLS connection error."
 msgstr "Помилка з'єднання TLS."
 
-#: plugins/spice/spice_plugin.c:417
+#: plugins/spice/spice_plugin.c:411
 msgid "Connection to the SPICE server dropped."
 msgstr "З'єднання із сервером SPICE розірвано."
 
-#: plugins/spice/spice_plugin.c:648
+#: plugins/spice/spice_plugin.c:642
 msgid "Auto GLZ"
 msgstr "Авто-GLZ"
 
-#: plugins/spice/spice_plugin.c:649
+#: plugins/spice/spice_plugin.c:643
 msgid "Auto LZ"
 msgstr "Авто-LZ"
 
-#: plugins/spice/spice_plugin.c:662
+#: plugins/spice/spice_plugin.c:656
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr ""
 "Вимкнути накладку з відео, якщо програма не показує відео належним чином.\n"
 
-#: plugins/spice/spice_plugin.c:687
+#: plugins/spice/spice_plugin.c:681
 msgid "Use TLS encryption"
 msgstr "Використовувати шифрування TLS"
 
-#: plugins/spice/spice_plugin.c:688
+#: plugins/spice/spice_plugin.c:682
 msgid "Server CA certificate"
 msgstr "Сертифікат CA сервера"
 
-#: plugins/spice/spice_plugin.c:706
+#: plugins/spice/spice_plugin.c:700
 msgid "Preferred video codec"
 msgstr "Бажаний відеокодек"
 
-#: plugins/spice/spice_plugin.c:707
+#: plugins/spice/spice_plugin.c:701
 msgid "Turn off GStreamer overlay"
 msgstr "Вимкнути накладку GStreamer"
 
-#: plugins/spice/spice_plugin.c:710
+#: plugins/spice/spice_plugin.c:704
 msgid "Preferred image compression"
 msgstr "Бажане стискання зображень"
 
-#: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
+#: plugins/spice/spice_plugin.c:707 plugins/spice/spice_plugin.c:720
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 msgid "No clipboard sync"
 msgstr "Без синхронізації буферів обміну"
 
-#: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/spice/spice_plugin.c:709 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
 msgstr "Увімкнути звуковий канал"
 
-#: plugins/spice/spice_plugin.c:716
+#: plugins/spice/spice_plugin.c:710
 msgid "Share smart card"
 msgstr "Надати доступ до смарт-картки"
 
-#: plugins/spice/spice_plugin.c:728 plugins/spice/spice_plugin_usb.c:51
+#: plugins/spice/spice_plugin.c:722 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
 msgstr "Виберіть USB-пристрої для переспрямування"
 
-#: plugins/spice/spice_plugin.c:739
+#: plugins/spice/spice_plugin.c:733
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE — простий протокол для незалежних середовищ розрахунків"
 
@@ -4125,13 +4213,19 @@ msgstr "Шукати за _формальним виразом"
 msgid "_Wrap around"
 msgstr "Ц_иклічний пошук"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
+#: data/ui/remmina_about.glade:32 data/ui/remmina_main.glade:419
 msgid "About"
 msgstr "Про програму"
 
-#: data/ui/remmina_about.glade:35
+#: data/ui/remmina_about.glade:36
+#, fuzzy
+#| msgid ""
+#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+#| "Copyright © 2009–2014 Vic Lee\n"
+#| "More details in COPYING"
 msgid ""
-"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
+"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
@@ -4139,7 +4233,7 @@ msgstr ""
 "© Vic Lee, 2009–2014\n"
 "Докладніше про це у файлі COPYING"
 
-#: data/ui/remmina_about.glade:39
+#: data/ui/remmina_about.glade:41
 msgid "https://www.remmina.org/"
 msgstr "https://www.remmina.org/"
 
@@ -4230,18 +4324,26 @@ msgstr "Гаразд"
 msgid "Verify password"
 msgstr "Перевірити пароль"
 
-#: data/ui/remmina_news.glade:75
+#: data/ui/remmina_info.glade:90
+#, fuzzy
+#| msgid ""
+#| "<big><b>The news are turned off</b></big>\n"
+#| "\n"
+#| "<span>\n"
+#| "Turning on news means the program connects to a Remmina server to "
+#| "download the release notes.\n"
+#| "</span>\n"
+#| "\n"
+#| "<span>\n"
+#| "Version checking can only be activated at compile time.\n"
+#| "</span>\n"
+#| "\n"
+#| "<span>\n"
+#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
+#| "</span>"
 msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
+"<big><b>The news failed to load</b></big>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
@@ -4264,60 +4366,6 @@ msgstr ""
 "випуску Remmina\"><i>Відвідайте сайт, щоб ознайомитися із нотатками щодо "
 "випуску</i></a>.\n"
 "</span>"
-
-#: data/ui/remmina_news.glade:130
-msgid "Use as default remote desktop client"
-msgstr "Використовувати як типовий клієнт віддалених стільниць"
-
-#: data/ui/remmina_news.glade:139
-msgid "Apply"
-msgstr "Застосувати"
-
-#: data/ui/remmina_news.glade:143
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "Дозволити Remmina автоматично відкривати файли .rdp та .remmina."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:157
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
-msgstr ""
-"Отримувати новини з <a href=\"https://remmina.org\" title=\"Сайт новин "
-"Remmina\">remmina.org</a> (*)"
-
-#: data/ui/remmina_news.glade:169
-msgid "Receives updated news from remmina.org"
-msgstr "Отримує оновлені новини з remmina.org"
-
-#: data/ui/remmina_news.glade:182
-msgid "* By turning on news you consent to fetching data from remmina.org"
-msgstr "* Вмикаючи показ новин, ви погоджується отримувати дані з remmina.org"
-
-#: data/ui/remmina_news.glade:205
-msgid "<big>Take part</big>"
-msgstr "<big>Взяти участь</big>"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:231
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a "
-"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>Якщо ви в захваті від використання вільного програмного забезпечення, <a "
-"href=\"https://remmina.org/donations/\" title=\"Чудові пожертви "
-"Remmina\">підтримайте нас фінансово</a>, аби зробити нас ще щасливішими та "
-"стимулювати програмувати ще краще в майбутньому.</b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:251
-msgid "<big>Contribute</big>"
-msgstr "<big>Фінансова підтримка</big>"
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
@@ -4357,7 +4405,7 @@ msgid "Server name or IP address"
 msgstr "Назва чи IP-адреса сервера"
 
 #: data/ui/remmina_main.glade:103 data/ui/remmina_main.glade:105
-#: data/ui/remmina_preferences.glade:426
+#: data/ui/remmina_preferences.glade:447
 msgid "Clear"
 msgstr "Очистити"
 
@@ -4385,124 +4433,176 @@ msgstr "Діагностика"
 msgid "Export"
 msgstr "Експорт"
 
-#: data/ui/remmina_main.glade:347
+#: data/ui/remmina_main.glade:339
+msgid "Report Bug"
+msgstr ""
+
+#: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
 msgstr "Зробити Remmina типовим клієнтом віддалених стільниць"
 
-#: data/ui/remmina_main.glade:363
+#: data/ui/remmina_main.glade:372
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: data/ui/remmina_main.glade:373
+#: data/ui/remmina_main.glade:382
 msgid "Donations"
 msgstr "Фінансова допомога"
 
-#: data/ui/remmina_main.glade:383
+#: data/ui/remmina_main.glade:392
 msgid "Wiki"
 msgstr "Вікі"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:393
+#: data/ui/remmina_main.glade:402
 msgid "Community"
 msgstr "Спільнота"
 
-#: data/ui/remmina_main.glade:537
+#: data/ui/remmina_main.glade:546
 msgid "Plugin"
 msgstr "Додаток"
 
-#: data/ui/remmina_main.glade:551
+#: data/ui/remmina_main.glade:560
 msgid "Last used"
 msgstr "Востаннє використано"
 
-#: data/ui/remmina_main.glade:600
+#: data/ui/remmina_main.glade:609
 msgid "New connection profile"
 msgstr "Профіль нового з'єднання"
 
-#: data/ui/remmina_main.glade:612
+#: data/ui/remmina_main.glade:621
 msgid "Show search bar"
 msgstr "Показати панель пошуку"
 
-#: data/ui/remmina_main.glade:632
+#: data/ui/remmina_main.glade:641
 msgid "Remmina main menu"
 msgstr "Головне меню Remmina"
 
-#: data/ui/remmina_main.glade:639
+#: data/ui/remmina_main.glade:648
 msgid "Actions"
 msgstr "Дії"
 
-#: data/ui/remmina_main.glade:654
+#: data/ui/remmina_main.glade:663
 msgid "Toggle view"
 msgstr "Перемкнути режим перегляду"
+
+#: data/ui/remmina_bug_report.glade:43
+msgid "Include System Info"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:59
+msgid "Include Debug Data"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:75
+msgid "Submit"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:114
+#, fuzzy
+#| msgid "Username"
+msgid "Name/Username:"
+msgstr "Імʼя користувача"
+
+#: data/ui/remmina_bug_report.glade:141
+msgid "E-mail:"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:154
+msgid "Email"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
+msgid "Bug Title"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:200
+#, fuzzy
+#| msgid "Description"
+msgid "Bug Description"
+msgstr "Опис"
+
+#: data/ui/remmina_bug_report.glade:245
+msgid ""
+"Clicking \"Submit\" will send this to Remmina's GitLab page and "
+"automatically create a new issue on the issue tracker."
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:296
+#, fuzzy
+#| msgid "Remmina password"
+msgid "Remmina Report Bug"
+msgstr "Пароль Remmina"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
 msgstr "Зачекайте…"
 
-#: data/ui/remmina_preferences.glade:42
+#: data/ui/remmina_preferences.glade:63
 msgid "Double-click action"
 msgstr "Дія на подвійне клацання"
 
-#: data/ui/remmina_preferences.glade:58
+#: data/ui/remmina_preferences.glade:79
 msgid "Open connection"
 msgstr "Встановити з'єднання"
 
-#: data/ui/remmina_preferences.glade:59
+#: data/ui/remmina_preferences.glade:80
 msgid "Edit settings"
 msgstr "Редагувати параметри"
 
-#: data/ui/remmina_preferences.glade:75
+#: data/ui/remmina_preferences.glade:96
 msgid "Scaling quality"
 msgstr "Якість масштабування"
 
-#: data/ui/remmina_preferences.glade:91
+#: data/ui/remmina_preferences.glade:112
 msgid "Nearest"
 msgstr "Найближче"
 
-#: data/ui/remmina_preferences.glade:92
+#: data/ui/remmina_preferences.glade:113
 msgid "Tiles"
 msgstr "Плитки"
 
-#: data/ui/remmina_preferences.glade:93
+#: data/ui/remmina_preferences.glade:114
 msgid "Bilinear"
 msgstr "Білінійний"
 
-#: data/ui/remmina_preferences.glade:94
+#: data/ui/remmina_preferences.glade:115
 msgid "Hyper"
 msgstr "Hyper"
 
-#: data/ui/remmina_preferences.glade:110
+#: data/ui/remmina_preferences.glade:131
 msgid "Step size for auto-scroll"
 msgstr "Крок автоматичного гортання"
 
-#: data/ui/remmina_preferences.glade:139
+#: data/ui/remmina_preferences.glade:160
 msgid "Maximal amount of recent items"
 msgstr "Максимальна кількість останніх записів"
 
-#: data/ui/remmina_preferences.glade:154
+#: data/ui/remmina_preferences.glade:175
 msgid "Screen resolutions"
 msgstr "Роздільні здатності екрана"
 
-#: data/ui/remmina_preferences.glade:200
+#: data/ui/remmina_preferences.glade:221
 msgid "Folder for screenshots"
 msgstr "Тека для знімків вікон"
 
-#: data/ui/remmina_preferences.glade:212
+#: data/ui/remmina_preferences.glade:233
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "Виберіть теку для збереження знімків вікон Remmina."
 
-#: data/ui/remmina_preferences.glade:216 data/ui/remmina_preferences.glade:302
+#: data/ui/remmina_preferences.glade:237 data/ui/remmina_preferences.glade:323
 msgid "Select a folder"
 msgstr "Виберіть теку"
 
-#: data/ui/remmina_preferences.glade:227
+#: data/ui/remmina_preferences.glade:248
 msgid "Set up"
 msgstr "Налаштувати"
 
-#: data/ui/remmina_preferences.glade:249
+#: data/ui/remmina_preferences.glade:270
 msgid "Screenshot filenames"
 msgstr "Назви файлів знімків екрана"
 
-#: data/ui/remmina_preferences.glade:261
+#: data/ui/remmina_preferences.glade:282
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4512,29 +4612,29 @@ msgstr ""
 "%h Назва сервера/IP\n"
 "%Y Рік, %m Місяць, %d День, %H Година, %M Хвилина, %S Секунда (час UTC)\n"
 
-#: data/ui/remmina_preferences.glade:280
+#: data/ui/remmina_preferences.glade:301
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "Каталог для зберігання профілів з'єднань, типовим є XDG_USER_DATA"
 
 #. The folder where profiles are saved
-#: data/ui/remmina_preferences.glade:285
+#: data/ui/remmina_preferences.glade:306
 msgid "Remmina data folder"
 msgstr "Тека даних Remmina"
 
-#: data/ui/remmina_preferences.glade:297
+#: data/ui/remmina_preferences.glade:318
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr "Виберіть теку для збереження профілів з'єднання Remmina."
 
-#: data/ui/remmina_preferences.glade:315
+#: data/ui/remmina_preferences.glade:336
 msgid "Remember last view for each connection"
 msgstr "Запам'ятати останній режим показу для кожного з'єднання"
 
-#: data/ui/remmina_preferences.glade:319
+#: data/ui/remmina_preferences.glade:340
 msgid "Remember last view mode"
 msgstr "Запам'ятовувати останній режим перегляду"
 
-#: data/ui/remmina_preferences.glade:345
+#: data/ui/remmina_preferences.glade:366
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
@@ -4542,12 +4642,12 @@ msgstr ""
 "Встановити нетипову назву файлів для профілів з'єднань Remmina, з "
 "використанням форматованого рядка."
 
-#: data/ui/remmina_preferences.glade:349
+#: data/ui/remmina_preferences.glade:370
 msgid "Template for profile filenames"
 msgstr "Шаблон для назв файлів профілів"
 
 #. Placeholders used to name a Remmina connection profile
-#: data/ui/remmina_preferences.glade:361
+#: data/ui/remmina_preferences.glade:382
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4563,90 +4663,112 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:383
+#: data/ui/remmina_preferences.glade:404
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
 "Лише зберігати згенеровані знімки вікон, не копіювати їх до буфера обміну."
 
-#: data/ui/remmina_preferences.glade:387
+#: data/ui/remmina_preferences.glade:408
 msgid "Prevent screenshots from entering clipboard"
 msgstr "Заборонити копіювання знімків до буфера"
 
-#: data/ui/remmina_preferences.glade:448
+#: data/ui/remmina_preferences.glade:469
 msgid "Confirm before closing multiple tabs"
 msgstr "Підтвердження перед закриттям декількох вкладок"
 
-#: data/ui/remmina_preferences.glade:500
+#: data/ui/remmina_preferences.glade:501
+#, fuzzy
+#| msgid "Send anonymous statistics"
+msgid "Disable anonymous statistics"
+msgstr "Надсилати анонімну статистику"
+
+#: data/ui/remmina_preferences.glade:533
+#, fuzzy
+#| msgid ""
+#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
+#| "site\">remmina.org</a> (*)"
+msgid ""
+"Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a>"
+msgstr ""
+"Отримувати новини з <a href=\"https://remmina.org\" title=\"Сайт новин "
+"Remmina\">remmina.org</a> (*)"
+
+#: data/ui/remmina_preferences.glade:566
+msgid "Disable tip of the day"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:618
 msgid "General"
 msgstr "Загальне"
 
-#: data/ui/remmina_preferences.glade:525
+#: data/ui/remmina_preferences.glade:643
 msgid "Always show tabs"
 msgstr "Завжди показувати вкладки"
 
-#: data/ui/remmina_preferences.glade:541
+#: data/ui/remmina_preferences.glade:659
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Ховати панель інструментів в інтерфейсі з вкладками"
 
-#: data/ui/remmina_preferences.glade:562
+#: data/ui/remmina_preferences.glade:680
 msgid "Default view"
 msgstr "Типовий перегляд"
 
-#: data/ui/remmina_preferences.glade:576
+#: data/ui/remmina_preferences.glade:694
 msgid "Automatic"
 msgstr "Автоматично"
 
-#: data/ui/remmina_preferences.glade:577
+#: data/ui/remmina_preferences.glade:695
 msgid "Scrolled window"
 msgstr "Вікно з гортанням"
 
-#: data/ui/remmina_preferences.glade:579
+#: data/ui/remmina_preferences.glade:697
 msgid "Viewport fullscreen"
 msgstr "Повноекранний"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:595
+#: data/ui/remmina_preferences.glade:713
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "Групування вкладок"
 
-#: data/ui/remmina_preferences.glade:607
+#: data/ui/remmina_preferences.glade:725
 msgid "By group"
 msgstr "За групами"
 
-#: data/ui/remmina_preferences.glade:608
+#: data/ui/remmina_preferences.glade:726
 msgid "By protocol"
 msgstr "За протоколом"
 
-#: data/ui/remmina_preferences.glade:609
+#: data/ui/remmina_preferences.glade:727
 msgid "Per connection"
 msgstr "На з'єднання"
 
-#: data/ui/remmina_preferences.glade:621
+#: data/ui/remmina_preferences.glade:739
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Повноекранний на тому ж екрані, що й вікно з'єднання"
 
-#: data/ui/remmina_preferences.glade:644
+#: data/ui/remmina_preferences.glade:762
 msgid "Peeking"
 msgstr "Контекстний"
 
-#: data/ui/remmina_preferences.glade:645
+#: data/ui/remmina_preferences.glade:763
 msgid "Hidden"
 msgstr "Приховано"
 
-#: data/ui/remmina_preferences.glade:662
+#: data/ui/remmina_preferences.glade:780
 msgid "Fullscreen toolbar visibility"
 msgstr "Видимість повноекранної панелі інструментів"
 
-#: data/ui/remmina_preferences.glade:672
+#: data/ui/remmina_preferences.glade:790
 msgid "Hide the search bar shown in the main window"
 msgstr "Приховати рядок пошуку в основному вікні"
 
-#: data/ui/remmina_preferences.glade:688
+#: data/ui/remmina_preferences.glade:806
 msgid "Prefer dark theme"
 msgstr "Перевага темної теми"
 
-#: data/ui/remmina_preferences.glade:692
+#: data/ui/remmina_preferences.glade:810
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
@@ -4654,20 +4776,20 @@ msgstr ""
 "Якщо у теми GTK є темний варіант, його буде використано замість налаштованої "
 "теми."
 
-#: data/ui/remmina_preferences.glade:705
+#: data/ui/remmina_preferences.glade:823
 msgid "Always show notes"
 msgstr "Завжди показувати нотатки"
 
-#: data/ui/remmina_preferences.glade:709
+#: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
 msgstr "Додати стовпчик із показом усіх нотаток, які пов'язано із з'єднанням."
 
-#: data/ui/remmina_preferences.glade:729
+#: data/ui/remmina_preferences.glade:847
 msgid "“Grab all keyboard events” status colour"
 msgstr ""
 "Колір стану «Передавати на віддалений комп'ютер будь-яке натискання клавіш»"
 
-#: data/ui/remmina_preferences.glade:740
+#: data/ui/remmina_preferences.glade:858
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
@@ -4677,123 +4799,123 @@ msgstr ""
 "Змінює колір тла назви з'єднання на панелі інструментів з'єднання Remmina у "
 "повноекранному режимі."
 
-#: data/ui/remmina_preferences.glade:757
+#: data/ui/remmina_preferences.glade:875
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
 "Увімкнути або вимкнути колір стану «Передавати на віддалений комп'ютер будь-"
 "яке натискання клавіш»"
 
-#: data/ui/remmina_preferences.glade:820
+#: data/ui/remmina_preferences.glade:938
 msgid "Appearance"
 msgstr "Вигляд"
 
-#: data/ui/remmina_preferences.glade:846
+#: data/ui/remmina_preferences.glade:964
 msgid "Show new connection on top of the menu"
 msgstr "Показувати нові з'єднання згори меню"
 
-#: data/ui/remmina_preferences.glade:865
+#: data/ui/remmina_preferences.glade:983
 msgid "Hide total count shown in the group menu"
 msgstr "Приховати загальну кількість у груповому меню"
 
-#: data/ui/remmina_preferences.glade:883
+#: data/ui/remmina_preferences.glade:1001
 msgid "No tray icon"
 msgstr "Без піктограми у лотку"
 
-#: data/ui/remmina_preferences.glade:902
+#: data/ui/remmina_preferences.glade:1020
 msgid "Start in tray upon user login"
 msgstr "Запускати до лотка при вході"
 
-#: data/ui/remmina_preferences.glade:933
+#: data/ui/remmina_preferences.glade:1051
 msgid "Applet"
 msgstr "Аплет"
 
-#: data/ui/remmina_preferences.glade:965
+#: data/ui/remmina_preferences.glade:1083
 msgid "Host key"
 msgstr "Host-клавіша"
 
-#: data/ui/remmina_preferences.glade:997
+#: data/ui/remmina_preferences.glade:1115
 msgid "Show/hide fullscreen"
 msgstr "Показати/Сховати повноекранний режим"
 
-#: data/ui/remmina_preferences.glade:1028
+#: data/ui/remmina_preferences.glade:1146
 msgid "Auto-fit window"
 msgstr "Автозаповнення вікна"
 
-#: data/ui/remmina_preferences.glade:1105
+#: data/ui/remmina_preferences.glade:1223
 msgid "Apply/remove scaling"
 msgstr "Застосувати/прибрати масштабування"
 
-#: data/ui/remmina_preferences.glade:1136
+#: data/ui/remmina_preferences.glade:1254
 msgid "Grab keyboard"
 msgstr "Захоплення клавіатури"
 
-#: data/ui/remmina_preferences.glade:1229
+#: data/ui/remmina_preferences.glade:1347
 msgid "Show/hide toolbar"
 msgstr "Показати/Приховати панель інструментів"
 
-#: data/ui/remmina_preferences.glade:1292
-#: data/ui/remmina_preferences.glade:1302
+#: data/ui/remmina_preferences.glade:1410
+#: data/ui/remmina_preferences.glade:1420
 msgid "View-only mode"
 msgstr "Режим лише перегляду"
 
-#: data/ui/remmina_preferences.glade:1359
+#: data/ui/remmina_preferences.glade:1477
 msgid "Send clipboard as keystrokes"
 msgstr "Надіслати буфер обміну як натискання клавіш"
 
-#: data/ui/remmina_preferences.glade:1369
+#: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
 msgstr "Надіслати буфер"
 
-#: data/ui/remmina_preferences.glade:1399
+#: data/ui/remmina_preferences.glade:1517
 msgid "Keyboard"
 msgstr "Клавіатура"
 
-#: data/ui/remmina_preferences.glade:1430
+#: data/ui/remmina_preferences.glade:1548
 msgid "Local SSH port"
 msgstr "Локальний порт SSH"
 
-#: data/ui/remmina_preferences.glade:1454
+#: data/ui/remmina_preferences.glade:1572
 msgid "Parse ~/.ssh/config"
 msgstr "Видобути з ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1478
+#: data/ui/remmina_preferences.glade:1596
 msgid "No logging at all"
 msgstr "Не вести журналу взагалі"
 
-#: data/ui/remmina_preferences.glade:1479
+#: data/ui/remmina_preferences.glade:1597
 msgid "Rare conditions or warnings"
 msgstr "Рідкісні умови або попередження"
 
-#: data/ui/remmina_preferences.glade:1480
+#: data/ui/remmina_preferences.glade:1598
 msgid "API-accessible entrypoints"
 msgstr "Доступні з програмного інтерфейсу точки входу"
 
-#: data/ui/remmina_preferences.glade:1481
+#: data/ui/remmina_preferences.glade:1599
 msgid "Lower level protocol info, packet level"
 msgstr "Дані низькорівневого протоколу на рівні пакетів"
 
-#: data/ui/remmina_preferences.glade:1482
+#: data/ui/remmina_preferences.glade:1600
 msgid "Function entering and leaving"
 msgstr "Вхід і вихід з функцій"
 
-#: data/ui/remmina_preferences.glade:1499
+#: data/ui/remmina_preferences.glade:1617
 msgid "SSH log level"
 msgstr "Рівень журналювання SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1570
+#: data/ui/remmina_preferences.glade:1688
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
 "Час бездіяльності з'єднання перед тим, як буде розпочато надсилання зондів "
 "TCP підтримання зв'язку."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1586
+#: data/ui/remmina_preferences.glade:1704
 msgid "Seconds between each keepalive probe."
 msgstr "Інтервал між сигналами підтримання зв'язку у секундах."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1602
+#: data/ui/remmina_preferences.glade:1720
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
@@ -4801,7 +4923,7 @@ msgstr ""
 "скиданням з'єднання."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1618
+#: data/ui/remmina_preferences.glade:1736
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -4809,11 +4931,11 @@ msgstr ""
 "Кількість мілісекунд для розпізнавання даних перед примусовим закриттям TCP-"
 "з'єднання."
 
-#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1762
 msgid "SSH options"
 msgstr "Параметри SSH"
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1779
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
@@ -4821,66 +4943,66 @@ msgstr ""
 "Кількість секунд, протягом яких Remmina не проситиме повторно ввести пароль "
 "і не блокуватиме сеанс. Типовим значенням є 300 секунд."
 
-#: data/ui/remmina_preferences.glade:1673
+#: data/ui/remmina_preferences.glade:1791
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 "Встановити і використати ключ захисту для захисту Remmina від "
 "неуповноваженого використання."
 
-#: data/ui/remmina_preferences.glade:1678
+#: data/ui/remmina_preferences.glade:1796
 msgid "Remmina password"
 msgstr "Пароль Remmina"
 
-#: data/ui/remmina_preferences.glade:1689
+#: data/ui/remmina_preferences.glade:1807
 msgid "Use secret key authentication for some widgets"
 msgstr "Використовувати розпізнавання за ключем для деяких віджетів"
 
-#: data/ui/remmina_preferences.glade:1709
+#: data/ui/remmina_preferences.glade:1827
 msgid "Valid for"
 msgstr "Строк дії"
 
-#: data/ui/remmina_preferences.glade:1720
+#: data/ui/remmina_preferences.glade:1838
 msgid "Number of seconds to keep password valid for"
 msgstr "Строк дії пароля у секундах"
 
-#: data/ui/remmina_preferences.glade:1725
+#: data/ui/remmina_preferences.glade:1843
 msgid "timeout in seconds (default 300)"
 msgstr "час очікування у секундах (типове значення 300)"
 
-#: data/ui/remmina_preferences.glade:1737
+#: data/ui/remmina_preferences.glade:1855
 msgid "Enter your Remmina password to connect"
 msgstr "Для встановлення з'єднання введіть ваш пароль до Remmina"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1741
+#: data/ui/remmina_preferences.glade:1859
 msgid "Require to connect"
 msgstr "Потрібно для встановлення з'єднання"
 
-#: data/ui/remmina_preferences.glade:1752
+#: data/ui/remmina_preferences.glade:1870
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 "Створення, редагування, копіювання та вилучення потребують введення пароля "
 "до Remmina"
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1756
+#: data/ui/remmina_preferences.glade:1874
 msgid "Require to modify"
 msgstr "Потрібно для внесення змін"
 
-#: data/ui/remmina_preferences.glade:1767
+#: data/ui/remmina_preferences.glade:1885
 msgid "Enter your Remmina password to view passwords"
 msgstr "Для перегляду паролів введіть ваш пароль до Remmina"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1771
+#: data/ui/remmina_preferences.glade:1889
 msgid "Require to view passwords"
 msgstr "Потрібен для перегляду паролів"
 
-#: data/ui/remmina_preferences.glade:1827
+#: data/ui/remmina_preferences.glade:1945
 msgid "Encryption"
 msgstr "Шифрування"
 
-#: data/ui/remmina_preferences.glade:1838
+#: data/ui/remmina_preferences.glade:1956
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -4902,64 +5024,64 @@ msgstr ""
 "безпеки, але для користування ним знадобиться 1 ГБ оперативної пам'яті та "
 "значні потужності процесора. "
 
-#: data/ui/remmina_preferences.glade:1847
+#: data/ui/remmina_preferences.glade:1965
 msgid "Intermediate (+64 MiB RAM)"
 msgstr "Проміжний (+64 МіБ оперативної пам'яті)"
 
-#: data/ui/remmina_preferences.glade:1848
+#: data/ui/remmina_preferences.glade:1966
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr "Потужний (+256 МіБ, процесор приблизно 2009 року)"
 
-#: data/ui/remmina_preferences.glade:1849
+#: data/ui/remmina_preferences.glade:1967
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr "Секретний (+1 ГБ, процесор ~2014 року)"
 
-#: data/ui/remmina_preferences.glade:1865
+#: data/ui/remmina_preferences.glade:1983
 msgid "Auditing log"
 msgstr "Журнал ревізування"
 
-#: data/ui/remmina_preferences.glade:1890
+#: data/ui/remmina_preferences.glade:2008
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Автоматично приймати усі відбитки і сертифікати"
 
-#: data/ui/remmina_preferences.glade:1895
+#: data/ui/remmina_preferences.glade:2013
 msgid "Trust all certificates"
 msgstr "Довіряти усім сертифікатам"
 
-#: data/ui/remmina_preferences.glade:1930
+#: data/ui/remmina_preferences.glade:2048
 msgid "Security"
 msgstr "Безпека"
 
-#: data/ui/remmina_preferences.glade:1961
+#: data/ui/remmina_preferences.glade:2079
 msgid "Terminal font"
 msgstr "Термінальний шрифт"
 
-#: data/ui/remmina_preferences.glade:1974
+#: data/ui/remmina_preferences.glade:2092
 msgid "Scrollback lines"
 msgstr "Рядків у буфері гортання"
 
-#: data/ui/remmina_preferences.glade:2022
+#: data/ui/remmina_preferences.glade:2140
 msgid "Shortcuts for copying and pasting"
 msgstr "Комбінації клавіш для копіювання та вставляння"
 
-#: data/ui/remmina_preferences.glade:2035
+#: data/ui/remmina_preferences.glade:2153
 msgid "Select all shortcuts"
 msgstr "Комбінація клавіш для вибору всього"
 
-#: data/ui/remmina_preferences.glade:2048
-#: data/ui/remmina_preferences.glade:2065
-#: data/ui/remmina_preferences.glade:2518
-#: data/ui/remmina_preferences.glade:2548
-#: data/ui/remmina_preferences.glade:2682
-#: data/ui/remmina_preferences.glade:2699
+#: data/ui/remmina_preferences.glade:2166
+#: data/ui/remmina_preferences.glade:2183
+#: data/ui/remmina_preferences.glade:2636
+#: data/ui/remmina_preferences.glade:2666
+#: data/ui/remmina_preferences.glade:2800
+#: data/ui/remmina_preferences.glade:2817
 msgid "(Host key+)"
 msgstr "(Host-клавіша+)"
 
-#: data/ui/remmina_preferences.glade:2083
+#: data/ui/remmina_preferences.glade:2201
 msgid "Use default system font"
 msgstr "Використовувати системний шрифт"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:2226
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
@@ -4967,15 +5089,15 @@ msgstr ""
 "Вибір «SGR 1» також перемикає кольори на яскраві аналоги перших 8 кольорів "
 "палітри (на додачу до перетворення символів шрифту на напівжирні)."
 
-#: data/ui/remmina_preferences.glade:2124
+#: data/ui/remmina_preferences.glade:2242
 msgid "Show bold text in bright colors"
 msgstr "Показувати напівжирний текст яскравими кольорами"
 
-#: data/ui/remmina_preferences.glade:2138
+#: data/ui/remmina_preferences.glade:2256
 msgid "Colour theme"
 msgstr "Тема кольорів"
 
-#: data/ui/remmina_preferences.glade:2149
+#: data/ui/remmina_preferences.glade:2267
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
@@ -4984,130 +5106,130 @@ msgstr ""
 "remmina/theme. Докладніше про це можна дізнатися тут: https://github.com/"
 "mbadolato/iTerm2-Color-Schemes ."
 
-#: data/ui/remmina_preferences.glade:2153
+#: data/ui/remmina_preferences.glade:2271
 msgid "Pick a terminal colouring file"
 msgstr "Вибір файла схеми розфарбування термінала"
 
-#: data/ui/remmina_preferences.glade:2168
+#: data/ui/remmina_preferences.glade:2286
 msgid "Bright colours"
 msgstr "Яскраві кольори"
 
-#: data/ui/remmina_preferences.glade:2182
+#: data/ui/remmina_preferences.glade:2300
 msgid "Pick a light black colour"
 msgstr "Вибір світло-чорного кольору"
 
-#: data/ui/remmina_preferences.glade:2196
+#: data/ui/remmina_preferences.glade:2314
 msgid "Pick a light red colour"
 msgstr "Вибір світло-червоного кольору"
 
-#: data/ui/remmina_preferences.glade:2210
+#: data/ui/remmina_preferences.glade:2328
 msgid "Pick a bright green colour"
 msgstr "Вибір яскраво-зеленого кольору"
 
-#: data/ui/remmina_preferences.glade:2224
+#: data/ui/remmina_preferences.glade:2342
 msgid "Pick a bright yellow colour"
 msgstr "Вибір яскраво-жовтого кольору"
 
-#: data/ui/remmina_preferences.glade:2238
+#: data/ui/remmina_preferences.glade:2356
 msgid "Pick a bright blue colour"
 msgstr "Вибір яскраво-синього кольору"
 
-#: data/ui/remmina_preferences.glade:2252
+#: data/ui/remmina_preferences.glade:2370
 msgid "Pick a light magenta colour"
 msgstr "Вибір світло-пурпурового кольору"
 
-#: data/ui/remmina_preferences.glade:2266
+#: data/ui/remmina_preferences.glade:2384
 msgid "Pick a light cyan colour"
 msgstr "Вибір світло-блакитного кольору"
 
-#: data/ui/remmina_preferences.glade:2280
+#: data/ui/remmina_preferences.glade:2398
 msgid "Pick a light white colour"
 msgstr "Вибір світло-білого кольору"
 
-#: data/ui/remmina_preferences.glade:2294
+#: data/ui/remmina_preferences.glade:2412
 msgid "Pick a black colour"
 msgstr "Вибір чорного кольору"
 
-#: data/ui/remmina_preferences.glade:2308
+#: data/ui/remmina_preferences.glade:2426
 msgid "Pick a red colour"
 msgstr "Вибір червоного кольору"
 
-#: data/ui/remmina_preferences.glade:2322
+#: data/ui/remmina_preferences.glade:2440
 msgid "Pick a green colour"
 msgstr "Вибір зеленого кольору"
 
-#: data/ui/remmina_preferences.glade:2336
+#: data/ui/remmina_preferences.glade:2454
 msgid "Pick a yellow colour"
 msgstr "Вибір жовтого кольору"
 
-#: data/ui/remmina_preferences.glade:2350
+#: data/ui/remmina_preferences.glade:2468
 msgid "Pick a blue colour"
 msgstr "Вибір синього кольору"
 
-#: data/ui/remmina_preferences.glade:2364
+#: data/ui/remmina_preferences.glade:2482
 msgid "Pick a magenta colour"
 msgstr "Вибір пурпурового кольору"
 
-#: data/ui/remmina_preferences.glade:2378
+#: data/ui/remmina_preferences.glade:2496
 msgid "Pick a cyan colour"
 msgstr "Вибір блакитного кольору"
 
-#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2510
 msgid "Pick a white colour"
 msgstr "Вибір білого кольору"
 
-#: data/ui/remmina_preferences.glade:2405
+#: data/ui/remmina_preferences.glade:2523
 msgid "Normal colours"
 msgstr "Звичайні кольори"
 
-#: data/ui/remmina_preferences.glade:2418
-#: data/ui/remmina_preferences.glade:2433
+#: data/ui/remmina_preferences.glade:2536
+#: data/ui/remmina_preferences.glade:2551
 msgid "Cursor colour"
 msgstr "Колір курсора"
 
-#: data/ui/remmina_preferences.glade:2447
-#: data/ui/remmina_preferences.glade:2462
+#: data/ui/remmina_preferences.glade:2565
+#: data/ui/remmina_preferences.glade:2580
 msgid "Background colour"
 msgstr "Колір тла"
 
-#: data/ui/remmina_preferences.glade:2478
-#: data/ui/remmina_preferences.glade:2492
+#: data/ui/remmina_preferences.glade:2596
+#: data/ui/remmina_preferences.glade:2610
 msgid "Foreground colour"
 msgstr "Колір тексту"
 
-#: data/ui/remmina_preferences.glade:2505
+#: data/ui/remmina_preferences.glade:2623
 msgid "Increase and decrease font size"
 msgstr "Збільшити або зменшити розмір шрифту"
 
-#: data/ui/remmina_preferences.glade:2535
+#: data/ui/remmina_preferences.glade:2653
 msgid "Search text shortcut"
 msgstr "Скорочення для пошуку тексту"
 
-#: data/ui/remmina_preferences.glade:2566
-#: data/ui/remmina_preferences.glade:2581
+#: data/ui/remmina_preferences.glade:2684
+#: data/ui/remmina_preferences.glade:2699
 msgid "Bold colour"
 msgstr "Колір напівжирного"
 
-#: data/ui/remmina_preferences.glade:2595
-#: data/ui/remmina_preferences.glade:2636
+#: data/ui/remmina_preferences.glade:2713
+#: data/ui/remmina_preferences.glade:2754
 msgid "Highlight colour"
 msgstr "Колір підсвічування"
 
-#: data/ui/remmina_preferences.glade:2608
-#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2726
+#: data/ui/remmina_preferences.glade:2770
 msgid "Highlight foreground colour"
 msgstr "Колір підсвічування тексту"
 
-#: data/ui/remmina_preferences.glade:2621
-#: data/ui/remmina_preferences.glade:2668
+#: data/ui/remmina_preferences.glade:2739
+#: data/ui/remmina_preferences.glade:2786
 msgid "Cursor foreground colour"
 msgstr "Колір курсора переднього плану"
 
-#: data/ui/remmina_preferences.glade:2724
+#: data/ui/remmina_preferences.glade:2842
 msgid "Terminal"
 msgstr "Термінал"
 
-#: data/ui/remmina_preferences.glade:2738
+#: data/ui/remmina_preferences.glade:2856
 msgid "Remmina Preferences"
 msgstr "Налаштування Remmina"
 
@@ -5122,6 +5244,43 @@ msgstr "Розблокувати"
 #: data/ui/remmina_unlock.glade:109
 msgid "Master password"
 msgstr "Майстер-пароль"
+
+#~ msgid "Use as default remote desktop client"
+#~ msgstr "Використовувати як типовий клієнт віддалених стільниць"
+
+#~ msgid "Apply"
+#~ msgstr "Застосувати"
+
+#~ msgid "Allow Remmina to automatically open .rdp and .remmina files."
+#~ msgstr "Дозволити Remmina автоматично відкривати файли .rdp та .remmina."
+
+#~ msgid "Receives updated news from remmina.org"
+#~ msgstr "Отримує оновлені новини з remmina.org"
+
+#~ msgid "* By turning on news you consent to fetching data from remmina.org"
+#~ msgstr ""
+#~ "* Вмикаючи показ новин, ви погоджується отримувати дані з remmina.org"
+
+#~ msgid "<big>Take part</big>"
+#~ msgstr "<big>Взяти участь</big>"
+
+#~ msgid ""
+#~ "<span>\n"
+#~ "<b>You have our gratitude in choosing copylefted libre software, <a "
+#~ "href=\"https://remmina.org/donations/\" title=\"Where’s the money, "
+#~ "Lebowski? “blblblblblb”\">donations also make us happy</a>, and further "
+#~ "help improve Remmina.</b>\n"
+#~ "</span>\n"
+#~ msgstr ""
+#~ "<span>\n"
+#~ "<b>Якщо ви в захваті від використання вільного програмного забезпечення, "
+#~ "<a href=\"https://remmina.org/donations/\" title=\"Чудові пожертви "
+#~ "Remmina\">підтримайте нас фінансово</a>, аби зробити нас ще щасливішими "
+#~ "та стимулювати програмувати ще краще в майбутньому.</b>\n"
+#~ "</span>\n"
+
+#~ msgid "<big>Contribute</big>"
+#~ msgstr "<big>Фінансова підтримка</big>"
 
 #, c-format
 #~ msgid "Could not start SSH session. %s"
@@ -5143,9 +5302,6 @@ msgstr "Майстер-пароль"
 
 #~ msgid "An error occured while starting an X2Go session…"
 #~ msgstr "Під час спроби започаткувати сеанс X2Go сталася помилка…"
-
-#~ msgid "Disable news notification"
-#~ msgstr "Вимкнути сповіщення щодо новин"
 
 #~ msgid "News"
 #~ msgstr "Новини"
@@ -5285,9 +5441,6 @@ msgstr "Майстер-пароль"
 #~ "Надсилати <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
 #~ "remmina__stats_8c.html#details\" title=\"Статистика використання "
 #~ "Remmina\">анонімну</a></b> статистику. (*)"
-
-#~ msgid "Send anonymous statistics"
-#~ msgstr "Надсилати анонімну статистику"
 
 #~ msgid "Started pyhoca-cli with following arguments:"
 #~ msgstr "Запущено pyhoca-cli із такими аргументами:"

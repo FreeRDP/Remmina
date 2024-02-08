@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Remmina v1.3.9\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2023-09-24 14:41+0000\n"
+"POT-Creation-Date: 2024-02-08 11:49+0000\n"
 "PO-Revision-Date: 2022-11-27 08:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Marathi <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -22,9 +22,9 @@ msgstr ""
 "X-Generator: Weblate 4.15-dev\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
-#: src/remmina_protocol_widget.c:1726 src/remmina_protocol_widget.c:1745
-#: src/remmina_file_editor.c:1209 src/remmina_file_editor.c:1332
-#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:2880
+#: src/remmina_protocol_widget.c:1729 src/remmina_protocol_widget.c:1748
+#: src/remmina_file_editor.c:1216 src/remmina_file_editor.c:1339
+#: src/remmina_ssh_plugin.c:1394 plugins/rdp/rdp_plugin.c:3110
 #: plugins/www/www_plugin.c:909 plugins/x2go/x2go_plugin.c:3397
 #: data/ui/remmina_mpc.glade:218 data/ui/remmina_passwd.glade:68
 #: data/ui/remmina_unlock.glade:98
@@ -33,25 +33,25 @@ msgid "Password"
 msgstr "संकेतशब्द"
 
 #: src/remmina_sftp_plugin.c:310 src/remmina_sftp_plugin.c:355
-#: src/remmina_file_editor.c:1210 src/remmina_ssh_plugin.c:1395
+#: src/remmina_file_editor.c:1217 src/remmina_ssh_plugin.c:1395
 #: src/remmina_ssh_plugin.c:1506 plugins/x2go/x2go_plugin.c:3420
 #, fuzzy
 msgid "SSH identity file"
 msgstr "SSH ओळख फाइल"
 
-#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1211
+#: src/remmina_sftp_plugin.c:311 src/remmina_file_editor.c:1218
 #: src/remmina_ssh_plugin.c:1396
 #, fuzzy
 msgid "SSH agent"
 msgstr "SSH एजंट"
 
-#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1212
+#: src/remmina_sftp_plugin.c:312 src/remmina_file_editor.c:1219
 #: src/remmina_ssh_plugin.c:1397
 #, fuzzy
 msgid "Public key (automatic)"
 msgstr "सार्वजनिक की (स्वयंचलित)"
 
-#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1213
+#: src/remmina_sftp_plugin.c:313 src/remmina_file_editor.c:1220
 #: src/remmina_ssh_plugin.c:1398
 #, fuzzy
 msgid "Kerberos (GSSAPI)"
@@ -78,8 +78,8 @@ msgid "Connect via SSH from a new terminal"
 msgstr "नवीन टर्मिनलवरून SSH द्वारे कनेक्ट करा"
 
 #: src/remmina_sftp_plugin.c:352 src/remmina_message_panel.c:330
-#: src/remmina_file_editor.c:1326 src/remmina_ssh_plugin.c:1504
-#: plugins/rdp/rdp_plugin.c:2879 plugins/vnc/vnc_plugin.c:2098
+#: src/remmina_file_editor.c:1333 src/remmina_ssh_plugin.c:1504
+#: plugins/rdp/rdp_plugin.c:3109 plugins/vnc/vnc_plugin.c:2098
 #: plugins/vnc/vnc_plugin.c:2110 plugins/www/www_plugin.c:908
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
 #: data/ui/remmina_mpc.glade:122
@@ -87,13 +87,13 @@ msgstr "नवीन टर्मिनलवरून SSH द्वारे �
 msgid "Username"
 msgstr "यूजरनेम"
 
-#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1317
+#: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1324
 #: src/remmina_ssh_plugin.c:1503
 #, fuzzy
 msgid "Authentication type"
 msgstr "प्रमाणीकरण प्रकार"
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1350
+#: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1357
 #: src/remmina_ssh_plugin.c:1510
 #, fuzzy
 msgid "Password to unlock private key"
@@ -109,17 +109,17 @@ msgstr "एसएसएच प्रॉक्सी कमांड"
 msgid "SFTP - Secure File Transfer"
 msgstr "एसएफटीपी - सुरक्षित फाइल हस्तांतरण"
 
-#: src/remmina_log.c:130
+#: src/remmina_log.c:131
 #, fuzzy
 msgid "Remmina debugging window"
 msgstr "रेमिना मुख्य खिडकी उघडा"
 
-#: src/remmina_log.c:134
+#: src/remmina_log.c:135
 #, fuzzy
 msgid "Paste system info in the Remmina debugging window"
 msgstr "रेमिना मुख्य खिडकी उघडा"
 
-#: src/remmina_log.c:155
+#: src/remmina_log.c:156
 msgid ""
 "This window can help you find connection problems.\n"
 "You can stop and start the logging at any moment using the On/Off switch.\n"
@@ -129,68 +129,93 @@ msgid ""
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:74 src/remmina_file_editor.c:2112
+#: src/remmina_plugin_manager.c:86 src/remmina_file_editor.c:2119
 #, fuzzy
 msgid "Protocol"
 msgstr "प्रोटोकॉल"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 #, fuzzy
 msgid "Entry"
 msgstr "प्रवेश"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 #, fuzzy
 msgid "File"
 msgstr "कानस"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 #, fuzzy
 msgid "Tool"
 msgstr "अवजार"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 #, fuzzy
 msgid "Preference"
 msgstr "प्राधान्यक्रम"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 #, fuzzy
 msgid "Secret"
 msgstr "गुप्त"
 
-#: src/remmina_plugin_manager.c:74
+#: src/remmina_plugin_manager.c:86
 msgid "Language Wrapper"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:531 data/ui/remmina_main.glade:330
+#: src/remmina_plugin_manager.c:773
 #, fuzzy
-msgid "Plugins"
-msgstr "प्लगईन"
+msgid "Plugin Download"
+msgstr "डाउनलोड"
 
-#: src/remmina_plugin_manager.c:531 src/remmina_message_panel.c:455
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:252
+#: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
+#: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
+#: src/remmina_file_editor.c:253
 #, fuzzy
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:549 src/remmina_file_editor.c:2044
-#: data/ui/remmina_main.glade:457
+#: src/remmina_plugin_manager.c:1369 data/ui/remmina_main.glade:330
+#, fuzzy
+msgid "Plugins"
+msgstr "प्लगईन"
+
+#: src/remmina_plugin_manager.c:1369
+#, fuzzy
+msgid "_Download"
+msgstr "डाउनलोड"
+
+#: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
+#: data/ui/remmina_snap_info_dialog.glade:25
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_info.glade:49
+#: data/ui/remmina_preferences.glade:2860
+#, fuzzy
+msgid "Close"
+msgstr "बंद करा"
+
+#: src/remmina_plugin_manager.c:1408
+msgid "Install"
+msgstr ""
+
+#: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
+#: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
+#: data/ui/remmina_bug_report.glade:128
 #, fuzzy
 msgid "Name"
 msgstr "नाव"
 
-#: src/remmina_plugin_manager.c:555
+#: src/remmina_plugin_manager.c:1426 src/remmina_plugin_manager.c:1431
 #, fuzzy
 msgid "Type"
 msgstr "प्रकार"
 
-#: src/remmina_plugin_manager.c:561
+#: src/remmina_plugin_manager.c:1437 src/remmina_plugin_manager.c:1442
 #, fuzzy
 msgid "Description"
 msgstr "विवरण"
 
-#: src/remmina_plugin_manager.c:567
+#: src/remmina_plugin_manager.c:1449 src/remmina_plugin_manager.c:1454
 #, fuzzy
 msgid "Version"
 msgstr "आवृत्ती"
@@ -255,44 +280,44 @@ msgstr "मेटा+"
 msgid "<None>"
 msgstr "<None>"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:560
+#: src/remmina_pref_dialog.c:95 src/remmina_file_editor.c:561
 #, fuzzy
 msgid "Resolutions"
 msgstr "ठराव"
 
-#: src/remmina_pref_dialog.c:94 src/remmina_file_editor.c:560
+#: src/remmina_pref_dialog.c:95 src/remmina_file_editor.c:561
 #, fuzzy
 msgid "Configure the available resolutions"
 msgstr "उपलब्ध ठरावांची मांडणी करा"
 
-#: src/remmina_pref_dialog.c:146
+#: src/remmina_pref_dialog.c:147
 #, fuzzy
 msgid "Recent lists cleared."
 msgstr "अलीकडील याद्या मंजूर झाल्या."
 
-#: src/remmina_pref_dialog.c:158 src/rcw.c:2073
-#: data/ui/remmina_preferences.glade:169 data/ui/remmina_preferences.glade:179
+#: src/remmina_pref_dialog.c:159 src/rcw.c:2073
+#: data/ui/remmina_preferences.glade:190 data/ui/remmina_preferences.glade:200
 #, fuzzy
 msgid "Keystrokes"
 msgstr "कीस्ट्रोक्स"
 
-#: src/remmina_pref_dialog.c:158
+#: src/remmina_pref_dialog.c:159
 #, fuzzy
 msgid "Configure the keystrokes"
 msgstr "कीस्ट्रोक्स कॉन्फिगर करा"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:480
+#: src/remmina_pref_dialog.c:483
 #, fuzzy
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "लिबसोडियम >= मास्टर पासवर्ड वापरण्यासाठी 1.9.0 आवश्यक आहे"
 
-#: src/remmina_pref_dialog.c:816
+#: src/remmina_pref_dialog.c:845
 #, fuzzy
 msgid "Picking a terminal colouring file replaces the file: "
 msgstr "टर्मिनल कलरिंग फाइल निवडणे फाइल बदलते: "
 
-#: src/remmina_pref_dialog.c:820
+#: src/remmina_pref_dialog.c:849
 #, fuzzy
 msgid ""
 "This file contains the “Custom” terminal colour scheme selectable from the "
@@ -308,25 +333,17 @@ msgstr ""
 msgid "Cancel"
 msgstr "रद्द करा"
 
-#: src/remmina_message_panel.c:199 data/ui/remmina_snap_info_dialog.glade:25
-#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
-#: data/ui/remmina_string_list.glade:63 data/ui/remmina_news.glade:33
-#: data/ui/remmina_preferences.glade:2742
-#, fuzzy
-msgid "Close"
-msgstr "बंद करा"
-
 #: src/remmina_message_panel.c:260
 #, fuzzy
 msgid "Yes"
 msgstr "होय"
 
-#: src/remmina_message_panel.c:267 plugins/rdp/rdp_plugin.c:2763
+#: src/remmina_message_panel.c:267 plugins/rdp/rdp_plugin.c:2993
 #, fuzzy
 msgid "No"
 msgstr "नाही"
 
-#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:2881
+#: src/remmina_message_panel.c:394 plugins/rdp/rdp_plugin.c:3111
 #: data/ui/remmina_mpc.glade:151
 #, fuzzy
 msgid "Domain"
@@ -338,8 +355,10 @@ msgid "Save password"
 msgstr "पासवर्ड वाचवा"
 
 #: src/remmina_message_panel.c:460 src/remmina_message_panel.c:632
-#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:251
-#: src/remmina_file_editor.c:1918 plugins/spice/spice_plugin_file_transfer.c:84
+#: src/remmina_ftp_client.c:411 src/remmina_ftp_client.c:607
+#: src/remmina_main.c:1267 src/remmina_main.c:1318
+#: src/remmina_sftp_client.c:972 src/remmina_file_editor.c:252
+#: src/remmina_file_editor.c:1925 plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 #, fuzzy
@@ -391,7 +410,7 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "व्ह्यूपोर्ट फुलस्क्रीन मोड"
 
-#: src/rcw.c:1451 data/ui/remmina_preferences.glade:578
+#: src/rcw.c:1451 data/ui/remmina_preferences.glade:696
 #, fuzzy
 msgid "Scrolled fullscreen"
 msgstr "पूर्ण स्क्रीन स्क्रॉल केले"
@@ -467,8 +486,8 @@ msgstr "रिमोट रिझोल्यूशनमध्ये बसण�
 msgid "Toggle fullscreen mode"
 msgstr "टोगल फुलस्क्रीन मोड"
 
-#: src/rcw.c:2456 data/ui/remmina_preferences.glade:1325
-#: data/ui/remmina_preferences.glade:1335
+#: src/rcw.c:2456 data/ui/remmina_preferences.glade:1443
+#: data/ui/remmina_preferences.glade:1453
 #, fuzzy
 msgid "Multi monitor"
 msgstr "मल्टी मॉनिटर"
@@ -483,7 +502,7 @@ msgstr "टोगल डायनॅमिक रिझोल्यूशन अ
 msgid "Toggle scaled mode"
 msgstr "टोगल स्केल्ड मोड"
 
-#: src/rcw.c:2522 data/ui/remmina_preferences.glade:1059
+#: src/rcw.c:2522 data/ui/remmina_preferences.glade:1177
 #, fuzzy
 msgid "Switch tab pages"
 msgstr "टॅब पृष्ठे स्विच करा"
@@ -508,18 +527,18 @@ msgstr "टूल्स"
 msgid "Tools"
 msgstr "साधने"
 
-#: src/rcw.c:2572 data/ui/remmina_preferences.glade:1260
-#: data/ui/remmina_preferences.glade:1270
+#: src/rcw.c:2572 data/ui/remmina_preferences.glade:1378
+#: data/ui/remmina_preferences.glade:1388
 #, fuzzy
 msgid "Screenshot"
 msgstr "स्क्रीनशॉट"
 
-#: src/rcw.c:2586 data/ui/remmina_preferences.glade:1167
+#: src/rcw.c:2586 data/ui/remmina_preferences.glade:1285
 #, fuzzy
 msgid "Minimize window"
 msgstr "खिडकी कमी करा"
 
-#: src/rcw.c:2596 data/ui/remmina_preferences.glade:1198
+#: src/rcw.c:2596 data/ui/remmina_preferences.glade:1316
 #, fuzzy
 msgid "Disconnect"
 msgstr "जोडणी तोडा(_D)"
@@ -593,13 +612,13 @@ msgstr[0] "%d पासवर्ड बदलला."
 msgstr[1] "%d पासवर्ड बदललॆ."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:96
+#: src/remmina.c:102
 #, fuzzy
 msgid "Show 'About'"
 msgstr "'अबाउट' दाखवा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:98
+#: src/remmina.c:104
 #, fuzzy
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
@@ -608,13 +627,13 @@ msgstr ""
 "एकतर फाइलमध्ये वर्णन केलेल्या डेस्कटॉपशी (.रेमिना किंवा प्लगइनद्वारे समर्थित फाइलटाइप) "
 "किंवा समर्थित यूआरआय (आरडीपी, व्हीएनसी, एसएसएच किंवा स्पाइस) शी कनेक्ट करा"
 
-#: src/remmina.c:98 src/remmina.c:100 src/remmina.c:102
+#: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 #, fuzzy
 msgid "FILE"
 msgstr "कानस"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:100
+#: src/remmina.c:106
 #, fuzzy
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
@@ -623,7 +642,7 @@ msgstr ""
 "फाइलमध्ये वर्णन केलेल्या डेस्कटॉपशी कनेक्ट करा (.रेमिना किंवा प्लगइनद्वारे समर्थित प्रकार)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:102
+#: src/remmina.c:108
 #, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
@@ -632,108 +651,118 @@ msgstr ""
 "फाइलमध्ये वर्णन केलेले संपादन डेस्कटॉप कनेक्शन (.रेमिना किंवा प्लगइनद्वारे समर्थित प्रकार)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:105
+#: src/remmina.c:111
 #, fuzzy
 msgid "Start in kiosk mode"
 msgstr "किऑस्क मोडमध्ये सुरुवात करा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:107
+#: src/remmina.c:113
 #, fuzzy
 msgid "Create new connection profile"
 msgstr "नवीन कनेक्शन प्रोफाइल तयार करा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:109
+#: src/remmina.c:115
 #, fuzzy
 msgid "Show preferences"
 msgstr "प्राधान्ये दाखवा"
 
-#: src/remmina.c:109
+#: src/remmina.c:115
 #, fuzzy
 msgid "TABINDEX"
 msgstr "टॅबइंडेक्स"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:116
+#: src/remmina.c:122
 #, fuzzy
 msgid "Quit"
 msgstr "सोडून जाणे"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:118
+#: src/remmina.c:124
 #, fuzzy
 msgid "Use default server name (for --new)"
 msgstr "डिफॉल्ट सर्व्हर नाव वापरा (--नवीन साठी)"
 
-#: src/remmina.c:118
+#: src/remmina.c:124
 #, fuzzy
 msgid "SERVER"
 msgstr "सर्व्हर"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:120
+#: src/remmina.c:126
 #, fuzzy
 msgid "Use default protocol (for --new)"
 msgstr "डिफॉल्ट प्रोटोकॉल वापरा (--नवीन)"
 
-#: src/remmina.c:120
+#: src/remmina.c:126
 #, fuzzy
 msgid "PROTOCOL"
 msgstr "प्रोटोकॉल"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:122
+#: src/remmina.c:128
 #, fuzzy
 msgid "Start in tray"
 msgstr "ट्रेमध्ये सुरुवात करा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:124
+#: src/remmina.c:130
 #, fuzzy
 msgid "Show the application version"
 msgstr "अनुप्रयोग आवृत्ती दर्शविा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:126
+#: src/remmina.c:132
 #, fuzzy
 msgid "Show version of the application and its plugins"
 msgstr "अनुप्रयोग आणि त्याच्या प्लगइनची आवृत्ती दर्शविा"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:128
+#: src/remmina.c:134
 #, fuzzy
 msgid "Modify connection profile (requires --set-option)"
 msgstr "कनेक्शन प्रोफाइल मध्ये बदल करा (आवश्यक --सेट-पर्याय)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:130
+#: src/remmina.c:136
 #, fuzzy
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr "एक किंवा अधिक प्रोफाइल सेटिंग्ज सेट करा, -- अपडेट-प्रोफाइलसह वापरले जाईल"
 
-#: src/remmina.c:131
+#: src/remmina.c:137
 #, fuzzy
 msgid "Encrypt a password"
 msgstr "पासवर्ड एन्क्रिप्ट करा"
 
-#: src/remmina.c:132
+#: src/remmina.c:138
+#, fuzzy
+msgid "Disable news"
+msgstr "ट्रे आयकॉन नाही"
+
+#: src/remmina.c:139
+#, fuzzy
+msgid "Disable stats"
+msgstr "टूलबार दाखवा/लपवा"
+
+#: src/remmina.c:140
 #, fuzzy
 msgid "Disable toolbar"
 msgstr "टूलबार दाखवा/लपवा"
 
-#: src/remmina.c:133
+#: src/remmina.c:141
 #, fuzzy
 msgid "Enable fullscreen"
 msgstr "पूर्ण स्क्रीन स्क्रॉल केले"
 
-#: src/remmina.c:134
+#: src/remmina.c:142
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
 
-#: src/remmina.c:135
+#: src/remmina.c:143
 #, fuzzy
 msgid "Disable tray icon"
 msgstr "ट्रे आयकॉन नाही"
@@ -742,21 +771,21 @@ msgstr "ट्रे आयकॉन नाही"
 #. * This link should point to a resource explaining how to get Remmina
 #. * to log more verbose statements.
 #.
-#: src/remmina.c:364
+#: src/remmina.c:393
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
-"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
-#: src/remmina.c:418
+#: src/remmina.c:447
 #, fuzzy
 msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- किंवा प्रोटोकॉल/वापरकर्ता नाव:encryptedpassword@host:बंदर"
 
-#: src/remmina.c:421
+#: src/remmina.c:450
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -868,6 +897,12 @@ msgstr "आपण सर्व्हरवरील निवडक फायल
 msgid "Choose a file to upload"
 msgstr "अपलोड करण्यासाठी फाइल निवडा"
 
+#: src/remmina_ftp_client.c:608 src/remmina_ftp_client.c:676
+#: src/remmina_ftp_client.c:793
+#, fuzzy
+msgid "Upload"
+msgstr "अपलोड करा"
+
 #: src/remmina_ftp_client.c:613
 #, fuzzy
 msgid "Upload folder"
@@ -877,11 +912,6 @@ msgstr "फोल्डर अपलोड करा"
 #, fuzzy
 msgid "Download"
 msgstr "डाउनलोड"
-
-#: src/remmina_ftp_client.c:676 src/remmina_ftp_client.c:793
-#, fuzzy
-msgid "Upload"
-msgstr "अपलोड करा"
 
 #: src/remmina_ftp_client.c:683
 #, fuzzy
@@ -908,7 +938,7 @@ msgstr "वर"
 msgid "Go to parent folder"
 msgstr "पालक फोल्डरमध्ये जा"
 
-#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:2977
+#: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:3207
 #: plugins/vnc/vnc_plugin.c:2154
 #, fuzzy
 msgid "Refresh"
@@ -955,8 +985,8 @@ msgstr "आकार"
 msgid "User"
 msgstr "वापरकर्ता"
 
-#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2069
-#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:479
+#: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2076
+#: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:488
 #, fuzzy
 msgid "Group"
 msgstr "समुह"
@@ -970,12 +1000,12 @@ msgstr "परवानग्या"
 msgid "Modified"
 msgstr ""
 
-#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2745
+#: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2975
 #, fuzzy
 msgid "Remote"
 msgstr "दूरस्थ"
 
-#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2744
+#: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2974
 #, fuzzy
 msgid "Local"
 msgstr "स्थानिक"
@@ -1037,104 +1067,104 @@ msgstr "%s कमांड आदेश चालवू शकलो नाह�
 msgid "Connecting to %s via SSH…"
 msgstr "SSH द्वारे \"%s\" शी कनेक्ट करत आहे…"
 
-#: src/remmina_protocol_widget.c:1744
+#: src/remmina_protocol_widget.c:1747
 #, fuzzy
 msgid "Type in SSH username and password."
 msgstr "एसएसएच वापरकर्त्याचे नाव आणि पासवर्डमध्ये टाइप करा."
 
-#: src/remmina_protocol_widget.c:1799 src/remmina_protocol_widget.c:1831
+#: src/remmina_protocol_widget.c:1802 src/remmina_protocol_widget.c:1834
 #, fuzzy
 msgid "Fingerprint automatically accepted"
 msgstr "बोटांचे ठसे आपोआप स्वीकारले"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1807
+#: src/remmina_protocol_widget.c:1810
 #, fuzzy
 msgid "Certificate details:"
 msgstr "प्रमाणपत्र तपशील:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
-#: src/remmina_protocol_widget.c:1809 src/remmina_protocol_widget.c:1841
+#: src/remmina_protocol_widget.c:1812 src/remmina_protocol_widget.c:1844
 #, fuzzy
 msgid "Subject:"
 msgstr "विषय:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
-#: src/remmina_protocol_widget.c:1811 src/remmina_protocol_widget.c:1843
+#: src/remmina_protocol_widget.c:1814 src/remmina_protocol_widget.c:1846
 #, fuzzy
 msgid "Issuer:"
 msgstr "जारीकर्ता:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1813
+#: src/remmina_protocol_widget.c:1816
 #, fuzzy
 msgid "Fingerprint:"
 msgstr "बोटांचे ठसे:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1815
+#: src/remmina_protocol_widget.c:1818
 #, fuzzy
 msgid "Accept certificate?"
 msgstr "प्रमाणपत्र स्वीकारा?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
-#: src/remmina_protocol_widget.c:1839
+#: src/remmina_protocol_widget.c:1842
 #, fuzzy
 msgid "The certificate changed! Details:"
 msgstr "प्रमाणपत्र बदलले! तपशील:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1845
+#: src/remmina_protocol_widget.c:1848
 #, fuzzy
 msgid "Old fingerprint:"
 msgstr "जुने बोटांचे ठसे:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
-#: src/remmina_protocol_widget.c:1847
+#: src/remmina_protocol_widget.c:1850
 #, fuzzy
 msgid "New fingerprint:"
 msgstr "नवीन बोटांचे ठसे:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
-#: src/remmina_protocol_widget.c:1849
+#: src/remmina_protocol_widget.c:1852
 #, fuzzy
 msgid "Accept changed certificate?"
 msgstr "बदललेले प्रमाणपत्र स्वीकारा?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
-#: src/remmina_protocol_widget.c:1992
+#: src/remmina_protocol_widget.c:1995
 #, fuzzy, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "येणाऱ्या [एक्स ३७ एक्स] कनेक्शनसाठी बंदरावर [एक्स १८ एक्स] ऐकणे…"
 
-#: src/remmina_protocol_widget.c:2017
+#: src/remmina_protocol_widget.c:2020
 #, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "पुनर्जोडणीचा प्रयत्न करत, प्रमाणित करू शकत नाही…"
 
-#: src/remmina_protocol_widget.c:2080 src/remmina_file_editor.c:464
-#: src/remmina_file_editor.c:1282 data/ui/remmina_main.glade:509
+#: src/remmina_protocol_widget.c:2083 src/remmina_file_editor.c:465
+#: src/remmina_file_editor.c:1289 data/ui/remmina_main.glade:518
 #, fuzzy
 msgid "Server"
 msgstr "सर्व्हर"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
-#: src/remmina_protocol_widget.c:2098
+#: src/remmina_protocol_widget.c:2101
 #, fuzzy, c-format
 msgid "Install the %s protocol plugin first."
 msgstr "प्रथम [एक्स १२ एक्स] प्रोटोकॉल प्लगइन स्थापित करा."
 
-#: src/remmina_ssh.c:744
+#: src/remmina_ssh.c:745
 #, fuzzy, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
 msgstr "टीओटीपी/ओटीपी/2एफए सह प्रमाणित करू शकत नाही. [एक्स 42 एक्स]"
 
-#: src/remmina_ssh.c:803 src/remmina_ssh.c:1184
+#: src/remmina_ssh.c:804 src/remmina_ssh.c:1191
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "एसएसएच पासवर्डसह प्रमाणित करू शकत नाही. [एक्स ४२ एक्स]"
 
-#: src/remmina_ssh.c:830 src/remmina_ssh.c:897
+#: src/remmina_ssh.c:831 src/remmina_ssh.c:904
 #, fuzzy
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
@@ -1142,99 +1172,106 @@ msgstr ""
 "करण्यास सांगणे."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:835 src/remmina_ssh.c:876 src/remmina_ssh.c:902
-#: src/remmina_ssh.c:941 src/remmina_ssh.c:1254
+#: src/remmina_ssh.c:836 src/remmina_ssh.c:877 src/remmina_ssh.c:909
+#: src/remmina_ssh.c:948 src/remmina_ssh.c:1261
 #, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "सार्वजनिक एसएसएच कीसह प्रमाणित करू शकत नाही. [एक्स ४४ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:844
+#: src/remmina_ssh.c:845
 #, fuzzy, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "एसएसएच प्रमाणपत्र आयात करता येत नाही. [एक्स ३६ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:853
+#: src/remmina_ssh.c:854
 #, fuzzy, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
 msgstr "एसएसएच प्रमाणपत्र खासगी एसएसएच कीमध्ये कॉपी केले जाऊ शकत नाही. [एक्स ५९ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:863
+#: src/remmina_ssh.c:864
 #, fuzzy, c-format
 msgid "Could not authenticate using SSH certificate. %s"
 msgstr "एसएसएच प्रमाणपत्र वापरून प्रमाणित करू शकत नाही. [एक्स ४६ एक्स]"
 
-#: src/remmina_ssh.c:877
+#: src/remmina_ssh.c:878
 msgid "SSH identity file not selected."
 msgstr "SSH ओळख फाइल"
 
+#: src/remmina_ssh.c:884
+#, fuzzy
+msgid "No username found. Asking user to enter it."
+msgstr ""
+"कोणताही सेव्ह केलेला एसएसएच पासवाक्प्रचार पुरवला गेला नाही. वापरकर्त्याला त्यात प्रवेश "
+"करण्यास सांगणे."
+
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:888
+#: src/remmina_ssh.c:895
 #, fuzzy, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "सार्वजनिक एसएसएच की आयात करता येत नाही. [एक्स ३५ एक्स]"
 
-#: src/remmina_ssh.c:986
+#: src/remmina_ssh.c:993
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "सार्वजनिक एसएसएच कीसह आपोआप प्रमाणित करू शकत नाही. [एक्स ५८ एक्स]"
 
-#: src/remmina_ssh.c:1031
+#: src/remmina_ssh.c:1038
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
 msgstr "एसएसएच एजंटबरोबर आपोआप प्रमाणित करू शकत नाही. [एक्स ५३ एक्स]"
 
-#: src/remmina_ssh.c:1077 src/remmina_ssh.c:1364
+#: src/remmina_ssh.c:1084 src/remmina_ssh.c:1371
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "एसएसएच जीएसएसपीआय/कर्बोस बरोबर प्रमाणित करू शकला नाही. [एक्स ४९ एक्स]"
 
-#: src/remmina_ssh.c:1106
+#: src/remmina_ssh.c:1113
 #, fuzzy
 msgid "The public SSH key changed!"
 msgstr "सार्वजनिक एसएसएच की बदलली!"
 
-#: src/remmina_ssh.c:1219
+#: src/remmina_ssh.c:1226
 #, fuzzy, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
 msgstr "कीबोर्ड-इंटरॅक्टिव्हसह प्रमाणित करू शकत नाही. [एक्स ५० एक्स]"
 
-#: src/remmina_ssh.c:1321
+#: src/remmina_ssh.c:1328
 #, fuzzy, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
 msgstr "स्वयंचलित सार्वजनिक एसएसएच कीसह प्रमाणित करू शकत नाही. [एक्स ५४ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1429
+#: src/remmina_ssh.c:1436
 #, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "सर्व्हरची सार्वजनिक एसएसएच की आणू शकली नाही. [एक्स ४५ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1436
+#: src/remmina_ssh.c:1443
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "सार्वजनिक एसएसएच की मिळू शकली नाही. [एक्स ३२ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1444
+#: src/remmina_ssh.c:1451
 #, fuzzy, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
 msgstr "सार्वजनिक एसएसएच कीची चेकसम मिळू शकली नाही. [एक्स ४८ एक्स]"
 
-#: src/remmina_ssh.c:1457
+#: src/remmina_ssh.c:1464
 #, fuzzy
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "सर्व्हर अज्ञात आहे. सार्वजनिक मुख्य बोटांचे ठसे असे आहेत:"
 
-#: src/remmina_ssh.c:1459 src/remmina_ssh.c:1465
+#: src/remmina_ssh.c:1466 src/remmina_ssh.c:1472
 #, fuzzy
 msgid "Do you trust the new public key?"
 msgstr "तुम्हाला नवीन सार्वजनिक चावीवर विश्वास आहे का?"
 
-#: src/remmina_ssh.c:1462
+#: src/remmina_ssh.c:1469
 #, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
@@ -1246,155 +1283,166 @@ msgstr ""
 "किंवा प्रशासकाने चावी बदलली आहे. नवीन सार्वजनिक की फिंगरप्रिंट असे आहे:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1487
+#: src/remmina_ssh.c:1494
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "ज्ञात एसएसएच यजमानांची यादी तपासू शकला नाही. [एक्स ४१ एक्स]"
 
-#: src/remmina_ssh.c:1496
+#: src/remmina_ssh.c:1503
 #, fuzzy
 msgid "SSH password"
 msgstr "एसएसएच पासवर्ड"
 
-#: src/remmina_ssh.c:1503 src/remmina_ssh.c:1547
+#: src/remmina_ssh.c:1510 src/remmina_ssh.c:1556 src/remmina_ssh.c:1590
 #, fuzzy
 msgid "Password for private SSH key"
 msgstr "खाजगी की अनलॉक करण्यासाठी पासवर्ड"
 
-#: src/remmina_ssh.c:1508
+#: src/remmina_ssh.c:1515
 #, fuzzy
 msgid "SSH Kerberos/GSSAPI"
 msgstr "एसएसएच कर्बोस/जीएसएसपीआय"
 
-#: src/remmina_ssh.c:1513
+#: src/remmina_ssh.c:1520
 #, fuzzy
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "टीओटीपी/ओटीपी/2एफए कोड प्रविष्ट करा"
 
-#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1569
+#: src/remmina_ssh.c:1552
+#, fuzzy
+msgid "SSH tunnel private key credentials"
+msgstr "एसएसएच बोगद्याची ओळख"
+
+#: src/remmina_ssh.c:1552
+#, fuzzy
+#| msgid "SSH identity file"
+msgid "SSH private key credentials"
+msgstr "एसएसएच खाजगी की फाइल"
+
+#: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 #, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "एसएसएच बोगद्याची ओळख"
 
-#: src/remmina_ssh.c:1543 src/remmina_ssh.c:1569
+#: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 #, fuzzy
 msgid "SSH credentials"
 msgstr "एसएसएच क्रेडेंशियल्स"
 
-#: src/remmina_ssh.c:1620
+#: src/remmina_ssh.c:1663
 #, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "कीबोर्ड इंटरॅक्टिव्ह लॉगिन, टीओटीपी/ओटीपी/2एफए"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2319
+#: src/remmina_ssh.c:2363
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "चॅनेल तयार करता आले नाही. [एक्स २६ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2330
+#: src/remmina_ssh.c:2374
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "एसएसएच बोगद्याशी कनेक्ट होऊ शकला नाही. [एक्स ३३ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2401 src/remmina_ssh.c:2422 src/remmina_ssh.c:2431
+#: src/remmina_ssh.c:2445 src/remmina_ssh.c:2466 src/remmina_ssh.c:2475
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "पोर्ट फॉरवर्डिंगची विनंती करू शकला नाही. [एक्स ३५ एक्स]"
 
-#: src/remmina_ssh.c:2461
+#: src/remmina_ssh.c:2505
 #, fuzzy
 msgid "The server did not respond."
 msgstr "सर्व्हरने प्रतिसाद दिला नाही."
 
-#: src/remmina_ssh.c:2499
+#: src/remmina_ssh.c:2543
 #, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "स्थानिक बंदराशी (एक्स २९ एक्स) कनेक्ट होऊ शकत नाही."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2548
+#: src/remmina_ssh.c:2592
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "एसएसएच चॅनेलला लिहू शकला नाही. [एक्स ३२ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2555
+#: src/remmina_ssh.c:2599
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "बोगद्याच्या ऐकण्याच्या सॉकेटमधून वाचता आले नाही. [एक्स ४५ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2575
+#: src/remmina_ssh.c:2619
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "एसएसएच चॅनेलला पोल करता आले नाही. [एक्स २८ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2582
+#: src/remmina_ssh.c:2626
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "एसएसएच चॅनेल ब्लॉक न करता वाचता आले नाही. [एक्स ५० एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2601
+#: src/remmina_ssh.c:2645
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "बोगद्याच्या ऐकण्याच्या सॉकेटवर डेटा पाठवू शकला नाही. [एक्स ४८ एक्स]"
 
-#: src/remmina_ssh.c:2703
+#: src/remmina_ssh.c:2747
 #, fuzzy
 msgid "Assign a destination port."
 msgstr "गंतव्य बंदर नेमून द्या."
 
-#: src/remmina_ssh.c:2710
+#: src/remmina_ssh.c:2754
 #, fuzzy
 msgid "Could not create socket."
 msgstr "सॉकेट तयार करू शकला नाही."
 
-#: src/remmina_ssh.c:2720
+#: src/remmina_ssh.c:2764
 #, fuzzy
 msgid "Could not bind server socket to local port."
 msgstr "सर्व्हर सॉकेट स्थानिक बंदराला बांधू शकत नव्हते."
 
-#: src/remmina_ssh.c:2726
+#: src/remmina_ssh.c:2770
 #, fuzzy
 msgid "Could not listen to local port."
 msgstr "स्थानिक बंदर ऐकू शकत नव्हते."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:2736 src/remmina_ssh.c:2753 src/remmina_ssh.c:2771
+#: src/remmina_ssh.c:2780 src/remmina_ssh.c:2797 src/remmina_ssh.c:2815
 #, fuzzy
 msgid "Could not start pthread."
 msgstr "पायथ्रेड सुरू करू शकला नाही."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2863
+#: src/remmina_ssh.c:2907
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "एसएफटीपी सत्र तयार करू शकले नाही. [एक्स ३१ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2868
+#: src/remmina_ssh.c:2912
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "एसएफटीपी सत्र सुरू करू शकले नाही. [एक्स ३० एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:2960
+#: src/remmina_ssh.c:3004
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "चॅनेल उघडू शकत नव्हते. [एक्स २४ एक्स]"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:3003
+#: src/remmina_ssh.c:3047
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "शेलची विनंती करू शकला नाही. [एक्स २५ एक्स]"
 
-#: src/remmina_ssh.c:3133
+#: src/remmina_ssh.c:3177
 #, fuzzy
 msgid "Could not create PTY device."
 msgstr "पीटीवाय डिव्हाइस तयार करू शकला नाही."
@@ -1413,41 +1461,41 @@ msgstr ""
 msgid "Plugin %s is not registered."
 msgstr "प्लगइन [एक्स ७ एक्स] नोंदणीकृत नाही."
 
-#: src/remmina_main.c:733
+#: src/remmina_main.c:736
 #, fuzzy
 msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "नवीनतम यशस्वी कनेक्शन प्रयत्न, किंवा पूर्व-संगणकीय तारीख"
 
-#: src/remmina_main.c:735
+#: src/remmina_main.c:738
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "एकूण %i आयटम."
 msgstr[1] "एकूण %i आयटम."
 
-#: src/remmina_main.c:743
+#: src/remmina_main.c:746
 msgid "Network status: fully online"
 msgstr ""
 
-#: src/remmina_main.c:746
+#: src/remmina_main.c:749
 msgid "Network status: offline"
 msgstr ""
 
-#: src/remmina_main.c:999
+#: src/remmina_main.c:1003
 #, fuzzy, c-format
 msgid "Are you sure you want to delete “%s”?"
 msgstr "तुम्हास \"%s\" नक्की डिलीट करायचे आहे का?"
 
-#: src/remmina_main.c:1021
+#: src/remmina_main.c:1025
 #, fuzzy
 msgid "Are you sure you want to delete the selected files?"
 msgstr "आपण सर्व्हरवरील निवडक फायली डिलीट करणार आहात याची खात्री आहे का?"
 
-#: src/remmina_main.c:1032
+#: src/remmina_main.c:1036
 msgid "Failed to delete files!"
 msgstr ""
 
-#: src/remmina_main.c:1213
+#: src/remmina_main.c:1219
 #, fuzzy, c-format
 msgid ""
 "Unable to import:\n"
@@ -1456,27 +1504,48 @@ msgstr ""
 "आयात करण्यास असमर्थ:\n"
 "[एक्स १८ एक्स]"
 
-#: src/remmina_main.c:1239 data/ui/remmina_main.glade:310
+#: src/remmina_main.c:1247
+#, fuzzy
+msgid "RDP Files"
+msgstr "कानस"
+
+#: src/remmina_main.c:1256
+#, fuzzy
+msgid "All Files"
+msgstr "कानस"
+
+#: src/remmina_main.c:1266 src/remmina_main.c:1267
+#: data/ui/remmina_main.glade:310
 #, fuzzy
 msgid "Import"
 msgstr "आयात करा"
 
-#: src/remmina_main.c:1262 src/remmina_file_editor.c:1926
+#: src/remmina_main.c:1300
+#, fuzzy
+msgid "Select the connection profile."
+msgstr "नवीन कनेक्शन प्रोफाइल तयार करा"
+
+#: src/remmina_main.c:1309
+#, fuzzy
+msgid "Remmina couldn't export."
+msgstr "रेमिना डेटा फोल्डर"
+
+#: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 #, fuzzy
 msgid "_Save"
 msgstr "_साठवा"
 
-#: src/remmina_main.c:1268
+#: src/remmina_main.c:1331
 #, fuzzy
 msgid "This protocol does not support exporting."
 msgstr "हा प्रोटोकॉल निर्यातीला पाठिंबा देत नाही."
 
-#: src/remmina_main.c:1588
+#: src/remmina_main.c:1658
 #, fuzzy
 msgid "Remmina Remote Desktop Client"
 msgstr "रेमिना रिमोट डेस्कटॉप क्लायंट"
 
-#: src/remmina_main.c:1590
+#: src/remmina_main.c:1660
 #, fuzzy
 msgid "Remmina Kiosk"
 msgstr "रेमिना किऑस्क"
@@ -1565,7 +1634,7 @@ msgstr "पुनर्लेखन"
 msgid "The following file already exists in the target folder:"
 msgstr "लक्ष्य फोल्डरमध्ये खालील फाइल आधीच अस्तित्वात आहे:"
 
-#: src/remmina_file_editor.c:60
+#: src/remmina_file_editor.c:61
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1582,7 +1651,7 @@ msgstr ""
 "• आयडी:रिपीटर आयडी क्रमांक\n"
 "• unix:///path/socket.sock[एक्स १२१ एक्स]"
 
-#: src/remmina_file_editor.c:69
+#: src/remmina_file_editor.c:70
 #, fuzzy
 msgid ""
 "<big>• command in PATH args %h\n"
@@ -1610,7 +1679,7 @@ msgstr ""
 "कनेक्ट करण्यापूर्वी कमांड अंमलात आणायची असेल तर पार्श्वभूमीत धावू नका.\n"
 "[एक्स ४७२ एक्स]"
 
-#: src/remmina_file_editor.c:83
+#: src/remmina_file_editor.c:84
 #, fuzzy
 msgid ""
 "<big>Supported formats\n"
@@ -1623,171 +1692,171 @@ msgstr ""
 "• सर्व्हर[:p ओर्ट]\n"
 "• username@server[:p ओर्ट] (एसएसएच प्रोटोकॉल फक्त)[एक्स ९२ एक्स]"
 
-#: src/remmina_file_editor.c:171
+#: src/remmina_file_editor.c:172
 #, fuzzy
 msgid "Input is invalid."
 msgstr "इनपुट अवैध आहे."
 
-#: src/remmina_file_editor.c:249
+#: src/remmina_file_editor.c:250
 #, fuzzy
 msgid "Choose a Remote Desktop Server"
 msgstr "रिमोट डेस्कटॉप सर्व्हर निवडा"
 
-#: src/remmina_file_editor.c:488
+#: src/remmina_file_editor.c:489
 #, fuzzy, c-format
 msgid "Browse the network to find a %s server"
 msgstr "[एक्स 29 एक्स] सर्व्हर शोधण्यासाठी नेटवर्क ब्राउझ करा"
 
-#: src/remmina_file_editor.c:596
+#: src/remmina_file_editor.c:597
 #, fuzzy
 msgid "Resolution"
 msgstr "ठराव"
 
-#: src/remmina_file_editor.c:603
+#: src/remmina_file_editor.c:604
 #, fuzzy
 msgid "Use initial window size"
 msgstr "प्रारंभिक खिडकीचा आकार वापरा"
 
-#: src/remmina_file_editor.c:607
+#: src/remmina_file_editor.c:608
 #, fuzzy
 msgid "Use client resolution"
 msgstr "क्लायंट रिझोल्यूशन वापरा"
 
-#: src/remmina_file_editor.c:618 src/remmina_file_editor.c:1262
+#: src/remmina_file_editor.c:619 src/remmina_file_editor.c:1269
 #, fuzzy
 msgid "Custom"
 msgstr "कस्टम"
 
-#: src/remmina_file_editor.c:657
+#: src/remmina_file_editor.c:658
 msgid "Assistance Mode"
 msgstr ""
 
-#: src/remmina_file_editor.c:1038
+#: src/remmina_file_editor.c:1045
 #, fuzzy
 msgid "Keyboard mapping"
 msgstr "कीबोर्ड मॅपिंग"
 
-#: src/remmina_file_editor.c:1165
+#: src/remmina_file_editor.c:1172
 #, fuzzy
 msgid "Behavior"
 msgstr "वर्तन"
 
-#: src/remmina_file_editor.c:1168
+#: src/remmina_file_editor.c:1175
 msgid "Execute a Command"
 msgstr "बाह्य आदेशांची अंमलबजावणी करीत आहे …"
 
-#: src/remmina_file_editor.c:1172
+#: src/remmina_file_editor.c:1179
 #, fuzzy
 msgid "Before connecting"
 msgstr "जोडण्यापूर्वी"
 
-#: src/remmina_file_editor.c:1174
+#: src/remmina_file_editor.c:1181
 #, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "कमांड % एच% यू %टी % यू %पी %जी -- पर्याय"
 
-#: src/remmina_file_editor.c:1179
+#: src/remmina_file_editor.c:1186
 #, fuzzy
 msgid "After connecting"
 msgstr "कनेक्ट केल्यानंतर"
 
-#: src/remmina_file_editor.c:1181
+#: src/remmina_file_editor.c:1188
 #, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/मार्ग/ते/कमांड -ऑप्ट1 आर्ग %एच %यू %टी -ऑप्ट2%यू %पी%जी"
 
-#: src/remmina_file_editor.c:1185
+#: src/remmina_file_editor.c:1192
 #, fuzzy
 msgid "Start-up"
 msgstr "स्टार्ट-अप"
 
-#: src/remmina_file_editor.c:1188
+#: src/remmina_file_editor.c:1195
 #, fuzzy
 msgid "Auto-start this profile"
 msgstr "हे प्रोफाइल ऑटो-स्टार्ट करा"
 
-#: src/remmina_file_editor.c:1192
+#: src/remmina_file_editor.c:1199
 #, fuzzy
 msgid "Connection profile security"
 msgstr "नवीन कनेक्शन प्रोफाइल"
 
-#: src/remmina_file_editor.c:1195
+#: src/remmina_file_editor.c:1202
 msgid "Require password to connect or edit the profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1199
+#: src/remmina_file_editor.c:1206
 msgid "Unexpected disconnect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1202
+#: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
 msgstr ""
 
-#: src/remmina_file_editor.c:1235
+#: src/remmina_file_editor.c:1242
 #, fuzzy
 msgid "SSH Tunnel"
 msgstr "एसएसएच बोगदा"
 
-#: src/remmina_file_editor.c:1236
+#: src/remmina_file_editor.c:1243
 #, fuzzy
 msgid "Enable SSH tunnel"
 msgstr "एसएसएच बोगदा सक्षम करा"
 
-#: src/remmina_file_editor.c:1243
+#: src/remmina_file_editor.c:1250
 #, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "लूपबॅक पत्त्याद्वारे बोगदा"
 
-#: src/remmina_file_editor.c:1253
+#: src/remmina_file_editor.c:1260
 #, fuzzy, c-format
 msgid "Same server at port %i"
 msgstr "बंदरावर तोच सर्व्हर [एक्स २० एक्स]"
 
-#: src/remmina_file_editor.c:1303 plugins/rdp/rdp_plugin.c:2925
+#: src/remmina_file_editor.c:1310 plugins/rdp/rdp_plugin.c:3155
 #, fuzzy
 msgid "Start-up path"
 msgstr "स्टार्ट-अप मार्ग"
 
-#: src/remmina_file_editor.c:1312
+#: src/remmina_file_editor.c:1319
 #, fuzzy
 msgid "SSH Authentication"
 msgstr "एसएसएच प्रमाणीकरण"
 
-#: src/remmina_file_editor.c:1339
+#: src/remmina_file_editor.c:1346
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "SSH private key file"
 msgstr "एसएसएच खाजगी की फाइल"
 
-#: src/remmina_file_editor.c:1345 src/remmina_ssh_plugin.c:1508
+#: src/remmina_file_editor.c:1352 src/remmina_ssh_plugin.c:1508
 #, fuzzy
 #| msgid "SSH identity file"
 msgid "SSH certificate file"
 msgstr "एसएसएच प्रमाणपत्र फाइल"
 
-#: src/remmina_file_editor.c:1402
+#: src/remmina_file_editor.c:1409
 #, fuzzy
 msgid "Basic"
 msgstr "पायाभूत"
 
-#: src/remmina_file_editor.c:1408
+#: src/remmina_file_editor.c:1415
 #, fuzzy
 msgid "Advanced"
 msgstr "प्रगत"
 
-#: src/remmina_file_editor.c:1419 data/ui/remmina_main.glade:523
+#: src/remmina_file_editor.c:1426 data/ui/remmina_main.glade:532
 #, fuzzy
 msgid "Notes"
 msgstr "टिपणे"
 
-#: src/remmina_file_editor.c:1551
+#: src/remmina_file_editor.c:1558
 #, fuzzy, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "([एक्स १ एक्स]: [एक्स ५ एक्स]) : 'मूल्य' किंवा 'जीएफई' रद्दबातल असल्याने '[एक्स ३४ "
 "एक्स]' सेटिंग वैध ठरवू शकत नाही!"
 
-#: src/remmina_file_editor.c:1555
+#: src/remmina_file_editor.c:1562
 #, fuzzy, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
@@ -1797,74 +1866,74 @@ msgstr ""
 "रद्दल असल्याने वापरकर्त्याचे इनपुट वैध ठरवू शकत नाही!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
-#: src/remmina_file_editor.c:1559 plugins/x2go/x2go_plugin.c:2574
+#: src/remmina_file_editor.c:1566 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 #, fuzzy
 msgid "Internal error."
 msgstr "अंतर्गत त्रुटी."
 
-#: src/remmina_file_editor.c:1802 src/remmina_file_editor.c:1838
-#: src/remmina_file_editor.c:1859 src/remmina_file_editor.c:1882
+#: src/remmina_file_editor.c:1809 src/remmina_file_editor.c:1845
+#: src/remmina_file_editor.c:1866 src/remmina_file_editor.c:1889
 #, fuzzy, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "वापरकर्त्याचे इनपुट वैध ठरवू शकत नाही. [एक्स ३० एक्स]"
 
-#: src/remmina_file_editor.c:1826
+#: src/remmina_file_editor.c:1833
 #, fuzzy
 msgid "Default settings saved."
 msgstr "डिफॉल्ट सेटिंग्ज सेव्ह केल्या."
 
-#: src/remmina_file_editor.c:1916
+#: src/remmina_file_editor.c:1923
 #, fuzzy
 msgid "Remote Connection Profile"
 msgstr "रिमोट कनेक्शन प्रोफाइल"
 
-#: src/remmina_file_editor.c:1922
+#: src/remmina_file_editor.c:1929
 #, fuzzy
 msgid "Save as Default"
 msgstr "डिफॉल्ट म्हणून वाचवा"
 
-#: src/remmina_file_editor.c:1923
+#: src/remmina_file_editor.c:1930
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "सर्व नवीन कनेक्शन प्रोफाइलसाठी सध्याच्या सेटिंग्ज डिफॉल्ट म्हणून वापरा"
 
-#: src/remmina_file_editor.c:1931 data/ui/remmina_main.glade:161
+#: src/remmina_file_editor.c:1938 data/ui/remmina_main.glade:161
 #, fuzzy
 msgid "Connect"
 msgstr "जोडा"
 
-#: src/remmina_file_editor.c:1934
+#: src/remmina_file_editor.c:1941
 #, fuzzy
 msgid "_Save and Connect"
 msgstr "_Save आणि कनेक्ट"
 
-#: src/remmina_file_editor.c:2058
+#: src/remmina_file_editor.c:2065
 #, fuzzy
 msgid "Quick Connect"
 msgstr "द्रुत कनेक्ट"
 
-#: src/remmina_file_editor.c:2082
+#: src/remmina_file_editor.c:2089
 #, fuzzy, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "सबग्रुप डिलिमिटर म्हणून '[एक्स 5 एक्स]' वापरा"
 
-#: src/remmina_file_editor.c:2087 data/ui/remmina_main.glade:493
+#: src/remmina_file_editor.c:2094 data/ui/remmina_main.glade:502
 msgid "Labels"
 msgstr ""
 
-#: src/remmina_file_editor.c:2101
+#: src/remmina_file_editor.c:2108
 msgid "Label1,Label2"
 msgstr ""
 
-#: src/remmina_file_editor.c:2173 src/remmina_file_editor.c:2192
+#: src/remmina_file_editor.c:2180 src/remmina_file_editor.c:2199
 #, fuzzy, c-format
 msgid "Could not find the file “%s”."
 msgstr "फाइल सापडली नाही [[एक्स २५ एक्स]\"."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
-#: src/remmina_file.c:494 src/remmina_file.c:540
+#: src/remmina_file.c:495 src/remmina_file.c:541
 #, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
@@ -1877,7 +1946,7 @@ msgstr ""
 msgid "Enable Service Discovery"
 msgstr "सेवा शोध सक्षम करा"
 
-#: src/remmina_icon.c:157 data/ui/remmina_main.glade:419
+#: src/remmina_icon.c:157 data/ui/remmina_main.glade:428
 #, fuzzy
 msgid "_Quit"
 msgstr "_बाहेर पडा"
@@ -2077,7 +2146,7 @@ msgstr "मजकूर शोधा"
 msgid "_Find text"
 msgstr "_Find मजकूर"
 
-#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:686
+#: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:680
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 #, fuzzy
 msgid "User password"
@@ -2203,180 +2272,185 @@ msgstr "एसएसएच - सुरक्षित शेल"
 msgid "Secured password storage in KWallet"
 msgstr "केवॉलेटमध्ये सुरक्षित पासवर्ड स्टोरेज"
 
-#: plugins/rdp/rdp_settings.c:215
+#: plugins/rdp/rdp_settings.c:214
 #, fuzzy
 msgid "<Auto-detect>"
 msgstr "<Auto-detect>"
 
-#: plugins/rdp/rdp_settings.c:247
+#: plugins/rdp/rdp_settings.c:267
 #, fuzzy
 msgid "<Not set>"
 msgstr "< सेट नाही>"
 
-#: plugins/rdp/rdp_settings.c:278
+#: plugins/rdp/rdp_settings.c:298
 #, fuzzy
 msgid "<Choose a quality level to edit…>"
 msgstr "< संपादनकरण्यासाठी गुणवत्तेची पातळी निवडा... >"
 
-#: plugins/rdp/rdp_settings.c:280 plugins/rdp/rdp_plugin.c:2719
+#: plugins/rdp/rdp_settings.c:300 plugins/rdp/rdp_plugin.c:2949
 #: plugins/vnc/vnc_plugin.c:2041
 #, fuzzy
 msgid "Poor (fastest)"
 msgstr "गरीब (सर्वात वेगवान)"
 
-#: plugins/rdp/rdp_settings.c:282 plugins/rdp/rdp_plugin.c:2720
+#: plugins/rdp/rdp_settings.c:302 plugins/rdp/rdp_plugin.c:2950
 #: plugins/vnc/vnc_plugin.c:2040
 #, fuzzy
 msgid "Medium"
 msgstr "मध्यम"
 
-#: plugins/rdp/rdp_settings.c:284 plugins/rdp/rdp_plugin.c:2721
+#: plugins/rdp/rdp_settings.c:304 plugins/rdp/rdp_plugin.c:2951
 #: plugins/vnc/vnc_plugin.c:2038
 #, fuzzy
 msgid "Good"
 msgstr "चांगला"
 
-#: plugins/rdp/rdp_settings.c:286 plugins/rdp/rdp_plugin.c:2722
+#: plugins/rdp/rdp_settings.c:306 plugins/rdp/rdp_plugin.c:2952
 #: plugins/vnc/vnc_plugin.c:2039
 #, fuzzy
 msgid "Best (slowest)"
 msgstr "सर्वोत्तम (सर्वात मंद)"
 
-#: plugins/rdp/rdp_settings.c:425
+#: plugins/rdp/rdp_settings.c:445
 #, fuzzy
 msgid "Keyboard layout"
 msgstr "कळफलक मांडणी"
 
-#: plugins/rdp/rdp_settings.c:455
+#: plugins/rdp/rdp_settings.c:475
 #, fuzzy
 msgid "Use client keyboard mapping"
 msgstr "क्लायंट कीबोर्ड मॅपिंग वापरा"
 
-#: plugins/rdp/rdp_settings.c:466
+#: plugins/rdp/rdp_settings.c:486
 #, fuzzy
 msgid "Keyboard scancode remapping"
 msgstr "कीबोर्ड स्कॅनकोड रिमॅपिंग"
 
-#: plugins/rdp/rdp_settings.c:481
+#: plugins/rdp/rdp_settings.c:501
 #, fuzzy
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
 "मुख्य=मूल्याची यादी,... स्कॅनकोड पुन्हा मॅप करण्यासाठी जोड्या. उदा.0x56=0x29,0x29=0x56"
 
-#: plugins/rdp/rdp_settings.c:484
+#: plugins/rdp/rdp_settings.c:504
 #, fuzzy
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
 msgstr "स्कॅनकोड मॅप करण्यासाठी फ्रीआरडीपी > 2.3.0 आवश्यक आहे"
 
-#: plugins/rdp/rdp_settings.c:492
+#: plugins/rdp/rdp_settings.c:512
 #, fuzzy
 msgid "Quality settings"
 msgstr "गुणवत्ता सेटिंग्ज"
 
-#: plugins/rdp/rdp_settings.c:515
+#: plugins/rdp/rdp_settings.c:535
 #, fuzzy
 msgid "Wallpaper"
 msgstr "वॉलपेपर"
 
-#: plugins/rdp/rdp_settings.c:523
+#: plugins/rdp/rdp_settings.c:543
 #, fuzzy
 msgid "Window drag"
 msgstr "खिडकी ओढ"
 
-#: plugins/rdp/rdp_settings.c:530
+#: plugins/rdp/rdp_settings.c:550
 #, fuzzy
 msgid "Menu animation"
 msgstr "मेनू अ ॅनिमेशन"
 
-#: plugins/rdp/rdp_settings.c:538
+#: plugins/rdp/rdp_settings.c:558
 #, fuzzy
 msgid "Theme"
 msgstr "धर्ती"
 
-#: plugins/rdp/rdp_settings.c:545
+#: plugins/rdp/rdp_settings.c:565
 #, fuzzy
 msgid "Cursor shadow"
 msgstr "कर्सर सावली"
 
-#: plugins/rdp/rdp_settings.c:553
+#: plugins/rdp/rdp_settings.c:573
 #, fuzzy
 msgid "Cursor blinking"
 msgstr "कर्सर ब्लिंकिंग"
 
-#: plugins/rdp/rdp_settings.c:560
+#: plugins/rdp/rdp_settings.c:580
 #, fuzzy
 msgid "Font smoothing"
 msgstr "फॉन्ट गुळगुळीत"
 
-#: plugins/rdp/rdp_settings.c:568
+#: plugins/rdp/rdp_settings.c:588
 #, fuzzy
 msgid "Composition"
 msgstr "रचना"
 
-#: plugins/rdp/rdp_settings.c:578
+#: plugins/rdp/rdp_settings.c:598
 #, fuzzy
 msgid "Remote scale factor"
 msgstr "रिमोट स्केल फॅक्टर"
 
-#: plugins/rdp/rdp_settings.c:593
+#: plugins/rdp/rdp_settings.c:613
 #, fuzzy
 msgid "Desktop scale factor %"
 msgstr "डेस्कटॉप स्केल घटक%"
 
-#: plugins/rdp/rdp_settings.c:605
+#: plugins/rdp/rdp_settings.c:625
 #, fuzzy
 msgid "Device scale factor %"
 msgstr "डिव्हाइस स्केल फॅक्टर%"
 
-#: plugins/rdp/rdp_settings.c:628
+#: plugins/rdp/rdp_settings.c:648
 #, fuzzy
 msgid "Desktop orientation"
 msgstr "डेस्कटॉप अभिमुखता"
 
-#: plugins/rdp/rdp_settings.c:648
+#: plugins/rdp/rdp_settings.c:668
 #, fuzzy
 msgid "Input device settings"
 msgstr "इनपुट डिव्हाइस सेटिंग्ज"
 
-#: plugins/rdp/rdp_settings.c:656 plugins/rdp/rdp_plugin.c:2886
+#: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:3116
 #: plugins/vnc/vnc_plugin.c:2132
 #, fuzzy
 msgid "Disable smooth scrolling"
 msgstr "गुळगुळीत स्क्रोलिंग अक्षम करा"
 
-#: plugins/rdp/rdp_settings.c:667
+#: plugins/rdp/rdp_settings.c:687
 #, fuzzy
 msgid "General settings"
 msgstr "सामान्य सेटिंग्ज"
 
-#: plugins/rdp/rdp_settings.c:674 plugins/rdp/rdp_plugin.c:2939
+#: plugins/rdp/rdp_settings.c:694 plugins/rdp/rdp_plugin.c:3169
 #, fuzzy
 msgid "Reconnect attempts number"
 msgstr "पुन्हा संपर्क प्रयत्न क्रमांक"
 
-#: plugins/rdp/rdp_settings.c:687 plugins/rdp/rdp_plugin.c:2939
+#: plugins/rdp/rdp_settings.c:707 plugins/rdp/rdp_plugin.c:3169
 #, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr "आरडीपी डिस्कनेक्टवर जास्तीत जास्त पुन्हा संपर्क प्रयत्न (डिफॉल्ट: 20)"
 
-#: plugins/rdp/rdp_plugin.c:799 plugins/rdp/rdp_plugin.c:864
+#: plugins/rdp/rdp_plugin.c:837 plugins/rdp/rdp_plugin.c:902
+#: plugins/rdp/rdp_plugin.c:987
 #, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "आरडीपी प्रमाणीकरण क्रेडेंशियल्स प्रविष्ट करा"
 
-#: plugins/rdp/rdp_plugin.c:872
+#: plugins/rdp/rdp_plugin.c:910 plugins/rdp/rdp_plugin.c:998
 #, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "आरडीपी गेटवे प्रमाणीकरण क्रेडेंशियल्स प्रविष्ट करा"
 
+#: plugins/rdp/rdp_plugin.c:1007
+msgid "Enter RDP SmartCard PIN"
+msgstr ""
+
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:1065
+#: plugins/rdp/rdp_plugin.c:1269
 #, c-format
 msgid "Disconnected from %s via RDP"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2248
+#: plugins/rdp/rdp_plugin.c:2463
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2385,7 +2459,7 @@ msgstr ""
 "आरडीपी सर्व्हरमध्ये प्रवेश करू शकला नाही [[एक्स ३३ एक्स]\".\n"
 "खाते बंद केले."
 
-#: plugins/rdp/rdp_plugin.c:2255
+#: plugins/rdp/rdp_plugin.c:2470
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2394,7 +2468,7 @@ msgstr ""
 "आरडीपी सर्व्हरमध्ये प्रवेश करू शकला नाही [[एक्स ३३ एक्स]\".\n"
 "खाते संपले."
 
-#: plugins/rdp/rdp_plugin.c:2262
+#: plugins/rdp/rdp_plugin.c:2477
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2403,7 +2477,7 @@ msgstr ""
 "आरडीपी सर्व्हरमध्ये प्रवेश करू शकला नाही [[एक्स ३३ एक्स]\".\n"
 "पासवर्ड ची मुदत संपली."
 
-#: plugins/rdp/rdp_plugin.c:2269
+#: plugins/rdp/rdp_plugin.c:2484
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2412,7 +2486,7 @@ msgstr ""
 "आरडीपी सर्व्हरमध्ये प्रवेश करू शकला नाही [[एक्स ३३ एक्स]\".\n"
 "खाते अपंग."
 
-#: plugins/rdp/rdp_plugin.c:2275
+#: plugins/rdp/rdp_plugin.c:2490
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2421,7 +2495,7 @@ msgstr ""
 "आरडीपी सर्व्हरमध्ये प्रवेश करू शकला नाही [[एक्स ३३ एक्स]\".\n"
 "वापरकर्त्यांना अपुरे विशेषाधिकार."
 
-#: plugins/rdp/rdp_plugin.c:2283
+#: plugins/rdp/rdp_plugin.c:2498
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2430,7 +2504,7 @@ msgstr ""
 "आरडीपी सर्व्हरमध्ये प्रवेश करू शकला नाही [[एक्स ३३ एक्स]\".\n"
 "खाते प्रतिबंधित."
 
-#: plugins/rdp/rdp_plugin.c:2291
+#: plugins/rdp/rdp_plugin.c:2506
 #, fuzzy, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
@@ -2439,17 +2513,17 @@ msgstr ""
 "आरडीपी सर्व्हरमध्ये प्रवेश करू शकला नाही [[एक्स ३३ एक्स]\".\n"
 "कनेक्ट करण्यापूर्वी वापरकर्त्याचा पासवर्ड बदला."
 
-#: plugins/rdp/rdp_plugin.c:2296
+#: plugins/rdp/rdp_plugin.c:2511
 #, fuzzy, c-format
 msgid "Lost connection to the RDP server “%s”."
 msgstr "आरडीपी सर्व्हरशी संबंध गमावला [[एक्स ३५ एक्स]\"."
 
-#: plugins/rdp/rdp_plugin.c:2299
+#: plugins/rdp/rdp_plugin.c:2514
 #, fuzzy, c-format
 msgid "Could not find the address for the RDP server “%s”."
 msgstr "आरडीपी सर्व्हरसाठी पत्ता सापडला नाही [[एक्स ४७ एक्स]\"."
 
-#: plugins/rdp/rdp_plugin.c:2303
+#: plugins/rdp/rdp_plugin.c:2518
 #, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
@@ -2459,7 +2533,7 @@ msgstr ""
 "सर्व्हर सामान्य टीएलएस आवृत्तीला समर्थन देतात हे तपासा."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_plugin.c:2307
+#: plugins/rdp/rdp_plugin.c:2522
 #, fuzzy, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
@@ -2468,17 +2542,17 @@ msgstr ""
 "आरडीपी सर्व्हरशी कनेक्शन स्थापित करण्यास असमर्थ [[एक्स ५२ एक्स]\". \"सुरक्षा प्रोटोकॉल "
 "वाटाघाटी\" तपासा."
 
-#: plugins/rdp/rdp_plugin.c:2315
+#: plugins/rdp/rdp_plugin.c:2530
 #, fuzzy, c-format
 msgid "Cannot connect to the RDP server “%s”."
 msgstr "आरडीपी सर्व्हरशी कनेक्ट होऊ शकत नाही [[एक्स ३४ एक्स]\"."
 
-#: plugins/rdp/rdp_plugin.c:2318
+#: plugins/rdp/rdp_plugin.c:2533
 #, fuzzy
 msgid "Could not start libfreerdp-gdi."
 msgstr "लिब्फ्रीर्डप-जीडी सुरू करू शकला नाही."
 
-#: plugins/rdp/rdp_plugin.c:2321
+#: plugins/rdp/rdp_plugin.c:2536
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
@@ -2487,12 +2561,12 @@ msgstr ""
 "आपण सर्व्हरसाठी एच.264 जीएफएक्स मोडची विनंती केली \"[एक्स 47एक्स]\", परंतु आपला "
 "लिब्फ्रीर्डपी एच.264 ला समर्थन देत नाही. कृपया नॉन-एव्हीसी कलर डेप्थ सेटिंग वापरा."
 
-#: plugins/rdp/rdp_plugin.c:2328
+#: plugins/rdp/rdp_plugin.c:2543
 #, fuzzy, c-format
 msgid "The “%s” server refused the connection."
 msgstr "\"एक्स ५ एक्स] सर्व्हरने कनेक्शन नाकारले."
 
-#: plugins/rdp/rdp_plugin.c:2333
+#: plugins/rdp/rdp_plugin.c:2548
 #, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
@@ -2501,189 +2575,189 @@ msgstr ""
 "रिमोट डेस्कटॉप गेटवे [एक्स २८ एक्स]\" ने वापरकर्त्याला धोरणामुळे \"[एक्स ४९ एक्स]/[एक्स ५२ "
 "एक्स]\" प्रवेश नाकारला."
 
-#: plugins/rdp/rdp_plugin.c:2343
+#: plugins/rdp/rdp_plugin.c:2558
 #, fuzzy, c-format
 msgid "Cannot connect to the “%s” RDP server."
 msgstr "आरडीपी सर्व्हरशी \"एक्स २३ एक्स] कनेक्ट होऊ शकत नाही."
 
-#: plugins/rdp/rdp_plugin.c:2688
+#: plugins/rdp/rdp_plugin.c:2918
 #, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "ऑटोमॅटिक (32 बीपीपी) (सर्व्हर त्याचे सर्वोत्तम स्वरूप निवडतो)"
 
-#: plugins/rdp/rdp_plugin.c:2689
+#: plugins/rdp/rdp_plugin.c:2919
 #, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "जीएफएक्स एव्हीसी४४४ (३२ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2690
+#: plugins/rdp/rdp_plugin.c:2920
 #, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "जीएफएक्स एव्हीसी४२० (३२ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2691
+#: plugins/rdp/rdp_plugin.c:2921
 #, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "जीएफएक्स आरएफएक्स (३२ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2692
+#: plugins/rdp/rdp_plugin.c:2922
 #, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "जीएफएक्स आरएफएक्स प्रोग्रेसिव्ह (३२ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2693
+#: plugins/rdp/rdp_plugin.c:2923
 #, fuzzy
 msgid "RemoteFX (32 bpp)"
 msgstr "रिमोटएफएक्स (३२ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2694 plugins/vnc/vnc_plugin.c:2029
+#: plugins/rdp/rdp_plugin.c:2924 plugins/vnc/vnc_plugin.c:2029
 #, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "खरा रंग (३२ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2695
+#: plugins/rdp/rdp_plugin.c:2925
 #, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "खरा रंग (२४ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2696 plugins/vnc/vnc_plugin.c:2030
+#: plugins/rdp/rdp_plugin.c:2926 plugins/vnc/vnc_plugin.c:2030
 #, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "उच्च रंग (१६ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2697
+#: plugins/rdp/rdp_plugin.c:2927
 #, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "उच्च रंग (१५ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2698 plugins/vnc/vnc_plugin.c:2031
+#: plugins/rdp/rdp_plugin.c:2928 plugins/vnc/vnc_plugin.c:2031
 #, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "२५६ रंग (८ बीपीपी)"
 
-#: plugins/rdp/rdp_plugin.c:2729 data/ui/remmina_preferences.glade:610
+#: plugins/rdp/rdp_plugin.c:2959 data/ui/remmina_preferences.glade:728
 #, fuzzy
 msgid "None"
 msgstr "काहीही नाही"
 
-#: plugins/rdp/rdp_plugin.c:2730
+#: plugins/rdp/rdp_plugin.c:2960
 #, fuzzy
 msgid "Auto-detect"
 msgstr "ऑटो-डिटेक्ट"
 
-#: plugins/rdp/rdp_plugin.c:2731
+#: plugins/rdp/rdp_plugin.c:2961
 #, fuzzy
 msgid "Modem"
 msgstr "मॉडेम"
 
-#: plugins/rdp/rdp_plugin.c:2732
+#: plugins/rdp/rdp_plugin.c:2962
 #, fuzzy
 msgid "Low performance broadband"
 msgstr "कमी कामगिरी ब्रॉडबँड"
 
-#: plugins/rdp/rdp_plugin.c:2733
+#: plugins/rdp/rdp_plugin.c:2963
 #, fuzzy
 msgid "Satellite"
 msgstr "उपग्रह"
 
-#: plugins/rdp/rdp_plugin.c:2734
+#: plugins/rdp/rdp_plugin.c:2964
 #, fuzzy
 msgid "High performance broadband"
 msgstr "उच्च कामगिरी ब्रॉडबँड"
 
-#: plugins/rdp/rdp_plugin.c:2735
+#: plugins/rdp/rdp_plugin.c:2965
 #, fuzzy
 msgid "WAN"
 msgstr "वान"
 
-#: plugins/rdp/rdp_plugin.c:2736
+#: plugins/rdp/rdp_plugin.c:2966
 #, fuzzy
 msgid "LAN"
 msgstr "लॅन"
 
-#: plugins/rdp/rdp_plugin.c:2743 plugins/spice/spice_plugin.c:647
-#: data/ui/remmina_preferences.glade:646
+#: plugins/rdp/rdp_plugin.c:2973 plugins/spice/spice_plugin.c:641
+#: data/ui/remmina_preferences.glade:764
 #, fuzzy
 msgid "Off"
 msgstr "दूर"
 
-#: plugins/rdp/rdp_plugin.c:2752
+#: plugins/rdp/rdp_plugin.c:2982
 #, fuzzy
 msgid "Automatic negotiation"
 msgstr "स्वयंचलित वाटाघाटी"
 
-#: plugins/rdp/rdp_plugin.c:2753
+#: plugins/rdp/rdp_plugin.c:2983
 #, fuzzy
 msgid "NLA protocol security"
 msgstr "एनएलए प्रोटोकॉल सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2754
+#: plugins/rdp/rdp_plugin.c:2984
 #, fuzzy
 msgid "TLS protocol security"
 msgstr "टीएलएस प्रोटोकॉल सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2755
+#: plugins/rdp/rdp_plugin.c:2985
 #, fuzzy
 msgid "RDP protocol security"
 msgstr "आरडीपी प्रोटोकॉल सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2756
+#: plugins/rdp/rdp_plugin.c:2986
 #, fuzzy
 msgid "NLA extended protocol security"
 msgstr "एनएलएने प्रोटोकॉल सुरक्षा वाढविली"
 
-#: plugins/rdp/rdp_plugin.c:2764
+#: plugins/rdp/rdp_plugin.c:2994
 msgid "Every 1 min"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2765
+#: plugins/rdp/rdp_plugin.c:2995
 msgid "Every 3 min"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2766
+#: plugins/rdp/rdp_plugin.c:2996
 msgid "Every 5 min"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2767
+#: plugins/rdp/rdp_plugin.c:2997
 msgid "Every 10 min"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2781 plugins/spice/spice_plugin.c:628
-#: plugins/spice/spice_plugin.c:646
+#: plugins/rdp/rdp_plugin.c:3011 plugins/spice/spice_plugin.c:622
+#: plugins/spice/spice_plugin.c:640
 #, fuzzy
 msgid "Default"
 msgstr "डिफॉल्ट"
 
-#: plugins/rdp/rdp_plugin.c:2782
+#: plugins/rdp/rdp_plugin.c:3012
 msgid "0 — Windows 7 compatible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2783
+#: plugins/rdp/rdp_plugin.c:3013
 msgid "1"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2784
+#: plugins/rdp/rdp_plugin.c:3014
 msgid "2"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2785
+#: plugins/rdp/rdp_plugin.c:3015
 msgid "3"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2786
+#: plugins/rdp/rdp_plugin.c:3016
 msgid "4"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2787
+#: plugins/rdp/rdp_plugin.c:3017
 msgid "5"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2792
+#: plugins/rdp/rdp_plugin.c:3022
 #, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "२६०० (विंडोज एक्सपी), ७६०१ (विंडोज व्हिस्टा/७), ९६०० (विंडोज ८ आणि नवीन)"
 
-#: plugins/rdp/rdp_plugin.c:2795
+#: plugins/rdp/rdp_plugin.c:3025
 #, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
@@ -2700,7 +2774,7 @@ msgstr ""
 "विंडोज ८ आणि नवीन: स्कार्डगेटरीडरआयकॉन (),\n"
 "    स्कार्डगेटडिव्हाइसटाइपआयडी()"
 
-#: plugins/rdp/rdp_plugin.c:2803
+#: plugins/rdp/rdp_plugin.c:3033
 #, fuzzy
 msgid ""
 "Options for redirection of audio input:\n"
@@ -2719,7 +2793,7 @@ msgstr ""
 "  • सिस:ओएस, देव:१, स्वरूप:१\n"
 "  • सिस:अल्सा"
 
-#: plugins/rdp/rdp_plugin.c:2812
+#: plugins/rdp/rdp_plugin.c:3042
 #, fuzzy
 msgid ""
 "Options for redirection of audio output:\n"
@@ -2738,7 +2812,7 @@ msgstr ""
 "  • सिस:ओएस, देव:१, स्वरूप:१\n"
 "  • सिस:अल्सा"
 
-#: plugins/rdp/rdp_plugin.c:2822
+#: plugins/rdp/rdp_plugin.c:3052
 #, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
@@ -2751,7 +2825,7 @@ msgstr ""
 "  • ऑटो\n"
 "  • ओळखपत्र:054 सी:0268#4669:6ई6बी,अॅडर:04:0सी"
 
-#: plugins/rdp/rdp_plugin.c:2828
+#: plugins/rdp/rdp_plugin.c:3058
 #, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
@@ -2762,7 +2836,7 @@ msgstr ""
 "कनेक्शन टाइमआउट समायोजित करते. जर तुमच्या कनेक्शनच्या वेळा बाहेर असतील तर वापरा.\n"
 "सर्वात जास्त संभाव्य मूल्य ६००००० एमएस (१० मिनिटे) आहे.\n"
 
-#: plugins/rdp/rdp_plugin.c:2833
+#: plugins/rdp/rdp_plugin.c:3063
 #, fuzzy
 msgid ""
 "Performance optimisations based on the network connection type:\n"
@@ -2773,7 +2847,7 @@ msgstr ""
 "ऑटो-डिटेक्शन चा वापर करण्याचा सल्ला दिला जातो.\n"
 "जर \"ऑटो-डिटेक्ट\" अपयशी ठरला, तर यादीतील सर्वात योग्य पर्याय निवडा.\n"
 
-#: plugins/rdp/rdp_plugin.c:2838
+#: plugins/rdp/rdp_plugin.c:3068
 #, fuzzy
 msgid ""
 "Comma-separated list of monitor IDs and desktop orientations:\n"
@@ -2798,7 +2872,7 @@ msgstr ""
 "  • २७० (पोर्ट्रेट फ्लिप)\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2850
+#: plugins/rdp/rdp_plugin.c:3080
 #, fuzzy
 msgid ""
 "Redirect directory <path> as named share <name>.\n"
@@ -2819,164 +2893,164 @@ msgstr ""
 "  • हॉटप्लग,*\n"
 "\n"
 
-#: plugins/rdp/rdp_plugin.c:2882 plugins/spice/spice_plugin.c:689
+#: plugins/rdp/rdp_plugin.c:3112 plugins/spice/spice_plugin.c:683
 #, fuzzy
 msgid "Share folder"
 msgstr "फोल्डर सामायिक करा"
 
-#: plugins/rdp/rdp_plugin.c:2883
+#: plugins/rdp/rdp_plugin.c:3113
 #, fuzzy
 msgid "Restricted admin mode"
 msgstr "प्रतिबंधित व्यवस्थापक मोड"
 
-#: plugins/rdp/rdp_plugin.c:2884
+#: plugins/rdp/rdp_plugin.c:3114
 #, fuzzy
 msgid "Password hash"
 msgstr "पासवर्ड हॅश"
 
-#: plugins/rdp/rdp_plugin.c:2884
+#: plugins/rdp/rdp_plugin.c:3114
 #, fuzzy
 msgid "Restricted admin mode password hash"
 msgstr "प्रतिबंधित व्यवस्थापक मोड पासवर्ड हॅश"
 
-#: plugins/rdp/rdp_plugin.c:2885
+#: plugins/rdp/rdp_plugin.c:3115
 #, fuzzy
 msgid "Left-handed mouse support"
 msgstr "डाव्या हाताने उंदीर आधार"
 
-#: plugins/rdp/rdp_plugin.c:2885
+#: plugins/rdp/rdp_plugin.c:3115
 #, fuzzy
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr "डाव्या हाताच्या उंदराच्या आधारासाठी डावी आणि उजवी उंदीर बटणे अदलाबदल करा"
 
-#: plugins/rdp/rdp_plugin.c:2887
+#: plugins/rdp/rdp_plugin.c:3117
 #, fuzzy
 msgid "Enable multi monitor"
 msgstr "मल्टी मॉनिटर सक्षम करा"
 
-#: plugins/rdp/rdp_plugin.c:2888
+#: plugins/rdp/rdp_plugin.c:3118
 #, fuzzy
 msgid "Span screen over multiple monitors"
 msgstr "एकाधिक मॉनिटरवर स्क्रीन स्पॅन"
 
-#: plugins/rdp/rdp_plugin.c:2889
+#: plugins/rdp/rdp_plugin.c:3119
 #, fuzzy
 msgid "List monitor IDs"
 msgstr "यादी मॉनिटर आयडी"
 
-#: plugins/rdp/rdp_plugin.c:2891 plugins/vnc/vnc_plugin.c:2100
+#: plugins/rdp/rdp_plugin.c:3121 plugins/vnc/vnc_plugin.c:2100
 #: plugins/vnc/vnc_plugin.c:2112 plugins/gvnc/gvnc_plugin.c:848
 #, fuzzy
 msgid "Colour depth"
 msgstr "रंग खोली"
 
-#: plugins/rdp/rdp_plugin.c:2892
+#: plugins/rdp/rdp_plugin.c:3122
 #, fuzzy
 msgid "Network connection type"
 msgstr "नेटवर्क कनेक्शन प्रकार"
 
-#: plugins/rdp/rdp_plugin.c:2908 plugins/vnc/vnc_plugin.c:2101
+#: plugins/rdp/rdp_plugin.c:3138 plugins/vnc/vnc_plugin.c:2101
 #: plugins/vnc/vnc_plugin.c:2113
 #, fuzzy
 msgid "Quality"
 msgstr "दर्जा"
 
-#: plugins/rdp/rdp_plugin.c:2909
+#: plugins/rdp/rdp_plugin.c:3139
 #, fuzzy
 msgid "Security protocol negotiation"
 msgstr "सुरक्षा प्रोटोकॉल वाटाघाटी"
 
-#: plugins/rdp/rdp_plugin.c:2910
+#: plugins/rdp/rdp_plugin.c:3140
 #, fuzzy
 msgid "Gateway transport type"
 msgstr "गेटवे वाहतूक प्रकार"
 
-#: plugins/rdp/rdp_plugin.c:2911
+#: plugins/rdp/rdp_plugin.c:3141
 #, fuzzy
 msgid "TLS Security Level"
 msgstr "सुरक्षा"
 
-#: plugins/rdp/rdp_plugin.c:2912
+#: plugins/rdp/rdp_plugin.c:3142
 #, fuzzy
 msgid "FreeRDP log level"
 msgstr "फ्रीआरडीपी लॉग लेव्हल"
 
-#: plugins/rdp/rdp_plugin.c:2913
+#: plugins/rdp/rdp_plugin.c:3143
 #, fuzzy
 msgid "FreeRDP log filters"
 msgstr "फ्रीआरडीपी लॉग फिल्टर"
 
-#: plugins/rdp/rdp_plugin.c:2913
+#: plugins/rdp/rdp_plugin.c:3143
 #, fuzzy
 msgid "tag:level[,tag:level[,…]]"
 msgstr "टॅग:पातळी[,टॅग:पातळी[,...]]"
 
-#: plugins/rdp/rdp_plugin.c:2914
+#: plugins/rdp/rdp_plugin.c:3144
 #, fuzzy
 msgid "Audio output mode"
 msgstr "ऑडिओ आउटपुट मोड"
 
-#: plugins/rdp/rdp_plugin.c:2915
+#: plugins/rdp/rdp_plugin.c:3145
 #, fuzzy
 msgid "Redirect local audio output"
 msgstr "स्थानिक ऑडिओ आउटपुट पुनर्निर्देशित करा"
 
-#: plugins/rdp/rdp_plugin.c:2916
+#: plugins/rdp/rdp_plugin.c:3146
 #, fuzzy
 msgid "Redirect local microphone"
 msgstr "स्थानिक मायक्रोफोन पुनर्निर्देशित करणे"
 
-#: plugins/rdp/rdp_plugin.c:2917
+#: plugins/rdp/rdp_plugin.c:3147
 msgid "Connection timeout in ms"
 msgstr "\"%s\" शी कनेक्ट करत आहे…"
 
-#: plugins/rdp/rdp_plugin.c:2918
+#: plugins/rdp/rdp_plugin.c:3148
 #, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "रिमोट डेस्कटॉप गेटवे सर्व्हर"
 
-#: plugins/rdp/rdp_plugin.c:2919
+#: plugins/rdp/rdp_plugin.c:3149
 #, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "रिमोट डेस्कटॉप गेटवे वापरकर्तानाव"
 
-#: plugins/rdp/rdp_plugin.c:2920
+#: plugins/rdp/rdp_plugin.c:3150
 #, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "रिमोट डेस्कटॉप गेटवे पासवर्ड"
 
-#: plugins/rdp/rdp_plugin.c:2921
+#: plugins/rdp/rdp_plugin.c:3151
 #, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "रिमोट डेस्कटॉप गेटवे डोमेन"
 
-#: plugins/rdp/rdp_plugin.c:2922
+#: plugins/rdp/rdp_plugin.c:3152
 #, fuzzy
 msgid "Client name"
 msgstr "ग्राहक नाव"
 
-#: plugins/rdp/rdp_plugin.c:2923
+#: plugins/rdp/rdp_plugin.c:3153
 #, fuzzy
 msgid "Client build"
 msgstr "क्लायंट बिल्ड"
 
-#: plugins/rdp/rdp_plugin.c:2924
+#: plugins/rdp/rdp_plugin.c:3154
 #, fuzzy
 msgid "Start-up program"
 msgstr "स्टार्ट-अप प्रोग्राम"
 
-#: plugins/rdp/rdp_plugin.c:2926
+#: plugins/rdp/rdp_plugin.c:3156
 #, fuzzy
 msgid "Load balance info"
 msgstr "लोड बॅलन्स माहिती"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
-#: plugins/rdp/rdp_plugin.c:2928
+#: plugins/rdp/rdp_plugin.c:3158
 #, fuzzy
 msgid "Override printer drivers"
 msgstr "प्रिंटर चालकांना ओव्हरराइड करा"
 
-#: plugins/rdp/rdp_plugin.c:2928
+#: plugins/rdp/rdp_plugin.c:3158
 #, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
@@ -2985,236 +3059,236 @@ msgstr ""
 "\"Samsung_CLX-3300_Series.सॅमसंग सीएलएक्स-3300 सिरीज पीएस\";\" कॅनन एमएफ ४१०.कॅनन "
 "एमएफ ४१० मालिका यूएफआर २\""
 
-#: plugins/rdp/rdp_plugin.c:2929
+#: plugins/rdp/rdp_plugin.c:3159
 #, fuzzy
 msgid "USB device redirection"
 msgstr "यूएसबी डिव्हाइस पुनर्निर्देशन"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:3160
 #, fuzzy
 msgid "Local serial name"
 msgstr "स्थानिक मालिका नाव"
 
-#: plugins/rdp/rdp_plugin.c:2930
+#: plugins/rdp/rdp_plugin.c:3160
 #, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "कॉम १, कॉम २ इ."
 
-#: plugins/rdp/rdp_plugin.c:2931
+#: plugins/rdp/rdp_plugin.c:3161
 #, fuzzy
 msgid "Local serial driver"
 msgstr "स्थानिक मालिका चालक"
 
-#: plugins/rdp/rdp_plugin.c:2931
+#: plugins/rdp/rdp_plugin.c:3161
 #, fuzzy
 msgid "Serial"
 msgstr "मालिका"
 
-#: plugins/rdp/rdp_plugin.c:2932
+#: plugins/rdp/rdp_plugin.c:3162
 #, fuzzy
 msgid "Local serial path"
 msgstr "स्थानिक क्रमिक मार्ग"
 
-#: plugins/rdp/rdp_plugin.c:2932
+#: plugins/rdp/rdp_plugin.c:3162
 #, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/देव/टीटीवायएस0, /देव/टीटीएस1 इत्यादी."
 
-#: plugins/rdp/rdp_plugin.c:2933
+#: plugins/rdp/rdp_plugin.c:3163
 #, fuzzy
 msgid "Local parallel name"
 msgstr "स्थानिक समांतर नाव"
 
-#: plugins/rdp/rdp_plugin.c:2934
+#: plugins/rdp/rdp_plugin.c:3164
 #, fuzzy
 msgid "Local parallel device"
 msgstr "स्थानिक समांतर उपकरण"
 
-#: plugins/rdp/rdp_plugin.c:2935
+#: plugins/rdp/rdp_plugin.c:3165
 #, fuzzy
 msgid "Name of smart card"
 msgstr "स्मार्ट कार्डचे नाव"
 
-#: plugins/rdp/rdp_plugin.c:2936
+#: plugins/rdp/rdp_plugin.c:3166
 #, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "डायनॅमिक व्हर्च्युअल चॅनेल"
 
-#: plugins/rdp/rdp_plugin.c:2936 plugins/rdp/rdp_plugin.c:2937
+#: plugins/rdp/rdp_plugin.c:3166 plugins/rdp/rdp_plugin.c:3167
 #, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<channel>[,<options>]"
 
-#: plugins/rdp/rdp_plugin.c:2937
+#: plugins/rdp/rdp_plugin.c:3167
 #, fuzzy
 msgid "Static virtual channel"
 msgstr "स्टॅटिक व्हर्च्युअल चॅनेल"
 
-#: plugins/rdp/rdp_plugin.c:2938
+#: plugins/rdp/rdp_plugin.c:3168
 #, fuzzy
 msgid "TCP redirection"
 msgstr "टीसीपी पुनर्निर्देशन"
 
-#: plugins/rdp/rdp_plugin.c:2938
+#: plugins/rdp/rdp_plugin.c:3168
 #, fuzzy
 msgid "/PATH/TO/rdp2tcp"
 msgstr "/पाथ/टीओ/आरडीपी2टीसीपी"
 
-#: plugins/rdp/rdp_plugin.c:2940
+#: plugins/rdp/rdp_plugin.c:3170
 #, fuzzy
 msgid "Move mouse when connection is idle"
 msgstr "रिमोट कनेक्शन प्रोफाइल"
 
-#: plugins/rdp/rdp_plugin.c:2942
+#: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2943
+#: plugins/rdp/rdp_plugin.c:3173
 #, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "आयपीव्ही ४ ए रेकॉर्डपेक्षा आयपीव्ही ६ एएए रेकॉर्ड ला प्राधान्य द्या"
 
-#: plugins/rdp/rdp_plugin.c:2944
+#: plugins/rdp/rdp_plugin.c:3174
 #, fuzzy
 msgid "Share printers"
 msgstr "प्रिंटर सामायिक करा"
 
-#: plugins/rdp/rdp_plugin.c:2945
+#: plugins/rdp/rdp_plugin.c:3175
 #, fuzzy
 msgid "Share serial ports"
 msgstr "मालिका बंदरे सामायिक करा"
 
-#: plugins/rdp/rdp_plugin.c:2946
+#: plugins/rdp/rdp_plugin.c:3176
 #, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(एसईलिनक्स) अनुज्ञेय मोड सीरियल पोर्टसाठी"
 
-#: plugins/rdp/rdp_plugin.c:2947
+#: plugins/rdp/rdp_plugin.c:3177
 #, fuzzy
 msgid "Share parallel ports"
 msgstr "समांतर बंदरे सामायिक करा"
 
-#: plugins/rdp/rdp_plugin.c:2948
+#: plugins/rdp/rdp_plugin.c:3178
 #, fuzzy
 msgid "Share a smart card"
 msgstr "स्मार्ट कार्ड सामायिक करा"
 
-#: plugins/rdp/rdp_plugin.c:2949 plugins/vnc/vnc_plugin.c:2137
+#: plugins/rdp/rdp_plugin.c:3179 plugins/vnc/vnc_plugin.c:2137
 #, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "क्लिपबोर्ड सिंक बंद करा"
 
-#: plugins/rdp/rdp_plugin.c:2950
+#: plugins/rdp/rdp_plugin.c:3180
 #, fuzzy
 msgid "Ignore certificate"
 msgstr "प्रमाणपत्राकडे दुर्लक्ष करा"
 
-#: plugins/rdp/rdp_plugin.c:2951
+#: plugins/rdp/rdp_plugin.c:3181
 #, fuzzy
 msgid "Use the old license workflow"
 msgstr "जुना परवाना वर्कफ्लो वापरा"
 
-#: plugins/rdp/rdp_plugin.c:2951
+#: plugins/rdp/rdp_plugin.c:3181
 #, fuzzy
 msgid "It disables CAL and hwId is set to 0"
 msgstr "हे सीएएल ला अक्षम करते आणि एचडब्ल्यूआयडी 0 वर सेट आहे"
 
-#: plugins/rdp/rdp_plugin.c:2952 plugins/spice/spice_plugin.c:714
+#: plugins/rdp/rdp_plugin.c:3182 plugins/spice/spice_plugin.c:708
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 #, fuzzy
 msgid "Forget passwords after use"
 msgstr "वापरानंतर पासवर्ड विसरा"
 
-#: plugins/rdp/rdp_plugin.c:2953
+#: plugins/rdp/rdp_plugin.c:3183
 #, fuzzy
 msgid "Attach to console (2003/2003 R2)"
 msgstr "कन्सोलशी संलग्न (२००३/२००३ आर २)"
 
-#: plugins/rdp/rdp_plugin.c:2954
+#: plugins/rdp/rdp_plugin.c:3184
 #, fuzzy
 msgid "Turn off fast-path"
 msgstr "वेगवान मार्ग बंद करा"
 
-#: plugins/rdp/rdp_plugin.c:2955
+#: plugins/rdp/rdp_plugin.c:3185
 #, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "रिमोट डेस्कटॉप गेटवे वापरून सर्व्हर डिटेक्शन"
 
-#: plugins/rdp/rdp_plugin.c:2957
+#: plugins/rdp/rdp_plugin.c:3187
 #, fuzzy
 msgid "Use system proxy settings"
 msgstr "सिस्टम प्रॉक्सी सेटिंग्ज वापरा"
 
-#: plugins/rdp/rdp_plugin.c:2959
+#: plugins/rdp/rdp_plugin.c:3189
 #, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "स्वयंचलित पुनर्जोडणी बंद करा"
 
-#: plugins/rdp/rdp_plugin.c:2960
+#: plugins/rdp/rdp_plugin.c:3190
 #, fuzzy
 msgid "Relax order checks"
 msgstr "ऑर्डर चेक शिथिल करा"
 
-#: plugins/rdp/rdp_plugin.c:2961
+#: plugins/rdp/rdp_plugin.c:3191
 #, fuzzy
 msgid "Glyph cache"
 msgstr "ग्लिफ कॅशे"
 
-#: plugins/rdp/rdp_plugin.c:2962
+#: plugins/rdp/rdp_plugin.c:3192
 #, fuzzy
 msgid "Enable multitransport protocol (UDP)"
 msgstr "मल्टीट्रान्सपोर्ट प्रोटोकॉल (यूडीपी) सक्षम करा"
 
-#: plugins/rdp/rdp_plugin.c:2962
+#: plugins/rdp/rdp_plugin.c:3192
 #, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "यूडीपी प्रोटोकॉल चा वापर केल्याने कामगिरी सुधारू शकते"
 
-#: plugins/rdp/rdp_plugin.c:2963
+#: plugins/rdp/rdp_plugin.c:3193
 #, fuzzy
 msgid "Use base credentials for gateway too"
 msgstr "गेटवेसाठी बेस क्रेडेंशियल्स देखील वापरा"
 
-#: plugins/rdp/rdp_plugin.c:2965
+#: plugins/rdp/rdp_plugin.c:3195
 #, fuzzy
 msgid "Enable Gateway websockets support"
 msgstr "गेटवे वेबसॉकेटसमर्थन सक्षम करा"
 
-#: plugins/rdp/rdp_plugin.c:2967
+#: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:2976 plugins/spice/spice_plugin.c:717
-#: plugins/spice/spice_plugin.c:725 plugins/vnc/vnc_plugin.c:2139
+#: plugins/rdp/rdp_plugin.c:3206 plugins/spice/spice_plugin.c:711
+#: plugins/spice/spice_plugin.c:719 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 #, fuzzy
 msgid "View only"
 msgstr "फक्त पहा"
 
-#: plugins/rdp/rdp_plugin.c:2981 plugins/spice/spice_plugin.c:727
+#: plugins/rdp/rdp_plugin.c:3211 plugins/spice/spice_plugin.c:721
 #: plugins/vnc/vnc_plugin.c:2156
 #, fuzzy
 msgid "Send Ctrl+Alt+Delete"
 msgstr "सीटीआरएल+ऑल्ट+डिलीट पाठवा"
 
-#: plugins/rdp/rdp_plugin.c:2994
+#: plugins/rdp/rdp_plugin.c:3224
 #, fuzzy
 msgid "RDP - Remote Desktop Protocol"
 msgstr "आरडीपी - रिमोट डेस्कटॉप प्रोटोकॉल"
 
-#: plugins/rdp/rdp_plugin.c:3019
+#: plugins/rdp/rdp_plugin.c:3249
 #, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "आरडीपी - आरडीपी फाइल हँडलर"
 
-#: plugins/rdp/rdp_plugin.c:3034
+#: plugins/rdp/rdp_plugin.c:3264
 #, fuzzy
 msgid "RDP - Preferences"
 msgstr "आरडीपी - प्राधान्ये"
 
-#: plugins/rdp/rdp_plugin.c:3087
+#: plugins/rdp/rdp_plugin.c:3317
 #, fuzzy
 msgid "Export connection in Windows .rdp file format"
 msgstr "विंडोज .आरडीपी फाइल फॉरमॅटमध्ये निर्यात कनेक्शन"
@@ -3225,7 +3299,7 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "[एक्स २७ एक्स] चे पुनर्जोडणी प्रयत्न [एक्स २१ एक्स]…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
-#: plugins/rdp/rdp_event.c:1190
+#: plugins/rdp/rdp_event.c:1191
 #, fuzzy, c-format
 msgid "Connected to %s via RDP"
 msgstr "SSH द्वारे \"%s\" शी कनेक्ट करत आहे…"
@@ -3255,98 +3329,98 @@ msgstr "हस्तांतरण पूर्ण झाले"
 msgid "The %s file has been transferred"
 msgstr "[एक्स 4 एक्स] फाइल हस्तांतरित केली गेली आहे"
 
-#: plugins/spice/spice_plugin.c:347
+#: plugins/spice/spice_plugin.c:341
 #, fuzzy
 msgid "Enter SPICE password"
 msgstr "स्पाइस पासवर्ड प्रविष्ट करा"
 
-#: plugins/spice/spice_plugin.c:394
+#: plugins/spice/spice_plugin.c:388
 #, fuzzy, c-format
 msgid "Disconnected from the SPICE %s."
 msgstr "स्पाइस सर्व्हरपासून तुटलेला [[एक्स ३६ एक्स]\"."
 
-#: plugins/spice/spice_plugin.c:396
+#: plugins/spice/spice_plugin.c:390
 #, fuzzy, c-format
 msgid "Disconnected from %s via SPICE"
 msgstr "स्पाइस सर्व्हरपासून तुटलेला [[एक्स ३६ एक्स]\"."
 
-#: plugins/spice/spice_plugin.c:399
+#: plugins/spice/spice_plugin.c:393
 #, fuzzy, c-format
 msgid "Connected to %s via SPICE"
 msgstr "SSH द्वारे \"%s\" शी कनेक्ट करत आहे…"
 
-#: plugins/spice/spice_plugin.c:411
+#: plugins/spice/spice_plugin.c:405
 #, fuzzy
 msgid "TLS connection error."
 msgstr "टीएलएस कनेक्शन त्रुटी."
 
-#: plugins/spice/spice_plugin.c:417
+#: plugins/spice/spice_plugin.c:411
 #, fuzzy
 msgid "Connection to the SPICE server dropped."
 msgstr "स्पाइस सर्व्हरचे कनेक्शन कमी झाले."
 
-#: plugins/spice/spice_plugin.c:648
+#: plugins/spice/spice_plugin.c:642
 #, fuzzy
 msgid "Auto GLZ"
 msgstr "ऑटो जीएलझेड"
 
-#: plugins/spice/spice_plugin.c:649
+#: plugins/spice/spice_plugin.c:643
 #, fuzzy
 msgid "Auto LZ"
 msgstr "ऑटो एलझेड"
 
-#: plugins/spice/spice_plugin.c:662
+#: plugins/spice/spice_plugin.c:656
 #, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr "व्हिडिओ योग्य प्रकारे प्रदर्शित न केल्यास व्हिडिओ ओव्हरले अक्षम करा.\n"
 
-#: plugins/spice/spice_plugin.c:687
+#: plugins/spice/spice_plugin.c:681
 #, fuzzy
 msgid "Use TLS encryption"
 msgstr "टीएलएस एन्क्रिप्शन वापरा"
 
-#: plugins/spice/spice_plugin.c:688
+#: plugins/spice/spice_plugin.c:682
 #, fuzzy
 msgid "Server CA certificate"
 msgstr "सर्व्हर सीए प्रमाणपत्र"
 
-#: plugins/spice/spice_plugin.c:706
+#: plugins/spice/spice_plugin.c:700
 #, fuzzy
 msgid "Preferred video codec"
 msgstr "प्राधान्य ित व्हिडिओ कोडक"
 
-#: plugins/spice/spice_plugin.c:707
+#: plugins/spice/spice_plugin.c:701
 #, fuzzy
 msgid "Turn off GStreamer overlay"
 msgstr "जीस्ट्रीमर ओव्हरले बंद करा"
 
-#: plugins/spice/spice_plugin.c:710
+#: plugins/spice/spice_plugin.c:704
 #, fuzzy
 msgid "Preferred image compression"
 msgstr "प्राधान्य प्रतिमा संपीडन"
 
-#: plugins/spice/spice_plugin.c:713 plugins/spice/spice_plugin.c:726
+#: plugins/spice/spice_plugin.c:707 plugins/spice/spice_plugin.c:720
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 #, fuzzy
 msgid "No clipboard sync"
 msgstr "क्लिपबोर्ड सिंक नाही"
 
-#: plugins/spice/spice_plugin.c:715 plugins/gvnc/gvnc_plugin.c:868
+#: plugins/spice/spice_plugin.c:709 plugins/gvnc/gvnc_plugin.c:868
 #, fuzzy
 msgid "Enable audio channel"
 msgstr "ऑडिओ चॅनेल सक्षम करा"
 
-#: plugins/spice/spice_plugin.c:716
+#: plugins/spice/spice_plugin.c:710
 #, fuzzy
 msgid "Share smart card"
 msgstr "स्मार्ट कार्ड सामायिक करा"
 
-#: plugins/spice/spice_plugin.c:728 plugins/spice/spice_plugin_usb.c:51
+#: plugins/spice/spice_plugin.c:722 plugins/spice/spice_plugin_usb.c:51
 #, fuzzy
 msgid "Select USB devices for redirection"
 msgstr "पुनर्निर्देशनासाठी यूएसबी डिव्हाइस निवडा"
 
-#: plugins/spice/spice_plugin.c:739
+#: plugins/spice/spice_plugin.c:733
 #, fuzzy
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "स्पाइस - स्वतंत्र संगणकीय पर्यावरणासाठी साधा प्रोटोकॉल"
@@ -4611,19 +4685,20 @@ msgstr "_regular अभिव्यक्तीम्हणून जुळव�
 msgid "_Wrap around"
 msgstr "आजूबाजूला _Wrap"
 
-#: data/ui/remmina_about.glade:31 data/ui/remmina_main.glade:410
+#: data/ui/remmina_about.glade:32 data/ui/remmina_main.glade:419
 #, fuzzy
 msgid "About"
 msgstr "बद्दल"
 
-#: data/ui/remmina_about.glade:35
+#: data/ui/remmina_about.glade:36
 #, fuzzy
 #| msgid ""
 #| "Copyright © 2014–2022 Antenore Gatta, Giovanni Panozzo.\n"
 #| "Copyright © 2009–2014 Vic Lee\n"
 #| "More details in COPYING"
 msgid ""
-"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
+"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
@@ -4631,7 +4706,7 @@ msgstr ""
 "कॉपीराइट © 2009–2014 विक ली\n"
 "कॉपीमध्ये अधिक तपशील"
 
-#: data/ui/remmina_about.glade:39
+#: data/ui/remmina_about.glade:41
 #, fuzzy
 msgid "https://www.remmina.org/"
 msgstr "https://www.remmina.org/"
@@ -4743,19 +4818,10 @@ msgstr "_OK"
 msgid "Verify password"
 msgstr "वापरकर्ता पासवर्ड"
 
-#: data/ui/remmina_news.glade:75
+#: data/ui/remmina_info.glade:90
 #, fuzzy
 msgid ""
-"<big><b>The news are turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
+"<big><b>The news failed to load</b></big>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
@@ -4777,65 +4843,6 @@ msgstr ""
 "[एक्स २३२ एक्स] [एक्स ३१५ एक्स] रिलीज नोट्स वाचण्यासाठी वेबसाइटला भेट द्या[एक्स ३६१ "
 "एक्स][एक्स ३६५ एक्स].\n"
 "[एक्स ३७१ एक्स]"
-
-#: data/ui/remmina_news.glade:130
-#, fuzzy
-msgid "Use as default remote desktop client"
-msgstr "डिफॉल्ट रिमोट डेस्कटॉप क्लायंट म्हणून वापरा"
-
-#: data/ui/remmina_news.glade:139
-#, fuzzy
-msgid "Apply"
-msgstr "अर्ज करणे"
-
-#: data/ui/remmina_news.glade:143
-#, fuzzy
-msgid "Allow Remmina to automatically open .rdp and .remmina files."
-msgstr "रेमिनाला आपोआप .आरडीपी आणि .रेमिना फाइल्स उघडण्याची परवानगी द्या."
-
-#. The star (*) is a reference to privacy consent
-#: data/ui/remmina_news.glade:157
-#, fuzzy
-msgid ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
-msgstr "[एक्स 16 एक्स] remmina.org[एक्स 83 एक्स] (*) कडून बातम्या आणा"
-
-#: data/ui/remmina_news.glade:169
-msgid "Receives updated news from remmina.org"
-msgstr ""
-
-#: data/ui/remmina_news.glade:182
-#, fuzzy
-msgid "* By turning on news you consent to fetching data from remmina.org"
-msgstr "* आकडेवारी आणि/किंवा बातम्या सक्षम करून आपण डेटा पाठविण्यास आणि remmina.org"
-
-#: data/ui/remmina_news.glade:205
-#, fuzzy
-msgid "<big>Take part</big>"
-msgstr "[एक्स०एक्स] भाग घ्या[एक्स १४ एक्स]"
-
-#. Pay attention to the quoting characters as they may break the pango layout. If in doubt and cannot test, copy and paste the symbols from the English string.
-#: data/ui/remmina_news.glade:231
-#, fuzzy
-msgid ""
-"<span>\n"
-"<b>You have our gratitude in choosing copylefted libre software, <a "
-"href=\"https://remmina.org/donations/\" title=\"Where’s the money, Lebowski? "
-"“blblblblblb”\">donations also make us happy</a>, and further help improve "
-"Remmina.</b>\n"
-"</span>\n"
-msgstr ""
-"[एक्स०एक्स]\n"
-"[एक्स ७ एक्स] कॉपीलेफ्ट केलेले लिब्रे सॉफ्टवेअर निवडण्याबद्दल तुमचे आभार आहेत, [एक्स ७२ "
-"एक्स]देणग्या देखील आम्हाला आनंदी करतात [एक्स १९२ एक्स], आणि रेमिना सुधारण्यास मदत "
-"करतात. [एक्स २३१ एक्स]\n"
-"[एक्स २३६ एक्स]\n"
-
-#: data/ui/remmina_news.glade:251
-#, fuzzy
-msgid "<big>Contribute</big>"
-msgstr "[एक्स०एक्स] योगदान[एक्स १५ एक्स]"
 
 #: data/ui/remmina_key_chooser.glade:23
 #, fuzzy
@@ -4882,7 +4889,7 @@ msgid "Server name or IP address"
 msgstr "सर्व्हर नाव किंवा आयपी पत्ता"
 
 #: data/ui/remmina_main.glade:103 data/ui/remmina_main.glade:105
-#: data/ui/remmina_preferences.glade:426
+#: data/ui/remmina_preferences.glade:447
 #, fuzzy
 msgid "Clear"
 msgstr "साफ करा"
@@ -4917,153 +4924,202 @@ msgstr "डिबगिंग"
 msgid "Export"
 msgstr "निर्यात करा"
 
-#: data/ui/remmina_main.glade:347
+#: data/ui/remmina_main.glade:339
+msgid "Report Bug"
+msgstr ""
+
+#: data/ui/remmina_main.glade:356
 #, fuzzy
 msgid "Make Remmina your default remote desktop client"
 msgstr "रेमिना आपला डिफॉल्ट रिमोट डेस्कटॉप क्लायंट बनवा"
 
-#: data/ui/remmina_main.glade:363
+#: data/ui/remmina_main.glade:372
 #, fuzzy
 msgid "Homepage"
 msgstr "मुखपृष्ठ"
 
-#: data/ui/remmina_main.glade:373
+#: data/ui/remmina_main.glade:382
 #, fuzzy
 msgid "Donations"
 msgstr "देणग्या"
 
-#: data/ui/remmina_main.glade:383
+#: data/ui/remmina_main.glade:392
 #, fuzzy
 msgid "Wiki"
 msgstr "विकि"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:393
+#: data/ui/remmina_main.glade:402
 #, fuzzy
 msgid "Community"
 msgstr "समुदाय"
 
-#: data/ui/remmina_main.glade:537
+#: data/ui/remmina_main.glade:546
 #, fuzzy
 msgid "Plugin"
 msgstr "प्लगइन"
 
-#: data/ui/remmina_main.glade:551
+#: data/ui/remmina_main.glade:560
 #, fuzzy
 msgid "Last used"
 msgstr "शेवटचा वापर"
 
-#: data/ui/remmina_main.glade:600
+#: data/ui/remmina_main.glade:609
 #, fuzzy
 msgid "New connection profile"
 msgstr "नवीन कनेक्शन प्रोफाइल"
 
-#: data/ui/remmina_main.glade:612
+#: data/ui/remmina_main.glade:621
 #, fuzzy
 msgid "Show search bar"
 msgstr "सर्च बार दाखवा"
 
-#: data/ui/remmina_main.glade:632
+#: data/ui/remmina_main.glade:641
 #, fuzzy
 msgid "Remmina main menu"
 msgstr "रेमिना मुख्य मेनू"
 
-#: data/ui/remmina_main.glade:639
+#: data/ui/remmina_main.glade:648
 #, fuzzy
 msgid "Actions"
 msgstr "कृती"
 
-#: data/ui/remmina_main.glade:654
+#: data/ui/remmina_main.glade:663
 #, fuzzy
 msgid "Toggle view"
 msgstr "टोगल दृश्य"
+
+#: data/ui/remmina_bug_report.glade:43
+msgid "Include System Info"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:59
+msgid "Include Debug Data"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:75
+msgid "Submit"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:114
+#, fuzzy
+msgid "Name/Username:"
+msgstr "यूजरनेम"
+
+#: data/ui/remmina_bug_report.glade:141
+msgid "E-mail:"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:154
+msgid "Email"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
+msgid "Bug Title"
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:200
+#, fuzzy
+msgid "Bug Description"
+msgstr "विवरण"
+
+#: data/ui/remmina_bug_report.glade:245
+msgid ""
+"Clicking \"Submit\" will send this to Remmina's GitLab page and "
+"automatically create a new issue on the issue tracker."
+msgstr ""
+
+#: data/ui/remmina_bug_report.glade:296
+#, fuzzy
+msgid "Remmina Report Bug"
+msgstr "वापरकर्ता पासवर्ड"
 
 #: data/ui/remmina_spinner.glade:54
 #, fuzzy
 msgid "Please wait…"
 msgstr "कृपया थांबा।।।"
 
-#: data/ui/remmina_preferences.glade:42
+#: data/ui/remmina_preferences.glade:63
 #, fuzzy
 msgid "Double-click action"
 msgstr "डबल-क्लिक कृती"
 
-#: data/ui/remmina_preferences.glade:58
+#: data/ui/remmina_preferences.glade:79
 #, fuzzy
 msgid "Open connection"
 msgstr "उघडकनेक्शन"
 
-#: data/ui/remmina_preferences.glade:59
+#: data/ui/remmina_preferences.glade:80
 #, fuzzy
 msgid "Edit settings"
 msgstr "संपादन सेटिंग्ज"
 
-#: data/ui/remmina_preferences.glade:75
+#: data/ui/remmina_preferences.glade:96
 #, fuzzy
 msgid "Scaling quality"
 msgstr "स्केलिंग गुणवत्ता"
 
-#: data/ui/remmina_preferences.glade:91
+#: data/ui/remmina_preferences.glade:112
 #, fuzzy
 msgid "Nearest"
 msgstr "सर्वात जवळचे"
 
-#: data/ui/remmina_preferences.glade:92
+#: data/ui/remmina_preferences.glade:113
 #, fuzzy
 msgid "Tiles"
 msgstr "टाइल्स"
 
-#: data/ui/remmina_preferences.glade:93
+#: data/ui/remmina_preferences.glade:114
 #, fuzzy
 msgid "Bilinear"
 msgstr "द्विरेषीय"
 
-#: data/ui/remmina_preferences.glade:94
+#: data/ui/remmina_preferences.glade:115
 #, fuzzy
 msgid "Hyper"
 msgstr "हायपर"
 
-#: data/ui/remmina_preferences.glade:110
+#: data/ui/remmina_preferences.glade:131
 #, fuzzy
 msgid "Step size for auto-scroll"
 msgstr "ऑटो-स्क्रोलसाठी पायरी आकार"
 
-#: data/ui/remmina_preferences.glade:139
+#: data/ui/remmina_preferences.glade:160
 #, fuzzy
 msgid "Maximal amount of recent items"
 msgstr "अलीकडील वस्तूंचे मॅक्झिमल प्रमाण"
 
-#: data/ui/remmina_preferences.glade:154
+#: data/ui/remmina_preferences.glade:175
 #, fuzzy
 msgid "Screen resolutions"
 msgstr "स्क्रीन संकल्प"
 
-#: data/ui/remmina_preferences.glade:200
+#: data/ui/remmina_preferences.glade:221
 #, fuzzy
 msgid "Folder for screenshots"
 msgstr "स्क्रीनशॉटसाठी फोल्डर"
 
-#: data/ui/remmina_preferences.glade:212
+#: data/ui/remmina_preferences.glade:233
 #, fuzzy
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "रेमिनामधील स्क्रीनशॉट वाचवण्यासाठी फोल्डर निवडा."
 
-#: data/ui/remmina_preferences.glade:216 data/ui/remmina_preferences.glade:302
+#: data/ui/remmina_preferences.glade:237 data/ui/remmina_preferences.glade:323
 #, fuzzy
 msgid "Select a folder"
 msgstr "एक फोल्डर निवडा"
 
-#: data/ui/remmina_preferences.glade:227
+#: data/ui/remmina_preferences.glade:248
 #, fuzzy
 msgid "Set up"
 msgstr "सेट अप करा"
 
-#: data/ui/remmina_preferences.glade:249
+#: data/ui/remmina_preferences.glade:270
 #, fuzzy
 msgid "Screenshot filenames"
 msgstr "स्क्रीनशॉट फाइलनेम"
 
-#: data/ui/remmina_preferences.glade:261
+#: data/ui/remmina_preferences.glade:282
 #, fuzzy
 msgid ""
 "%p Profile name\n"
@@ -5074,34 +5130,34 @@ msgstr ""
 "% एच सर्व्हर नाव/आयपी\n"
 "%वाय वर्ष, % मी महिना, % डी दिवस, %एच अवर, %एम मिनिट, %एस सेकंद (यूटीसी वेळ)\n"
 
-#: data/ui/remmina_preferences.glade:280
+#: data/ui/remmina_preferences.glade:301
 #, fuzzy
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr "फोल्डर कनेक्शन प्रोफाइल मध्ये सेव्ह केले जातात, ते XDG_USER_DATA"
 
 #. The folder where profiles are saved
-#: data/ui/remmina_preferences.glade:285
+#: data/ui/remmina_preferences.glade:306
 #, fuzzy
 msgid "Remmina data folder"
 msgstr "रेमिना डेटा फोल्डर"
 
-#: data/ui/remmina_preferences.glade:297
+#: data/ui/remmina_preferences.glade:318
 #, fuzzy
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr "रेमिनाइनपासून कनेक्शन प्रोफाइल वाचवण्यासाठी फोल्डर निवडा."
 
-#: data/ui/remmina_preferences.glade:315
+#: data/ui/remmina_preferences.glade:336
 #, fuzzy
 msgid "Remember last view for each connection"
 msgstr "प्रत्येक कनेक्शनसाठी शेवटचे दृश्य लक्षात ठेवा"
 
-#: data/ui/remmina_preferences.glade:319
+#: data/ui/remmina_preferences.glade:340
 #, fuzzy
 msgid "Remember last view mode"
 msgstr "शेवटचा दृश्य मोड लक्षात ठेवा"
 
-#: data/ui/remmina_preferences.glade:345
+#: data/ui/remmina_preferences.glade:366
 #, fuzzy
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
@@ -5109,13 +5165,13 @@ msgid ""
 msgstr ""
 "आपल्या रेमिना कनेक्शन प्रोफाइलसाठी एक सानुकूल फाइलनेम सेट करा, फॉरमॅटिंग स्ट्रिंग वापरून."
 
-#: data/ui/remmina_preferences.glade:349
+#: data/ui/remmina_preferences.glade:370
 #, fuzzy
 msgid "Template for profile filenames"
 msgstr "प्रोफाइल फाइलनेमसाठी साचा"
 
 #. Placeholders used to name a Remmina connection profile
-#: data/ui/remmina_preferences.glade:361
+#: data/ui/remmina_preferences.glade:382
 #, fuzzy
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
@@ -5132,108 +5188,124 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/ui/remmina_preferences.glade:383
+#: data/ui/remmina_preferences.glade:404
 #, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr "फक्त तयार केलेले स्क्रीनशॉट वाचवा, क्लिपबोर्डवर कॉपी करू नका."
 
-#: data/ui/remmina_preferences.glade:387
+#: data/ui/remmina_preferences.glade:408
 #, fuzzy
 msgid "Prevent screenshots from entering clipboard"
 msgstr "स्क्रीनशॉटक्लिपबोर्डमध्ये प्रवेश करण्यापासून रोखा"
 
-#: data/ui/remmina_preferences.glade:448
+#: data/ui/remmina_preferences.glade:469
 msgid "Confirm before closing multiple tabs"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:500
+#: data/ui/remmina_preferences.glade:501
+#, fuzzy
+msgid "Disable anonymous statistics"
+msgstr "निनावी आकडेवारी पाठवा"
+
+#: data/ui/remmina_preferences.glade:533
+#, fuzzy
+msgid ""
+"Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
+"site\">remmina.org</a>"
+msgstr "[एक्स 16 एक्स] remmina.org[एक्स 83 एक्स] (*) कडून बातम्या आणा"
+
+#: data/ui/remmina_preferences.glade:566
+msgid "Disable tip of the day"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:618
 #, fuzzy
 msgid "General"
 msgstr "सामान्य सेटिंग्ज"
 
-#: data/ui/remmina_preferences.glade:525
+#: data/ui/remmina_preferences.glade:643
 #, fuzzy
 msgid "Always show tabs"
 msgstr "नेहमी टॅब दाखवा"
 
-#: data/ui/remmina_preferences.glade:541
+#: data/ui/remmina_preferences.glade:659
 #, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "टॅबबेड इंटरफेसमध्ये दर्शविलेला टूलबार लपवा"
 
-#: data/ui/remmina_preferences.glade:562
+#: data/ui/remmina_preferences.glade:680
 #, fuzzy
 msgid "Default view"
 msgstr "डिफॉल्ट दृश्य"
 
-#: data/ui/remmina_preferences.glade:576
+#: data/ui/remmina_preferences.glade:694
 #, fuzzy
 msgid "Automatic"
 msgstr "ऑटोमॅटिक"
 
-#: data/ui/remmina_preferences.glade:577
+#: data/ui/remmina_preferences.glade:695
 #, fuzzy
 msgid "Scrolled window"
 msgstr "गुंडाळलेली खिडकी"
 
-#: data/ui/remmina_preferences.glade:579
+#: data/ui/remmina_preferences.glade:697
 #, fuzzy
 msgid "Viewport fullscreen"
 msgstr "व्ह्यूपोर्ट फुलस्क्रीन"
 
 #. How tabs are grouped in the Remmina connection window
-#: data/ui/remmina_preferences.glade:595
+#: data/ui/remmina_preferences.glade:713
 #, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "टॅब ग्रुपिंग"
 
-#: data/ui/remmina_preferences.glade:607
+#: data/ui/remmina_preferences.glade:725
 #, fuzzy
 msgid "By group"
 msgstr "गटानुसार"
 
-#: data/ui/remmina_preferences.glade:608
+#: data/ui/remmina_preferences.glade:726
 #, fuzzy
 msgid "By protocol"
 msgstr "प्रोटोकॉलद्वारे"
 
-#: data/ui/remmina_preferences.glade:609
+#: data/ui/remmina_preferences.glade:727
 #, fuzzy
 msgid "Per connection"
 msgstr "प्रति कनेक्शन"
 
-#: data/ui/remmina_preferences.glade:621
+#: data/ui/remmina_preferences.glade:739
 #, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "कनेक्शन विंडोसारख्याच स्क्रीनवर फुलस्क्रीन"
 
-#: data/ui/remmina_preferences.glade:644
+#: data/ui/remmina_preferences.glade:762
 #, fuzzy
 msgid "Peeking"
 msgstr "डोकावणे"
 
-#: data/ui/remmina_preferences.glade:645
+#: data/ui/remmina_preferences.glade:763
 #, fuzzy
 msgid "Hidden"
 msgstr "अदृश्य"
 
-#: data/ui/remmina_preferences.glade:662
+#: data/ui/remmina_preferences.glade:780
 #, fuzzy
 msgid "Fullscreen toolbar visibility"
 msgstr "फुलस्क्रीन टूलबार दृश्यमानता"
 
-#: data/ui/remmina_preferences.glade:672
+#: data/ui/remmina_preferences.glade:790
 #, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "मुख्य खिडकीत दाखवलेला शोध बार लपवा"
 
-#: data/ui/remmina_preferences.glade:688
+#: data/ui/remmina_preferences.glade:806
 #, fuzzy
 msgid "Prefer dark theme"
 msgstr "गडद थीम ला प्राधान्य द्या"
 
-#: data/ui/remmina_preferences.glade:692
+#: data/ui/remmina_preferences.glade:810
 #, fuzzy
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
@@ -5242,21 +5314,21 @@ msgstr ""
 "जर जीटीके थीममध्ये डार्क व्हेरिएंट चा समावेश असेल, तर तो कॉन्फिगर केलेल्या थीमऐवजी वापरला "
 "जाईल."
 
-#: data/ui/remmina_preferences.glade:705
+#: data/ui/remmina_preferences.glade:823
 #, fuzzy
 msgid "Always show notes"
 msgstr "नेहमी टॅब दाखवा"
 
-#: data/ui/remmina_preferences.glade:709
+#: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:729
+#: data/ui/remmina_preferences.glade:847
 #, fuzzy
 msgid "“Grab all keyboard events” status colour"
 msgstr "\"सर्व कीबोर्ड इव्हेंट्स पकडा\" स्टेटस कलर"
 
-#: data/ui/remmina_preferences.glade:740
+#: data/ui/remmina_preferences.glade:858
 #, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
@@ -5266,152 +5338,152 @@ msgstr ""
 "हेक्साडेसिमल- किंवा रंगीत नावे (लाल, #ff0000).\n"
 "हे रेमिना कनेक्शन टूलबारमधील कनेक्शन नावांचा पार्श्वभूमी रंग बदलते (पूर्ण स्क्रीनमध्ये असताना)."
 
-#: data/ui/remmina_preferences.glade:757
+#: data/ui/remmina_preferences.glade:875
 #, fuzzy
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr "सक्षम/अक्षम \"सर्व कीबोर्ड इव्हेंट्स पकडा\" स्थिती रंग"
 
-#: data/ui/remmina_preferences.glade:820
+#: data/ui/remmina_preferences.glade:938
 #, fuzzy
 msgid "Appearance"
 msgstr "रूप"
 
-#: data/ui/remmina_preferences.glade:846
+#: data/ui/remmina_preferences.glade:964
 #, fuzzy
 msgid "Show new connection on top of the menu"
 msgstr "मेनूच्या वर नवीन कनेक्शन दर्शवा"
 
-#: data/ui/remmina_preferences.glade:865
+#: data/ui/remmina_preferences.glade:983
 #, fuzzy
 msgid "Hide total count shown in the group menu"
 msgstr "ग्रुप मेन्यूमध्ये दर्शविलेली एकूण गणना लपवा"
 
-#: data/ui/remmina_preferences.glade:883
+#: data/ui/remmina_preferences.glade:1001
 #, fuzzy
 msgid "No tray icon"
 msgstr "ट्रे आयकॉन नाही"
 
-#: data/ui/remmina_preferences.glade:902
+#: data/ui/remmina_preferences.glade:1020
 #, fuzzy
 msgid "Start in tray upon user login"
 msgstr "वापरकर्त्याच्या लॉगइनवर ट्रेमध्ये सुरुवात करा"
 
-#: data/ui/remmina_preferences.glade:933
+#: data/ui/remmina_preferences.glade:1051
 #, fuzzy
 msgid "Applet"
 msgstr "अॅपलट"
 
-#: data/ui/remmina_preferences.glade:965
+#: data/ui/remmina_preferences.glade:1083
 #, fuzzy
 msgid "Host key"
 msgstr "यजमान की"
 
-#: data/ui/remmina_preferences.glade:997
+#: data/ui/remmina_preferences.glade:1115
 #, fuzzy
 msgid "Show/hide fullscreen"
 msgstr "पूर्ण स्क्रीन दाखवा/लपवा"
 
-#: data/ui/remmina_preferences.glade:1028
+#: data/ui/remmina_preferences.glade:1146
 #, fuzzy
 msgid "Auto-fit window"
 msgstr "ऑटो-फिट विंडो"
 
-#: data/ui/remmina_preferences.glade:1105
+#: data/ui/remmina_preferences.glade:1223
 #, fuzzy
 msgid "Apply/remove scaling"
 msgstr "स्केलिंग लावा/काढा"
 
-#: data/ui/remmina_preferences.glade:1136
+#: data/ui/remmina_preferences.glade:1254
 #, fuzzy
 msgid "Grab keyboard"
 msgstr "कीबोर्ड पकडा"
 
-#: data/ui/remmina_preferences.glade:1229
+#: data/ui/remmina_preferences.glade:1347
 #, fuzzy
 msgid "Show/hide toolbar"
 msgstr "टूलबार दाखवा/लपवा"
 
-#: data/ui/remmina_preferences.glade:1292
-#: data/ui/remmina_preferences.glade:1302
+#: data/ui/remmina_preferences.glade:1410
+#: data/ui/remmina_preferences.glade:1420
 #, fuzzy
 msgid "View-only mode"
 msgstr "फक्त दृश्य मोड"
 
-#: data/ui/remmina_preferences.glade:1359
+#: data/ui/remmina_preferences.glade:1477
 #, fuzzy
 msgid "Send clipboard as keystrokes"
 msgstr "क्लिपबोर्ड सामग्री कीस्ट्रोक म्हणून पाठवा"
 
-#: data/ui/remmina_preferences.glade:1369
+#: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1399
+#: data/ui/remmina_preferences.glade:1517
 #, fuzzy
 msgid "Keyboard"
 msgstr "कळफलक"
 
-#: data/ui/remmina_preferences.glade:1430
+#: data/ui/remmina_preferences.glade:1548
 #, fuzzy
 msgid "Local SSH port"
 msgstr "स्थानिक एसएसएच बंदर"
 
-#: data/ui/remmina_preferences.glade:1454
+#: data/ui/remmina_preferences.glade:1572
 #, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "पारसे ~/श/संफिग"
 
-#: data/ui/remmina_preferences.glade:1478
+#: data/ui/remmina_preferences.glade:1596
 #, fuzzy
 msgid "No logging at all"
 msgstr "लॉगिंग मुळीच नाही"
 
-#: data/ui/remmina_preferences.glade:1479
+#: data/ui/remmina_preferences.glade:1597
 #, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "दुर्मिळ परिस्थिती किंवा इशारे"
 
-#: data/ui/remmina_preferences.glade:1480
+#: data/ui/remmina_preferences.glade:1598
 #, fuzzy
 msgid "API-accessible entrypoints"
 msgstr "एपीआय-सुलभ प्रवेशबिंदू"
 
-#: data/ui/remmina_preferences.glade:1481
+#: data/ui/remmina_preferences.glade:1599
 #, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "खालच्या स्तरावरील प्रोटोकॉल माहिती, पॅकेट पातळी"
 
-#: data/ui/remmina_preferences.glade:1482
+#: data/ui/remmina_preferences.glade:1600
 #, fuzzy
 msgid "Function entering and leaving"
 msgstr "प्रवेश करणे आणि जाणे कार्य करणे"
 
-#: data/ui/remmina_preferences.glade:1499
+#: data/ui/remmina_preferences.glade:1617
 #, fuzzy
 msgid "SSH log level"
 msgstr "एसएसएच लॉग लेव्हल"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1570
+#: data/ui/remmina_preferences.glade:1688
 #, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr "टीसीपी कीपअलाइव्ह प्रोब पाठवण्यापूर्वी कनेक्शन निष्क्रियतेचे सेकंद."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1586
+#: data/ui/remmina_preferences.glade:1704
 #, fuzzy
 msgid "Seconds between each keepalive probe."
 msgstr "प्रत्येक जिवंत चौकशीदरम्यान सेकंद."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1602
+#: data/ui/remmina_preferences.glade:1720
 #, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr "टीसीपी कनेक्शन खाली येण्यापूर्वी पाठविलेल्या कीपअलाइव्ह प्रोबची संख्या."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1618
+#: data/ui/remmina_preferences.glade:1736
 #, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
@@ -5420,80 +5492,80 @@ msgstr ""
 "संबंधित टीसीपी कनेक्शन जबरदस्तीने बंद करण्यापूर्वी डेटा मान्य करण्याचा प्रयत्न करण्यासाठी "
 "मिलीसेकंदांची रक्कम."
 
-#: data/ui/remmina_preferences.glade:1644
+#: data/ui/remmina_preferences.glade:1762
 #, fuzzy
 msgid "SSH options"
 msgstr "एसएसएच पर्याय"
 
-#: data/ui/remmina_preferences.glade:1661
+#: data/ui/remmina_preferences.glade:1779
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1673
+#: data/ui/remmina_preferences.glade:1791
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1678
+#: data/ui/remmina_preferences.glade:1796
 #, fuzzy
 msgid "Remmina password"
 msgstr "वापरकर्ता पासवर्ड"
 
-#: data/ui/remmina_preferences.glade:1689
+#: data/ui/remmina_preferences.glade:1807
 #, fuzzy
 msgid "Use secret key authentication for some widgets"
 msgstr "काही विजेटसाठी गुप्त की प्रमाणीकरण वापरा"
 
-#: data/ui/remmina_preferences.glade:1709
+#: data/ui/remmina_preferences.glade:1827
 msgid "Valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1720
+#: data/ui/remmina_preferences.glade:1838
 msgid "Number of seconds to keep password valid for"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1725
+#: data/ui/remmina_preferences.glade:1843
 msgid "timeout in seconds (default 300)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1737
+#: data/ui/remmina_preferences.glade:1855
 #, fuzzy
 msgid "Enter your Remmina password to connect"
 msgstr "केवॉलेटमध्ये सुरक्षित पासवर्ड स्टोरेज"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1741
+#: data/ui/remmina_preferences.glade:1859
 #, fuzzy
 msgid "Require to connect"
 msgstr "केवॉलेटमध्ये सुरक्षित पासवर्ड स्टोरेज"
 
-#: data/ui/remmina_preferences.glade:1752
+#: data/ui/remmina_preferences.glade:1870
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
 
 #. Creation, editing, copying, and deletions require the primary password
-#: data/ui/remmina_preferences.glade:1756
+#: data/ui/remmina_preferences.glade:1874
 msgid "Require to modify"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1767
+#: data/ui/remmina_preferences.glade:1885
 #, fuzzy
 msgid "Enter your Remmina password to view passwords"
 msgstr "केवॉलेटमध्ये सुरक्षित पासवर्ड स्टोरेज"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
-#: data/ui/remmina_preferences.glade:1771
+#: data/ui/remmina_preferences.glade:1889
 #, fuzzy
 msgid "Require to view passwords"
 msgstr "नवीन पासवर्ड सेट करा"
 
-#: data/ui/remmina_preferences.glade:1827
+#: data/ui/remmina_preferences.glade:1945
 #, fuzzy
 msgid "Encryption"
 msgstr "विवरण"
 
-#: data/ui/remmina_preferences.glade:1838
+#: data/ui/remmina_preferences.glade:1956
 msgid ""
 "These are the encryption methods used by Remmina to store passwords.\n"
 "\n"
@@ -5504,74 +5576,74 @@ msgid ""
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1847
+#: data/ui/remmina_preferences.glade:1965
 msgid "Intermediate (+64 MiB RAM)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1848
+#: data/ui/remmina_preferences.glade:1966
 msgid "Strong (+256 MiB, ~2009 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1849
+#: data/ui/remmina_preferences.glade:1967
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:1865
+#: data/ui/remmina_preferences.glade:1983
 #, fuzzy
 msgid "Auditing log"
 msgstr "संपादन सेटिंग्ज"
 
-#: data/ui/remmina_preferences.glade:1890
+#: data/ui/remmina_preferences.glade:2008
 #, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "सर्व बोटांचे ठसे आणि प्रमाणपत्रे आपोआप स्वीकारा"
 
-#: data/ui/remmina_preferences.glade:1895
+#: data/ui/remmina_preferences.glade:2013
 #, fuzzy
 msgid "Trust all certificates"
 msgstr "सर्व बोटांचे ठसे आणि प्रमाणपत्रांवर विश्वास ठेवा"
 
-#: data/ui/remmina_preferences.glade:1930
+#: data/ui/remmina_preferences.glade:2048
 #, fuzzy
 msgid "Security"
 msgstr "सुरक्षा"
 
-#: data/ui/remmina_preferences.glade:1961
+#: data/ui/remmina_preferences.glade:2079
 #, fuzzy
 msgid "Terminal font"
 msgstr "टर्मिनल फॉन्ट"
 
-#: data/ui/remmina_preferences.glade:1974
+#: data/ui/remmina_preferences.glade:2092
 #, fuzzy
 msgid "Scrollback lines"
 msgstr "स्क्रोलबॅक ओळी"
 
-#: data/ui/remmina_preferences.glade:2022
+#: data/ui/remmina_preferences.glade:2140
 #, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "कॉपी आणि पेस्टिंगसाठी शॉर्टकट"
 
-#: data/ui/remmina_preferences.glade:2035
+#: data/ui/remmina_preferences.glade:2153
 #, fuzzy
 msgid "Select all shortcuts"
 msgstr "सर्व शॉर्टकट निवडा"
 
-#: data/ui/remmina_preferences.glade:2048
-#: data/ui/remmina_preferences.glade:2065
-#: data/ui/remmina_preferences.glade:2518
-#: data/ui/remmina_preferences.glade:2548
-#: data/ui/remmina_preferences.glade:2682
-#: data/ui/remmina_preferences.glade:2699
+#: data/ui/remmina_preferences.glade:2166
+#: data/ui/remmina_preferences.glade:2183
+#: data/ui/remmina_preferences.glade:2636
+#: data/ui/remmina_preferences.glade:2666
+#: data/ui/remmina_preferences.glade:2800
+#: data/ui/remmina_preferences.glade:2817
 #, fuzzy
 msgid "(Host key+)"
 msgstr "(होस्ट की+)"
 
-#: data/ui/remmina_preferences.glade:2083
+#: data/ui/remmina_preferences.glade:2201
 #, fuzzy
 msgid "Use default system font"
 msgstr "डिफॉल्ट सिस्टम फॉन्ट वापरा"
 
-#: data/ui/remmina_preferences.glade:2108
+#: data/ui/remmina_preferences.glade:2226
 #, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
@@ -5580,16 +5652,16 @@ msgstr ""
 "\"एसजीआर १\" निवडणे देखील पहिल्या ८ पॅलेट रंगांच्या चमकदार समकक्षांकडे (मजकूर बोल्ड "
 "करण्याव्यतिरिक्त) स्विच करते."
 
-#: data/ui/remmina_preferences.glade:2124
+#: data/ui/remmina_preferences.glade:2242
 msgid "Show bold text in bright colors"
 msgstr ""
 
-#: data/ui/remmina_preferences.glade:2138
+#: data/ui/remmina_preferences.glade:2256
 #, fuzzy
 msgid "Colour theme"
 msgstr "रंग थीम"
 
-#: data/ui/remmina_preferences.glade:2149
+#: data/ui/remmina_preferences.glade:2267
 #, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
@@ -5598,159 +5670,159 @@ msgstr ""
 "रंगयोजनेची फाइल निवडा. सहसा /उसर/शेअर/रेमिना/थीममध्ये उपलब्ध आहे. https://github.com/"
 "mbadolato/iTerm2-Color-Schemes अधिक तपशील आहे."
 
-#: data/ui/remmina_preferences.glade:2153
+#: data/ui/remmina_preferences.glade:2271
 #, fuzzy
 msgid "Pick a terminal colouring file"
 msgstr "टर्मिनल कलरिंग फाइल निवडा"
 
-#: data/ui/remmina_preferences.glade:2168
+#: data/ui/remmina_preferences.glade:2286
 #, fuzzy
 msgid "Bright colours"
 msgstr "चमकदार रंग"
 
-#: data/ui/remmina_preferences.glade:2182
+#: data/ui/remmina_preferences.glade:2300
 #, fuzzy
 msgid "Pick a light black colour"
 msgstr "हलका काळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2196
+#: data/ui/remmina_preferences.glade:2314
 #, fuzzy
 msgid "Pick a light red colour"
 msgstr "हलका लाल रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2210
+#: data/ui/remmina_preferences.glade:2328
 #, fuzzy
 msgid "Pick a bright green colour"
 msgstr "चमकदार हिरवा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2224
+#: data/ui/remmina_preferences.glade:2342
 #, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "एक चमकदार पिवळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2238
+#: data/ui/remmina_preferences.glade:2356
 #, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "चमकदार निळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2252
+#: data/ui/remmina_preferences.glade:2370
 #, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "हलका मॅजेंटा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2266
+#: data/ui/remmina_preferences.glade:2384
 #, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "हलका सायन रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2280
+#: data/ui/remmina_preferences.glade:2398
 #, fuzzy
 msgid "Pick a light white colour"
 msgstr "हलका पांढरा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2294
+#: data/ui/remmina_preferences.glade:2412
 #, fuzzy
 msgid "Pick a black colour"
 msgstr "काळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2308
+#: data/ui/remmina_preferences.glade:2426
 #, fuzzy
 msgid "Pick a red colour"
 msgstr "लाल रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2322
+#: data/ui/remmina_preferences.glade:2440
 #, fuzzy
 msgid "Pick a green colour"
 msgstr "हिरवा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2336
+#: data/ui/remmina_preferences.glade:2454
 #, fuzzy
 msgid "Pick a yellow colour"
 msgstr "पिवळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2350
+#: data/ui/remmina_preferences.glade:2468
 #, fuzzy
 msgid "Pick a blue colour"
 msgstr "निळा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2364
+#: data/ui/remmina_preferences.glade:2482
 #, fuzzy
 msgid "Pick a magenta colour"
 msgstr "मॅजेंटा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2378
+#: data/ui/remmina_preferences.glade:2496
 #, fuzzy
 msgid "Pick a cyan colour"
 msgstr "सायन रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2392
+#: data/ui/remmina_preferences.glade:2510
 #, fuzzy
 msgid "Pick a white colour"
 msgstr "पांढरा रंग निवडा"
 
-#: data/ui/remmina_preferences.glade:2405
+#: data/ui/remmina_preferences.glade:2523
 #, fuzzy
 msgid "Normal colours"
 msgstr "सामान्य रंग"
 
-#: data/ui/remmina_preferences.glade:2418
-#: data/ui/remmina_preferences.glade:2433
+#: data/ui/remmina_preferences.glade:2536
+#: data/ui/remmina_preferences.glade:2551
 #, fuzzy
 msgid "Cursor colour"
 msgstr "कर्सर रंग"
 
-#: data/ui/remmina_preferences.glade:2447
-#: data/ui/remmina_preferences.glade:2462
+#: data/ui/remmina_preferences.glade:2565
+#: data/ui/remmina_preferences.glade:2580
 #, fuzzy
 msgid "Background colour"
 msgstr "बॅकग्राऊंड रंग"
 
-#: data/ui/remmina_preferences.glade:2478
-#: data/ui/remmina_preferences.glade:2492
+#: data/ui/remmina_preferences.glade:2596
+#: data/ui/remmina_preferences.glade:2610
 #, fuzzy
 msgid "Foreground colour"
 msgstr "अग्रभागी रंग"
 
-#: data/ui/remmina_preferences.glade:2505
+#: data/ui/remmina_preferences.glade:2623
 #, fuzzy
 msgid "Increase and decrease font size"
 msgstr "फॉन्टचा आकार वाढवा आणि कमी करा"
 
-#: data/ui/remmina_preferences.glade:2535
+#: data/ui/remmina_preferences.glade:2653
 #, fuzzy
 msgid "Search text shortcut"
 msgstr "टेक्स्ट शॉर्टकट शोधा"
 
-#: data/ui/remmina_preferences.glade:2566
-#: data/ui/remmina_preferences.glade:2581
+#: data/ui/remmina_preferences.glade:2684
+#: data/ui/remmina_preferences.glade:2699
 #, fuzzy
 msgid "Bold colour"
 msgstr "ठळक रंग"
 
-#: data/ui/remmina_preferences.glade:2595
-#: data/ui/remmina_preferences.glade:2636
+#: data/ui/remmina_preferences.glade:2713
+#: data/ui/remmina_preferences.glade:2754
 #, fuzzy
 msgid "Highlight colour"
 msgstr "रंग ठळक करा"
 
-#: data/ui/remmina_preferences.glade:2608
-#: data/ui/remmina_preferences.glade:2652
+#: data/ui/remmina_preferences.glade:2726
+#: data/ui/remmina_preferences.glade:2770
 #, fuzzy
 msgid "Highlight foreground colour"
 msgstr "अग्रभागी रंग हायलाइट करा"
 
-#: data/ui/remmina_preferences.glade:2621
-#: data/ui/remmina_preferences.glade:2668
+#: data/ui/remmina_preferences.glade:2739
+#: data/ui/remmina_preferences.glade:2786
 #, fuzzy
 msgid "Cursor foreground colour"
 msgstr "कर्सर अग्रभागी रंग"
 
-#: data/ui/remmina_preferences.glade:2724
+#: data/ui/remmina_preferences.glade:2842
 #, fuzzy
 msgid "Terminal"
 msgstr "टर्मिनल"
 
-#: data/ui/remmina_preferences.glade:2738
+#: data/ui/remmina_preferences.glade:2856
 #, fuzzy
 msgid "Remmina Preferences"
 msgstr "रेमिना प्राधान्ये"
@@ -5769,6 +5841,46 @@ msgstr "अनलॉक"
 #, fuzzy
 msgid "Master password"
 msgstr "मास्टर पासवर्ड"
+
+#, fuzzy
+#~ msgid "Use as default remote desktop client"
+#~ msgstr "डिफॉल्ट रिमोट डेस्कटॉप क्लायंट म्हणून वापरा"
+
+#, fuzzy
+#~ msgid "Apply"
+#~ msgstr "अर्ज करणे"
+
+#, fuzzy
+#~ msgid "Allow Remmina to automatically open .rdp and .remmina files."
+#~ msgstr "रेमिनाला आपोआप .आरडीपी आणि .रेमिना फाइल्स उघडण्याची परवानगी द्या."
+
+#, fuzzy
+#~ msgid "* By turning on news you consent to fetching data from remmina.org"
+#~ msgstr ""
+#~ "* आकडेवारी आणि/किंवा बातम्या सक्षम करून आपण डेटा पाठविण्यास आणि remmina.org"
+
+#, fuzzy
+#~ msgid "<big>Take part</big>"
+#~ msgstr "[एक्स०एक्स] भाग घ्या[एक्स १४ एक्स]"
+
+#, fuzzy
+#~ msgid ""
+#~ "<span>\n"
+#~ "<b>You have our gratitude in choosing copylefted libre software, <a "
+#~ "href=\"https://remmina.org/donations/\" title=\"Where’s the money, "
+#~ "Lebowski? “blblblblblb”\">donations also make us happy</a>, and further "
+#~ "help improve Remmina.</b>\n"
+#~ "</span>\n"
+#~ msgstr ""
+#~ "[एक्स०एक्स]\n"
+#~ "[एक्स ७ एक्स] कॉपीलेफ्ट केलेले लिब्रे सॉफ्टवेअर निवडण्याबद्दल तुमचे आभार आहेत, [एक्स ७२ "
+#~ "एक्स]देणग्या देखील आम्हाला आनंदी करतात [एक्स १९२ एक्स], आणि रेमिना सुधारण्यास मदत "
+#~ "करतात. [एक्स २३१ एक्स]\n"
+#~ "[एक्स २३६ एक्स]\n"
+
+#, fuzzy
+#~ msgid "<big>Contribute</big>"
+#~ msgstr "[एक्स०एक्स] योगदान[एक्स १५ एक्स]"
 
 #, fuzzy, c-format
 #~ msgid "Could not start SSH session. %s"
@@ -5885,10 +5997,6 @@ msgstr "मास्टर पासवर्ड"
 #~ "statistics\">anonymous</a></b> statistics. (*)"
 #~ msgstr ""
 #~ "[एक्स ५ एक्स][एक्स ८ एक्स]अनामिक[एक्स १३८ एक्स][एक्स १४२ एक्स] आकडेवारी पाठवा. (*)"
-
-#, fuzzy
-#~ msgid "Send anonymous statistics"
-#~ msgstr "निनावी आकडेवारी पाठवा"
 
 #, fuzzy
 #~ msgid "Started pyhoca-cli with following arguments:"
