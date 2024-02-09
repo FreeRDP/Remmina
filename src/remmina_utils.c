@@ -46,8 +46,14 @@
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 #include <openssl/evp.h>
+
+#if OPENSSL_VERSION_MAJOR >= 3
 #include <openssl/decoder.h>
 #include <openssl/core_names.h>
+#else
+#include <openssl/pem.h>
+#endif
+
 #include <openssl/rsa.h>
 #include <openssl/err.h>
 #include "remmina_sodium.h"
@@ -709,9 +715,16 @@ gchar *remmina_gen_random_uuid()
  */
 EVP_PKEY *remmina_get_pubkey(const char *keytype, const char *public_key_selection) {
 	BIO *pkbio;
-	OSSL_DECODER_CTX *dctx;
-
 	EVP_PKEY *pubkey = NULL;
+
+	pkbio = BIO_new_mem_buf(public_key_selection, -1);
+
+	if (pkbio == NULL) {
+		return NULL;
+	}
+
+#if OPENSSL_VERSION_MAJOR >= 3
+	OSSL_DECODER_CTX *dctx;
 	const char *format = "PEM";
 	const char *structure = NULL;
 	dctx = OSSL_DECODER_CTX_new_for_pkey(&pubkey, format, structure,
@@ -722,15 +735,18 @@ EVP_PKEY *remmina_get_pubkey(const char *keytype, const char *public_key_selecti
 	if (dctx == NULL) {
 		return NULL;
 	}
-	pkbio = BIO_new_mem_buf(public_key_selection, -1);
 
 	if (OSSL_DECODER_from_bio(dctx, pkbio) == 0) {
 		BIO_free(pkbio);
 		OSSL_DECODER_CTX_free(dctx);
 		return NULL;
 	}
-	BIO_free(pkbio);
+
 	OSSL_DECODER_CTX_free(dctx);
+#else
+	PEM_read_bio_PUBKEY(pkbio, &pubkey, NULL, NULL);
+#endif
+	BIO_free(pkbio);
 	return pubkey;
 }
 
@@ -750,10 +766,8 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 	int remaining;
 	size_t blksz, maxblksz;
 	unsigned char *outptr;
-
 	unsigned char *ebuf = NULL;
 	gsize ebufLen;
-	EVP_PKEY_CTX *ctx = NULL;
 	int pkeyLen = EVP_PKEY_size(pubkey);
 	int inLen = strlen(instr);
 	remaining = inLen;
@@ -766,6 +780,8 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 	}
 	outptr = ebuf;
 
+#if OPENSSL_VERSION_MAJOR >= 3
+	EVP_PKEY_CTX *ctx = NULL;
 	ctx = EVP_PKEY_CTX_new_from_pkey(NULL, pubkey, NULL);
 	if (ctx == NULL) {
 		g_free(ebuf);
@@ -783,12 +799,19 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 		g_free(ebuf);
 		return NULL;
 	}
+#else
+	RSA* rsa = EVP_PKEY_get1_RSA(pubkey);
+	if (rsa == NULL) {
+		return NULL;
+	}
+#endif
 
 	/* encrypt input string block by block */
 	while (remaining > 0) {
 		blksz = remaining > maxblksz ? maxblksz : remaining;
 		size_t out_blksz;
 
+#if OPENSSL_VERSION_MAJOR >= 3
 		int calc_size_return_val = EVP_PKEY_encrypt(ctx, NULL, &out_blksz, (const unsigned char *)instr, blksz);
 		if (calc_size_return_val == -2) {
 			EVP_PKEY_CTX_free(ctx);
@@ -806,6 +829,13 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 			g_free(ebuf);
 			return NULL;
 		}
+#else
+		out_blksz = RSA_public_encrypt(blksz, (const unsigned char *)instr, outptr, rsa, RSA_PKCS1_OAEP_PADDING);
+		if (out_blksz == -1) {
+			g_free(ebuf);
+			return NULL;
+		}
+#endif
 
 		instr += blksz;
 		remaining -= blksz;
@@ -814,7 +844,9 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 
 	enc = g_base64_encode(ebuf, ebufLen);
 	g_free(ebuf);
+#if OPENSSL_VERSION_MAJOR >= 3
 	EVP_PKEY_CTX_free(ctx);
+#endif
 	return enc;
 }
 
@@ -876,7 +908,7 @@ gboolean remmina_execute_plugin_signature_verification(GFile* plugin_file, size_
 
 
 	/* Create context for verification */
-	ctx = EVP_MD_CTX_create();
+	ctx = EVP_MD_CTX_new();
 	if(ctx == NULL) {
 		return FALSE;
 	}
@@ -888,6 +920,7 @@ gboolean remmina_execute_plugin_signature_verification(GFile* plugin_file, size_
 		return FALSE;
 	}
 
+#if OPENSSL_VERSION_MAJOR >= 3
 	/* Set up context with the corresponding message digest. 1 is the only code for success */
 	int return_val = EVP_DigestInit_ex(ctx, message_digest, NULL);
 
@@ -897,8 +930,10 @@ gboolean remmina_execute_plugin_signature_verification(GFile* plugin_file, size_
 	}
 
 	/* Add the public key and initialize the context for verification*/
-
 	return_val = EVP_DigestVerifyInit(ctx, NULL, message_digest, NULL, public_key);
+#else
+	int return_val = EVP_VerifyInit(ctx, message_digest);
+#endif
 
 	if(return_val != 1) {
 		EVP_MD_CTX_free(ctx);
@@ -911,8 +946,11 @@ gboolean remmina_execute_plugin_signature_verification(GFile* plugin_file, size_
 	read = g_input_stream_read(G_INPUT_STREAM(in_stream), buffer, 1024, NULL, NULL);
 	while (read > 0){
 		total_read += read;
+#if OPENSSL_VERSION_MAJOR >= 3
 		return_val = EVP_DigestVerifyUpdate(ctx, buffer, read);
-
+#else
+		return_val = EVP_VerifyUpdate(ctx, buffer, read);
+#endif
 		if(return_val != 1) {
 			EVP_MD_CTX_free(ctx);
 			return FALSE;
@@ -925,8 +963,11 @@ gboolean remmina_execute_plugin_signature_verification(GFile* plugin_file, size_
 	ERR_clear_error();
 
 	/* Execute the signature verification. */
+#if OPENSSL_VERSION_MAJOR >= 3
 	return_val = EVP_DigestVerifyFinal(ctx, sig, sig_len);
-
+#else
+	return_val = EVP_VerifyFinal(ctx, sig, sig_len, public_key);
+#endif
 	if(return_val != 1) {
 		EVP_MD_CTX_free(ctx);
 		return FALSE;
