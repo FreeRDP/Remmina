@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Davy Defaud <davy.defaud@free.fr>, 2016-2019, 2020, 2021, 2022, 2023.
+# Davy Defaud <davy.defaud@free.fr>, 2016-2019, 2020, 2021, 2022, 2023, 2024.
 # Nathan <bonnemainsnathan@gmail.com>, 2019, 2020.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
 # Goten <jonathan.breysse@delphisoft.de>, 2020.
@@ -26,8 +26,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-09-22 14:48+0000\n"
-"Last-Translator: cosas <f0rhum@free.fr>\n"
+"PO-Revision-Date: 2024-02-10 19:02+0000\n"
+"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1729 src/remmina_protocol_widget.c:1748
@@ -128,13 +128,13 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
-"Cette fenêtre peut vous aider à élucider les problèmes de connexion.\n"
+"Cette fenêtre peut vous aider à diagnostiquer des problèmes de connexion.\n"
 "Vous pouvez démarrer ou arrêter la journalisation à tout instant via le "
 "commutateur.\n"
 "Le bouton « stats » (Ctrl + T) permet de récupérer les informations système "
 "que vous pourriez vouloir fournir lors d’un rapport de bogue.\n"
-"Vous trouverez plus d'informations sur le débogage de Remmina à l'adresse "
-"suivante : https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-"
+"Vous trouverez plus d’informations sur le débogage de Remmina à l’adresse "
+"suivante : https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-"
 "debugging\n"
 
 #: src/remmina_plugin_manager.c:86 src/remmina_file_editor.c:2119
@@ -166,10 +166,8 @@ msgid "Language Wrapper"
 msgstr "Liaison de langage"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Télécharger"
+msgstr "Téléchargement de greffon"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -182,10 +180,8 @@ msgid "Plugins"
 msgstr "Greffons"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Télécharger"
+msgstr "_Télécharger"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -197,7 +193,7 @@ msgstr "Fermer"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Installer"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -408,8 +404,8 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
-"ATTENTION : copier‐coller du texte enverra une séquence de codes clavier "
-"comme s’ils avaient été tapés depuis votre clavier.\n"
+"ATTENTION : coller du texte depuis le presse‐papiers enverra une séquence de "
+"codes clavier comme s’ils avaient été tapés depuis votre clavier.\n"
 "\n"
 "     • pour de meilleurs résultats, définissez le même agencement de clavier "
 "sur le client et le serveur.\n"
@@ -689,16 +685,12 @@ msgid "Encrypt a password"
 msgstr "Chiffrer un mot de passe"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable news notification"
 msgid "Disable news"
-msgstr "Désactiver les notifications d’information"
+msgstr "Désactiver les actualités"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "Désactiver la barre d’outils"
+msgstr "Désactiver les statistiques"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -725,12 +717,6 @@ msgstr "Désactiver l’icône de notification"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -738,10 +724,10 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne journalise pas la sortie de toutes les actions. Pour augmenter la "
-"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à "
-"« all » (G_MESSAGES_DEBUG=all).\n"
+"verbosité, veuillez définir la variable d’environnement G_MESSAGES_DEBUG à « "
+"remmina » (G_MESSAGES_DEBUG=remmina).\n"
 "Pour de plus amples informations, veuillez consulter la page du Wiki de "
-"Remmina suivante :\n"
+"Remmina suivante :\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
@@ -1144,12 +1130,9 @@ msgid "SSH identity file not selected."
 msgstr "Le fichier d’identité SSH n’a pas été sélectionné."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
 msgstr ""
-"Aucun mot de passe SSH n’est enregistré. L’utilisateur est invité à le "
-"saisir."
+"Aucun nom d’utilisateur enregistré. L’utilisateur est invité à le saisir."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1247,16 +1230,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Entrez le code TOTP, OTP ou 2FA"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "Identifiants du tunnel SSH"
+msgstr "Identifiants de la clef privée du tunnel SSH"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Fichier contenant la clef SSH privée"
+msgstr "Identifiants de la clef SSH privée"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1381,8 +1360,8 @@ msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
 msgstr ""
-"Êtes‐vous sûr de vouloir entièrement quitter Remmina ?\n"
-" Ceci fermera toutes les connexions actives."
+"Êtes‐vous sûr de vouloir complètement quitter Remmina ?\n"
+"Toutes les connexions actives seront fermées."
 
 #: src/remmina_exec.c:505
 #, c-format
@@ -1431,16 +1410,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Fichier"
+msgstr "Fichiers RDP"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Fichier"
+msgstr "Tous les fichiers"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1448,16 +1423,12 @@ msgid "Import"
 msgstr "Importer"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Créer un nouveau profil de connexion"
+msgstr "Sélectionnez le profil de connexion"
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Répertoire de données de Remmina"
+msgstr "Échec de l’exportation de Remmina."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -2265,7 +2236,7 @@ msgstr "Entrez les paramètres d’authentification sur la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Entrez le code PIN de la carte à puce"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2989,7 +2960,7 @@ msgstr "Activer la prise en charge des WebSockets par la passerelle"
 
 #: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
-msgstr "Mettre à jour le tampon mémoire vidéo même lorsqu’il n’est pas visible"
+msgstr "Mettre à jour le tampon de trame vidéo même lorsqu’il n’est pas visible"
 
 #: plugins/rdp/rdp_plugin.c:3206 plugins/spice/spice_plugin.c:711
 #: plugins/spice/spice_plugin.c:719 plugins/vnc/vnc_plugin.c:2139
@@ -4295,18 +4266,14 @@ msgid "About"
 msgstr "À propos"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
+"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "Plus de détails dans le fichier COPYING"
 
@@ -4404,23 +4371,6 @@ msgid "Verify password"
 msgstr "Confirmation du mot de passe"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4429,21 +4379,12 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Les actualités sont désactivées</b></big>\n"
+"<big><b>Les actualités n’ont pas pu être téléchargées</b></big>\n"
 "\n"
 "<span>\n"
-"Activer les actualités permet au programme de se connecter au site Web "
-"remmina.org afin d’y télécharger les notes de publication.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"La vérification de version ne peut être activée que lors de la compilation.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Notes de "
-"publication de Remmina\"><i>Consulter le site Web pour lire les notes de "
-"publication</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>Veuillez consulter le site Web pour lire les notes de "
+"version</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_key_chooser.glade:23
@@ -4516,7 +4457,7 @@ msgstr "Exporter"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Rapporter un bogue"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4569,51 +4510,47 @@ msgstr "Basculer l’affichage"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Inclure les infos système"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Inclure les données de débogage"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Envoyer"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Nom d’utilisateur"
+msgstr "Nom ou nom d’utilisateur :"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "Courriel :"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "Courriel"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Intitulé du bogue"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Description"
+msgstr "Description du bogue"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Cliquer sur « Envoyer » enverra ces données au projet GitLab de Remmina et "
+"créera automatiquement un nouveau ticket dans le système de suivi."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Mot de passe Remmina"
+msgstr "Rapport de bogue de Remmina"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
@@ -4767,26 +4704,20 @@ msgid "Confirm before closing multiple tabs"
 msgstr "Confirmer la fermeture d’une fenêtre possédant plusieurs onglets"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
-#| msgid "Send anonymous statistics"
 msgid "Disable anonymous statistics"
-msgstr "Envoyer des statistiques anonymisées"
+msgstr "Désactiver les statistiques anonymisées"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Récupérer les actualités depuis <a href=\"https://remmina.org\" title=\"Le "
-"site d’actualité de Remmina\">remmina.org</a> (*)"
+"Désactiver la récupération des actualités depuis <a href=\"https://remmina."
+"org\" title=\"Le site des actualités de Remmina\">remmina.org</a>"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "Désactiver l’astuce du jour"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
@@ -4952,15 +4883,12 @@ msgid "View-only mode"
 msgstr "Mode lecture seule"
 
 #: data/ui/remmina_preferences.glade:1477
-#, fuzzy
-#| msgid "Send clipboard content as keystrokes"
 msgid "Send clipboard as keystrokes"
 msgstr "Envoyer le contenu du presse‑papiers comme une saisie au clavier"
 
 #: data/ui/remmina_preferences.glade:1487
-#, fuzzy
 msgid "Send-clipboard"
-msgstr "Envoyer au presse-papier"
+msgstr "Envoyer le presse‐papiers"
 
 #: data/ui/remmina_preferences.glade:1517
 msgid "Keyboard"
