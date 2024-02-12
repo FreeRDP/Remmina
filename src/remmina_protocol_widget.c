@@ -1168,6 +1168,44 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 
 	g_ptr_array_add(gp->priv->ssh_tunnels, tunnel);
 
+
+	//try startup command
+	ssh_channel channel;
+	int rc;
+	const gchar* tunnel_command = remmina_file_get_string(gp->priv->remmina_file, "ssh_tunnel_command");
+	if (tunnel_command != NULL){
+		channel = ssh_channel_new(REMMINA_SSH(tunnel)->session);
+		if (channel == NULL) return g_strdup_printf("127.0.0.1:%i", remmina_pref.sshtunnel_port);
+
+		rc = ssh_channel_open_session(channel);
+		if (rc != SSH_OK)
+		{
+			ssh_channel_free(channel);
+			return g_strdup_printf("127.0.0.1:%i", remmina_pref.sshtunnel_port);
+		}
+		rc = ssh_channel_request_exec(channel, tunnel_command);
+		if (rc != SSH_OK)
+		{
+			ssh_channel_close(channel);
+			ssh_channel_free(channel);
+			return g_strdup_printf("127.0.0.1:%i", remmina_pref.sshtunnel_port);
+		}
+		struct timeval timeout = {10, 0};
+		ssh_channel channels[2];
+		channels[0] = channel;
+		channels[1] = NULL;
+		rc = ssh_channel_select(channels, NULL, NULL, &timeout);
+		if (rc == SSH_OK){
+			char buffer[256];
+			ssh_channel_read(channel, buffer, sizeof(buffer), 0);
+		}
+		
+		REMMINA_DEBUG("Ran startup command");
+		ssh_channel_close(channel);
+		ssh_channel_free(channel);
+	}
+
+
 	return g_strdup_printf("127.0.0.1:%i", remmina_pref.sshtunnel_port);
 
 #else
