@@ -129,6 +129,7 @@ struct _RemminaFileEditorPriv {
 	GtkWidget *		ssh_tunnel_server_default_radio;
 	GtkWidget *		ssh_tunnel_server_custom_radio;
 	GtkWidget *		ssh_tunnel_server_entry;
+	GtkWidget *		ssh_tunnel_command_entry;
 	GtkWidget *		ssh_tunnel_auth_agent_radio;
 	GtkWidget *		ssh_tunnel_auth_password_radio;
 	GtkWidget *		ssh_tunnel_auth_password;
@@ -418,6 +419,8 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_username_entry), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_password), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_combo), enabled);
+		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_command_entry), enabled);
+		
 		//}
 		g_free(p);
 	}
@@ -445,6 +448,12 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 		if (enabled && gtk_entry_get_text(GTK_ENTRY(gfe->priv->ssh_tunnel_passphrase))[0] == '\0') {
 			cp = remmina_file_get_string(priv->remmina_file, "ssh_tunnel_passphrase");
 			gtk_entry_set_text(GTK_ENTRY(gfe->priv->ssh_tunnel_passphrase), cp ? cp : "");
+		}
+	}
+	if (gfe->priv->ssh_tunnel_command_entry) {
+		if (enabled && gtk_entry_get_text(GTK_ENTRY(gfe->priv->ssh_tunnel_command_entry))[0] == '\0') {
+			cp = remmina_file_get_string(priv->remmina_file, "ssh_tunnel_command");
+			gtk_entry_set_text(GTK_ENTRY(gfe->priv->ssh_tunnel_command_entry), cp ? cp : "");
 		}
 	}
 }
@@ -1384,6 +1393,19 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 				   cs ? cs : "");
 	}
 
+
+	remmina_public_create_group(GTK_GRID(grid), _("SSH Command"), row, 2, 1);
+	row += 2;
+	priv->ssh_tunnel_command_entry =
+			remmina_file_editor_create_text(gfe, grid, row, 0,
+							_("Startup command"), NULL, "ssh_tunnel_command");
+	cs = remmina_file_get_string(priv->remmina_file, "ssh_tunnel_command");
+	gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_command_entry),
+				   cs ? cs : "");
+	row++;
+
+
+
 	remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(NULL, gfe, ssh_setting);
 	gtk_widget_show_all(grid);
 	g_free(p);
@@ -1455,6 +1477,7 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox *combo, Re
 	priv->ssh_tunnel_server_custom_radio = NULL;
 	priv->ssh_tunnel_server_entry = NULL;
 	priv->ssh_tunnel_username_entry = NULL;
+	priv->ssh_tunnel_command_entry = NULL;
 	priv->ssh_tunnel_auth_combo = NULL;
 	priv->ssh_tunnel_auth_password = NULL;
 	priv->ssh_tunnel_privatekey_chooser = NULL;
@@ -1541,6 +1564,11 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
 		priv->remmina_file,
 		"ssh_tunnel_password",
 		(ssh_tunnel_enabled && (ssh_tunnel_auth == SSH_AUTH_PASSWORD)) ? gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_auth_password)) : NULL);
+
+	char* command = gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_command_entry));
+	remmina_file_set_string(
+		priv->remmina_file,
+		"ssh_tunnel_command", command);
 
 	remmina_file_set_string(
 		priv->remmina_file,
