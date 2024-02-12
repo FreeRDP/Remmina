@@ -44,7 +44,6 @@
 #include <gio/gio.h>
 #include <openssl/rsa.h>
 #include <openssl/evp.h>
-#include <openssl/decoder.h>
 
 #define MAX_COMPRESSED_FILE_SIZE 100000 //100kb file size max
 #define NAME_OF_DIGEST "SHA256"
