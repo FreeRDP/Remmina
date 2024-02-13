@@ -115,7 +115,9 @@
 
 #if FREERDP_VERSION_MAJOR < 3
 static HANDLE freerdp_abort_event(rdpContext* context) {
+#ifdef WINPR_ASSERT
 	WINPR_ASSERT(context);
+#endif
 	return context->abortEvent;
 }
 
@@ -133,7 +135,9 @@ static BOOL freerdp_settings_set_pointer_len(rdpSettings* settings, size_t id, c
 }
 
 static void freerdp_abort_connect_context(rdpContext* context) {
+#ifdef WINPR_ASSERT
 	WINPR_ASSERT(context);
+#endif
 	freerdp_abort_connect(context->instance);
 }
 #endif
