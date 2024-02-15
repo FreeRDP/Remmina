@@ -1025,7 +1025,7 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 								key_title,
 								remmina_plugin_service->file_get_string(remminafile, key_user),
 								remmina_plugin_service->file_get_string(remminafile, key_password),
-								remmina_plugin_service->file_get_string(remminafile, disablepasswordstoring ? NULL : key_domain),
+								remmina_plugin_service->file_get_string(remminafile, key_domain),
 								NULL);
 	if (ret == GTK_RESPONSE_OK) {
 		if (cfg_key_user != FreeRDP_STRING_UNUSED)
