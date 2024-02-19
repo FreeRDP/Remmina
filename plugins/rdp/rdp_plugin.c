@@ -126,8 +126,9 @@ static BOOL freerdp_settings_set_pointer_len(rdpSettings* settings, size_t id, c
 	switch(id) {
 	case FreeRDP_LoadBalanceInfo:
 		free(settings->LoadBalanceInfo);
-		settings->LoadBalanceInfo = _strdup(data);
-		settings->LoadBalanceInfoLength = len;
+		settings->LoadBalanceInfo = (BYTE *)data;
+		freerdp_settings_set_uint32(settings, FreeRDP_LoadBalanceInfoLength, strlen(data));
+
 		return TRUE;
 	default:
 		return FALSE;
