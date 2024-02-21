@@ -1886,7 +1886,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	if (remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo")) {
 		const gchar *tmp = strdup(remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"));
-		freerdp_settings_set_pointer_len(rfi->clientContext.context.settings, FreeRDP_LoadBalanceInfo, tmp, strlen(tmp) + 1);
+		freerdp_settings_set_pointer_len(rfi->clientContext.context.settings, FreeRDP_LoadBalanceInfo, tmp, strlen(tmp));
 	}
 
 	if (remmina_plugin_service->file_get_string(remminafile, "exec"))
