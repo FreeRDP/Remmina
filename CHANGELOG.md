@@ -1,3 +1,14 @@
+## v1.4.35
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.34...v1.4.35)
+
+* Fix build for openssl-1.1 [!2565](https://gitlab.com/Remmina/Remmina/merge_requests/2565) *@bhatman1441*
+* Allow running an SSH command when connecting via ssh tunnel [!2566](https://gitlab.com/Remmina/Remmina/merge_requests/2566) *@myheroyuki*
+* Check if WINPR_ASSERT is defined [!2567](https://gitlab.com/Remmina/Remmina/merge_requests/2567) *@bhatman1441*
+* [REM-3047] fix issue compiling with gcc-14 [!2568](https://gitlab.com/Remmina/Remmina/merge_requests/2568) *@myheroyuki*
+* Fix crash caused by enabling disablepasswordstoring [!2569](https://gitlab.com/Remmina/Remmina/merge_requests/2569) *@bhatman1441*
+* Revert setting loadbalanceinfo to the old method used before FreeRDP3 [!2570](https://gitlab.com/Remmina/Remmina/merge_requests/2570) *@myheroyuki*
+* updated call to set FreeRDP_LoadBalanceInfo [!2571](https://gitlab.com/Remmina/Remmina/merge_requests/2571) *@myheroyuki*
+
 ## v1.4.34
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v.1.4.33...v1.4.34)
 
