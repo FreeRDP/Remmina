@@ -7,15 +7,15 @@
 # Jose Riha <jose1711@gmail.com>, 2020, 2022.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # shoothub <reloadshoot@gmail.com>, 2021.
-# menom <menom1@protonmail.com>, 2022, 2023.
+# menom <menom1@protonmail.com>, 2022, 2023, 2024.
 # Milan Šalka <salka.milan@googlemail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-10-12 11:02+0000\n"
-"Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
+"PO-Revision-Date: 2024-02-24 17:02+0000\n"
+"Last-Translator: menom <menom1@protonmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/remmina/remmina/"
 "sk/>\n"
 "Language: sk\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -153,10 +153,8 @@ msgid "Language Wrapper"
 msgstr "Wrapper jazyka"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Prevziať"
+msgstr "Plugin na stiahnutie"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -169,10 +167,8 @@ msgid "Plugins"
 msgstr "Zásuvné moduly"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Prevziať"
+msgstr "_Stiahnuť"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -184,7 +180,7 @@ msgstr "Zavrieť"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Inštalácia"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -667,16 +663,12 @@ msgid "Encrypt a password"
 msgstr "Zašifruje heslo"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable news notification"
 msgid "Disable news"
-msgstr "Vypnúť upozornenia o novinkách"
+msgstr "Zakázať správy"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "Vypnúť lištu s nástrojmi"
+msgstr "Zakázať štatistiky"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -703,12 +695,6 @@ msgstr "Vypnúť ikonu v oznamovacej oblasti"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -716,7 +702,7 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina nezaznamenáva všetky výstupné príkazy. Ak chcete povoliť podrobnejší "
-"výstup, použite ako premennú prostredia \"G_MESSAGES_DEBUG=all\".\n"
+"výstup, použite ako premennú prostredia \"G_MESSAGES_DEBUG=remmina\".\n"
 "Viac informácií je dostupných na stránke Remmina wiki:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -1104,10 +1090,9 @@ msgid "SSH identity file not selected."
 msgstr "Súbor s kľúčom SSH zatiaľ nebol vybraný."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "Nie je zadané žiadne uložené heslo SSH. Zadajte ho."
+msgstr ""
+"Nenašlo sa žiadne používateľské meno. Požiadajte používateľa, aby ho zadal."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1205,16 +1190,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Zadajte TOTP/OTP/2FA kód"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "Poverenia tunela SSH"
+msgstr "Poverenia súkromného kľúča tunela SSH"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Súbor súkromného kľúča SSH"
+msgstr "Poverenia súkromného kľúča SSH"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1390,16 +1371,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Súbor"
+msgstr "Súbory RDP"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Súbor"
+msgstr "Všetky súbory"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1407,16 +1384,12 @@ msgid "Import"
 msgstr "Import"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Vytvorí profil nového pripojenia"
+msgstr "Vyberte profil pripojenia."
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Priečinok údajov aplikácie Remmina"
+msgstr "Remmina nemohla exportovať."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -2212,7 +2185,7 @@ msgstr "Zadajte poverenia pre overenie totožnosti brány RDP"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Zadajte PIN RDP SmartCard"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -4203,17 +4176,13 @@ msgid "About"
 msgstr "O aplikácii"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
+"Autorské práva © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Autorské práva © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
 "Autorské práva © 2009–2014 Vic Lee\n"
 "Viac podrobností v súbore COPYING"
@@ -4311,23 +4280,6 @@ msgid "Verify password"
 msgstr "Overiť heslo"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4336,16 +4288,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Novinky sú vypnuté</b></big>\n"
-"\n"
-"<span>\n"
-"Zapnutím noviniek sa rozumie pripojenie programu k serveru aplikácie Remmina "
-"kvôli prevzatiu poznámok k vydaniu.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Kontrola verzií môže byť aktivovaná iba v priebehu kompilácie.\n"
-"</span>\n"
+"<big><b>Správy sa nepodarilo načítať</b></big>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
@@ -4420,7 +4363,7 @@ msgstr "Export"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Nahlásiť chybu"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4475,51 +4418,47 @@ msgstr "Prepne zobrazenie"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Zahrnúť informácie o systéme"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Zahrnúť údaje ladenia"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Odoslať"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Meno používateľa"
+msgstr "Meno/Užívateľské meno:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "E-mail:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Názov chyby"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Popis"
+msgstr "Popis chyby"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Kliknutím na „Odoslať“ sa to odošle na stránku Remmina GitLab a automaticky "
+"sa vytvorí nový problém v nástroji na sledovanie problémov."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Remmina heslo"
+msgstr "Nahlásiť chybu remmina"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
@@ -4670,26 +4609,20 @@ msgid "Confirm before closing multiple tabs"
 msgstr "Potvrdiť pred zatvorením viacerých tabov"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
-#| msgid "Send anonymous statistics"
 msgid "Disable anonymous statistics"
-msgstr "Odosielať anonymné štatistiky"
+msgstr "Zakázať anonymné štatistiky"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Získavať novinky z adresy <a href=\"https://remmina.org\" title=\"Remmina "
-"news site\">remmina.org</a> (*)"
+"Zakázať novinky z adresy <a href=\"https://remmina.org\" title=\"Remmina "
+"news site\">remmina.org</a>"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "Zakázať tip dňa"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
