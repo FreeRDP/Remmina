@@ -18,7 +18,7 @@
 # flyvint <flyvint@gmail.com>, 2021.
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
 # Сергей <sw@atrus.ru>, 2022.
-# Сергей <asvmail.as@gmail.com>, 2022, 2023.
+# Сергей <asvmail.as@gmail.com>, 2022, 2023, 2024.
 # AHOHNMYC <lqwh2h2cwa@protonmail.com>, 2022.
 # Dmitriy Kulikov <kulikov@dima.perm.ru>, 2023.
 msgid ""
@@ -26,17 +26,17 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-10-06 12:10+0000\n"
-"Last-Translator: Солтыс Сергей <treefeed@mail.ru>\n"
+"PO-Revision-Date: 2024-02-25 13:05+0000\n"
+"Last-Translator: Сергей <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Poedit-Flags-xgettext: --add-comments\n"
 
@@ -168,10 +168,8 @@ msgid "Language Wrapper"
 msgstr "Языковая обёртка"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Скачать"
+msgstr "Скачать модуль"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -184,10 +182,8 @@ msgid "Plugins"
 msgstr "Модули"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Скачать"
+msgstr "_Скачать"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -199,7 +195,7 @@ msgstr "Закрыть"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Установить"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -1410,16 +1406,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Файл"
+msgstr "Файлы RDP"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Файл"
+msgstr "Все файлы"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1427,10 +1419,8 @@ msgid "Import"
 msgstr "Импортировать"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Создать новый профиль соединения"
+msgstr "Выбрать профиль соединения."
 
 #: src/remmina_main.c:1309
 #, fuzzy
@@ -2236,7 +2226,7 @@ msgstr "Введите данные авторизации RDP шлюза"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Введите ПИН-код SmartCard RDP"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -4448,7 +4438,7 @@ msgstr "Экспортировать"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Сообщить об ошибке"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4502,51 +4492,47 @@ msgstr "Переключить вид"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Включить информацию о системе"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Включить отладочные данные"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Отправить"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Имя пользователя"
+msgstr "Имя/Имя пользователя:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "Электронная почта:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Название ошибки"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Описание"
+msgstr "Описание ошибки"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Нажатие «Отправить» приведёт к отправке сообщения на страницу Remmina в "
+"GitLab и автоматически создаст новую задачу в системе отслеживания ошибок."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Пароль Remmina"
+msgstr "Сообщить об ошибке в Remmina"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
