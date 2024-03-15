@@ -1519,6 +1519,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	case SSH_AUTH_KBDINTERACTIVE:
 		instruction = _("Enter TOTP/OTP/2FA code");
 		remmina_ssh_auth_type = REMMINA_SSH_AUTH_KBDINTERACTIVE;
+		pwdfkey = ssh->is_tunnel ? "ssh_tunnel_password" : "password";
 		break;
 	default:
 		return REMMINA_SSH_AUTH_FATAL_ERROR;
