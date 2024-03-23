@@ -16,13 +16,15 @@
 # Manolol <manolol@mailfence.com>, 2022.
 # Luis Mengel <mail@lmengel.de>, 2023.
 # Florian Schaupp <fschaupp@hotmail.com>, 2023.
+# Rand0m_Name_ <Rand0m_Name_@users.noreply.hosted.weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-03-08 23:01+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2024-03-23 23:01+0000\n"
+"Last-Translator: Rand0m_Name_ <Rand0m_Name_@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
 "Language: de\n"
@@ -161,10 +163,8 @@ msgid "Language Wrapper"
 msgstr "Schnittstelle zu Programmiersprachen"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Herunterladen"
+msgstr "Plugin Herunterladen"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -707,12 +707,6 @@ msgstr "Taskleisten ausschalten"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -720,7 +714,7 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina protokolliert nicht alle Ausgaben. Um eine ausführlichere Ausgabe zu "
-"ermöglichen, verwenden Sie bitte \"G_MESSAGES_DEBUG=all\" als "
+"ermöglichen, verwenden Sie bitte \"G_MESSAGES_DEBUG=remmina\" als "
 "Umgebungsvariable.\n"
 "Weitere Informationen finden Sie im Remmina-Wiki unter:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
@@ -1229,16 +1223,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Geben Sie den TOTP/OTP/2FA Code ein"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "SSH‐Tunnel Anmeldedaten"
+msgstr "Anmeldedaten für den privaten SSH-Tunnel"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Datei mit privatem SSH-Schlüssel"
+msgstr "Anmeldedaten für den privaten SSH-Schlüssel"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -2237,7 +2227,7 @@ msgstr "RDP-Gateway - Authentifizierunginformationen eingeben"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "RDP SmartCard-PIN eingeben"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -4346,23 +4336,6 @@ msgid "Verify password"
 msgstr "Passwort wiederholen"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4382,7 +4355,9 @@ msgstr ""
 "Die Versionsprüfung kann nur beim Compilieren eingeschaltet werden.\n"
 "</span>\n"
 "\n"
-"<span>\n"
+"<big><b>Die Nachrichten konnten nicht geladen werden!</b></big>\n"
+"\n"
+"<span></big>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
 "Versionsinformationen\"><i>Besuchen Sie die Webseite um die "
 "Versionsinformationen zu lesen</i></a>.\n"
@@ -4545,6 +4520,8 @@ msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Wenn Sie auf \"Absenden\" klicken, wird dies an die GitLab-Seite von Remmina "
+"gesendet und automatisch ein neuer Eintrag im Issue Tracker erstellt."
 
 #: data/ui/remmina_bug_report.glade:296
 msgid "Remmina Report Bug"
@@ -4701,16 +4678,12 @@ msgid "Disable anonymous statistics"
 msgstr "Anonyme Statistiken deaktivieren"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Nachrichten von <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> empfangen (*)"
+"Deaktivieren Sie Nachrichten von <a href=\"https://remmina.org\" title="
+"\"Remmina news site\">remmina.org</a> (*)"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
