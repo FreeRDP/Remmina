@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "46",
     "sdk": "org.gnome.Sdk",
     "command": "remmina",
     "cleanup": [
@@ -47,14 +47,14 @@
     "add-extensions": {
         "org.freedesktop.Platform.ffmpeg-full": {
             "directory": "lib/ffmpeg",
-            "version": "22.08",
+            "version": "23.08",
             "add-ld-path": ".",
             "no-autodownload": false,
             "autodelete": false
         },
         "org.freedesktop.Platform.openh264": {
             "directory": "lib/openh264",
-            "version": "2.3.0",
+            "version": "2.4.1",
             "add-ld-path": "."
         }
     },
@@ -72,8 +72,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.6.tar.xz",
-                    "sha256": "580b8525b12ecc0144aa16c88b0aafa76d2e799b44c8c6c50f9ce92788b5586e",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.7.tar.xz",
+                    "sha256": "4436e3148bb91a162406230d9f736a49ca8b50b74790015dc15d78d6ce8e825f",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 14958,
@@ -87,8 +87,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://xorg.freedesktop.org/archive/individual/lib/libXmu-1.1.4.tar.xz",
-                    "sha256": "210de3ab9c3e9382572c25d17c2518a854ce6e2c62c5f8315deac7579e758244",
+                    "url": "https://xorg.freedesktop.org/archive/individual/lib/libXmu-1.2.0.tar.xz",
+                    "sha256": "072026fe305889538e5b0c5f9cbcd623d2c27d2b85dcd37ca369ab21590b6963",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 1785,
@@ -102,8 +102,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://xorg.freedesktop.org/archive/individual/app/xauth-1.1.2.tar.xz",
-                    "sha256": "78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xauth-1.1.3.tar.xz",
+                    "sha256": "e7075498bae332f917f01d660f9b940c0752b2556a8da61ccb62a44d0ffe9d33",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 5253,
@@ -159,8 +159,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/vte.git",
-                    "tag": "0.74.1",
-                    "commit": "eee37c871173d04387cd0004dde7f8676f390f62",
+                    "tag": "0.76.0",
+                    "commit": "3c29bfef30c34afec4982ba5ec37f944cfacbba2",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -290,8 +290,8 @@
                     "sources": [
                         {
                             "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/39/92/8486ede85fcc088f1b3dba4ce92dd29d126fd96b0008ea213167940a2475/pyparsing-3.1.1-py3-none-any.whl",
-                            "sha256": "32c7c0b711493c72ff18a981d24f28aaf9c1fb7ed5e9667c9e84e3db623bdbfb",
+                            "url": "https://files.pythonhosted.org/packages/9d/ea/6d76df31432a0e6fdf81681a895f009a4bb47b3c39036db3e1b528191d52/pyparsing-3.1.2-py3-none-any.whl",
+                            "sha256": "f9db75911801ed778fe61bb643079ff86601aca99fcae6345aa67292038fb742",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyparsing",
@@ -430,8 +430,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libssh.org/files/0.10/libssh-0.10.5.tar.xz",
-                    "sha256": "b60e2ff7f367b9eee2b5634d3a63303ddfede0e6a18dfca88c44a8770e7e4234",
+                    "url": "https://www.libssh.org/files/0.10/libssh-0.10.6.tar.xz",
+                    "sha256": "1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 1729,
@@ -475,9 +475,9 @@
             ],
             "sources": [
                 {
-                "type": "archive",
-                "url": "https://github.com/curl/curl/releases/download/curl-7_81_0/curl-7.81.0.tar.xz",
-                "sha256": "a067b688d1645183febc31309ec1f3cdce9213d02136b6a6de3d50f69c95a7d3"
+                    "type": "archive",
+                    "url": "https://github.com/curl/curl/releases/download/curl-7_81_0/curl-7.81.0.tar.xz",
+                    "sha256": "a067b688d1645183febc31309ec1f3cdce9213d02136b6a6de3d50f69c95a7d3"
                 }
             ]
         },
