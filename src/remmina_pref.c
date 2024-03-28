@@ -498,10 +498,18 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.datadir_path = g_strdup("");
 
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "remmina_file_name", NULL))
-		remmina_pref.remmina_file_name = g_key_file_get_string(gkeyfile, "remmina_pref", "remmina_file_name", NULL);
-	else
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "remmina_file_name", NULL)) {
+		if (strcmp(g_key_file_get_string(gkeyfile, "remmina_pref", "remmina_file_name", NULL), "") != 0) {
+			remmina_pref.remmina_file_name = g_key_file_get_string(gkeyfile, "remmina_pref", "remmina_file_name", NULL);
+		}
+		else {
+			REMMINA_DEBUG("remmina_file_name in config is empty, setting to %%G_%%P_%%N_%%h");
+			remmina_pref.remmina_file_name = g_strdup("%G_%P_%N_%h");
+		}
+	}
+	else {
 		remmina_pref.remmina_file_name = g_strdup("%G_%P_%N_%h");
+	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "screenshot_path", NULL)) {
 		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", NULL);

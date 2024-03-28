@@ -230,6 +230,9 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	if (remmina_pref.datadir_path == NULL)
 		remmina_pref.datadir_path = g_strdup("");
 	remmina_pref.remmina_file_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_file_name);
+	if (strcmp(remmina_pref.remmina_file_name, "") == 0) {
+		remmina_pref.remmina_file_name = g_strdup("%G_%P_%N_%h");
+	}
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.screenshot_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_screenshot_name);
 	remmina_pref.deny_screenshot_clipboard = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard));
