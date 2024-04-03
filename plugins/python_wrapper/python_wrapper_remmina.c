@@ -819,9 +819,9 @@ static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugi
 			}
 
 			if (python_wrapper_get_service()->register_plugin((RemminaPlugin*)remmina_plugin)) {
-				g_print("%s: Successfully reigstered!\n", remmina_plugin->name);
+				g_print("%s: Successfully registered!\n", remmina_plugin->name);
 			} else {
-				g_print("%s: Failed to reigster!\n", remmina_plugin->name);
+				g_print("%s: Failed to register!\n", remmina_plugin->name);
 			}
 		}
 	}

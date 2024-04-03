@@ -6,7 +6,7 @@ See [the wiki](https://gitlab.com/Remmina/Remmina/wikis/home#for-users-with-a-di
 Build instructions
 ------------------
 
-0. Update fluthub shared modules
+0. Update flathub shared modules
 
 From time to time update the shared-modules provided by flathub
 

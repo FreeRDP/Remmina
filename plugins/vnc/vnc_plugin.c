@@ -1312,7 +1312,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		}
 
 		if (rfbInitClient(cl, NULL, NULL)) {
-			REMMINA_PLUGIN_DEBUG("Client initialization successfull");
+			REMMINA_PLUGIN_DEBUG("Client initialization successful");
 			break;
 		} else {
 			REMMINA_PLUGIN_DEBUG("Client initialization failed");

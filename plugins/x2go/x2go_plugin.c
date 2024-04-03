@@ -577,7 +577,7 @@ static GtkWidget* rmplugin_x2go_choose_session_dialog_factory(X2GoCustomUserData
 	for (gint i = 0; i < SESSION_NUM_PROPERTIES; ++i) {
 		// Everything is a String. (Except IS_VISIBLE flag)
 		// If that changes one day, you could extent the if statement here.
-		// But you would propably need a *lot* of refactoring.
+		// But you would probably need a *lot* of refactoring.
 		// Especially in the session parser.
 		if (i == SESSION_DIALOG_IS_VISIBLE) {
 			types[i] = G_TYPE_BOOLEAN;
@@ -889,7 +889,7 @@ static GValue rmplugin_x2go_session_chooser_get_property(GtkWidget *dialog,
  *	       Last elements has to be NULL. \n
  *	       Strings will get freed automatically.
  * @param error Will be filled with an error message on fail.
- * @param env String array of enviroment variables. \n
+ * @param env String array of environment variables. \n
  *	      The list is NULL terminated and each item in
  *	      the list is of the form `NAME=VALUE`.
  *
@@ -966,7 +966,7 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 
 	if (standard_err && strlen(standard_err) > 0) {
 		if (g_str_has_prefix(standard_err, "pyhoca-cli: error: a socket error "
-				     "occured while establishing the connection:")) {
+				     "occurred while establishing the connection:")) {
 			// Log error into GUI.
 			gchar* errmsg = g_strdup_printf(
 				_("The necessary PyHoca-CLI process has encountered a "
@@ -990,14 +990,14 @@ static gchar* rmplugin_x2go_spawn_pyhoca_process(guint argc, gchar* argv[],
 	} else if (!success_ret || (*error) || strlen(standard_out) <= 0 || exit_code) {
 		if (!(*error)) {
 			gchar* errmsg = g_strdup_printf(
-				_("An unknown error occured while trying "
+				_("An unknown error occurred while trying "
 				  "to start PyHoca-CLI. Exit code: %i"),
 				exit_code);
 			REMMINA_PLUGIN_WARNING("%s", errmsg);
 			g_set_error(error, 1, 1, "%s", errmsg);
 		} else {
 			gchar* errmsg = g_strdup_printf(
-				_("An unknown error occured while trying to start "
+				_("An unknown error occurred while trying to start "
 				  "PyHoca-CLI. Exit code: %i. Error: '%s'"),
 				exit_code, (*error)->message);
 			REMMINA_PLUGIN_WARNING("%s", errmsg);
@@ -1285,7 +1285,7 @@ static gboolean rmplugin_x2go_pyhoca_terminate_session(X2GoCustomUserData *custo
 		err_ddata->flags = GTK_DIALOG_MODAL;
 		err_ddata->type = GTK_MESSAGE_ERROR;
 		err_ddata->buttons = GTK_BUTTONS_OK;
-		err_ddata->title = _("An error occured.");
+		err_ddata->title = _("An error occurred.");
 		err_ddata->message = err_msg;
 		// We don't need the response.
 		err_ddata->callbackfunc = NULL;
@@ -2018,7 +2018,7 @@ static gchar* rmplugin_x2go_get_pyhoca_sessions(RemminaProtocolWidget* gp, GErro
  *			needed for retrieving sessions from a X2Go server.
  *
  * @returns Returns either a GList containing the IDs of every already existing session
- *	    found or if the function failes, NULL.
+ *	    found or if the function fails, NULL.
  *
  * TODO: If pyhoca-cli (python-x2go) implements `--json` or similar option -> Replace
  *	 entire function with JSON parsing.

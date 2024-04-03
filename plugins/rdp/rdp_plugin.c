@@ -646,7 +646,7 @@ static BOOL rf_desktop_resize(rdpContext *context)
 	ui->event.type = REMMINA_RDP_UI_EVENT_DESTROY_CAIRO_SURFACE;
 	remmina_rdp_event_queue_ui_sync_retint(gp, ui);
 
-	/* Tell libfreerdp to change its internal GDI bitmap width and heigt,
+	/* Tell libfreerdp to change its internal GDI bitmap width and height,
 	 * this will also destroy gdi->primary_buffer, making our rfi->surface invalid */
 	gdi_resize(((rdpContext *)rfi)->gdi, w, h);
 
@@ -1949,7 +1949,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			REMMINA_PLUGIN_DEBUG("Network settings not set");
 	}
 
-	/* PerformanceFlags bitmask need also to be splitted into BOOL variables
+	/* PerformanceFlags bitmask need also to be split into BOOL variables
 	 * like freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_DisableWallpaper, freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_AllowFontSmoothing…
 	 * or freerdp_get_param_bool() function will return the wrong value
 	 */
