@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-04-11 11:01+0000\n"
+"PO-Revision-Date: 2024-04-11 13:02+0000\n"
 "Last-Translator: Andreas Florin <andreas.florin.1988@outlook.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
 "sv/>\n"
@@ -65,11 +65,11 @@ msgstr "Visa dolda filer"
 
 #: src/remmina_sftp_plugin.c:324
 msgid "Overwrite all files"
-msgstr "Överskriv alt"
+msgstr "Skriv över alla filer"
 
 #: src/remmina_sftp_plugin.c:326
 msgid "Resume all file transfers"
-msgstr "Filöverföringar"
+msgstr "Återuppta alla filöverföringar"
 
 #: src/remmina_sftp_plugin.c:327 src/remmina_protocol_widget.c:285
 msgid "Connect via SSH from a new terminal"
@@ -107,10 +107,8 @@ msgid "Remmina debugging window"
 msgstr "Remmina felsökningsfönster"
 
 #: src/remmina_log.c:135
-#, fuzzy
-#| msgid "Open the Remmina main window"
 msgid "Paste system info in the Remmina debugging window"
-msgstr "Öppna Remmina-huvudfönstret"
+msgstr "Klistra in systeminformation i Remminas felsökningsfönster"
 
 #: src/remmina_log.c:156
 msgid ""
@@ -121,6 +119,12 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Detta fönster kan hjälpa dig att hitta anslutningsproblem.\n"
+"Du kan stoppa och starta loggningen när som helst med On/Off-switchen.\n"
+"Statistikknappen (Ctrl+T), kan vara användbar för att samla "
+"systeminformation som du kan dela när du rapporterar en bugg.\n"
+"Det finns mer information om felsökning av Remmina på https://gitlab.com/"
+"Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:86 src/remmina_file_editor.c:2119
 msgid "Protocol"
@@ -151,10 +155,8 @@ msgid "Language Wrapper"
 msgstr "Språkinpackning"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Ladda ner"
+msgstr "adda ner plugin"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -167,10 +169,8 @@ msgid "Plugins"
 msgstr "Tilläggsprogram"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Ladda ner"
+msgstr "_Ladda ner"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -274,8 +274,6 @@ msgstr "Ställ in knapptryckningar"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:483
-#, fuzzy
-#| msgid "libsodium >= 1.9.0 is required to use master password"
 msgid "libsodium >= 1.9.0 is required to use Primary Password"
 msgstr "libsodium >= 1.9.0 krävs for att använda huvudlösenord"
 
@@ -344,7 +342,7 @@ msgstr "Klientcertifieringsfil"
 
 #: src/remmina_message_panel.c:594
 msgid "Client Certificate Key"
-msgstr "Klientcertifieringsnykkel"
+msgstr "Klientcertifieringsnyckel"
 
 #: src/rcw.c:673
 #, c-format
@@ -423,7 +421,7 @@ msgstr "Öppna Remmina-huvudfönstret"
 
 #: src/rcw.c:2382
 msgid "Duplicate current connection"
-msgstr "Duplicera nuvarande tillkoppling"
+msgstr "Kopiera nuvarande anslutning"
 
 #: src/rcw.c:2399
 msgid "Resize the window to fit in remote resolution"
@@ -985,7 +983,7 @@ msgstr "Skriv in användarnamn och lösenord for SSH."
 
 #: src/remmina_protocol_widget.c:1802 src/remmina_protocol_widget.c:1834
 msgid "Fingerprint automatically accepted"
-msgstr "Fingeravtryck automatiskt godkänd"
+msgstr "Fingeravtryck godkändes automatiskt"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1810
@@ -1928,11 +1926,11 @@ msgstr "Spara session til fil"
 
 #: src/remmina_ssh_plugin.c:838
 msgid "Increase font size (host+Page Up)"
-msgstr "Öka skriftstorlek (värd+Page Up)"
+msgstr "Förstora textstorlek (värd+Page Up)"
 
 #: src/remmina_ssh_plugin.c:839
 msgid "Decrease font size (host+Page Down)"
-msgstr "Förminska skriftstorlek (värd+Page Up)"
+msgstr "Minska textstorleken (värd+Page Down)"
 
 #: src/remmina_ssh_plugin.c:840
 msgid "Find text (host+G)"
@@ -1970,7 +1968,7 @@ msgstr "_Välj alt"
 
 #: src/remmina_ssh_plugin.c:1476
 msgid "Increase font size"
-msgstr "Öka skriftstorlek"
+msgstr "Öka textstorleken"
 
 #: src/remmina_ssh_plugin.c:1476
 msgid "_Increase font size"
@@ -2393,14 +2391,13 @@ msgid "The “%s” server refused the connection."
 msgstr "\"%s\"-tjänaren avslog tillknytningen."
 
 #: plugins/rdp/rdp_plugin.c:2548
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
-msgstr "Fjärrskrivbordskörsporten \"%s\" nektade anvendern \"%s"
+msgstr ""
+"Fjärrskrivbordsgatewayen \"%s\" nekade användaren \"%s\\%s\" åtkomst på "
+"grund av policy."
 
 #: plugins/rdp/rdp_plugin.c:2558
 #, c-format
