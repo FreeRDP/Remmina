@@ -198,7 +198,7 @@ Without the  **Remmina community** of remminers, this project wouldn't exist.
 * Dennis Ollier ([larchunix](https://github.com/larchunix)) made the SPICE protocol plugin.
 * Luca Falavigna ([dktrkranz](https://github.com/dktrkranz)) Ubuntu PPA and Remmina patches.
 * Matteo F. Vescovi ([mfvescovi](https://github.com/mfvescovi)) brought the Remmina upstream version to Debian and Ubuntu.
-* Matteo Nastasi ([nastasi](https://github.com/nastasi)) started the implementation of build recipies for Ubuntu and Debian.
+* Matteo Nastasi ([nastasi](https://github.com/nastasi)) started the implementation of build recipes for Ubuntu and Debian.
 * Johannes Weberhofer ([weberhofer](https://github.com/weberhofer)) and **Pavel Alexeev** ([Hubbitus](https://github.com/Hubbitus))
 * Fabio Castelli ([muflone](https://github.com/muflone)) great improvements and functionalities.
 

@@ -98,7 +98,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	display = gdk_display_get_default ();
 	n_monitors = gdk_display_get_n_monitors(display);
 
-	/* Get monitor at windows curently in use */
+	/* Get monitor at windows currently in use */
 	//w = gtk_widget_get_window(rfi->drawing_area);
 
 	//current_monitor = gdk_display_get_monitor_at_window (display, w);

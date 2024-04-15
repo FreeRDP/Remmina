@@ -636,7 +636,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	}
 
 	if (clipboard->format != info || clipboard->srv_data == NULL) {
-		/* We do not have a local cached clipoard, so we have to start a remote request */
+		/* We do not have a local cached clipboard, so we have to start a remote request */
 		remmina_rdp_cliprdr_cached_clipboard_free(clipboard);
 
 		clipboard->format = info;

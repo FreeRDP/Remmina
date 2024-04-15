@@ -62,7 +62,7 @@ These would make good topics for videos:
 
 - Configuration and use of a basic RDP profile, quickly showing the most common controls (resizes, toolbar placement, screenshots, …).
 - Creation of a default profile.
-- Cration of and connection to a VNC server.
+- Creation of a connection to a VNC server.
 - Using a basic SSH tunnel.
 
 ### Disclaimer

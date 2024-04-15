@@ -990,7 +990,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget *gp)
 	/** Fixme: This comment
 	 * needed for TS_SUPPRESS_OUTPUT_PDU
 	 * But it works only when we stay in the same window mode, if we switch to
-	 * fullscreen, for instance, the object refernce is lost, so we loose these
+	 * fullscreen, for instance, the object reference is lost, so we loose these
 	 * events.
 	 */
 	//g_signal_connect(G_OBJECT(gtk_widget_get_toplevel(rfi->drawing_area)), "map-event",
