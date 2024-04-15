@@ -1658,7 +1658,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	REMMINA_PLUGIN_DEBUG("gfx_h264_available: %d", gfx_h264_available);
 
 	/* Avoid using H.264 modes if they are not available on libfreerdp */
-	if (!gfx_h264_available && (freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_ColorDepth) == 65 || freerdp_settings_get_bool(rfi->clientContext.context.settings, FreeRDP_ColorDepth == 66)))
+	if (!gfx_h264_available &&
+	    (freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_ColorDepth) == 65 ||
+	     freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_ColorDepth) == 66))
 		freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_ColorDepth, 64); // Fallback to GFX RFX
 
 	if (freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_ColorDepth) == 0) {
