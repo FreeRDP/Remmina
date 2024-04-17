@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-03-06 19:01+0000\n"
+"PO-Revision-Date: 2024-04-17 22:03+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
@@ -690,12 +690,6 @@ msgstr "Disable tray icon"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -703,7 +697,7 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina does not log all output statements. Turn on more verbose output by "
-"using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
+"using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -1085,10 +1079,8 @@ msgid "SSH identity file not selected."
 msgstr "SSH Key file not yet set."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "No saved SSH password supplied. Asking user to enter it."
+msgstr "No username found. Asking user to enter it."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1184,16 +1176,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Enter TOTP/OTP/2FA code"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "SSH tunnel credentials"
+msgstr "SSH tunnel private key credentials"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "SSH private key file"
+msgstr "SSH private key credentials"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1368,16 +1356,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "File"
+msgstr "RDP Files"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "File"
+msgstr "All Files"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1385,16 +1369,12 @@ msgid "Import"
 msgstr "Import"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Create new connection profile"
+msgstr "Select the connection profile."
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Remmina data folder"
+msgstr "Remmina couldn't export."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -2183,7 +2163,7 @@ msgstr "Enter RDP gateway authentication credentials"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Enter RDP SmartCard PIN"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -4164,18 +4144,14 @@ msgid "About"
 msgstr "About"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
+"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 
@@ -4271,23 +4247,6 @@ msgid "Verify password"
 msgstr "Verify password"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4296,16 +4255,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>The news is turned off</b></big>\n"
-"\n"
-"<span>\n"
-"Turning on news means the program connects to a Remmina server to download "
-"the release notes.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Version checking can only be activated at compile time.\n"
-"</span>\n"
+"<big><b>The news failed to load</b></big>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
@@ -4379,7 +4329,7 @@ msgstr "Export"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Report Bug"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4432,51 +4382,47 @@ msgstr "Toggle view"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Include System Info"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Include Debug Data"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Username"
+msgstr "Name/Username:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "E-mail:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Bug Title"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Description"
+msgstr "Bug Description"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Clicking \"Submit\" will send this to Remmina's GitLab page and "
+"automatically create a new issue on the issue tracker."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Remmina password"
+msgstr "Remmina Report Bug"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
@@ -4622,25 +4568,20 @@ msgid "Confirm before closing multiple tabs"
 msgstr "Confirm before closing multiple tabs"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
 msgid "Disable anonymous statistics"
-msgstr "Send anonymous statistics"
+msgstr "Disable anonymous statistics"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
+"Disable news from <a href=\"https://remmina.org\" title=\"Remmina news site\""
+">remmina.org</a>"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "Disable tip of the day"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
