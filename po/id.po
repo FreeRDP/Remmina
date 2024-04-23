@@ -11,13 +11,14 @@
 # Jacque Fresco <aidter@use.startmail.com>, 2021.
 # Aditya Rahman <adityarahman032@gmail.com>, 2021.
 # Muhammad Khuirul Huda <hudah2102@gmail.com>, 2023.
+# DzEN/DzEN <dandyoctavian@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-11-09 02:34+0000\n"
-"Last-Translator: Muhammad Khuirul Huda <hudah2102@gmail.com>\n"
+"PO-Revision-Date: 2024-04-23 08:07+0000\n"
+"Last-Translator: DzEN/DzEN <dandyoctavian@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/remmina/"
 "remmina/id/>\n"
 "Language: id\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -156,10 +157,8 @@ msgid "Language Wrapper"
 msgstr "Pembungkus Bahasa"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Unduh"
+msgstr "Unduh Plugin"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -172,10 +171,8 @@ msgid "Plugins"
 msgstr "Pengaya"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Unduh"
+msgstr "_Unduh"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -187,7 +184,7 @@ msgstr "Tutup"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Pasang"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -666,10 +663,8 @@ msgid "Encrypt a password"
 msgstr "Enkripsi kata sandi"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable news notification"
 msgid "Disable news"
-msgstr "Nonaktifkan pemberitahuan berita"
+msgstr "Nonaktifkan berita"
 
 #: src/remmina.c:139
 #, fuzzy
@@ -702,19 +697,13 @@ msgstr "Nonaktifkan ikon baki"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remmina tidak mencatat semua pernyataan keluaran. Nyalakan keluaran yang "
+"Remmina tidak mencatat semua informasi keluaran. Nyalakan keluaran yang "
 "lebih rinci dengan memakai \"G_MESSAGES_DEBUG=all\" sebagai variabel "
 "lingkungan.\n"
 "Info lebih banyak tersedia pada wiki Remmina di:\n"
@@ -1102,12 +1091,8 @@ msgid "SSH identity file not selected."
 msgstr "Berkas Kunci SSH belum ditata."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr ""
-"Tidak ada kata sandi SSH tersimpan yang diberikan. Meminta pengguna untuk "
-"memasukkannya."
+msgstr "Nama user tidak ditemukan. Masukkan secara manual."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1204,16 +1189,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Masukkan kode TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "Kredensial SSH Tunnel"
+msgstr "Kredensial Kunci pribadi SSH Tunnel"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Berkas kunci privat SSH"
+msgstr "Kredensial kunci privat SSH"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1334,12 +1315,12 @@ msgid "Could not create PTY device."
 msgstr "Tidak bisa membuat perangkat PTY."
 
 #: src/remmina_exec.c:128
-#, fuzzy
-#| msgid "Are you sure you want to close this last active connection?"
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
-msgstr "Anda yakin ingin menutup koneksi aktif terakhir ini?"
+msgstr ""
+"Anda yakin ingin menutup semua koneksi aktif ini?\n"
+"‐Tindakan ini akan menutup semua koneksi."
 
 #: src/remmina_exec.c:505
 #, c-format
@@ -1389,16 +1370,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Berkas"
+msgstr "Berkas RDP"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Berkas"
+msgstr "Semua Berkas"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1406,16 +1383,12 @@ msgid "Import"
 msgstr "Impor"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Membuat profil koneksi baru"
+msgstr "Pilih profil koneksi"
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Folder data Remmina"
+msgstr "Tidak dapat mengekspor"
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -2213,7 +2186,7 @@ msgstr "Masukkan kredensial autentikasi gateway RDP"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Masukkan PIN SmartCard RDP"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2829,10 +2802,8 @@ msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/KE/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
-#, fuzzy
-#| msgid "Remote Connection Profile"
 msgid "Move mouse when connection is idle"
-msgstr "Profil Sambungan Jarak Jauh"
+msgstr "Goyangkan tetikus saat koneksi idle"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
@@ -4208,20 +4179,16 @@ msgid "About"
 msgstr "Tentang"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
+"Hak cipta © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Hak cipta © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
 "Hak cipta © 2009–2014 Vic Lee\n"
-"Lebih banyak rincian dalam COPYING"
+"Lebih lanjut silahkan lihat bagian COPYING"
 
 #: data/ui/remmina_about.glade:41
 msgid "https://www.remmina.org/"
@@ -4315,23 +4282,6 @@ msgid "Verify password"
 msgstr "Verifikasi kata sandi"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4340,16 +4290,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Berita dimatikan</b></big>\n"
-"\n"
-"<span>\n"
-"Menyalakan berita berarti bahwa program menyambung ke server Remmina untuk "
-"mengunduh catatan rilis.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Pemeriksaan versi hanya dapat diaktifkan saat kompail.\n"
-"</span>\n"
+"<big><b>Gagal memuat Berita</b></big>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
@@ -4423,7 +4364,7 @@ msgstr "Ekspor"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Laporkan Masalah"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4476,51 +4417,47 @@ msgstr "Jungkitkan tilikan"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Masukkan info sistem"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Masukkan Data Debug"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Kirimkan"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Nama pengguna"
+msgstr "Nama/Nama pengguna:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "Surel:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "Surel"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Judul Permasalahan"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Deskripsi"
+msgstr "Deskripsi Permasalahan"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Klik \"Kirimkan\" akan mengirimkan ke halaman Remmina GitLab dan akan "
+"otomatis membuat isu baru pada daftar isu."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Kata sandi Remmina"
+msgstr "Laporkan Masalah Remmina"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
@@ -4667,26 +4604,20 @@ msgid "Confirm before closing multiple tabs"
 msgstr "Konfirmasikan sebelum menutup beberapa tab"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
-#| msgid "Send anonymous statistics"
 msgid "Disable anonymous statistics"
-msgstr "Kirim statistik anonim"
+msgstr "Jangan kirimkan data anonim"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Ambil berita darai <a href=\"https://remmina.org\" title=\"Remmina news "
+"Hentikan berita dari <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a> (*)"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "Matikan tips hari ini"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
@@ -4849,10 +4780,8 @@ msgid "View-only mode"
 msgstr "Mode hanya lihat"
 
 #: data/ui/remmina_preferences.glade:1477
-#, fuzzy
-#| msgid "Send clipboard content as keystrokes"
 msgid "Send clipboard as keystrokes"
-msgstr "Mengirim konten papan klip sebagai ketukan tombol"
+msgstr "Kirim konten papan klip dengan tombol kombinasi"
 
 #: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
