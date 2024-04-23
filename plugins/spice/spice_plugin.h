@@ -80,6 +80,7 @@ typedef struct _RemminaPluginSpiceData {
 	SpiceGtkSession *	gtk_session;
 	SpiceMainChannel *	main_channel;
 	SpiceSession *		session;
+	SpiceUsbDeviceManager *	usbmanager;
 	gchar *				unixPath;
 	gboolean			isUnix;
 
