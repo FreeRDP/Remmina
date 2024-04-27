@@ -54,5 +54,6 @@ void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget *gp, RemminaP
 gboolean remmina_rdp_event_on_map(RemminaProtocolWidget *gp);
 gboolean remmina_rdp_event_on_unmap(RemminaProtocolWidget *gp);
 void remmina_rdp_mouse_jitter(RemminaProtocolWidget *gp);
+void remmina_rdp_idle_keypress(RemminaProtocolWidget *gp, int *keypress_opts);
 
 G_END_DECLS
