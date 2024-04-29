@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-04-29 14:34+0000\n"
+"PO-Revision-Date: 2024-04-29 14:47+0000\n"
 "Last-Translator: Kilian GUILLAUME <kilian.guillaume@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -1166,7 +1166,7 @@ msgstr "Authentification SSH par saisie interactive impossible. %s"
 #: src/remmina_ssh.c:1328
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "Authentification SSH par clef publique impossible. %s"
+msgstr "Échec d'authentification automatique SSH par clef publique. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1436
@@ -2959,8 +2959,7 @@ msgstr "Activer la prise en charge des WebSockets par la passerelle"
 
 #: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
-msgstr ""
-"Mettre à jour le tampon de trame vidéo même lorsqu’il n’est pas visible"
+msgstr "Mettre à jour le tampon vidéo quand la fenêtre est masquée"
 
 #: plugins/rdp/rdp_plugin.c:3206 plugins/spice/spice_plugin.c:711
 #: plugins/spice/spice_plugin.c:719 plugins/vnc/vnc_plugin.c:2139
@@ -3033,9 +3032,9 @@ msgid "Disconnected from the SPICE %s."
 msgstr "Déconnecté du serveur SPICE %s."
 
 #: plugins/spice/spice_plugin.c:390
-#, c-format
+#, c-format, fuzzy
 msgid "Disconnected from %s via SPICE"
-msgstr "Déconnecté de %s via SPICE"
+msgstr "Déconnecté du serveur SPICE %s:%d"
 
 #: plugins/spice/spice_plugin.c:393
 #, c-format
@@ -3191,12 +3190,13 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
-"À l’écoute d’une connexion VNC cliente :\n"
+"À l’écoute d’une connexion VNC cliente :\n"
 "  • le champ « Écouter sur le port » définit le port sur lequel Remmina va "
-"écouter, p. ex. 8888 ;\n"
-"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina, "
-"p. ex. avec x11vnc :\n"
-"    x11vnc -display :0 -connect 192.168.1.36:8888"
+"écouter,\n"
+"    p. ex. 8888 ;\n"
+"  • depuis le client VNC distant, vous pourrez vous connecter à Remmina,\n"
+"    p. ex. avec x11vnc :\n"
+"    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:2063
 msgid ""
