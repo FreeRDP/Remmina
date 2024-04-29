@@ -136,6 +136,14 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 		"auto-clipboard",
 		!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 		NULL);
+
+	const gchar *filterstr = remmina_plugin_service->file_get_string(remminafile, "usbredir");
+	if (filterstr) {
+		gpdata->usbmanager = spice_usb_device_manager_get(gpdata->session, NULL);
+		if (gpdata->usbmanager != NULL) {
+			g_object_set(gpdata->usbmanager, "redirect-on-connect", filterstr, NULL);
+		}
+	}
 }
 
 static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
@@ -681,6 +689,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,		"usetls",		N_("Use TLS encryption"),	FALSE,	NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,		"cacert",		N_("Server CA certificate"),	FALSE,	NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,		"sharefolder",		N_("Share folder"),		FALSE,	NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,		"usbredir",		N_("USB device redirection"),	FALSE,  NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,		NULL,			NULL,				FALSE,	NULL, NULL, NULL, NULL }
 };
 
