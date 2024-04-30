@@ -2669,6 +2669,7 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	freerdp *instance;
 	rfContext *rfi;
+	gchar* auth_list;
 
 	instance = freerdp_new();
 	instance->PreConnect = remmina_rdp_pre_connect;
@@ -2708,6 +2709,12 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	rfi->last_y = 0;
 
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
+
+	auth_list = remmina_plugin_service->pref_get_value("rdp_auth_filter");
+	if (auth_list == NULL){
+		auth_list = "!kerberos";
+	}
+	freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_AuthenticationPackageList, auth_list);
 
 	remmina_rdp_event_init(gp);
 }
