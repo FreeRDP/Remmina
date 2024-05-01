@@ -66,6 +66,13 @@ void remmina_rdp_settings_init(void)
 
 	g_free(value);
 
+	value = remmina_plugin_service->pref_get_value("rdp_auth_filter");
+	if (value == NULL) {
+		remmina_plugin_service->pref_set_value("rdp_auth_filter", "!kerberos");
+	} else {
+		g_free(value);
+	}
+
 	remmina_rdp_settings_kbd_init();
 }
 
@@ -723,7 +730,7 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 	gtk_widget_set_margin_end(GTK_WIDGET(widget), 6);
 	gtk_widget_set_margin_start(GTK_WIDGET(widget), 18);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 14, 1, 1);
-	widget = gtk_label_new(_("Auth string"));
+	widget = gtk_label_new(_("FreeRDP auth-pkg-list"));
 	gtk_widget_show(widget);
 	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
 	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
