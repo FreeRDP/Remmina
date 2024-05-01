@@ -2669,6 +2669,7 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	freerdp *instance;
 	rfContext *rfi;
+	gchar* auth_list;
 
 	instance = freerdp_new();
 	instance->PreConnect = remmina_rdp_pre_connect;
@@ -2708,7 +2709,13 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	rfi->last_y = 0;
 
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
-
+#if FREERDP_VERSION_MAJOR >= 3
+	if (auth_list != NULL && auth_list[0] != 0){
+		freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_AuthenticationPackageList, auth_list);
+	}
+	g_free(auth_list);
+	
+#endif
 	remmina_rdp_event_init(gp);
 }
 

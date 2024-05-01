@@ -66,6 +66,13 @@ void remmina_rdp_settings_init(void)
 
 	g_free(value);
 
+	value = remmina_plugin_service->pref_get_value("rdp_auth_filter");
+	if (value == NULL) {
+		remmina_plugin_service->pref_set_value("rdp_auth_filter", "!kerberos");
+	} else {
+		g_free(value);
+	}
+
 	remmina_rdp_settings_kbd_init();
 }
 
@@ -103,6 +110,7 @@ typedef struct _RemminaPluginRdpsetGrid {
 	GtkWidget *	disable_smooth_scrolling_check;
 	GtkWidget *	reconnect_attempts;
 	GtkWidget *	kbd_remap;
+	GtkWidget *	auth_filter;
 
 	/* FreeRDP /scale-desktop: Scaling of desktop app */
 	GtkWidget *	desktop_scale_factor_spin;
@@ -161,6 +169,9 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget *widget, gpointer data)
 
 	remmina_plugin_service->pref_set_value("rdp_reconnect_attempts",
 					       gtk_entry_get_text(GTK_ENTRY(grid->reconnect_attempts)));
+
+	remmina_plugin_service->pref_set_value("rdp_auth_filter",
+					       gtk_entry_get_text(GTK_ENTRY(grid->auth_filter)));
 
 	remmina_plugin_service->pref_set_value("rdp_kbd_remap",
 					       gtk_entry_get_text(GTK_ENTRY(grid->kbd_remap)));
@@ -710,6 +721,34 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 		gtk_entry_set_text(GTK_ENTRY(widget), s);
 	g_free(s);
 	grid->reconnect_attempts = widget;
+
+
+	widget = gtk_label_new(_("Auth settings"));
+	gtk_widget_show(widget);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_margin_end(GTK_WIDGET(widget), 6);
+	gtk_widget_set_margin_start(GTK_WIDGET(widget), 18);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 14, 1, 1);
+	widget = gtk_label_new(_("FreeRDP auth-pkg-list"));
+	gtk_widget_show(widget);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_margin_start(GTK_WIDGET(widget), 6);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 14, 1, 1);
+	widget = gtk_entry_new();
+	gtk_widget_show(widget);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_END);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_grid_attach(GTK_GRID(grid), widget, 2, 14, 1, 1);
+	gtk_entry_set_input_purpose(GTK_ENTRY(widget), GTK_INPUT_PURPOSE_NUMBER);
+	gtk_entry_set_input_hints(GTK_ENTRY(widget), GTK_INPUT_HINT_NONE);
+	gtk_widget_set_tooltip_text(widget, _("Authentication package filter(comma-separated list, use '!' to exclude)"));
+	s = remmina_plugin_service->pref_get_value("rdp_auth_filter");
+	if (s && s[0])
+		gtk_entry_set_text(GTK_ENTRY(widget), s);
+	g_free(s);
+	grid->auth_filter = widget;
 
 }
 
