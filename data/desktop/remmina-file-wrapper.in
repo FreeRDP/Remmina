@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #===============================================================================
 #
 #          FILE: remmina-file-wrapper
@@ -24,11 +24,11 @@ set -o nounset                                  # Treat unset variables as an er
 USRBIN="$(dirname "$(readlink -f "${0}")")"
 REMMINA="@REMMINA_BINARY_PATH@"
 
-if [[ ! -f "$REMMINA" ]]; then
+if [ ! -f "$REMMINA" ]; then
     REMMINA="${USRBIN}/remmina"
 fi
 
-if [[ ! -f "$REMMINA" ]]; then
+if [ ! -f "$REMMINA" ]; then
     REMMINA="remmina"
 fi
 
