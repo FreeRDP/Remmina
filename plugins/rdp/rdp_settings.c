@@ -66,12 +66,6 @@ void remmina_rdp_settings_init(void)
 
 	g_free(value);
 
-	value = remmina_plugin_service->pref_get_value("rdp_auth_filter");
-	if (value == NULL) {
-		remmina_plugin_service->pref_set_value("rdp_auth_filter", "!kerberos");
-	} else {
-		g_free(value);
-	}
 
 	remmina_rdp_settings_kbd_init();
 }
