@@ -129,6 +129,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 		"enable-audio", remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE),
 		"enable-smartcard", remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE),
 		"shared-dir", remmina_plugin_service->file_get_string(remminafile, "sharefolder"),
+		"proxy", remmina_plugin_service->file_get_string(remminafile, "proxy"),
 		NULL);
 
 	gpdata->gtk_session = spice_gtk_session_get(gpdata->session);
@@ -689,6 +690,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,		"usetls",		N_("Use TLS encryption"),	FALSE,	NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,		"cacert",		N_("Server CA certificate"),	FALSE,	NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,		"sharefolder",		N_("Share folder"),		FALSE,	NULL, NULL, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "proxy",                N_("Proxy"),                 FALSE,  NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,		"usbredir",		N_("USB device redirection"),	FALSE,  NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,		NULL,			NULL,				FALSE,	NULL, NULL, NULL, NULL }
 };
