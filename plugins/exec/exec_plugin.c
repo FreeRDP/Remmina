@@ -294,7 +294,7 @@ static gboolean remmina_plugin_exec_close(RemminaProtocolWidget *gp)
  */
 static const RemminaProtocolSetting remmina_plugin_exec_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"execcommand",  N_("Command"),  		FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"execcommand",  N_("Command"),  		FALSE, "*May not work if running in a sandboxed environment*", NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"runasync", 	N_("Asynchronous execution"),	FALSE, NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,  "kill_proc",    N_("Kill process on disconnect"),       FALSE, NULL, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,	    	NULL,	    			FALSE, NULL, NULL, NULL, NULL }
