@@ -34,6 +34,8 @@
 
 #pragma once
 #include "common/remmina_plugin.h"
+#include <rfb/rfbclient.h>
+
 
 #ifndef __PLUGIN_CONFIG_H
 #define __PLUGIN_CONFIG_H
@@ -118,6 +120,14 @@ typedef struct _RemminaPluginVncData {
 	float		scroll_x_accumulator, scroll_y_accumulator;
 
 } RemminaPluginVncData;
+
+typedef struct _FrameInfo{
+	rfbClient *cl; 
+	int x; 
+	int y; 
+	int w; 
+	int h;
+} FrameInfo;
 
 enum {
 	REMMINA_PLUGIN_VNC_EVENT_KEY,
