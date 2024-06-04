@@ -700,6 +700,14 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget *widget, GdkEventScroll *e
 		flag = PTR_FLAGS_WHEEL | 0x0188;  // -120 (one scroll unit) in 9 bits two's complement
 		break;
 
+	case GDK_SCROLL_RIGHT:
+		flag = PTR_FLAGS_HWHEEL | 0x0078; // 120 is one scroll unit defined in WM_MOUSEWHEEL
+		break;
+
+	case GDK_SCROLL_LEFT:
+		flag = PTR_FLAGS_HWHEEL | 0x0188; // -120 (one scroll unit) in 9 bits two's complement
+		break;
+
 #if GTK_CHECK_VERSION(3, 4, 0)
 	case GDK_SCROLL_SMOOTH:
 
