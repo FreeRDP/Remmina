@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021.
 # gogogogi <trebelnik2@gmail.com>, 2019, 2020, 2021, 2022, 2023.
-# Milo Ivir <mail@milotype.de>, 2020, 2021, 2022, 2023.
+# Milo Ivir <mail@milotype.de>, 2020, 2021, 2022, 2023, 2024.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-10-20 04:17+0000\n"
+"PO-Revision-Date: 2024-06-07 16:09+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -19,9 +19,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.6-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -152,10 +152,8 @@ msgid "Language Wrapper"
 msgstr "Jezični wrapper"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Preuzimanje"
+msgstr "Preuzimanje priključka"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -168,10 +166,8 @@ msgid "Plugins"
 msgstr "Priključci"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Preuzimanje"
+msgstr "_Preuzmi"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -183,7 +179,7 @@ msgstr "Zatvori"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Instaliraj"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -664,16 +660,12 @@ msgid "Encrypt a password"
 msgstr "Šifriraj lozinku"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable news notification"
 msgid "Disable news"
-msgstr "Onemogući obavijesti o novostima"
+msgstr "Deaktiviraj novosti"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "Onemogući alatnu traku"
+msgstr "Deaktiviraj statistike"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -700,12 +692,6 @@ msgstr "Onemogući ikonu trake sustava"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -713,7 +699,7 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ne bilježi sve izlazne izjave. Uključite opširnije bilježenje "
-"korištenjem \"G_MESSAGES_DEBUG=all\" kao varijablu okruženja.\n"
+"korištenjem \"G_MESSAGES_DEBUG=remmina\" kao varijablu okruženja.\n"
 "Više informacija je dostupno na Remmina wiki:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -1096,10 +1082,8 @@ msgid "SSH identity file not selected."
 msgstr "Datoteka SSH identiteta nije odabrana."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "Nema spremljenih SSH lozinki. Upitaj korisnika da ju upiše."
+msgstr "Korisničko ime nije pronađeno. Od korisnika se traži da ga unese."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1195,16 +1179,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Upiši TOTP/OTP/2FA kôd"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "SSH tunel vjerodajnice"
+msgstr "Vjerodajnice privatnog SSH tunela"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Datoteka privatnog SSH ključa"
+msgstr "Vjerodajnice privatnog SSH ključa"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1380,16 +1360,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Datoteka"
+msgstr "RDP datoteke"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Datoteka"
+msgstr "Sve datoteke"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1397,16 +1373,12 @@ msgid "Import"
 msgstr "Uvoz"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Stvori novi profil povezivanja"
+msgstr "Odaberi profil povezivanja."
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Remmina mapa podataka"
+msgstr "Remmina nije mogla izvesti."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -1590,7 +1562,7 @@ msgstr "Prilagođeno"
 
 #: src/remmina_file_editor.c:658
 msgid "Assistance Mode"
-msgstr ""
+msgstr "Modus pomoći"
 
 #: src/remmina_file_editor.c:1045
 msgid "Keyboard mapping"
@@ -1638,11 +1610,11 @@ msgstr "Potrebna je lozinka za povezivanje ili uređivanje profila"
 
 #: src/remmina_file_editor.c:1206
 msgid "Unexpected disconnect"
-msgstr ""
+msgstr "Neočekivani prekid veze"
 
 #: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr ""
+msgstr "Nemoj zatvoriti prozor ako Remmina nije prekinula vezu"
 
 #: src/remmina_file_editor.c:1242
 msgid "SSH Tunnel"
@@ -2199,7 +2171,7 @@ msgstr "Upišite RDP pristupnik vjerodajnice ovjere"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Upiši RDP SmartCard PIN"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2439,19 +2411,19 @@ msgstr "NLA prošireni sigurnosni protokol"
 
 #: plugins/rdp/rdp_plugin.c:2994
 msgid "Every 1 min"
-msgstr ""
+msgstr "Svake 1 min"
 
 #: plugins/rdp/rdp_plugin.c:2995
 msgid "Every 3 min"
-msgstr ""
+msgstr "Svake 3 min"
 
 #: plugins/rdp/rdp_plugin.c:2996
 msgid "Every 5 min"
-msgstr ""
+msgstr "Svakih 5 min"
 
 #: plugins/rdp/rdp_plugin.c:2997
 msgid "Every 10 min"
-msgstr ""
+msgstr "Svakih 10 min"
 
 #: plugins/rdp/rdp_plugin.c:3011 plugins/spice/spice_plugin.c:622
 #: plugins/spice/spice_plugin.c:640
@@ -2813,14 +2785,12 @@ msgid "/PATH/TO/rdp2tcp"
 msgstr "/PUTANJA/DO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
-#, fuzzy
-#| msgid "Remote Connection Profile"
 msgid "Move mouse when connection is idle"
-msgstr "Profil udaljenog povezivanja"
+msgstr "Pomakni miša kada je veza neaktivna"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "Pokušaj povezivanja u modusu pomoći"
 
 #: plugins/rdp/rdp_plugin.c:3173
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2982,22 +2952,19 @@ msgid "Enter SPICE password"
 msgstr "Upišite SPICE lozinku"
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "Prekinuto povezivanje sa SPICE poslužiteljem “%s”."
+msgstr "Prekinuto povezivanje sa SPICE %s."
 
 #: plugins/spice/spice_plugin.c:390
-#, fuzzy, c-format
-#| msgid "Disconnected from %s:%d via SPICE"
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Prekinuto povezivanje s %s:%d putem SPICE"
+msgstr "Prekinuta veza s %s putem SPICE"
 
 #: plugins/spice/spice_plugin.c:393
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via SPICE"
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "Povezano s %s:%d putem SPICE"
+msgstr "Povezano s %s putem SPICE"
 
 #: plugins/spice/spice_plugin.c:405
 msgid "TLS connection error."
@@ -3160,6 +3127,11 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"Zaključaj omjer kada je aktivirana dinamička razlučivost:\n"
+"\n"
+"   • Omjer slike treba unijeti kao decimalni broj, npr. 1,777\n"
+"   • 16:9 odgovara otprilike 1,7777, 4:3 odgovara otprilike 1,333\n"
+"   • Zadana vrijednost 0 ne nameće nikakav omjer"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3198,7 +3170,7 @@ msgstr "Zaobiđi predpostavljena VNC kôdiranja"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "Dinamička razlučivost je nametnula omjer"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
@@ -4183,18 +4155,14 @@ msgid "About"
 msgstr "O programu"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Autorsko pravo © 2014. – 2023. Antenore Gatta, Giovanni Panozzo.\n"
+"Autorsko pravo © 2023. – 2024. Hiroyuki Tanaka, Sunil Bhat\n"
+"Autorsko pravo © 2014. – 2023. Antenore Gatta, Giovanni Panozzo\n"
 "Autorsko pravo © 2009. – 2014. Vic Lee\n"
 "Više pojedinosti u COPYING"
 
@@ -4290,23 +4258,6 @@ msgid "Verify password"
 msgstr "Potvrdi lozinku"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4315,16 +4266,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Novosti su isključene</b></big>\n"
-"\n"
-"<span>\n"
-"Uključivanje novosti znači da se program povezuje s Remmina poslužiteljem "
-"kako bi se preuzele bilješke izdanja.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Provjera inačice može se samo aktivirati u vrijeme kompilacije.\n"
-"</span>\n"
+"<big><b>Neuspjelo učitavanje novosti</b></big>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
@@ -4338,7 +4280,7 @@ msgstr "Odaberi novu tipku"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "Dozvoli modifikatorske tipke"
 
 #: data/ui/remmina_key_chooser.glade:121
 msgid "Please press the new key…"
@@ -4399,7 +4341,7 @@ msgstr "Izvoz"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Prijavi grešku"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4452,51 +4394,47 @@ msgstr "Uklj/Isklj prikaz"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Uključi informacije sustava"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Uključi podatke za ispravljanje grešaka"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Pošalji"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Korisničko ime"
+msgstr "Ime/Korisničko ime:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "E-mail:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Naslov greške"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Opis"
+msgstr "Opis greške"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Pritiskom na „Pošalji” će se ovo poslati na Remmininu GitLab stranicu i "
+"automatski će stvoriti novi problem u sustavu za praćenje problema."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Remmina lozinka"
+msgstr "Prijava Remmina greške"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
@@ -4642,26 +4580,20 @@ msgid "Confirm before closing multiple tabs"
 msgstr "Potvrdi prije zatvaranja više kartica"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
-#| msgid "Send anonymous statistics"
 msgid "Disable anonymous statistics"
-msgstr "Šalji anonimnu statistiku"
+msgstr "Deaktiviraj anonimne statistike"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Preuzmi novosti s <a href=\"https://remmina.org\" title=\"Remmina stranica "
-"novosti\">remmina.org</a> (*)"
+"Deaktiviraj novosti od <a href=\"https://remmina.org\" title=\"Remmina "
+"stranica novosti\">remmina.org</a> (*)"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "Deaktiviraj prikaz savjeta dana"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
@@ -4821,14 +4753,12 @@ msgid "View-only mode"
 msgstr "Samo-za-gledanje način rada"
 
 #: data/ui/remmina_preferences.glade:1477
-#, fuzzy
-#| msgid "Send clipboard content as keystrokes"
 msgid "Send clipboard as keystrokes"
-msgstr "Pošalji sadržaj međuspremnika kao pritisak tipki"
+msgstr "Pošalji međuspremnik kao pritisak tipki"
 
 #: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
-msgstr ""
+msgstr "Slanje međuspremnika"
 
 #: data/ui/remmina_preferences.glade:1517
 msgid "Keyboard"
@@ -4848,7 +4778,7 @@ msgstr "Bez zapisivanja"
 
 #: data/ui/remmina_preferences.glade:1597
 msgid "Rare conditions or warnings"
-msgstr "Rijetka stanja upozorenja"
+msgstr "Rijetka stanja ili upozorenja"
 
 #: data/ui/remmina_preferences.glade:1598
 msgid "API-accessible entrypoints"
