@@ -2068,14 +2068,15 @@ static void rcw_toolbar_tools(GtkToolItem *toggle, RemminaConnectionWindow *cnnw
 	if (remmina_protocol_widget_plugin_receives_keystrokes(REMMINA_PROTOCOL_WIDGET(cnnobj->proto))) {
 		/* Get the registered keystrokes list */
 		keystrokes = g_strsplit(remmina_pref.keystrokes, STRING_DELIMITOR, -1);
+		
+		/* Add a keystrokes submenu */
+		menuitem = gtk_menu_item_new_with_label(_("Keystrokes"));
+		submenu_keystrokes = GTK_MENU(gtk_menu_new());
+		gtk_menu_item_set_submenu(GTK_MENU_ITEM(menuitem), GTK_WIDGET(submenu_keystrokes));
+		gtk_widget_show(menuitem);
+		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+		/* Add each registered keystroke */
 		if (g_strv_length(keystrokes)) {
-			/* Add a keystrokes submenu */
-			menuitem = gtk_menu_item_new_with_label(_("Keystrokes"));
-			submenu_keystrokes = GTK_MENU(gtk_menu_new());
-			gtk_menu_item_set_submenu(GTK_MENU_ITEM(menuitem), GTK_WIDGET(submenu_keystrokes));
-			gtk_widget_show(menuitem);
-			gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-			/* Add each registered keystroke */
 			for (i = 0; i < g_strv_length(keystrokes); i++) {
 				keystroke_values = g_strsplit(keystrokes[i], STRING_DELIMITOR2, -1);
 				if (g_strv_length(keystroke_values) > 1) {
@@ -2084,30 +2085,31 @@ static void rcw_toolbar_tools(GtkToolItem *toggle, RemminaConnectionWindow *cnnw
 						g_strdup(keystroke_values[strlen(keystroke_values[0]) ? 0 : 1]));
 					g_object_set_data(G_OBJECT(menuitem), "keystrokes", g_strdup(keystroke_values[1]));
 					g_signal_connect_swapped(G_OBJECT(menuitem), "activate",
-								 G_CALLBACK(remmina_protocol_widget_send_keystrokes),
-								 REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
+									G_CALLBACK(remmina_protocol_widget_send_keystrokes),
+									REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 					gtk_widget_show(menuitem);
 					gtk_menu_shell_append(GTK_MENU_SHELL(submenu_keystrokes), menuitem);
 				}
 				g_strfreev(keystroke_values);
 			}
-			menuitem = gtk_menu_item_new_with_label(_("Send clipboard content as keystrokes"));
-			static gchar k_tooltip[] =
-				N_("CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on your local keyboard.\n"
-				"\n"
-				"  • For best results use same keyboard settings for both, client and server.\n"
-				"\n"
-				"  • If client-keyboard is different from server-keyboard the received text can contain wrong or erroneous characters.\n"
-				"\n"
-				"  • Unicode characters and other special characters that can't be translated to local key-codes won’t be sent to the server.\n"
-				"\n");
-			gtk_widget_set_tooltip_text(menuitem, k_tooltip);
-			gtk_menu_shell_append(GTK_MENU_SHELL(submenu_keystrokes), menuitem);
-			g_signal_connect_swapped(G_OBJECT(menuitem), "activate",
-						 G_CALLBACK(remmina_protocol_widget_send_clipboard),
-						 REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
-			gtk_widget_show(menuitem);
 		}
+		menuitem = gtk_menu_item_new_with_label(_("Send clipboard content as keystrokes"));
+		static gchar k_tooltip[] =
+			N_("CAUTION: Pasted text will be sent as a sequence of key-codes as if typed on your local keyboard.\n"
+			"\n"
+			"  • For best results use same keyboard settings for both, client and server.\n"
+			"\n"
+			"  • If client-keyboard is different from server-keyboard the received text can contain wrong or erroneous characters.\n"
+			"\n"
+			"  • Unicode characters and other special characters that can't be translated to local key-codes won’t be sent to the server.\n"
+			"\n");
+		gtk_widget_set_tooltip_text(menuitem, k_tooltip);
+		gtk_menu_shell_append(GTK_MENU_SHELL(submenu_keystrokes), menuitem);
+		g_signal_connect_swapped(G_OBJECT(menuitem), "activate",
+						G_CALLBACK(remmina_protocol_widget_send_clipboard),
+						REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
+		gtk_widget_show(menuitem);
+		
 		g_strfreev(keystrokes);
 	}
 
