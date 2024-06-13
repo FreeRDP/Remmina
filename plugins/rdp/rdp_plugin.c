@@ -991,6 +991,9 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 		case AUTH_NLA:
 		case AUTH_TLS:
 		case AUTH_RDP:
+			if ((*username) && (*password)){
+				return true;
+			}
 			key_title = _("Enter RDP authentication credentials");
 			key_user = "username";
 			key_domain = "domain";
