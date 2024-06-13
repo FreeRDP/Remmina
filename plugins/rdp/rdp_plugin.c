@@ -148,6 +148,7 @@ RemminaPluginService *remmina_plugin_service = NULL;
 static BOOL gfx_h264_available = FALSE;
 // keep track of last interaction time for keep alive
 static time_t last_time;
+static time_t last_time_idle_keypress;
 
 /* Compatibility: these functions have been introduced with https://github.com/FreeRDP/FreeRDP/commit/8c5d96784d
  * and are missing on older FreeRDP, so we add them here.
@@ -264,6 +265,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 
 	while ((event = (RemminaPluginRdpEvent *)g_async_queue_try_pop(rfi->event_queue)) != NULL) {
 		time(&last_time); //update last user interaction time
+		time(&last_time_idle_keypress);
 		switch (event->type) {
 		case REMMINA_RDP_EVENT_TYPE_SCANCODE:
 			
@@ -1208,10 +1210,13 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 	gchar buf[100];
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	time_t cur_time, time_diff;
+	time_t cur_time, time_diff_jitter, time_diff_keypress;
 
 	int jitter_time = remmina_plugin_service->file_get_int(remminafile, "rdp_mouse_jitter", 0);
+ 	int keypress_time = remmina_plugin_service->file_get_int(remminafile, "rdp_idle_keypress_time", 0);
+	int keypress_opts = remmina_plugin_service->file_get_int(remminafile, "rdp_idle_keypress_combo", 0);
 	time(&last_time);
+	time(&last_time_idle_keypress);
 #if FREERDP_VERSION_MAJOR >= 3
 	while (!freerdp_shall_disconnect_context(&rfi->clientContext.context)) {
 #else
@@ -1219,10 +1224,17 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 #endif
 		// move mouse if we've been idle and option is selected
 		time(&cur_time);
-		time_diff = cur_time - last_time;
-		if (jitter_time > 0 && time_diff > jitter_time){
+		time_diff_jitter = cur_time - last_time;
+		if (jitter_time > 0 && time_diff_jitter > jitter_time){
 			last_time = cur_time;
 			remmina_rdp_mouse_jitter(gp);
+		}
+		// press key(s) if we've been idle and option is selected
+		time(&cur_time);
+		time_diff_keypress = cur_time - last_time_idle_keypress;		
+		if (keypress_time > 0 && time_diff_keypress > keypress_time){
+			last_time_idle_keypress = cur_time;
+			remmina_rdp_idle_keypress(gp, &keypress_opts);
 		}
 
 		HANDLE handles[MAXIMUM_WAIT_OBJECTS] = {0};
@@ -3013,6 +3025,24 @@ static gpointer mouse_jitter_list[] =
 	NULL
 };
 
+static gpointer idle_keypress_time_list[] =
+{
+	"No",	  N_("No"),
+	"30",  N_("Every 30 sec"),
+	"60",  N_("Every 1 min"),
+	"180", N_("Every 3 min"),
+	"300", N_("Every 5 min"),
+	"600", N_("Every 10 min"),
+	NULL
+};
+
+static gpointer idle_keypress_combo_list[] =
+{
+	"1",  N_("ALT_L + Tab"),
+	"2",  N_("Win + Tab"),
+	NULL
+};
+
 static gpointer gwtransp_list[] =
 {
 	"http", "HTTP",
@@ -3182,7 +3212,9 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "vc",			    N_("Static virtual channel"),			 FALSE, NULL,		  N_("<channel>[,<options>]")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "rdp2tcp",		    N_("TCP redirection"),				 FALSE, NULL,		  N_("/PATH/TO/rdp2tcp")											 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "rdp_reconnect_attempts", N_("Reconnect attempts number"),			 FALSE, NULL,		  N_("The maximum number of reconnect attempts upon an RDP disconnect (default: 20)")				 },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "rdp_mouse_jitter",    N_("Move mouse when connection is idle"),		 FALSE, mouse_jitter_list,	  NULL											 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "rdp_mouse_jitter",    N_("Move mouse when connection is idle"),		 FALSE, mouse_jitter_list,	  NULL											},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "rdp_idle_keypress_time",    N_("Press keys when connection is idle"),		 FALSE, idle_keypress_time_list,	  NULL							},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "rdp_idle_keypress_combo",    N_("Keys combination"),		 FALSE, idle_keypress_combo_list,	  NULL							},
 
 	{ REMMINA_PROTOCOL_SETTING_TYPE_ASSISTANCE,	  "assistance_mode",	    N_("Attempt to connect in assistance mode"),	TRUE,	NULL																 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "preferipv6",		    N_("Prefer IPv6 AAAA record over IPv4 A record"),	 TRUE,	NULL,		  NULL														 },
