@@ -5,25 +5,26 @@
 # Olexandr Nesterenko <olexn@ukr.net>, 2019, 2020.
 # anonymous <noreply@weblate.org>, 2019.
 # Rostyslav <info@ubilling.net.ua>, 2020, 2021.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024.
 # Солтыс Сергей <treefeed@mail.ru>, 2022.
 # Dan <denqwerta@gmail.com>, 2022.
+# Box5 <box5sht@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-09-22 14:48+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"PO-Revision-Date: 2024-06-16 17:21+0000\n"
+"Last-Translator: Box5 <box5sht@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.6-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -155,10 +156,8 @@ msgid "Language Wrapper"
 msgstr "Мовна обгортка"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Отримати"
+msgstr "Отримання додатків"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -171,10 +170,8 @@ msgid "Plugins"
 msgstr "Додатки"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Отримати"
+msgstr "_Отримати"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -186,7 +183,7 @@ msgstr "Закрити"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Встановити"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -668,16 +665,12 @@ msgid "Encrypt a password"
 msgstr "Зашифрувати пароль"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable news notification"
 msgid "Disable news"
-msgstr "Вимкнути сповіщення щодо новин"
+msgstr "Вимкнути новини"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "Вимкнути панель інструментів"
+msgstr "Вимкнути статистику"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -705,12 +698,6 @@ msgstr "Вимкнути піктограму лотка"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -719,7 +706,7 @@ msgid ""
 msgstr ""
 "Remmina не записує до журналу усі виведені повідомлення. Щоб увімкнути "
 "докладніший режим, будь ласка, скористайтеся значенням змінної середовища "
-"G_MESSAGES_DEBUG=all.\n"
+"G_MESSAGES_DEBUG=remmina.\n"
 "Щоб дізнатися більше, будь ласка, відвідайте сторінку вікі Remmina:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -1100,10 +1087,9 @@ msgid "SSH identity file not selected."
 msgstr "Не вибрано файла профілю SSH."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "Не надано збереженого пароля до SSH. Просимо користувача його ввести."
+msgstr ""
+"Користувача з таким іменем не знайдено. Просимо користувача ввести ім'я."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1201,16 +1187,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Введіть код TOTP, OTP або 2FA"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "Реєстраційні дані SSH-тунелю"
+msgstr "Реєстраційні дані закритого ключа SSH-тунелю"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Файл закритого ключа SSH"
+msgstr "Реєстраційні дані закритого ключа SSH"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1388,16 +1370,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Файл"
+msgstr "Файли RDP"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Файл"
+msgstr "Усі файли"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1405,16 +1383,12 @@ msgid "Import"
 msgstr "Імпорт"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Створити новий профіль з'єднання"
+msgstr "Оберіть профіль з'єднання"
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Тека даних Remmina"
+msgstr "Не вдалося експортувати."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -2210,7 +2184,7 @@ msgstr "Введіть дані розпізнавання на шлюзі RDP"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Введіть пін-код картки пам'яті RDP"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -4218,17 +4192,13 @@ msgid "About"
 msgstr "Про програму"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
+"© Hiroyuki Tanaka, Sunil Bhat, 2023–2024\n"
 "© Antenore Gatta, Giovanni Panozzo, 2014–2023\n"
 "© Vic Lee, 2009–2014\n"
 "Докладніше про це у файлі COPYING"
@@ -4325,23 +4295,6 @@ msgid "Verify password"
 msgstr "Перевірити пароль"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4350,16 +4303,7 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Отримання новин вимкнено</b></big>\n"
-"\n"
-"<span>\n"
-"Вмикання отримання новин означає, що програма встановлюватиме з'єднання із "
-"сервером Remmina, щоб отримати нотатки щодо випуску.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Перевірку версій можна активувати лише під час збирання.\n"
-"</span>\n"
+"<big><b>Не вдалося отримати новини</b></big>\n"
 "\n"
 "<span>\n"
 "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Нотатки щодо "
@@ -4499,10 +4443,8 @@ msgid "Submit"
 msgstr ""
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Імʼя користувача"
+msgstr "Імʼя користувача:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
