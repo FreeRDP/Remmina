@@ -297,7 +297,10 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 			break;
 
 		case REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST:
-			rfi->clipboard.context->ClientFormatList(rfi->clipboard.context, event->clipboard_formatlist.pFormatList);
+			if(rfi->clipboard.context != NULL){
+				rfi->clipboard.context->ClientFormatList(rfi->clipboard.context, event->clipboard_formatlist.pFormatList);
+			}
+			
 			free(event->clipboard_formatlist.pFormatList);
 			break;
 
