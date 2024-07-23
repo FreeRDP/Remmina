@@ -146,9 +146,6 @@ static void freerdp_abort_connect_context(rdpContext* context) {
 RemminaPluginService *remmina_plugin_service = NULL;
 
 static BOOL gfx_h264_available = FALSE;
-// keep track of last interaction time for keep alive
-static time_t last_time;
-static time_t last_time_idle_keypress;
 
 /* Compatibility: these functions have been introduced with https://github.com/FreeRDP/FreeRDP/commit/8c5d96784d
  * and are missing on older FreeRDP, so we add them here.
@@ -264,8 +261,8 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	while ((event = (RemminaPluginRdpEvent *)g_async_queue_try_pop(rfi->event_queue)) != NULL) {
-		time(&last_time); //update last user interaction time
-		time(&last_time_idle_keypress);
+		time(&(rfi->last_time)); //update last user interaction time
+		time(&(rfi->last_time_idle_keypress));
 		switch (event->type) {
 		case REMMINA_RDP_EVENT_TYPE_SCANCODE:
 			
@@ -1221,8 +1218,8 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 	int jitter_time = remmina_plugin_service->file_get_int(remminafile, "rdp_mouse_jitter", 0);
  	int keypress_time = remmina_plugin_service->file_get_int(remminafile, "rdp_idle_keypress_time", 0);
 	int keypress_opts = remmina_plugin_service->file_get_int(remminafile, "rdp_idle_keypress_combo", 0);
-	time(&last_time);
-	time(&last_time_idle_keypress);
+	time(&(rfi->last_time));
+	time(&(rfi->last_time_idle_keypress));
 #if FREERDP_VERSION_MAJOR >= 3
 	while (!freerdp_shall_disconnect_context(&rfi->clientContext.context)) {
 #else
@@ -1230,16 +1227,16 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 #endif
 		// move mouse if we've been idle and option is selected
 		time(&cur_time);
-		time_diff_jitter = cur_time - last_time;
+		time_diff_jitter = cur_time - rfi->last_time;
 		if (jitter_time > 0 && time_diff_jitter > jitter_time){
-			last_time = cur_time;
+			rfi->last_time = cur_time;
 			remmina_rdp_mouse_jitter(gp);
 		}
 		// press key(s) if we've been idle and option is selected
 		time(&cur_time);
-		time_diff_keypress = cur_time - last_time_idle_keypress;		
+		time_diff_keypress = cur_time - rfi->last_time_idle_keypress;		
 		if (keypress_time > 0 && time_diff_keypress > keypress_time){
-			last_time_idle_keypress = cur_time;
+			rfi->last_time_idle_keypress = cur_time;
 			remmina_rdp_idle_keypress(gp, &keypress_opts);
 		}
 

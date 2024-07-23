@@ -385,6 +385,10 @@ struct rf_context {
 	GArray *		keymap; /* Array of RemminaPluginRdpKeymapEntry */
 
 	gboolean		attempt_interactive_authentication;
+	
+	// keep track of last interaction time for keep alive
+	time_t			last_time;
+	time_t			last_time_idle_keypress;
 
 	enum { REMMINA_POSTCONNECT_ERROR_OK = 0, REMMINA_POSTCONNECT_ERROR_GDI_INIT = 1, REMMINA_POSTCONNECT_ERROR_NO_H264 } postconnect_error;
 };
