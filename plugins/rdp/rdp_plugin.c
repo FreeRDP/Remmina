@@ -1102,9 +1102,21 @@ static BOOL remmina_rdp_present_gateway_message(freerdp* instance, UINT32 type, 
                                            BOOL isConsentMandatory, size_t length,
                                            const WCHAR* message)
 {
-	// TODO: Present a message to the user, usually terms of service or similar
-	// See client_cli_present_gateway_message or sdl_present_gateway_message
-	return client_cli_present_gateway_message(instance, type, isDisplayMandatory, isConsentMandatory, length, message);
+	if (!isConsentMandatory && !isDisplayMandatory){
+		return TRUE;
+	}
+
+	rfContext *rfi;
+	RemminaProtocolWidget *gp;
+	rfi = (rfContext *)instance->context;
+	gp = rfi->protocol_widget;
+	int ret = remmina_protocol_widget_panel_question_accept(gp, message);
+	if (ret == GTK_RESPONSE_YES){
+		return TRUE;
+	}
+	else{
+		return FALSE;
+	}
 }
 
 static int remmina_rdp_logon_error_info(freerdp* instance, UINT32 data, UINT32 type)
