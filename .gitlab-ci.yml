@@ -178,10 +178,10 @@ trigger_ppa:
 #    - schedules
 
 run:triage:
-  image: ruby:2.7
+  image: ruby:3.2
   stage: triage
   script:
-    - gem install gitlab-triage -v 1.41.0
+    - gem install gitlab-triage 
     - gitlab-triage --token $RM_TRIAGE_TOKEN --host-url $CI_SERVER_URL --source projects --source-id $CI_PROJECT_PATH
   only:
     - schedules
