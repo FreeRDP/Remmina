@@ -211,7 +211,7 @@ void remmina_message_panel_setup_message(RemminaMessagePanel *mp, const gchar *m
 
 }
 
-void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data)
+void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data, gboolean accept)
 {
 	/*
 	 * Setup a message panel to a message to read like "Do you accept ?",
@@ -253,14 +253,27 @@ void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *
 	gtk_widget_show(w);
 	gtk_grid_attach(GTK_GRID(grid), w, 0, 0, 2, 1);
 
-	/* A button for yes and one for no */
-	bbox = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-	gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox), GTK_BUTTONBOX_START);
-	gtk_grid_attach(GTK_GRID(grid), bbox, 0, 1, 1, 1);
-	w = gtk_button_new_with_label(_("Yes"));
-	gtk_widget_set_valign(GTK_WIDGET(w), GTK_ALIGN_CENTER);
-	g_object_set_data(G_OBJECT(w), btn_response_key, (void *)GTK_RESPONSE_YES);
-
+	if (accept){
+		w = gtk_label_new(_("Do you accept?"));
+		gtk_grid_attach(GTK_GRID(grid), w, 0, 1, 1, 1);
+		/* A button for yes and one for no */
+		bbox = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+		gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox), GTK_BUTTONBOX_START);
+		gtk_grid_attach(GTK_GRID(grid), bbox, 0, 2, 1, 1);
+		w = gtk_button_new_with_label(_("Yes"));
+		gtk_widget_set_valign(GTK_WIDGET(w), GTK_ALIGN_CENTER);
+		g_object_set_data(G_OBJECT(w), btn_response_key, (void *)GTK_RESPONSE_YES);
+	}
+	else {
+		/* A button for yes and one for no */
+		bbox = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+		gtk_button_box_set_layout(GTK_BUTTON_BOX(bbox), GTK_BUTTONBOX_START);
+		gtk_grid_attach(GTK_GRID(grid), bbox, 0, 1, 1, 1);
+		w = gtk_button_new_with_label(_("Yes"));
+		gtk_widget_set_valign(GTK_WIDGET(w), GTK_ALIGN_CENTER);
+		g_object_set_data(G_OBJECT(w), btn_response_key, (void *)GTK_RESPONSE_YES);
+	}
+	
 	g_signal_connect(G_OBJECT(w), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
 	gtk_container_add(GTK_CONTAINER(bbox), w);
 

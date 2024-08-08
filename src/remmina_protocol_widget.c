@@ -105,7 +105,8 @@ struct _RemminaProtocolWidgetPriv {
 enum panel_type {
 	RPWDT_AUTH,
 	RPWDT_QUESTIONYESNO,
-	RPWDT_AUTHX509
+	RPWDT_AUTHX509,
+	RPWDT_ACCEPT
 };
 
 G_DEFINE_TYPE(RemminaProtocolWidget, remmina_protocol_widget, GTK_TYPE_EVENT_BOX)
@@ -1620,7 +1621,9 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD)
 			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, (d->default_password == NULL || d->default_password[0] == 0) ? FALSE: TRUE);
 	} else if (d->dtype == RPWDT_QUESTIONYESNO) {
-		remmina_message_panel_setup_question(mp, d->title, authpanel_mt_cb, d);
+		remmina_message_panel_setup_question(mp, d->title, authpanel_mt_cb, d, FALSE);
+	} else if (d->dtype == RPWDT_ACCEPT) {
+		remmina_message_panel_setup_question(mp, d->title, authpanel_mt_cb, d, TRUE);
 	} else if (d->dtype == RPWDT_AUTHX509) {
 		remmina_message_panel_setup_auth_x509(mp, authpanel_mt_cb, d);
 		if ((s = remmina_file_get_string(remminafile, "cacert")) != NULL)
@@ -1757,6 +1760,11 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget *gp, const char *msg)
 {
 	return remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, msg, NULL, NULL, NULL, NULL);
+}
+
+gint remmina_protocol_widget_panel_question_accept(RemminaProtocolWidget *gp, const char *msg)
+{
+	return remmina_protocol_widget_dialog(RPWDT_ACCEPT, gp, 0, msg, NULL, NULL, NULL, NULL);
 }
 
 gint remmina_protocol_widget_panel_auth(RemminaProtocolWidget *gp, RemminaMessagePanelFlags pflags,
