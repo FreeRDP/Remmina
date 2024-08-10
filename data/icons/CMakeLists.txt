@@ -53,6 +53,7 @@ set(APPICONSCALE_ACTIONS_DATA
     scalable/actions/org.remmina.Remmina-pin-down-symbolic.svg
     scalable/actions/org.remmina.Remmina-pin-up-symbolic.svg
     scalable/actions/org.remmina.Remmina-preferences-system-symbolic.svg
+    scalable/actions/org.remmina.Remmina-reconnect-symbolic.svg
     scalable/actions/org.remmina.Remmina-scale-symbolic.svg
     scalable/actions/org.remmina.Remmina-switch-page-symbolic.svg
     scalable/actions/org.remmina.Remmina-system-run-symbolic.svg
