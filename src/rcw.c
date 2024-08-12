@@ -2300,6 +2300,20 @@ static void rcw_toolbar_disconnect(GtkToolItem *toggle, RemminaConnectionWindow 
 	rco_disconnect_current_page(cnnobj);
 }
 
+static void rcw_toolbar_reconnect(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+{
+	TRACE_CALL(__func__);
+	RemminaConnectionObject *cnnobj;
+
+	if (cnnwin->priv->toolbar_is_reconfiguring)
+		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+	if (cnnobj->connected){
+		rcw_toolbar_disconnect(toggle, cnnwin);
+	}
+	rcw_open_from_file(cnnobj->remmina_file);
+}
+
 static void rcw_toolbar_grab(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -2591,6 +2605,14 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_minimize), cnnwin);
 	if (kioskmode)
 		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+
+	/* Reconnect */
+	toolitem = gtk_tool_button_new(NULL, "_Reconnect");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-reconnect-symbolic");
+	gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Reconnect"));
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_reconnect), cnnwin);
 
 	/* Disconnect */
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
