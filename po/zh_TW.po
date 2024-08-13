@@ -5,13 +5,14 @@
 # Walter Cheuk <wwycheuk@gmail.com>, 2019, 2021.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2022, 2023.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
+# Ricky From Hong Kong <lamricky11@hotmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-05-01 12:49+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2024-08-13 09:09+0000\n"
+"Last-Translator: Ricky From Hong Kong <lamricky11@hotmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -2034,9 +2035,9 @@ msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr "%s 你可能需要安装和使用Gnome Shell扩展Appindicator。"
 
 #: src/remmina_ssh_plugin.c:343
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "正在以 SSH 連接 %s …"
+msgstr "正在以 SSH 連接 %s:%d"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:551
@@ -2082,7 +2083,7 @@ msgstr "貼上（Host+v）"
 #: src/remmina_ssh_plugin.c:896
 #, fuzzy, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "正在以 SSH 連接 %s …"
+msgstr "正在以 SSH 連接 %s:%d"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
 #, fuzzy
@@ -2993,8 +2994,9 @@ msgid "Redirect local microphone"
 msgstr "重新導向本地麥克風"
 
 #: plugins/rdp/rdp_plugin.c:3147
+#, fuzzy
 msgid "Connection timeout in ms"
-msgstr "正連接至「%s」…"
+msgstr "正連接至「%s」"
 
 #: plugins/rdp/rdp_plugin.c:3148
 #, fuzzy
@@ -3285,9 +3287,9 @@ msgstr "重新連線中。第 %d / %d 次嘗試…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1191
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s via RDP"
-msgstr "正在以 SSH 連接 %s …"
+msgstr "正在以 RDP 連接 %s"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 #, fuzzy
@@ -3332,9 +3334,9 @@ msgid "Disconnected from %s via SPICE"
 msgstr "已中斷與 SPICE 伺服器的連線 %s。"
 
 #: plugins/spice/spice_plugin.c:393
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "正在以 SSH 連接 %s …"
+msgstr "正在以 SPICE 連接 %s"
 
 #: plugins/spice/spice_plugin.c:405
 #, fuzzy
@@ -3459,14 +3461,14 @@ msgid "Please retry after turning on encryption for this profile."
 msgstr "請在此連線設定檔上啟用加密後重試"
 
 #: plugins/vnc/vnc_plugin.c:1719
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s via VNC"
-msgstr "正在以 SSH 連接 %s …"
+msgstr "正在以 VNC連接 %s"
 
 #: plugins/vnc/vnc_plugin.c:1726
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "正在以 SSH 連接 %s …"
+msgstr "正在以 VNC連接 %s:%d"
 
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
@@ -4031,10 +4033,8 @@ msgid "Enter password to unlock the SSH key:"
 msgstr "解锁私钥的密码"
 
 #: plugins/x2go/x2go_plugin.c:1769
-#, fuzzy
-#| msgid "Authentication type"
 msgid "Password input cancelled. Aborting…"
-msgstr "认证失败。%s。"
+msgstr "密碼輸入被取消。正在中止…"
 
 #: plugins/x2go/x2go_plugin.c:1800
 msgid ""
@@ -4049,10 +4049,8 @@ msgid "Enter X2Go credentials"
 msgstr "输入X2Go凭证"
 
 #: plugins/x2go/x2go_plugin.c:1860
-#, fuzzy
-#| msgid "Authentication type"
 msgid "Authentication cancelled. Aborting…"
-msgstr "认证失败。%s。"
+msgstr "認證被取消。正在中止…"
 
 #: plugins/x2go/x2go_plugin.c:2047
 #, fuzzy
@@ -4124,9 +4122,9 @@ msgstr "用户选择以ID恢复会话：'%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session '%s'…"
-msgstr "恢复会话'%s'...。"
+msgstr "恢复会话「%s」…"
 
 #: plugins/x2go/x2go_plugin.c:2513
 #, fuzzy
@@ -4137,7 +4135,7 @@ msgstr "DPI设置超出了范围。请在配置文件设置中调整。"
 #, fuzzy
 #| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session…"
-msgstr "无法启动X2Go会话。"
+msgstr "无法启动X2Go会话…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 #, fuzzy
@@ -4178,9 +4176,9 @@ msgid "Available feature[%i]: '%s'"
 msgstr "可用功能[%i]：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:2747
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "正在以 SSH 連接 %s …"
+msgstr "正在以 X2Go連接 %s:%d"
 
 #: plugins/x2go/x2go_plugin.c:2841
 #, fuzzy
