@@ -286,6 +286,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_protocol_widget_is_closed,
 	remmina_protocol_widget_get_file,
 	remmina_protocol_widget_panel_auth,
+	remmina_protocol_widget_panel_question_accept,
 	remmina_protocol_widget_register_hostkey,
 	remmina_protocol_widget_start_direct_tunnel,
 	remmina_protocol_widget_start_reverse_tunnel,

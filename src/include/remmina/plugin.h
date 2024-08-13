@@ -282,6 +282,7 @@ typedef struct _RemminaPluginService {
 	RemminaFile *(*protocol_widget_get_file)(RemminaProtocolWidget *gp);
 	gint (*protocol_widget_panel_auth)(RemminaProtocolWidget *gp, RemminaMessagePanelFlags pflags,
 					const gchar *title, const gchar *default_username, const gchar *default_password, const gchar *default_domain, const gchar *password_prompt);
+	gint (*protocol_widget_panel_accept)(RemminaProtocolWidget *gp, const char *msg);
 	void (*protocol_widget_register_hostkey)(RemminaProtocolWidget *gp, GtkWidget *widget);
 	gchar *(*protocol_widget_start_direct_tunnel)(RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
 	gboolean (*protocol_widget_start_reverse_tunnel)(RemminaProtocolWidget *gp, gint local_port);

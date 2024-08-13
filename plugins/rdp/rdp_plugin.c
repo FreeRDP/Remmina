@@ -1110,7 +1110,7 @@ static BOOL remmina_rdp_present_gateway_message(freerdp* instance, UINT32 type, 
 	RemminaProtocolWidget *gp;
 	rfi = (rfContext *)instance->context;
 	gp = rfi->protocol_widget;
-	int ret = remmina_protocol_widget_panel_question_accept(gp, message);
+	int ret = remmina_plugin_service->protocol_widget_panel_accept(gp, message);
 	if (ret == GTK_RESPONSE_YES){
 		return TRUE;
 	}
