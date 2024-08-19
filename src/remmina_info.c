@@ -689,7 +689,6 @@ static void remmina_info_profiles_get_data(RemminaFile *remminafile, gpointer us
 	pdata = (struct ProfilesData*)user_data;
 
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
-	//pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
 	const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
 
 	prof_gdate = pdata_gdate = NULL;

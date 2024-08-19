@@ -159,9 +159,7 @@ static gboolean gvnc_plugin_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 static gboolean gvnc_plugin_get_screenshot(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
 {
 	GVncPluginData *gpdata = GET_PLUGIN_DATA(gp);
-	//gsize szmem;
 	const VncPixelFormat *currentFormat;
-	//GError *err = NULL;
 
 	if (!gpdata)
 		return FALSE;
@@ -176,16 +174,7 @@ static gboolean gvnc_plugin_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 	rpsd->height = gdk_pixbuf_get_height(pix);
 	rpsd->bitsPerPixel = currentFormat->bits_per_pixel;
 	rpsd->bytesPerPixel = rpsd->bitsPerPixel / 8;
-	//szmem = gdk_pixbuf_get_byte_length(pix);
 
-	//szmem = rpsd->width * rpsd->height * rpsd->bytesPerPixel;
-
-	//REMMINA_PLUGIN_DEBUG("allocating %zu bytes for a full screenshot", szmem);
-	//REMMINA_PLUGIN_DEBUG("Calculated screenshot size: %zu", szcalc);
-	//rpsd->buffer = malloc(szmem);
-
-	//memcpy(rpsd->buffer, pix, szmem);
-	//gdk_pixbuf_save_to_buffer(pix, &rpsd->buffer, &szmem, "jpeg", &err, "quality", "100", NULL);
 
 
 	/* Returning TRUE instruct also the caller to deallocate rpsd->buffer */
@@ -216,7 +205,6 @@ void gvnc_plugin_paste_text(RemminaProtocolWidget *gp, const gchar *text)
 static void gvnc_plugin_clipboard_cb(GtkClipboard *cb, GdkEvent *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	//GVncPluginData *gpdata = GET_PLUGIN_DATA(gp);
 	gchar *text;
 
 	REMMINA_PLUGIN_DEBUG("owner-change event received");
@@ -277,7 +265,6 @@ static void gvnc_plugin_cut_text(VncDisplay *vnc G_GNUC_UNUSED, const gchar *tex
 					     G_OBJECT(gp));
 	}
 
-	//g_signal_emit_by_name(session, "session-cut-text", text);
 }
 
 
@@ -298,7 +285,6 @@ static void gvnc_plugin_on_bell(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("Bell message received");
-	//GVncPluginData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	if (remmina_plugin_service->file_get_int(remminafile, "disableserverbell", FALSE))
@@ -327,8 +313,7 @@ static void gvnc_plugin_update_scale_mode(RemminaProtocolWidget *gp)
 	else
 		vnc_display_set_scaling(VNC_DISPLAY(gpdata->vnc), FALSE);
 
-	//width = remmina_plugin_service->protocol_plugin_get_width(gp);
-	//height = remmina_plugin_service->protocol_plugin_get_height(gp);
+
 	gpdata->width = vnc_display_get_width(VNC_DISPLAY(gpdata->vnc));
 	gpdata->height = vnc_display_get_height(VNC_DISPLAY(gpdata->vnc));
 
@@ -602,7 +587,6 @@ cleanup:
 	g_free(s_username);
 	g_free(s_password);
 
-	//g_object_set(gpdata->session, "password", s_password, NULL);
 	return TRUE;
 }
 
@@ -655,7 +639,6 @@ static void gvnc_plugin_initialized(GtkWidget *vncdisplay, RemminaProtocolWidget
 static void gvnc_plugin_disconnected(VncDisplay *vnc G_GNUC_UNUSED, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	//GVncPluginData *gpdata = GET_PLUGIN_DATA(gp);
 
 	REMMINA_PLUGIN_DEBUG("[%s] Plugin disconnected", PLUGIN_NAME);
 }
@@ -670,7 +653,6 @@ static gboolean gvnc_plugin_close_connection(RemminaProtocolWidget *gp)
 		if (gpdata->error_msg) g_free(gpdata->error_msg);
 		if (gpdata->vnc)
 			vnc_display_close(VNC_DISPLAY(gpdata->vnc));
-		//g_object_unref(gpdata->vnc);
 	}
 
 	/* Remove instance->context from gp object data to avoid double free */
@@ -683,7 +665,6 @@ static void gvnc_plugin_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	GVncPluginData *gpdata;
-	//VncGrabSequence *seq;
 
 	GtkClipboard *cb;
 
@@ -726,9 +707,6 @@ static void gvnc_plugin_init(RemminaProtocolWidget *gp)
 			 G_CALLBACK(gvnc_plugin_mouse_ungrab), gp);
 	g_signal_connect(gpdata->vnc, "vnc-server-cut-text",
 			 G_CALLBACK(gvnc_plugin_cut_text), gp);
-	//seq = vnc_grab_sequence_new_from_string ("Control_R");
-	//vnc_display_set_grab_keys(VNC_DISPLAY(gpdata->vnc), seq);
-	//vnc_grab_sequence_free(seq);
 
 	/* Setup the clipboard */
 	cb = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);

@@ -344,7 +344,6 @@ static void remmina_rdp_settings_appscale_on_changed(GtkComboBox *widget, Remmin
 	} else {
 		gtk_widget_set_sensitive(GTK_WIDGET(grid->desktop_scale_factor_spin), TRUE);
 		gtk_spin_button_set_range(GTK_SPIN_BUTTON(grid->desktop_scale_factor_spin), 100, 500);
-		// gtk_spin_button_set_value(GTK_SPIN_BUTTON(grid->desktop_scale_factor_spin), i);
 	}
 }
 

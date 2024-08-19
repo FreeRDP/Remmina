@@ -452,7 +452,6 @@ static void rcw_kp_ungrab(RemminaConnectionWindow *cnnwin)
 	display = gtk_widget_get_display(GTK_WIDGET(cnnwin));
 #if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat(display);
-	// keyboard = gdk_seat_get_pointer(seat);
 #else
 	manager = gdk_display_get_device_manager(display);
 	keyboard = gdk_device_manager_get_client_pointer(manager);
@@ -2001,7 +2000,6 @@ static void rcw_toolbar_menu(GtkToolItem *toggle, RemminaConnectionWindow *cnnwi
 	remmina_applet_menu_populate(REMMINA_APPLET_MENU(menu));
 
 	g_signal_connect(G_OBJECT(menu), "launch-item", G_CALLBACK(rcw_toolbar_menu_on_launch_item), NULL);
-	//g_signal_connect(G_OBJECT(menu), "edit-item", G_CALLBACK(rcw_toolbar_menu_on_edit_item), NULL);
 	menuitem = gtk_separator_menu_item_new();
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
@@ -2218,9 +2216,7 @@ static void rcw_toolbar_screenshot(GtkToolItem *toggle, RemminaConnectionWindow 
 
 		// Get the screenshot.
 		active_window = gtk_widget_get_window(GTK_WIDGET(gp));
-		// width = gdk_window_get_width(gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
 		width = gdk_window_get_width(active_window);
-		// height = gdk_window_get_height(gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
 		height = gdk_window_get_height(active_window);
 
 		screenshot = gdk_pixbuf_get_from_window(active_window, 0, 0, width, height);
@@ -3369,9 +3365,7 @@ static gboolean rcw_map_event_fullscreen(GtkWidget *widget, GdkEvent *event, gpo
 		return FALSE;
 	}
 
-	//RemminaConnectionWindow *cnnwin = (RemminaConnectionWindow *)data;
 	cnnobj = rcw_get_visible_cnnobj((RemminaConnectionWindow *)widget);
-	//cnnobj = g_object_get_data(G_OBJECT(widget), "cnnobj");
 	if (!cnnobj) {
 		REMMINA_DEBUG("Remmina Connection Object undefined, cannot go fullscreen");
 		return FALSE;
@@ -4338,9 +4332,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 					remmina_file_get_string(cnnobj->remmina_file, "server"));
 	REMMINA_DEBUG("We save the last successful connection date");
-	//remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
 	remmina_file_state_last_success(cnnobj->remmina_file);
-	//REMMINA_DEBUG("Last connection made on %s.", last_success);
 
 	REMMINA_DEBUG("Saving credentials");
 	/* Save credentials */

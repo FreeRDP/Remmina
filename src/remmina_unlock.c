@@ -81,7 +81,6 @@ void remmina_unlock_timer_destroy()
 static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	//g_timer_reset(NULL);
 
 	gchar *unlock_password;
 	const gchar *entry_passwd;
@@ -90,11 +89,9 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 	unlock_password = remmina_pref_get_value("unlock_password");
 	entry_passwd = gtk_entry_get_text(remmina_unlock_dialog->entry_unlock);
 	rc = remmina_sodium_pwhash_str_verify(unlock_password, entry_passwd);
-	//REMMINA_DEBUG("remmina_sodium_pwhash_str_verify returned %i", rc);
 
 	if (rc == 0) {
 		REMMINA_DEBUG("Password verified");
-		//unlocked = FALSE;
 		remmina_unlock_dialog->retval = TRUE;
 	} else {
 		REMMINA_WARNING ("The password is wrong. Reset it by editing the remmina.pref file by hand");
@@ -145,7 +142,6 @@ gint remmina_unlock_new(GtkWindow *parent)
 		remmina_unlock_timer_reset(NULL);
 	}
 	/* We don't lock as it has been already requested */
-	//if (!unlocked && ((int)unlock_timeout - elapsed) > 0) unlocked = TRUE;
 
 	REMMINA_DEBUG("Based on settings and current status, the unlocking dialog is set to %d", unlocked);
 
@@ -184,10 +180,8 @@ gint remmina_unlock_new(GtkWindow *parent)
 
 		gchar *unlock_password = NULL;
 		unlock_password = g_strdup(remmina_pref_get_value("unlock_password"));
-		//REMMINA_DEBUG ("Password from preferences is: %s", unlock_password);
 		if ((unlock_password == NULL) || (g_strcmp0(unlock_password, "") == 0)) {
 			if (remmina_passwd (GTK_WINDOW(remmina_unlock_dialog->dialog), &unlock_password)) {
-				//REMMINA_DEBUG ("Password is: %s", unlock_password);
 				remmina_pref_set_value("unlock_password", g_strdup(unlock_password));
 				remmina_unlock_dialog->retval = TRUE;
 			} else {
@@ -213,7 +207,6 @@ gint remmina_unlock_new(GtkWindow *parent)
 				REMMINA_DEBUG ("retval: %d", remmina_unlock_dialog->retval);
 				break;
 			default:
-				//unlocked = FALSE;
 				remmina_unlock_dialog->retval = FALSE;
 				remmina_unlock_timer_destroy ();
 				REMMINA_DEBUG ("Password not requested. Return value: %d", remmina_unlock_dialog->retval);

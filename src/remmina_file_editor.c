@@ -415,16 +415,13 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_server_custom_radio), enabled);
 		remmina_file_editor_ssh_tunnel_server_custom_radio_on_toggled(NULL, gfe);
 		p = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo));
-		// if (!(g_strcmp0(p, "SFTP") == 0 || g_strcmp0(p, "SSH") == 0)) {
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_username_entry), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_password), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_combo), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_command_entry), enabled);
 		
-		//}
 		g_free(p);
 	}
-	// remmina_file_editor_ssh_tunnel_auth_publickey_radio_on_toggled(NULL, gfe);
 	s = remmina_file_get_string(gfe->priv->remmina_file, "ssh_tunnel_privatekey");
 	if (s)
 		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(gfe->priv->ssh_tunnel_privatekey_chooser), s);
@@ -1618,7 +1615,6 @@ static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *	gfe,
 
 	setting_iter = protocol_plugin->basic_settings;
 	if (setting_iter) {
-		// gboolean found = FALSE;
 		while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
 			if (setting_iter->name == NULL) {
 				g_error("Internal error: a setting name in protocol plugin %s is "
@@ -1626,7 +1622,6 @@ static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *	gfe,
 					protocol_plugin->name);
 			} else if ((gchar *)setting_name_to_validate) {
 				if (strcmp((gchar *)setting_name_to_validate, setting_iter->name) == 0) {
-					// found = TRUE;
 
 					gpointer validator_data = setting_iter->validator_data;
 					GCallback validator = setting_iter->validator;
@@ -1655,11 +1650,6 @@ static gboolean remmina_file_editor_validate_settings(RemminaFileEditor *	gfe,
 			}
 			setting_iter++;
 		}
-
-		// if (!found) {
-		// 	 TOO VERBOSE:
-		// 	 g_warning("%s is not a plugin setting!", setting_name_to_validate);
-		// }
 	}
 
 	return TRUE;
@@ -2081,8 +2071,6 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	gtk_grid_set_column_homogeneous(GTK_GRID(grid), TRUE);
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(gfe))), grid, FALSE, FALSE, 2);
-
-	// remmina_public_create_group(GTK_GRID(grid), _("Profile"), 0, 4, 3);
 
 	gboolean profile_file_exists = (remmina_file_get_filename(remminafile) != NULL);
 

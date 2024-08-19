@@ -49,7 +49,6 @@ static void remmina_monitor_can_reach_cb (GNetworkMonitor *netmonitor, GAsyncRes
 	gboolean is_reachable = g_network_monitor_can_reach_finish (netmonitor, result, &error);
 
 	const gchar *addr_tostr = g_strdup(g_socket_connectable_to_string (monitor->addr));
-	//gchar *value = (gchar *)g_hash_table_lookup (monitor->server_status, addr_tostr);
 
 	if (is_reachable) {
 
@@ -68,9 +67,6 @@ static void remmina_monitor_can_reach_cb (GNetworkMonitor *netmonitor, GAsyncRes
 		REMMINA_DEBUG ("Replacing %s -> %s", addr_tostr, status);
 	}
 
-	/* Cannot use remminafile here because is freed by remmina_file_manager_iterate */
-	//if (remminafile)
-		//remmina_file_set_state_int (remminafile, "reachable", reachable);
 	g_free (status);
 }
 
@@ -162,8 +158,6 @@ gchar *remmina_monitor_can_reach(RemminaFile *remminafile, RemminaMonitor *monit
 
 
 		status = (gchar *)g_hash_table_lookup (monitor->server_status, addr_tostr);
-		//if (!status)
-			//g_hash_table_insert (monitor->server_status, g_strdup(addr_tostr), "offline");
 
 	}
 
@@ -172,9 +166,6 @@ gchar *remmina_monitor_can_reach(RemminaFile *remminafile, RemminaMonitor *monit
 	} else
 		return status;
 
-	//g_free(ssh_tunnel_host), ssh_tunnel_host = NULL;
-	//g_free(srv_host), srv_host = NULL;
-	//g_free(dest), dest = NULL;
 
 }
 

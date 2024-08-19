@@ -969,7 +969,6 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	g_signal_connect(G_OBJECT(hbox), "focus-in-event", G_CALLBACK(remmina_plugin_ssh_on_focus_in), gp);
 
 	vte = vte_terminal_new();
-	//gtk_widget_show(vte);
 	vte_terminal_set_size(VTE_TERMINAL(vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke(VTE_TERMINAL(vte), TRUE);
 #if !VTE_CHECK_VERSION(0, 38, 0)

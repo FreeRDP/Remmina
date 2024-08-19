@@ -142,12 +142,10 @@ gboolean remmina_passwd(GtkWindow *parent, gchar **unlock_password)
 	{
 		case GTK_RESPONSE_ACCEPT:
 #if SODIUM_VERSION_INT >= 90200
-			//REMMINA_DEBUG ("Password before encryption: %s", remmina_passwd_dialog->password);
 			*unlock_password = remmina_sodium_pwhash_str(remmina_passwd_dialog->password);
 #else
 			*unlock_password = g_strdup(remmina_passwd_dialog->password);
 #endif
-			//REMMINA_DEBUG ("Password after encryption is: %s", *unlock_password);
 			remmina_passwd_dialog->password = NULL;
 			rc = TRUE;
 			break;

@@ -97,8 +97,6 @@ void remmina_plugin_www_notify_download(WebKitDownload *download, gchar *destina
 	const gchar *dest = webkit_download_get_destination(download);
 
 	www_utils_send_notification("www-plugin-download-completed-id", _("File downloaded"), dest);
-	//download(gp, webkit_download_get_response(download));
-	//webkit_download_cancel(download);
 }
 
 static gboolean remmina_plugin_www_decide_policy_cb(
@@ -343,8 +341,6 @@ gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, Remm
 	 */
 	if (gpdata->document_type != type) {
 		gpdata->document_type = type;
-
-		//g_object_notify_by_pspec (G_OBJECT (webview), obj_properties[PROP_DOCUMENT_TYPE]);
 	}
 
 	webkit_policy_decision_download(decision);
@@ -781,7 +777,6 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 		remmina_plugin_www_on_auth(gpdata->webview, NULL, gp);
 	}
 
-	//"signal::load-failed-with-tls-errors", G_CALLBACK(remmina_plugin_www_load_failed_tls_cb), gp,
 	g_object_connect(
 		G_OBJECT(gpdata->webview),
 		"signal::create", G_CALLBACK(remmina_plugin_www_on_create), gp,
@@ -818,13 +813,11 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 
 	GError *err = NULL;
 	cairo_surface_t *surface;
-	//unsigned char* buffer;
 	int width;
 	int height;
 	GdkPixbuf *screenshot;
 	GString *pngstr;
 	gchar *pngname;
-	//cairo_forma_t* cairo_format;
 	GDateTime *date = g_date_time_new_now_utc();
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -832,10 +825,8 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 	surface = webkit_web_view_get_snapshot_finish(WEBKIT_WEB_VIEW(webview), result, &err);
 	if (err)
 		REMMINA_PLUGIN_DEBUG("An error happened generating the snapshot: %s\n", err->message);
-	//buffer = cairo_image_surface_get_data (surface);
 	width = cairo_image_surface_get_width(surface);
 	height = cairo_image_surface_get_height(surface);
-	//cairo_format = cairo_image_surface_get_format (surface);
 
 	screenshot = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
 	if (screenshot == NULL)

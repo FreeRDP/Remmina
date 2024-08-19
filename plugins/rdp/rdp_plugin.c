@@ -802,7 +802,6 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 		return FALSE;
 	}
 
-	// pointer_cache_register_callbacks(instance->update);
 	rdpUpdate *update = instance->context->update;
 	update->BeginPaint = rf_begin_paint;
 	update->EndPaint = rf_end_paint;
@@ -2228,11 +2227,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			REMMINA_PLUGIN_DEBUG("[Deprecated->migrated] - drive set to %s", g_strdup(ccs));
 		}
 		g_free(ccs);
-		//CLPARAM **p;
-		//size_t count;
-		//p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("drive", g_strdup(cs), &count);
-		//status = freerdp_client_add_device_channel(rfi->clientContext.context.settings, count, p);
-		//g_free(p);
 	}
 	cs = remmina_plugin_service->file_get_string(remminafile, "drive");
 	if (cs != NULL && cs[0] != '\0') {
@@ -2702,9 +2696,7 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	instance->PreConnect = remmina_rdp_pre_connect;
 	instance->PostConnect = remmina_rdp_post_connect;
 	instance->PostDisconnect = remmina_rdp_post_disconnect;
-	//instance->VerifyCertificate = remmina_rdp_verify_certificate;
 	instance->VerifyCertificateEx = remmina_rdp_verify_certificate_ex;
-	//instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
 	instance->VerifyChangedCertificateEx = remmina_rdp_verify_changed_certificate_ex;
 #if FREERDP_VERSION_MAJOR >= 3
 	instance->AuthenticateEx = remmina_rdp_authenticate_ex;

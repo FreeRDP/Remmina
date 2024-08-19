@@ -167,7 +167,6 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 				gcry_strerror(err));
 		g_free(buf);
 		gcry_cipher_close(hd);
-		//return NULL;
 		return g_strdup(str);
 	}
 

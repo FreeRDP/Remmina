@@ -70,9 +70,6 @@ remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean 
 	gchar *buf, *ptr1, *ptr2;
 	gint i;
 
-	//g_debug("text: %s\n", text);
-	//g_debug("def: %s\n", def);
-
 	combo = gtk_combo_box_text_new_with_entry();
 	found = FALSE;
 
@@ -336,15 +333,13 @@ remmina_public_combine_path(const gchar *path1, const gchar *path2)
 	return g_strdup_printf("%s/%s", path1, path2);
 }
 
-//static int remmina_public_open_unix_sock(const char *unixsock, GError **error)
 gint remmina_public_open_unix_sock(const char *unixsock)
 {
     struct sockaddr_un addr;
     int fd;
 
     if (strlen(unixsock) + 1 > sizeof(addr.sun_path)) {
-        //g_set_error(error, REMMINA_ERROR, REMMINA_ERROR_FAILED,
-                    g_debug(_("Address is too long for UNIX socket_path: %s"), unixsock);
+		g_debug(_("Address is too long for UNIX socket_path: %s"), unixsock);
         return -1;
     }
 
@@ -353,14 +348,12 @@ gint remmina_public_open_unix_sock(const char *unixsock)
     strcpy(addr.sun_path, unixsock);
 
     if ((fd = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
-        //g_set_error(error, REMMINA_ERROR, REMMINA_ERROR_FAILED,
-                    g_debug(_("Creating UNIX socket failed: %s"), g_strerror(errno));
+        g_debug(_("Creating UNIX socket failed: %s"), g_strerror(errno));
         return -1;
     }
 
     if (connect(fd, (struct sockaddr *)&addr, sizeof addr) < 0) {
-        //g_set_error(error, REMMINA_ERROR, REMMINA_ERROR_FAILED,
-                    g_debug(_("Connecting to UNIX socket failed: %s"), g_strerror(errno));
+        g_debug(_("Connecting to UNIX socket failed: %s"), g_strerror(errno));
         close(fd);
         return -1;
     }
@@ -543,7 +536,6 @@ guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval)
 gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keycode)
 {
 	TRACE_CALL(__func__);
-	//g_return_val_if_fail(keycode > 0, FALSE);
 	if (keycode > 0) return FALSE;
 #ifdef GDK_WINDOWING_X11
 	return gdk_x11_keymap_key_is_modifier(keymap, keycode);
@@ -575,7 +567,6 @@ GtkBuilder* remmina_public_gtk_builder_new_from_resource(gchar *resource)
 	GError *err = NULL;
 	GtkBuilder *builder = gtk_builder_new();
 	gtk_builder_add_from_resource (builder, resource, &err);
-	//GtkBuilder *builder = gtk_builder_new_from_resource (resource);
 	if (err != NULL) {
 		g_print("Error adding build from resource. Error: %s", err->message);
 		g_error_free(err);
