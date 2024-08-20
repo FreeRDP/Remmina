@@ -237,8 +237,6 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 				g_debug ("Editing file: %s", files[i]);
 				remmina_exec_command(REMMINA_COMMAND_EDIT, files[i]);
 			}
-		//remmina_exec_command(REMMINA_COMMAND_EDIT, str);
-		//g_free(str);
 		executed = TRUE;
 	}
 

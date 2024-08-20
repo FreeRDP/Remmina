@@ -98,10 +98,6 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	display = gdk_display_get_default ();
 	n_monitors = gdk_display_get_n_monitors(display);
 
-	/* Get monitor at windows currently in use */
-	//w = gtk_widget_get_window(rfi->drawing_area);
-
-	//current_monitor = gdk_display_get_monitor_at_window (display, w);
 
 	/* we got monitorids as options */
 	if (*monitorids)
@@ -133,7 +129,6 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		REMMINA_PLUGIN_DEBUG("Monitor n %d", index);
 		/* If the desktop env in use doesn't have the working area concept
 		 * gdk_monitor_get_workarea will return the monitor geometry*/
-		//gdk_monitor_get_workarea (monitor, &geometry);
 		gdk_monitor_get_geometry (monitor, &geometry);
 		current->x = geometry.x;
 		REMMINA_PLUGIN_DEBUG("Monitor n %d x: %d", index, geometry.x);
@@ -184,12 +179,6 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		}
 		REMMINA_PLUGIN_DEBUG ("Local X Shift: %d", freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX));
 		REMMINA_PLUGIN_DEBUG ("Local Y Shift: %d", freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY));
-		//current->x =
-			//current->x - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX);
-		//REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", index, current->x);
-		//current->y =
-			//current->y - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY);
-		//REMMINA_PLUGIN_DEBUG("Monitor n %d calculated y: %d", index, current->y);
 
 		if (buffer_offset == 0)
 			buffer_offset = g_sprintf(buffer + buffer_offset, "%d", i);

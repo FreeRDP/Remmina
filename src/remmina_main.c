@@ -499,7 +499,6 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 							 remmina_file_get_string(remminafile, "group"));
 
 	datetime = remmina_file_get_datetime(remminafile);
-	//REMMINA_DEBUG("The date is %s", datetime);
 	gtk_tree_store_append(store, &child, (found ? &iter : NULL));
 	gtk_tree_store_set(store, &child,
 			   PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
@@ -1439,8 +1438,6 @@ static gboolean remmina_main_quickconnect(void)
 	 */
 	if (g_strrstr(server, "/") != NULL)
 		return FALSE;
-	//if (g_str_has_suffix (server, "/"))
-	//return FALSE;
 	if (is_empty(server))
 		return FALSE;
 
@@ -1683,8 +1680,6 @@ static void remmina_main_init(void)
 	}
 	gtk_combo_box_set_active(GTK_COMBO_BOX(remminamain->combo_quick_connect_protocol), qcp_actidx);
 
-	/* Connect the group accelerators to the GtkWindow */
-	//gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
 	/* Set the Quick Connection */
 	gtk_entry_set_activates_default(remminamain->entry_quick_connect_server, TRUE);
 	/* Set the TreeView for the files list */

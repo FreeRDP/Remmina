@@ -255,7 +255,6 @@ remmina_ssh_search_item(ssh_channel channel)
 {
 	TRACE_CALL(__func__);
 
-	// TODO: too verbose REMMINA_DEBUG("search node");
 
 	pthread_mutex_lock(&mutex);
 
@@ -263,7 +262,6 @@ remmina_ssh_search_item(ssh_channel channel)
 	while (current != NULL) {
 		if (current->channel == channel) {
 			pthread_mutex_unlock(&mutex);
-			// TODO: too verbose REMMINA_DEBUG("found node - fd_in: %d - fd_out: %d - protected: %d", current->fd_in, current->fd_out, current->protected);
 			return current;
 		} else {
 			current = current->next;
@@ -508,9 +506,7 @@ remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata)
 				return -1;
 			}
 				
-			//TODO: too verbose REMMINA_DEBUG("ssh_channel_write ret: %d sz: %d", ret, sz);
 		} else if (sz < 0) {
-			// TODO: too verbose REMMINA_WARNING("fd bytes read: %d", sz);
 			g_free(buf);
 			return -1;
 		} else {
@@ -549,7 +545,6 @@ remmina_ssh_cp_to_fd_cb(ssh_session session, ssh_channel channel, void *data, ui
 	gint sz = 0;
 
 	sz = write(fd, data, len);
-	// TODO: too verbose REMMINA_DEBUG("fd bytes written: %d", sz);
 
 	return sz;
 }
@@ -679,7 +674,6 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	gint n;
 	gint i;
 	const gchar *name, *instruction = NULL;
-	//gchar *prompt,*ptr;
 
 	ret = SSH_AUTH_ERROR;
 	if (ssh->authenticated) return REMMINA_SSH_AUTH_SUCCESS;
@@ -1281,7 +1275,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-					//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
+					REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
@@ -1314,7 +1308,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 						break;
 					case SSH_AUTH_METHOD_INTERACTIVE:
 						ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-						//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
+						REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 						break;
 					case SSH_AUTH_METHOD_UNKNOWN:
 					default:
@@ -1357,7 +1351,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 					break;
 				case SSH_AUTH_METHOD_INTERACTIVE:
 					ssh->auth = SSH_AUTH_KBDINTERACTIVE;
-					//REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
+					REMMINA_DEBUG("Interactive auth method not implemented: %d", ssh->auth);
 					break;
 				case SSH_AUTH_METHOD_UNKNOWN:
 				default:
@@ -3211,7 +3205,6 @@ void
 remmina_ssh_shell_free(RemminaSSHShell *shell)
 {
 	TRACE_CALL(__func__);
-	//pthread_t thread = shell->thread;
 
 	// Close all OPENED X11 channel
 	remmina_ssh_close_all_x11_ch(shell->thread);

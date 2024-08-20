@@ -145,7 +145,6 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	 *	Validates UTF-8 encoded text.
 	 */
 
-	//g_free(remminafile->filename), remminafile->filename = NULL;
 
 	filenamestr = g_string_new(g_strdup_printf("%s",
 						   remmina_pref.remmina_file_name));
@@ -609,7 +608,6 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 
 	value = g_hash_table_lookup(remminafile->settings, setting);
 	r = value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
-	// TOO verbose: REMMINA_DEBUG ("Integer value is: %d", r);
 	return r;
 }
 
@@ -621,7 +619,6 @@ gint remmina_file_get_state_int(RemminaFile *remminafile, const gchar *setting, 
 
 	value = g_hash_table_lookup(remminafile->states, setting);
 	r = value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
-	// TOO verbose: REMMINA_DEBUG ("Integer value is: %d", r);
 	return r;
 }
 
@@ -647,7 +644,6 @@ gdouble remmina_file_get_double(RemminaFile *	remminafile,
 		// failed.
 		d = default_value;
 
-	// TOO VERBOSE: REMMINA_DEBUG("Double value is: %lf", d);
 	return d;
 }
 
@@ -673,7 +669,6 @@ gdouble remmina_file_get_state_double(RemminaFile *	remminafile,
 		// failed.
 		d = default_value;
 
-	// TOO VERBOSE: REMMINA_DEBUG("Double value is: %lf", d);
 	return d;
 }
 
@@ -996,7 +991,6 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile)
 			setting_iter = protocol_plugin->basic_settings;
 			if (setting_iter) {
 				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
-					// TOO VERBOSE: g_debug("setting name: %s", setting_iter->name);
 					if (setting_iter->name == NULL)
 						g_error("Internal error: a setting name in protocol plugin %s is null. Please fix RemminaProtocolSetting struct content.", proto);
 					else
@@ -1044,7 +1038,6 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	guint64 mtime;
 
 	if (remminafile->statefile)
-		//REMMINA_DEBUG ("remminafile->statefile: %s", remminafile->statefile);
 		file = g_file_new_for_path(remminafile->statefile);
 	else
 		file = g_file_new_for_path(remminafile->filename);
@@ -1058,25 +1051,21 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	g_object_unref(file);
 
 	if (info == NULL) {
-		//REMMINA_DEBUG("could not get time info");
 
 		// The BDAY "Fri, 16 Oct 2009 07:04:46 GMT"
 		mtime = 1255676686;
 		const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
 		if (last_success) {
-			//REMMINA_DEBUG ("Last success is %s", last_success);
 			GDateTime *dt;
 			tmps = g_strconcat(last_success, "T00:00:00Z", NULL);
 			dt = g_date_time_new_from_iso8601(tmps, NULL);
 			g_free(tmps);
 			if (dt) {
-				//REMMINA_DEBUG("Converting last_success");
 				tmps = g_date_time_format(dt, "%s");
 				mtime = g_ascii_strtoull(tmps, NULL, 10);
 				g_free(tmps);
 				g_date_time_unref(dt);
 			} else {
-				//REMMINA_DEBUG("dt was null");
 				mtime = 191543400;
 			}
 		}

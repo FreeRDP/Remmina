@@ -1735,13 +1735,11 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 		rcbutton = mpri.response;
 	} else {
 		d->called_from_subthread = TRUE;
-		// pthread_cleanup_push(ptcleanup, (void*)d);
 		pthread_cond_init(&d->pt_cond, NULL);
 		pthread_mutex_init(&d->pt_mutex, NULL);
 		g_idle_add(remmina_protocol_widget_dialog_mt_setup, d);
 		pthread_mutex_lock(&d->pt_mutex);
 		pthread_cond_wait(&d->pt_cond, &d->pt_mutex);
-		// pthread_cleanup_pop(0);
 		pthread_mutex_destroy(&d->pt_mutex);
 		pthread_cond_destroy(&d->pt_cond);
 

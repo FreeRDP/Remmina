@@ -226,7 +226,6 @@ gboolean remmina_rdp_file_export_channel(RemminaFile *remminafile, FILE *fp)
 	}
 
 	fprintf(fp, "session bpp:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "colordepth", 8));
-	//fprintf(fp, "winposstr:s:0,1,123,34,931,661\r\n");
 	fprintf(fp, "compression:i:1\r\n");
 	fprintf(fp, "keyboardhook:i:2\r\n");
 	fprintf(fp, "displayconnectionbar:i:1\r\n");
