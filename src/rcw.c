@@ -3220,7 +3220,9 @@ static void rcw_create_floating_toolbar(RemminaConnectionWindow *cnnwin, gint mo
 
 	priv->floating_toolbar_label = label;
 
-	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM) {
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT) {
 		gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 		gtk_box_pack_start(GTK_BOX(vbox), tb, FALSE, FALSE, 0);
 	} else {
@@ -3906,9 +3908,21 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 
 	revealer = gtk_revealer_new();
 
-	gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_CENTER);
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP_LEFT) {
+		gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_START);
+	}
+	else if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP_RIGHT) {
+		gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_END);
+	}
+	else{
+		gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_CENTER);
+	}
 
-	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM) {
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT) {
 		gtk_box_pack_start(GTK_BOX(vbox), handle, FALSE, FALSE, 0);
 		gtk_box_pack_start(GTK_BOX(vbox), revealer, FALSE, FALSE, 0);
 		gtk_revealer_set_transition_type(GTK_REVEALER(revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP);
@@ -3940,7 +3954,9 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 	gtk_widget_show(priv->overlay_ftb_overlay);
 	gtk_widget_show(fr);
 
-	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM)
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT || 
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT)
 		gtk_widget_set_name(fr, "ftbbox-lower");
 	else
 		gtk_widget_set_name(fr, "ftbbox-upper");
@@ -3981,9 +3997,17 @@ static gboolean rcw_ftb_drag_drop(GtkWidget *widget, GdkDragContext *context,
 
 	gtk_widget_get_allocation(widget, &wa);
 
-	if (y >= wa.height / 2)
+	if (y >= wa.height / 2 && x < wa.width / 3)
+		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT;
+	else if (y >= wa.height / 2 && x > (2*(wa.width / 3)))
+		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT;
+	else if (y < wa.height / 2 && x > (2*(wa.width / 3)))
+		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_TOP_RIGHT;
+	else if (y < wa.height / 2 && x  < wa.width / 3)
+		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_TOP_LEFT;
+	else if (y >= wa.height /2)
 		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_BOTTOM;
-	else
+	else 
 		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_TOP;
 
 	gtk_drag_finish(context, TRUE, TRUE, time);
