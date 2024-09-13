@@ -733,7 +733,7 @@ static void remmina_plugin_vnc_rfb_got_update(rfbClient *cl, int x, int y, int w
 	frame->y = y;
 	frame->h = h;
 	frame->w = w;
-	g_idle_add(remmina_plugin_vnc_rfb_updatefb, frame);
+	g_idle_add(G_SOURCE_FUNC(remmina_plugin_vnc_rfb_updatefb), frame);
 
 }
 
