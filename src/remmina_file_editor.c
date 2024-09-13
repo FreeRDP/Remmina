@@ -1573,7 +1573,7 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe)
 		"ssh_tunnel_password",
 		(ssh_tunnel_enabled && (ssh_tunnel_auth == SSH_AUTH_PASSWORD)) ? gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_auth_password)) : NULL);
 
-	char* command = gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_command_entry));
+	const char* command = gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_command_entry));
 	remmina_file_set_string(
 		priv->remmina_file,
 		"ssh_tunnel_command", command);
