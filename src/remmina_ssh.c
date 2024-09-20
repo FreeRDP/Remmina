@@ -1892,6 +1892,8 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		// Run the DNS resolution 
 		// First retrieve host from the ssh->session structure
 		ssh_options_get(ssh->session, SSH_OPTIONS_HOST, &hostname);
+		unsigned int* set_port;
+		ssh_options_get_port(ssh->session, set_port);
 		// Call getaddrinfo
 		memset(&hints, 0, sizeof(hints));
 		hints.ai_family = AF_INET6;
@@ -1943,6 +1945,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 					REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to IPv4 %s", ipstr);
 					if (ssh_connect(ssh->session)) {
 						ssh_disconnect(ssh->session);
+						ssh->error = g_strdup_printf("Error connecting to %s:%d ", hostname, *set_port);
 						REMMINA_DEBUG("IPv4 session failed");
 					} else {
 						success = 1;
