@@ -7,7 +7,7 @@
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2020, 2021, 2022, 2023, 2024.
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021, 2023, 2024.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
-# Ricky Tigg <ricky.tigg@gmail.com>, 2021.
+# Ricky Tigg <ricky.tigg@gmail.com>, 2021, 2024.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # LINUX-SAUNA <linuxsauna@protonmail.com>, 2022.
 msgid ""
@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-08-06 07:09+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2024-09-24 12:15+0000\n"
+"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -691,12 +691,6 @@ msgstr "Poista käytöstä ilmoitusalueen kuvake"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -704,7 +698,7 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina ei kirjaa kaikkia tulostuslauseita. Ota käyttöön yksityiskohtaisempi "
-"tulostus käyttämällä ympäristömuuttujaa \"G_MESSAGES_DEBUG=all\".\n"
+"tulostus käyttämällä ympäristömuuttujaa \"G_MESSAGES_DEBUG=remmina\".\n"
 "Lisätietoja on saatavilla Remminan wikissä osoitteessa:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -1086,10 +1080,8 @@ msgid "SSH identity file not selected."
 msgstr "SSH-identiteettitiedostoa ei ole valittu."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "Ei tallennettua SSH-salasanaa. Käyttäjää pyydetään syöttämään se."
+msgstr "Käyttäjänimeä ei löytynyt. Pyydetään käyttäjää syöttämään se."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1188,16 +1180,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Syötä TOTP/OTP/2FA-koodi"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "SSH-tunnelin kirjautumistiedot"
+msgstr "SSH-tunnelin yksityisen avaimen valtuustiedot"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Yksityisen SSH-avaimen tiedosto"
+msgstr "Yksityisen SSH-avaimen valtuustiedot"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1741,7 +1729,7 @@ msgstr "Nimikkeet"
 
 #: src/remmina_file_editor.c:2108
 msgid "Label1,Label2"
-msgstr ""
+msgstr "Nimiö_1, Nimiö_2"
 
 #: src/remmina_file_editor.c:2180 src/remmina_file_editor.c:2199
 #, c-format
@@ -2189,7 +2177,7 @@ msgstr "Syötä RDP-yhdyskäytävän kirjautumistiedot"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Syötä RDP-älykortin PIN-koodi"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2808,7 +2796,7 @@ msgstr "Liikuta hiirtä yhteydessä ollen jouten"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "Yritä muodostaa yhteys avustustilassa"
 
 #: plugins/rdp/rdp_plugin.c:3173
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2902,7 +2890,7 @@ msgstr "Ota käyttöön Gateway websockets -tuki"
 
 #: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Päivitä kehyspuskuri, vaikka se ei olisi näkyvissä"
 
 #: plugins/rdp/rdp_plugin.c:3206 plugins/spice/spice_plugin.c:711
 #: plugins/spice/spice_plugin.c:719 plugins/vnc/vnc_plugin.c:2139
@@ -2970,22 +2958,19 @@ msgid "Enter SPICE password"
 msgstr "Kirjoita SPICE-salasana"
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "Katkaistu yhteys SPICE-palvelimeen \"%s\"."
+msgstr "Yhteys katkaistu SPICE:stä %s."
 
 #: plugins/spice/spice_plugin.c:390
-#, fuzzy, c-format
-#| msgid "Disconnected from %s:%d via SPICE"
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Kytketty irti %s SPICE:n kautta"
+msgstr "Yhteys katkaistu %s:sta SPICE:n kautta"
 
 #: plugins/spice/spice_plugin.c:393
-#, fuzzy, c-format
-#| msgid "Connected to %s:%d via SPICE"
+#, c-format
 msgid "Connected to %s via SPICE"
-msgstr "Kytketty %s SPICE:n kautta"
+msgstr "Kytketty %s:een SPICE:n kautta"
 
 #: plugins/spice/spice_plugin.c:405
 msgid "TLS connection error."
@@ -3152,6 +3137,11 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"Lukitse kuvasuhde, kun dynaaminen resoluutio on käytössä:\n"
+"\n"
+" • Kuvasuhde tulee syöttää desimaalilukuna, esim. 1,777\n"
+" • 16:9 vastaa suunnilleen 1,7777, 4:3 vastaa karkeasti 1,333\n"
+" • Oletusarvo 0 ei pakota mitään kuvasuhdetta"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3189,7 +3179,7 @@ msgstr "Ohita esiasetetut VNC-koodaukset"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "Dynaamisen resoluution pakotettu kuvasuhde"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
@@ -3419,8 +3409,6 @@ msgid "Visible"
 msgstr "Näkyvä"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
-#| msgid "Couldn't retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
 "Ei voitu noutaa kelvollisia \"DialogData\" tai \"sessions_list\"! "
@@ -3452,8 +3440,6 @@ msgid "Unknown property '%i'"
 msgstr "Tuntematon ominaisuus '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
-#| msgid "Couldn't find child GtkTreeView of session chooser dialog."
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr "Istunnonvalintaikkunan GtkTreeView-lapsen GtkTreeView ei löytynyt."
 
@@ -3474,10 +3460,8 @@ msgstr ""
 "tuntemattomasta syystä."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Couldn't get currently selected row (session)!"
 msgid "Could not get currently selected row (session)!"
-msgstr "Ei saatu valittua nykyistä valittua riviä (istunto)!"
+msgstr "Ei saatu nykyistä valittua riviä (istunto)!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3557,22 +3541,21 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "Parametria 'custom_data' ei ole täysin alustettu!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start X2Go session."
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "X2Go-istuntoa ei voitu käynnistää."
+msgstr ""
+"X2Go-istuntoa '%s' ei voitu lopettaa:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
 msgstr "Tapahtui virhe."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
-#| msgid "Couldn't get session ID from session chooser dialog."
 msgid "Could not get session ID from session chooser dialog."
-msgstr "Istunnon ID:tä ei saatu istunnon valintaikkunasta."
+msgstr "Istunnon tunnusta ei saatu istunnon valintaikkunasta."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
@@ -3594,20 +3577,16 @@ msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr "PyHoca-CLI päättyi odottamatta. Tämä yhteys suljetaan nyt."
 
 #: plugins/x2go/x2go_plugin.c:1666
-#, fuzzy
-#| msgid ""
-#| "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
-#| "Please check your profile settings and PyHoca-CLI's output for possible "
-#| "errors. Also ensure the remote server is reachable."
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable and you're using the "
 "right credentials."
 msgstr ""
-"Tarvittava lapsiprosessi 'pyhoca-cli' pysähtyi odottamatta.\n"
-"Tarkista profiiliasetukset ja PyHoca-CLI'n tulosteet mahdollisten virheiden "
-"varalta. Varmista myös, että etäpalvelin on tavoitettavissa."
+"Tarvittava lapsiprosessi \"pyhoca-cli\" pysähtyi odottamatta.\n"
+"Tarkista profiiliasetuksesi ja PyHoca-CLI:n tulos mahdollisten virheiden "
+"varalta. Varmista myös, että etäpalvelin on tavoitettavissa ja käytät "
+"oikeita valtuustietoja."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
@@ -3618,16 +3597,12 @@ msgid "Could not save new credentials."
 msgstr "Uusia tunnuksia ei voitu tallentaa."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
-#| msgid ""
-#| "An error occured while trying to save new credentials: 's_password' or "
-#| "'s_username' strings were not set."
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Tapahtui virhe, kun yritettiin tallentaa uusia tunnistetietoja: 's_password' "
-"tai 's_username' -merkkijonoja ei asetettu."
+"Uusia valtuustietoja ei voitu tallentaa: \"s_password\"- tai \"s_username\"-"
+"merkkijonoja ei määritetty."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
@@ -3642,6 +3617,9 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Vinkki: Valitse \"Tallenna salasana\" -valintaruutu tai kirjoita X2Go-"
+"käyttäjänimesi ja salasanasi profiiliasetuksiin tallentaaksesi ne nopeampaa "
+"kirjautumista varten."
 
 #: plugins/x2go/x2go_plugin.c:1831
 msgid "Enter X2Go credentials"
@@ -3652,10 +3630,6 @@ msgid "Authentication cancelled. Aborting…"
 msgstr "Todennus peruttu. Lopetetaan…"
 
 #: plugins/x2go/x2go_plugin.c:2047
-#, fuzzy
-#| msgid ""
-#| "Couldn't parse the output of PyHoca-CLI's --list-sessions option. "
-#| "Creating a new session now."
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
@@ -3738,11 +3712,6 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "PyHoca-CLI:tä ei voitu käynnistää (%i): '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
-#| msgid ""
-#| "Couldn't get PyHoca-CLI's command-line features. This indicates it is "
-#| "either too old, or not installed. An old limited set of features will be "
-#| "used for now."
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
@@ -4197,18 +4166,14 @@ msgid "About"
 msgstr "Tietoja"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014-2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Tekijänoikeus © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
+"Tekijänoikeus © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Tekijänoikeus © 2009-2014 Vic Lee\n"
 "Lisätietoja kohdassa KOPIOINTI"
 
@@ -4304,23 +4269,6 @@ msgid "Verify password"
 msgstr "Vahvista salasana"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4329,20 +4277,11 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Uutiset on kytketty pois päältä</b></big>\n"
+"<big><b>Uutisten lataaminen epäonnistui</b></big>\n"
 "\n"
 "<span>\n"
-"Uutisten ottaminen käyttöön tarkoittaa, että ohjelma muodostaa yhteyden "
-"Remmina-palvelimeen ladatakseen julkaisutiedot.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Versiotarkistus voidaan aktivoida vain kääntämisajankohtana.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Käy verkkosivustolla lukeaksesi julkaisutiedot</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remminan "
+"julkaisutiedot\"><i>Lue julkaisutiedot verkkosivulta</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_key_chooser.glade:23
@@ -4351,7 +4290,7 @@ msgstr "Valitse uusi näppäin"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "Salli näppäinten muokkaajat"
 
 #: data/ui/remmina_key_chooser.glade:121
 msgid "Please press the new key…"
@@ -4500,6 +4439,8 @@ msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"\"Lähetä\":n napsauttaminen lähettää tämän Remminan GitLab-sivulle ja luo "
+"automaattisesti uuden vian vianseurantaan."
 
 #: data/ui/remmina_bug_report.glade:296
 msgid "Remmina Report Bug"
@@ -4621,14 +4562,6 @@ msgstr "Malli profiilin tiedostonimille"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:382
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Host name/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4832,14 +4765,12 @@ msgid "View-only mode"
 msgstr "Vain katselu -tila"
 
 #: data/ui/remmina_preferences.glade:1477
-#, fuzzy
-#| msgid "Send clipboard content as keystrokes"
 msgid "Send clipboard as keystrokes"
-msgstr "Leikepöydän sisällön lähettäminen näppäinpainalluksina"
+msgstr "Lähetä leikepöytä näppäinpainalluksina"
 
 #: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
-msgstr ""
+msgstr "Lähetä leikepöytä"
 
 #: data/ui/remmina_preferences.glade:1517
 msgid "Keyboard"
