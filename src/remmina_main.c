@@ -1252,6 +1252,11 @@ static void remmina_set_file_chooser_filters(GtkFileChooser *chooser)
 	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(chooser), filter);
 
 	filter = gtk_file_filter_new();
+	gtk_file_filter_set_name(filter, _("Virt-Viewer Files"));
+	gtk_file_filter_add_pattern(filter, "*.vv");
+	gtk_file_chooser_add_filter(chooser, filter);
+
+	filter = gtk_file_filter_new();
 	gtk_file_filter_set_name(filter, _("All Files"));
 	gtk_file_filter_add_pattern(filter, "*");
 	gtk_file_chooser_add_filter(chooser, filter);
@@ -1318,7 +1323,7 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 		gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(chooser), TRUE);
 		remmina_set_file_chooser_filters(GTK_FILE_CHOOSER(chooser));
 		gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(chooser), TRUE);
-		export_name = g_strdup_printf("%s.rdp", remminamain->priv->selected_name);
+		export_name = g_strdup_printf("%s%s", remminamain->priv->selected_name, plugin->export_ext);
 		gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(chooser), export_name);
 		g_free(export_name);
 		g_signal_connect(chooser, "response", G_CALLBACK(on_export_save_response), remminafile);

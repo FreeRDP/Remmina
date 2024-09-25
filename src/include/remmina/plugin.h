@@ -125,6 +125,7 @@ typedef struct _RemminaFilePlugin {
 	gboolean (*export_test_func)(struct _RemminaFilePlugin* instance, RemminaFile *file);
 	gboolean (*export_func)(struct _RemminaFilePlugin* instance, RemminaFile *file, const gchar *to_file);
 	const gchar *		export_hints;
+	const gchar * 		export_ext;
 } RemminaFilePlugin;
 
 typedef struct _RemminaToolPlugin {

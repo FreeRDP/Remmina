@@ -3307,6 +3307,7 @@ static RemminaFilePlugin remmina_rdpf =
 	remmina_rdp_file_import,                        // Import function
 	remmina_rdp_file_export_test,                   // Test export function
 	remmina_rdp_file_export,                        // Export function
+	".rdp",     				                   // Export extension
 	NULL
 };
 
@@ -3369,6 +3370,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 		return FALSE;
 
 	remmina_rdpf.export_hints = _("Export connection in Windows .rdp file format");
+	remmina_rdpf.export_ext = ".rdp";
 
 	if (!service->register_plugin((RemminaPlugin *)&remmina_rdpf))
 		return FALSE;
