@@ -1,3 +1,37 @@
+## v1.4.36
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.35...v1.4.36)
+
+* Fix crash with keyboard-interactive SSH auth [!2576](https://gitlab.com/Remmina/Remmina/merge_requests/2576) *@bhatman1441*
+* Prevent empty remmina_file_name in remmina.pref [!2577](https://gitlab.com/Remmina/Remmina/merge_requests/2577) *@bhatman1441*
+* rdp/rdp-plugin: Fix faulty color depth check [!2579](https://gitlab.com/Remmina/Remmina/merge_requests/2579) *@pnowack*
+* Fix typos [!2578](https://gitlab.com/Remmina/Remmina/merge_requests/2578) *@deining*
+* Usbredirect on connect [!2580](https://gitlab.com/Remmina/Remmina/merge_requests/2580) *@hunderteins*
+* [REM-3104] Add global RDP options to set FreeRDP auth filter [!2581](https://gitlab.com/Remmina/Remmina/merge_requests/2581) *@myheroyuki*
+* Use universal /bin/sh shebang in remmina-rile-wrapper(1) [!2572](https://gitlab.com/Remmina/Remmina/merge_requests/2572) *@klemensn*
+* [REM-3104] Added back in line that was accidentally removed before merge [!2582](https://gitlab.com/Remmina/Remmina/merge_requests/2582) *@myheroyuki*
+* [REM-3104] Do not initialize rdp_auth_filter [!2583](https://gitlab.com/Remmina/Remmina/merge_requests/2583) *@myheroyuki*
+* [REM-3076] Add proxy field for SPICE connections [!2584](https://gitlab.com/Remmina/Remmina/merge_requests/2584) *@myheroyuki*
+* add a conditional check for darwin and NetBSD [!2585](https://gitlab.com/Remmina/Remmina/merge_requests/2585) *@gador1*
+* [REM-3103] Make more obvious to user that Remmina may not be able to exec... [!2586](https://gitlab.com/Remmina/Remmina/merge_requests/2586) *@myheroyuki*
+* [REM-3121] Handle GotFrameBufferUpdate on its own thread to prevent freeze [!2587](https://gitlab.com/Remmina/Remmina/merge_requests/2587) *@myheroyuki*
+* Enable horitical scroll on RDP plugin. [!2588](https://gitlab.com/Remmina/Remmina/merge_requests/2588) *@AkiraPenguin*
+* [REM-2854] Add timeout option to handle VNC disconnects [!2589](https://gitlab.com/Remmina/Remmina/merge_requests/2589) *@myheroyuki*
+* [REM-3134] Fix bug where option to send clipboard as keystrokes did not appear [!2590](https://gitlab.com/Remmina/Remmina/merge_requests/2590) *@myheroyuki*
+* Add ability to send a key combination when RDP connection is idle [!2591](https://gitlab.com/Remmina/Remmina/merge_requests/2591) *@dexxter00*
+* [REM-3111] Do not prompt user for credentials if they have already been entered [!2592](https://gitlab.com/Remmina/Remmina/merge_requests/2592) *@myheroyuki*
+* [REM-3140] Add null check to prevent segfault [!2593](https://gitlab.com/Remmina/Remmina/merge_requests/2593) *@myheroyuki*
+* Move the idle timer into rf_context to make it session-specific. [!2594](https://gitlab.com/Remmina/Remmina/merge_requests/2594) *@morganw3*
+* [REM-3156] Limit connection name on rcw tab to reasonable length [!2595](https://gitlab.com/Remmina/Remmina/merge_requests/2595) *@myheroyuki*
+* Update several dependencies [!2596](https://gitlab.com/Remmina/Remmina/merge_requests/2596) *@myheroyuki*
+* [REM-3127] Add user prompt for gateway messages [!2597](https://gitlab.com/Remmina/Remmina/merge_requests/2597) *@myheroyuki*
+* [REM-3167] Add reconnect button to rcw [!2598](https://gitlab.com/Remmina/Remmina/merge_requests/2598) *@myheroyuki*
+* [REM-3127] Changed to put call to a message accept panel in the RemminaPluginService struct [!2599](https://gitlab.com/Remmina/Remmina/merge_requests/2599) *@myheroyuki*
+* Removed unused, commented code [!2600](https://gitlab.com/Remmina/Remmina/merge_requests/2600) *@myheroyuki*
+* [REM-2428] Allow floating toolbar to be drag and dropped to more locations on the screen [!2601](https://gitlab.com/Remmina/Remmina/merge_requests/2601) *@myheroyuki*
+* [REM-3162] Fixed some compile warnings causing issues with GCC 14.2.1 [!2602](https://gitlab.com/Remmina/Remmina/merge_requests/2602) *@myheroyuki*
+* Update ssh error to not show outdated message [!2603](https://gitlab.com/Remmina/Remmina/merge_requests/2603) *@myheroyuki*
+
+
 ## v1.4.35
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.34...v1.4.35)
 
