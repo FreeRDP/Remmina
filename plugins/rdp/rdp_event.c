@@ -742,17 +742,22 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget *widget, GdkEventScroll *e
 #if GTK_CHECK_VERSION(3, 4, 0)
 	case GDK_SCROLL_SMOOTH:
 
-		if (event->delta_y == 0.0)
+		if (event->delta_y != 0.0) {
+			flag = PTR_FLAGS_WHEEL;
+			windows_delta = event->delta_y * -120;
+		} else if (event->delta_x != 0.0) {
+			flag = PTR_FLAGS_HWHEEL;
+			windows_delta = event->delta_x * 120;
+		} else {
 			return FALSE;
-
-		windows_delta = event->delta_y * -120;
+		}
 
 		if (windows_delta > 255)
 			windows_delta = 255;
 		if (windows_delta < -256)
 			windows_delta = -256;
 
-		flag = PTR_FLAGS_WHEEL | ((short)windows_delta & WheelRotationMask);
+		flag |= ((short)windows_delta & WheelRotationMask);
 
 		break;
 #endif
