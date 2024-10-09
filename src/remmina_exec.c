@@ -262,6 +262,10 @@ static void remmina_exec_connect(const gchar *data)
 		protocol = "SSH";
 	else if (strncmp("spice://", data, 8) == 0 || strncmp("SPICE://", data, 8) == 0)
 		protocol = "SPICE";
+	else if (strncmp("https://", data, 8) == 0 || strncmp("HTTPS://", data, 8) == 0)
+		protocol = "WWW";
+	else if (strncmp("http://", data, 7) == 0 || strncmp("HTTP://", data, 7) == 0)
+		protocol = "WWW";
 
 	if (strncmp("file://", data, 6) == 0) {
 		gchar *filename = g_filename_from_uri (data, NULL, &error);
@@ -279,7 +283,13 @@ static void remmina_exec_connect(const gchar *data)
 	}
 
 	protocolserver = g_strsplit(data, "://", 2);
-	server = g_strdup(protocolserver[1]);
+	if (strncmp(protocol, "WWW", 3) == 0){
+		server = data;
+	}
+	else{
+		server = g_strdup(protocolserver[1]);
+	}
+	
 
 	// Support loading .remmina files using handler
 	if ((temp = strrchr(server, '.')) != NULL && g_strcmp0(temp + 1, "remmina") == 0) {
