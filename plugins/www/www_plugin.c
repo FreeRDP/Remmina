@@ -427,7 +427,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	cache_dir = g_build_path("/", datapath, "cache", NULL);
 	REMMINA_PLUGIN_DEBUG("WWW data path is %s", datapath);
 
-	if (datapath) {
+	if (datapath && datapath[0 != '\0']) {
 		gchar *indexeddb_dir = g_build_filename(datapath, "indexeddb", NULL);
 		gchar *local_storage_dir = g_build_filename(datapath, "local_storage", NULL);
 		gchar *applications_dir = g_build_filename(datapath, "applications", NULL);
