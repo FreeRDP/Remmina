@@ -394,6 +394,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.always_show_notes = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "mp_left", NULL))
+		remmina_pref.mp_left = g_key_file_get_boolean(gkeyfile, "remmina_pref", "mp_left", NULL);
+	else
+		remmina_pref.mp_left = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL))
 		remmina_pref.hide_connection_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
 									      "hide_connection_toolbar", NULL);
@@ -919,6 +924,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", remmina_pref.fullscreen_on_auto);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_notes", remmina_pref.always_show_notes);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "mp_left", remmina_pref.mp_left);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_connection_toolbar", remmina_pref.hide_connection_toolbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_searchbar", remmina_pref.hide_searchbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
