@@ -58,7 +58,6 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 static int dot_cursor_x_hot = 2;
 static int dot_cursor_y_hot = 2;
-static int cl_select_counter = 0;
 static const gchar *dot_cursor_xpm[] =
 { "5 5 3 1", "  c None", ".	c #000000", "+	c #FFFFFF", " ... ", ".+++.", ".+ +.", ".+++.", " ... " };
 
@@ -683,7 +682,7 @@ static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient *cl, guchar *dest, gint
 	}
 }
 
-gboolean remmina_plugin_vnc_rfb_updatefb(gpointer* data){
+void remmina_plugin_vnc_rfb_updatefb(gpointer* data){
 	FrameInfo *frame = (FrameInfo*)data;
 	rfbClient *cl = frame->cl;
 	int x = frame->x;
@@ -1170,7 +1169,6 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 	FD_SET(cl->sock, &fds);
 	FD_SET(gpdata->vnc_event_pipe[0], &fds);
 	ret = select(MAX(cl->sock, gpdata->vnc_event_pipe[0]) + 1, &fds, NULL, NULL, &timeout);
-	cl_select_counter++;
 
 	/* Sometimes it returns <0 when opening a modal dialog in other window. Absolutely weird */
 	/* So we continue looping anyway */
@@ -1180,16 +1178,13 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 	if (FD_ISSET(gpdata->vnc_event_pipe[0], &fds)){
 		remmina_plugin_vnc_process_vnc_event(gp);
 	}
-	if (FD_ISSET(cl->sock, &fds) || cl_select_counter >= 10) {
-		cl_select_counter = 0;
+	if (FD_ISSET(cl->sock, &fds)) {
 		i = WaitForMessage(cl, 500);
-		if (i < 0){
-						return TRUE;
-		}
+		if (i < 0)
+			return TRUE;
 handle_buffered:
 		if (!HandleRFBServerMessage(cl)) {
 			gpdata->running = FALSE;
-			remmina_plugin_service->protocol_plugin_set_error(gp, "VNC connection timed out");
 			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp))
 				remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 			return FALSE;
@@ -1214,7 +1209,6 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 	gint colordepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 32);
 	gint quality = remmina_plugin_service->file_get_int(remminafile, "quality", 9);
-	gint timeout = remmina_plugin_service->file_get_int(remminafile, "timeout", 60);
 
 	while (gpdata->connected) {
 		gpdata->auth_called = FALSE;
@@ -1250,9 +1244,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		cl->GetPassword = remmina_plugin_vnc_rfb_password;
 		cl->GetCredential = remmina_plugin_vnc_rfb_credential;
 		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_got_update;
-		cl->readTimeout = timeout;
-		cl->connectTimeout = timeout;
-		
+		// cl->readTimeout = 60;
 		/**
 		 * @fixme we have to implement FinishedFrameBufferUpdate
 		 * This is to know when the server has finished to send a batch of frame buffer
@@ -2085,10 +2077,6 @@ static gchar repeater_tooltip[] =
 	   "    the repeater, e.g. with x11vnc:\n"
 	   "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500");
 
-static gchar timeout_tooltip[] =
-	N_("Time in seconds to wait while reading from the VNC server before disconnecting:\n"
-	   "  • Set to 0 to disable any timeout\n");
-
 static gchar vnciport_tooltip[] =
 	N_("Listening for remote VNC connection:\n"
 	   "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -2137,7 +2125,6 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"), FALSE, NULL,	     NULL,	       NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Colour depth"),  FALSE, colordepth_list, NULL,	       NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",	N_("Quality"),	     FALSE, quality_list,    NULL,	       NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_INT,	  "timeout",	N_("Disconnect Timeout"),	      FALSE, NULL,    timeout_tooltip,		NULL, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,	  "keymap",	NULL,		     FALSE, NULL,	     NULL,	       NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		NULL,		     FALSE, NULL,	     NULL,	       NULL, NULL }
 };
@@ -2150,7 +2137,6 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"),  FALSE, NULL,	      NULL,		NULL, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Colour depth"),   FALSE, colordepth_list, NULL,		NULL, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",	N_("Quality"),	      FALSE, quality_list,    NULL,		NULL, NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_INT,	  "timeout",	N_("Disconnect Timeout"),	      FALSE, NULL,    timeout_tooltip,		NULL, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,	  "keymap",	NULL,		      FALSE, NULL,	      NULL,		NULL, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		NULL,		      FALSE, NULL,	      NULL,		NULL, NULL}
 };
