@@ -682,15 +682,8 @@ static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient *cl, guchar *dest, gint
 	}
 }
 
-void remmina_plugin_vnc_rfb_updatefb(gpointer* data){
-	FrameInfo *frame = (FrameInfo*)data;
-	rfbClient *cl = frame->cl;
-	int x = frame->x;
-	int y = frame->y;
-	int w = frame->w;
-	int h = frame->h;
-
-
+static void remmina_plugin_vnc_rfb_updatefb(rfbClient *cl, int x, int y, int w, int h)
+{
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = rfbClientGetClientData(cl, NULL);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
@@ -698,42 +691,25 @@ void remmina_plugin_vnc_rfb_updatefb(gpointer* data){
 	gint rowstride;
 	gint width;
 
-	if (gpdata->running){
-		LOCK_BUFFER(TRUE);
+	LOCK_BUFFER(TRUE);
 
-		if (w >= 1 || h >= 1) {
-			width = remmina_plugin_service->protocol_plugin_get_width(gp);
-			bytesPerPixel = cl->format.bitsPerPixel / 8;
-			rowstride = cairo_image_surface_get_stride(gpdata->rgb_buffer);
-			cairo_surface_flush(gpdata->rgb_buffer);
-			remmina_plugin_vnc_rfb_fill_buffer(cl, cairo_image_surface_get_data(gpdata->rgb_buffer) + y * rowstride + x * 4,
-							rowstride, gpdata->vnc_buffer + ((y * width + x) * bytesPerPixel), width * bytesPerPixel, NULL,
-							w, h);
-			cairo_surface_mark_dirty(gpdata->rgb_buffer);
-		}
-
-		if ((remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE))
-			remmina_plugin_vnc_scale_area(gp, &x, &y, &w, &h);
-
-		UNLOCK_BUFFER(TRUE);
-
-		remmina_plugin_vnc_queue_draw_area(gp, x, y, w, h);
+	if (w >= 1 || h >= 1) {
+		width = remmina_plugin_service->protocol_plugin_get_width(gp);
+		bytesPerPixel = cl->format.bitsPerPixel / 8;
+		rowstride = cairo_image_surface_get_stride(gpdata->rgb_buffer);
+		cairo_surface_flush(gpdata->rgb_buffer);
+		remmina_plugin_vnc_rfb_fill_buffer(cl, cairo_image_surface_get_data(gpdata->rgb_buffer) + y * rowstride + x * 4,
+						   rowstride, gpdata->vnc_buffer + ((y * width + x) * bytesPerPixel), width * bytesPerPixel, NULL,
+						   w, h);
+		cairo_surface_mark_dirty(gpdata->rgb_buffer);
 	}
-	free(frame);
-	return FALSE;
-}
 
-static void remmina_plugin_vnc_rfb_got_update(rfbClient *cl, int x, int y, int w, int h)
-{
-	TRACE_CALL(__func__);
-	FrameInfo* frame = malloc(sizeof(FrameInfo));
-	frame->cl = cl;
-	frame->x = x;
-	frame->y = y;
-	frame->h = h;
-	frame->w = w;
-	g_idle_add(G_SOURCE_FUNC(remmina_plugin_vnc_rfb_updatefb), frame);
+	if ((remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE))
+		remmina_plugin_vnc_scale_area(gp, &x, &y, &w, &h);
 
+	UNLOCK_BUFFER(TRUE);
+
+	remmina_plugin_vnc_queue_draw_area(gp, x, y, w, h);
 }
 
 static void remmina_plugin_vnc_rfb_finished(rfbClient *cl) __attribute__ ((unused));
@@ -1163,7 +1139,7 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 	if (cl->buffered)
 		goto handle_buffered;
 
-	timeout.tv_sec = 5;
+	timeout.tv_sec = 10;
 	timeout.tv_usec = 0;
 	FD_ZERO(&fds);
 	FD_SET(cl->sock, &fds);
@@ -1172,12 +1148,11 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 
 	/* Sometimes it returns <0 when opening a modal dialog in other window. Absolutely weird */
 	/* So we continue looping anyway */
-	if (ret <= 0){
+	if (ret <= 0)
 		return TRUE;
-	}
-	if (FD_ISSET(gpdata->vnc_event_pipe[0], &fds)){
+
+	if (FD_ISSET(gpdata->vnc_event_pipe[0], &fds))
 		remmina_plugin_vnc_process_vnc_event(gp);
-	}
 	if (FD_ISSET(cl->sock, &fds)) {
 		i = WaitForMessage(cl, 500);
 		if (i < 0)
@@ -1190,6 +1165,7 @@ handle_buffered:
 			return FALSE;
 		}
 	}
+
 	return TRUE;
 }
 
@@ -1243,8 +1219,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		cl->canHandleNewFBSize = TRUE;
 		cl->GetPassword = remmina_plugin_vnc_rfb_password;
 		cl->GetCredential = remmina_plugin_vnc_rfb_credential;
-		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_got_update;
-		// cl->readTimeout = 60;
+		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
 		/**
 		 * @fixme we have to implement FinishedFrameBufferUpdate
 		 * This is to know when the server has finished to send a batch of frame buffer
@@ -1255,7 +1230,6 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		 * @fixme we have to implement HandleKeyboardLedState
 		 * cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state
 		 */
-		cl->FinishedFrameBufferUpdate = remmina_plugin_vnc_rfb_finished;
 		cl->HandleKeyboardLedState = remmina_plugin_vnc_rfb_led_state;
 		cl->GotXCutText = (
 			remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ?
