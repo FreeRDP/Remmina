@@ -129,6 +129,8 @@ if(NOT BUILD_SHARED_LIBS)
   set(BUILD_SHARED_LIBS ON)
 endif()
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror=incompatible-pointer-types")
+
 if(CMAKE_COMPILER_IS_GNUCC)
   if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64" OR CMAKE_SYSTEM_PROCESSOR MATCHES
                                                 "i686")
