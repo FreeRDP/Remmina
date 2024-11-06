@@ -4845,7 +4845,7 @@ void rco_show_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel
 	g_list_free(childs);
 
 	if (remmina_pref.mp_left){
-		gtk_widget_set_halign(mp, GTK_ALIGN_START);
+		gtk_widget_set_halign(GTK_WIDGET(mp), GTK_ALIGN_START);
 	}
 	
 	/* Add the new message panel at the top of cnnobj->page */
