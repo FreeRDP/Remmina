@@ -200,7 +200,7 @@ if(AVAHI_FOUND)
 endif()
 
 if(OPENSSL_FOUND)
-  include_directories(${OPENSSL_INCLUDE_DIRS})
+  include_directories(${OPENSSL_INCLUDE_DIR})
   target_link_libraries(remmina ${OPENSSL_LIBRARIES})
 endif()
 
