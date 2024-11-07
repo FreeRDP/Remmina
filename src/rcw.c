@@ -3565,7 +3565,7 @@ static GtkWidget *rco_create_tab_label(RemminaConnectionObject *cnnobj)
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, FALSE, FALSE, 0);
 
-	gchar* label = remmina_file_get_string(cnnobj->remmina_file, "name");
+	gchar* label = (gchar *)remmina_file_get_string(cnnobj->remmina_file, "name");
 	if (strlen(label) > 100){
 		label[99] = 0;
 	}
