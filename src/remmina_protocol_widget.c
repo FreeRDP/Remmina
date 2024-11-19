@@ -632,6 +632,9 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
+	if (clip_text == NULL){
+		return;
+	}
 	gchar *text = g_utf8_normalize(clip_text, -1, G_NORMALIZE_DEFAULT_COMPOSE);
 	guint *keyvals;
 	gint i;
