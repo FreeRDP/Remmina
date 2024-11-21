@@ -284,7 +284,7 @@ static void remmina_exec_connect(const gchar *data)
 
 	protocolserver = g_strsplit(data, "://", 2);
 	if (strncmp(protocol, "WWW", 3) == 0){
-		server = data;
+		server = (gchar *)data;
 	}
 	else{
 		server = g_strdup(protocolserver[1]);
