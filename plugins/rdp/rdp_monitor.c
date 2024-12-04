@@ -214,7 +214,5 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	*maxwidth = destgeom.width;
 	*maxheight = destgeom.height;
 	REMMINA_PLUGIN_DEBUG("maxw and maxh: %ux%u", *maxwidth, *maxheight);
-	if (n_monitors > 1)
-		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_SupportMonitorLayoutPdu, TRUE);
 	*monitorids = g_strdup(buffer);
 }
