@@ -313,8 +313,7 @@ static void remmina_exec_connect(const gchar *data)
 			user = g_uri_unescape_string(userpass[0], NULL);
 			password = g_uri_unescape_string(userpass[1], NULL);
 
-			// Try to decrypt the password field if it contains =
-			temp = password != NULL && strrchr(password, '=') != NULL ? remmina_crypt_decrypt(password) : NULL;
+			temp = password != NULL ? remmina_crypt_decrypt(password) : NULL;
 			if (temp != NULL) {
 				g_free(password);
 				password = temp;
@@ -354,8 +353,7 @@ static void remmina_exec_connect(const gchar *data)
 			querystringpartkv = g_strsplit(*querystringpart, "=", 2);
 			value = g_uri_unescape_string(querystringpartkv[1], NULL);
 			if (strcmp(querystringpartkv[0], "VncPassword") == 0) {
-				// Try to decrypt password field if it contains =
-				temp = value != NULL && strrchr(value, '=') != NULL ? remmina_crypt_decrypt(value) : NULL;
+				temp = value != NULL ? remmina_crypt_decrypt(value) : NULL;
 				if (temp != NULL) {
 					g_free(value);
 					value = temp;
