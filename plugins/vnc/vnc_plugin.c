@@ -1356,8 +1356,15 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 	if (!gpdata->connected) {
 		REMMINA_PLUGIN_DEBUG("Client not connected with error: %s", vnc_error);
-		if (cl && !gpdata->auth_called && !(remmina_plugin_service->protocol_plugin_has_error(gp)))
-			remmina_plugin_service->protocol_plugin_set_error(gp, "%s", vnc_error);
+		if (cl && !gpdata->auth_called && !(remmina_plugin_service->protocol_plugin_has_error(gp))){
+			if (remmina_plugin_service->file_get_int(remminafile, "closeonfailure", FALSE)){
+				//Do nothing to close immediately
+			}
+			else{
+				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", vnc_error);
+			}
+		}
+			
 		gpdata->running = FALSE;
 
 		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
@@ -2137,6 +2144,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard",	 N_("Turn off clipboard sync"),			TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption",	 N_("Turn off encryption"),			FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly",		 N_("View only"),				TRUE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "closeonfailure",		 N_("Close on connection failure"),				TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			 NULL,						FALSE, NULL, NULL }
 };
 
