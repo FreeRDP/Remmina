@@ -19,37 +19,6 @@ resource_rules:
             {{author}} This issue was closed due to not being updated for a long time. Please re-open it if still relevant.
             CC {{assignees}}
 
-      - name: Unlabelled after 8 days
-        conditions:
-          date:
-            attribute: updated_at
-            condition: older_than
-            interval_type: days
-            interval: 8
-          state: opened
-          no_additional_labels: true
-        limits:
-          most_recent: 50
-        actions:
-          labels:
-            - needs attention
-          comment: |
-            {{author}} This issue has gone unlabelled for 8 days. It needs somone to label it.
-          summarize:
-            title: |
-              #{resource[:type].capitalize} require labels
-            item: |
-              - [ ] [{{title}}]({{web_url}}) {{labels}}
-            redact_confidential_resources: false
-            summary: |
-              The following issues require labels:
-
-              {{items}}
-
-              Please take care of them.
-
-              /label ~"needs attention"
-
       - name: Close old "needinfo" policy
         conditions:
           date:
@@ -103,6 +72,38 @@ resource_rules:
           comment: |
             {{author}} This issue is now closed due to being marked as "needs attention" with no updates for a long time. Please re-open it if still relevant.
             CC {{assignees}}
+      
+      - name: Unlabelled after 8 days
+        conditions:
+          date:
+            attribute: updated_at
+            condition: older_than
+            interval_type: days
+            interval: 8
+          state: opened
+          no_additional_labels: true
+        limits:
+          most_recent: 50
+        actions:
+          labels:
+            - needs attention
+          comment: |
+            {{author}} This issue has gone unlabelled for 8 days. It needs somone to label it.
+          summarize:
+            title: |
+              #{resource[:type].capitalize} require labels
+            item: |
+              - [ ] [{{title}}]({{web_url}}) {{labels}}
+            redact_confidential_resources: false
+            summary: |
+              The following issues require labels:
+
+              {{items}}
+
+              Please take care of them.
+
+              /label ~"needs attention"
+
 
   merge_requests:
     rules:
