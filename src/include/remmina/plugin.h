@@ -319,6 +319,7 @@ typedef struct _RemminaPluginService {
 	void (*show_dialog)(GtkMessageType msg, GtkButtonsType buttons, const gchar* message);
 	GtkWindow *(*get_window)(void);
 	gint (*plugin_unlock_new)(GtkWindow* parent);
+	void (*add_network_state)(gchar* key, gchar* value);
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */

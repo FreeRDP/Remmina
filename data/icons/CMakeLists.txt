@@ -64,6 +64,9 @@ set(APPICONSCALE_ACTIONS_DATA
 set(APPICONSCALE_EMBLEMS_DATA
     scalable/emblems/org.remmina.Remmina-sftp-symbolic.svg
     scalable/emblems/org.remmina.Remmina-ssh-symbolic.svg
+    scalable/emblems/org.remmina.Remmina-status-red.svg
+    scalable/emblems/org.remmina.Remmina-status-grey.svg
+    scalable/emblems/org.remmina.Remmina-status-green.svg
     )
 
 install(FILES ${APPICONSCALE_ACTIONS_DATA} DESTINATION ${APPICONSCALE_ACTIONS_DIR})

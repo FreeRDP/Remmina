@@ -68,6 +68,7 @@ static PyObject* remmina_register_plugin_wrapper(PyObject* self, PyObject* plugi
 static PyObject* remmina_file_get_datadir_wrapper(PyObject* self, PyObject* plugin);
 static PyObject* remmina_file_new_wrapper(PyObject* self, PyObject* args, PyObject* kwargs);
 static PyObject* remmina_unlock_new_wrapper(PyObject* self, PyObject* args, PyObject* kwargs);
+static void		 remmina_add_network_state_wrapper(PyObject* self, PyObject* args, PyObject* kwargs);
 static PyObject* remmina_pref_set_value_wrapper(PyObject* self, PyObject* args, PyObject* kwargs);
 static PyObject* remmina_pref_get_value_wrapper(PyObject* self, PyObject* args, PyObject* kwargs);
 static PyObject* remmina_pref_get_scale_quality_wrapper(PyObject* self, PyObject* plugin);
@@ -138,6 +139,10 @@ static PyMethodDef remmina_python_module_type_methods[] = {
 	 */
 	{ "unlock_new", (PyCFunction)remmina_unlock_new_wrapper, METH_VARARGS | METH_KEYWORDS, NULL },
 
+	/**
+	 * Calls remmina_main_add_network_status and returns its result.
+	 */
+	{ "add_network_state", (PyCFunction)remmina_add_network_state_wrapper, METH_VARARGS | METH_KEYWORDS, NULL },
 	/**
 	 * Calls remmina_pref_set_value and returns its result.
 	 */
@@ -873,6 +878,26 @@ static PyObject* remmina_unlock_new_wrapper(PyObject* self, PyObject* args, PyOb
 	}
 
 	return PyBool_FromLong(python_wrapper_get_service()->plugin_unlock_new(window));
+}
+
+static void remmina_add_network_state_wrapper(PyObject* self, PyObject* args, PyObject* kwargs)
+{
+	TRACE_CALL(__func__);
+	static char* kwlist[] = { "key", "value", NULL };
+	gchar* key, * value;
+
+	if (!PyArg_ParseTupleAndKeywords(args, kwargs, "ss", kwlist, &key, &value))
+	{
+		return;
+	}
+
+	if (key)
+	{
+		python_wrapper_get_service()->add_network_state(g_strdup(key), g_strdup(value));
+	}
+
+	python_wrapper_check_error();
+	return;
 }
 
 static PyObject* remmina_pref_set_value_wrapper(PyObject* self, PyObject* args, PyObject* kwargs)
