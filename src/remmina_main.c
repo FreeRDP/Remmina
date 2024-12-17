@@ -82,6 +82,7 @@ enum {
 	FILENAME_COLUMN,
 	LABELS_COLUMN,
 	NOTES_COLUMN,
+	STATUS_COLUMN,
 	N_COLUMNS
 };
 
@@ -360,10 +361,24 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 	TRACE_CALL(__func__);
 	GtkTreeIter iter;
 	GtkListStore *store;
-
+	gchar* status_icon = "";
 	store = GTK_LIST_STORE(user_data);
 	gchar *datetime;
-
+	if (remmina_pref_get_boolean("status_check")){
+		status_icon = "org.remmina.Remmina-status-grey";
+		if (g_hash_table_contains(remminamain->network_states, remminafile->filename)){
+			gchar* result = (gchar*)g_hash_table_lookup(remminamain->network_states, remminafile->filename);
+			if (result != NULL){
+				if (strncmp("Yes", result, strlen("Yes")) == 0){
+					status_icon = "org.remmina.Remmina-status-green";
+				}
+				else if (strncmp("No", result, strlen("No")) == 0){
+					status_icon = "org.remmina.Remmina-status-red";
+				}
+			}
+		}
+	}
+	
 	datetime = remmina_file_get_datetime(remminafile);
 	gtk_list_store_append(store, &iter);
 	gtk_list_store_set(store, &iter,
@@ -376,6 +391,7 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 			   DATE_COLUMN, datetime,
 			   FILENAME_COLUMN, remmina_file_get_filename(remminafile),
 			   LABELS_COLUMN, remmina_file_get_string(remminafile, "labels"),
+			   STATUS_COLUMN, status_icon,
 			   -1);
 	g_free(datetime);
 }
@@ -490,6 +506,21 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	GtkTreeStore *store;
 	gboolean found;
 	gchar *datetime = NULL;
+	gchar* status_icon = "";
+	if (remmina_pref_get_boolean("status_check")){
+		status_icon = "org.remmina.Remmina-status-grey";
+		if (g_hash_table_contains(remminamain->network_states, remminafile->filename)){
+			gchar* result = (gchar*)g_hash_table_lookup(remminamain->network_states, remminafile->filename);
+			if (result != NULL){
+				if (strncmp("Yes", result, strlen("Yes")) == 0){
+					status_icon = "org.remmina.Remmina-status-green";
+				}
+				else if (strncmp("No", result, strlen("No")) == 0){
+					status_icon = "org.remmina.Remmina-status-red";
+				}
+			}
+		}
+	}
 
 	store = GTK_TREE_STORE(user_data);
 
@@ -510,6 +541,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 			   DATE_COLUMN, datetime,
 			   FILENAME_COLUMN, remmina_file_get_filename(remminafile),
 			   LABELS_COLUMN, remmina_file_get_string(remminafile, "labels"),
+			   STATUS_COLUMN, status_icon,
 			   -1);
 	g_free(datetime);
 }
@@ -678,7 +710,7 @@ static void remmina_main_load_files()
 	switch (view_file_mode) {
 	case REMMINA_VIEW_FILE_TREE:
 		/* Create new GtkTreeStore model */
-		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(9, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(10, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Hide the Group column in the tree view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, FALSE);
 		/* Load groups first */
@@ -690,7 +722,7 @@ static void remmina_main_load_files()
 	case REMMINA_VIEW_FILE_LIST:
 	default:
 		/* Create new GtkListStore model */
-		newmodel = GTK_TREE_MODEL(gtk_list_store_new(9, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
+		newmodel = GTK_TREE_MODEL(gtk_list_store_new(10, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Show the Group column in the list view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, TRUE);
 		/* Load files list */
@@ -1713,6 +1745,15 @@ void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 #endif
 }
 
+void remmina_main_add_network_status(gchar* key, gchar* value)
+{
+	if (remminamain != NULL){
+		g_hash_table_insert(remminamain->network_states, key, value);
+		remmina_main_load_files();
+	}
+	
+}
+
 /* RemminaMain instance */
 GtkWidget *remmina_main_new(void)
 {
@@ -1722,6 +1763,7 @@ GtkWidget *remmina_main_new(void)
 
 	remminamain = g_new0(RemminaMain, 1);
 	remminamain->priv = g_new0(RemminaMainPriv, 1);
+	remminamain->network_states = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 	/* Assign UI widgets to the private members */
 	remminamain->builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_main.glade");
 	remminamain->window = GTK_WINDOW(RM_GET_OBJECT("RemminaMain"));

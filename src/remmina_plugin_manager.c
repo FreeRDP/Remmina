@@ -324,6 +324,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_main_show_dialog,
 	remmina_main_get_window,
 	remmina_unlock_new,
+	remmina_main_add_network_status,
 };
 
 const char *get_filename_ext(const char *filename) {

@@ -85,6 +85,7 @@ typedef struct _RemminaMain {
 	GtkAccelGroup *		accelgroup_shortcuts;
 	RemminaMainPriv *	priv;
 	RemminaMonitor *	monitor;
+	GHashTable *		network_states;
 } RemminaMain;
 
 struct _RemminaMainPriv {
@@ -108,6 +109,7 @@ GtkWidget *remmina_main_new(void);
 GtkWindow *remmina_main_get_window(void);
 
 void remmina_main_update_file_datetime(RemminaFile *file);
+void remmina_main_add_network_status(gchar* key, gchar* value);
 
 void remmina_main_destroy(void);
 void remmina_main_on_destroy_event(void);
