@@ -444,6 +444,20 @@ gchar *remmina_utils_get_lsb_codename()
 }
 
 /**
+ * Print the process list as specified by the ps command.
+ * @return the list string or NULL. Caller must free it with g_free().
+ */
+gchar *remmina_utils_get_process_list()
+{
+	TRACE_CALL(__func__);
+	gchar *list = NULL;
+	if (g_spawn_command_line_sync("ps aux", &list, NULL, NULL, NULL))
+		return list;
+	return NULL;
+}
+
+
+/**
  * Print the distribution description if found.
  * Test each known distribution specific information file and print it’s content.
  * @return a string or NULL. Caller must free it with g_free().
