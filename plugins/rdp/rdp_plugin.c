@@ -2536,7 +2536,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				break;
 
 			case FREERDP_ERROR_CONNECT_FAILED:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Lost connection to the RDP server “%s”."), freerdp_settings_get_string(rfi->clientContext.context.settings, FreeRDP_ServerHostname));
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Failed to connect to the RDP server “%s”."), freerdp_settings_get_string(rfi->clientContext.context.settings, FreeRDP_ServerHostname));
 				break;
 			case FREERDP_ERROR_DNS_NAME_NOT_FOUND:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not find the address for the RDP server “%s”."), freerdp_settings_get_string(rfi->clientContext.context.settings, FreeRDP_ServerHostname));
