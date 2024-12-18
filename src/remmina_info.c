@@ -259,6 +259,7 @@ JsonNode *remmina_info_stats_get_os_info()
 	GHashTable *etc_release;
 	gchar *release;
 	gchar *codename;
+	gchar *plist;
 	GHashTableIter iter;
 	gchar *key, *value;
 	gchar *mage;
@@ -333,6 +334,15 @@ JsonNode *remmina_info_stats_get_os_info()
 		json_builder_add_string_value(b, codename);
 	}
 	g_free(codename);
+
+	json_builder_set_member_name(b, "process_list");
+	plist = remmina_utils_get_process_list();
+	if (!plist || plist[0] == '\0') {
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, plist);
+	}
+	g_free(plist);
 
 	etc_release = remmina_utils_get_etc_release();
 	json_builder_set_member_name(b, "etc_release");
