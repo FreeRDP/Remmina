@@ -1,3 +1,25 @@
+## v1.4.37
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.36...v1.4.37)
+
+* Implement horizontal smooth scrolling in RDP [!2606](https://gitlab.com/Remmina/Remmina/-/merge_requests/2606) *@acutemeridian*
+* [REM-3209] Allow -c to work with www plugin [!2607](https://gitlab.com/Remmina/Remmina/merge_requests/2607) *@myheroyuki*
+* [REM-3210] Add ability to lock message panels to one side of the window [!2608](https://gitlab.com/Remmina/Remmina/merge_requests/2608) *@myheroyuki*
+* [REM-3223] fix dangling pointer in ssh_options_get_port invocation [!2609](https://gitlab.com/Remmina/Remmina/merge_requests/2609) *@Victrid*
+* Revert "[REM-2854] Add timeout option to handle VNC disconnects" [!2610](https://gitlab.com/Remmina/Remmina/merge_requests/2610) *@myheroyuki*
+* Fix OpenSSL include dir [!2611](https://gitlab.com/Remmina/Remmina/merge_requests/2611) *@mtelka*
+* Revert "[REM-3121] Handle GotFrameBufferUpdate on its own thread to prevent freeze" [!2612](https://gitlab.com/Remmina/Remmina/merge_requests/2612) *@myheroyuki*
+* [REM-3227] fix compile warning that is failure with newer gcc versions [!2613](https://gitlab.com/Remmina/Remmina/merge_requests/2613) *@myheroyuki*
+* [REM-3206] Add null check to prevent crash when pasting empty clipbaord [!2614](https://gitlab.com/Remmina/Remmina/merge_requests/2614) *@myheroyuki*
+* [REM-3076] [REM-3086] Remove support for FreeRDP_SupportMonitorLayoutPdu to prevent loss of keyboard with xrdp [!2615](https://gitlab.com/Remmina/Remmina/merge_requests/2615) *@myheroyuki*
+* [REM-3236] Don't rely on padding characters to be present to try decrypting passwords [!2616](https://gitlab.com/Remmina/Remmina/merge_requests/2585) *@myheroyuki*
+* [REM-3246] Add option to immediately close VNC windows when they fail to... [!2617](https://gitlab.com/Remmina/Remmina/merge_requests/2617) *@myheroyuki*
+* Allow Remmina to use plugins immediately on download without needing a restart [!2618](https://gitlab.com/Remmina/Remmina/merge_requests/2618) *@myheroyuki*
+* [REM-3176] Add plugin api to allow Remmina to display if a profile is...  [!2619](https://gitlab.com/Remmina/Remmina/merge_requests/2619) *@myheroyuki*
+* [REM-3177] Fix error message for failed RDP connection [!2620](https://gitlab.com/Remmina/Remmina/merge_requests/2620) *@myheroyuki*
+* Add more detail to bug report to make certain issues easier to solve [!2621](https://gitlab.com/Remmina/Remmina/merge_requests/2621) *@myheroyuki*
+* [REM-3176] Resize icons to fit flatpak specifications [!2622](https://gitlab.com/Remmina/Remmina/merge_requests/2622) *@myheroyuki*
+
+
 ## v1.4.36
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.35...v1.4.36)
 
