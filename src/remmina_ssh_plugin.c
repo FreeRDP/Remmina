@@ -811,6 +811,18 @@ remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *men
 	return FALSE;
 }
 
+gboolean
+remmina_ssh_plugin_copy_selection(GtkWidget *widget, GdkEvent *event, GtkWidget *menu)
+{
+	if ((event->type == GDK_BUTTON_RELEASE) && (((GdkEventButton *)event)->button == 1)) {
+		if (vte_terminal_get_has_selection(VTE_TERMINAL(widget))){
+				vte_terminal_copy_clipboard_format(VTE_TERMINAL(widget), VTE_FORMAT_TEXT);
+		}
+	}
+
+	return FALSE;
+}
+
 /**
  * Remmina SSH plugin terminal popup menu.
  *
@@ -1244,6 +1256,11 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	gtk_widget_show(vscrollbar);
 	gtk_box_pack_start(GTK_BOX(hbox), vscrollbar, FALSE, TRUE, 0);
 
+	if (remmina_file_get_int(remminafile, "ssh_copy_on_select", FALSE)){
+		g_signal_connect(G_OBJECT(gpdata->vte), "button_release_event",
+				G_CALLBACK(remmina_ssh_plugin_copy_selection), gpdata->vte);
+	}
+
 	const gchar *dir;
 	const gchar *sshlogname;
 	gchar *fp;
@@ -1550,6 +1567,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_copy_on_select", N_("Copy text on selection"),	      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			  NULL,					      FALSE, NULL,		   NULL										 }
 };
 
