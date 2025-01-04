@@ -317,8 +317,11 @@ GNode *remmina_file_manager_get_group_tree(void)
 	datadir = g_strdup(remmina_file_get_datadir());
 	dir = g_dir_open(datadir, 0, NULL);
 
-	if (dir == NULL)
+	if (dir == NULL) {
+		g_free(datadir);
+		datadir = NULL;
 		return root;
+	}
 	while ((name = g_dir_read_name(dir)) != NULL) {
 		if (!g_str_has_suffix(name, ".remmina"))
 			continue;

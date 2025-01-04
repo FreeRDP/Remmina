@@ -617,6 +617,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 			iter = g_utf8_find_next_char(iter, NULL);
 		}
 		g_free(keyvals);
+		g_free(iter);
 	}
 	g_free(keystrokes);
 	return;
@@ -721,6 +722,7 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 				iter = g_utf8_find_next_char(iter, NULL);
 			}
 			g_free(keyvals);
+			g_free(iter);
 		}
 		g_free(text);
 	}
@@ -1106,7 +1108,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	if (!server)
 		return g_strdup("");
 
-	if (strstr(g_strdup(server), "unix:///") != NULL) {
+	if (strstr(server, "unix:///") != NULL) {
 		REMMINA_DEBUG("%s is a UNIX socket", server);
 		return g_strdup(server);
 	}

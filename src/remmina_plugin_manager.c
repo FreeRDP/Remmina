@@ -610,6 +610,8 @@ JsonNode *remmina_plugin_manager_plugin_stats_get_all()
 
 		n = remmina_info_stats_get_uid();
 		uid = g_strdup(json_node_get_string(n));
+		json_node_unref(n);
+		n = NULL;
 		json_builder_set_member_name(b_outer, "UID");
 		json_builder_add_string_value(b_outer, uid);
 
@@ -624,6 +626,8 @@ JsonNode *remmina_plugin_manager_plugin_stats_get_all()
 
 		g = json_generator_new();
 		json_generator_set_root(g, n);
+		json_node_unref(n);
+		n = NULL;
 		unenc_p = json_generator_to_data(g, NULL);
 
 

@@ -418,7 +418,7 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 	const gchar *nul_terminated_server = NULL;
 	if (server != NULL) {
-		if(strstr(g_strdup(server), "ID:") != NULL) {
+		if(strstr(server, "ID:") != NULL) {
 			g_debug ("(%s) - Using remmina_public_get_server_port_old to parse the repeater ID", __func__);
 			remmina_public_get_server_port_old (server, defaultport, host, port);
 			return;
@@ -427,7 +427,7 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 		GNetworkAddress *address;
 		GError *err = NULL;
 
-		nul_terminated_server = g_strdup (server);
+		nul_terminated_server = server;
 		g_debug ("(%s) - Parsing server: %s, default port: %d", __func__, server, defaultport);
 		address = (GNetworkAddress*)g_network_address_parse ((const gchar *)nul_terminated_server, defaultport, &err);
 
@@ -440,6 +440,7 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 			*host = g_strdup(g_network_address_get_hostname (address));
 			*port = g_network_address_get_port (address);
+			g_object_unref(address);
 		}
 	} else
 		*host = NULL;

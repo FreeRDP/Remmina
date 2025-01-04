@@ -134,8 +134,9 @@ gchar *remmina_sysinfo_get_wm_name()
 	const gchar *gdmsession;
 	gchar *ret;
 
-	xdg_current_desktop = g_environ_getenv(g_get_environ(), "XDG_CURRENT_DESKTOP");
-	gdmsession = g_environ_getenv(g_get_environ(), "GDMSESSION");
+	gchar **envp = g_get_environ();
+	xdg_current_desktop = g_environ_getenv(envp, "XDG_CURRENT_DESKTOP");
+	gdmsession = g_environ_getenv(envp, "GDMSESSION");
 
 	if (!xdg_current_desktop || xdg_current_desktop[0] == '\0') {
 		if (!gdmsession || gdmsession[0] == '\0') {
@@ -151,5 +152,6 @@ gchar *remmina_sysinfo_get_wm_name()
 	}else {
 		ret = g_strdup_printf("%s %s", xdg_current_desktop, gdmsession);
 	}
+	g_strfreev(envp);
 	return ret;
 }

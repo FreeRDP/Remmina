@@ -371,7 +371,8 @@ void remmina_icon_init(void)
 	/* Print on stdout the availability of appindicators on DBUS */
 	sni_supported = remmina_sysinfo_is_appindicator_available();
 
-	g_autofree gchar *wmname = g_ascii_strdown(remmina_sysinfo_get_wm_name(), -1);
+	g_autofree gchar *wmnameu = remmina_sysinfo_get_wm_name();
+	g_autofree gchar *wmname = g_ascii_strdown(wmnameu, -1);
 	//TRANSLATORS: These are Linux desktop components to show icons in the system tray, after the “ there's the Desktop Name (like GNOME).
 	g_autofree gchar *msg = g_strconcat(
 		_("StatusNotifier/Appindicator support in “"),
