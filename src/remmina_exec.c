@@ -123,13 +123,15 @@ static gboolean disable_rcw_delete_confirm_cb(GtkWidget *widget, gpointer data)
 void remmina_exec_exitremmina_one_confirm()
 {
 	TRACE_CALL(__func__);
-	GtkWidget* dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
-							GTK_BUTTONS_YES_NO,
-							_("Are you sure you want to fully quit Remmina?\n This will close any active connections."));
-			int response = gtk_dialog_run(GTK_DIALOG(dialog));
-			gtk_widget_destroy(dialog);
-			if (response != GTK_RESPONSE_YES)
-				return;
+	if (remmina_widget_pool_count() >1 || !remmina_main_get_window()) {
+		GtkWidget* dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
+								GTK_BUTTONS_YES_NO,
+								_("Are you sure you want to fully quit Remmina?\n This will close any active connections."));
+				int response = gtk_dialog_run(GTK_DIALOG(dialog));
+				gtk_widget_destroy(dialog);
+				if (response != GTK_RESPONSE_YES)
+					return;
+	}
 	remmina_widget_pool_foreach(disable_rcw_delete_confirm_cb, NULL);
 	remmina_exec_exitremmina();
 }
