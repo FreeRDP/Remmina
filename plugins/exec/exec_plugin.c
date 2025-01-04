@@ -108,7 +108,7 @@ cb_err_watch (GIOChannel *channel, GIOCondition cond, RemminaProtocolWidget *gp)
 	}
 
 	g_io_channel_read_line( channel, &string, &size, NULL, NULL );
-	gtk_text_buffer_insert_at_cursor( gpdata->err, string, -1 );
+	gtk_text_buffer_insert_at_cursor( gpdata->log_buffer, string, -1 );
 	g_free( string );
 
 	return TRUE;

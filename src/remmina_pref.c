@@ -274,6 +274,10 @@ void remmina_pref_init(void)
 			}
 			g_free(remmina_dir), remmina_dir = NULL;
 			g_dir_close(dir);
+		} else if (dirs[i + 1] != NULL) {
+			// Handle the case where g_file_test(remmina_dir, G_FILE_TEST_IS_DIR) is NULL
+			g_free(remmina_dir);
+			remmina_dir = NULL;
 		}
 	}
 	

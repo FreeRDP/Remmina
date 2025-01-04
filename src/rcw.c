@@ -2752,6 +2752,7 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 		bg = g_strdup(remmina_pref.grab_color);
 		if (!gdk_rgba_parse(&rgba, bg)) {
 			REMMINA_DEBUG("%s cannot be parsed as a color", bg);
+			g_free(bg);
 			bg = g_strdup("#00FF00");
 		} else {
 			REMMINA_DEBUG("Using %s as background color", bg);

@@ -135,16 +135,17 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 
 
 	/* Get the icon based on the protocol */
-	const gchar* icon_name;
+	gchar* icon_name;
 	RemminaProtocolPlugin *plugin;
 	plugin  = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
 									    item->protocol);
 	if (!plugin) {
 		icon_name = g_strconcat(REMMINA_APP_ID, "-symbolic", NULL);
 	} else {
-		icon_name = item->ssh_tunnel_enabled ? plugin->icon_name_ssh : plugin->icon_name;
+		icon_name = g_strdup(item->ssh_tunnel_enabled ? plugin->icon_name_ssh : plugin->icon_name);
 	}
 	icon = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_MENU);
+	g_free(icon_name);
 
 	/* Create the label */
 	widget = gtk_label_new(item->name);

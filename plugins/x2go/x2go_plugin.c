@@ -1377,9 +1377,9 @@ static gboolean rmplugin_x2go_session_chooser_callback(X2GoCustomUserData* custo
 		custom_data->opt2 = self;
 
 		// Actually start pyhoca-cli process with --terminate $session_id.
-		g_thread_new("terminate-session-thread",
+		g_thread_unref(g_thread_new("terminate-session-thread",
 			     (GThreadFunc) rmplugin_x2go_pyhoca_terminate_session,
-			     custom_data);
+			     custom_data));
 
 		// Dialog should stay open.
 		return G_SOURCE_CONTINUE;

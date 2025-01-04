@@ -1467,16 +1467,22 @@ static gboolean remmina_main_quickconnect(void)
 
 	remminafile = remmina_file_new();
 	server = g_strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
-	if (g_hostname_to_ascii(server) == NULL)
+	if (g_hostname_to_ascii(server) == NULL) {
+		g_free(server), server = NULL;
 		return FALSE;
+	}
 	/* If server contain /, e.g. vnc://, it won't connect
 	 * We could search for an array of invalid characters, but
 	 * it's better to find a way to correctly parse and validate addresses
 	 */
-	if (g_strrstr(server, "/") != NULL)
+	if (g_strrstr(server, "/") != NULL) {
+		g_free(server), server = NULL;
 		return FALSE;
-	if (is_empty(server))
+	}
+	if (is_empty(server)){
+		g_free(server), server = NULL;
 		return FALSE;
+	}
 
 	/* check if server is an IP address and trim whitespace if so */
 	server_trimmed = g_strdup(server);

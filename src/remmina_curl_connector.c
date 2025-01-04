@@ -261,6 +261,7 @@ void remmina_curl_send_message(gpointer data)
 
 void remmina_curl_compose_message(gchar* body, char* type, char* url, gpointer data)
 {
+	GThread *t = NULL;
 	if (!imode){
 		struct curl_msg* message = (struct curl_msg*)malloc(sizeof(struct curl_msg));
 		if (message == NULL) {
@@ -269,7 +270,8 @@ void remmina_curl_compose_message(gchar* body, char* type, char* url, gpointer d
 		message->body = body;
 		message->url = url;
 		message->user_data = data;
-		g_thread_new("send_curl_message", (GThreadFunc)remmina_curl_send_message, message);
+		t = g_thread_new("send_curl_message", (GThreadFunc)remmina_curl_send_message, message);
+		g_thread_unref(t);
 	}
 	
 }
