@@ -1,3 +1,12 @@
+## v1.4.38
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.37...v1.4.38)
+
+* [REM-3257] Add option to automatically copy ssh text when selected [!2624](https://gitlab.com/Remmina/Remmina/-/merge_requests/2624) *@myheroyuki*
+* [REM-2604] Allow -c to work with www plugin [!2604](https://gitlab.com/Remmina/Remmina/merge_requests/2604) *@myheroyuki*
+* [REM-3256] Don't prompt about closing connections with no connections [!2625](https://gitlab.com/Remmina/Remmina/merge_requests/2625) *@myheroyuki*
+* Mainly fixing memory leaks and some small bugs [!2626](https://gitlab.com/Remmina/Remmina/merge_requests/2626) *@myheroyuki*
+
+
 ## v1.4.37
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.36...v1.4.37)
 
