@@ -33,6 +33,7 @@
  */
 
 #include "spice_plugin.h"
+#include "spice_file.h"
 
 #define XSPICE_DEFAULT_PORT 5900
 
@@ -760,6 +761,22 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	NULL                                                                    // RCW unmap event
 };
 
+/* File plugin definition and features */
+static RemminaFilePlugin remmina_spicef =
+{
+	REMMINA_PLUGIN_TYPE_FILE,                       // Type
+	"SPICEF",                                       // Name
+	N_("SPICE vv file"),         					// Description
+	GETTEXT_PACKAGE,                                // Translation domain
+	VERSION,         					            // Version number
+	remmina_spice_file_import_test,                   // Test import function
+	remmina_spice_file_import,                        // Import function
+	remmina_spice_file_export_test,                   // Test export function
+	remmina_spice_file_export,                        // Export function
+	".vv",                        // Export extension
+	NULL
+};
+
 void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar *option_to_remove) {
 	gpointer *src, *dst;
 
@@ -840,6 +857,12 @@ remmina_plugin_entry(RemminaPluginService *service)
 	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_spice)) {
 		return FALSE;
 	}
+
+	remmina_spicef.export_hints = _("Export connection in virt-viewer .vv file format");
+	remmina_spicef.export_ext = ".vv";
+
+	if (!service->register_plugin((RemminaPlugin *)&remmina_spicef))
+		return FALSE;
 
 	return TRUE;
 }
