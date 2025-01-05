@@ -1,3 +1,8 @@
+## v1.4.39
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.38...v1.4.39)
+
+* [REM-3260] Fix bug passing wrong value in SPICE plugin (Breaking compilation on some distributions) [!2624](https://gitlab.com/Remmina/Remmina/merge_requests/2628) *@myheroyuki*
+
 ## v1.4.38
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.37...v1.4.38)
 
