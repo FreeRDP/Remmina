@@ -72,7 +72,7 @@ static void remmina_spice_file_import_field(RemminaFile *remminafile, const gcha
         else{
             viewmode = 1;
         }
-		remmina_plugin_service->file_set_int(remminafile, "viewmode", value);
+		remmina_plugin_service->file_set_int(remminafile, "viewmode", viewmode);
 	} else if (g_strcmp0(key, "username") == 0) {
 		remmina_plugin_service->file_set_string(remminafile, "username", value);
 	} else if (g_strcmp0(key, "title") == 0) {
