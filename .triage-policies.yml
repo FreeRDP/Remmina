@@ -1,24 +1,6 @@
 resource_rules:
   issues:
     rules:
-      - name: Close older than 9 Months
-        conditions:
-          date:
-            attribute: updated_at
-            condition: older_than
-            interval_type: months
-            interval: 9
-          state: opened
-          forbidden_labels:
-            - Status::Backlog
-        limits:
-          most_recent: 50
-        actions:
-          status: close
-          comment: |
-            {{author}} This issue was closed due to not being updated for a long time. Please re-open it if still relevant.
-            CC {{assignees}}
-
       - name: Close old "needinfo" policy
         conditions:
           date:
