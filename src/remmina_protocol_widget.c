@@ -576,7 +576,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 										  keystrokes_replaces[i].replace));
 			REMMINA_DEBUG("Keystrokes after replacement is \'%s\'", keystrokes);
 		}
-		gchar *iter = g_strdup(keystrokes);
+		gchar *iter = keystrokes;
 		keyvals = (guint *)g_malloc(strlen(keystrokes));
 		while (TRUE) {
 			/* Process each character in the keystrokes */
@@ -617,7 +617,6 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 			iter = g_utf8_find_next_char(iter, NULL);
 		}
 		g_free(keyvals);
-		g_free(iter);
 	}
 	g_free(keystrokes);
 	return;
@@ -672,7 +671,7 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 										    text_replaces[i].replace));
 				REMMINA_DEBUG("Text clipboard after replacement is \'%s\'", text);
 			}
-			gchar *iter = g_strdup(text);
+			gchar *iter = text;
 			REMMINA_DEBUG("Iter: %s", iter),
 			keyvals = (guint *)g_malloc(strlen(text));
 			while (TRUE) {
@@ -722,7 +721,6 @@ void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gc
 				iter = g_utf8_find_next_char(iter, NULL);
 			}
 			g_free(keyvals);
-			g_free(iter);
 		}
 		g_free(text);
 	}
