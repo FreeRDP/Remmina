@@ -630,10 +630,16 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 static void rcw_close_all_connections(RemminaConnectionWindow *cnnwin)
 {
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
-	GtkNotebook *notebook = GTK_NOTEBOOK(priv->notebook);
+	GtkNotebook *notebook;
 	GtkWidget *w;
 	RemminaConnectionObject *cnnobj;
 	gint i, n;
+
+	/* connection already closed */
+	if (!priv)
+		return;
+
+	notebook = GTK_NOTEBOOK(priv->notebook);
 
 	if (GTK_IS_WIDGET(notebook)) {
 		n = gtk_notebook_get_n_pages(notebook);
@@ -650,9 +656,15 @@ gboolean rcw_delete(RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
-	GtkNotebook *notebook = GTK_NOTEBOOK(priv->notebook);
+	GtkNotebook *notebook;
 	GtkWidget *dialog;
 	gint i, n, nopen;
+
+	/* connection already closed */
+	if (!priv)
+		return TRUE;
+
+	notebook = GTK_NOTEBOOK(priv->notebook);
 
 	if (!REMMINA_IS_CONNECTION_WINDOW(cnnwin))
 		return TRUE;
