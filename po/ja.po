@@ -14,13 +14,14 @@
 # あわしろいくや <ikunya@gmail.com>, 2021.
 # WonYong Jung <hirameki@gmail.com>, 2022.
 # maboroshin <maboroshin@users.noreply.hosted.weblate.org>, 2023.
+# nyiyui <nyiyui@nyiyui.ca>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-06-20 15:09+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2025-02-10 19:02+0000\n"
+"Last-Translator: nyiyui <nyiyui@nyiyui.ca>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -173,10 +174,8 @@ msgid "Plugins"
 msgstr "プラグイン"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "ダウンロード"
+msgstr "ダウンロード(_D)"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -188,7 +187,7 @@ msgstr "閉じる"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "インストール"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -394,6 +393,19 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
+"注：クリップボードの内容はキーボードで入力するのと同様に送られます。\n"
+"\n"
+"\n"
+"  • クライアントとサーバーのキーボード設定を同じにしてください。\n"
+"\n"
+"  • "
+"クライアントとサーバーのキーボード設定が違う場合、間違った文字が入力される可"
+"能性があります。\n"
+"\n"
+"  • "
+"漢字や記号等のユニコードやクライアントのキーコードに変換できない文字は送られ"
+"ません。\n"
+"\n"
 
 #: src/rcw.c:2212
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -652,16 +664,12 @@ msgid "Encrypt a password"
 msgstr "パスワードを暗号化する"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable encryption"
 msgid "Disable news"
-msgstr "暗号化を無効にする"
+msgstr "ニュースを無効にする"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "ツールバーを無効にする"
+msgstr "接続情報を無効にする"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -686,20 +694,15 @@ msgstr "トレイアイコンを無効にする"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remminaは出力のすべてをログファイルに残している訳ではありません。環境変数に"
-"\"G_MESSAGES_DEBUG=all\"を追加してより詳しく出録するようにしてください。\n"
+"Remminaは出力のすべてをログファイルに残している訳ではありません。"
+"環境変数に\"G_MESSAGES_DEBUG="
+"remmina\"を追加してより詳しく出録するようにしてください。\n"
 "RemminaのWikiで追加情報が得られます：\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -916,7 +919,7 @@ msgstr "権限"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "変更済み"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2975
 msgid "Remote"
@@ -1098,10 +1101,8 @@ msgid "SSH identity file not selected."
 msgstr "SSH 秘密鍵ファイルが選択されていません。"
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "SSH パスワードが保存されていません。ユーザーが入力する必要があります。"
+msgstr "ユーザーネームが保存されていません。ユーザーが入力する必要があります。"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1197,16 +1198,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "TOTP/OTP/2FA のコードを入力してください"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "SSH トンネル資格情報"
+msgstr "SSH トンネル用秘密鍵"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "SSH 秘密鍵のキーファイル"
+msgstr "SSH 秘密鍵"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1327,12 +1324,10 @@ msgid "Could not create PTY device."
 msgstr "PTY デバイスを作成できませんでした。"
 
 #: src/remmina_exec.c:128
-#, fuzzy
-#| msgid "Are you sure you want to close this last active connection?"
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
-msgstr "この最後のアクティブな接続を閉じますか?"
+msgstr "Remminaを終了しますか？すべてのアクティブな接続を閉じます。"
 
 #: src/remmina_exec.c:505
 #, c-format
@@ -1398,10 +1393,8 @@ msgid "Import"
 msgstr "インポート"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "新しい接続プロファイルを作成"
+msgstr "新しい接続プロファイルを選択"
 
 #: src/remmina_main.c:1309
 #, fuzzy
@@ -2203,7 +2196,7 @@ msgstr "RDP ゲートウェイ認証資格情報を入力してください"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "RDP SmartCard PINを入力"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2443,19 +2436,19 @@ msgstr "NLA 拡張プロトコルセキュリティ"
 
 #: plugins/rdp/rdp_plugin.c:2994
 msgid "Every 1 min"
-msgstr ""
+msgstr "1分毎"
 
 #: plugins/rdp/rdp_plugin.c:2995
 msgid "Every 3 min"
-msgstr ""
+msgstr "3分毎"
 
 #: plugins/rdp/rdp_plugin.c:2996
 msgid "Every 5 min"
-msgstr ""
+msgstr "5分毎"
 
 #: plugins/rdp/rdp_plugin.c:2997
 msgid "Every 10 min"
-msgstr ""
+msgstr "10分毎"
 
 #: plugins/rdp/rdp_plugin.c:3011 plugins/spice/spice_plugin.c:622
 #: plugins/spice/spice_plugin.c:640
@@ -3779,10 +3772,8 @@ msgstr ""
 "GtkSocket は X.org でしか動作しないため、%s プロトコルは利用できません。"
 
 #: plugins/x2go/x2go_plugin.c:3107
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
-msgstr ""
-"pthread を初期化できませんでした。非スレッドモードにフォールバックします…"
+msgstr "pthread を初期化できませんでした。非スレッドモードにフォールバックします。"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3914,10 +3905,8 @@ msgid "Clipboard direction"
 msgstr "クリップボードの方向"
 
 #: plugins/x2go/x2go_plugin.c:3411
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
-msgstr ""
-"クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：「両"
+msgstr "クリップボードの内容をどの方向にコピーするか？(を設定します（デフォルト：「両"
 "方」）。"
 
 #: plugins/x2go/x2go_plugin.c:3415
