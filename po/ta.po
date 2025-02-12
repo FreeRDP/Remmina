@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.39\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-02-12 04:18+0000\n"
+"PO-Revision-Date: 2025-02-12 06:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/remmina/remmina/ta/"
 ">\n"
@@ -472,6 +472,7 @@ msgstr "துண்டிக்கவும்"
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
 msgstr ""
+"“%s” கோப்பு சிதைந்துள்ளது, படிக்க முடியாதது அல்லது கண்டுபிடிக்க முடியவில்லை."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
@@ -480,12 +481,16 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4655
 msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
+"எச்சரிக்கை: இந்த சொருகி Gtksocket தேவைப்படுகிறது, ஆனால் இந்த நற்பொருத்தம் ஒரு வேலண்ட் "
+"அமர்வில் கிடைக்கவில்லை."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. 'GtkSocket feature is not available'.
@@ -497,42 +502,47 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"Gtksocket ஐ நம்பியிருக்கும் செருகுநிரல்கள் ஒரு வேலண்ட் அமர்வில் இயங்க முடியாது.\n"
+" மேலும் செய்தி மற்றும் சாத்தியமான பணித்தொகுப்புக்கு, ரெம்மினா விக்கியைப் பார்வையிடவும்:\n"
+"\n"
+" https://gitlab.com/remmina/remmina/-/wikis/gtksocket-fieture-is-at-"
+"available-in-a-bayland-session"
 
 #: src/rcw.c:4675
 msgid "Open in web browser"
-msgstr ""
+msgstr "வலை உலாவியில் திறக்கவும்"
 
 #: src/remmina_mpchange.c:263
 msgid "The passwords do not match"
-msgstr ""
+msgstr "கடவுச்சொற்கள் பொருந்தவில்லை"
 
 #: src/remmina_mpchange.c:276
 msgid "The Gateway passwords do not match"
-msgstr ""
+msgstr "நுழைவாயில் கடவுச்சொற்கள் பொருந்தவில்லை"
 
 #: src/remmina_mpchange.c:290
 msgid "Resetting passwords, please wait…"
-msgstr ""
+msgstr "கடவுச்சொற்களை மீட்டமைத்தல், தயவுசெய்து காத்திருங்கள்…"
 
 #: src/remmina_mpchange.c:381
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr ""
+msgstr "மல்டி கடவுச்சொல் மாற்றிக்கு ஒரு ரகசிய சொருகி தேவைப்படுகிறது.\n"
 
 #: src/remmina_mpchange.c:384
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr ""
+msgstr "பல கடவுச்சொல் மாற்றத்திற்கு ஒரு ரகசிய பணி தேவை.\n"
 
 #: src/remmina_mpchange.c:479
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d கடவுச்சொல் மாற்றப்பட்டது."
+msgstr[1] "%d கடவுச்சொற்கள் மாற்றப்பட்டன."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
 msgid "Show 'About'"
-msgstr ""
+msgstr "'பற்றி' காட்டு"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
@@ -540,10 +550,13 @@ msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
+"ஒரு கோப்பில் விவரிக்கப்பட்டுள்ள டெச்க்டாப்புடன் (.remmina அல்லது ஒரு சொருகி ஆதரிக்கப்படும் "
+"பைல்டைப்) அல்லது ஆதரிக்கப்பட்ட யூரி (RDP, VNC, பாஓடு அல்லது பாஓடு அல்லது ச்பைச்) உடன் "
+"இணைக்கவும்"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
-msgstr ""
+msgstr "கோப்பு"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:106
@@ -551,6 +564,8 @@ msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
+"ஒரு கோப்பில் விவரிக்கப்பட்டுள்ள டெச்க்டாப்புடன் இணைக்கவும் (.remmina அல்லது ஒரு சொருகி "
+"ஆதரிக்கப்படும் பைல்டைப்)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
@@ -558,103 +573,109 @@ msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
+"கோப்பில் விவரிக்கப்பட்ட டெச்க்டாப் இணைப்பைத் திருத்தவும் (.remmina அல்லது சொருகி "
+"ஆதரிக்கப்படும் பைல்டைப்)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:111
 msgid "Start in kiosk mode"
-msgstr ""
+msgstr "கியோச்க் பயன்முறையில் தொடங்கவும்"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:113
 msgid "Create new connection profile"
-msgstr ""
+msgstr "புதிய இணைப்பு சுயவிவரத்தை உருவாக்கவும்"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:115
 msgid "Show preferences"
-msgstr ""
+msgstr "விருப்பங்களைக் காட்டு"
 
 #: src/remmina.c:115
 msgid "TABINDEX"
-msgstr ""
+msgstr "தபிண்டெக்ச்"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:122
 msgid "Quit"
-msgstr ""
+msgstr "வெளியேறு"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:124
 msgid "Use default server name (for --new)"
-msgstr ""
+msgstr "இயல்புநிலை சேவையக பெயரைப் பயன்படுத்தவும் ( -new க்கு)"
 
 #: src/remmina.c:124
 msgid "SERVER"
-msgstr ""
+msgstr "சேவையகம்"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:126
 msgid "Use default protocol (for --new)"
-msgstr ""
+msgstr "இயல்புநிலை நெறிமுறையைப் பயன்படுத்தவும் (--new க்கு)"
 
 #: src/remmina.c:126
 msgid "PROTOCOL"
-msgstr ""
+msgstr "நெறிமுறை"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:128
 msgid "Start in tray"
-msgstr ""
+msgstr "தட்டில் தொடங்கவும்"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:130
 msgid "Show the application version"
-msgstr ""
+msgstr "பயன்பாட்டு பதிப்பைக் காட்டு"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:132
 msgid "Show version of the application and its plugins"
-msgstr ""
+msgstr "பயன்பாட்டின் பதிப்பையும் அதன் செருகுநிரல்களையும் காட்டு"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:134
 msgid "Modify connection profile (requires --set-option)"
-msgstr ""
+msgstr "இணைப்பு சுயவிவரத்தை மாற்றவும் (--செட்-விருப்பம் தேவை)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:136
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+"ஒன்று அல்லது அதற்கு மேற்பட்ட சுயவிவர அமைப்புகளை அமைக்கவும்,-update- சுயவிவரத்துடன் "
+"பயன்படுத்தப்பட வேண்டும்"
 
 #: src/remmina.c:137
 msgid "Encrypt a password"
-msgstr ""
+msgstr "கடவுச்சொல்லை குறியாக்கவும்"
 
 #: src/remmina.c:138
 msgid "Disable news"
-msgstr ""
+msgstr "செய்திகளை முடக்கு"
 
 #: src/remmina.c:139
 msgid "Disable stats"
-msgstr ""
+msgstr "புள்ளிவிவரங்களை முடக்கு"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
-msgstr ""
+msgstr "கருவிப்பட்டியை முடக்கு"
 
 #: src/remmina.c:141
 msgid "Enable fullscreen"
-msgstr ""
+msgstr "முழுத்திரை இயக்கவும்"
 
 #: src/remmina.c:142
 msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
+"கூடுதல் கடினப்படுத்தலை இயக்கவும் (நிறைவு உறுதிப்படுத்தலை முடக்கு, பாதுகாப்பற்ற "
+"குறுக்குவழி விசைகளை முடக்கு, தாவல்களை மறைக்க, தேடல் பட்டியை மறைக்கவும்)"
 
 #: src/remmina.c:143
 msgid "Disable tray icon"
-msgstr ""
+msgstr "தட்டு ஐகானை முடக்கு"
 
 #. TRANSLATORS:
 #. * This link should point to a resource explaining how to get Remmina
@@ -667,11 +688,16 @@ msgid ""
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
+"ரெம்மினா அனைத்து வெளியீட்டு அறிக்கைகளையும் பதிவு செய்யவில்லை. சுற்றுச்சூழல் மாறியாக "
+"\"G_Messages_debug = Remmina\" ஐப் பயன்படுத்துவதன் மூலம் மேலும் வாய்மொழி வெளியீட்டை "
+"இயக்கவும்.\n"
+" ரெம்மினா விக்கியில் கூடுதல் தகவல்:\n"
+" https://gitlab.com/remmina/remmina/-/wikis/usage/remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:447
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr ""
+msgstr "- or protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:450
 msgid ""
@@ -707,373 +733,404 @@ msgid ""
 "remmina --set-option username --set-option resolution_mode=2 --set-option "
 "password\n"
 msgstr ""
+"எடுத்துக்காட்டுகள்:\n"
+" ஏற்கனவே உள்ள இணைப்பு சுயவிவரத்தைப் பயன்படுத்தி இணைக்க, பயன்படுத்தவும்:\n"
+"\n"
+" ரெம்மினா -சி கோப்பு.ரெமினா\n"
+"\n"
+" யூரி ஐப் பயன்படுத்தி விரைவாக இணைக்க:\n"
+"\n"
+" Remmina -c rdp: // பயனர்பெயர்@சேவையகம்\n"
+" Remmina -c rdp: // டொமைன் \\\\ பயனர்பெயர்@சேவையகம்\n"
+" Remmina -c vnc: // பயனர்பெயர்@சேவையகம்\n"
+" Remmina -c vnc: // server? vncusername = பயனர்பெயர்\n"
+" Remmina -c ssh: // பயனர்@சேவையகம்\n"
+" ரெமினா -சி ச்பைச்: // சேவையகம்\n"
+"\n"
+" மறைகுறியாக்கப்பட்ட கடவுச்சொல்லுடன் யூரி ஐப் பயன்படுத்தி விரைவாக இணைக்க:\n"
+"\n"
+" Remmina -c rdp: // பயனர்பெயர்: மறைகுறியாக்கப்பட்ட -பாச்வேர்ட்@சேவையகம்\n"
+" Remmina -c vnc: // பயனர்பெயர்: மறைகுறியாக்கப்பட்ட -பாச்வேர்ட்@சேவையகம்\n"
+" Remmina -c vnc: // server?\n"
+"\n"
+" யூரி உடன் பயன்படுத்த கடவுச்சொல்லை குறியாக்க:\n"
+"\n"
+" ரெமினா-என்கிரிப்ட்-பாச்வேர்ட்\n"
+"\n"
+" பயனர்பெயர் மற்றும் கடவுச்சொல்லைப் புதுப்பிக்க மற்றும் ரெமினா இணைப்பு சுயவிவரத்தின் வேறு "
+"தெளிவுத்திறன் பயன்முறையை அமைக்க, பயன்படுத்தவும்:\n"
+"\n"
+" எதிரொலி \"பயனர்பெயர் \\ நாபாச்வேர்ட்\" | remmina --update-profile/path/to/"
+"foo.remmina --set-option பயனர்பெயர்-Set-option repution_mode = 2--Set-option "
+"கடவுச்சொல்\n"
 
 #: src/remmina_public.c:347
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr ""
+msgstr "யுனிக்ச் சாக்கெட்_பாத்துக்கு முகவரி மிக நீளமானது: %s"
 
 #: src/remmina_public.c:357
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr ""
+msgstr "யூனிக்ச் சாக்கெட்டை உருவாக்குவது தோல்வியுற்றது: %s"
 
 #: src/remmina_public.c:363
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr ""
+msgstr "யுனிக்ச் சாக்கெட் தோல்வியுற்றது: %s"
 
 #: src/remmina_public.c:634
 msgid "Please enter format 'widthxheight'."
-msgstr ""
+msgstr "தயவுசெய்து 'widthxheight' வடிவத்தை உள்ளிடவும்."
 
 #: src/remmina_public.c:656
 msgid "Change security settings"
-msgstr ""
+msgstr "பாதுகாப்பு அமைப்புகளை மாற்றவும்"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:53
 msgid "translator-credits"
-msgstr ""
+msgstr "மொழிபெயர்ப்பாளர்-வரவு"
 
 #: src/remmina_ftp_client.c:409
 msgid "Choose download location"
-msgstr ""
+msgstr "பதிவிறக்க இருப்பிடத்தைத் தேர்வுசெய்க"
 
 #: src/remmina_ftp_client.c:549
 msgid "Are you sure to delete the selected files on server?"
-msgstr ""
+msgstr "சேவையகத்தில் தேர்ந்தெடுக்கப்பட்ட கோப்புகளை நீக்குவது உறுதி?"
 
 #: src/remmina_ftp_client.c:606
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "பதிவேற்ற ஒரு கோப்பைத் தேர்வுசெய்க"
 
 #: src/remmina_ftp_client.c:608 src/remmina_ftp_client.c:676
 #: src/remmina_ftp_client.c:793
 msgid "Upload"
-msgstr ""
+msgstr "பதிவேற்றும்"
 
 #: src/remmina_ftp_client.c:613
 msgid "Upload folder"
-msgstr ""
+msgstr "கோப்புறை பதிவேற்றவும்"
 
 #: src/remmina_ftp_client.c:669 src/remmina_ftp_client.c:786
 msgid "Download"
-msgstr ""
+msgstr "பதிவிறக்கம்"
 
 #: src/remmina_ftp_client.c:683
 msgid "_Delete"
-msgstr ""
+msgstr "_Delete"
 
 #: src/remmina_ftp_client.c:771
 msgid "Home"
-msgstr ""
+msgstr "வீடு"
 
 #: src/remmina_ftp_client.c:772
 msgid "Go to home folder"
-msgstr ""
+msgstr "வீட்டு கோப்புறைக்குச் செல்லுங்கள்"
 
 #: src/remmina_ftp_client.c:776
 msgid "Up"
-msgstr ""
+msgstr "மேலே"
 
 #: src/remmina_ftp_client.c:777
 msgid "Go to parent folder"
-msgstr ""
+msgstr "பெற்றோர் கோப்புறைக்குச் செல்லுங்கள்"
 
 #: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:3207
 #: plugins/vnc/vnc_plugin.c:2154
 msgid "Refresh"
-msgstr ""
+msgstr "புதுப்பிப்பு"
 
 #: src/remmina_ftp_client.c:782
 msgid "Refresh current folder"
-msgstr ""
+msgstr "தற்போதைய கோப்புறையை புதுப்பிக்கவும்"
 
 #: src/remmina_ftp_client.c:787
 msgid "Download from server"
-msgstr ""
+msgstr "சேவையகத்திலிருந்து பதிவிறக்கவும்"
 
 #: src/remmina_ftp_client.c:794
 msgid "Upload to server"
-msgstr ""
+msgstr "சேவையகத்தில் பதிவேற்றவும்"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
 #: data/ui/remmina_main.glade:252
 msgid "Delete"
-msgstr ""
+msgstr "நீக்கு"
 
 #: src/remmina_ftp_client.c:799
 msgid "Delete files on server"
-msgstr ""
+msgstr "சேவையகத்தில் கோப்புகளை நீக்கு"
 
 #: src/remmina_ftp_client.c:928 src/remmina_ftp_client.c:1005
 msgid "Filename"
-msgstr ""
+msgstr "கோப்புப்பெயர்"
 
 #: src/remmina_ftp_client.c:941 src/remmina_ftp_client.c:1034
 msgid "Size"
-msgstr ""
+msgstr "அளவு"
 
 #: src/remmina_ftp_client.c:949
 msgid "User"
-msgstr ""
+msgstr "பயனர்"
 
 #: src/remmina_ftp_client.c:955 src/remmina_file_editor.c:2076
 #: data/ui/remmina_mpc.glade:93 data/ui/remmina_main.glade:488
 msgid "Group"
-msgstr ""
+msgstr "குழு"
 
 #: src/remmina_ftp_client.c:961
 msgid "Permission"
-msgstr ""
+msgstr "இசைவு"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
-msgstr ""
+msgstr "மாற்றியமைக்கப்பட்ட"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2975
 msgid "Remote"
-msgstr ""
+msgstr "தொலைநிலை"
 
 #: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2974
 msgid "Local"
-msgstr ""
+msgstr "உள்ளக"
 
 #: src/remmina_ftp_client.c:1042
 msgid "Progress"
-msgstr ""
+msgstr "முன்னேற்றம்"
 
 #: src/remmina_protocol_widget.c:295 src/remmina_ssh_plugin.c:841
 #: src/remmina_ssh_plugin.c:1479
 msgid "Open SFTP transfer…"
-msgstr ""
+msgstr "திறந்த SFTP பரிமாற்றம்…"
 
 #: src/remmina_protocol_widget.c:327
 msgid "Executing external commands…"
-msgstr ""
+msgstr "வெளிப்புற கட்டளைகளை செயல்படுத்துதல்…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
 #: src/remmina_protocol_widget.c:335
 #, c-format
 msgid "Connecting to “%s”…"
-msgstr ""
+msgstr "“%s” உடன் இணைக்கிறது…"
 
 #. TRANSLATORS: “%s” is a placeholder for an hostname or an IP address.
 #: src/remmina_protocol_widget.c:958 src/remmina_protocol_widget.c:1142
 #, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr ""
+msgstr "பாஓடு வழியாக “%s” உடன் இணைகிறது…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1206
 #, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr ""
+msgstr "துறைமுகம் %i இல் உள்வரும் பாஓடு இணைப்புக்காக காத்திருக்கிறது…"
 
 #: src/remmina_protocol_widget.c:1259
 #, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr ""
+msgstr "பாஓடு சேவையகத்தில் “%s” கட்டளை கிடைக்கவில்லை."
 
 #: src/remmina_protocol_widget.c:1264
 #, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr ""
+msgstr "பாஓடு சேவையகத்தில் “ %s” கட்டளையை இயக்க முடியவில்லை (நிலை = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1272
 #, c-format
 msgid "Could not run command. %s"
-msgstr ""
+msgstr "கட்டளையை இயக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1342
 #, c-format
 msgid "Connecting to %s via SSH…"
-msgstr ""
+msgstr "பாஓடு வழியாக %s உடன் இணைகிறது…"
 
 #: src/remmina_protocol_widget.c:1747
 msgid "Type in SSH username and password."
-msgstr ""
+msgstr "பாஓடு பயனர்பெயர் மற்றும் கடவுச்சொல் தட்டச்சு செய்க."
 
 #: src/remmina_protocol_widget.c:1802 src/remmina_protocol_widget.c:1834
 msgid "Fingerprint automatically accepted"
-msgstr ""
+msgstr "கைரேகை தானாக ஏற்றுக்கொள்ளப்படுகிறது"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1810
 msgid "Certificate details:"
-msgstr ""
+msgstr "சான்றிதழ் விவரங்கள்:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1812 src/remmina_protocol_widget.c:1844
 msgid "Subject:"
-msgstr ""
+msgstr "பொருள்:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
 #: src/remmina_protocol_widget.c:1814 src/remmina_protocol_widget.c:1846
 msgid "Issuer:"
-msgstr ""
+msgstr "வழங்குபவர்:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1816
 msgid "Fingerprint:"
-msgstr ""
+msgstr "கைரேகை:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1818
 msgid "Accept certificate?"
-msgstr ""
+msgstr "சான்றிதழை ஏற்றுக்கொள்கிறீர்களா?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1842
 msgid "The certificate changed! Details:"
-msgstr ""
+msgstr "சான்றிதழ் மாற்றப்பட்டது! விவரங்கள்:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1848
 msgid "Old fingerprint:"
-msgstr ""
+msgstr "பழைய கைரேகை:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1850
 msgid "New fingerprint:"
-msgstr ""
+msgstr "புதிய கைரேகை:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1852
 msgid "Accept changed certificate?"
-msgstr ""
+msgstr "மாற்றப்பட்ட சான்றிதழை ஏற்றுக்கொள்கிறீர்களா?"
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1995
-#, c-format
+#, c-format, fuzzy
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr ""
+msgstr "உள்வரும் %s இணைப்புக்காக துறைமுகம் %i ஐக் கேட்பது…"
 
 #: src/remmina_protocol_widget.c:2020
 msgid "Could not authenticate, attempting reconnection…"
-msgstr ""
+msgstr "அங்கீகரிக்க முடியவில்லை, மீண்டும் இணைக்க முயற்சித்தது…"
 
 #: src/remmina_protocol_widget.c:2083 src/remmina_file_editor.c:465
 #: src/remmina_file_editor.c:1289 data/ui/remmina_main.glade:518
 msgid "Server"
-msgstr ""
+msgstr "சேவையகம்"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2101
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "முதலில் %s நெறிமுறை சொருகி நிறுவவும்."
 
 #: src/remmina_ssh.c:745
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr ""
+msgstr "TOTP/OTP/2FA உடன் அங்கீகரிக்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:804 src/remmina_ssh.c:1191
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr ""
+msgstr "பாஓடு கடவுச்சொல்லுடன் அங்கீகரிக்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:831 src/remmina_ssh.c:904
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
+"சேமிக்கப்பட்ட பாஓடு கடவுச்சொல் எதுவும் வழங்கப்படவில்லை. அதை உள்ளிட பயனரைக் கேட்கிறது."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:836 src/remmina_ssh.c:877 src/remmina_ssh.c:909
 #: src/remmina_ssh.c:948 src/remmina_ssh.c:1261
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
+msgstr "பொது பாஓடு விசையுடன் அங்கீகரிக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:845
 #, c-format
 msgid "SSH certificate cannot be imported. %s"
-msgstr ""
+msgstr "பாஓடு சான்றிதழை இறக்குமதி செய்ய முடியாது. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:854
 #, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr ""
+msgstr "பாஓடு சான்றிதழை தனியார் பாஓடு விசையில் நகலெடுக்க முடியாது. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:864
 #, c-format
 msgid "Could not authenticate using SSH certificate. %s"
-msgstr ""
+msgstr "பாஓடு சான்றிதழைப் பயன்படுத்தி அங்கீகரிக்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:878
 msgid "SSH identity file not selected."
-msgstr ""
+msgstr "பாஓடு அடையாள கோப்பு தேர்ந்தெடுக்கப்படவில்லை."
 
 #: src/remmina_ssh.c:884
 msgid "No username found. Asking user to enter it."
-msgstr ""
+msgstr "பயனர்பெயர் எதுவும் கிடைக்கவில்லை. அதை உள்ளிட பயனரைக் கேட்கிறது."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr ""
+msgstr "பொது பாஓடு விசையை இறக்குமதி செய்ய முடியாது. %s"
 
 #: src/remmina_ssh.c:993
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr ""
+msgstr "பொது பாஓடு விசையுடன் தானாக அங்கீகரிக்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:1038
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr ""
+msgstr "பாஓடு முகவருடன் தானாக அங்கீகரிக்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:1084 src/remmina_ssh.c:1371
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr ""
+msgstr "பாஓடு GSSAPI/KERBEROS உடன் அங்கீகரிக்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:1113
 msgid "The public SSH key changed!"
-msgstr ""
+msgstr "பொது பாஓடு விசை மாற்றப்பட்டது!"
 
 #: src/remmina_ssh.c:1226
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr ""
+msgstr "விசைப்பலகை-ஊடாடும் வகையில் அங்கீகரிக்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:1328
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr ""
+msgstr "தானியங்கி பொது பாஓடு விசையுடன் அங்கீகரிக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1436
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
+msgstr "சேவையகத்தின் பொது பாஓடு விசையை பெற முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1443
 #, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr ""
+msgstr "பொது பாஓடு விசையைப் பெற முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1451
 #, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr ""
+msgstr "பொது பாஓடு விசையின் செக்சமைப் பெற முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:1464
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr ""
+msgstr "சேவையகம் தெரியவில்லை. பொது விசை கைரேகை:"
 
 #: src/remmina_ssh.c:1466 src/remmina_ssh.c:1472
 msgid "Do you trust the new public key?"
-msgstr ""
+msgstr "புதிய பொது விசையை நீங்கள் நம்புகிறீர்களா?"
 
 #: src/remmina_ssh.c:1469
 msgid ""
@@ -1081,197 +1138,202 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
+"எச்சரிக்கை: சேவையகம் அதன் பொது விசையை மாற்றியுள்ளது. இதன் பொருள் நீங்கள் தாக்குதலுக்கு "
+"உள்ளாகிறீர்கள்,\n"
+" அல்லது நிர்வாகி விசையை மாற்றிவிட்டார். புதிய பொது விசை கைரேகை:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1494
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr ""
+msgstr "அறியப்பட்ட பாஓடு ஓச்ட்களின் பட்டியலை சரிபார்க்க முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:1503
 msgid "SSH password"
-msgstr ""
+msgstr "பாஓடு கடவுச்சொல்"
 
 #: src/remmina_ssh.c:1510 src/remmina_ssh.c:1556 src/remmina_ssh.c:1590
 msgid "Password for private SSH key"
-msgstr ""
+msgstr "தனிப்பட்ட பாஓடு விசைக்கான கடவுச்சொல்"
 
 #: src/remmina_ssh.c:1515
 msgid "SSH Kerberos/GSSAPI"
-msgstr ""
+msgstr "பாஓடு கெர்பரோச்/GSSAPI"
 
 #: src/remmina_ssh.c:1520
 msgid "Enter TOTP/OTP/2FA code"
-msgstr ""
+msgstr "TOTP/OTP/2FA குறியீட்டை உள்ளிடவும்"
 
 #: src/remmina_ssh.c:1552
 msgid "SSH tunnel private key credentials"
-msgstr ""
+msgstr "பாஓடு சுரங்கப்பாதை தனியார் முக்கிய நற்சான்றிதழ்கள்"
 
 #: src/remmina_ssh.c:1552
 msgid "SSH private key credentials"
-msgstr ""
+msgstr "பாஓடு தனியார் முக்கிய நற்சான்றிதழ்கள்"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
-msgstr ""
+msgstr "பாஓடு சுரங்கப்பாதை நற்சான்றிதழ்கள்"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH credentials"
-msgstr ""
+msgstr "பாஓடு நற்சான்றிதழ்கள்"
 
 #: src/remmina_ssh.c:1663
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr ""
+msgstr "விசைப்பலகை ஊடாடும் உள்நுழைவு, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2363
 #, c-format
 msgid "Could not create channel. %s"
-msgstr ""
+msgstr "சேனலை உருவாக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2374
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr ""
+msgstr "பாஓடு சுரங்கப்பாதையுடன் இணைக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2445 src/remmina_ssh.c:2466 src/remmina_ssh.c:2475
 #, c-format
 msgid "Could not request port forwarding. %s"
-msgstr ""
+msgstr "துறைமுகம் பகிர்தலை கோர முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:2505
 msgid "The server did not respond."
-msgstr ""
+msgstr "சேவையகம் பதிலளிக்கவில்லை."
 
 #: src/remmina_ssh.c:2543
 #, c-format
 msgid "Cannot connect to local port %i."
-msgstr ""
+msgstr "உள்ளக துறைமுகம் %i உடன் இணைக்க முடியாது."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2592
 #, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr ""
+msgstr "பாஓடு சேனலுக்கு எழுத முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2599
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr ""
+msgstr "சுரங்கப்பாதை கேட்கும் சாக்கெட்டிலிருந்து படிக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2619
 #, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr ""
+msgstr "பாஓடு சேனலை வாக்கெடுப்பு செய்ய முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2626
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr ""
+msgstr "தடையற்ற முறையில் பாஓடு சேனலைப் படிக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2645
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr ""
+msgstr "சுரங்கப்பாதை கேட்கும் சாக்கெட்டுக்கு தரவை அனுப்ப முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:2747
 msgid "Assign a destination port."
-msgstr ""
+msgstr "இலக்கு துறைமுகத்தை ஒதுக்கவும்."
 
 #: src/remmina_ssh.c:2754
 msgid "Could not create socket."
-msgstr ""
+msgstr "சாக்கெட் உருவாக்க முடியவில்லை."
 
 #: src/remmina_ssh.c:2764
 msgid "Could not bind server socket to local port."
-msgstr ""
+msgstr "சேவையக சாக்கெட்டை உள்ளக துறைமுகத்துடன் பிணைக்க முடியவில்லை."
 
 #: src/remmina_ssh.c:2770
 msgid "Could not listen to local port."
-msgstr ""
+msgstr "உள்ளக துறைமுகத்தைக் கேட்க முடியவில்லை."
 
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:2780 src/remmina_ssh.c:2797 src/remmina_ssh.c:2815
 msgid "Could not start pthread."
-msgstr ""
+msgstr "Pthread ஐ தொடங்க முடியவில்லை."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2907
 #, c-format
 msgid "Could not create SFTP session. %s"
-msgstr ""
+msgstr "SFTP அமர்வை உருவாக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2912
 #, c-format
 msgid "Could not start SFTP session. %s"
-msgstr ""
+msgstr "SFTP அமர்வைத் தொடங்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:3004
 #, c-format
 msgid "Could not open channel. %s"
-msgstr ""
+msgstr "சேனலைத் திறக்க முடியவில்லை. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:3047
 #, c-format
 msgid "Could not request shell. %s"
-msgstr ""
+msgstr "செல்லைக் கோர முடியவில்லை. %s"
 
 #: src/remmina_ssh.c:3177
 msgid "Could not create PTY device."
-msgstr ""
+msgstr "PTY சாதனத்தை உருவாக்க முடியவில்லை."
 
 #: src/remmina_exec.c:128
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
 msgstr ""
+"ரெம்மினாவை முழுமையாக விட்டுவிட விரும்புகிறீர்களா?\n"
+" இது எந்த செயலில் உள்ள இணைப்புகளையும் மூடும்."
 
 #: src/remmina_exec.c:505
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr ""
+msgstr "சொருகி %s பதிவு செய்யப்படவில்லை."
 
 #: src/remmina_main.c:736
 msgid "The latest successful connection attempt, or a pre-computed date"
-msgstr ""
+msgstr "அண்மைக் கால வெற்றிகரமான இணைப்பு முயற்சி அல்லது முன்-கணக்கிடப்பட்ட தேதி"
 
 #: src/remmina_main.c:738
-#, c-format
+#, c-format, fuzzy
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "மொத்த %நான் உருப்படி."
+msgstr[1] "மொத்த %i உருப்படிகள்."
 
 #: src/remmina_main.c:746
 msgid "Network status: fully online"
-msgstr ""
+msgstr "பிணைய நிலை: முழுமையாக ஆன்லைனில்"
 
 #: src/remmina_main.c:749
 msgid "Network status: offline"
-msgstr ""
+msgstr "பிணைய நிலை: இணைப்பில்லாத"
 
 #: src/remmina_main.c:1003
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "“%s” ஐ நீக்க விரும்புகிறீர்களா?"
 
 #: src/remmina_main.c:1025
 msgid "Are you sure you want to delete the selected files?"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்புகளை நீக்க விரும்புகிறீர்களா?"
 
 #: src/remmina_main.c:1036
 msgid "Failed to delete files!"
-msgstr ""
+msgstr "கோப்புகளை நீக்குவதில் தோல்வி!"
 
 #: src/remmina_main.c:1219
 #, c-format
@@ -1279,122 +1341,124 @@ msgid ""
 "Unable to import:\n"
 "%s"
 msgstr ""
+"இறக்குமதி செய்ய முடியவில்லை:\n"
+" %s"
 
 #: src/remmina_main.c:1247
 msgid "RDP Files"
-msgstr ""
+msgstr "RDP கோப்புகள்"
 
 #: src/remmina_main.c:1256
 msgid "All Files"
-msgstr ""
+msgstr "அனைத்து கோப்புகள்"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
 msgid "Import"
-msgstr ""
+msgstr "இறக்குமதி"
 
 #: src/remmina_main.c:1300
 msgid "Select the connection profile."
-msgstr ""
+msgstr "இணைப்பு சுயவிவரத்தைத் தேர்ந்தெடுக்கவும்."
 
 #: src/remmina_main.c:1309
 msgid "Remmina couldn't export."
-msgstr ""
+msgstr "ரெமினாவால் ஏற்றுமதி செய்ய முடியவில்லை."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
-msgstr ""
+msgstr "_சேவ்"
 
 #: src/remmina_main.c:1331
 msgid "This protocol does not support exporting."
-msgstr ""
+msgstr "இந்த நெறிமுறை ஏற்றுமதியை ஆதரிக்காது."
 
 #: src/remmina_main.c:1658
 msgid "Remmina Remote Desktop Client"
-msgstr ""
+msgstr "ரெம்மினா ரிமோட் டெச்க்டாப் வாங்கி"
 
 #: src/remmina_main.c:1660
 msgid "Remmina Kiosk"
-msgstr ""
+msgstr "ரெமினா கியோச்க்"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
 #, c-format
 msgid "Could not create the folder “%s”."
-msgstr ""
+msgstr "“%s” கோப்புறையை உருவாக்க முடியவில்லை."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:184 src/remmina_sftp_client.c:205
 #, c-format
 msgid "Could not create the file “%s”."
-msgstr ""
+msgstr "“%s” கோப்பை உருவாக்க முடியவில்லை."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:223
 #, c-format
 msgid "Could not open the file “%s” on the server. %s"
-msgstr ""
+msgstr "சேவையகத்தில் “%s” கோப்பைத் திறக்க முடியவில்லை. %s"
 
 #: src/remmina_sftp_client.c:245
 #, c-format
 msgid "Could not save the file “%s”."
-msgstr ""
+msgstr "“%s” கோப்பை சேமிக்க முடியவில்லை."
 
 #: src/remmina_sftp_client.c:294 src/remmina_sftp_client.c:710
 #: src/remmina_sftp_client.c:785
 #, c-format
 msgid "Could not open the folder “%s”. %s"
-msgstr ""
+msgstr "“%s” கோப்புறையைத் திறக்க முடியவில்லை. %s"
 
 #: src/remmina_sftp_client.c:398
 #, c-format
 msgid "Could not create the folder “%s” on the server. %s"
-msgstr ""
+msgstr "சேவையகத்தில் “%s” கோப்புறையை உருவாக்க முடியவில்லை. %s"
 
 #: src/remmina_sftp_client.c:426 src/remmina_sftp_client.c:448
 #, c-format
 msgid "Could not create the file “%s” on the server. %s"
-msgstr ""
+msgstr "சேவையகத்தில் “%s” கோப்பை உருவாக்க முடியவில்லை. %s"
 
 #: src/remmina_sftp_client.c:469
 #, c-format
 msgid "Could not open the file “%s”."
-msgstr ""
+msgstr "“%s” கோப்பைத் திறக்க முடியவில்லை."
 
 #: src/remmina_sftp_client.c:489
 #, c-format
 msgid "Could not write to the file “%s” on the server. %s"
-msgstr ""
+msgstr "சேவையகத்தில் “%s” கோப்புக்கு எழுத முடியவில்லை. %s"
 
 #: src/remmina_sftp_client.c:727
 #, c-format
 msgid "Could not read from the folder. %s"
-msgstr ""
+msgstr "கோப்புறையிலிருந்து படிக்க முடியவில்லை. %s"
 
 #: src/remmina_sftp_client.c:848
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr ""
+msgstr "கோப்பு பரிமாற்றத்தை முன்னேற்றத்தில் ரத்து செய்ய விரும்புகிறீர்களா?"
 
 #: src/remmina_sftp_client.c:882
 #, c-format
 msgid "Could not delete “%s”. %s"
-msgstr ""
+msgstr "“%s” ஐ நீக்க முடியவில்லை. %s"
 
 #: src/remmina_sftp_client.c:967
 msgid "The file exists already"
-msgstr ""
+msgstr "கோப்பு ஏற்கனவே உள்ளது"
 
 #: src/remmina_sftp_client.c:970
 msgid "Resume"
-msgstr ""
+msgstr "மீண்டும் தொடங்குங்கள்"
 
 #: src/remmina_sftp_client.c:971
 msgid "Overwrite"
-msgstr ""
+msgstr "மேலெழுதும்"
 
 #: src/remmina_sftp_client.c:989
 msgid "The following file already exists in the target folder:"
-msgstr ""
+msgstr "பின்வரும் கோப்பு ஏற்கனவே இலக்கு கோப்புறையில் உள்ளது:"
 
 #: src/remmina_file_editor.c:61
 msgid ""
@@ -1405,6 +1469,12 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
+"<பெரிய> உதவி வடிவங்கள்\n"
+" • சேவையகம்\n"
+" • சேவையகம் [: போர்ட்]\n"
+" வி.என்.சி கூடுதல் வடிவங்கள்\n"
+" • ஐடி: ரிப்பீட்டர் ஐடி எண்\n"
+" • unix: ///path/socket.sock </big>"
 
 #: src/remmina_file_editor.c:70
 msgid ""
@@ -1421,6 +1491,18 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
+"<big> பாதை பாதையில் கட்டளை %h\n"
+" •/பாதை/to/foo -options %h %u\n"
+" H %H சேவையக பெயருடன் மாற்றாக உள்ளது\n"
+" • %T பாஓடு சேவையக பெயருடன் மாற்றப்படுகிறது\n"
+" • %u பயனர்பெயருடன் மாற்றாக உள்ளது\n"
+" • %u பாஓடு பயனர்பெயருடன் மாற்றாக உள்ளது\n"
+" • %P ரெம்மினா சுயவிவரப் பெயருடன் மாற்றப்படுகிறது\n"
+" G %g ரெம்மினா சுயவிவரக் குழு பெயருடன் மாற்றப்படுகிறது\n"
+" டி ஐ ISO 8601 வடிவத்தில் உள்ளக தேதி மற்றும் நேரத்துடன் மாற்றப்படுகிறது\n"
+" இணைப்பதற்கு முன் கட்டளை செயல்படுத்தப்பட வேண்டும் என்று நீங்கள் விரும்பினால் பின்னணியில் இயங்க "
+"வேண்டாம்.\n"
+" </big>"
 
 #: src/remmina_file_editor.c:84
 msgid ""
@@ -1429,141 +1511,145 @@ msgid ""
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
+"<பெரிய> உதவி வடிவங்கள்\n"
+" • சேவையகம்\n"
+" • சேவையகம் [: போர்ட்]\n"
+" • பயனர்பெயர்@சேவையகம் [: போர்ட்] (SSH நெறிமுறை மட்டும்) </big>"
 
 #: src/remmina_file_editor.c:172
 msgid "Input is invalid."
-msgstr ""
+msgstr "உள்ளீடு தவறானது."
 
 #: src/remmina_file_editor.c:250
 msgid "Choose a Remote Desktop Server"
-msgstr ""
+msgstr "தொலைநிலை டெச்க்டாப் சேவையகத்தைத் தேர்வுசெய்க"
 
 #: src/remmina_file_editor.c:489
 #, c-format
 msgid "Browse the network to find a %s server"
-msgstr ""
+msgstr "ஒரு %s சேவையகத்தைக் கண்டுபிடிக்க பிணையத்தை உலாவுக"
 
 #: src/remmina_file_editor.c:597
 msgid "Resolution"
-msgstr ""
+msgstr "பகுத்தல்"
 
 #: src/remmina_file_editor.c:604
 msgid "Use initial window size"
-msgstr ""
+msgstr "ஆரம்ப சாளர அளவைப் பயன்படுத்தவும்"
 
 #: src/remmina_file_editor.c:608
 msgid "Use client resolution"
-msgstr ""
+msgstr "கிளையன்ட் தீர்மானத்தைப் பயன்படுத்தவும்"
 
 #: src/remmina_file_editor.c:619 src/remmina_file_editor.c:1269
 msgid "Custom"
-msgstr ""
+msgstr "தனிப்பயன்"
 
 #: src/remmina_file_editor.c:658
 msgid "Assistance Mode"
-msgstr ""
+msgstr "உதவி முறை"
 
 #: src/remmina_file_editor.c:1045
 msgid "Keyboard mapping"
-msgstr ""
+msgstr "விசைப்பலகை மேப்பிங்"
 
 #: src/remmina_file_editor.c:1172
 msgid "Behavior"
-msgstr ""
+msgstr "நடத்தை"
 
 #: src/remmina_file_editor.c:1175
 msgid "Execute a Command"
-msgstr ""
+msgstr "ஒரு கட்டளையை இயக்கவும்"
 
 #: src/remmina_file_editor.c:1179
 msgid "Before connecting"
-msgstr ""
+msgstr "இணைப்பதற்கு முன்"
 
 #: src/remmina_file_editor.c:1181
 msgid "command %h %u %t %U %p %g --option"
-msgstr ""
+msgstr "கட்டளை %h %u %t %u %p %g -option"
 
 #: src/remmina_file_editor.c:1186
 msgid "After connecting"
-msgstr ""
+msgstr "இணைத்த பிறகு"
 
 #: src/remmina_file_editor.c:1188
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr ""
+msgstr "/பாதை/to/command -opt1 arg %h %u %t -opt2 %u %p %g"
 
 #: src/remmina_file_editor.c:1192
 msgid "Start-up"
-msgstr ""
+msgstr "தொடக்க"
 
 #: src/remmina_file_editor.c:1195
 msgid "Auto-start this profile"
-msgstr ""
+msgstr "இந்த சுயவிவரத்தை தானாகத் தொடங்கவும்"
 
 #: src/remmina_file_editor.c:1199
 msgid "Connection profile security"
-msgstr ""
+msgstr "இணைப்பு சுயவிவர பாதுகாப்பு"
 
 #: src/remmina_file_editor.c:1202
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "சுயவிவரத்தை இணைக்க அல்லது திருத்த கடவுச்சொல் தேவை"
 
 #: src/remmina_file_editor.c:1206
 msgid "Unexpected disconnect"
-msgstr ""
+msgstr "எதிர்பாராத துண்டிப்பு"
 
 #: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr ""
+msgstr "ரெம்மினாவால் துண்டிக்கப்படாவிட்டால் சாளரத்தை மூடுவதைத் தடுக்கவும்"
 
 #: src/remmina_file_editor.c:1242
 msgid "SSH Tunnel"
-msgstr ""
+msgstr "பாஓடு சுரங்கப்பாதை"
 
 #: src/remmina_file_editor.c:1243
 msgid "Enable SSH tunnel"
-msgstr ""
+msgstr "பாஓடு சுரங்கப்பாதையை இயக்கவும்"
 
 #: src/remmina_file_editor.c:1250
 msgid "Tunnel via loopback address"
-msgstr ""
+msgstr "லூப் பேக் முகவரி வழியாக சுரங்கப்பாதை"
 
 #: src/remmina_file_editor.c:1260
 #, c-format
 msgid "Same server at port %i"
-msgstr ""
+msgstr "துறைமுகம் %i இல் அதே சேவையகம்"
 
 #: src/remmina_file_editor.c:1310 plugins/rdp/rdp_plugin.c:3155
 msgid "Start-up path"
-msgstr ""
+msgstr "தொடக்க பாதை"
 
 #: src/remmina_file_editor.c:1319
 msgid "SSH Authentication"
-msgstr ""
+msgstr "பாஓடு ஏற்பு"
 
 #: src/remmina_file_editor.c:1346
 msgid "SSH private key file"
-msgstr ""
+msgstr "பாஓடு தனியார் விசை கோப்பு"
 
 #: src/remmina_file_editor.c:1352 src/remmina_ssh_plugin.c:1508
 msgid "SSH certificate file"
-msgstr ""
+msgstr "பாஓடு சான்றிதழ் கோப்பு"
 
 #: src/remmina_file_editor.c:1409
 msgid "Basic"
-msgstr ""
+msgstr "அடிப்படை"
 
 #: src/remmina_file_editor.c:1415
 msgid "Advanced"
-msgstr ""
+msgstr "மேம்பட்ட"
 
 #: src/remmina_file_editor.c:1426 data/ui/remmina_main.glade:532
 msgid "Notes"
-msgstr ""
+msgstr "குறிப்புகள்"
 
 #: src/remmina_file_editor.c:1558
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
-msgstr ""
+msgstr "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' அரே NULL!"
 
 #: src/remmina_file_editor.c:1562
 #, c-format
@@ -1571,64 +1657,68 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
+"(%s: %i): Can't validate பயனர் input since 'setting_name_to_validate', "
+"'value' or 'gfe' அரே NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1566 plugins/x2go/x2go_plugin.c:2574
 #: plugins/x2go/x2go_plugin.c:3224
 msgid "Internal error."
-msgstr ""
+msgstr "உள் பிழை."
 
 #: src/remmina_file_editor.c:1809 src/remmina_file_editor.c:1845
 #: src/remmina_file_editor.c:1866 src/remmina_file_editor.c:1889
 #, c-format
 msgid "Couldn't validate user input. %s"
-msgstr ""
+msgstr "பயனர் உள்ளீட்டை சரிபார்க்க முடியவில்லை. %s"
 
 #: src/remmina_file_editor.c:1833
 msgid "Default settings saved."
-msgstr ""
+msgstr "இயல்புநிலை அமைப்புகள் சேமிக்கப்பட்டன."
 
 #: src/remmina_file_editor.c:1923
 msgid "Remote Connection Profile"
-msgstr ""
+msgstr "தொலை இணைப்பு சுயவிவரம்"
 
 #: src/remmina_file_editor.c:1929
 msgid "Save as Default"
-msgstr ""
+msgstr "இயல்புநிலையாக சேமிக்கவும்"
 
 #: src/remmina_file_editor.c:1930
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
+"அனைத்து புதிய இணைப்பு சுயவிவரங்களுக்கும் இயல்புநிலையாக தற்போதைய அமைப்புகளைப் "
+"பயன்படுத்தவும்"
 
 #: src/remmina_file_editor.c:1938 data/ui/remmina_main.glade:161
 msgid "Connect"
-msgstr ""
+msgstr "இணை"
 
 #: src/remmina_file_editor.c:1941
 msgid "_Save and Connect"
-msgstr ""
+msgstr "_சேவ் மற்றும் இணைக்கவும்"
 
 #: src/remmina_file_editor.c:2065
 msgid "Quick Connect"
-msgstr ""
+msgstr "விரைவான இணைப்பு"
 
 #: src/remmina_file_editor.c:2089
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr ""
+msgstr "துணைக்குழு டிலிமிட்டராக '%s' ஐப் பயன்படுத்தவும்"
 
 #: src/remmina_file_editor.c:2094 data/ui/remmina_main.glade:502
 msgid "Labels"
-msgstr ""
+msgstr "சிட்டைகள்"
 
 #: src/remmina_file_editor.c:2108
 msgid "Label1,Label2"
-msgstr ""
+msgstr "சிட்டை 1, சிட்டை 2"
 
 #: src/remmina_file_editor.c:2180 src/remmina_file_editor.c:2199
 #, c-format
 msgid "Could not find the file “%s”."
-msgstr ""
+msgstr "“%s” கோப்பைக் கண்டுபிடிக்க முடியவில்லை."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
@@ -1637,194 +1727,202 @@ msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
+"ரெம்மினா விருப்பத்தேர்வுகள் கோப்பில் «தீர்மானம்» அளவுருவைப் பயன்படுத்துவது நீக்கப்பட்டது.\n"
 
 #: src/remmina_icon.c:143
 msgid "Enable Service Discovery"
-msgstr ""
+msgstr "பணி கண்டுபிடிப்பை இயக்கவும்"
 
 #: src/remmina_icon.c:157 data/ui/remmina_main.glade:428
 msgid "_Quit"
-msgstr ""
+msgstr "_Quit"
 
 #: src/remmina_icon.c:162
 msgid "_About"
-msgstr ""
+msgstr "_About"
 
 #: src/remmina_icon.c:167 data/ui/remmina_main.glade:279
 msgid "_Preferences"
-msgstr ""
+msgstr "_ முனைகள்"
 
 #: src/remmina_icon.c:172
 msgid "Open Main Window"
-msgstr ""
+msgstr "முதன்மையான சாளரத்தைத் திறக்கவும்"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:306 src/remmina_icon.c:472
 msgid "Remmina Applet"
-msgstr ""
+msgstr "ரெமினா ஆப்லெட்"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:308 src/remmina_icon.c:474
 msgid "Connect to remote desktops through the applet menu"
-msgstr ""
+msgstr "ஆப்லெட் பட்டியல் மூலம் தொலைநிலை டெச்க்டாப்புகளுடன் இணைக்கவும்"
 
 #: src/remmina_icon.c:377
 msgid "StatusNotifier/Appindicator support in “"
-msgstr ""
+msgstr "StatusNotifier / AppInditor உதவி \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, c-format
+#, c-format, fuzzy
 msgid "%s your desktop does support it"
-msgstr ""
+msgstr "உங்கள் டெச்க்டாப் அதை ஆதரிக்கிறது"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
 #, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
+"%s மற்றும் ரெம்மினா லிபாப்பிண்டிகேட்டருக்கு உள்ளமைக்கப்பட்ட (தொகுக்கப்பட்ட) உதவி."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:389
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
+"உங்கள் டெச்க்டாப் சூழலால் சொந்தமாக ஆதரிக்கப்படவில்லை. லிபாப்பிண்டிகேட்டர் gtkstatusicon/"
+"Xembed க்கு குறைய முயற்சிக்கும்"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:393
 #, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr ""
+msgstr "நீங்கள் நிறுவ வேண்டிய %s, மற்றும் XAPP நிலை Applet ஐப் பயன்படுத்தலாம்"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:396
 #, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
 msgstr ""
+"%s நீங்கள் நிறுவ வேண்டியிருக்கலாம், மேலும் kstatusnotifieritem ஐப் பயன்படுத்தலாம்"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:399
 #, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr ""
+"%s நீங்கள் நிறுவ வேண்டியிருக்கலாம், மேலும் xembed sni ப்ராக்சியைப் பயன்படுத்தலாம்"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:402
 #, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
+"%s நீங்கள் நிறுவ வேண்டியிருக்கலாம், மேலும் க்னோம் செல் நீட்டிப்பு AppIndicator ஐப் "
+"பயன்படுத்தவும்"
 
 #: src/remmina_ssh_plugin.c:343
 #, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr ""
+msgstr "%s உடன் இணைக்கப்பட்டுள்ளது: பாஓடு வழியாக %d"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:551
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "பிழை: %s"
 
 #: src/remmina_ssh_plugin.c:568
 msgid "Terminal content saved in"
-msgstr ""
+msgstr "முனைய உள்ளடக்கம் சேமிக்கப்பட்டது"
 
 #: src/remmina_ssh_plugin.c:834
 msgid "Select All (host+A)"
-msgstr ""
+msgstr "அனைத்தையும் தேர்ந்தெடுக்கவும் (ஓச்ட்+ஏ)"
 
 #: src/remmina_ssh_plugin.c:835
 msgid "Copy (host+C)"
-msgstr ""
+msgstr "நகலெடு (ஓச்ட்+சி)"
 
 #: src/remmina_ssh_plugin.c:836
 msgid "Paste (host+V)"
-msgstr ""
+msgstr "ஒட்டுதல் (ஓச்ட்+வி)"
 
 #: src/remmina_ssh_plugin.c:837
 msgid "Save session to file"
-msgstr ""
+msgstr "அமர்வை தாக்கல் செய்ய சேமிக்கவும்"
 
 #: src/remmina_ssh_plugin.c:838
 msgid "Increase font size (host+Page Up)"
-msgstr ""
+msgstr "எழுத்துரு அளவை அதிகரிக்கவும் (ஓச்ட்+பக்கம் அப்)"
 
 #: src/remmina_ssh_plugin.c:839
 msgid "Decrease font size (host+Page Down)"
-msgstr ""
+msgstr "எழுத்துரு அளவைக் குறைக்கவும் (ஓச்ட்+பக்கம் கீழே)"
 
 #: src/remmina_ssh_plugin.c:840
 msgid "Find text (host+G)"
-msgstr ""
+msgstr "உரையைக் கண்டறியவும் (ஓச்ட்+சி)"
 
 #: src/remmina_ssh_plugin.c:896
 #, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr ""
+msgstr "%s இலிருந்து துண்டிக்கப்பட்டது: பாஓடு வழியாக %d"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
 msgid "Copy"
-msgstr ""
+msgstr "நகலெடு"
 
 #: src/remmina_ssh_plugin.c:1473
 msgid "_Copy"
-msgstr ""
+msgstr "_ கோபி"
 
 #: src/remmina_ssh_plugin.c:1474
 msgid "Paste"
-msgstr ""
+msgstr "ஒட்டு"
 
 #: src/remmina_ssh_plugin.c:1474
 msgid "_Paste"
-msgstr ""
+msgstr "_ பேச்ட்"
 
 #: src/remmina_ssh_plugin.c:1475
 msgid "Select all"
-msgstr ""
+msgstr "அனைத்தையும் தெரிவுசெய்"
 
 #: src/remmina_ssh_plugin.c:1475
 msgid "_Select all"
-msgstr ""
+msgstr "அனைத்தையும் தேர்ந்தெடுக்கவும்"
 
 #: src/remmina_ssh_plugin.c:1476
 msgid "Increase font size"
-msgstr ""
+msgstr "எழுத்துரு அளவை அதிகரிக்கவும்"
 
 #: src/remmina_ssh_plugin.c:1476
 msgid "_Increase font size"
-msgstr ""
+msgstr "எழுத்துரு அளவை அதிகரிக்கவும்"
 
 #: src/remmina_ssh_plugin.c:1477
 msgid "Decrease font size"
-msgstr ""
+msgstr "எழுத்துரு அளவைக் குறைக்கவும்"
 
 #: src/remmina_ssh_plugin.c:1477
 msgid "_Decrease font size"
-msgstr ""
+msgstr "_ குறிப்பு எழுத்துரு அளவு"
 
 #: src/remmina_ssh_plugin.c:1478
 msgid "Find text"
-msgstr ""
+msgstr "உரையைக் கண்டறியவும்"
 
 #: src/remmina_ssh_plugin.c:1478
 msgid "_Find text"
-msgstr ""
+msgstr "_ உரை"
 
 #: src/remmina_ssh_plugin.c:1505 plugins/spice/spice_plugin.c:680
 #: plugins/vnc/vnc_plugin.c:2099 plugins/vnc/vnc_plugin.c:2111
 msgid "User password"
-msgstr ""
+msgstr "பயனர் கடவுச்சொல்"
 
 #: src/remmina_ssh_plugin.c:1511
 msgid "Opening command"
-msgstr ""
+msgstr "தொடக்க கட்டளை"
 
 #: src/remmina_ssh_plugin.c:1512
 msgid "Start-up background program"
-msgstr ""
+msgstr "தொடக்க பின்னணி திட்டம்"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid ""
@@ -1838,223 +1936,235 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local date and time in ISO 8601 format\n"
 msgstr ""
+"கோப்பு பெயர் பின்வரும் ஒதுக்கிடங்களைப் பயன்படுத்தலாம்:\n"
+"\n"
+" H %H சேவையக பெயருடன் மாற்றாக உள்ளது\n"
+" • %T பாஓடு சேவையக பெயருடன் மாற்றப்படுகிறது\n"
+" • %u பயனர்பெயருடன் மாற்றாக உள்ளது\n"
+" • %u பாஓடு பயனர்பெயருடன் மாற்றாக உள்ளது\n"
+" • %P ரெம்மினா சுயவிவரப் பெயருடன் மாற்றப்படுகிறது\n"
+" G %g ரெம்மினா சுயவிவரக் குழு பெயருடன் மாற்றப்படுகிறது\n"
+" டி ஐ ISO 8601 வடிவத்தில் உள்ளக தேதி மற்றும் நேரத்துடன் மாற்றப்படுகிறது\n"
 
 #: src/remmina_ssh_plugin.c:1539
 msgid "Terminal colour scheme"
-msgstr ""
+msgstr "முனையத்தில் colour scheme"
 
 #: src/remmina_ssh_plugin.c:1540
 msgid "Character set"
-msgstr ""
+msgstr "எழுத்து தொகுப்பு"
 
 #: src/remmina_ssh_plugin.c:1542
 msgid "KEX (Key Exchange) algorithms"
-msgstr ""
+msgstr "கெக்ச் (முக்கிய பரிமாற்றம்) வழிமுறைகள்"
 
 #: src/remmina_ssh_plugin.c:1543
 msgid "Symmetric cipher client to server"
-msgstr ""
+msgstr "சேவையகத்திற்கு சமச்சீர் சைபர் வாங்கி"
 
 #: src/remmina_ssh_plugin.c:1544
 msgid "Preferred server host key types"
-msgstr ""
+msgstr "விருப்பமான சேவையக புரவலன் முக்கிய வகைகள்"
 
 #: src/remmina_ssh_plugin.c:1545
 msgid "Folder for SSH session log"
-msgstr ""
+msgstr "பாஓடு அமர்வு பதிவுக்கான கோப்புறை"
 
 #: src/remmina_ssh_plugin.c:1545
 msgid "Full path of an existing folder"
-msgstr ""
+msgstr "ஏற்கனவே உள்ள கோப்புறையின் முழு பாதை"
 
 #: src/remmina_ssh_plugin.c:1546
 msgid "Filename for SSH session log"
-msgstr ""
+msgstr "பாஓடு அமர்வு பதிவுக்கான கோப்பு பெயர்"
 
 #: src/remmina_ssh_plugin.c:1547
 msgid "Log SSH session when exiting Remmina"
-msgstr ""
+msgstr "ரெமினாவிலிருந்து வெளியேறும்போது பாஓடு அமர்வு பதிவு"
 
 #: src/remmina_ssh_plugin.c:1548
 msgid "Log SSH session asynchronously"
-msgstr ""
+msgstr "பாஓடு அமர்வை ஒத்திசைவற்ற முறையில் பதிவு செய்யுங்கள்"
 
 #: src/remmina_ssh_plugin.c:1548
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
+"அமர்வை ஒத்திசைவற்ற முறையில் சேமிப்பது குறிப்பிடத்தக்க செயல்திறன் தாக்கத்தை ஏற்படுத்தக்கூடும்"
 
 #: src/remmina_ssh_plugin.c:1549
 msgid "Audible terminal bell"
-msgstr ""
+msgstr "கேட்கக்கூடிய முனைய மணி"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH X11 Forwarding"
-msgstr ""
+msgstr "பாஓடு X11 பகிர்தல்"
 
 #: src/remmina_ssh_plugin.c:1551
 msgid "SSH compression"
-msgstr ""
+msgstr "பாஓடு சுருக்க"
 
 #: src/remmina_ssh_plugin.c:1552
 msgid "Don't remember passwords"
-msgstr ""
+msgstr "கடவுச்சொற்கள் நினைவில் இல்லை"
 
 #: src/remmina_ssh_plugin.c:1553
 msgid "Strict host key checking"
-msgstr ""
+msgstr "கடுமையான புரவலன் விசை சோதனை"
 
 #: src/remmina_ssh_plugin.c:1567
 msgid "SSH - Secure Shell"
-msgstr ""
+msgstr "பாஓடு - பாதுகாப்பான செல்"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secured password storage in KWallet"
-msgstr ""
+msgstr "க்வாலட்டில் பாதுகாக்கப்பட்ட கடவுச்சொல் சேமிப்பு"
 
 #: plugins/rdp/rdp_settings.c:214
 msgid "<Auto-detect>"
-msgstr ""
+msgstr "<ஆட்டோ-கண்டறிதல்>"
 
 #: plugins/rdp/rdp_settings.c:267
 msgid "<Not set>"
-msgstr ""
+msgstr "<அமைக்கவில்லை>"
 
 #: plugins/rdp/rdp_settings.c:298
 msgid "<Choose a quality level to edit…>"
-msgstr ""
+msgstr "<திருத்த ஒரு தர நிலையைத் தேர்வுசெய்க…>"
 
 #: plugins/rdp/rdp_settings.c:300 plugins/rdp/rdp_plugin.c:2949
 #: plugins/vnc/vnc_plugin.c:2041
 msgid "Poor (fastest)"
-msgstr ""
+msgstr "ஏழை (வேகமான)"
 
 #: plugins/rdp/rdp_settings.c:302 plugins/rdp/rdp_plugin.c:2950
 #: plugins/vnc/vnc_plugin.c:2040
 msgid "Medium"
-msgstr ""
+msgstr "சராசரி"
 
 #: plugins/rdp/rdp_settings.c:304 plugins/rdp/rdp_plugin.c:2951
 #: plugins/vnc/vnc_plugin.c:2038
 msgid "Good"
-msgstr ""
+msgstr "நல்லது"
 
 #: plugins/rdp/rdp_settings.c:306 plugins/rdp/rdp_plugin.c:2952
 #: plugins/vnc/vnc_plugin.c:2039
 msgid "Best (slowest)"
-msgstr ""
+msgstr "சிறந்தது (மெதுவாக)"
 
 #: plugins/rdp/rdp_settings.c:445
 msgid "Keyboard layout"
-msgstr ""
+msgstr "விசைப்பலகை தளவமைப்பு"
 
 #: plugins/rdp/rdp_settings.c:475
 msgid "Use client keyboard mapping"
-msgstr ""
+msgstr "கிளையன்ட் விசைப்பலகை மேப்பிங்கைப் பயன்படுத்தவும்"
 
 #: plugins/rdp/rdp_settings.c:486
 msgid "Keyboard scancode remapping"
-msgstr ""
+msgstr "விசைப்பலகை ச்கான்கோட் ரீமேப்பிங்"
 
 #: plugins/rdp/rdp_settings.c:501
 msgid "List of key=value,… pairs to remap scancodes. E.g. 0x56=0x29,0x29=0x56"
 msgstr ""
+"முக்கிய = மதிப்பு,… ரீமேப் ச்கான்கோட்களுக்கு சோடிகள். எ.கா. 0x56 = 0x29,0x29 = 0x56"
 
 #: plugins/rdp/rdp_settings.c:504
 msgid "FreeRDP > 2.3.0 is required to map scancodes"
-msgstr ""
+msgstr "SCANCODES ஐ வரைபடமாக்குவதற்கு freerdp> 2.3.0 தேவை"
 
 #: plugins/rdp/rdp_settings.c:512
 msgid "Quality settings"
-msgstr ""
+msgstr "தரமான அமைப்புகள்"
 
 #: plugins/rdp/rdp_settings.c:535
 msgid "Wallpaper"
-msgstr ""
+msgstr "வால்பேப்பர்"
 
 #: plugins/rdp/rdp_settings.c:543
 msgid "Window drag"
-msgstr ""
+msgstr "சாளர இழுவை"
 
 #: plugins/rdp/rdp_settings.c:550
 msgid "Menu animation"
-msgstr ""
+msgstr "பட்டி அனிமேசன்"
 
 #: plugins/rdp/rdp_settings.c:558
 msgid "Theme"
-msgstr ""
+msgstr "கருப்பொருள்"
 
 #: plugins/rdp/rdp_settings.c:565
 msgid "Cursor shadow"
-msgstr ""
+msgstr "கர்சர் நிழல்"
 
 #: plugins/rdp/rdp_settings.c:573
 msgid "Cursor blinking"
-msgstr ""
+msgstr "கர்சர் ஒளிரும்"
 
 #: plugins/rdp/rdp_settings.c:580
 msgid "Font smoothing"
-msgstr ""
+msgstr "எழுத்துரு மென்மையாக்குதல்"
 
 #: plugins/rdp/rdp_settings.c:588
 msgid "Composition"
-msgstr ""
+msgstr "கலவை"
 
 #: plugins/rdp/rdp_settings.c:598
 msgid "Remote scale factor"
-msgstr ""
+msgstr "தொலைநிலை காரணி"
 
 #: plugins/rdp/rdp_settings.c:613
 msgid "Desktop scale factor %"
-msgstr ""
+msgstr "டெச்க்டாப் அளவிலான காரணி %"
 
 #: plugins/rdp/rdp_settings.c:625
 msgid "Device scale factor %"
-msgstr ""
+msgstr "சாதன அளவிலான காரணி %"
 
 #: plugins/rdp/rdp_settings.c:648
 msgid "Desktop orientation"
-msgstr ""
+msgstr "டெச்க்டாப் நோக்குநிலை"
 
 #: plugins/rdp/rdp_settings.c:668
 msgid "Input device settings"
-msgstr ""
+msgstr "உள்ளீட்டு சாதன அமைப்புகள்"
 
 #: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:3116
 #: plugins/vnc/vnc_plugin.c:2132
 msgid "Disable smooth scrolling"
-msgstr ""
+msgstr "மென்மையான ச்க்ரோலிங் முடக்கு"
 
 #: plugins/rdp/rdp_settings.c:687
 msgid "General settings"
-msgstr ""
+msgstr "பொது அமைப்புகள்"
 
 #: plugins/rdp/rdp_settings.c:694 plugins/rdp/rdp_plugin.c:3169
 msgid "Reconnect attempts number"
-msgstr ""
+msgstr "முயற்சிகள் எண்ணை மீண்டும் இணைக்கவும்"
 
 #: plugins/rdp/rdp_settings.c:707 plugins/rdp/rdp_plugin.c:3169
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
+"RDP துண்டிக்கும்போது மீண்டும் இணைக்க முயற்சிகளின் அதிகபட்ச எண்ணிக்கை (இயல்புநிலை: 20)"
 
 #: plugins/rdp/rdp_plugin.c:837 plugins/rdp/rdp_plugin.c:902
 #: plugins/rdp/rdp_plugin.c:987
 msgid "Enter RDP authentication credentials"
-msgstr ""
+msgstr "RDP அங்கீகார சான்றுகளை உள்ளிடவும்"
 
 #: plugins/rdp/rdp_plugin.c:910 plugins/rdp/rdp_plugin.c:998
 msgid "Enter RDP gateway authentication credentials"
-msgstr ""
+msgstr "RDP நுழைவாயில் அங்கீகார சான்றுகளை உள்ளிடவும்"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "RDP அறிவுள்ள அட்டை முள் உள்ளிடவும்"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "RDP வழியாக %s இலிருந்து துண்டிக்கப்பட்டது"
 
 #: plugins/rdp/rdp_plugin.c:2463
 #, c-format
@@ -2062,6 +2172,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
+"RDP சேவையகத்தை “%s” ஐ அணுக முடியவில்லை.\n"
+" கணக்கு பூட்டப்பட்டுள்ளது."
 
 #: plugins/rdp/rdp_plugin.c:2470
 #, c-format
@@ -2069,6 +2181,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
 msgstr ""
+"RDP சேவையகத்தை “%s” ஐ அணுக முடியவில்லை.\n"
+" கணக்கு காலாவதியானது."
 
 #: plugins/rdp/rdp_plugin.c:2477
 #, c-format
@@ -2076,6 +2190,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
 msgstr ""
+"RDP சேவையகத்தை “%s” ஐ அணுக முடியவில்லை.\n"
+" கடவுச்சொல் காலாவதியானது."
 
 #: plugins/rdp/rdp_plugin.c:2484
 #, c-format
@@ -2083,6 +2199,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
 msgstr ""
+"RDP சேவையகத்தை “%s” ஐ அணுக முடியவில்லை.\n"
+" கணக்கு முடக்கப்பட்டது."
 
 #: plugins/rdp/rdp_plugin.c:2490
 #, c-format
@@ -2090,6 +2208,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
 msgstr ""
+"RDP சேவையகத்தை “%s” ஐ அணுக முடியவில்லை.\n"
+" போதிய பயனர் சலுகைகள்."
 
 #: plugins/rdp/rdp_plugin.c:2498
 #, c-format
@@ -2097,6 +2217,8 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
 msgstr ""
+"RDP சேவையகத்தை “%s” ஐ அணுக முடியவில்லை.\n"
+" கணக்கு தடைசெய்யப்பட்டுள்ளது."
 
 #: plugins/rdp/rdp_plugin.c:2506
 #, c-format
@@ -2104,16 +2226,18 @@ msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
 msgstr ""
+"RDP சேவையகத்தை “%s” ஐ அணுக முடியவில்லை.\n"
+" இணைப்பதற்கு முன் பயனர் கடவுச்சொல்லை மாற்றவும்."
 
 #: plugins/rdp/rdp_plugin.c:2511
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
-msgstr ""
+msgstr "RDP சேவையகத்திற்கான இணைப்பு “%s”."
 
 #: plugins/rdp/rdp_plugin.c:2514
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
-msgstr ""
+msgstr "RDP சேவையகத்திற்கான முகவரியை “%s” கண்டுபிடிக்க முடியவில்லை."
 
 #: plugins/rdp/rdp_plugin.c:2518
 #, c-format
@@ -2121,6 +2245,8 @@ msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
 msgstr ""
+"TLS வழியாக RDP சேவையகத்திற்கு “%s” உடன் இணைக்க முடியவில்லை. மேலும் தகவலுக்கு ஒரு "
+"முனையத்திலிருந்து பிழைத்திருத்த தடயங்களைப் பார்க்கவும்."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2522
@@ -2129,15 +2255,17 @@ msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
+"RDP சேவையகத்திற்கு “%s” உடன் இணைப்பை நிறுவ முடியவில்லை. “பாதுகாப்பு நெறிமுறை "
+"பேச்சுவார்த்தை” சரிபார்க்கவும்."
 
 #: plugins/rdp/rdp_plugin.c:2530
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
-msgstr ""
+msgstr "RDP சேவையகத்துடன் “%s” உடன் இணைக்க முடியாது."
 
 #: plugins/rdp/rdp_plugin.c:2533
 msgid "Could not start libfreerdp-gdi."
-msgstr ""
+msgstr "Libfreerdp-gdi ஐ தொடங்க முடியவில்லை."
 
 #: plugins/rdp/rdp_plugin.c:2536
 #, c-format
@@ -2145,11 +2273,13 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
+"சேவையகத்திற்கு “%s” க்கு H.264 GFX பயன்முறையை நீங்கள் கோரியுள்ளீர்கள், ஆனால் உங்கள் "
+"லிப்ஃப்ரீர்டிபி H.264 ஐ ஆதரிக்கவில்லை. AVC அல்லாத வண்ண ஆழம் அமைப்பைப் பயன்படுத்தவும்."
 
 #: plugins/rdp/rdp_plugin.c:2543
 #, c-format
 msgid "The “%s” server refused the connection."
-msgstr ""
+msgstr "“%s” சேவையகம் இணைப்பை மறுத்துவிட்டது."
 
 #: plugins/rdp/rdp_plugin.c:2548
 #, c-format
@@ -2157,161 +2287,164 @@ msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
+"தொலைநிலை டெச்க்டாப் நுழைவாயில் “%s” கொள்கை காரணமாக பயனரை “%s \\%s” அணுகலை மறுத்தது."
 
 #: plugins/rdp/rdp_plugin.c:2558
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
-msgstr ""
+msgstr "“%s” RDP சேவையகத்துடன் இணைக்க முடியாது."
 
 #: plugins/rdp/rdp_plugin.c:2918
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr ""
+"தானியங்கி (32 பிபிபி) (சேவையகம் அதன் சிறந்த வடிவமைப்பைத் தேர்வுசெய்கிறது)"
 
 #: plugins/rdp/rdp_plugin.c:2919
 msgid "GFX AVC444 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC444 (32 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2920
 msgid "GFX AVC420 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC420 (32 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2921
 msgid "GFX RFX (32 bpp)"
-msgstr ""
+msgstr "சி.எஃப்.எக்ச் ஆர்.எஃப்.எக்ச் (32 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2922
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr ""
+msgstr "சி.எஃப்.எக்ச் ஆர்.எஃப்.எக்ச் முற்போக்கான (32 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2923
 msgid "RemoteFX (32 bpp)"
-msgstr ""
+msgstr "ரிமோட்எஃப்எக்ச் (32 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2924 plugins/vnc/vnc_plugin.c:2029
 msgid "True colour (32 bpp)"
-msgstr ""
+msgstr "உண்மையான நிறம் (32 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2925
 msgid "True colour (24 bpp)"
-msgstr ""
+msgstr "உண்மையான நிறம் (24 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2926 plugins/vnc/vnc_plugin.c:2030
 msgid "High colour (16 bpp)"
-msgstr ""
+msgstr "உயர் நிறம் (16 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2927
 msgid "High colour (15 bpp)"
-msgstr ""
+msgstr "உயர் நிறம் (15 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2928 plugins/vnc/vnc_plugin.c:2031
 msgid "256 colours (8 bpp)"
-msgstr ""
+msgstr "256 வண்ணங்கள் (8 பிபிபி)"
 
 #: plugins/rdp/rdp_plugin.c:2959 data/ui/remmina_preferences.glade:728
 msgid "None"
-msgstr ""
+msgstr "எதுவுமில்லை"
 
 #: plugins/rdp/rdp_plugin.c:2960
 msgid "Auto-detect"
-msgstr ""
+msgstr "தானாக கண்டறியவும்"
 
 #: plugins/rdp/rdp_plugin.c:2961
 msgid "Modem"
-msgstr ""
+msgstr "இணக்கி"
 
 #: plugins/rdp/rdp_plugin.c:2962
 msgid "Low performance broadband"
-msgstr ""
+msgstr "குறைந்த செயல்திறன் பிராட்பேண்ட்"
 
 #: plugins/rdp/rdp_plugin.c:2963
 msgid "Satellite"
-msgstr ""
+msgstr "செயற்கைக் கோள்"
 
 #: plugins/rdp/rdp_plugin.c:2964
 msgid "High performance broadband"
-msgstr ""
+msgstr "உயர் செயல்திறன் பிராட்பேண்ட்"
 
 #: plugins/rdp/rdp_plugin.c:2965
 msgid "WAN"
-msgstr ""
+msgstr "வான்"
 
 #: plugins/rdp/rdp_plugin.c:2966
 msgid "LAN"
-msgstr ""
+msgstr "லேன்"
 
 #: plugins/rdp/rdp_plugin.c:2973 plugins/spice/spice_plugin.c:641
 #: data/ui/remmina_preferences.glade:764
 msgid "Off"
-msgstr ""
+msgstr "அணை"
 
 #: plugins/rdp/rdp_plugin.c:2982
 msgid "Automatic negotiation"
-msgstr ""
+msgstr "தானியங்கி பேச்சுவார்த்தை"
 
 #: plugins/rdp/rdp_plugin.c:2983
 msgid "NLA protocol security"
-msgstr ""
+msgstr "என்.எல்.ஏ நெறிமுறை பாதுகாப்பு"
 
 #: plugins/rdp/rdp_plugin.c:2984
 msgid "TLS protocol security"
-msgstr ""
+msgstr "டி.எல்.எச் நெறிமுறை பாதுகாப்பு"
 
 #: plugins/rdp/rdp_plugin.c:2985
 msgid "RDP protocol security"
-msgstr ""
+msgstr "ஆர்.டி.பி நெறிமுறை பாதுகாப்பு"
 
 #: plugins/rdp/rdp_plugin.c:2986
 msgid "NLA extended protocol security"
-msgstr ""
+msgstr "என்.எல்.ஏ நீட்டிக்கப்பட்ட நெறிமுறை பாதுகாப்பு"
 
 #: plugins/rdp/rdp_plugin.c:2994
 msgid "Every 1 min"
-msgstr ""
+msgstr "ஒவ்வொரு 1 மணித்துளி"
 
 #: plugins/rdp/rdp_plugin.c:2995
 msgid "Every 3 min"
-msgstr ""
+msgstr "ஒவ்வொரு 3 நிமிடமும்"
 
 #: plugins/rdp/rdp_plugin.c:2996
 msgid "Every 5 min"
-msgstr ""
+msgstr "ஒவ்வொரு 5 நிமிடமும்"
 
 #: plugins/rdp/rdp_plugin.c:2997
 msgid "Every 10 min"
-msgstr ""
+msgstr "ஒவ்வொரு 10 நிமிடமும்"
 
 #: plugins/rdp/rdp_plugin.c:3011 plugins/spice/spice_plugin.c:622
 #: plugins/spice/spice_plugin.c:640
 msgid "Default"
-msgstr ""
+msgstr "இயல்புநிலை"
 
 #: plugins/rdp/rdp_plugin.c:3012
 msgid "0 — Windows 7 compatible"
-msgstr ""
+msgstr "0 - சாளரங்கள் 7 இணக்கமானது"
 
 #: plugins/rdp/rdp_plugin.c:3013
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: plugins/rdp/rdp_plugin.c:3014
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: plugins/rdp/rdp_plugin.c:3015
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: plugins/rdp/rdp_plugin.c:3016
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: plugins/rdp/rdp_plugin.c:3017
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:3022
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr ""
+"2600 (விண்டோச் எக்ச்பி), 7601 (விண்டோச் விச்டா/7), 9600 (விண்டோச் 8 மற்றும் புதியது)"
 
 #: plugins/rdp/rdp_plugin.c:3025
 msgid ""
@@ -2323,6 +2456,13 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
+"பயன்படுத்தப்பட்டது i.a. கிளையன்ட் திறன்களை வேறுபடுத்துவதற்கு அறிவுள்ள அட்டை சேனலில் முனை"
+"ய சேவைகள் மூலம்:\n"
+" • <4034: சாளரங்கள் எக்ச்பி பேச் அறிவுள்ள அட்டை செயல்பாடுகள்\n"
+" 34 4034-7064: சாளரங்கள் விச்டா/7: ச்கார்ட்ரட்கேச் (),\n"
+" ScardWriteCache (), ScardgetTransmitCount ()\n"
+" •> = 7065: சாளரங்கள் 8 மற்றும் புதியது: ச்கார்ட்செட் ரீட்ரிகான் (),\n"
+" Scardgetdevicetypeid ()"
 
 #: plugins/rdp/rdp_plugin.c:3033
 msgid ""
@@ -2334,6 +2474,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"ஆடியோ உள்ளீட்டை திருப்பிவிடுவதற்கான விருப்பங்கள்:\n"
+" • [sys: <sys>,] [dev: <vev>,] [வடிவம்: <format>,] [வீதம்: <rate>,]\n"
+" [சேனல்: <anunall>] ஆடியோ உள்ளீடு (மைக்ரோஃபோன்)\n"
+" • SYS: துடிப்பு\n"
+" • வடிவம்: 1\n"
+" • SYS: OSS, DEV: 1, வடிவம்: 1\n"
+" • SYS: ALSA"
 
 #: plugins/rdp/rdp_plugin.c:3042
 msgid ""
@@ -2345,6 +2492,13 @@ msgid ""
 "  • sys:oss,dev:1,format:1\n"
 "  • sys:alsa"
 msgstr ""
+"ஆடியோ வெளியீட்டை திருப்பிவிடுவதற்கான விருப்பங்கள்:\n"
+" • [sys: <sys>,] [dev: <vev>,] [வடிவம்: <format>,] [வீதம்: <rate>,]\n"
+" [சேனல்: <anunalor>] ஆடியோ வெளியீடு\n"
+" • SYS: துடிப்பு\n"
+" • வடிவம்: 1\n"
+" • SYS: OSS, DEV: 1, வடிவம்: 1\n"
+" • SYS: ALSA"
 
 #: plugins/rdp/rdp_plugin.c:3052
 msgid ""
@@ -2353,6 +2507,10 @@ msgid ""
 "  • auto\n"
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 msgstr ""
+"யூ.எச்.பி சாதனத்தை திருப்பிவிடுவதற்கான விருப்பங்கள்:\n"
+" • [dbg,] [id: <vid>: <bid>#…,] [addr: <bus>: <ddr>#…,] [ஆட்டோ]\n"
+" • ஆட்டோ\n"
+" • ஐடி: 054 சி: 0268#4669: 6e6b, addr: 04: 0c"
 
 #: plugins/rdp/rdp_plugin.c:3058
 msgid ""
@@ -2360,6 +2518,9 @@ msgid ""
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
+"உயர் நேரந்தவறுகை இணைப்புகளுக்கான மேம்பட்ட அமைப்பு:\n"
+" இணைப்பு நேரத்தை சரிசெய்கிறது. உங்கள் இணைப்பு நேரங்கள் இருந்தால் பயன்படுத்தவும்.\n"
+" அதிகபட்ச மதிப்பு 600000 எம்.எச் (10 நிமிடங்கள்) ஆகும்.\n"
 
 #: plugins/rdp/rdp_plugin.c:3063
 msgid ""
@@ -2367,6 +2528,10 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
+"பிணையம் இணைப்பு வகையின் அடிப்படையில் செயல்திறன் தேர்வுமுறை:\n"
+" ஆட்டோ கண்டறிதலைப் பயன்படுத்துவது அறிவுறுத்தப்படுகிறது.\n"
+" “ஆட்டோ-கண்டறிதல்” தோல்வியுற்றால், பட்டியலில் மிகவும் பொருத்தமான விருப்பத்தைத் தேர்வுசெய்க."
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:3068
 msgid ""
@@ -2381,6 +2546,16 @@ msgid ""
 "  • 270 (portrait flipped)\n"
 "\n"
 msgstr ""
+"மானிட்டர் ஐடிகள் மற்றும் டெச்க்டாப் நோக்குநிலைகளின் கமாவால் பிரிக்கப்பட்ட பட்டியல்:\n"
+" • [<ஐடி>: <நோக்குநிலை-இன்-டிகிரீச்>,]\n"
+" 1 0,1,2,3\n"
+" • 0: 270,1: 90\n"
+" நோக்குநிலைகள் டிகிரிகளில் குறிப்பிடப்பட்டுள்ளன, செல்லுபடியாகும் மதிப்புகள்:\n"
+" • 0 (நிலப்பரப்பு)\n"
+" • 90 (உருவப்படம்)\n"
+" • 180 (நிலப்பரப்பு புரட்டப்பட்டது)\n"
+" 0 270 (உருவப்படம் புரட்டப்பட்டது)\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:3080
 msgid ""
@@ -2393,500 +2568,512 @@ msgid ""
 "  • hotplug,*\n"
 "\n"
 msgstr ""
+"பெயரிடப்பட்ட பகிர்வு <athe> ஐ திருப்பி அனுப்பவும் <பெயர்>.\n"
+" • பெயர்>, <முழு பாத்> [; <பெயர்>, <முழு பாத்> [;…]]\n"
+" • மைஓம்,/ஓம்/ரெமினர்\n"
+" • /ஓம் /ரெமினர்\n"
+" • மைஓம்,/ஓம்/ரெமினர்;\n"
+" ஆட் பிளக் உதவி இயக்கப்பட்டுள்ளது:\n"
+" • ஆட் பிளக்,*\n"
+"\n"
 
 #: plugins/rdp/rdp_plugin.c:3112 plugins/spice/spice_plugin.c:683
 msgid "Share folder"
-msgstr ""
+msgstr "கோப்புறையைப் பகிரவும்"
 
 #: plugins/rdp/rdp_plugin.c:3113
 msgid "Restricted admin mode"
-msgstr ""
+msgstr "தடைசெய்யப்பட்ட நிர்வாக பயன்முறை"
 
 #: plugins/rdp/rdp_plugin.c:3114
 msgid "Password hash"
-msgstr ""
+msgstr "கடவுச்சொல் ஆச்"
 
 #: plugins/rdp/rdp_plugin.c:3114
 msgid "Restricted admin mode password hash"
-msgstr ""
+msgstr "தடைசெய்யப்பட்ட நிர்வாக பயன்முறை கடவுச்சொல் ஆச்"
 
 #: plugins/rdp/rdp_plugin.c:3115
 msgid "Left-handed mouse support"
-msgstr ""
+msgstr "இடது கை சுட்டி உதவி"
 
 #: plugins/rdp/rdp_plugin.c:3115
 msgid "Swap left and right mouse buttons for left-handed mouse support"
 msgstr ""
+"இடது கை சுட்டி ஆதரவுக்காக இடது மற்றும் வலது சுட்டி பொத்தான்களை மாற்றவும்"
 
 #: plugins/rdp/rdp_plugin.c:3117
 msgid "Enable multi monitor"
-msgstr ""
+msgstr "மல்டி மானிட்டரை இயக்கவும்"
 
 #: plugins/rdp/rdp_plugin.c:3118
 msgid "Span screen over multiple monitors"
-msgstr ""
+msgstr "பல கண்காணிப்பாளர்களுக்கு மேல் திரை"
 
 #: plugins/rdp/rdp_plugin.c:3119
 msgid "List monitor IDs"
-msgstr ""
+msgstr "மானிட்டர் ஐடிஎச் பட்டியல்"
 
 #: plugins/rdp/rdp_plugin.c:3121 plugins/vnc/vnc_plugin.c:2100
 #: plugins/vnc/vnc_plugin.c:2112 plugins/gvnc/gvnc_plugin.c:848
 msgid "Colour depth"
-msgstr ""
+msgstr "வண்ண ஆழம்"
 
 #: plugins/rdp/rdp_plugin.c:3122
 msgid "Network connection type"
-msgstr ""
+msgstr "பிணைய இணைப்பு வகை"
 
 #: plugins/rdp/rdp_plugin.c:3138 plugins/vnc/vnc_plugin.c:2101
 #: plugins/vnc/vnc_plugin.c:2113
 msgid "Quality"
-msgstr ""
+msgstr "தகுதி"
 
 #: plugins/rdp/rdp_plugin.c:3139
 msgid "Security protocol negotiation"
-msgstr ""
+msgstr "பாதுகாப்பு நெறிமுறை பேச்சுவார்த்தை"
 
 #: plugins/rdp/rdp_plugin.c:3140
 msgid "Gateway transport type"
-msgstr ""
+msgstr "நுழைவாயில் போக்குவரத்து வகை"
 
 #: plugins/rdp/rdp_plugin.c:3141
 msgid "TLS Security Level"
-msgstr ""
+msgstr "டி.எல்.எச் பாதுகாப்பு நிலை"
 
 #: plugins/rdp/rdp_plugin.c:3142
 msgid "FreeRDP log level"
-msgstr ""
+msgstr "Freerdp பதிவு நிலை"
 
 #: plugins/rdp/rdp_plugin.c:3143
 msgid "FreeRDP log filters"
-msgstr ""
+msgstr "FREERDP பதிவு வடிப்பான்கள்"
 
 #: plugins/rdp/rdp_plugin.c:3143
 msgid "tag:level[,tag:level[,…]]"
-msgstr ""
+msgstr "குறிச்சொல்: நிலை [, குறிச்சொல்: நிலை [,…]]"
 
 #: plugins/rdp/rdp_plugin.c:3144
 msgid "Audio output mode"
-msgstr ""
+msgstr "ஆடியோ வெளியீட்டு முறை"
 
 #: plugins/rdp/rdp_plugin.c:3145
 msgid "Redirect local audio output"
-msgstr ""
+msgstr "உள்ளக ஆடியோ வெளியீட்டை திருப்பி விடுங்கள்"
 
 #: plugins/rdp/rdp_plugin.c:3146
 msgid "Redirect local microphone"
-msgstr ""
+msgstr "உள்ளக மைக்ரோஃபோனை திருப்பி விடுங்கள்"
 
 #: plugins/rdp/rdp_plugin.c:3147
 msgid "Connection timeout in ms"
-msgstr ""
+msgstr "MS இல் இணைப்பு நேரம் முடிந்தது"
 
 #: plugins/rdp/rdp_plugin.c:3148
 msgid "Remote Desktop Gateway server"
-msgstr ""
+msgstr "தொலைநிலை டெச்க்டாப் கேட்வே சேவையகம்"
 
 #: plugins/rdp/rdp_plugin.c:3149
 msgid "Remote Desktop Gateway username"
-msgstr ""
+msgstr "தொலைநிலை டெச்க்டாப் நுழைவாயில் பயனர்பெயர்"
 
 #: plugins/rdp/rdp_plugin.c:3150
 msgid "Remote Desktop Gateway password"
-msgstr ""
+msgstr "தொலைநிலை டெச்க்டாப் நுழைவாயில் கடவுச்சொல்"
 
 #: plugins/rdp/rdp_plugin.c:3151
 msgid "Remote Desktop Gateway domain"
-msgstr ""
+msgstr "தொலைநிலை டெச்க்டாப் கேட்வே டொமைன்"
 
 #: plugins/rdp/rdp_plugin.c:3152
 msgid "Client name"
-msgstr ""
+msgstr "கிளையன்ட் பெயர்"
 
 #: plugins/rdp/rdp_plugin.c:3153
 msgid "Client build"
-msgstr ""
+msgstr "வாங்கி உருவாக்க"
 
 #: plugins/rdp/rdp_plugin.c:3154
 msgid "Start-up program"
-msgstr ""
+msgstr "தொடக்க நிரல்"
 
 #: plugins/rdp/rdp_plugin.c:3156
 msgid "Load balance info"
-msgstr ""
+msgstr "இருப்பு தகவலை ஏற்றவும்"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
 #: plugins/rdp/rdp_plugin.c:3158
 msgid "Override printer drivers"
-msgstr ""
+msgstr "அச்சுப்பொறி இயக்கிகளை மேலெழுதவும்"
 
 #: plugins/rdp/rdp_plugin.c:3158
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"\"சாம்சங்_.சி.எல்.எக்ச் -3300_சரீச்\": \"சாம்சங் சி.எல்.எக்ச் -3300 தொடர் பி.எச்\"; "
+"\"கேனான் எம்.எஃப் 410\": \"கேனான் எம்.எஃப் 410 தொடர் யுஎஃப்ஆர் II\""
 
 #: plugins/rdp/rdp_plugin.c:3159
 msgid "USB device redirection"
-msgstr ""
+msgstr "யூ.எச்.பி சாதன திசைதிருப்பல்"
 
 #: plugins/rdp/rdp_plugin.c:3160
 msgid "Local serial name"
-msgstr ""
+msgstr "உள்ளக தொடர் பெயர்"
 
 #: plugins/rdp/rdp_plugin.c:3160
 msgid "COM1, COM2, etc."
-msgstr ""
+msgstr "Com1, com2, முதலியன."
 
 #: plugins/rdp/rdp_plugin.c:3161
 msgid "Local serial driver"
-msgstr ""
+msgstr "உள்ளக தொடர் இயக்கி"
 
 #: plugins/rdp/rdp_plugin.c:3161
 msgid "Serial"
-msgstr ""
+msgstr "தொடர்"
 
 #: plugins/rdp/rdp_plugin.c:3162
 msgid "Local serial path"
-msgstr ""
+msgstr "உள்ளக தொடர் பாதை"
 
 #: plugins/rdp/rdp_plugin.c:3162
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr ""
+msgstr "/dev/ttys0,/dev/ttys1, முதலியன."
 
 #: plugins/rdp/rdp_plugin.c:3163
 msgid "Local parallel name"
-msgstr ""
+msgstr "உள்ளக இணையான பெயர்"
 
 #: plugins/rdp/rdp_plugin.c:3164
 msgid "Local parallel device"
-msgstr ""
+msgstr "உள்ளக இணை சாதனம்"
 
 #: plugins/rdp/rdp_plugin.c:3165
 msgid "Name of smart card"
-msgstr ""
+msgstr "அறிவுள்ள கார்டின் பெயர்"
 
 #: plugins/rdp/rdp_plugin.c:3166
 msgid "Dynamic virtual channel"
-msgstr ""
+msgstr "மாறும் மெய்நிகர் சேனல்"
 
 #: plugins/rdp/rdp_plugin.c:3166 plugins/rdp/rdp_plugin.c:3167
 msgid "<channel>[,<options>]"
-msgstr ""
+msgstr "<ananhel> [, <விருப்பங்கள்>]"
 
 #: plugins/rdp/rdp_plugin.c:3167
 msgid "Static virtual channel"
-msgstr ""
+msgstr "நிலையான மெய்நிகர் சேனல்"
 
 #: plugins/rdp/rdp_plugin.c:3168
 msgid "TCP redirection"
-msgstr ""
+msgstr "டி.சி.பி திசைதிருப்பல்"
 
 #: plugins/rdp/rdp_plugin.c:3168
 msgid "/PATH/TO/rdp2tcp"
-msgstr ""
+msgstr "/பாதை/to/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
 msgid "Move mouse when connection is idle"
-msgstr ""
+msgstr "இணைப்பு சும்மா இருக்கும்போது சுட்டியை நகர்த்தவும்"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "உதவி பயன்முறையில் இணைக்க முயற்சி"
 
 #: plugins/rdp/rdp_plugin.c:3173
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr ""
+msgstr "IPv4 இல் IPv6 AAAA பதிவை விரும்புங்கள்"
 
 #: plugins/rdp/rdp_plugin.c:3174
 msgid "Share printers"
-msgstr ""
+msgstr "அச்சுப்பொறிகளைப் பகிரவும்"
 
 #: plugins/rdp/rdp_plugin.c:3175
 msgid "Share serial ports"
-msgstr ""
+msgstr "தொடர் துறைமுகங்களைப் பகிரவும்"
 
 #: plugins/rdp/rdp_plugin.c:3176
 msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
+msgstr "(செலினக்ச்) தொடர் துறைமுகங்களுக்கான அனுமதிக்கப்பட்ட பயன்முறை"
 
 #: plugins/rdp/rdp_plugin.c:3177
 msgid "Share parallel ports"
-msgstr ""
+msgstr "இணையான துறைமுகங்களைப் பகிரவும்"
 
 #: plugins/rdp/rdp_plugin.c:3178
 msgid "Share a smart card"
-msgstr ""
+msgstr "அறிவுள்ள கார்டைப் பகிரவும்"
 
 #: plugins/rdp/rdp_plugin.c:3179 plugins/vnc/vnc_plugin.c:2137
 msgid "Turn off clipboard sync"
-msgstr ""
+msgstr "இடைநிலைப்பலகை ஒத்திசைவை அணைக்கவும்"
 
 #: plugins/rdp/rdp_plugin.c:3180
 msgid "Ignore certificate"
-msgstr ""
+msgstr "சான்றிதழைப் புறக்கணிக்கவும்"
 
 #: plugins/rdp/rdp_plugin.c:3181
 msgid "Use the old license workflow"
-msgstr ""
+msgstr "பழைய உரிம பணிப்பாய்வுகளைப் பயன்படுத்தவும்"
 
 #: plugins/rdp/rdp_plugin.c:3181
 msgid "It disables CAL and hwId is set to 0"
-msgstr ""
+msgstr "இது CAL ஐ முடக்குகிறது மற்றும் HWID 0 ஆக அமைக்கப்பட்டுள்ளது"
 
 #: plugins/rdp/rdp_plugin.c:3182 plugins/spice/spice_plugin.c:708
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
-msgstr ""
+msgstr "பயன்பாட்டிற்குப் பிறகு கடவுச்சொற்களை மறந்து விடுங்கள்"
 
 #: plugins/rdp/rdp_plugin.c:3183
 msgid "Attach to console (2003/2003 R2)"
-msgstr ""
+msgstr "கன்சோலுடன் இணைக்கவும் (2003/2003 ஆர் 2)"
 
 #: plugins/rdp/rdp_plugin.c:3184
 msgid "Turn off fast-path"
-msgstr ""
+msgstr "வேகமாக பாதையை அணைக்கவும்"
 
 #: plugins/rdp/rdp_plugin.c:3185
 msgid "Server detection using Remote Desktop Gateway"
-msgstr ""
+msgstr "ரிமோட் டெச்க்டாப் நுழைவாயிலைப் பயன்படுத்தி சேவையக கண்டறிதல்"
 
 #: plugins/rdp/rdp_plugin.c:3187
 msgid "Use system proxy settings"
-msgstr ""
+msgstr "கணினி பதிலாள் அமைப்புகளைப் பயன்படுத்தவும்"
 
 #: plugins/rdp/rdp_plugin.c:3189
 msgid "Turn off automatic reconnection"
-msgstr ""
+msgstr "தானியங்கி மறு இணைப்பை அணைக்கவும்"
 
 #: plugins/rdp/rdp_plugin.c:3190
 msgid "Relax order checks"
-msgstr ""
+msgstr "ஆர்டர் காசோலைகளை தளர்த்தவும்"
 
 #: plugins/rdp/rdp_plugin.c:3191
 msgid "Glyph cache"
-msgstr ""
+msgstr "கிளிஃப் கேச்"
 
 #: plugins/rdp/rdp_plugin.c:3192
 msgid "Enable multitransport protocol (UDP)"
-msgstr ""
+msgstr "மல்டிட்ரான்ச்போர்ட் நெறிமுறையை இயக்கவும் (யுடிபி)"
 
 #: plugins/rdp/rdp_plugin.c:3192
 msgid "Using the UDP protocol may improve performance"
-msgstr ""
+msgstr "யுடிபி நெறிமுறையைப் பயன்படுத்துவது செயல்திறனை மேம்படுத்தக்கூடும்"
 
 #: plugins/rdp/rdp_plugin.c:3193
 msgid "Use base credentials for gateway too"
-msgstr ""
+msgstr "நுழைவாயிலுக்கும் அடிப்படை நற்சான்றிதழ்களைப் பயன்படுத்தவும்"
 
 #: plugins/rdp/rdp_plugin.c:3195
 msgid "Enable Gateway websockets support"
-msgstr ""
+msgstr "நுழைவாயில் வெப்சாக்கெட்டுகள் ஆதரவை இயக்கவும்"
 
 #: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "காணப்படாதபோது கூட பிரேம் பஃபர் புதுப்பிக்கவும்"
 
 #: plugins/rdp/rdp_plugin.c:3206 plugins/spice/spice_plugin.c:711
 #: plugins/spice/spice_plugin.c:719 plugins/vnc/vnc_plugin.c:2139
 #: plugins/vnc/vnc_plugin.c:2152 plugins/gvnc/gvnc_plugin.c:869
 #: plugins/gvnc/gvnc_plugin.c:878
 msgid "View only"
-msgstr ""
+msgstr "பார்க்க மட்டுமே"
 
 #: plugins/rdp/rdp_plugin.c:3211 plugins/spice/spice_plugin.c:721
 #: plugins/vnc/vnc_plugin.c:2156
 msgid "Send Ctrl+Alt+Delete"
-msgstr ""
+msgstr "Ctrl+Alt+நீக்கு அனுப்பவும்"
 
 #: plugins/rdp/rdp_plugin.c:3224
 msgid "RDP - Remote Desktop Protocol"
-msgstr ""
+msgstr "RDP - ரிமோட் டெச்க்டாப் நெறிமுறை"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "RDP - RDP File Handler"
-msgstr ""
+msgstr "RDP - RDP கோப்பு கையாளுபவர்"
 
 #: plugins/rdp/rdp_plugin.c:3264
 msgid "RDP - Preferences"
-msgstr ""
+msgstr "RDP - விருப்பத்தேர்வுகள்"
 
 #: plugins/rdp/rdp_plugin.c:3317
 msgid "Export connection in Windows .rdp file format"
-msgstr ""
+msgstr "சாளரங்கள் .rdp கோப்பு வடிவத்தில் இணைப்பு ஏற்றுமதி"
 
 #: plugins/rdp/rdp_event.c:363
 #, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr ""
+msgstr "%d இன் %d ஐ மீண்டும் இணைத்தல்…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1191
 #, c-format
 msgid "Connected to %s via RDP"
-msgstr ""
+msgstr "RDP வழியாக %s உடன் இணைக்கப்பட்டுள்ளது"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
-msgstr ""
+msgstr "கோப்பு இடமாற்றங்கள்"
 
 #: plugins/spice/spice_plugin_file_transfer.c:219
 msgid "Transfer error"
-msgstr ""
+msgstr "பரிமாற்ற பிழை"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
 #, c-format
 msgid "%s: %s"
-msgstr ""
+msgstr "%s: %s"
 
 #: plugins/spice/spice_plugin_file_transfer.c:223
 msgid "Transfer completed"
-msgstr ""
+msgstr "பரிமாற்றம் முடிந்தது"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "The %s file has been transferred"
-msgstr ""
+msgstr "%s கோப்பு மாற்றப்பட்டுள்ளது"
 
 #: plugins/spice/spice_plugin.c:341
 msgid "Enter SPICE password"
-msgstr ""
+msgstr "ச்பைச் கடவுச்சொல்லை உள்ளிடவும்"
 
 #: plugins/spice/spice_plugin.c:388
 #, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr ""
+msgstr "மசாலா %s இலிருந்து துண்டிக்கப்பட்டது."
 
 #: plugins/spice/spice_plugin.c:390
 #, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr ""
+msgstr "மசாலா வழியாக %s இலிருந்து துண்டிக்கப்பட்டது"
 
 #: plugins/spice/spice_plugin.c:393
 #, c-format
 msgid "Connected to %s via SPICE"
-msgstr ""
+msgstr "மசாலா வழியாக %s உடன் இணைக்கப்பட்டுள்ளது"
 
 #: plugins/spice/spice_plugin.c:405
 msgid "TLS connection error."
-msgstr ""
+msgstr "டி.எல்.எச் இணைப்பு பிழை."
 
 #: plugins/spice/spice_plugin.c:411
 msgid "Connection to the SPICE server dropped."
-msgstr ""
+msgstr "ச்பைச் சேவையகத்திற்கான இணைப்பு கைவிடப்பட்டது."
 
 #: plugins/spice/spice_plugin.c:642
 msgid "Auto GLZ"
-msgstr ""
+msgstr "ஆட்டோ GLZ"
 
 #: plugins/spice/spice_plugin.c:643
 msgid "Auto LZ"
-msgstr ""
+msgstr "ஆட்டோ LZ"
 
 #: plugins/spice/spice_plugin.c:656
 msgid "Disable video overlay if videos are not displayed properly.\n"
-msgstr ""
+msgstr "வீடியோக்கள் சரியாக காட்டப்படாவிட்டால் வீடியோ மேலடுக்கை முடக்கு.\n"
 
 #: plugins/spice/spice_plugin.c:681
 msgid "Use TLS encryption"
-msgstr ""
+msgstr "TLS குறியாக்கத்தைப் பயன்படுத்தவும்"
 
 #: plugins/spice/spice_plugin.c:682
 msgid "Server CA certificate"
-msgstr ""
+msgstr "சேவையக CA சான்றிதழ்"
 
 #: plugins/spice/spice_plugin.c:700
 msgid "Preferred video codec"
-msgstr ""
+msgstr "விருப்பமான வீடியோ கோடெக்"
 
 #: plugins/spice/spice_plugin.c:701
 msgid "Turn off GStreamer overlay"
-msgstr ""
+msgstr "சிச்ட்ரீமர் மேலடுக்கை அணைக்கவும்"
 
 #: plugins/spice/spice_plugin.c:704
 msgid "Preferred image compression"
-msgstr ""
+msgstr "விருப்பமான பட சுருக்கம்"
 
 #: plugins/spice/spice_plugin.c:707 plugins/spice/spice_plugin.c:720
 #: plugins/gvnc/gvnc_plugin.c:865 plugins/gvnc/gvnc_plugin.c:879
 msgid "No clipboard sync"
-msgstr ""
+msgstr "இடைநிலைப்பலகை ஒத்திசைவு இல்லை"
 
 #: plugins/spice/spice_plugin.c:709 plugins/gvnc/gvnc_plugin.c:868
 msgid "Enable audio channel"
-msgstr ""
+msgstr "ஆடியோ சேனலை இயக்கவும்"
 
 #: plugins/spice/spice_plugin.c:710
 msgid "Share smart card"
-msgstr ""
+msgstr "அறிவுள்ள கார்டைப் பகிரவும்"
 
 #: plugins/spice/spice_plugin.c:722 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
-msgstr ""
+msgstr "திருப்பிவிட யூ.எச்.பி சாதனங்களைத் தேர்ந்தெடுக்கவும்"
 
 #: plugins/spice/spice_plugin.c:733
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
+msgstr "மசாலா - சுயாதீன கணினி சூழல்களுக்கான எளிய நெறிமுறை"
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
-msgstr ""
+msgstr "மூடு (_C)"
 
 #: plugins/spice/spice_plugin_usb.c:94
 msgid "USB redirection error"
-msgstr ""
+msgstr "யூ.எச்.பி திசைதிருப்பல் பிழை"
 
 #: plugins/vnc/vnc_plugin.c:792
 msgid "Enter VNC password"
-msgstr ""
+msgstr "VNC கடவுச்சொல்லை உள்ளிடவும்"
 
 #: plugins/vnc/vnc_plugin.c:845 plugins/gvnc/gvnc_plugin.c:538
 msgid "Enter VNC authentication credentials"
-msgstr ""
+msgstr "VNC அங்கீகார சான்றுகளை உள்ளிடவும்"
 
 #: plugins/vnc/vnc_plugin.c:953
 msgid "Unable to connect to VNC server"
-msgstr ""
+msgstr "வி.என்.சி சேவையகத்துடன் இணைக்க முடியவில்லை"
 
 #: plugins/vnc/vnc_plugin.c:954
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
-msgstr ""
+msgstr "'%s' ஐ புரவலன் முகவரியாக மாற்ற முடியவில்லை"
 
 #: plugins/vnc/vnc_plugin.c:955
 #, c-format
 msgid "VNC connection failed: %s"
-msgstr ""
+msgstr "வி.என்.சி இணைப்பு தோல்வியுற்றது: %s"
 
 #: plugins/vnc/vnc_plugin.c:956
 msgid "Your connection has been rejected."
-msgstr ""
+msgstr "உங்கள் இணைப்பு நிராகரிக்கப்பட்டுள்ளது."
 
 #: plugins/vnc/vnc_plugin.c:983
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
-msgstr ""
+msgstr "வி.என்.சி சேவையகம் அறியப்படாத அங்கீகார முறையை கோரியது. %s"
 
 #: plugins/vnc/vnc_plugin.c:985
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
+"இந்த சுயவிவரத்திற்கான குறியாக்கத்தை இயக்கிய பின் மீண்டும் முயற்சிக்கவும்."
 
 #: plugins/vnc/vnc_plugin.c:1719
 #, c-format
 msgid "Connected to %s via VNC"
-msgstr ""
+msgstr "வி.என்.சி வழியாக %s உடன் இணைக்கப்பட்டுள்ளது"
 
 #: plugins/vnc/vnc_plugin.c:1726
 #, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr ""
+msgstr "%s உடன் இணைக்கப்பட்டுள்ளது: VNC வழியாக %d"
 
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "%s இலிருந்து துண்டிக்கப்பட்டது: VNC வழியாக %d"
 
 #: plugins/vnc/vnc_plugin.c:2046
 msgid ""
@@ -2898,6 +3085,13 @@ msgid ""
 "    the repeater, e.g. with x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 msgstr ""
+"ரிப்பீட்டரைப் பயன்படுத்தி வி.என்.சி உடன் இணைக்கவும்:\n"
+" • சேவையக புலத்தில் ரிப்பீட்டர் ஐடி இருக்க வேண்டும், எ.கா. ஐடி: 123456789\n"
+" • ரிப்பீட்டர் புலம் ரிப்பீட்டர் ஐபி மற்றும் போர்ட்டுக்கு அமைக்கப்பட வேண்டும்:\n"
+" 10.10.10.12:5901\n"
+" V தொலைதூர வி.என்.சி சேவையகத்திலிருந்து, நீங்கள் இணைப்பீர்கள்\n"
+" ரிப்பீட்டர், எ.கா. X11VNC உடன்:\n"
+" X11VNC -Connect ரிப்பீட்டர் = ஐடி: 123456789+10.10.10.12: 5500"
 
 #: plugins/vnc/vnc_plugin.c:2055
 msgid ""
@@ -2908,6 +3102,12 @@ msgid ""
 "    Remmina, e.g. with x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
+"தொலைநிலை VNC இணைப்பைக் கேட்பது:\n"
+" • “போர்ட் ஆன் போர்ட்” புலம் துறைமுகம் ரெம்மினா கேட்கும்,\n"
+" எ.கா. 8888\n"
+" V தொலைதூர வி.என்.சி சேவையகத்திலிருந்து, நீங்கள் இணைப்பீர்கள்\n"
+" ரெமினா, எ.கா. X11VNC உடன்:\n"
+" X11VNC -Display: 0 -கோனெக்ட் 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:2063
 msgid ""
@@ -2917,6 +3117,11 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"மாறும் தீர்மானம் இயக்கப்பட்டிருக்கும் போது விகித விகிதத்தை பூட்டுங்கள்:\n"
+"\n"
+" Ration விகித விகிதத்தை தசம எண்ணாக உள்ளிட வேண்டும், எ.கா. 1.777\n"
+" • 16: 9 தோராயமாக 1.7777, 4: 3 உடன் ஒத்திருக்கிறது\n"
+" • இயல்புநிலை மதிப்பு எந்த விகித விகிதத்தையும் செயல்படுத்தாது"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -2930,156 +3135,166 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"முன் அமைக்கப்பட்ட வி.என்.சி குறியாக்க தரத்தை மீறுதல்:\n"
+"\n"
+" • “ஏழை (வேகமான)” குறியாக்கத்தை “பதிப்புரிமை ச்லிப் எக்ச்டைல் ரா” க்கு அமைக்கிறது\n"
+" • “நடுத்தர” குறியாக்கத்தை “இறுக்கமான Zrle அல்ட்ரா பதிப்புரிமை எக்ச்டைல் ச்லிப் கோர் rre "
+"rra” க்கு அமைக்கிறது.\n"
+" • “நல்ல” குறியீடுகளை “இறுக்கமான zrle அல்ட்ரா பதிப்புரிமை எக்ச்டைல் ச்லிப் கோர் ரூ ரா”\n"
+" • “சிறந்த (மெதுவான)” குறியாக்கத்தை “பதிப்புரிமை Zrle அல்ட்ரா ச்லிப் எக்ச்டைல் கோர் ரூ "
+"ரா” க்கு அமைக்கிறது."
 
 #: plugins/vnc/vnc_plugin.c:2097
 msgid "Repeater"
-msgstr ""
+msgstr "மறுபிரவேசம்"
 
 #: plugins/vnc/vnc_plugin.c:2109
 msgid "Listen on port"
-msgstr ""
+msgstr "துறைமுகத்தில் கேளுங்கள்"
 
 #: plugins/vnc/vnc_plugin.c:2129
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "முன் அமைக்கப்பட்ட வி.என்.சி குறியாக்கங்களை மேலெழுதவும்"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "மாறும் தீர்மானம் செயல்படுத்தப்பட்ட விகித விகிதம்"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
-msgstr ""
+msgstr "இறுக்கமான குறியாக்கத்தை கட்டாயப்படுத்துங்கள்"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "ரிமோட் டெச்க்டாப் துருவல் தோன்றும்போது இதை செயல்படுத்துவது உதவக்கூடும்"
 
 #: plugins/vnc/vnc_plugin.c:2134 plugins/gvnc/gvnc_plugin.c:867
 msgid "Ignore remote bell messages"
-msgstr ""
+msgstr "தொலைநிலை மணி செய்திகளை புறக்கணிக்கவும்"
 
 #: plugins/vnc/vnc_plugin.c:2135 plugins/vnc/vnc_plugin.c:2153
 msgid "Prevent local interaction on the server"
-msgstr ""
+msgstr "சேவையகத்தில் உள்ளக தொடர்புகளைத் தடுக்கவும்"
 
 #: plugins/vnc/vnc_plugin.c:2136
 msgid "Show remote cursor"
-msgstr ""
+msgstr "ரிமோட் கர்சரைக் காட்டு"
 
 #: plugins/vnc/vnc_plugin.c:2138
 msgid "Turn off encryption"
-msgstr ""
+msgstr "குறியாக்கத்தை அணைக்கவும்"
 
 #: plugins/vnc/vnc_plugin.c:2155
 msgid "Open Chat…"
-msgstr ""
+msgstr "திறந்த அரட்டை…"
 
 #: plugins/vnc/vnc_plugin.h:42
 msgid "Remmina VNC Plugin"
-msgstr ""
+msgstr "ரெம்மினா வி.என்.சி சொருகி"
 
 #: plugins/vnc/vnc_plugin.h:47
 msgid "Remmina VNC listener Plugin"
-msgstr ""
+msgstr "ரெம்மினா வி.என்.சி கேட்போர் சொருகி"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina web-browser plugin"
-msgstr ""
+msgstr "ரெம்மினா வலை-உலாவி சொருகி"
 
 #: plugins/www/www_plugin.c:99
 msgid "File downloaded"
-msgstr ""
+msgstr "கோப்பு பதிவிறக்கம் செய்யப்பட்டது"
 
 #: plugins/www/www_plugin.c:592
 msgid "Enter WWW authentication credentials"
-msgstr ""
+msgstr "WWW அங்கீகார சான்றுகளை உள்ளிடவும்"
 
 #: plugins/www/www_plugin.c:907
 msgid "URL"
-msgstr ""
+msgstr "முகவரி"
 
 #: plugins/www/www_plugin.c:907
 msgid "http://address or https://address"
-msgstr ""
+msgstr "http: // முகவரி அல்லது https: // முகவரி"
 
 #: plugins/www/www_plugin.c:924
 msgid "User agent"
-msgstr ""
+msgstr "பயனர் முகவர்"
 
 #: plugins/www/www_plugin.c:925
 msgid "Proxy URL"
-msgstr ""
+msgstr "பதிலாள் முகவரி"
 
 #: plugins/www/www_plugin.c:925
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr ""
+msgstr "எ.கா. https://example.org, socks: // mysocks: 1080"
 
 #: plugins/www/www_plugin.c:926
 msgid "Turn on Java support"
-msgstr ""
+msgstr "சாவா ஆதரவை இயக்கவும்"
 
 #: plugins/www/www_plugin.c:927
 msgid "Turn on smooth scrolling"
-msgstr ""
+msgstr "மென்மையான ச்க்ரோலிங் இயக்கவும்"
 
 #: plugins/www/www_plugin.c:928
 msgid "Turn on spatial navigation"
-msgstr ""
+msgstr "இடஞ்சார்ந்த வழிசெலுத்தலை இயக்கவும்"
 
 #: plugins/www/www_plugin.c:931
 msgid "Turn on plugin support"
-msgstr ""
+msgstr "சொருகி ஆதரவை இயக்கவும்"
 
 #: plugins/www/www_plugin.c:932
 msgid "Turn on WebGL support"
-msgstr ""
+msgstr "வெப்சிஎல் ஆதரவை இயக்கவும்"
 
 #: plugins/www/www_plugin.c:934
 msgid "Turn on HTML5 audio support"
-msgstr ""
+msgstr "HTML5 ஆடியோ ஆதரவை இயக்கவும்"
 
 #: plugins/www/www_plugin.c:935
 msgid "Ignore TLS errors"
-msgstr ""
+msgstr "TLS பிழைகளை புறக்கணிக்கவும்"
 
 #: plugins/www/www_plugin.c:938
 msgid "Turn on Web Inspector"
-msgstr ""
+msgstr "வலை ஆய்வாளரை இயக்கவும்"
 
 #: plugins/exec/exec_plugin.c:167
 msgid "You did not set any command to be executed"
-msgstr ""
+msgstr "செயல்படுத்த எந்த கட்டளையும் நீங்கள் அமைக்கவில்லை"
 
 #: plugins/exec/exec_plugin.c:214
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
+"எச்சரிக்கை: ஒத்திசைவாக ஒரு கட்டளையை இயக்குவது ரெம்மினா பதிலளிக்கக்கூடாது.\n"
+" நீங்கள் உண்மையில் தொடர விரும்புகிறீர்களா?"
 
 #: plugins/exec/exec_plugin.c:297
 msgid "Command"
-msgstr ""
+msgstr "கட்டளை"
 
 #: plugins/exec/exec_plugin.c:298
 msgid "Asynchronous execution"
-msgstr ""
+msgstr "ஒத்திசைவற்ற சாவுஒறுப்பு"
 
 #: plugins/exec/exec_plugin.c:299
 msgid "Kill process on disconnect"
-msgstr ""
+msgstr "துண்டிக்கப்படுவதில் செயல்முறையைக் கொல்லுங்கள்"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
-msgstr ""
+msgstr "ஒரு கட்டளையை இயக்கவும்"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
-msgstr ""
+msgstr "வணக்கம், உலகம்!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secured password storage in the GNOME keyring"
-msgstr ""
+msgstr "க்னோம் கீரிங்கில் பாதுகாக்கப்பட்ட கடவுச்சொல் சேமிப்பு"
 
 #: plugins/x2go/x2go_plugin.c:71
 #, c-format
@@ -3087,6 +3302,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"கட்டளை-வரி நற்பொருத்தம் '%s' கிடைக்கவில்லை! இந்த அம்சத்தைப் பயன்படுத்தாமல் PYHOCA-CLI ஐத் "
+"தொடங்க முயற்சிக்கிறது…"
 
 #: plugins/x2go/x2go_plugin.c:296 plugins/x2go/x2go_plugin.c:428
 #: plugins/x2go/x2go_plugin.c:517 plugins/x2go/x2go_plugin.c:624
@@ -3106,117 +3323,124 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3334
 #, c-format
 msgid "Internal error: %s"
-msgstr ""
+msgstr "உள் பிழை: %s"
 
 #: plugins/x2go/x2go_plugin.c:297 plugins/x2go/x2go_plugin.c:429
 #: plugins/x2go/x2go_plugin.c:518 plugins/x2go/x2go_plugin.c:1349
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr ""
+msgstr "'Custom_Data' அளவுரு துவக்கப்படவில்லை!"
 
 #: plugins/x2go/x2go_plugin.c:310
 msgid "Broken `DialogData`! Aborting…"
-msgstr ""
+msgstr "உடைந்த `உரையாடல்`! கருக்கலைப்பு…"
 
 #: plugins/x2go/x2go_plugin.c:314
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr ""
+msgstr "`டயலோக்டேட்டா` மீட்டெடுக்க முடியாது! கருக்கலைப்பு…"
 
 #: plugins/x2go/x2go_plugin.c:476
 msgid "X Display"
-msgstr ""
+msgstr "ஃச் காட்சி"
 
 #: plugins/x2go/x2go_plugin.c:477
 msgid "Status"
-msgstr ""
+msgstr "நிலை"
 
 #: plugins/x2go/x2go_plugin.c:478
 msgid "Session ID"
-msgstr ""
+msgstr "அமர்வு ஐடி"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Create date"
-msgstr ""
+msgstr "தேதியை உருவாக்கு"
 
 #: plugins/x2go/x2go_plugin.c:480
 msgid "Suspended since"
-msgstr ""
+msgstr "பின்னர் இடைநீக்கம்"
 
 #: plugins/x2go/x2go_plugin.c:481
 msgid "Agent PID"
-msgstr ""
+msgstr "முகவர் பிஐடி"
 
 #: plugins/x2go/x2go_plugin.c:483
 msgid "Hostname"
-msgstr ""
+msgstr "புரவலன்பெயர்"
 
 #: plugins/x2go/x2go_plugin.c:484
 msgid "Cookie"
-msgstr ""
+msgstr "குக்கீ"
 
 #: plugins/x2go/x2go_plugin.c:485
 msgid "Graphic port"
-msgstr ""
+msgstr "கிராஃபிக் துறைமுகம்"
 
 #: plugins/x2go/x2go_plugin.c:486
 msgid "SND port"
-msgstr ""
+msgstr "எச்.என்.டி துறைமுகம்"
 
 #: plugins/x2go/x2go_plugin.c:487
 msgid "SSHFS port"
-msgstr ""
+msgstr "SSHFS துறைமுகம்"
 
 #: plugins/x2go/x2go_plugin.c:488
 msgid "Visible"
-msgstr ""
+msgstr "தெரியும்"
 
 #: plugins/x2go/x2go_plugin.c:527
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
 msgstr ""
+"செல்லுபடியாகும் `டயலோக்டேட்டா` அல்லது` அமர்வுகள்_லிச்ட்` ஆகியவற்றை மீட்டெடுக்க முடியவில்லை"
+"! கருக்கலைப்பு…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
 msgid "_Terminate"
-msgstr ""
+msgstr "_ -டெர்மினேட்"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:539
 msgid "_Resume"
-msgstr ""
+msgstr "_RESUME"
 
 #: plugins/x2go/x2go_plugin.c:541
 msgid "_New"
-msgstr ""
+msgstr "_ நியூ"
 
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:550
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "X2GO அமர்வுகளை நிறுத்துவதற்கு ஒரு கணம் ஆகலாம்."
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
-#, c-format
+#, c-format, fuzzy
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "அறியப்படாத சொத்து '%நான்'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
+"அமர்வு தேர்வு உரையாடலின் குழந்தை Gtktreeview ஐக் கண்டுபிடிக்க முடியவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"'உரையாடல்' அல்லது 'ட்ரீவியூ' அளவுருக்கள் துவக்கப்படவில்லை! அவற்றில் குறைந்தபட்சம் ஒன்று "
+"கொடுக்கப்பட வேண்டும்."
 
 #: plugins/x2go/x2go_plugin.c:736
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
+"அறியப்படாத காரணத்திற்காக, அமர்வு தேர்வு உரையாடலின் \"GtktreeModelfilter*\" ஐப் பெற "
+"முடியவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:771
 msgid "Could not get currently selected row (session)!"
-msgstr ""
+msgstr "தற்போது தேர்ந்தெடுக்கப்பட்ட வரிசையை (அமர்வு) பெற முடியவில்லை!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3224,32 +3448,34 @@ msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
 msgstr ""
+"சரியாக ஒரு அமர்வு தேர்ந்தெடுக்கப்பட வேண்டும், ஆனால் '%i' வரிசைகள் (அமர்வுகள்) "
+"தேர்ந்தெடுக்கப்படுகின்றன."
 
 #: plugins/x2go/x2go_plugin.c:840
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "'Gtktreeiter' ஐ நிரப்பத் தவறிவிட்டது."
 
 #: plugins/x2go/x2go_plugin.c:906
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "'argv' அளவுரு 'NULL'."
 
 #: plugins/x2go/x2go_plugin.c:917
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "'பிழை' அளவுரு 'பூச்யம்'."
 
 #: plugins/x2go/x2go_plugin.c:925
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "'என்வி' அளவுரு தவறானது அல்லது தீர்க்கப்படாதது."
 
 #: plugins/x2go/x2go_plugin.c:941 plugins/x2go/x2go_plugin.c:2553
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr ""
+msgstr "பின்வரும் வாதங்களுடன் பைஓகா-கிளி தொடங்கியது:"
 
 #: plugins/x2go/x2go_plugin.c:972
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr ""
+msgstr "தேவையான PYHOCA-CLI செயல்முறை இணைய இணைப்பு சிக்கலை எதிர்கொண்டது."
 
 #: plugins/x2go/x2go_plugin.c:982
 #, c-format
@@ -3257,12 +3483,16 @@ msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
 msgstr ""
+"Pyhoca-cli ஐத் தொடங்க முடியவில்லை:\n"
+" %s"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"PYHOCA-CLI ஐ தொடங்க முயற்சிக்கும்போது அறியப்படாத பிழை ஏற்பட்டது. வெளியேறும் குறியீடு: "
+"%i"
 
 #: plugins/x2go/x2go_plugin.c:1000
 #, c-format
@@ -3270,23 +3500,25 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"PYHOCA-CLI ஐ தொடங்க முயற்சிக்கும்போது அறியப்படாத பிழை ஏற்பட்டது. வெளியேறும் குறியீடு: "
+"%i. பிழை: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1044
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr ""
+msgstr "'பாதை' அல்லது 'உரையாடல்' அளவுருக்கள் துவக்கப்படவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "Gtktrepath 'பாதை' இல்லாத வரிசையை விவரிக்கிறது!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
 msgid "'Invalid connection data.'"
-msgstr ""
+msgstr "'தவறான இணைப்பு தரவு.'"
 
 #: plugins/x2go/x2go_plugin.c:1154
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr ""
+msgstr "'Custom_Data' அளவுரு முழுமையாக துவக்கப்படவில்லை!"
 
 #: plugins/x2go/x2go_plugin.c:1276
 #, c-format
@@ -3294,33 +3526,36 @@ msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
 msgstr ""
+"X2GO அமர்வை '%s' ஐ நிறுத்த முடியவில்லை:\n"
+" %s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
 msgid "An error occured."
-msgstr ""
+msgstr "பிழை ஏற்பட்டது."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
 msgid "Could not get session ID from session chooser dialog."
-msgstr ""
+msgstr "அமர்வு தேர்வு உரையாடலில் இருந்து அமர்வு ஐடியைப் பெற முடியவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "மீண்டும் அமர்வு: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1411
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr ""
+msgstr "அமர்வு நிறுத்துதல்: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "X2GO வழியாக %s: %d இலிருந்து துண்டிக்கப்பட்டது"
 
 #: plugins/x2go/x2go_plugin.c:1657
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
+"PYHOCA-CLI எதிர்பாராத விதமாக வெளியேறியது. இந்த இணைப்பு இப்போது மூடப்படும்."
 
 #: plugins/x2go/x2go_plugin.c:1666
 msgid ""
@@ -3329,122 +3564,136 @@ msgid ""
 "errors. Also ensure the remote server is reachable and you're using the "
 "right credentials."
 msgstr ""
+"தேவையான குழந்தை செயல்முறை 'பைஓகா-கிளி' எதிர்பாராத விதமாக நிறுத்தப்பட்டது.\n"
+" சாத்தியமான பிழைகளுக்கு உங்கள் சுயவிவர அமைப்புகள் மற்றும் பைஓகா-கிளியின் வெளியீட்டை "
+"சரிபார்க்கவும். தொலை சேவையகம் அடையக்கூடியது என்பதை உறுதிப்படுத்தவும், நீங்கள் சரியான "
+"நற்சான்றிதழ்களைப் பயன்படுத்துகிறீர்கள்."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
-msgstr ""
+msgstr "வெற்று பயனர்பெயரை சேமிக்க முடியாது!"
 
 #: plugins/x2go/x2go_plugin.c:1723
 msgid "Could not save new credentials."
-msgstr ""
+msgstr "புதிய சான்றுகளை சேமிக்க முடியவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:1726
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
+"புதிய நற்சான்றிதழ்களைச் சேமிக்க முடியவில்லை: 'S_PASSWORD' அல்லது 'S_USERNAME' சரங்கள் "
+"அமைக்கப்படவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
-msgstr ""
+msgstr "பாஓடு விசையைத் திறக்க கடவுச்சொல்லை உள்ளிடவும்:"
 
 #: plugins/x2go/x2go_plugin.c:1769
 msgid "Password input cancelled. Aborting…"
-msgstr ""
+msgstr "கடவுச்சொல் உள்ளீடு ரத்து செய்யப்பட்டது. கருக்கலைப்பு…"
 
 #: plugins/x2go/x2go_plugin.c:1800
 msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"உதவிக்குறிப்பு: 'கடவுச்சொல்லைச் சேமி' தேர்வுப்பெட்டியை சரிபார்க்கவும் அல்லது வேகமான "
+"உள்நுழைவுகளுக்கு சேமிக்க சுயவிவர அமைப்புகளில் உங்கள் x2go பயனர்பெயர் மற்றும் கடவுச்சொல்லை "
+"கைமுறையாக உள்ளிடவும்."
 
 #: plugins/x2go/x2go_plugin.c:1831
 msgid "Enter X2Go credentials"
-msgstr ""
+msgstr "X2GO நற்சான்றிதழ்களை உள்ளிடவும்"
 
 #: plugins/x2go/x2go_plugin.c:1860
 msgid "Authentication cancelled. Aborting…"
-msgstr ""
+msgstr "ஏற்பு ரத்து செய்யப்பட்டது. கருக்கலைப்பு…"
 
 #: plugins/x2go/x2go_plugin.c:2047
 msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
+"PYHOCA-CLI இன்-பட்டியல்-அமர்வுகள் விருப்பத்தின் வெளியீட்டை அலச முடியவில்லை. இப்போது ஒரு "
+"புதிய அமர்வை உருவாக்குகிறது."
 
 #: plugins/x2go/x2go_plugin.c:2086
 msgid "Could not allocate enough memory!"
-msgstr ""
+msgstr "போதுமான நினைவகத்தை ஒதுக்க முடியவில்லை!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "ஐடியுடன் ஏற்கனவே இருக்கும் x2go அமர்வு காணப்படுகிறது: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
 msgid "Suspended"
-msgstr ""
+msgstr "இடைநீக்கம்"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2142
 msgid "Running"
-msgstr ""
+msgstr "இயங்கும்"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2145
 msgid "Terminated"
-msgstr ""
+msgstr "நிறுத்தப்பட்டது"
 
 #: plugins/x2go/x2go_plugin.c:2178
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"தொலைநிலை இயந்திரத்தில் எந்த அமர்வுகளையும் கண்டுபிடிக்க முடியவில்லை. இப்போது ஒரு புதிய "
+"அமர்வை உருவாக்குகிறது."
 
 #: plugins/x2go/x2go_plugin.c:2233
 msgid "Choose a session to resume:"
-msgstr ""
+msgstr "மீண்டும் தொடங்க ஒரு அமர்வைத் தேர்வுசெய்க:"
 
 #: plugins/x2go/x2go_plugin.c:2276
 msgid "Waiting for user to select a session…"
-msgstr ""
+msgstr "பயனர் ஒரு அமர்வைத் தேர்ந்தெடுக்க காத்திருக்கிறது…"
 
 #: plugins/x2go/x2go_plugin.c:2284
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "அமர்வு எதுவும் தேர்ந்தெடுக்கப்படவில்லை. புதிய ஒன்றை உருவாக்குதல்."
 
 #: plugins/x2go/x2go_plugin.c:2356
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "விமர்சனமற்ற பிழை நடந்தது: %s"
 
 #: plugins/x2go/x2go_plugin.c:2361
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "ஐடியுடன் அமர்வை மீண்டும் தொடங்க பயனர் தேர்வு செய்தார்: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "அமர்வு '%s' மீண்டும் தொடங்குகிறது…"
 
 #: plugins/x2go/x2go_plugin.c:2513
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
+"டிபிஐ அமைப்பு எல்லைக்கு அப்பாற்பட்டது. சுயவிவர அமைப்புகளில் அதை சரிசெய்யவும்."
 
 #: plugins/x2go/x2go_plugin.c:2576
 msgid "Could not start X2Go session…"
-msgstr ""
+msgstr "X2GO அமர்வைத் தொடங்க முடியவில்லை…"
 
 #: plugins/x2go/x2go_plugin.c:2583
 msgid "Could not start X2Go session."
-msgstr ""
+msgstr "X2GO அமர்வைத் தொடங்க முடியவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:2584
 #, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr ""
+msgstr "Pyhoca-cli (%i) ஐத் தொடங்க முடியவில்லை: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
 msgid ""
@@ -3452,55 +3701,62 @@ msgid ""
 "either too old, or not installed. An old limited set of features will be "
 "used for now."
 msgstr ""
+"PYHOCA-CLI இன் கட்டளை-வரி அம்சங்களைப் பெற முடியவில்லை. இது மிகவும் பழையது, அல்லது "
+"நிறுவப்படவில்லை என்பதைக் குறிக்கிறது. பழைய வரையறுக்கப்பட்ட நற்பொருத்தங்கள் இப்போது "
+"பயன்படுத்தப்படும்."
 
 #: plugins/x2go/x2go_plugin.c:2708
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
+"PYHOCA-CLI இன் கட்டளை-வரி அம்சங்களை அலச முடியவில்லை. இப்போது வரையறுக்கப்பட்ட "
+"அம்ச-தொகுப்பைப் பயன்படுத்துதல்."
 
 #: plugins/x2go/x2go_plugin.c:2714
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr ""
+msgstr "பின்வரும் PYHOCA-CLI கட்டளை-வரி அம்சங்களை மீட்டெடுத்தது:"
 
 #: plugins/x2go/x2go_plugin.c:2722
 #, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr ""
+msgstr "கிடைக்கும் நற்பொருத்தம் [%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2747
 #, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr ""
+msgstr "X2GO வழியாக %s: %d உடன் இணைக்கப்பட்டுள்ளது"
 
 #: plugins/x2go/x2go_plugin.c:2841
 msgid "Could not open X11 DISPLAY."
-msgstr ""
+msgstr "X11 காட்சியைத் திறக்க முடியவில்லை."
 
 #: plugins/x2go/x2go_plugin.c:2881
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr ""
+msgstr "X2go முகவரின் சாளரம் தோன்றும் வரை காத்திருக்கிறது…"
 
 #: plugins/x2go/x2go_plugin.c:2907
 msgid "Waiting for PyHoca-CLI to show the session's window…"
-msgstr ""
+msgstr "அமர்வின் சாளரத்தைக் காண்பிக்க பைஓகா-கிளி காத்திருக்கிறது…"
 
 #: plugins/x2go/x2go_plugin.c:2958
 msgid "No X2Go session window appeared. Something went wrong…"
-msgstr ""
+msgstr "X2go அமர்வு சாளரம் இல்லை. ஏதோ தவறு நடந்தது…"
 
 #: plugins/x2go/x2go_plugin.c:3077
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr ""
+msgstr "ரெமினாப்ரோட்டோகோல்விட்செட்* சி.பி. 'பூச்யம்'!"
 
 #: plugins/x2go/x2go_plugin.c:3098
 #, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
+"%s நெறிமுறை கிடைக்கவில்லை, ஏனெனில் gtksocket x.org இன் கீழ் மட்டுமே செயல்படுகிறது"
 
 #: plugins/x2go/x2go_plugin.c:3107
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr ""
+"Pthread ஐ துவக்க முடியவில்லை. திரட்டப்படாத பயன்முறையில் மீண்டும் விழுகிறது…"
 
 #. TRANSLATORS: Presumably you just want to translate 'and' into
 #. your language.
@@ -3511,9 +3767,9 @@ msgstr ""
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:3150 plugins/x2go/x2go_plugin.c:3168
-#, c-format
+#, c-format, fuzzy
 msgid "%sand '%s'"
-msgstr ""
+msgstr "%மணல் '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3524,7 +3780,7 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3155 plugins/x2go/x2go_plugin.c:3173
 #, c-format
 msgid "%s'%s' "
-msgstr ""
+msgstr "%s '%s' "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3532,253 +3788,259 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3160
 #, c-format
 msgid "%s'%s', "
-msgstr ""
+msgstr "%s '%s', "
 
 #: plugins/x2go/x2go_plugin.c:3199
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr ""
+msgstr "நெறிமுறைகள் வரிசையில் தவறான சரிபார்ப்பு தரவு!"
 
 #: plugins/x2go/x2go_plugin.c:3214 plugins/x2go/x2go_plugin.c:3279
 msgid "Validation data in ProtocolSettings array is invalid!"
-msgstr ""
+msgstr "நெறிமுறை வரிசையில் சரிபார்ப்பு தரவு தவறானது!"
 
 #: plugins/x2go/x2go_plugin.c:3223
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "அளவுருக்கள் 'விசை' அல்லது 'மதிப்பு' 'பூச்யம்'!"
 
 #: plugins/x2go/x2go_plugin.c:3241
 #, c-format
 msgid "Allowed values are %s."
-msgstr ""
+msgstr "அனுமதிக்கப்பட்ட மதிப்புகள் %s."
 
 #: plugins/x2go/x2go_plugin.c:3243
 #, c-format
 msgid "The only allowed value is '%s'."
-msgstr ""
+msgstr "அனுமதிக்கப்பட்ட ஒரே மதிப்பு '%s'."
 
 #: plugins/x2go/x2go_plugin.c:3290
 msgid "The lower limit is not a valid integer!"
-msgstr ""
+msgstr "குறைந்த வரம்பு செல்லுபடியாகும் முழு எண் அல்ல!"
 
 #: plugins/x2go/x2go_plugin.c:3295
 msgid "The lower limit is too high!"
-msgstr ""
+msgstr "குறைந்த வரம்பு மிக அதிகம்!"
 
 #: plugins/x2go/x2go_plugin.c:3300
 msgid "The lower limit is too low!"
-msgstr ""
+msgstr "குறைந்த வரம்பு மிகக் குறைவு!"
 
 #: plugins/x2go/x2go_plugin.c:3305 plugins/x2go/x2go_plugin.c:3335
 #: plugins/x2go/x2go_plugin.c:3355
 msgid "Something unknown went wrong."
-msgstr ""
+msgstr "தெரியாத ஒன்று தவறு."
 
 #: plugins/x2go/x2go_plugin.c:3310 plugins/x2go/x2go_plugin.c:3340
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
+"சாத்தியமான பிழைகளுக்கு ரெமினாப்ரோட்டோகோல்செட்டிங் வரிசையை சரிபார்க்கவும்."
 
 #: plugins/x2go/x2go_plugin.c:3320
 msgid "The upper limit is not a valid integer!"
-msgstr ""
+msgstr "மேல் வரம்பு செல்லுபடியாகும் முழு எண் அல்ல!"
 
 #: plugins/x2go/x2go_plugin.c:3325
 msgid "The upper limit is too high!"
-msgstr ""
+msgstr "மேல் வரம்பு மிக அதிகம்!"
 
 #: plugins/x2go/x2go_plugin.c:3330
 msgid "The upper limit is too low!"
-msgstr ""
+msgstr "மேல் வரம்பு மிகக் குறைவு!"
 
 #: plugins/x2go/x2go_plugin.c:3350
 msgid "The input is not a valid integer!"
-msgstr ""
+msgstr "உள்ளீடு சரியான முழு எண் அல்ல!"
 
 #: plugins/x2go/x2go_plugin.c:3352 plugins/x2go/x2go_plugin.c:3369
 #, c-format
 msgid "Input must be a number between %i and %i."
-msgstr ""
+msgstr "உள்ளீடு %i மற்றும் %i க்கு இடையில் இருக்க வேண்டும்."
 
 #: plugins/x2go/x2go_plugin.c:3398
 msgid "Startup program"
-msgstr ""
+msgstr "தொடக்க நிரல்"
 
 #: plugins/x2go/x2go_plugin.c:3400
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr ""
+msgstr "X2GO அமர்வை உருவாக்கிய பிறகு எந்த கட்டளையை செயல்படுத்த வேண்டும்?"
 
 #: plugins/x2go/x2go_plugin.c:3402
 msgid "Keyboard Layout (auto)"
-msgstr ""
+msgstr "விசைப்பலகை தளவமைப்பு (ஆட்டோ)"
 
 #: plugins/x2go/x2go_plugin.c:3403
 msgid "Keyboard type (auto)"
-msgstr ""
+msgstr "விசைப்பலகை வகை (ஆட்டோ)"
 
 #: plugins/x2go/x2go_plugin.c:3404
 msgid "Audio support"
-msgstr ""
+msgstr "ஆடியோ உதவி"
 
 #: plugins/x2go/x2go_plugin.c:3406
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr ""
+msgstr "X2GO சேவையகத்தின் ஒலி அமைப்பு (இயல்புநிலை: 'துடிப்பு')."
 
 #: plugins/x2go/x2go_plugin.c:3409
 msgid "Clipboard direction"
-msgstr ""
+msgstr "இடைநிலைப்பலகை திசை"
 
 #: plugins/x2go/x2go_plugin.c:3411
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
+"இடைநிலைப்பலகை உள்ளடக்கத்தை எந்த திசையில் நகலெடுக்க வேண்டும்? (இயல்புநிலை: 'இரண்டும்')."
 
 #: plugins/x2go/x2go_plugin.c:3415
 msgid "DPI resolution"
-msgstr ""
+msgstr "டிபிஐ தீர்மானம்"
 
 #: plugins/x2go/x2go_plugin.c:3416
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
+"ஒரு குறிப்பிட்ட தெளிவுத்திறனுடன் (அங்குலத்திற்கு புள்ளிகளில்) அமர்வு தொடங்கவும். 20 முதல் "
+"400 வரை இருக்க வேண்டும்."
 
 #: plugins/x2go/x2go_plugin.c:3420
 msgid "Your private key"
-msgstr ""
+msgstr "உங்கள் தனிப்பட்ட விசை"
 
 #: plugins/x2go/x2go_plugin.c:3460
 msgid "X2Go plugin loaded."
-msgstr ""
+msgstr "X2GO சொருகி ஏற்றப்பட்டது."
 
 #: plugins/x2go/x2go_plugin.h:43
 msgid "X2Go - Launch an X2Go session"
-msgstr ""
+msgstr "X2GO - ஒரு X2GO அமர்வைத் தொடங்கவும்"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr ""
+msgstr "க்னோம் மற்றும் கே.வி.எம் க்கான ரெமினா வி.என்.சி சொருகி"
 
 #: plugins/gvnc/gvnc_plugin.c:476
 #, c-format
 msgid "Unsupported authentication type %u"
-msgstr ""
+msgstr "ஆதரிக்கப்படாத அங்கீகார வகை %u"
 
 #: plugins/gvnc/gvnc_plugin.c:488
 #, c-format
 msgid "Authentication failure: %s"
-msgstr ""
+msgstr "அங்கீகார தோல்வி: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:819
 msgid "Use server settings"
-msgstr ""
+msgstr "சேவையக அமைப்புகளைப் பயன்படுத்தவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:820
 msgid "True colour (24 bits)"
-msgstr ""
+msgstr "உண்மையான நிறம் (24 பிட்கள்)"
 
 #: plugins/gvnc/gvnc_plugin.c:821
 msgid "High colour (16 bits)"
-msgstr ""
+msgstr "உயர் நிறம் (16 பிட்கள்)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
 msgid "Low colour (8 bits)"
-msgstr ""
+msgstr "குறைந்த நிறம் (8 பிட்கள்)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
 msgid "Ultra low colour (3 bits)"
-msgstr ""
+msgstr "அல்ட்ரா குறைந்த நிறம் (3 பிட்கள்)"
 
 #: plugins/gvnc/gvnc_plugin.c:847
 msgid "VNC password"
-msgstr ""
+msgstr "வி.என்.சி கடவுச்சொல்"
 
 #: plugins/gvnc/gvnc_plugin.c:849
 msgid "Use JPEG Compression"
-msgstr ""
+msgstr "JPEG சுருக்கத்தைப் பயன்படுத்தவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:849
 msgid "This might not work on all VNC servers"
-msgstr ""
+msgstr "இது அனைத்து வி.என்.சி சேவையகங்களிலும் வேலை செய்யாது"
 
 #: plugins/gvnc/gvnc_plugin.c:850
 msgid "Enable GTK-VNC debug"
-msgstr ""
+msgstr "GTK-VNC பிழைத்திருத்தத்தை இயக்கவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:870
 msgid "Shared connection"
-msgstr ""
+msgstr "பகிரப்பட்ட இணைப்பு"
 
 #: plugins/gvnc/gvnc_plugin.c:870
 msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
+"சேவையகம் மற்ற வாடிக்கையாளர்களை இணைத்து விட்டுவிட்டு டெச்க்டாப்பைப் பகிர முயற்சிக்க வேண்டும் "
+"என்றால்"
 
 #: plugins/gvnc/gvnc_plugin.c:880
 msgid "Send Ctrl+Alt+_Del"
-msgstr ""
+msgstr "Ctrl+Alt+_del ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:881
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr ""
+msgstr "CTRL+ALT+பேக்ச்பேசை அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:882
 msgid "Send Ctrl+Alt+_F1"
-msgstr ""
+msgstr "Ctrl+Alt+_f1 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:883
 msgid "Send Ctrl+Alt+_F2"
-msgstr ""
+msgstr "Ctrl+Alt+_f2 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:884
 msgid "Send Ctrl+Alt+_F3"
-msgstr ""
+msgstr "Ctrl+Alt+_f3 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:885
 msgid "Send Ctrl+Alt+_F4"
-msgstr ""
+msgstr "Ctrl+Alt+_f4 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:886
 msgid "Send Ctrl+Alt+_F5"
-msgstr ""
+msgstr "Ctrl+Alt+_f5 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:887
 msgid "Send Ctrl+Alt+_F6"
-msgstr ""
+msgstr "Ctrl+Alt+_f6 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:888
 msgid "Send Ctrl+Alt+_F7"
-msgstr ""
+msgstr "Ctrl+Alt+_f7 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:889
 msgid "Send Ctrl+Alt+_F8"
-msgstr ""
+msgstr "Ctrl+Alt+_f8 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:890
 msgid "Send Ctrl+Alt+_F9"
-msgstr ""
+msgstr "Ctrl+Alt+_f9 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:891
 msgid "Send Ctrl+Alt+_F10"
-msgstr ""
+msgstr "Ctrl+Alt+_f10 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:892
 msgid "Send Ctrl+Alt+_F11"
-msgstr ""
+msgstr "Ctrl+Alt+_f11 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:893
 msgid "Send Ctrl+Alt+_F12"
-msgstr ""
+msgstr "Ctrl+Alt+_f12 ஐ அனுப்பவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:895
 msgid "Reboot remote host"
-msgstr ""
+msgstr "தொலை ஓச்டை மீண்டும் துவக்கவும்"
 
 #: plugins/gvnc/gvnc_plugin.c:896
 msgid "Reset remote host (hard reboot)"
-msgstr ""
+msgstr "தொலை ஓச்டை மீட்டமைக்கவும் (கடின மறுதொடக்கம்)"
 
 #: plugins/gvnc/gvnc_plugin.c:897
 msgid "Shutdown remote host"
-msgstr ""
+msgstr "பணிநிறுத்தம் ரிமோட் புரவலன்"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -3786,14 +4048,16 @@ msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
+"%s தங்கள் டெச்க்டாப்பைப் பகிர்ந்து கொள்ள விரும்புகின்றன.\n"
+" நீங்கள் ஏற்றுக்கொள்கிறீர்களா?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
-msgstr ""
+msgstr "டெச்க்டாப் பகிர்வு அழைப்பிதழ்"
 
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
-msgstr ""
+msgstr "டெலிபதி - டெச்க்டாப் பகிர்வு"
 
 #: data/ui/remmina_snap_info_dialog.glade:67
 msgid ""
@@ -3804,6 +4068,12 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
+"<big> <b> ரெம்மினா ச்னாப் தொகுப்பு </b> </big>\n"
+"\n"
+" <span>\n"
+" ரெம்மினா உங்கள் கணினியில் ச்னாப் தொகுப்பாக இயங்குகிறது.\n"
+" சரியாக வேலை செய்ய சில ரெம்மினா செயல்பாடுகளை அமைக்க வேண்டும்.\n"
+" </span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:112
 msgid ""
@@ -3812,10 +4082,14 @@ msgid ""
 "the appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
+"உங்கள் கீரிங் மற்றும் ஆர்.டி.பி அச்சுப்பொறி பகிர்வு போன்ற சில முக்கியமான அம்சங்களுக்கான "
+"அணுகலை செயல்படுத்த, தயவுசெய்து உங்கள் மென்பொருள் மையத்தைத் திறந்து ரெம்மினாவுக்கு "
+"பொருத்தமான அனுமதிகளை வழங்கவும். மாற்றாக நீங்கள் ஒரு முனைய சாளரத்தில் பின்வரும் கட்டளைகளை "
+"உள்ளிடலாம்:"
 
 #: data/ui/remmina_snap_info_dialog.glade:157
 msgid "<big>Permissions</big>"
-msgstr ""
+msgstr "<big> அனுமதிகள் </big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:193
 msgid ""
@@ -3823,54 +4097,57 @@ msgid ""
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
+"SNAP தொகுப்புகள் கணினியின் மற்ற பகுதிகளிலிருந்து மட்டுப்படுத்தப்பட்டதால், ரெம்மினா "
+"சுயவிவரங்கள் முன்னிருப்பாக ச்னாப் கோப்பு முறைமைக்குள் சேமிக்கப்படுகின்றன. ரெம்மினா "
+"விருப்பங்களில் இருப்பிடத்தை மாற்றலாம்."
 
 #: data/ui/remmina_snap_info_dialog.glade:213
 msgid "Change where Remmina profiles are stored"
-msgstr ""
+msgstr "ரெம்மினா சுயவிவரங்கள் சேமிக்கப்படும் இடத்தை மாற்றவும்"
 
 #: data/ui/remmina_snap_info_dialog.glade:252
 msgid "<big>Snap settings</big>"
-msgstr ""
+msgstr "<big> ச்னாப் அமைப்புகள் </big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:265
 msgid "Do not show this message again"
-msgstr ""
+msgstr "இந்த செய்தியை மீண்டும் காட்ட வேண்டாம்"
 
 #: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
 msgid "Search"
-msgstr ""
+msgstr "தேடல்"
 
 #: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
 msgid "Search for previous occurrence"
-msgstr ""
+msgstr "முந்தைய நிகழ்வைத் தேடுங்கள்"
 
 #: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
 msgid "Search for next occurrence"
-msgstr ""
+msgstr "அடுத்த நிகழ்வைத் தேடுங்கள்"
 
 #: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
 msgid "Toggle search options"
-msgstr ""
+msgstr "தேடல் விருப்பங்களை மாற்றிக் கொள்ளுங்கள்"
 
 #: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
 msgid "_Match case"
-msgstr ""
+msgstr "_ மேட்ச் கேச்"
 
 #: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
 msgid "Match _entire word only"
-msgstr ""
+msgstr "_ ஈன்டயர் வார்த்தையை மட்டும் பொருத்துங்கள்"
 
 #: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
 msgid "Match as _regular expression"
-msgstr ""
+msgstr "வழக்கமான வெளிப்பாட்டுடன் பொருந்தவும்"
 
 #: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
 msgid "_Wrap around"
-msgstr ""
+msgstr "சுற்றி மடக்கு"
 
 #: data/ui/remmina_about.glade:32 data/ui/remmina_main.glade:419
 msgid "About"
-msgstr ""
+msgstr "பற்றி"
 
 #: data/ui/remmina_about.glade:36
 msgid ""
@@ -3879,6 +4156,10 @@ msgid ""
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
+"பதிப்புரிமை © 2023–2024 இரோயுகி தனகா, சுனில் பட்\n"
+" பதிப்புரிமை © 2014–2023 கட்டா ஆன்டெனோர், சியோவானி பனோசோ\n"
+" பதிப்புரிமை © 2009–2014 விக் லீ\n"
+" நகலெடுப்பதில் மேலும் விவரங்கள்"
 
 #: data/ui/remmina_about.glade:41
 msgid "https://www.remmina.org/"
@@ -3886,90 +4167,91 @@ msgstr ""
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
-msgstr ""
+msgstr "கூட்டு"
 
 #: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
 #: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
 msgid "_Remove"
-msgstr ""
+msgstr "_ அகற்று"
 
 #: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
 msgid "Move up"
-msgstr ""
+msgstr "மேலே செல்லுங்கள்"
 
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 msgid "Move down"
-msgstr ""
+msgstr "கீழே செல்லுங்கள்"
 
 #: data/ui/remmina_mpc.glade:19
 msgid "Change"
-msgstr ""
+msgstr "மாற்றம்"
 
 #: data/ui/remmina_mpc.glade:180
 msgid "Selection criteria"
-msgstr ""
+msgstr "தேர்வு அளவுகோல்கள்"
 
 #: data/ui/remmina_mpc.glade:244
 msgid "Confirm password"
-msgstr ""
+msgstr "கடவுச்சொல்லை உறுதிப்படுத்தவும்"
 
 #: data/ui/remmina_mpc.glade:271 data/ui/remmina_passwd.glade:6
 msgid "Set new password"
-msgstr ""
+msgstr "புதிய கடவுச்சொல்லை அமைக்கவும்"
 
 #: data/ui/remmina_mpc.glade:320
 msgid "Gateway Username"
-msgstr ""
+msgstr "நுழைவாயில் பயனர்பெயர்"
 
 #: data/ui/remmina_mpc.glade:349
 msgid "Gateway Domain"
-msgstr ""
+msgstr "நுழைவாயில் டொமைன்"
 
 #: data/ui/remmina_mpc.glade:415
 msgid "Gateway Password"
-msgstr ""
+msgstr "நுழைவாயில் கடவுச்சொல்"
 
 #: data/ui/remmina_mpc.glade:440
 msgid "Confirm Gateway Password"
-msgstr ""
+msgstr "நுழைவாயில் கடவுச்சொல்லை உறுதிப்படுத்தவும்"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr ""
+msgstr "தேர்ந்தெடு"
 
 #: data/ui/remmina_mpc.glade:515
 msgctxt "Multi password changer table"
 msgid "Name"
-msgstr ""
+msgstr "பெயர்"
 
 #: data/ui/remmina_mpc.glade:526
 msgctxt "Multi password changer table"
 msgid "Group"
-msgstr ""
+msgstr "குழு"
 
 #: data/ui/remmina_mpc.glade:537
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
-msgstr ""
+msgstr "டொமைன் \\ பயனர்பெயர்"
 
 #: data/ui/remmina_mpc.glade:548
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr ""
+msgstr "நுழைவாயில் டொமைன் \\ பயனர்பெயர்"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr ""
+"<ச்பான் எடை = 'தைரியமான' அளவு = 'பெரியது'> மல்டி கடவுச்சொல் மாற்றி </span>"
 
 #: data/ui/remmina_passwd.glade:35
 msgid "OK"
-msgstr ""
+msgstr "சரி"
 
 #: data/ui/remmina_passwd.glade:85
 msgid "Verify password"
-msgstr ""
+msgstr "கடவுச்சொல்லை சரிபார்க்கவும்"
 
 #: data/ui/remmina_info.glade:90
 msgid ""
@@ -3980,234 +4262,244 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
+"<big> <b> செய்தி ஏற்றத் தவறிவிட்டது </b> </பெரிய>\n"
+"\n"
+" <span>\n"
+" <a href = \"https://gitlab.com/remmina/remmina/-/tags/\" தலைப்பு = "
+"\"ரெமினா வெளியீட்டு குறிப்புகள்\"> <i> வெளியீட்டுக் குறிப்புகளைப் படிக்க வலைத்தளத்தைப் "
+"பார்வையிடவும் </i> </a>.\n"
+" </span>"
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
-msgstr ""
+msgstr "புதிய விசையைத் தேர்வுசெய்க"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "முக்கிய மாற்றிகளை அனுமதிக்கவும்"
 
 #: data/ui/remmina_key_chooser.glade:121
 msgid "Please press the new key…"
-msgstr ""
+msgstr "புதிய விசையை அழுத்தவும்…"
 
 #: data/ui/remmina_main.glade:36
 msgid "Hide or show the search bar"
-msgstr ""
+msgstr "தேடல் பட்டியை மறைக்கவும் அல்லது காட்டவும்"
 
 #: data/ui/remmina_main.glade:42
 msgid "Add a new connection profile"
-msgstr ""
+msgstr "புதிய இணைப்பு சுயவிவரத்தைச் சேர்க்கவும்"
 
 #: data/ui/remmina_main.glade:48
 msgid "Switch from grouped to list view"
-msgstr ""
+msgstr "குழுவாக இருந்து பட்டியல் பார்வைக்கு மாறவும்"
 
 #: data/ui/remmina_main.glade:80
 msgid "Select the protocol to use with the quick connect bar."
-msgstr ""
+msgstr "விரைவு இணைப்பு பட்டியுடன் பயன்படுத்த நெறிமுறையைத் தேர்ந்தெடுக்கவும்."
 
 #: data/ui/remmina_main.glade:98
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr ""
+"“விரைவான இணைப்பு” க்கான சரம் அல்லது சேவையக பெயர்/ஐபி முகவரியைத் தேடுங்கள்"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
 msgid "Server name or IP address"
-msgstr ""
+msgstr "சேவையக பெயர் அல்லது ஐபி முகவரி"
 
 #: data/ui/remmina_main.glade:103 data/ui/remmina_main.glade:105
 #: data/ui/remmina_preferences.glade:447
 msgid "Clear"
-msgstr ""
+msgstr "தெளிவான"
 
 #: data/ui/remmina_main.glade:188
 msgid "Edit"
-msgstr ""
+msgstr "தொகு"
 
 #: data/ui/remmina_main.glade:218
 msgid "Collapse all"
-msgstr ""
+msgstr "அனைத்தையும் சரக்கு"
 
 #: data/ui/remmina_main.glade:228
 msgid "Expand all"
-msgstr ""
+msgstr "அனைத்தையும் விரிவாக்குங்கள்"
 
 #: data/ui/remmina_main.glade:290
 msgid "Multi password changer"
-msgstr ""
+msgstr "பல கடவுச்சொல் மாற்றி"
 
 #: data/ui/remmina_main.glade:300
 msgid "Debugging"
-msgstr ""
+msgstr "பிழைத்திருத்தம்"
 
 #: data/ui/remmina_main.glade:320
 msgid "Export"
-msgstr ""
+msgstr "ஏற்றுமதி"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "பிழையைப் புகாரளிக்கவும்"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
-msgstr ""
+msgstr "ரெம்மினாவை உங்கள் இயல்புநிலை ரிமோட் டெச்க்டாப் கிளையண்டாக மாற்றவும்"
 
 #: data/ui/remmina_main.glade:372
 msgid "Homepage"
-msgstr ""
+msgstr "முகப்புப்பக்கம்"
 
 #: data/ui/remmina_main.glade:382
 msgid "Donations"
-msgstr ""
+msgstr "நன்கொடைகள்"
 
 #: data/ui/remmina_main.glade:392
 msgid "Wiki"
-msgstr ""
+msgstr "விக்கி"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:402
 msgid "Community"
-msgstr ""
+msgstr "சமூகம்"
 
 #: data/ui/remmina_main.glade:546
 msgid "Plugin"
-msgstr ""
+msgstr "சொருகு"
 
 #: data/ui/remmina_main.glade:560
 msgid "Last used"
-msgstr ""
+msgstr "கடைசியாக பயன்படுத்தப்பட்டது"
 
 #: data/ui/remmina_main.glade:609
 msgid "New connection profile"
-msgstr ""
+msgstr "புதிய இணைப்பு சுயவிவரம்"
 
 #: data/ui/remmina_main.glade:621
 msgid "Show search bar"
-msgstr ""
+msgstr "தேடல் பட்டியைக் காட்டு"
 
 #: data/ui/remmina_main.glade:641
 msgid "Remmina main menu"
-msgstr ""
+msgstr "ரெம்மினா பட்டியல் விளையாடுகிறார்"
 
 #: data/ui/remmina_main.glade:648
 msgid "Actions"
-msgstr ""
+msgstr "செயல்கள்"
 
 #: data/ui/remmina_main.glade:663
 msgid "Toggle view"
-msgstr ""
+msgstr "பார்வை மாற்று"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "கணினி தகவலைச் சேர்க்கவும்"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "பிழைத்திருத்த தரவைச் சேர்க்கவும்"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "சமர்ப்பிக்கவும்"
 
 #: data/ui/remmina_bug_report.glade:114
 msgid "Name/Username:"
-msgstr ""
+msgstr "பெயர்/பயனர்பெயர்:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "மின்னஞ்சல்:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "மின்னஞ்சல்"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "பிழை தலைப்பு"
 
 #: data/ui/remmina_bug_report.glade:200
 msgid "Bug Description"
-msgstr ""
+msgstr "பிழை விளக்கம்"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"\"சமர்ப்பி\" என்பதைக் சொடுக்கு செய்வதன் மூலம் இதை ரெம்மினாவின் அறிவிலிஆய்வு பக்கத்திற்கு "
+"அனுப்பி, தானாகவே வெளியீடு டிராக்கரில் ஒரு புதிய சிக்கலை உருவாக்கும்."
 
 #: data/ui/remmina_bug_report.glade:296
 msgid "Remmina Report Bug"
-msgstr ""
+msgstr "ரெமினா அறிக்கை பிழை"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
-msgstr ""
+msgstr "தயவுசெய்து காத்திருங்கள்…"
 
 #: data/ui/remmina_preferences.glade:63
 msgid "Double-click action"
-msgstr ""
+msgstr "இரட்டை சொடுக்கு நடவடிக்கை"
 
 #: data/ui/remmina_preferences.glade:79
 msgid "Open connection"
-msgstr ""
+msgstr "திறந்த இணைப்பு"
 
 #: data/ui/remmina_preferences.glade:80
 msgid "Edit settings"
-msgstr ""
+msgstr "அமைப்புகளைத் திருத்தவும்"
 
 #: data/ui/remmina_preferences.glade:96
 msgid "Scaling quality"
-msgstr ""
+msgstr "அளவிடுதல் தகுதி"
 
 #: data/ui/remmina_preferences.glade:112
 msgid "Nearest"
-msgstr ""
+msgstr "அருகில்"
 
 #: data/ui/remmina_preferences.glade:113
 msgid "Tiles"
-msgstr ""
+msgstr "ஓடுகள்"
 
 #: data/ui/remmina_preferences.glade:114
 msgid "Bilinear"
-msgstr ""
+msgstr "பிலினியர்"
 
 #: data/ui/remmina_preferences.glade:115
 msgid "Hyper"
-msgstr ""
+msgstr "ஐப்பர்"
 
 #: data/ui/remmina_preferences.glade:131
 msgid "Step size for auto-scroll"
-msgstr ""
+msgstr "ஆட்டோ-ச்க்ரோலுக்கான படி அளவு"
 
 #: data/ui/remmina_preferences.glade:160
 msgid "Maximal amount of recent items"
-msgstr ""
+msgstr "அண்மைக் கால பொருட்களின் அதிகபட்ச அளவு"
 
 #: data/ui/remmina_preferences.glade:175
 msgid "Screen resolutions"
-msgstr ""
+msgstr "திரை தீர்மானங்கள்"
 
 #: data/ui/remmina_preferences.glade:221
 msgid "Folder for screenshots"
-msgstr ""
+msgstr "திரை சாட்களுக்கான கோப்புறை"
 
 #: data/ui/remmina_preferences.glade:233
 msgid "Choose a folder to save screenshots from Remmina in."
-msgstr ""
+msgstr "ரெம்மினாவிலிருந்து திரை சாட்களைச் சேமிக்க ஒரு கோப்புறையைத் தேர்வுசெய்க."
 
 #: data/ui/remmina_preferences.glade:237 data/ui/remmina_preferences.glade:323
 msgid "Select a folder"
-msgstr ""
+msgstr "ஒரு கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 
 #: data/ui/remmina_preferences.glade:248
 msgid "Set up"
-msgstr ""
+msgstr "அமைக்கவும்"
 
 #: data/ui/remmina_preferences.glade:270
 msgid "Screenshot filenames"
-msgstr ""
+msgstr "திரைக்காட்சி கோப்பு பெயர்கள்"
 
 #: data/ui/remmina_preferences.glade:282
 msgid ""
@@ -4215,38 +4507,46 @@ msgid ""
 "%h Server name/IP\n"
 "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgstr ""
+"%p சுயவிவர பெயர்\n"
+" %H சேவையக பெயர்/ஐபி\n"
+" %Y ஆண்டு, %m மாதம், %d நாள், %h மணிநேரம், %m மணித்துளி, %s வினாடிகள் (UTC நேரம்)\n"
 
 #: data/ui/remmina_preferences.glade:301
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
+"கோப்புறை இணைப்பு சுயவிவரங்கள் சேமிக்கப்படுகின்றன, இது XDG_USER_DATA க்கு "
+"இயல்புநிலையாகிறது"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:306
 msgid "Remmina data folder"
-msgstr ""
+msgstr "ரெமினா தரவு கோப்புறை"
 
 #: data/ui/remmina_preferences.glade:318
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr ""
+"ரெம்மினாவிலிருந்து இணைப்பு சுயவிவரங்களைச் சேமிக்க ஒரு கோப்புறையைத் தேர்வுசெய்க."
 
 #: data/ui/remmina_preferences.glade:336
 msgid "Remember last view for each connection"
-msgstr ""
+msgstr "ஒவ்வொரு இணைப்பிற்கும் கடைசி பார்வையை நினைவில் கொள்ளுங்கள்"
 
 #: data/ui/remmina_preferences.glade:340
 msgid "Remember last view mode"
-msgstr ""
+msgstr "கடைசி பார்வை பயன்முறையை நினைவில் கொள்க"
 
 #: data/ui/remmina_preferences.glade:366
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
+"வடிவமைப்பு சரம் பயன்படுத்தி, உங்கள் ரெம்மினா இணைப்பு சுயவிவரங்களுக்கு தனிப்பயன் கோப்பு "
+"பெயரை அமைக்கவும்."
 
 #: data/ui/remmina_preferences.glade:370
 msgid "Template for profile filenames"
-msgstr ""
+msgstr "சுயவிவர கோப்பு பெயர்களுக்கான வார்ப்புரு"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:382
@@ -4258,120 +4558,133 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"குழுவின் %g பெயர் (ச்லாச்கள் \\/ கோடுகளாக மாற்றப்படுகின்றன -)\n"
+" %P நெறிமுறை பெயர்\n"
+" %N இணைப்பு பெயர்\n"
+" %h ஓச்ட்பெயர்/ஐபி\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:404
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
+"உருவாக்கப்பட்ட திரை சாட்களை மட்டுமே சேமிக்கவும், அவற்றை இடைநிலைப்பலகைக்கு நகலெடுக்க "
+"வேண்டாம்."
 
 #: data/ui/remmina_preferences.glade:408
 msgid "Prevent screenshots from entering clipboard"
-msgstr ""
+msgstr "திரை சாட்கள் கிளிப்போர்டில் நுழைவதைத் தடுக்கவும்"
 
 #: data/ui/remmina_preferences.glade:469
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "பல தாவல்களை மூடுவதற்கு முன் உறுதிப்படுத்தவும்"
 
 #: data/ui/remmina_preferences.glade:501
 msgid "Disable anonymous statistics"
-msgstr ""
+msgstr "அநாமதேய புள்ளிவிவரங்களை முடக்கு"
 
 #: data/ui/remmina_preferences.glade:533
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
+"<A href = \"https://remmina.org\" தலைப்பு = \"ரெமினா நியூச் தளம்\"> remmina.org "
+"</a> இலிருந்து செய்திகளை முடக்கு"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "அன்றைய உதவிக்குறிப்பை முடக்கு"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
-msgstr ""
+msgstr "பொது"
 
 #: data/ui/remmina_preferences.glade:643
 msgid "Always show tabs"
-msgstr ""
+msgstr "எப்போதும் தாவல்களைக் காட்டு"
 
 #: data/ui/remmina_preferences.glade:659
 msgid "Hide the toolbar shown in the tabbed interface"
-msgstr ""
+msgstr "தாவலாக்கப்பட்ட இடைமுகத்தில் காட்டப்பட்டுள்ள கருவிப்பட்டியை மறைக்கவும்"
 
 #: data/ui/remmina_preferences.glade:680
 msgid "Default view"
-msgstr ""
+msgstr "இயல்புநிலை பார்வை"
 
 #: data/ui/remmina_preferences.glade:694
 msgid "Automatic"
-msgstr ""
+msgstr "தானியங்கி"
 
 #: data/ui/remmina_preferences.glade:695
 msgid "Scrolled window"
-msgstr ""
+msgstr "உருட்டப்பட்ட சாளரம்"
 
 #: data/ui/remmina_preferences.glade:697
 msgid "Viewport fullscreen"
-msgstr ""
+msgstr "ViewPort முழு திரை"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:713
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr ""
+msgstr "தாவல்கள் குழு"
 
 #: data/ui/remmina_preferences.glade:725
 msgid "By group"
-msgstr ""
+msgstr "குழு மூலம்"
 
 #: data/ui/remmina_preferences.glade:726
 msgid "By protocol"
-msgstr ""
+msgstr "நெறிமுறை மூலம்"
 
 #: data/ui/remmina_preferences.glade:727
 msgid "Per connection"
-msgstr ""
+msgstr "ஒரு இணைப்புக்கு"
 
 #: data/ui/remmina_preferences.glade:739
 msgid "Fullscreen on the same screen as the connection window"
-msgstr ""
+msgstr "இணைப்பு சாளரத்தின் அதே திரையில் முழுத்திரை"
 
 #: data/ui/remmina_preferences.glade:762
 msgid "Peeking"
-msgstr ""
+msgstr "எட்டிப் பார்க்கிறது"
 
 #: data/ui/remmina_preferences.glade:763
 msgid "Hidden"
-msgstr ""
+msgstr "மறைக்கப்பட்ட"
 
 #: data/ui/remmina_preferences.glade:780
 msgid "Fullscreen toolbar visibility"
-msgstr ""
+msgstr "முழுத்திரை கருவிப்பட்டி தெரிவுநிலை"
 
 #: data/ui/remmina_preferences.glade:790
 msgid "Hide the search bar shown in the main window"
-msgstr ""
+msgstr "முதன்மையான சாளரத்தில் காட்டப்பட்டுள்ள தேடல் பட்டியை மறைக்கவும்"
 
 #: data/ui/remmina_preferences.glade:806
 msgid "Prefer dark theme"
-msgstr ""
+msgstr "இருண்ட கருப்பொருளை விரும்புங்கள்"
 
 #: data/ui/remmina_preferences.glade:810
 msgid ""
 "If a GTK theme includes a dark variant, it will be used instead of the "
 "configured theme."
 msgstr ""
+"சி.டி.கே கருப்பொருள் ஒரு இருண்ட மாறுபாட்டைக் கொண்டிருந்தால், அது உள்ளமைக்கப்பட்ட "
+"கருப்பொருளுக்கு பதிலாக பயன்படுத்தப்படும்."
 
 #: data/ui/remmina_preferences.glade:823
 msgid "Always show notes"
-msgstr ""
+msgstr "எப்போதும் குறிப்புகளைக் காட்டு"
 
 #: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
 msgstr ""
+"இணைப்புடன் தொடர்புடைய எந்த குறிப்புகளையும் காண்பிக்கும் நெடுவரிசையைச் சேர்க்கவும்."
 
 #: data/ui/remmina_preferences.glade:847
 msgid "“Grab all keyboard events” status colour"
-msgstr ""
+msgstr "“அனைத்து விசைப்பலகை நிகழ்வுகளையும் பற்றிக் கொள்ளுங்கள்” நிலை வண்ணம்"
 
 #: data/ui/remmina_preferences.glade:858
 msgid ""
@@ -4379,123 +4692,128 @@ msgid ""
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
+"எக்சாடெசிமல்- அல்லது வண்ண பெயர்கள் (சிவப்பு, #FF0000).\n"
+" இது ரெம்மினா இணைப்பு கருவிப்பட்டியில் இணைப்பு பெயர்களின் பின்னணி நிறத்தை மாற்றுகிறது "
+"(முழுத் திரையில் இருக்கும்போது)."
 
 #: data/ui/remmina_preferences.glade:875
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
+"\"அனைத்து விசைப்பலகை நிகழ்வுகளையும் கைப்பற்ற\" நிலை வண்ணத்தை இயக்கவும்/முடக்கவும்"
 
 #: data/ui/remmina_preferences.glade:938
 msgid "Appearance"
-msgstr ""
+msgstr "தோற்றம்"
 
 #: data/ui/remmina_preferences.glade:964
 msgid "Show new connection on top of the menu"
-msgstr ""
+msgstr "மெனுவின் மேல் புதிய இணைப்பைக் காட்டு"
 
 #: data/ui/remmina_preferences.glade:983
 msgid "Hide total count shown in the group menu"
-msgstr ""
+msgstr "குழு பட்டியலில் காட்டப்பட்டுள்ள மொத்த எண்ணிக்கையை மறைக்கவும்"
 
 #: data/ui/remmina_preferences.glade:1001
 msgid "No tray icon"
-msgstr ""
+msgstr "தட்டு படவுரு இல்லை"
 
 #: data/ui/remmina_preferences.glade:1020
 msgid "Start in tray upon user login"
-msgstr ""
+msgstr "பயனர் உள்நுழைவின் மீது தட்டில் தொடங்கவும்"
 
 #: data/ui/remmina_preferences.glade:1051
 msgid "Applet"
-msgstr ""
+msgstr "Applet"
 
 #: data/ui/remmina_preferences.glade:1083
 msgid "Host key"
-msgstr ""
+msgstr "புரவலன் விசை"
 
 #: data/ui/remmina_preferences.glade:1115
 msgid "Show/hide fullscreen"
-msgstr ""
+msgstr "முழுத்திரனைக் காட்டவும்/மறைக்கவும்"
 
 #: data/ui/remmina_preferences.glade:1146
 msgid "Auto-fit window"
-msgstr ""
+msgstr "ஆட்டோ-ஃபிட் சாளரம்"
 
 #: data/ui/remmina_preferences.glade:1223
 msgid "Apply/remove scaling"
-msgstr ""
+msgstr "அளவிடுதலைப் பயன்படுத்துங்கள்/அகற்று"
 
 #: data/ui/remmina_preferences.glade:1254
 msgid "Grab keyboard"
-msgstr ""
+msgstr "விசைப்பலகை பிடுங்கவும்"
 
 #: data/ui/remmina_preferences.glade:1347
 msgid "Show/hide toolbar"
-msgstr ""
+msgstr "கருவிப்பட்டியைக் காட்டவும்/மறைக்கவும்"
 
 #: data/ui/remmina_preferences.glade:1410
 #: data/ui/remmina_preferences.glade:1420
 msgid "View-only mode"
-msgstr ""
+msgstr "பார்வை மட்டும் பயன்முறை"
 
 #: data/ui/remmina_preferences.glade:1477
 msgid "Send clipboard as keystrokes"
-msgstr ""
+msgstr "கிளிப்போர்டை விசை அழுத்தமாக அனுப்பவும்"
 
 #: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
-msgstr ""
+msgstr "அனுப்பு-கிளிப்போர்டு"
 
 #: data/ui/remmina_preferences.glade:1517
 msgid "Keyboard"
-msgstr ""
+msgstr "விசைப்பலகை"
 
 #: data/ui/remmina_preferences.glade:1548
 msgid "Local SSH port"
-msgstr ""
+msgstr "உள்ளக பாஓடு துறைமுகம்"
 
 #: data/ui/remmina_preferences.glade:1572
 msgid "Parse ~/.ssh/config"
-msgstr ""
+msgstr "பாகுபடுத்தல் ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1596
 msgid "No logging at all"
-msgstr ""
+msgstr "பதிவு இல்லை"
 
 #: data/ui/remmina_preferences.glade:1597
 msgid "Rare conditions or warnings"
-msgstr ""
+msgstr "அரிய நிலைமைகள் அல்லது எச்சரிக்கைகள்"
 
 #: data/ui/remmina_preferences.glade:1598
 msgid "API-accessible entrypoints"
-msgstr ""
+msgstr "API- அணுகக்கூடிய நுழைவு புள்ளிகள்"
 
 #: data/ui/remmina_preferences.glade:1599
 msgid "Lower level protocol info, packet level"
-msgstr ""
+msgstr "கீழ் நிலை நெறிமுறை செய்தி, பாக்கெட் நிலை"
 
 #: data/ui/remmina_preferences.glade:1600
 msgid "Function entering and leaving"
-msgstr ""
+msgstr "செயல்பாடு மற்றும் வெளியேறுதல்"
 
 #: data/ui/remmina_preferences.glade:1617
 msgid "SSH log level"
-msgstr ""
+msgstr "பாஓடு பதிவு நிலை"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1688
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
-msgstr ""
+msgstr "TCP கீப்பலைவ் ஆய்வுகள் அனுப்பப்படுவதற்கு முன்பு இணைப்பு செயலற்ற தன்மை."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1704
 msgid "Seconds between each keepalive probe."
-msgstr ""
+msgstr "ஒவ்வொரு கீப்அலைவ் ஆய்வுக்கு இடையில் விநாடிகள்."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1720
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
+"TCP இணைப்பு மூலம் அது கைவிடப்படுவதற்கு முன்பு அனுப்பப்படும் கீப்அலைவ் ஆய்வுகளின் எண்ணிக்கை."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1736
@@ -4503,71 +4821,78 @@ msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr ""
+"தொடர்புடைய TCP இணைப்பை வலுக்கட்டாயமாக மூடுவதற்கு முன் தரவை ஒப்புக் கொள்ள முயற்சிப்பதற்கா"
+"ன மில்லி விநாடிகளின் அளவு."
 
 #: data/ui/remmina_preferences.glade:1762
 msgid "SSH options"
-msgstr ""
+msgstr "பாஓடு விருப்பங்கள்"
 
 #: data/ui/remmina_preferences.glade:1779
 msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"ரெம்மினா அமர்வைப் பூட்டி மீண்டும் கடவுச்சொல்லைக் கேட்கிறார். இயல்புநிலை: 300 வினாடிகள்."
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"ரெம்மினாவை அங்கீகரிக்கப்படாத பயன்பாட்டிலிருந்து பாதுகாக்க ஒரு ரகசிய விசையை அமைத்து "
+"பயன்படுத்தவும்."
 
 #: data/ui/remmina_preferences.glade:1796
 msgid "Remmina password"
-msgstr ""
+msgstr "ரெம்மினா கடவுச்சொல்"
 
 #: data/ui/remmina_preferences.glade:1807
 msgid "Use secret key authentication for some widgets"
-msgstr ""
+msgstr "சில விட்செட்களுக்கு ரகசிய விசை அங்கீகாரத்தைப் பயன்படுத்தவும்"
 
 #: data/ui/remmina_preferences.glade:1827
 msgid "Valid for"
-msgstr ""
+msgstr "செல்லுபடியாகும்"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "கடவுச்சொல்லை செல்லுபடியாகும் வினாடிகளின் எண்ணிக்கை"
 
 #: data/ui/remmina_preferences.glade:1843
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "விநாடிகளில் நேரம் முடிந்தது (இயல்புநிலை 300)"
 
 #: data/ui/remmina_preferences.glade:1855
 msgid "Enter your Remmina password to connect"
-msgstr ""
+msgstr "இணைக்க உங்கள் ரெமினா கடவுச்சொல்லை உள்ளிடவும்"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1859
 msgid "Require to connect"
-msgstr ""
+msgstr "இணைக்க வேண்டும்"
 
 #: data/ui/remmina_preferences.glade:1870
 msgid "Creation, editing, copying, and deletions require the Remmina password"
 msgstr ""
+"உருவாக்கம், திருத்துதல், நகலெடுப்பது மற்றும் நீக்குதல் மற்றும் நீக்குதல் ஆகியவை ரெம்மினா "
+"கடவுச்சொல் தேவை"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1874
 msgid "Require to modify"
-msgstr ""
+msgstr "மாற்ற வேண்டும்"
 
 #: data/ui/remmina_preferences.glade:1885
 msgid "Enter your Remmina password to view passwords"
-msgstr ""
+msgstr "கடவுச்சொற்களைக் காண உங்கள் ரெமினா கடவுச்சொல்லை உள்ளிடவும்"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1889
 msgid "Require to view passwords"
-msgstr ""
+msgstr "கடவுச்சொற்களைக் காண வேண்டும்"
 
 #: data/ui/remmina_preferences.glade:1945
 msgid "Encryption"
-msgstr ""
+msgstr "குறியாக்கம்"
 
 #: data/ui/remmina_preferences.glade:1956
 msgid ""
@@ -4579,50 +4904,58 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"கடவுச்சொற்களை சேமிக்க ரெம்மினா பயன்படுத்தும் குறியாக்க முறைகள் இவை.\n"
+"\n"
+" \"பலவீனமான\" முறையைத் தவிர, மற்றவர்கள் அனைவரும் பரிந்துரைக்கப்படுகிறார்கள், \"கீச்டோர்\" "
+"இயல்புநிலை, ஏனெனில் இது கே.டி.இ/பிளாச்மா மற்றும் க்னோம் உடன் ஒருங்கிணைக்கிறது.\n"
+"\n"
+" \"இடைநிலை\" நினைவகம் அல்லது செயலாக்க சக்தியைப் பயன்படுத்தாது, மேலும் \"உணர்திறன்\" "
+"மிகவும் பாதுகாப்பானது, ஆனால் +1 கிப் ரேம் மற்றும் பல சிபியு சுழற்சிகளைப் "
+"பயன்படுத்துகிறது. "
 
 #: data/ui/remmina_preferences.glade:1965
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "இடைநிலை (+64 MIB ரேம்)"
 
 #: data/ui/remmina_preferences.glade:1966
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "வலுவான (+256 MIB, ~ 2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1967
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "உணர்திறன் (+1 கிப், ~ 2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1983
 msgid "Auditing log"
-msgstr ""
+msgstr "தணிக்கை பதிவு"
 
 #: data/ui/remmina_preferences.glade:2008
 msgid "Automatically accept all fingerprints and certificates"
-msgstr ""
+msgstr "அனைத்து கைரேகைகளையும் சான்றிதழ்களையும் தானாக ஏற்றுக்கொள்ளுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2013
 msgid "Trust all certificates"
-msgstr ""
+msgstr "அனைத்து சான்றிதழ்களையும் நம்புங்கள்"
 
 #: data/ui/remmina_preferences.glade:2048
 msgid "Security"
-msgstr ""
+msgstr "பாதுகாப்பு"
 
 #: data/ui/remmina_preferences.glade:2079
 msgid "Terminal font"
-msgstr ""
+msgstr "முனைய எழுத்துரு"
 
 #: data/ui/remmina_preferences.glade:2092
 msgid "Scrollback lines"
-msgstr ""
+msgstr "உருள் கோடுகள்"
 
 #: data/ui/remmina_preferences.glade:2140
 msgid "Shortcuts for copying and pasting"
-msgstr ""
+msgstr "நகலெடுப்பதற்கும் ஒட்டுவதற்கும் குறுக்குவழிகள்"
 
 #: data/ui/remmina_preferences.glade:2153
 msgid "Select all shortcuts"
-msgstr ""
+msgstr "அனைத்து குறுக்குவழிகளையும் தேர்ந்தெடுக்கவும்"
 
 #: data/ui/remmina_preferences.glade:2166
 #: data/ui/remmina_preferences.glade:2183
@@ -4631,167 +4964,171 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:2800
 #: data/ui/remmina_preferences.glade:2817
 msgid "(Host key+)"
-msgstr ""
+msgstr "(ஓச்ட் விசை)"
 
 #: data/ui/remmina_preferences.glade:2201
 msgid "Use default system font"
-msgstr ""
+msgstr "இயல்புநிலை கணினி எழுத்துருவைப் பயன்படுத்தவும்"
 
 #: data/ui/remmina_preferences.glade:2226
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
+"“எச்சிஆர் 1” ஐத் தேர்ந்தெடுப்பது முதல் 8 தட்டு வண்ணங்களின் பிரகாசமான சகாக்களுக்கும் "
+"மாறுகிறது (உரையை தைரியமாக மாற்றுவதோடு கூடுதலாக)."
 
 #: data/ui/remmina_preferences.glade:2242
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "பிரகாசமான வண்ணங்களில் தைரியமான உரையைக் காட்டு"
 
 #: data/ui/remmina_preferences.glade:2256
 msgid "Colour theme"
-msgstr ""
+msgstr "வண்ண கருப்பொருள்"
 
 #: data/ui/remmina_preferences.glade:2267
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
+"வண்ணத் திட்ட கோப்பைத் தேர்வுசெய்க. பொதுவாக/usr/share/remmina/தீம் கிடைக்கும். https://"
+"github.com/mbadolato/iterm2-color-chemes க்கு கூடுதல் விவரங்கள் உள்ளன."
 
 #: data/ui/remmina_preferences.glade:2271
 msgid "Pick a terminal colouring file"
-msgstr ""
+msgstr "முனைய வண்ணமயமாக்கல் கோப்பைத் தேர்ந்தெடுக்கவும்"
 
 #: data/ui/remmina_preferences.glade:2286
 msgid "Bright colours"
-msgstr ""
+msgstr "பிரகாசமான வண்ணங்கள்"
 
 #: data/ui/remmina_preferences.glade:2300
 msgid "Pick a light black colour"
-msgstr ""
+msgstr "ஒரு ஒளி கருப்பு நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2314
 msgid "Pick a light red colour"
-msgstr ""
+msgstr "ஒளி சிவப்பு நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2328
 msgid "Pick a bright green colour"
-msgstr ""
+msgstr "பிரகாசமான பச்சை நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2342
 msgid "Pick a bright yellow colour"
-msgstr ""
+msgstr "பிரகாசமான மஞ்சள் நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2356
 msgid "Pick a bright blue colour"
-msgstr ""
+msgstr "பிரகாசமான நீல நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2370
 msgid "Pick a light magenta colour"
-msgstr ""
+msgstr "ஒளி மெசந்தா நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2384
 msgid "Pick a light cyan colour"
-msgstr ""
+msgstr "ஒரு ஒளி சியான் நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2398
 msgid "Pick a light white colour"
-msgstr ""
+msgstr "லேசான வெள்ளை நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2412
 msgid "Pick a black colour"
-msgstr ""
+msgstr "கருப்பு நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2426
 msgid "Pick a red colour"
-msgstr ""
+msgstr "சிவப்பு நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2440
 msgid "Pick a green colour"
-msgstr ""
+msgstr "பச்சை நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2454
 msgid "Pick a yellow colour"
-msgstr ""
+msgstr "மஞ்சள் நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2468
 msgid "Pick a blue colour"
-msgstr ""
+msgstr "நீல நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2482
 msgid "Pick a magenta colour"
-msgstr ""
+msgstr "ஒரு மெசந்தா வண்ணத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2496
 msgid "Pick a cyan colour"
-msgstr ""
+msgstr "ஒரு சியான் நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2510
 msgid "Pick a white colour"
-msgstr ""
+msgstr "ஒரு வெள்ளை நிறத்தைத் தேர்ந்தெடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2523
 msgid "Normal colours"
-msgstr ""
+msgstr "சாதாரண வண்ணங்கள்"
 
 #: data/ui/remmina_preferences.glade:2536
 #: data/ui/remmina_preferences.glade:2551
 msgid "Cursor colour"
-msgstr ""
+msgstr "கர்சர் நிறம்"
 
 #: data/ui/remmina_preferences.glade:2565
 #: data/ui/remmina_preferences.glade:2580
 msgid "Background colour"
-msgstr ""
+msgstr "பின்னணி நிறம்"
 
 #: data/ui/remmina_preferences.glade:2596
 #: data/ui/remmina_preferences.glade:2610
 msgid "Foreground colour"
-msgstr ""
+msgstr "முன்புற நிறம்"
 
 #: data/ui/remmina_preferences.glade:2623
 msgid "Increase and decrease font size"
-msgstr ""
+msgstr "எழுத்துரு அளவை அதிகரிக்கவும் குறைக்கவும்"
 
 #: data/ui/remmina_preferences.glade:2653
 msgid "Search text shortcut"
-msgstr ""
+msgstr "உரை குறுக்குவழியைத் தேடுங்கள்"
 
 #: data/ui/remmina_preferences.glade:2684
 #: data/ui/remmina_preferences.glade:2699
 msgid "Bold colour"
-msgstr ""
+msgstr "தைரியமான நிறம்"
 
 #: data/ui/remmina_preferences.glade:2713
 #: data/ui/remmina_preferences.glade:2754
 msgid "Highlight colour"
-msgstr ""
+msgstr "வண்ணத்தை முன்னிலைப்படுத்தவும்"
 
 #: data/ui/remmina_preferences.glade:2726
 #: data/ui/remmina_preferences.glade:2770
 msgid "Highlight foreground colour"
-msgstr ""
+msgstr "முன்புற வண்ணத்தை முன்னிலைப்படுத்தவும்"
 
 #: data/ui/remmina_preferences.glade:2739
 #: data/ui/remmina_preferences.glade:2786
 msgid "Cursor foreground colour"
-msgstr ""
+msgstr "கர்சர் முன்புற நிறம்"
 
 #: data/ui/remmina_preferences.glade:2842
 msgid "Terminal"
-msgstr ""
+msgstr "முனையத்தில்"
 
 #: data/ui/remmina_preferences.glade:2856
 msgid "Remmina Preferences"
-msgstr ""
+msgstr "ரெமினா விருப்பத்தேர்வுகள்"
 
 #: data/ui/remmina_unlock.glade:30
 msgid "Unlock Remmina"
-msgstr ""
+msgstr "ரெமினாவைத் திறக்கவும்"
 
 #: data/ui/remmina_unlock.glade:57
 msgid "Unlock"
-msgstr ""
+msgstr "திறக்க"
 
 #: data/ui/remmina_unlock.glade:109
 msgid "Master password"
-msgstr ""
+msgstr "முதன்மை கடவுச்சொல்"
