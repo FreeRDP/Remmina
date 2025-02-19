@@ -152,8 +152,8 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		REMMINA_PLUGIN_DEBUG("Monitor n %d physical  width: %d", i, current->attributes.physicalWidth);
 		current->orig_screen = index;
 		if (!primary_found) {
-			freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftX, current->x);
-			freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftY, current->y);
+			freerdp_settings_set_int32(settings, FreeRDP_MonitorLocalShiftX, current->x);
+			freerdp_settings_set_int32(settings, FreeRDP_MonitorLocalShiftY, current->y);
 		}
 		if (gdk_monitor_is_primary(monitor)) {
 			REMMINA_PLUGIN_DEBUG ("Primary monitor found with id: %d", index);
@@ -162,8 +162,8 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 			if (current->x != 0 || current->y != 0)
 			{
 				REMMINA_PLUGIN_DEBUG ("Primary monitor not at 0,0 coordinates: %d", index);
-				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftX, current->x);
-				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftY, current->y);
+				freerdp_settings_set_int32(settings, FreeRDP_MonitorLocalShiftX, current->x);
+				freerdp_settings_set_int32(settings, FreeRDP_MonitorLocalShiftY, current->y);
 			}
 		} else {
 			if (!primary_found && current->x == 0 &&
@@ -171,14 +171,14 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 			{
 				REMMINA_PLUGIN_DEBUG ("Monitor %d has 0,0 coordinates", index);
 				current->is_primary = TRUE;
-				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftX, current->x);
-				freerdp_settings_set_uint32(settings, FreeRDP_MonitorLocalShiftY, current->y);
+				freerdp_settings_set_int32(settings, FreeRDP_MonitorLocalShiftX, current->x);
+				freerdp_settings_set_int32(settings, FreeRDP_MonitorLocalShiftY, current->y);
 				primary_found = TRUE;
 				REMMINA_PLUGIN_DEBUG ("Primary monitor set to id: %d", index);
 			}
 		}
-		REMMINA_PLUGIN_DEBUG ("Local X Shift: %d", freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX));
-		REMMINA_PLUGIN_DEBUG ("Local Y Shift: %d", freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY));
+		REMMINA_PLUGIN_DEBUG ("Local X Shift: %d", freerdp_settings_get_int32(settings, FreeRDP_MonitorLocalShiftX));
+		REMMINA_PLUGIN_DEBUG ("Local Y Shift: %d", freerdp_settings_get_int32(settings, FreeRDP_MonitorLocalShiftY));
 
 		if (buffer_offset == 0)
 			buffer_offset = g_sprintf(buffer + buffer_offset, "%d", i);
@@ -203,10 +203,10 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	{
 		rdpMonitor* current = &base[i];
 		current->x =
-			current->x - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX);
+			current->x - freerdp_settings_get_int32(settings, FreeRDP_MonitorLocalShiftX);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", i, current->x);
 		current->y =
-			current->y - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftY);
+			current->y - freerdp_settings_get_int32(settings, FreeRDP_MonitorLocalShiftY);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated y: %d", i, current->y);
 	}
 
