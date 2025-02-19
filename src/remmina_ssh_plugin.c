@@ -1568,6 +1568,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Don't remember passwords"),	      TRUE,  NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_copy_on_select", N_("Copy text on selection"),	      FALSE, NULL,		   NULL										 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_allow_ssh_rsa", N_("Allow keys using ssh-rsa (insecure)"),	      FALSE, NULL,		   NULL										 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			  NULL,					      FALSE, NULL,		   NULL										 }
 };
 
