@@ -1751,6 +1751,10 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to %s and SSH_OPTIONS_PORT to %d", ssh->tunnel_entrance_host, ssh->tunnel_entrance_port);
 	}
 
+	if (ssh->allow_ssh_rsa){
+		ssh_options_set(ssh->session, SSH_OPTIONS_PUBLICKEY_ACCEPTED_TYPES, "+ssh-rsa");
+	}
+	
 	if (ssh->privkeyfile && *ssh->privkeyfile != 0) {
 		rc = ssh_options_set(ssh->session, SSH_OPTIONS_IDENTITY, ssh->privkeyfile);
 		if (rc == 0)
@@ -1961,7 +1965,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 			return FALSE;
 		}
 	}
- 
+
  #ifdef HAVE_NETINET_TCP_H
 
 	/* Set keepalive on SSH socket, so we can keep firewalls awaken and detect
@@ -2084,6 +2088,7 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	ssh->hostkeytypes = g_strdup(remmina_file_get_string(remminafile, is_tunnel ? "ssh_tunnel_hostkeytypes" : "ssh_hostkeytypes"));
 	ssh->proxycommand = g_strdup(remmina_file_get_string(remminafile, is_tunnel ? "ssh_tunnel_proxycommand" : "ssh_proxycommand"));
 	ssh->stricthostkeycheck = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_stricthostkeycheck" : "ssh_stricthostkeycheck", 0);
+	ssh->allow_ssh_rsa = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_allow_ssh_rsa" : "ssh_allow_ssh_rsa", 0);
 	gint c = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_compression" : "ssh_compression", 0);
 	ssh->compression = (c == 1) ? "yes" : "no";
 
