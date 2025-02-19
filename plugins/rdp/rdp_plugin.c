@@ -2272,7 +2272,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		remmina_plugin_service->file_set_int(remminafile, "multimon", 1);
 	}
 
-	if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
+	// Allow multimonitor mode always inititally. See https://gitlab.com/Remmina/Remmina/-/issues/3285
+	{
 		guint32 maxwidth = 0;
 		guint32 maxheight = 0;
 		gchar *monitorids;
