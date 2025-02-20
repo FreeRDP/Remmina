@@ -2332,7 +2332,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			g_free(monitorids);
 			g_strfreev(items);
 		}
-		if (maxwidth && maxheight &&  && remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
+		if (maxwidth && maxheight && remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
 			REMMINA_PLUGIN_DEBUG("Setting DesktopWidth and DesktopHeight to: %dx%d", maxwidth, maxheight);
 			freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_DesktopWidth, maxwidth);
 			freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_DesktopHeight, maxheight);
