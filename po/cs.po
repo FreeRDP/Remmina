@@ -7,13 +7,13 @@
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # Štěpán Adamec <adamec@yasas.org>, 2022, 2023.
 # Václav Koterec <kot.va@centrum.cz>, 2022.
-# Petr Kadlec <mormegil@centrum.cz>, 2023.
+# Petr Kadlec <mormegil@centrum.cz>, 2023, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2023-12-19 14:09+0000\n"
+"PO-Revision-Date: 2025-02-23 18:11+0000\n"
 "Last-Translator: Petr Kadlec <mormegil@centrum.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -21,8 +21,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.3\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -141,11 +141,11 @@ msgstr "Nástroj"
 
 #: src/remmina_plugin_manager.c:86
 msgid "Preference"
-msgstr "Předvolba"
+msgstr "Předvolby"
 
 #: src/remmina_plugin_manager.c:86
 msgid "Secret"
-msgstr "Tajnost"
+msgstr "Tajemství"
 
 #: src/remmina_plugin_manager.c:86
 msgid "Language Wrapper"
@@ -154,10 +154,8 @@ msgstr ""
 "v jiných jazycích (v tomto kontextu Python)"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Stáhnout"
+msgstr "Stažení zásuvného modulu"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -170,10 +168,8 @@ msgid "Plugins"
 msgstr "Zásuvné moduly"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Stáhnout"
+msgstr "_Stáhnout"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -185,7 +181,7 @@ msgstr "Zavřít"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Nainstalovat"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -1666,9 +1662,8 @@ msgid "Auto-start this profile"
 msgstr "Spouštět tento profil automaticky"
 
 #: src/remmina_file_editor.c:1199
-#, fuzzy
 msgid "Connection profile security"
-msgstr "Nový profil připojení"
+msgstr "Zabezpečení profilu připojení"
 
 #: src/remmina_file_editor.c:1202
 msgid "Require password to connect or edit the profile"
@@ -1817,17 +1812,14 @@ msgid "Enable Service Discovery"
 msgstr "Zapnout objevování služeb"
 
 #: src/remmina_icon.c:157 data/ui/remmina_main.glade:428
-#, fuzzy
 msgid "_Quit"
-msgstr "_Zavřít"
+msgstr "U_končit"
 
 #: src/remmina_icon.c:162
-#, fuzzy
 msgid "_About"
 msgstr "O progr_amu"
 
 #: src/remmina_icon.c:167 data/ui/remmina_main.glade:279
-#, fuzzy
 msgid "_Preferences"
 msgstr "_Nastavení"
 
@@ -2270,7 +2262,6 @@ msgid "Device scale factor %"
 msgstr "Měřítko zařízení %"
 
 #: plugins/rdp/rdp_settings.c:648
-#, fuzzy
 msgid "Desktop orientation"
 msgstr "Orientace plochy"
 
@@ -2288,38 +2279,31 @@ msgid "Disable smooth scrolling"
 msgstr "Zakázat plynulé posouvání"
 
 #: plugins/rdp/rdp_settings.c:687
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General settings"
 msgstr "Obecná nastavení"
 
 #: plugins/rdp/rdp_settings.c:694 plugins/rdp/rdp_plugin.c:3169
-#, fuzzy
-#| msgid "Reconnection attempt %d of %d…"
 msgid "Reconnect attempts number"
 msgstr "Počet pokusů o opětovné připojení"
 
 #: plugins/rdp/rdp_settings.c:707 plugins/rdp/rdp_plugin.c:3169
-#, fuzzy
 msgid ""
 "The maximum number of reconnect attempts upon an RDP disconnect (default: 20)"
 msgstr ""
-"Maximální počet pokusů o opětovné připojení při odpojení RDP (výchozí: 20)."
+"Maximální počet pokusů o opětovné připojení při odpojení RDP (výchozí: 20)"
 
 #: plugins/rdp/rdp_plugin.c:837 plugins/rdp/rdp_plugin.c:902
 #: plugins/rdp/rdp_plugin.c:987
-#, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "Zadejte přihlašovací údaje pro RDP"
 
 #: plugins/rdp/rdp_plugin.c:910 plugins/rdp/rdp_plugin.c:998
-#, fuzzy
 msgid "Enter RDP gateway authentication credentials"
 msgstr "Zadejte přihlašovací údaje pro bránu do RDP"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Zadejte PIN k čipové kartě RDP"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2467,59 +2451,48 @@ msgid "Cannot connect to the “%s” RDP server."
 msgstr "Nedaří se připojit k RDP serveru „%s“."
 
 #: plugins/rdp/rdp_plugin.c:2918
-#, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
-msgstr "Automaticky (32 bit/px) (Server zvolí nejlepší formát)"
+msgstr "Automaticky (32 bpp) (Server zvolí nejlepší formát)"
 
 #: plugins/rdp/rdp_plugin.c:2919
-#, fuzzy
 msgid "GFX AVC444 (32 bpp)"
-msgstr "GFX AVC444 (32 bit/px)"
+msgstr "GFX AVC444 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2920
-#, fuzzy
 msgid "GFX AVC420 (32 bpp)"
-msgstr "GFX AVC420 (32 bit/px)"
+msgstr "GFX AVC420 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2921
-#, fuzzy
 msgid "GFX RFX (32 bpp)"
-msgstr "GFX RFX (32 bit/px)"
+msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2922
-#, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX progresivní (32 bit/px)"
+msgstr "GFX RFX progresivní (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2923
-#, fuzzy
 msgid "RemoteFX (32 bpp)"
-msgstr "RemoteFX (32 bit/px)"
+msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2924 plugins/vnc/vnc_plugin.c:2029
-#, fuzzy
 msgid "True colour (32 bpp)"
-msgstr "True color (32 bit/px)"
+msgstr "True color (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2925
-#, fuzzy
 msgid "True colour (24 bpp)"
-msgstr "True color (24 bit/px)"
+msgstr "True color (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2926 plugins/vnc/vnc_plugin.c:2030
-#, fuzzy
 msgid "High colour (16 bpp)"
-msgstr "High color (16 bit/px)"
+msgstr "High color (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2927
-#, fuzzy
 msgid "High colour (15 bpp)"
-msgstr "High color (15 bit/px)"
+msgstr "High color (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2928 plugins/vnc/vnc_plugin.c:2031
-#, fuzzy
 msgid "256 colours (8 bpp)"
-msgstr "256 barev (8 bit/px)"
+msgstr "256 barev (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2959 data/ui/remmina_preferences.glade:728
 #, fuzzy
@@ -2528,48 +2501,40 @@ msgstr "Žádné"
 
 #: plugins/rdp/rdp_plugin.c:2960
 msgid "Auto-detect"
-msgstr "Automatické zjišťování"
+msgstr "Zjistit automaticky"
 
 #: plugins/rdp/rdp_plugin.c:2961
-#, fuzzy
 msgid "Modem"
 msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2962
-#, fuzzy
 msgid "Low performance broadband"
 msgstr "Širokopásmové připojení s nízkým výkonem"
 
 #: plugins/rdp/rdp_plugin.c:2963
-#, fuzzy
 msgid "Satellite"
 msgstr "Satelit"
 
 #: plugins/rdp/rdp_plugin.c:2964
-#, fuzzy
 msgid "High performance broadband"
 msgstr "Vysoce výkonné širokopásmové připojení"
 
 #: plugins/rdp/rdp_plugin.c:2965
-#, fuzzy
 msgid "WAN"
 msgstr "WAN"
 
 #: plugins/rdp/rdp_plugin.c:2966
-#, fuzzy
 msgid "LAN"
 msgstr "LAN"
 
 #: plugins/rdp/rdp_plugin.c:2973 plugins/spice/spice_plugin.c:641
 #: data/ui/remmina_preferences.glade:764
-#, fuzzy
 msgid "Off"
-msgstr "Vypnuto"
+msgstr "Vypnout"
 
 #: plugins/rdp/rdp_plugin.c:2982
-#, fuzzy
 msgid "Automatic negotiation"
-msgstr "Automaticky dojednat"
+msgstr "Vyjednat automaticky"
 
 #: plugins/rdp/rdp_plugin.c:2983
 #, fuzzy
@@ -2609,7 +2574,6 @@ msgstr "Každých 10 minut"
 
 #: plugins/rdp/rdp_plugin.c:3011 plugins/spice/spice_plugin.c:622
 #: plugins/spice/spice_plugin.c:640
-#, fuzzy
 msgid "Default"
 msgstr "Výchozí"
 
@@ -2638,7 +2602,6 @@ msgid "5"
 msgstr "5"
 
 #: plugins/rdp/rdp_plugin.c:3022
-#, fuzzy
 msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 a novější)"
 
@@ -3499,7 +3462,7 @@ msgstr "Zobrazit vzdálený kurzor"
 
 #: plugins/vnc/vnc_plugin.c:2138
 msgid "Turn off encryption"
-msgstr "Použít TLS šifrování"
+msgstr "Vypnout šifrování"
 
 #: plugins/vnc/vnc_plugin.c:2155
 #, fuzzy
@@ -3512,9 +3475,8 @@ msgid "Remmina VNC Plugin"
 msgstr "Zásuvný modul Remmina pro VNC"
 
 #: plugins/vnc/vnc_plugin.h:47
-#, fuzzy
 msgid "Remmina VNC listener Plugin"
-msgstr "Zásuvný modul Remmina pro očekávání VNC spojení"
+msgstr "Zásuvný modul Remmina pro příjem VNC spojení"
 
 #: plugins/www/www_config.h:43
 #, fuzzy
@@ -3522,7 +3484,6 @@ msgid "Remmina web-browser plugin"
 msgstr "Zásuvný modul Remmina pro webový prohlížeč"
 
 #: plugins/www/www_plugin.c:99
-#, fuzzy
 msgid "File downloaded"
 msgstr "Soubor stažen"
 
@@ -3537,7 +3498,6 @@ msgid "URL"
 msgstr "URL adresa"
 
 #: plugins/www/www_plugin.c:907
-#, fuzzy
 msgid "http://address or https://address"
 msgstr "http://adresa nebo https://adresa"
 
@@ -3572,7 +3532,6 @@ msgid "Turn on spatial navigation"
 msgstr "Zapnout prostorovou navigaci"
 
 #: plugins/www/www_plugin.c:931
-#, fuzzy
 msgid "Turn on plugin support"
 msgstr "Zapnout podporu zásuvných modulů"
 
@@ -4080,16 +4039,12 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "Nastavení DPI je mimo meze. Upravte jej v nastavení profilu."
 
 #: plugins/x2go/x2go_plugin.c:2576
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session…"
-msgstr "Nelze spustit relaci X2Go."
+msgstr "Nepodařilo se spustit relaci X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Nelze spustit relaci X2Go."
+msgstr "Nepodařilo se spustit relaci X2Go."
 
 #: plugins/x2go/x2go_plugin.c:2584
 #, fuzzy, c-format
@@ -4346,9 +4301,8 @@ msgid "Your private key"
 msgstr "Soubor se soukromým SSH klíčem"
 
 #: plugins/x2go/x2go_plugin.c:3460
-#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr "Načtení zásuvného modulu X2Go."
+msgstr "Zásuvný modul X2Go načten."
 
 #: plugins/x2go/x2go_plugin.h:43
 #, fuzzy
@@ -4782,7 +4736,7 @@ msgstr "Zvolte novou klávesu"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "Dovolit modifikátory kláves"
 
 #: data/ui/remmina_key_chooser.glade:121
 #, fuzzy
@@ -4816,7 +4770,6 @@ msgstr ""
 "Vyhledávací řetězec nebo název / ip adresa serveru pro „Rychlé připojení“"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#, fuzzy
 msgid "Server name or IP address"
 msgstr "Název nebo IP adresa serveru"
 
@@ -4832,41 +4785,34 @@ msgid "Edit"
 msgstr "Upravit"
 
 #: data/ui/remmina_main.glade:218
-#, fuzzy
 msgid "Collapse all"
 msgstr "Sbalit vše"
 
 #: data/ui/remmina_main.glade:228
-#, fuzzy
 msgid "Expand all"
 msgstr "Rozbalit vše"
 
 #: data/ui/remmina_main.glade:290
-#, fuzzy
 msgid "Multi password changer"
 msgstr "Nástroj pro hromadnou změnu hesel"
 
 #: data/ui/remmina_main.glade:300
-#, fuzzy
 msgid "Debugging"
 msgstr "Ladění"
 
 #: data/ui/remmina_main.glade:320
-#, fuzzy
 msgid "Export"
 msgstr "Exportovat"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Nahlásit chybu"
 
 #: data/ui/remmina_main.glade:356
-#, fuzzy
 msgid "Make Remmina your default remote desktop client"
 msgstr "Nastavit aplikaci Remmina jako výchozího klienta vzdálené plochy"
 
 #: data/ui/remmina_main.glade:372
-#, fuzzy
 msgid "Homepage"
 msgstr "Domovská stránka"
 
@@ -4876,7 +4822,6 @@ msgid "Donations"
 msgstr "Finanční příspěvky"
 
 #: data/ui/remmina_main.glade:392
-#, fuzzy
 msgid "Wiki"
 msgstr "Wiki"
 
@@ -4887,12 +4832,10 @@ msgid "Community"
 msgstr "Komunita"
 
 #: data/ui/remmina_main.glade:546
-#, fuzzy
 msgid "Plugin"
-msgstr "Doplněk"
+msgstr "Zásuvný modul"
 
 #: data/ui/remmina_main.glade:560
-#, fuzzy
 msgid "Last used"
 msgstr "Naposledy použito"
 
@@ -4923,63 +4866,57 @@ msgstr "Přepnout Pohled"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Zahrnout systémové informace"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Zahrnout ladicí data"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Odeslat"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Uživatelské jméno"
+msgstr "Jméno/uživatelské jméno:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "E-mail:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "e-mail"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Nadpis chyby"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Popis"
+msgstr "Popis chyby"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Kliknutím na „Odeslat“ se toto hlášení odešle na GitLab stránku Remminy a "
+"automaticky se založí nový záznam ve sledování chyb."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
 msgid "Remmina Report Bug"
-msgstr "Heslo k uživatelskému účtu"
+msgstr "Hlášení chyby v Remmině"
 
 #: data/ui/remmina_spinner.glade:54
-#, fuzzy
 msgid "Please wait…"
 msgstr "Počkejte prosím…"
 
 #: data/ui/remmina_preferences.glade:63
-#, fuzzy
 msgid "Double-click action"
 msgstr "Akce při dvojkliku"
 
 #: data/ui/remmina_preferences.glade:79
-#, fuzzy
 msgid "Open connection"
 msgstr "Otevřít připojení"
 
@@ -5123,45 +5060,36 @@ msgstr ""
 "\n"
 
 #: data/ui/remmina_preferences.glade:404
-#, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr "Pořízené zachycené stavy pouze ukládat a nekopírovat je do schránky."
+msgstr "Vytvořené snímky obrazovky pouze ukládat, nekopírovat je do schránky."
 
 #: data/ui/remmina_preferences.glade:408
-#, fuzzy
 msgid "Prevent screenshots from entering clipboard"
-msgstr "Zamezit tomu, aby se snímky obrazovky dostávaly do schránky"
+msgstr "Zamezit kopírování snímků obrazovky do schránky"
 
 #: data/ui/remmina_preferences.glade:469
 msgid "Confirm before closing multiple tabs"
 msgstr "Potvrzovat před zavíráním více záložek"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
 msgid "Disable anonymous statistics"
-msgstr "Odesílat anonymní statistiky"
+msgstr "Vypnout anonymní statistiky"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Stahovat novinky z <a href=\"https://remmina.org\" title=\"Stránky s "
-"novinkami v Remmina\">remmina.org</a> (*)"
+"Vypnout novinky z <a href=\"https://remmina.org\" title="
+"\"Stránky s novinkami v Remmina\">remmina.org</a>"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "Vypnout tipy dne"
 
 #: data/ui/remmina_preferences.glade:618
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General"
-msgstr "Obecná nastavení"
+msgstr "Obecné"
 
 #: data/ui/remmina_preferences.glade:643
 #, fuzzy
@@ -5356,39 +5284,32 @@ msgid "View-only mode"
 msgstr "Režim pouze-zobrazení"
 
 #: data/ui/remmina_preferences.glade:1477
-#, fuzzy
-#| msgid "Send clipboard content as keystrokes"
 msgid "Send clipboard as keystrokes"
-msgstr "Odesílání obsahu schránky jako stisknutí kláves"
+msgstr "Odeslat schránku jako stisky kláves"
 
 #: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
-msgstr ""
+msgstr "Poslat schránku"
 
 #: data/ui/remmina_preferences.glade:1517
-#, fuzzy
 msgid "Keyboard"
 msgstr "Klávesnice"
 
 #: data/ui/remmina_preferences.glade:1548
-#, fuzzy
 msgid "Local SSH port"
 msgstr "Místní SSH port"
 
 #: data/ui/remmina_preferences.glade:1572
-#, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "Zpracovat ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1596
-#, fuzzy
 msgid "No logging at all"
 msgstr "Vůbec nezaznamenávat"
 
 #: data/ui/remmina_preferences.glade:1597
-#, fuzzy
 msgid "Rare conditions or warnings"
-msgstr "Zřídka se vyskytující případy nebo varování"
+msgstr "Zřídka se vyskytující situace nebo varování"
 
 #: data/ui/remmina_preferences.glade:1598
 #, fuzzy
@@ -5396,19 +5317,16 @@ msgid "API-accessible entrypoints"
 msgstr "Vstupní body přístupné pro API"
 
 #: data/ui/remmina_preferences.glade:1599
-#, fuzzy
 msgid "Lower level protocol info, packet level"
-msgstr "Podrobné informace na úrovni protokolu a paketu"
+msgstr "Nízkoúrovňové informace protokolu na úrovni paketů"
 
 #: data/ui/remmina_preferences.glade:1600
-#, fuzzy
 msgid "Function entering and leaving"
-msgstr "Vstup do a opouštění funkcí"
+msgstr "Začátek a konec funkcí"
 
 #: data/ui/remmina_preferences.glade:1617
-#, fuzzy
 msgid "SSH log level"
-msgstr "Stupeň podrobností záznamu událostí v SSH"
+msgstr "Úroveň záznamu událostí SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1688
@@ -5444,7 +5362,6 @@ msgstr ""
 "přenos dat nepotvrzen, než TCP vynutí uzavření příslušného spojení."
 
 #: data/ui/remmina_preferences.glade:1762
-#, fuzzy
 msgid "SSH options"
 msgstr "Volby pro SSH"
 
@@ -5531,18 +5448,25 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Toto jsou šifrovací metody používané Remminou pro ukládání hesel.\n"
+"\n"
+"S výjimkou metody „Slabé“ jsou všechny ostatní doporučené. Výchozí je "
+"„klíčenka“, integruje se na KDE/Plasma a GNOME.\n"
+"\n"
+"„Střední“ nepoužívá tolik paměti či výpočetního výkonu, „Citlivé“ je "
+"bezpečnější, ale používá +1 GiB RAM a mnoho cyklů procesoru. "
 
 #: data/ui/remmina_preferences.glade:1965
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Střední (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1966
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Silné (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1967
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Citlivé (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1983
 msgid "Auditing log"
@@ -5608,15 +5532,13 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2242
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Tučný text ukazovat jasnými barvami"
 
 #: data/ui/remmina_preferences.glade:2256
-#, fuzzy
 msgid "Colour theme"
-msgstr "Schéma barev"
+msgstr "Barevné schéma"
 
 #: data/ui/remmina_preferences.glade:2267
-#, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
