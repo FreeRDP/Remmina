@@ -97,7 +97,8 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 
 	display = gdk_display_get_default ();
 	n_monitors = gdk_display_get_n_monitors(display);
-
+	
+	rdpMonitor* rdp_monitors = calloc(n_monitors + 1, sizeof(rdpMonitor));
 
 	/* we got monitorids as options */
 	if (*monitorids)
@@ -125,7 +126,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		}
 
 		monitor = gdk_display_get_monitor(display, index);
-		current = &base[index];
+		current = &rdp_monitors[index];
 		REMMINA_PLUGIN_DEBUG("Monitor n %d", index);
 		/* If the desktop env in use doesn't have the working area concept
 		 * gdk_monitor_get_workarea will return the monitor geometry*/
@@ -138,10 +139,10 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		 * we must multiply by the scale factor */
 		scale = gdk_monitor_get_scale_factor (monitor);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d scale: %d", index, scale);
-		geometry.x *= scale;
-		geometry.y *= scale;
-		geometry.width *= scale;
-		geometry.height *= scale;
+		// geometry.x *= scale;
+		// geometry.y *= scale;
+		// geometry.width *= scale;
+		// geometry.height *= scale;
 		REMMINA_PLUGIN_DEBUG("Monitor n %d width: %d", index, geometry.width);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d height: %d", index, geometry.height);
 		current->width = geometry.width;
@@ -191,6 +192,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		index++;
 
 	}
+	freerdp_settings_set_monitor_def_array_sorted(settings, rdp_monitors, index);
 	freerdp_settings_set_uint32(settings, FreeRDP_MonitorCount, index);
 	/* Subtract monitor shift from monitor variables for server-side use.
 	 * We maintain monitor shift value as Window requires the primary monitor to have a
@@ -201,7 +203,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	 */
 	for (gint i = 0; i < freerdp_settings_get_uint32(settings, FreeRDP_MonitorCount); i++)
 	{
-		rdpMonitor* current = &base[i];
+		rdpMonitor* current = &rdp_monitors[i];
 		current->x =
 			current->x - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", i, current->x);
