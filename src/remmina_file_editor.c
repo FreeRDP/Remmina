@@ -846,6 +846,44 @@ static GtkWidget *remmina_file_editor_create_check(RemminaFileEditor *gfe, GtkWi
 	return widget;
 }
 
+static void remmina_file_editor_export_settings(RemminaFileEditor* rfe)
+{
+	RemminaFileEditorPriv *priv = rfe->priv;
+}
+
+static void remmina_file_editor_run_saver_dialog(GtkButton* self, gpointer user_data)
+{
+
+	RemminaFileEditorPriv *priv = gfe->priv;
+	GtkWidget* dialog = gtk_file_chooser_dialog_new("Save to...", NULL, GTK_FILE_CHOOSER_ACTION_SAVE, _("_Cancel"),
+		GTK_RESPONSE_CANCEL, _("Save"), GTK_RESPONSE_ACCEPT, NULL);
+
+	gint response = gtk_dialog_run(GTK_DIALOG(dialog));
+	gtk_widget_destroy(dialog);
+
+	if (response == GTK_RESPONSE_ACCEPT){
+		
+	}
+	
+}
+
+
+static GtkWidget* remmina_file_editor_create_saver(RemminaFileEditor *gfe, GtkWidget *grid, gint row, gint col, const gchar *label,
+				   const gchar *value, gint type, gchar *setting_name)
+{
+	GtkWidget* widget = gtk_button_new_with_label("Export ssh tunnel settings");
+	gtk_widget_set_name(widget, "Export_ssh");
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
+	
+	
+
+	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_run_saver_dialog), gfe);
+
+	return widget;
+
+}
+
+
 /**
  * Create checkbox + gtk_file_chooser for open files and select folders
  *
@@ -1239,6 +1277,11 @@ static gpointer ssh_tunnel_auth_list[] =
 };
 #endif
 
+static gboolean
+remmina_file_editor_ssh_tunnel_import_settings(GtkFileChooserButton* self, gpointer user_data){
+	g_debug("Importing settings from %s", gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(self)));
+}
+
 static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, RemminaProtocolSSHSetting ssh_setting)
 {
 	TRACE_CALL(__func__);
@@ -1256,7 +1299,7 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 
 	/* The SSH tab (implementation) */
 	grid = remmina_file_editor_create_notebook_tab(gfe, NULL,
-						       _("SSH Tunnel"), 9, 3);
+						       _("SSH Tunnel"), 12, 3);
 	widget = gtk_toggle_button_new_with_label(_("Enable SSH tunnel"));
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
@@ -1411,6 +1454,25 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 	gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_command_entry),
 				   cs ? cs : "");
 	row++;
+
+	widget = remmina_file_editor_create_saver(gfe, grid, row, 0,
+									       _("Import ssh profile!"),
+									       remmina_file_get_string(priv->remmina_file, "ssh_saved_profile"),
+									       GTK_FILE_CHOOSER_ACTION_SAVE, "ssh_saved_profile");
+
+
+	row++;
+
+	widget = remmina_file_editor_create_chooser(gfe, grid, row, 0,
+									       _("Import ssh profile!"),
+									       remmina_file_get_string(priv->remmina_file, "ssh_saved_profile"),
+									       GTK_FILE_CHOOSER_ACTION_OPEN, "ssh_saved_profile");
+
+	g_signal_connect(G_OBJECT(widget), "file-set",
+				 G_CALLBACK(remmina_file_editor_ssh_tunnel_import_settings), gfe);
+
+	row++;
+
 
 
 
