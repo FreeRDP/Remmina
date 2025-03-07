@@ -326,8 +326,9 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 		case REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT:
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
 				freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_UseMultimon, TRUE);
-				/* TODO Add an option for this */
-				freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_ForceMultimon, TRUE);
+				if (remmina_plugin_service->file_get_int(remminafile, "force_multimon", FALSE)) {
+					freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_ForceMultimon, TRUE);
+				}	
 				freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_Fullscreen, TRUE);
 				/* got some crashes with g_malloc0, to be investigated */
 				dcml = calloc(freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_MonitorCount), sizeof(DISPLAY_CONTROL_MONITOR_LAYOUT));
@@ -2278,8 +2279,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		gchar *monitorids;
 		guint32 i;
 		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_UseMultimon, TRUE);
-		/* TODO Add an option for this */
-		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_ForceMultimon, TRUE);
+		if (remmina_plugin_service->file_get_int(remminafile, "force_multimon", FALSE)) {
+			freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_ForceMultimon, TRUE);
+		}	
 		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_Fullscreen, TRUE);
 
 		gchar *monitorids_string = g_strdup(remmina_plugin_service->file_get_string(remminafile, "monitorids"));
@@ -2859,11 +2861,12 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget *gp, const RemminaPro
 			RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 			if (remmina_plugin_service->file_get_int(remminafile, "multimon", FALSE)) {
 				freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_UseMultimon, TRUE);
-				/* TODO Add an option for this */
-				freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_ForceMultimon, TRUE);
 				freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_Fullscreen, TRUE);
 				remmina_rdp_event_send_delayed_monitor_layout(gp);
 			}
+			if (remmina_plugin_service->file_get_int(remminafile, "force_multimon", FALSE)) {
+				freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_ForceMultimon, TRUE);
+			}				
 		} else {
 			REMMINA_PLUGIN_DEBUG("Remmina RDP plugin warning: Null value for rfi by REMMINA_RDP_FEATURE_MULTIMON");
 		}
@@ -3167,8 +3170,9 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed",		N_("Left-handed mouse support"),	  TRUE,	 NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support"),	NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable-smooth-scrolling", N_("Disable smooth scrolling"),		  TRUE,	 NULL,		  NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",			N_("Enable multi monitor"),		  TRUE,	 NULL,		  NULL,										NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",			N_("Span screen over multiple monitors"), TRUE,	 NULL,		  NULL,										NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",		N_("List monitor IDs"),			  FALSE, NULL,		  monitorids_tooltip,								NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "force_multimon",			N_("Force multi monitor when toggled"),		  TRUE,	 NULL,		  NULL,										NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "span",			N_("Span screen over multiple monitors"), FALSE,	 NULL,		  NULL,										NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "monitorids",		N_("List monitor IDs"),			  TRUE, NULL,		  monitorids_tooltip,								NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					  FALSE, NULL,		  NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Colour depth"),			  FALSE, colordepth_list, NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "network",			N_("Network connection type"),		  FALSE, network_list,	  network_tooltip,								NULL, NULL },
