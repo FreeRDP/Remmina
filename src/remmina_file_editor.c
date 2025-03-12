@@ -854,16 +854,29 @@ static void remmina_file_editor_export_settings(RemminaFileEditor* rfe)
 static void remmina_file_editor_run_saver_dialog(GtkButton* self, gpointer user_data)
 {
 
+	RemminaFileEditor* gfe = (RemminaFileEditor*)user_data;
 	RemminaFileEditorPriv *priv = gfe->priv;
 	GtkWidget* dialog = gtk_file_chooser_dialog_new("Save to...", NULL, GTK_FILE_CHOOSER_ACTION_SAVE, _("_Cancel"),
 		GTK_RESPONSE_CANCEL, _("Save"), GTK_RESPONSE_ACCEPT, NULL);
 
+	GtkFileFilter *filter;
+
+
+	filter = gtk_file_filter_new();
+	gtk_file_filter_set_name(filter, _("Remmina Files"));
+	gtk_file_filter_add_pattern(filter, "*.remmina");
+	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), filter);
 	gint response = gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy(dialog);
+	
 
 	if (response == GTK_RESPONSE_ACCEPT){
-		
+		RemminaFile* export_rf = (RemminaFile*)remmina_file_new();
+		remmina_file_set_int(export_rf, "ssh_tunnel_enabled", gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->ssh_tunnel_enabled_check)));
+		export_rf->filename = g_file_get_path(gtk_file_chooser_get_file(GTK_FILE_CHOOSER(dialog)));
+		remmina_file_save(export_rf);
+
 	}
+	gtk_widget_destroy(dialog);
 	
 }
 
@@ -871,7 +884,7 @@ static void remmina_file_editor_run_saver_dialog(GtkButton* self, gpointer user_
 static GtkWidget* remmina_file_editor_create_saver(RemminaFileEditor *gfe, GtkWidget *grid, gint row, gint col, const gchar *label,
 				   const gchar *value, gint type, gchar *setting_name)
 {
-	GtkWidget* widget = gtk_button_new_with_label("Export ssh tunnel settings");
+	GtkWidget* widget = gtk_button_new_with_label(label);
 	gtk_widget_set_name(widget, "Export_ssh");
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 	
@@ -1456,7 +1469,7 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 	row++;
 
 	widget = remmina_file_editor_create_saver(gfe, grid, row, 0,
-									       _("Import ssh profile!"),
+									       _("Export ssh tunnel settings!"),
 									       remmina_file_get_string(priv->remmina_file, "ssh_saved_profile"),
 									       GTK_FILE_CHOOSER_ACTION_SAVE, "ssh_saved_profile");
 
