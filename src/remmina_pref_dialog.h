@@ -77,6 +77,8 @@ typedef struct _RemminaPrefDialog {
 	GtkCheckButton *	checkbutton_appearance_show_tabs;
 	GtkCheckButton *	checkbutton_appearance_show_notes;
 	GtkCheckButton *	checkbutton_appearance_mp_left;
+	GtkCheckButton *	checkbutton_appearance_start_fullscreen;
+	GtkCheckButton *	checkbutton_appearance_start_dynres;
 	GtkCheckButton *	checkbutton_appearance_hide_toolbar;
 	GtkCheckButton *	checkbutton_appearance_hide_searchbar;
 	GtkComboBox *		comboboxtext_options_double_click;

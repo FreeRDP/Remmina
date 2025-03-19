@@ -157,6 +157,8 @@ typedef struct _RemminaPref {
 	gboolean		always_show_tab;
 	gboolean		always_show_notes;
 	gboolean		mp_left;
+	gboolean		start_fullscreen;
+	gboolean		start_dynres;
 	gboolean		hide_connection_toolbar;
 	gboolean		hide_searchbar;
 	gint			default_mode;
