@@ -404,6 +404,10 @@ static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject *
 	plugin_can_scale = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 									 REMMINA_PROTOCOL_FEATURE_TYPE_SCALE);
 
+	if (remmina_pref.start_dynres){
+		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES;
+	}
+
 	/* Forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES when not possible */
 	if ((!plugin_has_dynres) && scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
@@ -411,7 +415,7 @@ static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject *
 	/* Forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED when not possible */
 	if (!plugin_can_scale && scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
-
+	
 	if (scale_avail)
 		*scale_avail = plugin_can_scale;
 	if (dynres_avail)
@@ -4633,6 +4637,10 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 
 	if (fullscreen)
 		view_mode = VIEWPORT_FULLSCREEN_MODE;
+
+	if (remmina_pref.start_fullscreen){
+		view_mode = VIEWPORT_FULLSCREEN_MODE;
+	}
 
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */
 	cnnobj->viewport = gtk_viewport_new(NULL, NULL);
