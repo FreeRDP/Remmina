@@ -1017,6 +1017,33 @@ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gin
 			gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_auth_password), cs);
 		}
 		g_free(cs);
+		//get private key
+		cs = remmina_file_get_string(import_rf, "ssh_tunnel_privatekey");
+		if (cs != NULL){
+			GtkWidget* check = GTK_WIDGET(g_object_get_data(G_OBJECT(priv->ssh_tunnel_privatekey_chooser), "check"));
+			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), TRUE);
+			gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(priv->ssh_tunnel_privatekey_chooser), cs);
+		}
+		g_free(cs);
+		//get certificate
+		cs = remmina_file_get_string(import_rf, "ssh_tunnel_certfile");
+		if (cs != NULL){
+			GtkWidget* check = GTK_WIDGET(g_object_get_data(G_OBJECT(priv->ssh_tunnel_certfile_chooser), "check"));
+			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), TRUE);
+			gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(priv->ssh_tunnel_certfile_chooser), cs);
+		}
+		g_free(cs);
+		//get key passoword
+		cs = remmina_file_get_string(import_rf, "ssh_tunnel_passphrase");
+		if (cs != NULL){
+			gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_passphrase), cs);
+		}
+		//get startup command
+		cs = remmina_file_get_string(import_rf, "ssh_tunnel_command");
+		if (cs != NULL){
+			gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_command_entry), cs);
+		}
+		g_free(cs);
 	}	
 	gtk_widget_destroy(dialog);
 }
@@ -1097,6 +1124,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor *gfe, GtkWidget *grid, gint
 	g_signal_connect(G_OBJECT(check), "toggled", G_CALLBACK(remmina_file_editor_button_on_toggled), widget);
 	remmina_file_editor_button_on_toggled(GTK_TOGGLE_BUTTON(check), widget);
 
+	g_object_set_data(G_OBJECT(widget), "check", (gpointer)check);
 	return widget;
 }
 
