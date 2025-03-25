@@ -877,7 +877,16 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 					}
 				}
 			}
-			scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(hardware_keycode);
+			DWORD vc;
+#ifdef GDK_WINDOWING_X11
+			vc = GetVirtualKeyCodeFromKeycode(hardware_keycode, WINPR_KEYCODE_TYPE_XKB);
+#else
+			vc = GetVirtualKeyCodeFromKeycode(hardware_keycode, WINPR_KEYCODE_TYPE_EVDEV);
+#endif
+			const DWORD sc = GetVirtualScanCodeFromVirtualKeyCode(vc, WINPR_KBD_TYPE_IBM_ENHANCED); //TODO set keyboard type
+			DWORD scancode = freerdp_keyboard_remap_key(rfi->remap_table, sc);
+			
+			// scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(hardware_keycode);
 			if (scancode) {
 				rdp_event.key_event.key_code = scancode & 0xFF;
 				rdp_event.key_event.extended = scancode & 0x100;

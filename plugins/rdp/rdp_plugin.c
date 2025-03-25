@@ -121,6 +121,11 @@ static HANDLE freerdp_abort_event(rdpContext* context) {
 	return context->abortEvent;
 }
 
+struct rdp_remap_table
+{
+	DWORD table[0x10000];
+};
+
 static BOOL freerdp_settings_set_pointer_len(rdpSettings* settings, size_t id, const void* data, size_t len)
 {
 	switch(id) {
@@ -819,6 +824,13 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 	ui->type = REMMINA_RDP_UI_CONNECTED;
 	remmina_rdp_event_queue_ui_async(gp, ui);
 
+	const char* KeyboardRemappingList =
+	    freerdp_settings_get_string(instance->context->settings, FreeRDP_KeyboardRemappingList);
+
+	rfi->remap_table = freerdp_keyboard_remap_string_to_list(KeyboardRemappingList);
+	if (!rfi->remap_table)
+		return FALSE;
+
 	return TRUE;
 }
 
@@ -1204,10 +1216,11 @@ static DWORD remmina_rdp_verify_changed_certificate_ex(freerdp *instance, const 
 static void remmina_rdp_post_disconnect(freerdp *instance)
 {
 	TRACE_CALL(__func__);
+	rfContext *rfi;
 
 	if (!instance || !instance->context)
 		return;
-
+	rfi = (rfContext *)instance->context;
 	PubSub_UnsubscribeChannelConnected(instance->context->pubSub,
 					   remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_UnsubscribeChannelDisconnected(instance->context->pubSub,
@@ -1216,6 +1229,7 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
 
 	// With FreeRDP3 only resources allocated in PostConnect and later are cleaned up here.
+
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
