@@ -1785,7 +1785,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Domain, remmina_plugin_service->file_get_string(remminafile, "domain"));
 
 	s = remmina_plugin_service->file_get_string(remminafile, "password");
-	if (s) freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Password, s);
+	if (s){
+		freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Password, s);
+	} 
+	else {
+		freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Password, "");
+	}
 
 	freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_AutoLogonEnabled, TRUE);
 
