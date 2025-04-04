@@ -1289,8 +1289,15 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			REMMINA_PLUGIN_DEBUG("cl->destPort: %d", cl->destPort);
 		}
 
-		cl->appData.useRemoteCursor = (
-			remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE) ? FALSE : TRUE);
+		int showcursor = remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE);
+
+		cl->appData.useRemoteCursor = (showcursor ? FALSE : TRUE);
+		if (showcursor){
+			GdkCursor* Cursor = gdk_cursor_new(GDK_BLANK_CURSOR);
+			GdkWindow* win = gtk_widget_get_window((gpdata->drawing_area));
+			gdk_window_set_cursor((win),Cursor);
+		}
+
 
 		remmina_plugin_vnc_update_quality(cl, quality);
 		remmina_plugin_vnc_update_colordepth(cl, colordepth);
