@@ -504,14 +504,17 @@
                 "-DWITH_OSS:BOOL=OFF",
                 "-DWITH_PULSE:BOOL=ON",
                 "-DWITH_LIBSYSTEMD:BOOL=OFF",
+                "-DWITH_FUSE:BOOL=OFF",
+                "-DWITH_WEBVIEW:BOOL=OFF",
+                "-DWITH_PKCS11:BOOL=ON",
                 "-DALLOW_IN_SOURCE_BUILD=ON"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.11.2",
-                    "commit": "a38c1be9eee39a9bc22b511fffe96e63fdf8ebe7",
+                    "tag": "3.14.1",
+                    "commit": "4019dcd4097d550d02dd6b70ee88b6a1189be26c",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -530,7 +533,7 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
-                "-DWITH_FREERDP3:BOOL=OFF",
+                "-DWITH_FREERDP3:BOOL=ON",
                 "-DWITH_GVNC:BOOL=ON",
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_PYTHONLIBS:BOOL=ON",
