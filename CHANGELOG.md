@@ -1,3 +1,21 @@
+## v1.4.40
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.39...v1.4.40)
+
+* [REM-3270] Fix invalid free causing crash with sending keystrokes and clipboard contents [!2631](https://gitlab.com/Remmina/Remmina/-/merge_requests/2631) *@myheroyuki*
+* Fix SEGV when removing a non-exitend connection  [!2632](https://gitlab.com/Remmina/Remmina/-/merge_requests/2632) *@sylv-io*
+* [REM-3282] Adjust floating toolbar to take up less space [!2633](https://gitlab.com/Remmina/Remmina/-/merge_requests/2633) *@myheroyuki*
+* [REM-3285] Fix issue with multimonitor configuration needed for FreeRDP versions after 3.10.x  [!2634](https://gitlab.com/Remmina/Remmina/-/merge_requests/2634) *@myheroyuki*
+* [REM-3286] Add option to allow ssh-rsa keys to be used for ssh connections  [!2635](https://gitlab.com/Remmina/Remmina/-/merge_requests/2635) *@myheroyuki*
+* [REM-3285] Only set the max width and height to full monitor if using multimonitor [!2636](https://gitlab.com/Remmina/Remmina/-/merge_requests/2636) *@myheroyuki*
+* [REM-3285] Fix typo [!2637](https://gitlab.com/Remmina/Remmina/-/merge_requests/2637) *@myheroyuki*
+* [REM-3285] Revert calls back to uint [!2638](https://gitlab.com/Remmina/Remmina/-/merge_requests/2638) *@myheroyuki*
+* [REM-3295] Fix issue with RDP scaling on connect [!2639](https://gitlab.com/Remmina/Remmina/-/merge_requests/2639) *@myheroyuki*
+* [REM-3301] Add option to force multimonitor mode [!2640](https://gitlab.com/Remmina/Remmina/-/merge_requests/2640) *@myheroyuki*
+* [REM-3314] Added the options to start connections in fullscreen mode and/or with dynamic resolution enabled for protocols that support the options [!2641](https://gitlab.com/Remmina/Remmina/-/merge_requests/2641) *@myheroyuki*
+* [REM-3316]  Allow empty passwords to be passed to FreeRDP [!2642](https://gitlab.com/Remmina/Remmina/-/merge_requests/2642) *@myheroyuki*
+* [REM-3289]  Allow import/export of ssh tunnel settings [!2643](https://gitlab.com/Remmina/Remmina/-/merge_requests/2643) *@myheroyuki*
+* [REM-3333]  hide local cursor when showing remote cursor [!2647](https://gitlab.com/Remmina/Remmina/-/merge_requests/2644) *@myheroyuki*
+
 ## v1.4.39
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.38...v1.4.39)
 

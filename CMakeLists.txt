@@ -36,7 +36,7 @@ cmake_policy(SET CMP0048 NEW)
 
 project(
   Remmina
-  VERSION 1.4.39
+  VERSION 1.4.40
   DESCRIPTION "The Gtk Remote Desktop Client"
   LANGUAGES C CXX
 )
@@ -452,7 +452,7 @@ find_package(Threads REQUIRED)
 if(NOT CMAKE_USE_PTHREADS_INIT)
   message(FATAL_ERROR "pthreads thread library not found")
 endif()
-
+# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
 # Add GCC sanitizer options, must be done after pthreads detection see remmina
 # issue #1276
 if(CMAKE_COMPILER_IS_GNUCC AND WITH_GCC_SANITIZE_ADDRESS)
