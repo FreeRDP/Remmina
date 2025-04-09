@@ -317,6 +317,7 @@ typedef struct remmina_plugin_rdp_keymap_entry {
 	unsigned	translated_keycode;
 } RemminaPluginRdpKeymapEntry;
 
+typedef struct rdp_remap_table FREERDP_REMAP_TABLE;
 struct rf_context {
 	rdpClientContext clientContext;
 
@@ -389,6 +390,7 @@ struct rf_context {
 	// keep track of last interaction time for keep alive
 	time_t			last_time;
 	time_t			last_time_idle_keypress;
+	FREERDP_REMAP_TABLE* remap_table;
 
 	enum { REMMINA_POSTCONNECT_ERROR_OK = 0, REMMINA_POSTCONNECT_ERROR_GDI_INIT = 1, REMMINA_POSTCONNECT_ERROR_NO_H264 } postconnect_error;
 };
