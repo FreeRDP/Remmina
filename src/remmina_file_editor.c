@@ -941,7 +941,7 @@ static gpointer ssh_tunnel_auth_list[] =
 
 static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gint type)
 {
-
+#ifdef HAVE_LIBSSH
 	RemminaFileEditor* gfe = (RemminaFileEditor*)user_data;
 	RemminaFileEditorPriv *priv = gfe->priv;
 	const gchar *cs;
@@ -1046,6 +1046,7 @@ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gin
 		g_free(cs);
 	}	
 	gtk_widget_destroy(dialog);
+#endif
 }
 
 
