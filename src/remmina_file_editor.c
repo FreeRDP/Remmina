@@ -1948,6 +1948,7 @@ static GError *remmina_file_editor_update(RemminaFileEditor *	gfe,
 	TRACE_CALL(__func__);
 	int res_w, res_h;
 	gchar *custom_resolution;
+	gchar* protocol;
 	RemminaProtocolWidgetResolutionMode res_mode;
 
 	RemminaFileEditorPriv *priv = gfe->priv;
@@ -1959,8 +1960,8 @@ static GError *remmina_file_editor_update(RemminaFileEditor *	gfe,
 	remmina_file_set_string(priv->remmina_file, "group",
 				(priv->group_combo ? remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->group_combo)) : NULL));
 
-	remmina_file_set_string(priv->remmina_file, "protocol",
-				remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo)));
+	protocol = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo));
+	remmina_file_set_string(priv->remmina_file, "protocol", protocol);
 
 	remmina_file_set_string(priv->remmina_file, "server",
 				(priv->server_combo ? remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->server_combo)) : NULL));
@@ -1988,7 +1989,7 @@ static GError *remmina_file_editor_update(RemminaFileEditor *	gfe,
 		remmina_file_set_int(priv->remmina_file, "resolution_height", res_h);
 	}
 
-	if (priv->assistance_toggle){
+	if (priv->assistance_toggle && g_strcmp0(protocol, "RDP") == 0){
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->assistance_toggle))) {
 			remmina_file_set_string(priv->remmina_file, "assistance_file", gtk_entry_get_text(GTK_ENTRY(priv->assistance_file)));
 			remmina_file_set_string(priv->remmina_file, "assistance_pass", gtk_entry_get_text(GTK_ENTRY(priv->assistance_password)));
@@ -1996,8 +1997,9 @@ static GError *remmina_file_editor_update(RemminaFileEditor *	gfe,
 		}else{
 			remmina_file_set_int(priv->remmina_file, "assistance_mode", 0);
 		}
-		
 	}
+
+	g_free(protocol);
 
 	if (priv->keymap_combo)
 		remmina_file_set_string(priv->remmina_file, "keymap",
