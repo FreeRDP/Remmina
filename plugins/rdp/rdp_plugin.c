@@ -1803,7 +1803,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Password, s);
 	} 
 	else {
-		freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Password, "");
+		i = remmina_plugin_service->file_get_int(remminafile, "allow_empty_pass", 0);
+		if (i){
+			freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Password, "");
+		}
+		else{
+			freerdp_settings_set_string(rfi->clientContext.context.settings, FreeRDP_Password, s);
+		}
+		
 	}
 
 	freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_AutoLogonEnabled, TRUE);
@@ -3272,6 +3279,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "websockets",		    N_("Enable Gateway websockets support"),		 TRUE,	NULL,		  NULL														 },
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "no-suppress",	    N_("Update framebuffer even when not visible"),	TRUE,	NULL																 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "allow_empty_pass",	N_("Allow sending empty password"),	TRUE,	NULL																 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,		  NULL														 }
 };
 
