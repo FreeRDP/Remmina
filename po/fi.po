@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Tuomas Lähteenmäki <lahtis@gmail.com>, 2019, 2020, 2021, 2022.
 # Jeannette L <j.lavoie@net-c.ca>, 2020.
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2020, 2021, 2022, 2023, 2024.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2020, 2021, 2022, 2023, 2024, 2025.
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021, 2023, 2024.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2021, 2024.
@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-09-24 12:15+0000\n"
-"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
+"PO-Revision-Date: 2025-04-21 20:05+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
 "Language: fi\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.11.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -165,7 +165,7 @@ msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:1369 data/ui/remmina_main.glade:330
 msgid "Plugins"
-msgstr "Laajennukset"
+msgstr "Liitännäiset"
 
 #: src/remmina_plugin_manager.c:1369
 msgid "_Download"
@@ -204,7 +204,7 @@ msgstr "Versio"
 #: src/remmina_chat_window.c:177
 #, c-format
 msgid "Chat with %s"
-msgstr "Keskustele %s:n kanssa"
+msgstr "Keskustele käyttäjän %s kanssa"
 
 #: src/remmina_chat_window.c:229
 msgid "_Send"
@@ -256,7 +256,7 @@ msgstr "Resoluutiot"
 
 #: src/remmina_pref_dialog.c:95 src/remmina_file_editor.c:561
 msgid "Configure the available resolutions"
-msgstr "Määritä käytettävissä olevat tarkkuudet"
+msgstr "Määritä käytettävissä olevat resoluutiot"
 
 #: src/remmina_pref_dialog.c:147
 msgid "Recent lists cleared."
@@ -293,7 +293,7 @@ msgstr ""
 #: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:33
 #: data/ui/remmina_passwd.glade:21 data/ui/remmina_unlock.glade:44
 msgid "Cancel"
-msgstr "Peruuta"
+msgstr "Peru"
 
 #: src/remmina_message_panel.c:260
 msgid "Yes"
@@ -320,7 +320,7 @@ msgstr "Tallenna salasana"
 #: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
-msgstr "_Peruuta"
+msgstr "_Peru"
 
 #: src/remmina_message_panel.c:516
 msgid "Enter certificate authentication files"
@@ -498,7 +498,7 @@ msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
-"Varoitus: Tämä laajennus vaatii GtkSocketin, mutta tämä ominaisuus ei ole "
+"Varoitus: Tämä liitännäinen vaatii GtkSocketin, mutta tämä ominaisuus ei ole "
 "käytettävissä Wayland-istunnossa."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
@@ -511,7 +511,7 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
-"GtkSocketiin tukeutuvat lisäosat eivät voi toimia Wayland-istunnossa.\n"
+"GtkSocketiin tukeutuvat liitännäiset eivät voi toimia Wayland-istunnossa.\n"
 "Lisätietoja ja mahdollisen ratkaisun löydät Remmina-wikistä osoitteesta:\n"
 "\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
@@ -559,8 +559,9 @@ msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
-"Yhteys joko tiedostossa (.remmina tai pluginin tukemassa tiedostotyypissä) "
-"tai tuetussa URI:ssä (RDP, VNC, SSH tai SPICE) kuvattuun työpöytään"
+"Yhdistä joko tiedostossa (.remmina tai liitännäisen tukemassa "
+"tiedostotyypissä) kuvattuun työpöytään tai tuettuun URI:in (RDP, VNC, SSH "
+"tai SPICE)"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
@@ -634,12 +635,12 @@ msgstr "Käynnistä järjestelmän ilmoitusalueelle"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:130
 msgid "Show the application version"
-msgstr "Näytää sovelluksen version"
+msgstr "Näytä sovelluksen versio"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:132
 msgid "Show version of the application and its plugins"
-msgstr "Näytä sovelluksen ja sen laajennusten versio"
+msgstr "Näytä sovelluksen ja sen liitännäisten versio"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:134
@@ -667,7 +668,7 @@ msgstr "Poista tilastot käytöstä"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
-msgstr "Kytke pois työkalupalkki"
+msgstr "Poista työkalupalkki käytöstä"
 
 #: src/remmina.c:141
 msgid "Enable fullscreen"
@@ -678,9 +679,8 @@ msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
-"Kytke päälle erityiskarkaisu (ota käytöstä pois sulkemisvahvistus, ota pois "
-"käytöstä turvattomat näppäinoikopolut, piilota välilehdet, piilota "
-"hakupalkki)"
+"Käytä erityiskoventamista (poista käytöstä sulkemisvahvistus, poista "
+"käytöstä turvattomat pikanäppäimet, piilota välilehdet, piilota hakupalkki)"
 
 #: src/remmina.c:143
 msgid "Disable tray icon"
@@ -815,7 +815,7 @@ msgstr "Haluatko varmasti poistaa valitut tiedostot palvelimelta?"
 
 #: src/remmina_ftp_client.c:606
 msgid "Choose a file to upload"
-msgstr "Valitse ladattava tiedosto"
+msgstr "Valitse lähetettävä tiedosto"
 
 #: src/remmina_ftp_client.c:608 src/remmina_ftp_client.c:676
 #: src/remmina_ftp_client.c:793
@@ -932,7 +932,7 @@ msgstr "Yhdistetään kohteeseen \"%s\"…"
 #: src/remmina_protocol_widget.c:958 src/remmina_protocol_widget.c:1142
 #, c-format
 msgid "Connecting to “%s” via SSH…"
-msgstr "Yhdistetään kohteeseen SSH:n kautta ”%s”…"
+msgstr "Yhdistetään kohteeseen ”%s” SSH:n kautta…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1206
@@ -960,7 +960,7 @@ msgstr "Komentoa ei voitu suorittaa. %s"
 #: src/remmina_protocol_widget.c:1342
 #, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "Yhdistetään kohteeseen ”%s” SSH-kautta…"
+msgstr "Yhdistetään kohteeseen ”%s” SSH:n kautta…"
 
 #: src/remmina_protocol_widget.c:1747
 msgid "Type in SSH username and password."
@@ -1019,7 +1019,7 @@ msgstr "Hyväksytäänkö muuttunut varmenne?"
 #: src/remmina_protocol_widget.c:1995
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Kuunnellaan portista %i saapuvaa %s-yhteyttä…"
+msgstr "Kuunnellaan portissa %i saapuvaa %s-yhteyttä…"
 
 #: src/remmina_protocol_widget.c:2020
 msgid "Could not authenticate, attempting reconnection…"
@@ -1034,7 +1034,7 @@ msgstr "Palvelin"
 #: src/remmina_protocol_widget.c:2101
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Asenna ensin %s-protokollalaajennus."
+msgstr "Asenna ensin %s-protokollaliitännäinen."
 
 #: src/remmina_ssh.c:745
 #, c-format
@@ -1666,7 +1666,7 @@ msgstr "Huomautukset"
 #, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): Ei voi't validoida asetusta '%s' koska 'arvo' tai 'gfe' ovat NULL!"
+"(%s: %i): Ei voi validoida asetusta '%s' koska 'value' tai 'gfe' ovat NULL!"
 
 #: src/remmina_file_editor.c:1562
 #, c-format
@@ -1674,7 +1674,7 @@ msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
-"(%s: %i): Käyttäjän syötettä ei voida'validoida, koska "
+"(%s: %i): Käyttäjän syötettä ei voi validoida, koska "
 "'setting_name_to_validate', 'value' tai 'gfe' ovat NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
@@ -1695,7 +1695,7 @@ msgstr "Oletusasetukset tallennettu."
 
 #: src/remmina_file_editor.c:1923
 msgid "Remote Connection Profile"
-msgstr "Uusi yhteysprofiili"
+msgstr "Etäyhteysprofiili"
 
 #: src/remmina_file_editor.c:1929
 msgid "Save as Default"
@@ -1729,7 +1729,7 @@ msgstr "Nimikkeet"
 
 #: src/remmina_file_editor.c:2108
 msgid "Label1,Label2"
-msgstr "Nimiö_1, Nimiö_2"
+msgstr "Nimike1,Nimike2"
 
 #: src/remmina_file_editor.c:2180 src/remmina_file_editor.c:2199
 #, c-format
@@ -1743,8 +1743,8 @@ msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"Parametrin \"resoluutio\" käyttäminen Remminan asetustiedostossa on "
-"vanhentunut.\n"
+"Parametrin «resolution» käyttäminen Remminan asetustiedostossa on "
+"vanhennettu.\n"
 
 #: src/remmina_icon.c:143
 msgid "Enable Service Discovery"
@@ -1834,7 +1834,7 @@ msgstr ""
 #: src/remmina_ssh_plugin.c:343
 #, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Yhteys %s:%d SSH:n kautta"
+msgstr "Yhdistetty %s:%d SSH:n kautta"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:551
@@ -1877,7 +1877,7 @@ msgstr "Etsi tekstiä (Host + G)"
 #: src/remmina_ssh_plugin.c:896
 #, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Yhteys katkesi %s:%d SSH:n kautta"
+msgstr "Yhteys %s:%d SSH:n kautta katkaistu"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -2014,7 +2014,7 @@ msgstr "Päätteen äänikello"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH X11 Forwarding"
-msgstr "SSH X11 eteenpäinvälitys"
+msgstr "SSH X11 -edelleenlähetys"
 
 #: src/remmina_ssh_plugin.c:1551
 msgid "SSH compression"
@@ -2144,7 +2144,7 @@ msgstr "Työpöydän suunta"
 
 #: plugins/rdp/rdp_settings.c:668
 msgid "Input device settings"
-msgstr "Syöttölaitteen asetukset"
+msgstr "Syötelaitteen asetukset"
 
 #: plugins/rdp/rdp_settings.c:676 plugins/rdp/rdp_plugin.c:3116
 #: plugins/vnc/vnc_plugin.c:2132
@@ -2157,7 +2157,7 @@ msgstr "Yleiset asetukset"
 
 #: plugins/rdp/rdp_settings.c:694 plugins/rdp/rdp_plugin.c:3169
 msgid "Reconnect attempts number"
-msgstr "Yhteyden uudelleen muodostamisyritysten määrä"
+msgstr "Yhteyden uudelleenmuodostamisyritysten määrä"
 
 #: plugins/rdp/rdp_settings.c:707 plugins/rdp/rdp_plugin.c:3169
 msgid ""
@@ -2183,7 +2183,7 @@ msgstr "Syötä RDP-älykortin PIN-koodi"
 #: plugins/rdp/rdp_plugin.c:1269
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr "Yhteys katkaistiin %s:stä RDP:n kautta"
+msgstr "Yhteys kohteeseen %s RDP:n kautta katkaistu"
 
 #: plugins/rdp/rdp_plugin.c:2463
 #, c-format
@@ -2256,7 +2256,7 @@ msgstr "Yhteyden muodostaminen RDP-palvelimeen \"%s\" ei onnistunut."
 #: plugins/rdp/rdp_plugin.c:2514
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
-msgstr "RDP-palvelimen osoitetta \"%s\" ei löytynyt."
+msgstr "RDP-palvelimen \"%s\" osoitetta ei löytynyt."
 
 #: plugins/rdp/rdp_plugin.c:2518
 #, c-format
@@ -2298,7 +2298,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2543
 #, c-format
 msgid "The “%s” server refused the connection."
-msgstr "Palvelin \"%s\" esti yhteyden."
+msgstr "Palvelin \"%s\" kieltäytyi yhteydestä."
 
 #: plugins/rdp/rdp_plugin.c:2548
 #, c-format
@@ -2332,7 +2332,7 @@ msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2922
 msgid "GFX RFX Progressive (32 bpp)"
-msgstr "GFX RFX (32 bpp)"
+msgstr "GFX RFX progressiivinen (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2923
 msgid "RemoteFX (32 bpp)"
@@ -2372,7 +2372,7 @@ msgstr "Modeemi"
 
 #: plugins/rdp/rdp_plugin.c:2962
 msgid "Low performance broadband"
-msgstr "Matala suorituskykyinen laajakaista"
+msgstr "Matalan suorituskyvyn laajakaista"
 
 #: plugins/rdp/rdp_plugin.c:2963
 msgid "Satellite"
@@ -2380,7 +2380,7 @@ msgstr "Satelliitti"
 
 #: plugins/rdp/rdp_plugin.c:2964
 msgid "High performance broadband"
-msgstr "Korkea suorituskykyinen laajakaista"
+msgstr "Korkean suorituskyvyn laajakaista"
 
 #: plugins/rdp/rdp_plugin.c:2965
 msgid "WAN"
@@ -2609,7 +2609,7 @@ msgstr "Salasanan tiiviste"
 
 #: plugins/rdp/rdp_plugin.c:3114
 msgid "Restricted admin mode password hash"
-msgstr "Rajoitetun hallintatilan salasanan hash"
+msgstr "Rajoitetun hallintatilan salasanan tiiviste"
 
 #: plugins/rdp/rdp_plugin.c:3115
 msgid "Left-handed mouse support"
@@ -2638,7 +2638,7 @@ msgstr "Värisyvyys"
 
 #: plugins/rdp/rdp_plugin.c:3122
 msgid "Network connection type"
-msgstr "Uusi yhteysprofiili"
+msgstr "Verkkoyhteyden tyyppi"
 
 #: plugins/rdp/rdp_plugin.c:3138 plugins/vnc/vnc_plugin.c:2101
 #: plugins/vnc/vnc_plugin.c:2113
@@ -2663,7 +2663,7 @@ msgstr "FreeRDP-lokitaso"
 
 #: plugins/rdp/rdp_plugin.c:3143
 msgid "FreeRDP log filters"
-msgstr "FreeRDP-lokitaso"
+msgstr "FreeRDP-lokisuodattimet"
 
 #: plugins/rdp/rdp_plugin.c:3143
 msgid "tag:level[,tag:level[,…]]"
@@ -2732,7 +2732,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:3159
 msgid "USB device redirection"
-msgstr "Valitse USB-laitteet uudelleenohjausta varten"
+msgstr "USB-laitteen uudelleenohjaus"
 
 #: plugins/rdp/rdp_plugin.c:3160
 msgid "Local serial name"
@@ -2744,7 +2744,7 @@ msgstr "COM1, COM2 jne."
 
 #: plugins/rdp/rdp_plugin.c:3161
 msgid "Local serial driver"
-msgstr "Paikallinen sarjaohjain"
+msgstr "Paikallinen sarja-ajuri"
 
 #: plugins/rdp/rdp_plugin.c:3161
 msgid "Serial"
@@ -2882,7 +2882,7 @@ msgstr "UDP-protokollan käyttö voi parantaa suorituskykyä"
 
 #: plugins/rdp/rdp_plugin.c:3193
 msgid "Use base credentials for gateway too"
-msgstr "Käytä myös yhdyskäytävän perustietoja"
+msgstr "Käytä pohjakirjautumistietoja myös yhdyskäytävään"
 
 #: plugins/rdp/rdp_plugin.c:3195
 msgid "Enable Gateway websockets support"
@@ -2929,7 +2929,7 @@ msgstr "Uudelleenyhdistämisen yritys %d/%d…"
 #: plugins/rdp/rdp_event.c:1191
 #, c-format
 msgid "Connected to %s via RDP"
-msgstr "Yhteys %s:een RDP:n kautta"
+msgstr "Yhdistetty kohteeseen %s RDP:n kautta"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
@@ -2965,12 +2965,12 @@ msgstr "Yhteys katkaistu SPICE:stä %s."
 #: plugins/spice/spice_plugin.c:390
 #, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Yhteys katkaistu %s:sta SPICE:n kautta"
+msgstr "Yhteys kohteeseen %s SPICE:n kautta katkaistu"
 
 #: plugins/spice/spice_plugin.c:393
 #, c-format
 msgid "Connected to %s via SPICE"
-msgstr "Kytketty %s:een SPICE:n kautta"
+msgstr "Yhdistetty kohteeseen %s SPICE:n kautta"
 
 #: plugins/spice/spice_plugin.c:405
 msgid "TLS connection error."
@@ -3007,7 +3007,7 @@ msgstr "Ensisijainen videokoodekki"
 
 #: plugins/spice/spice_plugin.c:701
 msgid "Turn off GStreamer overlay"
-msgstr "Poista palvelimen syöte käytöstä"
+msgstr "Poista GStreamer-päällys käytöstä"
 
 #: plugins/spice/spice_plugin.c:704
 msgid "Preferred image compression"
@@ -3045,11 +3045,11 @@ msgstr "USB-uudelleenohjausvirhe"
 
 #: plugins/vnc/vnc_plugin.c:792
 msgid "Enter VNC password"
-msgstr "Anna VNC-salasana"
+msgstr "Kirjoita VNC-salasana"
 
 #: plugins/vnc/vnc_plugin.c:845 plugins/gvnc/gvnc_plugin.c:538
 msgid "Enter VNC authentication credentials"
-msgstr "Syötä NX-todennustiedot"
+msgstr "Kirjoita NX-todennustiedot"
 
 #: plugins/vnc/vnc_plugin.c:953
 msgid "Unable to connect to VNC server"
@@ -3086,12 +3086,12 @@ msgstr "Yhdistetty kohteeseen %s VNC:n kautta"
 #: plugins/vnc/vnc_plugin.c:1726
 #, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Yhteys %s:%d VNC:n kautta"
+msgstr "Yhdistetty kohteeseen %s:%d VNC:n kautta"
 
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr "Yhteys katkesi %s:%d:stä VNC:n kautta"
+msgstr "Yhteys kohteeseen %s:%d VNC:n kautta katkaistu"
 
 #: plugins/vnc/vnc_plugin.c:2046
 msgid ""
@@ -3203,7 +3203,7 @@ msgstr "Näytä etäpään kohdistin"
 
 #: plugins/vnc/vnc_plugin.c:2138
 msgid "Turn off encryption"
-msgstr "Käytä TLS-salausta"
+msgstr "Poista salaus käytöstä"
 
 #: plugins/vnc/vnc_plugin.c:2155
 msgid "Open Chat…"
@@ -3227,7 +3227,7 @@ msgstr "Tiedosto ladattu"
 
 #: plugins/www/www_plugin.c:592
 msgid "Enter WWW authentication credentials"
-msgstr "Syötä WWW-todennustiedot"
+msgstr "Kirjoita WWW-todennustiedot"
 
 #: plugins/www/www_plugin.c:907
 msgid "URL"
@@ -3259,7 +3259,7 @@ msgstr "Ota tasainen vieritys käyttöön"
 
 #: plugins/www/www_plugin.c:928
 msgid "Turn on spatial navigation"
-msgstr "Kytke paikallinen navigointi päälle"
+msgstr "Kytke spatiaalinen navigointi päälle"
 
 #: plugins/www/www_plugin.c:931
 msgid "Turn on plugin support"
@@ -3362,7 +3362,7 @@ msgstr "Ei voi hakea `DialogData`! Keskeytys…"
 
 #: plugins/x2go/x2go_plugin.c:476
 msgid "X Display"
-msgstr "X Näyttö"
+msgstr "X-näyttö"
 
 #: plugins/x2go/x2go_plugin.c:477
 msgid "Status"
@@ -3417,7 +3417,7 @@ msgstr ""
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
 msgid "_Terminate"
-msgstr "_ Lopeta"
+msgstr "_Lopeta"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:539
@@ -3448,7 +3448,7 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
-"'dialogi' eikä 'puunäkymä' parametreja ole alustettu! Ainakin yksi niistä on "
+"Parametrejä 'dialog' tai 'treeview' ei ole alustettu! Ainakin yksi niistä on "
 "annettava."
 
 #: plugins/x2go/x2go_plugin.c:736
@@ -3469,8 +3469,8 @@ msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
 msgstr ""
-"Tarkalleen yhden istunnon pitäisi olla valittavissa, mutta '%i' rivit "
-"(istunnot) on valittu."
+"Tarkalleen yhden istunnon pitäisi olla valittavissa, mutta '%i' riviä "
+"(istuntoa) on valittu."
 
 #: plugins/x2go/x2go_plugin.c:840
 msgid "Failed to fill 'GtkTreeIter'."
@@ -3529,7 +3529,7 @@ msgstr "Parametreja 'path' eikä 'dialog' ole alustettu."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr "GtkTreePath 'path' kuvaa rivi, jota ei ole olemassa!"
+msgstr "GtkTreePathin 'path' kuvailee rivin, jota ei ole olemassa!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
@@ -3560,17 +3560,17 @@ msgstr "Istunnon tunnusta ei saatu istunnon valintaikkunasta."
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr "Istunnon jatkaminen: '%s'"
+msgstr "Jatketaan istuntoa: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1411
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr "Istunnon lopettaminen: '%s'"
+msgstr "Lopetetaan istunto: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr "Yhteys katkaistiin %s:%d X2Gon kautta"
+msgstr "Yhteys kohteeseen %s:%d X2Go:n kautta katkaistu"
 
 #: plugins/x2go/x2go_plugin.c:1657
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3601,12 +3601,12 @@ msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"Uusia valtuustietoja ei voitu tallentaa: \"s_password\"- tai \"s_username\"-"
-"merkkijonoja ei määritetty."
+"Uusia kirjautumistietoja ei voitu tallentaa: \"s_password\"- tai "
+"\"s_username\"-merkkijonoja ei määritetty."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
-msgstr "Anna salasana avataksesi SSH-avaimen lukituksen:"
+msgstr "Kirjoita salasana avataksesi SSH-avaimen lukituksen:"
 
 #: plugins/x2go/x2go_plugin.c:1769
 msgid "Password input cancelled. Aborting…"
@@ -3617,13 +3617,13 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
-"Vinkki: Valitse \"Tallenna salasana\" -valintaruutu tai kirjoita X2Go-"
-"käyttäjänimesi ja salasanasi profiiliasetuksiin tallentaaksesi ne nopeampaa "
+"Vinkki: Valitse \"Tallenna salasana\"-valintaruutu tai kirjoita X2Go-"
+"käyttäjänimesi ja -salasanasi profiiliasetuksiin tallentaaksesi ne nopeampaa "
 "kirjautumista varten."
 
 #: plugins/x2go/x2go_plugin.c:1831
 msgid "Enter X2Go credentials"
-msgstr "Syötä X2Go-todennustiedot"
+msgstr "Kirjoita X2Go-kirjautumistiedot"
 
 #: plugins/x2go/x2go_plugin.c:1860
 msgid "Authentication cancelled. Aborting…"
@@ -3644,7 +3644,7 @@ msgstr "Muistia ei voitu varata tarpeeksi!"
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr "Löytyi jo olemassa oleva X2Go-istunto tunnuksella: '%s'"
+msgstr "Löytyi jo olemassa oleva X2Go-istunto tunnisteella: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
@@ -3664,7 +3664,7 @@ msgstr "Lopetettu"
 #: plugins/x2go/x2go_plugin.c:2178
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
-msgstr "Etäkoneesta ei löytynyt istuntoja. Luodaan nyt uusi istunto."
+msgstr "Etäkoneesta ei löytynyt istuntoja. Luodaan uusi istunto nyt."
 
 #: plugins/x2go/x2go_plugin.c:2233
 msgid "Choose a session to resume:"
@@ -3686,13 +3686,13 @@ msgstr "Tapahtui ei-kriittinen virhe: %s"
 #: plugins/x2go/x2go_plugin.c:2361
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr "Käyttäjä päätti jatkaa istuntoa tunnuksella %s"
+msgstr "Käyttäjä päätti jatkaa istuntoa tunnisteella: %s"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr "Istunnon jatkaminen '%s'…"
+msgstr "Jatketaan istuntoa '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:2513
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3736,12 +3736,12 @@ msgstr "Hae seuraavat PyHoca-CLI:n komentorivin ominaisuudet:"
 #: plugins/x2go/x2go_plugin.c:2722
 #, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr "Käytettäviss oleva ominaisuus[%i]: '%s'"
+msgstr "Käytettävissä oleva ominaisuus[%i]: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2747
 #, c-format
 msgid "Connected to %s:%d via X2Go"
-msgstr "Yhteys %s:%d X2Gon kautta"
+msgstr "Yhdistetty kohteeseen %s:%d X2Go:n kautta"
 
 #: plugins/x2go/x2go_plugin.c:2841
 msgid "Could not open X11 DISPLAY."
@@ -3749,7 +3749,7 @@ msgstr "X11 DISPLAY -näyttöä ei voitu avata."
 
 #: plugins/x2go/x2go_plugin.c:2881
 msgid "Waiting for window of X2Go Agent to appear…"
-msgstr "Odotan X2Go Agentin ikkunan ilmestymistä…"
+msgstr "Odotetaan X2Go-agentin ikkunan ilmestymistä…"
 
 #: plugins/x2go/x2go_plugin.c:2907
 msgid "Waiting for PyHoca-CLI to show the session's window…"
@@ -3808,7 +3808,7 @@ msgstr "%s'%s', "
 
 #: plugins/x2go/x2go_plugin.c:3199
 msgid "Invalid validation data in ProtocolSettings array!"
-msgstr "ProtokollaSettings-matriisin vahvistustiedot eivät kelpaa!"
+msgstr "ProtocolSettings-matriisin validointitiedot eivät kelpaa!"
 
 #: plugins/x2go/x2go_plugin.c:3214 plugins/x2go/x2go_plugin.c:3279
 msgid "Validation data in ProtocolSettings array is invalid!"
@@ -3917,7 +3917,7 @@ msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:3420
 msgid "Your private key"
-msgstr "Yksityisen avaimesi"
+msgstr "Yksityinen avaimesi"
 
 #: plugins/x2go/x2go_plugin.c:3460
 msgid "X2Go plugin loaded."
@@ -3986,8 +3986,8 @@ msgid ""
 "If the server should try to share the desktop by leaving other clients "
 "connected"
 msgstr ""
-"Jos palvelin yrittää jakaa työpöydän jättämällä muut asiakkaat kytkettyinä "
-"toisiinsa"
+"Tuleeko palvelimen yrittää jakaa työpöytä jättämällä muut asiakkaat "
+"yhdistetyiksi"
 
 #: plugins/gvnc/gvnc_plugin.c:880
 msgid "Send Ctrl+Alt+_Del"
@@ -4123,7 +4123,7 @@ msgstr "Muuta Remmina-profiilien tallennuspaikkaa"
 
 #: data/ui/remmina_snap_info_dialog.glade:252
 msgid "<big>Snap settings</big>"
-msgstr "<big>Osallistu</big>"
+msgstr "<big>Snap-asetukset</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:265
 msgid "Do not show this message again"
@@ -4175,7 +4175,7 @@ msgstr ""
 "Tekijänoikeus © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Tekijänoikeus © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Tekijänoikeus © 2009-2014 Vic Lee\n"
-"Lisätietoja kohdassa KOPIOINTI"
+"Lisätietoja tiedostossa COPYING"
 
 #: data/ui/remmina_about.glade:41
 msgid "https://www.remmina.org/"
@@ -4200,7 +4200,7 @@ msgstr "Siirrä alas"
 
 #: data/ui/remmina_mpc.glade:19
 msgid "Change"
-msgstr "Muuta"
+msgstr "Vaihda"
 
 #: data/ui/remmina_mpc.glade:180
 msgid "Selection criteria"
@@ -4439,8 +4439,8 @@ msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
-"\"Lähetä\":n napsauttaminen lähettää tämän Remminan GitLab-sivulle ja luo "
-"automaattisesti uuden vian vianseurantaan."
+"\"Lähetä\"-painikkeen napsauttaminen lähettää tämän Remminan GitLab-sivulle "
+"ja luo automaattisesti uuden vian vianseurantaan."
 
 #: data/ui/remmina_bug_report.glade:296
 msgid "Remmina Report Bug"
@@ -4492,7 +4492,7 @@ msgstr "Enimmäismäärä viimeaikaisia kohteita"
 
 #: data/ui/remmina_preferences.glade:175
 msgid "Screen resolutions"
-msgstr "Näytön tarkkuudet"
+msgstr "Näytön resoluutiot"
 
 #: data/ui/remmina_preferences.glade:221
 msgid "Folder for screenshots"
@@ -4877,7 +4877,7 @@ msgstr "aikakatkaisu sekunteina (oletus 300)"
 
 #: data/ui/remmina_preferences.glade:1855
 msgid "Enter your Remmina password to connect"
-msgstr "Syötä Remmina-salasanasi yhteyden muodostamiseksi"
+msgstr "Kirjoita Remmina-salasanasi yhteyden muodostamiseksi"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1859
@@ -4897,7 +4897,7 @@ msgstr "Vaatii muokkaamista"
 
 #: data/ui/remmina_preferences.glade:1885
 msgid "Enter your Remmina password to view passwords"
-msgstr "Syötä Remmina-salasanasi nähdäksesi salasanat"
+msgstr "Kirjoita Remmina-salasanasi nähdäksesi salasanat"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1889
@@ -4942,7 +4942,7 @@ msgstr "Herkkä (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1983
 msgid "Auditing log"
-msgstr "Tarkastusloki"
+msgstr "Auditointiloki"
 
 #: data/ui/remmina_preferences.glade:2008
 msgid "Automatically accept all fingerprints and certificates"
@@ -4962,7 +4962,7 @@ msgstr "Päätteen fontti"
 
 #: data/ui/remmina_preferences.glade:2092
 msgid "Scrollback lines"
-msgstr "Vieritysrivit"
+msgstr "Takaisinvierityksen rivit"
 
 #: data/ui/remmina_preferences.glade:2140
 msgid "Shortcuts for copying and pasting"
@@ -4979,7 +4979,7 @@ msgstr "Valitse kaikki -pikanäppäin"
 #: data/ui/remmina_preferences.glade:2800
 #: data/ui/remmina_preferences.glade:2817
 msgid "(Host key+)"
-msgstr "(Host key +) (esim. oikea CTRL + )"
+msgstr "(Host key+)"
 
 #: data/ui/remmina_preferences.glade:2201
 msgid "Use default system font"
@@ -5006,7 +5006,7 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"Valitse värimalli tiedostosta. Yleensä käytettävissä on /usr/share/remmina/"
+"Valitse väriteematiedosto. Yleensä saatavilla polussa /usr/share/remmina/"
 "theme. Lisätietoja on saatavilla osoitteesta https://github.com/mbadolato/"
 "iTerm2-Color-Schemes."
 
@@ -5024,7 +5024,7 @@ msgstr "Valitse vaalean mustan väri"
 
 #: data/ui/remmina_preferences.glade:2314
 msgid "Pick a light red colour"
-msgstr "Valitse vaaleanpunainen väri"
+msgstr "Valitse vaalean punaisen väri"
 
 #: data/ui/remmina_preferences.glade:2328
 msgid "Pick a bright green colour"
@@ -5117,17 +5117,17 @@ msgstr "Normaalit värit"
 #: data/ui/remmina_preferences.glade:2713
 #: data/ui/remmina_preferences.glade:2754
 msgid "Highlight colour"
-msgstr "Korosta väri"
+msgstr "Korostuksen väri"
 
 #: data/ui/remmina_preferences.glade:2726
 #: data/ui/remmina_preferences.glade:2770
 msgid "Highlight foreground colour"
-msgstr "Korosta edustaväri"
+msgstr "Korostuksen edustaväri"
 
 #: data/ui/remmina_preferences.glade:2739
 #: data/ui/remmina_preferences.glade:2786
 msgid "Cursor foreground colour"
-msgstr "Kohdistimen etualan väri"
+msgstr "Kohdistimen edustaväri"
 
 #: data/ui/remmina_preferences.glade:2842
 msgid "Terminal"
@@ -5139,11 +5139,11 @@ msgstr "Remminan asetukset"
 
 #: data/ui/remmina_unlock.glade:30
 msgid "Unlock Remmina"
-msgstr "Poista Remminan lukitus"
+msgstr "Avaa Remminan lukitus"
 
 #: data/ui/remmina_unlock.glade:57
 msgid "Unlock"
-msgstr "Poista lukitus"
+msgstr "Avaa lukitus"
 
 #: data/ui/remmina_unlock.glade:109
 msgid "Master password"
