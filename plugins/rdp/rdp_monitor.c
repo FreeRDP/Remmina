@@ -192,7 +192,9 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 		index++;
 
 	}
+#if FREERDP_VERSION_MAJOR >= 3
 	freerdp_settings_set_monitor_def_array_sorted(settings, rdp_monitors, index);
+#endif
 	freerdp_settings_set_uint32(settings, FreeRDP_MonitorCount, index);
 	/* Subtract monitor shift from monitor variables for server-side use.
 	 * We maintain monitor shift value as Window requires the primary monitor to have a
