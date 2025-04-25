@@ -827,9 +827,13 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 	const char* KeyboardRemappingList =
 	    freerdp_settings_get_string(instance->context->settings, FreeRDP_KeyboardRemappingList);
 
+#if FREERDP_VERSION_MAJOR >= 3
 	rfi->remap_table = freerdp_keyboard_remap_string_to_list(KeyboardRemappingList);
 	if (!rfi->remap_table)
 		return FALSE;
+#else
+	rfi->remap_table = NULL;
+#endif
 
 	return TRUE;
 }
