@@ -8,15 +8,15 @@
 # Viktor Varga <viktor.varga@gmail.com>, 2020, 2021.
 # Marczis István <marczisi@yahoo.com>, 2020, 2021, 2023.
 # Péter Gyetvai <gyetpet@mailbox.org>, 2022, 2023.
-# Balázs Meskó <meskobalazs@mailbox.org>, 2023.
+# Balázs Meskó <meskobalazs@mailbox.org>, 2023, 2025.
 # Béla Bajza <bajzabela@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-06-20 15:09+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2025-04-26 17:01+0000\n"
+"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/remmina/"
 "remmina/hu/>\n"
 "Language: hu\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -120,8 +120,8 @@ msgid ""
 msgstr ""
 "Ez az ablak segíthet kapcsolódási problémák megtalálásában.\n"
 "A Ki/Be kapcsolóval bármikor leállíthatja vagy elindíthatja a naplózást.\n"
-"A statisztika gomb (Ctrl+T) segítségével összegyűjtheti a "
-"rendszerinformációkat, amiket megoszthat egy hiba bejelentésekor.\n"
+"A statisztika gomb (Ctrl+T) segítségével összegyűjtheti a rendszer-"
+"információkat, amiket megoszthat egy hiba bejelentésekor.\n"
 "Több infó található a Remmina hibakeresésről ezen az oldalon (angolul): "
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging\n"
 
@@ -154,10 +154,8 @@ msgid "Language Wrapper"
 msgstr "Programozási nyelvcsomagoló"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "Letöltés"
+msgstr "Bővítményletöltés"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -170,10 +168,8 @@ msgid "Plugins"
 msgstr "Bővítmények"
 
 #: src/remmina_plugin_manager.c:1369
-#, fuzzy
-#| msgid "Download"
 msgid "_Download"
-msgstr "Letöltés"
+msgstr "_Letöltés"
 
 #: src/remmina_plugin_manager.c:1369 src/remmina_message_panel.c:199
 #: data/ui/remmina_snap_info_dialog.glade:25
@@ -185,7 +181,7 @@ msgstr "Bezárás"
 
 #: src/remmina_plugin_manager.c:1408
 msgid "Install"
-msgstr ""
+msgstr "Telepítés"
 
 #: src/remmina_plugin_manager.c:1415 src/remmina_plugin_manager.c:1420
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
@@ -216,7 +212,7 @@ msgstr "_Küldés"
 
 #: src/remmina_chat_window.c:239
 msgid "_Clear"
-msgstr "Tis_ztít"
+msgstr "Tis_ztítás"
 
 #: src/remmina_applet_menu_item.c:125
 msgid "Discovered"
@@ -455,7 +451,7 @@ msgstr "Lapok váltása"
 
 #: src/rcw.c:2532
 msgid "Grab all keyboard events"
-msgstr "Minden billentyűesemény elkapása"
+msgstr "Összes billentyűesemény elkapása"
 
 #: src/rcw.c:2549
 msgid "Preferences"
@@ -485,7 +481,7 @@ msgstr "Kapcsolat bontása"
 #: src/rcw.c:4437
 #, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "A(z) \"%s\" fájl sérült, nem olvasható vagy nem található."
+msgstr "A(z) „%s” fájl sérült, nem olvasható vagy nem található."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
@@ -515,10 +511,10 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
-"Azok a bővítmények, amik a GtkSocket-et használnak, nem futtathatóak egy "
+"Azok a bővítmények, melyek a GtkSocketre támaszkodnak, nem futtathatóak "
 "Wayland munkamenetben.\n"
-"Több információ és lehetséges kerülőmegoldások tatlálhatóak a Remmina "
-"wikiben angolul:\n"
+"További információk és lehetséges kerülőmegoldások találhatóak a Remmina "
+"wikiben, angolul:\n"
 "\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
@@ -537,17 +533,18 @@ msgstr "Az átjáró jelszavai nem egyeznek"
 
 #: src/remmina_mpchange.c:290
 msgid "Resetting passwords, please wait…"
-msgstr "Jelszavak helyreállítása, kérem várjon…"
+msgstr "Jelszavak helyreállítása, kis türelmet…"
 
 #: src/remmina_mpchange.c:381
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr ""
-"A többszörös jelszó változtatónak szüksége van egy titkosság bővítményre.\n"
+"A többszörös jelszóváltoztatónak egy titkossági bővítményre van szüksége.\n"
 
 #: src/remmina_mpchange.c:384
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr ""
-"A többszörös jelszó változtatónak szüksége van egy titkosság bővítményre.\n"
+"A többszörös jelszóváltoztatónak egy titkossági szolgáltatásra van szüksége."
+"\n"
 
 #: src/remmina_mpchange.c:479
 #, c-format
@@ -567,8 +564,8 @@ msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgstr ""
-"Kapcsolódás egy fájl által leírt távoli asztalhoz (.remmina vagy bővítmény "
-"által támogatott típusú)"
+"Kapcsolódás egy fájl által (.remmina vagy bővítmény által támogatott típusú) "
+"vagy egy támogatott URI-val (RDP, VNC, SSH, SPICE) leírt távoli asztalhoz"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
@@ -658,23 +655,20 @@ msgstr "Kapcsolat profil módosítása (a --set opciót igényli)"
 #: src/remmina.c:136
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
-"Adjon meg egy vagy több profilbeállítást; --update-profile-val kell használni"
+"Adjon meg egy vagy több profilbeállítást; az --update-profile kapcsolóval "
+"kell használni"
 
 #: src/remmina.c:137
 msgid "Encrypt a password"
 msgstr "Adja meg a VNC jelszavát"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable encryption"
 msgid "Disable news"
-msgstr "Titkosítás tiltása"
+msgstr "Hírek letiltása"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "Eszköztár letiltása"
+msgstr "Statisztikák letiltása"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -701,27 +695,22 @@ msgstr "Tálca ikon letiltása"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"A Remmina nem naplózza az összes költséget. A részletesebb kimenet "
-"engedélyezéséhez használja a \"G_MESSAGES_DEBUG=all\" környezeti változót.\n"
+"A Remmina nem naplózza az összes kimeneti utasítást. A részletesebb kimenet "
+"engedélyezéséhez használja a „G_MESSAGES_DEBUG=remmina” környezeti változót."
+"\n"
 "További információkért lásd a Remmina wikit:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:447
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr "- vagy protocol://felhasználónév:titkosítottjelszó@host:port"
+msgstr "- vagy protokoll://felhasználónév:titkosítottjelszó@gép:port"
 
 #: src/remmina.c:450
 msgid ""
@@ -793,7 +782,7 @@ msgstr ""
 #: src/remmina_public.c:347
 #, c-format
 msgid "Address is too long for UNIX socket_path: %s"
-msgstr "A cím túl hosszú a UNIX socket_path-hoz: %s"
+msgstr "A cím túl hosszú a UNIX socket_path útvonalhoz: %s"
 
 #: src/remmina_public.c:357
 #, c-format
@@ -817,10 +806,11 @@ msgstr "Minőségbeállítások"
 #: src/remmina_about.c:53
 msgid "translator-credits"
 msgstr ""
-"Kornel Tako, 2007\n"
-"SULYOK Péter, 2003-2006\n"
-"HOSSZÚ Péter, 2001-2003\n"
-"Marczis István, 2023"
+"Hosszú Péter, 2001-2003\n"
+"Sulyok Péter, 2003-2006\n"
+"Takó Kornél, 2007\n"
+"Marczis István, 2023\n"
+"Meskó Balázs, 2025"
 
 #: src/remmina_ftp_client.c:409
 msgid "Choose download location"
@@ -1097,10 +1087,8 @@ msgid "SSH identity file not selected."
 msgstr "Még nincs beállítva SSH-kulcsfájl."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "Nincs elmentett SSH jelszó megadva. A felhasználónak meg kell adnia."
+msgstr "Nem található felhasználónév. A felhasználónak meg kell adnia."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1197,24 +1185,20 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Írja be a TOTP/OTP/2FA kódot"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "SSH alagút hitelesítő adatok"
+msgstr "SSH alagút privát kulcsának hitelesítő adatai"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "SSH privát kulcsfájl"
+msgstr "SSH privát kulcsának hitelesítő adatai"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
-msgstr "SSH alagút hitelesítő adatok"
+msgstr "SSH alagút hitelesítő adatai"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH credentials"
-msgstr "SSH hitelesítő adatok"
+msgstr "SSH hitelesítő adatai"
 
 #: src/remmina_ssh.c:1663
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
@@ -1240,7 +1224,7 @@ msgstr "Nem sikerült a porttovábbítás kérése. %s"
 
 #: src/remmina_ssh.c:2505
 msgid "The server did not respond."
-msgstr "A szerver nem válaszolt."
+msgstr "A kiszolgáló nem válaszolt."
 
 #: src/remmina_ssh.c:2543
 #, c-format
@@ -1283,11 +1267,11 @@ msgstr "Rendeljen hozzá egy célportot."
 
 #: src/remmina_ssh.c:2754
 msgid "Could not create socket."
-msgstr "Sikertelen a socket létrehozása."
+msgstr "A foglalat létrehozása sikertelen."
 
 #: src/remmina_ssh.c:2764
 msgid "Could not bind server socket to local port."
-msgstr "Sikertelen a socket helyi porthoz kötése."
+msgstr "A foglalat helyi porthoz kötése sikertelen."
 
 #: src/remmina_ssh.c:2770
 msgid "Could not listen to local port."
@@ -1382,16 +1366,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Fájl"
+msgstr "RDP-fájlok"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Fájl"
+msgstr "Összes fájl"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1399,16 +1379,12 @@ msgid "Import"
 msgstr "Importálás"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Új kapcsolódási profil létrehozása"
+msgstr "Válasszon kapcsolódási profilt."
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Remmina adat mappa"
+msgstr "A Remmina nem tudott exportálni."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -1420,7 +1396,7 @@ msgstr "Ez a protokoll nem támogatja az exportálást."
 
 #: src/remmina_main.c:1658
 msgid "Remmina Remote Desktop Client"
-msgstr "Remmina távoli asztal kliens"
+msgstr "Remmina távoli asztali kliens"
 
 #: src/remmina_main.c:1660
 msgid "Remmina Kiosk"
@@ -1430,13 +1406,13 @@ msgstr "Remmina kioszk"
 #: src/remmina_sftp_client.c:176
 #, c-format
 msgid "Could not create the folder “%s”."
-msgstr "Nem sikerült létrehozni a(z) \"%s\" mappát."
+msgstr "Nem sikerült létrehozni a(z) „%s” mappát."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:184 src/remmina_sftp_client.c:205
 #, c-format
 msgid "Could not create the file “%s”."
-msgstr "Nem sikerült létrehozni a \"%s\" fájlt."
+msgstr "Nem sikerült létrehozni a(z) „%s” fájlt."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:223
@@ -1447,13 +1423,13 @@ msgstr "Hiba a(z) „%s” fájl megnyitásakor a kiszolgálón. %s"
 #: src/remmina_sftp_client.c:245
 #, c-format
 msgid "Could not save the file “%s”."
-msgstr "Nem sikerült menteni a(z) \"%s\" fájlt."
+msgstr "Nem sikerült menteni a(z) „%s” fájlt."
 
 #: src/remmina_sftp_client.c:294 src/remmina_sftp_client.c:710
 #: src/remmina_sftp_client.c:785
 #, c-format
 msgid "Could not open the folder “%s”. %s"
-msgstr "Nem sikerült megnyitni a(z) \"%s\" könyvtárat. %s"
+msgstr "Nem sikerült megnyitni a(z) „%s” mappát. %s"
 
 #: src/remmina_sftp_client.c:398
 #, c-format
@@ -1468,7 +1444,7 @@ msgstr "Hiba a(z) „%s” fájl létrehozásakor a kiszolgálón. %s"
 #: src/remmina_sftp_client.c:469
 #, c-format
 msgid "Could not open the file “%s”."
-msgstr "Nem sikerült megnyitni a(z) \"%s\" fájlt."
+msgstr "Nem sikerült megnyitni a(z) „%s” fájlt."
 
 #: src/remmina_sftp_client.c:489
 #, c-format
@@ -1775,8 +1751,7 @@ msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"A \"resolution\" paraméter használata a Remmina preferences fájlban "
-"elavult.\n"
+"A „resolution” paraméter használata a Remmina beállítófájlban elavult.\n"
 
 #: src/remmina_icon.c:143
 msgid "Enable Service Discovery"
@@ -1802,7 +1777,7 @@ msgstr "Főablak megnyitása"
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:306 src/remmina_icon.c:472
 msgid "Remmina Applet"
-msgstr "Remmina értesítő ikon"
+msgstr "Remmina értesítési ikon"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:308 src/remmina_icon.c:474
@@ -2029,7 +2004,7 @@ msgstr "SSH munkamenet log fájlneve"
 
 #: src/remmina_ssh_plugin.c:1547
 msgid "Log SSH session when exiting Remmina"
-msgstr "Az SSH kapcsolat logolása a Remmina-ból kilépéskor"
+msgstr "Az SSH kapcsolat naplózása a Remminából kilépéskor"
 
 #: src/remmina_ssh_plugin.c:1548
 msgid "Log SSH session asynchronously"
@@ -2201,15 +2176,15 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:837 plugins/rdp/rdp_plugin.c:902
 #: plugins/rdp/rdp_plugin.c:987
 msgid "Enter RDP authentication credentials"
-msgstr "Adja meg az RDP hitelesítő adatokat"
+msgstr "Adja meg az RDP hitelesítő adatait"
 
 #: plugins/rdp/rdp_plugin.c:910 plugins/rdp/rdp_plugin.c:998
 msgid "Enter RDP gateway authentication credentials"
-msgstr "Adja meg az RDP átjáró hitelesítő adatokat"
+msgstr "Adja meg az RDP átjáró hitelesítő adatait"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Adja meg at RDP SmartCard PIN-kódját"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2997,14 +2972,14 @@ msgid "Disconnected from the SPICE %s."
 msgstr "Kapcsolat bontva a SPICE kiszolgálóval: „%s”."
 
 #: plugins/spice/spice_plugin.c:390
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Kapcsolat bontva: %s: SPICE kiszolgáló"
+msgstr "Kapcsolat bontva ezzel: „%s”, SPICE-on keresztül"
 
 #: plugins/spice/spice_plugin.c:393
 #, c-format
 msgid "Connected to %s via SPICE"
-msgstr "Csatlakozás ehhez: „%s” SPICE-on keresztül"
+msgstr "Csatlakozás ehhez: „%s”, SPICE-on keresztül"
 
 #: plugins/spice/spice_plugin.c:405
 msgid "TLS connection error."
@@ -3114,12 +3089,12 @@ msgstr "Próbálja meg újra a titkosítás engedélyezése után ebben a profil
 #: plugins/vnc/vnc_plugin.c:1719
 #, c-format
 msgid "Connected to %s via VNC"
-msgstr "Csatlakozás ehhez: „%s” VNC-n keresztül"
+msgstr "Csatlakozás ehhez: „%s”, VNC-n keresztül"
 
 #: plugins/vnc/vnc_plugin.c:1726
 #, c-format
 msgid "Connected to %s:%d via VNC"
-msgstr "Csatlakozás ehhez: „%s:%d” VNC-n keresztül"
+msgstr "Csatlakozás ehhez: „%s:%d”, VNC-n keresztül"
 
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
@@ -3155,10 +3130,10 @@ msgid ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
 "Távoli VNC-kapcsolat figyelése:\n"
-"  - A \"Listen on port\" mezőben a Remmina a portot fogja hallgatni,\n"
-"    pl. 8888\n"
-"  - A távoli VNC-kiszolgálóról a következőhöz fog csatlakozni\n"
-"    Remminához, pl. az x11vnc segítségével:\n"
+"  - A „Port figyelése” mezőben lévő porton fog a Remmina figyelni,\n"
+"    például a 8888-on\n"
+"  - A távoli VNC-kiszolgálóról például az x11vnc segítségével fog a\n"
+"    Remminához csatlakozni:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:2063
@@ -3256,7 +3231,7 @@ msgstr "Remmina VNC figyelő bővítmény"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina web-browser plugin"
-msgstr "Remmina böngésző bővítmény"
+msgstr "Remmina böngészőbővítmény"
 
 #: plugins/www/www_plugin.c:99
 msgid "File downloaded"
@@ -3280,7 +3255,7 @@ msgstr "Felhasználóügynök"
 
 #: plugins/www/www_plugin.c:925
 msgid "Proxy URL"
-msgstr "Proxy URL"
+msgstr "Proxy webcíme"
 
 #: plugins/www/www_plugin.c:925
 msgid "E.g. https://example.org, socks://mysocks:1080"
@@ -3300,7 +3275,7 @@ msgstr "Térbeli navigáció bekapcsolása"
 
 #: plugins/www/www_plugin.c:931
 msgid "Turn on plugin support"
-msgstr "Bővítmény támogatás bekapcsolása"
+msgstr "Bővítménytámogatás bekapcsolása"
 
 #: plugins/www/www_plugin.c:932
 msgid "Turn on WebGL support"
@@ -3557,7 +3532,7 @@ msgid ""
 "Error: '%s'"
 msgstr ""
 "Ismeretlen hiba lépett fel a PyHoca-CLI indítása közben. Kilépési kód: %i. "
-"Hiba: '%s'"
+"Hiba: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:1044
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
@@ -3571,11 +3546,11 @@ msgstr "GtkTreePath „path” nincs ilyen sor!"
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
 msgid "'Invalid connection data.'"
-msgstr "'Érvénytelen kapcsolati adatok.'"
+msgstr "„Érvénytelen kapcsolati adatok.”"
 
 #: plugins/x2go/x2go_plugin.c:1154
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr "A „custom_data” paraméter nem teljesen inicializált!"
+msgstr "A „custom_data” paraméter nem lett teljesen előkészítve!"
 
 #: plugins/x2go/x2go_plugin.c:1276
 #, c-format
@@ -3583,7 +3558,7 @@ msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
 msgstr ""
-"Az X2Go '%s' munkamenet nem szakítható meg:\n"
+"A(z) „%s” X2Go munkamenet nem szakítható meg:\n"
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
@@ -3599,12 +3574,12 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr "Munkamenet folytatása: '%s'"
+msgstr "Munkamenet folytatása: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:1411
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr "Munkamenet befejezése: '%s'"
+msgstr "Munkamenet befejezése: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
@@ -3684,7 +3659,7 @@ msgstr "Nem tudott elég memóriát lefoglalni!"
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr "Már létező X2Go munkamenetet találtunk azonosítóval: '%s'"
+msgstr "Létező X2Go munkamenet található ezzel az azonosítóval: „%s”"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
@@ -3728,14 +3703,14 @@ msgstr "Egy nem kritikus hiba történt: %s"
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
 msgstr ""
-"A felhasználó úgy döntött, hogy folytatja a munkamenetet az alábbi "
-"azonosítóval: '%s'"
+"A felhasználó úgy döntött, hogy folytatja az ezen azonosítójú munkamenetet: "
+"„%s”"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr "A '%s' munkamenet folytatása…"
+msgstr "A(z) „%s” munkamenet folytatása…"
 
 #: plugins/x2go/x2go_plugin.c:2513
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3753,7 +3728,7 @@ msgstr "Nem sikerült elindítani az X2Go munkamenetet."
 #: plugins/x2go/x2go_plugin.c:2584
 #, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "Nem tudta elindítani a PyHoca-CLI-t (%i): '%s'"
+msgstr "A PyHoca-CLI program indítása sikertelen (%i): „%s”"
 
 #: plugins/x2go/x2go_plugin.c:2699
 msgid ""
@@ -3780,7 +3755,7 @@ msgstr "A következő PyHoca-CLI parancssori funkciókat hívta le:"
 #: plugins/x2go/x2go_plugin.c:2722
 #, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr "Elérhető funkció[%i]: '%s''"
+msgstr "Elérhető funkció[%i]: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:2747
 #, c-format
@@ -3860,7 +3835,7 @@ msgstr "A ProtocolSettings tömb érvényesítési adatai érvénytelenek!"
 
 #: plugins/x2go/x2go_plugin.c:3223
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr "A 'kulcs' vagy 'érték' paraméterek 'NULL'!"
+msgstr "A „kulcs” vagy „érték” paraméterek valamelyike „NULL”!"
 
 #: plugins/x2go/x2go_plugin.c:3241
 #, c-format
@@ -3870,7 +3845,7 @@ msgstr "A megengedett értékek a következők: %s."
 #: plugins/x2go/x2go_plugin.c:3243
 #, c-format
 msgid "The only allowed value is '%s'."
-msgstr "Az egyetlen megengedett érték az \"%s\"."
+msgstr "Az egyetlen megengedett érték az „%s”."
 
 #: plugins/x2go/x2go_plugin.c:3290
 msgid "The lower limit is not a valid integer!"
@@ -3891,8 +3866,7 @@ msgstr "Valami ismeretlen dolog romlott el."
 
 #: plugins/x2go/x2go_plugin.c:3310 plugins/x2go/x2go_plugin.c:3340
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
-"Kérjük, ellenőrizze a RemminaProtocolSetting tömböt az esetleges hibák miatt."
+msgstr "Ellenőrizze a RemminaProtocolSetting tömböt az esetleges hibák miatt."
 
 #: plugins/x2go/x2go_plugin.c:3320
 msgid "The upper limit is not a valid integer!"
@@ -3938,7 +3912,7 @@ msgstr "Hangtámogatás"
 
 #: plugins/x2go/x2go_plugin.c:3406
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr "Az X2Go szerver hangrendszere (alapértelmezett: 'pulse')."
+msgstr "Az X2Go kiszolgáló hangrendszere (alapértelmezett: „pulse”)."
 
 #: plugins/x2go/x2go_plugin.c:3409
 msgid "Clipboard direction"
@@ -3975,7 +3949,7 @@ msgstr "X2Go - X2Go munkamenet indítása"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina VNC bővítmény GNOME és KVM számára"
+msgstr "Remmina VNC bővítmény a GNOME és a KVM számára"
 
 #: plugins/gvnc/gvnc_plugin.c:476
 #, c-format
@@ -3989,7 +3963,7 @@ msgstr "Hitelesítési hiba: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:819
 msgid "Use server settings"
-msgstr "Kiszolgáló beállítások használata"
+msgstr "Kiszolgálóbeállítások használata"
 
 #: plugins/gvnc/gvnc_plugin.c:820
 msgid "True colour (24 bits)"
@@ -4101,7 +4075,7 @@ msgstr "Távoli állomás alaphelyzetbe állítása (hard reboot)"
 
 #: plugins/gvnc/gvnc_plugin.c:897
 msgid "Shutdown remote host"
-msgstr "Távoli állomás leállítása"
+msgstr "Távoli gép leállítása"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -4133,7 +4107,7 @@ msgstr ""
 "\n"
 "<span>\n"
 "A Remmina snap csomagként fut a rendszeren.\n"
-"Néhány Remmina funkciót be kell állítani a megfelelő működéshez.\n"
+"A Remmina egyes funkcióit be kell állítani a megfelelő működéshez.\n"
 "</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:112
@@ -4212,20 +4186,16 @@ msgid "About"
 msgstr "Névjegy"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
+"Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
-"Részletek a MÁSOLÁS alatt"
+"Részletek a COPYING fájlban"
 
 #: data/ui/remmina_about.glade:41
 #, fuzzy
@@ -4320,23 +4290,6 @@ msgid "Verify password"
 msgstr "Jelszó megerősítése"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4345,21 +4298,12 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>A hírek kikapcsolásra kerültek</b></big>\n"
+"<big><b>A hírek betöltése nem sikerült</b></big>\n"
 "\n"
 "<span>\n"
-"A hírek bekapcsolásaazt jelenti, hogy a program csatlakozik a Remmina "
-"szervereihez, hogy letöltse a kiadási megjegyzéseket..\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"A verzió ellenőrzés csak fordítási időben aktiválható.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"kiadási napló\"><i>Látogassa meg a weboldalt a kiadási napló elolvasásához</"
-"i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
+"\"Remmina kiadási napló\"><i>A webhely felkeresése a kiadási napló "
+"elolvasásához</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_key_chooser.glade:23
@@ -4393,7 +4337,9 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:98
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Keresési szöveg vagy szerver név/IP cím a \"Gyors kapcsolódás\"-hoz"
+msgstr ""
+"Szöveg vagy a kiszolgáló nevének/IP-címének keresése a „Gyors kapcsolódás” "
+"funkcióhoz"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
 msgid "Server name or IP address"
@@ -4426,23 +4372,23 @@ msgstr "Hibakeresés"
 
 #: data/ui/remmina_main.glade:320
 msgid "Export"
-msgstr "Export"
+msgstr "Exportálás"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Hiba jelentése"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
-msgstr "Remmina beállítása alapértelmezett távoli asztal kliensnek"
+msgstr "A Remmina beállítása alapértelmezett távoli asztali kliensként"
 
 #: data/ui/remmina_main.glade:372
 msgid "Homepage"
-msgstr "Remmina honlap"
+msgstr "Honlap"
 
 #: data/ui/remmina_main.glade:382
 msgid "Donations"
-msgstr "Adakozás"
+msgstr "Adományok"
 
 #: data/ui/remmina_main.glade:392
 msgid "Wiki"
@@ -4483,55 +4429,51 @@ msgstr "Nézet átváltása"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Rendszerinformációk belevétele"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Hibakeresési adatok belevétele"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Beküldés"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Felhasználónév"
+msgstr "Név/felhasználónév:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "E-mail-cím:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Hiba címe"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Leírás"
+msgstr "Hiba leírása"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Az „Elküldés” gombra való kattintás elküldi ezt a Remmina GitLab-oldalára, "
+"és automatikusan új jegyet hoz létre a jegykövetőben."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Remmina jelszó"
+msgstr "Remmina hibajelentés"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
-msgstr "Kérem várjon…"
+msgstr "Kis türelmet…"
 
 #: data/ui/remmina_preferences.glade:63
 msgid "Double-click action"
@@ -4676,25 +4618,20 @@ msgid "Confirm before closing multiple tabs"
 msgstr "Megerősítés több lap bezárása előtt"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
 msgid "Disable anonymous statistics"
-msgstr "Névtelen statisztika küldése"
+msgstr "Névtelen statisztika letiltása"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Hírek beszerzése <a href=\"https://remmina.org\" title=\"Remmina hírek "
-"oldal\">remmina.org</a> címről (*)"
+"A <a href=\"https://remmina.org\" title=\"A Remmina hírek oldala\""
+">remmina.org</a> híreinek letiltása"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "A nap tippjének letiltása"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
@@ -4764,7 +4701,7 @@ msgstr "Keresősáv elrejtése a főablakban"
 
 #: data/ui/remmina_preferences.glade:806
 msgid "Prefer dark theme"
-msgstr "Inkább sötét téma"
+msgstr "Sötét téma előnyben részesítése"
 
 #: data/ui/remmina_preferences.glade:810
 msgid ""
@@ -4772,11 +4709,11 @@ msgid ""
 "configured theme."
 msgstr ""
 "Ha egy GTK téma tartalmaz egy sötét változatot, akkor azt fogja használni a "
-"konfigurált téma helyett."
+"beállított téma helyett."
 
 #: data/ui/remmina_preferences.glade:823
 msgid "Always show notes"
-msgstr "Mindig mutasson tippeket"
+msgstr "Tippek megjelenítése mindig"
 
 #: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
@@ -4785,7 +4722,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:847
 msgid "“Grab all keyboard events” status colour"
-msgstr "\"Minden billentyűzet esemény rögzítése\" állapotszín"
+msgstr "„Összes billentyűesemény elkapása\" állapotszíne"
 
 #: data/ui/remmina_preferences.glade:858
 msgid ""
@@ -4800,7 +4737,7 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:875
 msgid "Enable/Disable “Grab all keyboard events” status colour"
 msgstr ""
-"\"Minden billentyűzetesemény rögzítése\" állapotszín engedélyezése/letiltása"
+"„Összes billentyűesemény elkapása” állapotszínének engedélyezése/letiltása"
 
 #: data/ui/remmina_preferences.glade:938
 msgid "Appearance"
@@ -4812,11 +4749,11 @@ msgstr "Új kapcsolat megjelenítése a menü tetején"
 
 #: data/ui/remmina_preferences.glade:983
 msgid "Hide total count shown in the group menu"
-msgstr "Összesen érték elrejtése a csoport menüben"
+msgstr "Összes érték elrejtése a csoport menüben"
 
 #: data/ui/remmina_preferences.glade:1001
 msgid "No tray icon"
-msgstr "Nincs tálca ikon"
+msgstr "Nincs tálcaikon"
 
 #: data/ui/remmina_preferences.glade:1020
 msgid "Start in tray upon user login"
@@ -5084,7 +5021,7 @@ msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
-"Az \"SGR 1\" kiválasztása az első 8 paletta színének világos megfelelőjére "
+"Az „SGR 1” kiválasztása esetén az első 8 palettaszín világos megfelelőjére "
 "vált (a szöveg félkövérré tétele mellett)."
 
 #: data/ui/remmina_preferences.glade:2242
@@ -5100,10 +5037,9 @@ msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"Válasszon színsémafájlt. Az előre telepített témák általában az /usr/share/"
-"remmina/theme könyvtárban találhatók. Lásd \n"
-" a további részletekért.\n"
-"https://github.com/mbadolato/iTerm2-Color-Schemes a további részletekért.."
+"Válasszon színsémafájlt. Általában a /usr/share/remmina/theme könyvtárban "
+"találhatók. További részletekért lásd a https://github.com/mbadolato/iTerm2"
+"-Color-Schemes oldalt."
 
 #: data/ui/remmina_preferences.glade:2271
 msgid "Pick a terminal colouring file"
@@ -5202,7 +5138,7 @@ msgstr "Betűméret növelése és csökkentése"
 
 #: data/ui/remmina_preferences.glade:2653
 msgid "Search text shortcut"
-msgstr "Szövegkeresés gyorsbillentyű"
+msgstr "Szövegkeresés gyorsbillentyűje"
 
 #: data/ui/remmina_preferences.glade:2684
 #: data/ui/remmina_preferences.glade:2699
@@ -5217,12 +5153,12 @@ msgstr "Kiemelő szín"
 #: data/ui/remmina_preferences.glade:2726
 #: data/ui/remmina_preferences.glade:2770
 msgid "Highlight foreground colour"
-msgstr "Emelje ki az előtér színét"
+msgstr "Előtérszín kiemelése"
 
 #: data/ui/remmina_preferences.glade:2739
 #: data/ui/remmina_preferences.glade:2786
 msgid "Cursor foreground colour"
-msgstr "A kurzor előtér színe"
+msgstr "Kurzor előtérszíne"
 
 #: data/ui/remmina_preferences.glade:2842
 msgid "Terminal"
@@ -5242,7 +5178,7 @@ msgstr "Feloldás"
 
 #: data/ui/remmina_unlock.glade:109
 msgid "Master password"
-msgstr "Mester jelszó"
+msgstr "Mesterjelszó"
 
 #~ msgid "Use as default remote desktop client"
 #~ msgstr "Használja alapértelmezett távoli asztal kliensként"
