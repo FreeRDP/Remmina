@@ -55,6 +55,7 @@ static void remmina_plugin_spice_display_ready_cb(GObject *, GParamSpec *, Remmi
 static void remmina_plugin_spice_update_scale_mode(RemminaProtocolWidget *);
 static void remmina_plugin_spice_session_open_fd(RemminaProtocolWidget *);
 static void remmina_plugin_spice_channel_open_fd_cb(SpiceChannel *channel, gint tls G_GNUC_UNUSED, RemminaProtocolWidget *);
+static gboolean send_key_strokes(gpointer data);
 
 void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *);
 #ifdef SPICE_GTK_CHECK_VERSION
@@ -221,6 +222,10 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+
+	if(gpdata->keys_queue) {
+		g_async_queue_unref(gpdata->keys_queue);
+	}
 
 	if (gpdata->main_channel) {
 		g_signal_handlers_disconnect_by_func(gpdata->main_channel,
@@ -535,12 +540,41 @@ static void remmina_plugin_spice_keystroke(RemminaProtocolWidget *gp, const guin
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 
-	if (gpdata->display) {
-		spice_display_send_keys(gpdata->display,
-			keystrokes,
-			keylen,
-			SPICE_DISPLAY_KEY_EVENT_CLICK);
+	g_return_if_fail(gpdata->display != NULL);
+
+	if(gpdata->keys_queue == NULL) {
+		gpdata->keys_queue = g_async_queue_new();
+		gpdata->is_sending_keys = FALSE;
 	}
+
+	KeyStrokeData *key_stroke_data = g_malloc(sizeof(KeyStrokeData));
+	key_stroke_data->keylen = keylen;
+	key_stroke_data->keystrokes = g_malloc(keylen * sizeof(guint));
+	memcpy(key_stroke_data->keystrokes, keystrokes, keylen * sizeof(guint));
+	g_async_queue_push(gpdata->keys_queue, key_stroke_data);
+
+	if (!gpdata->is_sending_keys) {
+		gpdata->is_sending_keys = TRUE;
+		g_idle_add(send_key_strokes, (gpointer)gpdata);
+	}
+}
+
+static gboolean send_key_strokes(gpointer data) {
+	RemminaPluginSpiceData *gpdata = (RemminaPluginSpiceData *)data;
+	if (g_async_queue_length(gpdata->keys_queue) == 0) {
+		gpdata->is_sending_keys = FALSE;
+		return FALSE;
+	}
+
+	// Let's be nice here and wait a bit in order to avoid hammering SPICE
+	g_usleep(25000);
+
+	KeyStrokeData *key_stroke_data = g_async_queue_pop(gpdata->keys_queue);
+	spice_display_send_keys(gpdata->display, key_stroke_data->keystrokes, key_stroke_data->keylen, SPICE_DISPLAY_KEY_EVENT_CLICK);
+	g_free(key_stroke_data->keystrokes);
+	g_free(key_stroke_data);
+
+	return TRUE;
 }
 
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */

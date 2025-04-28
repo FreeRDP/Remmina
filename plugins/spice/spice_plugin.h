@@ -81,8 +81,10 @@ typedef struct _RemminaPluginSpiceData {
 	SpiceMainChannel *	main_channel;
 	SpiceSession *		session;
 	SpiceUsbDeviceManager *	usbmanager;
-	gchar *				unixPath;
-	gboolean			isUnix;
+	gchar *			unixPath;
+	gboolean		isUnix;
+	GAsyncQueue *		keys_queue;
+	gboolean 		is_sending_keys;
 
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
@@ -92,3 +94,8 @@ typedef struct _RemminaPluginSpiceData {
 #  endif        /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
 #endif          /* SPICE_GTK_CHECK_VERSION */
 } RemminaPluginSpiceData;
+
+typedef struct {
+	gint	keylen;
+	guint *	keystrokes;
+} KeyStrokeData;
