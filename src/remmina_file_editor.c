@@ -421,7 +421,7 @@ static void remmina_file_editor_ssh_tunnel_enabled_check_on_toggled(GtkToggleBut
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_auth_combo), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_startup_command_entry), enabled);
 		gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_tunnel_command_entry), enabled);
-		
+
 		g_free(p);
 	}
 	s = remmina_file_get_string(gfe->priv->remmina_file, "ssh_tunnel_privatekey");
@@ -885,6 +885,11 @@ static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe, Remm
 		remminafile,
 		"ssh_tunnel_server",
 		(ssh_tunnel_enabled && priv->ssh_tunnel_server_entry && (priv->ssh_tunnel_server_custom_radio == NULL || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->ssh_tunnel_server_custom_radio))) ? gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_server_entry)) : NULL));
+
+	remmina_file_set_string(
+		remminafile,
+		"ssh_tunnel_command_args",
+		(ssh_tunnel_enabled && priv->ssh_tunnel_command_entry ? gtk_entry_get_text(GTK_ENTRY(priv->ssh_tunnel_command_entry)) : NULL));
 
 	ssh_tunnel_auth = gtk_combo_box_get_active(GTK_COMBO_BOX(priv->ssh_tunnel_auth_combo));
 
@@ -1536,8 +1541,7 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 		priv->ssh_tunnel_command_entry =
 			remmina_file_editor_create_text(gfe, grid, row, 0,
 							_("Command arguments"), NULL, "ssh_tunnel_command_args", 
-							_("Overrides all other options\nOnly accepts flag argurment pairs\nExample: <-l username -p port>\n<-l user localhost> would 
-							not set localhost as there is no flag"));
+							_("Overrides all other options\nAll options may not be supported\nOnly accepts flag-argurment pairs\nExample: <-l username -p port>\n<-l user localhost> would not set localhost as there is no flag"));
 		// 3
 		row++;
 		break;
@@ -1645,6 +1649,9 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 				   cs ? cs : "");
 	}
 
+	cs = remmina_file_get_string(priv->remmina_file, "ssh_tunnel_command_args");
+	gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_command_entry),
+				   cs ? cs : "");
 
 	remmina_public_create_group(GTK_GRID(grid), _("SSH Command"), row, 2, 1);
 	row += 2;
