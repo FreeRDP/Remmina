@@ -1716,6 +1716,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	char ipstr[INET6_ADDRSTRLEN];
 	void *addr4=NULL;
 	void *addr6=NULL;
+	gchar* args[100]; //Should be much smaller, but set 100 to be safe
 
 	ssh->callback = g_new0(struct ssh_callbacks_struct, 1);
 
@@ -1788,6 +1789,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		else
 			REMMINA_DEBUG("Cannot parse ssh_config: %s", ssh_get_error(ssh->session));
 	}
+
 	if (g_strcmp0(ssh->tunnel_entrance_host, "127.0.0.1") == 0) {
 		REMMINA_DEBUG("Setting SSH_OPTIONS_HOST to ssh->tunnel_entrance_host is 127.0.0.1,");
 		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->tunnel_entrance_host);
@@ -1887,6 +1889,26 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		REMMINA_DEBUG("SSH_OPTIONS_COMPRESSION is now %s", ssh->compression);
 	else
 		REMMINA_DEBUG("SSH_OPTIONS_COMPRESSION does not have a valid value. %s", ssh->compression);
+
+
+	//Parse command line ssh arguments, if any exist
+	if (ssh->command_args){
+		gchar* command_args = g_strdup(ssh->command_args);
+		int arg_count = 1;
+		args[0] = "ssh";
+		char *token = strtok(command_args, " ");
+		while (token != NULL){
+			args[arg_count] = token;
+			token = token = strtok(NULL, " ");
+			arg_count += 1;
+		}
+		args[arg_count] = NULL;
+		if (ssh_options_getopt(ssh->session, &arg_count, args)){
+			REMMINA_DEBUG("ssh command line has not been correctly parsed");
+		}
+		g_free(command_args);
+	}
+
 
 	// Handle the dual IPv4 / IPv6 stack
 	// Prioritize IPv6 and fallback to IPv4
@@ -2091,12 +2113,14 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	ssh->allow_ssh_rsa = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_allow_ssh_rsa" : "ssh_allow_ssh_rsa", 0);
 	gint c = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_compression" : "ssh_compression", 0);
 	ssh->compression = (c == 1) ? "yes" : "no";
+	ssh->command_args = remmina_file_get_string(remminafile, "ssh_tunnel_command_args");
 
 	REMMINA_DEBUG("ssh->user: %s", ssh->user);
 	REMMINA_DEBUG("ssh->password: %s", ssh->password);
 	REMMINA_DEBUG("ssh->auth: %d", ssh->auth);
 	REMMINA_DEBUG("ssh->charset: %s", ssh->charset);
 	REMMINA_DEBUG("ssh->kex_algorithms: %s", ssh->kex_algorithms);
+	REMMINA_DEBUG("ssh->command_args: %s", ssh->command_args);
 	REMMINA_DEBUG("ssh->ciphers: %s", ssh->ciphers);
 	REMMINA_DEBUG("ssh->hostkeytypes: %s", ssh->hostkeytypes);
 	REMMINA_DEBUG("ssh->proxycommand: %s", ssh->proxycommand);
