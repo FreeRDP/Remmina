@@ -591,15 +591,6 @@ void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint v
 				    g_strdup_printf("%i", value));
 }
 
-void remmina_file_set_state_int(RemminaFile *remminafile, const gchar *setting, gint value)
-{
-	TRACE_CALL(__func__);
-	if (remminafile)
-		g_hash_table_insert(remminafile->states,
-				    g_strdup(setting),
-				    g_strdup_printf("%i", value));
-}
-
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
 {
 	TRACE_CALL(__func__);
@@ -607,18 +598,17 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 	gint r;
 
 	value = g_hash_table_lookup(remminafile->settings, setting);
-	r = value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
-	return r;
-}
 
-gint remmina_file_get_state_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
-{
-	TRACE_CALL(__func__);
-	gchar *value;
-	gint r;
-
-	value = g_hash_table_lookup(remminafile->states, setting);
-	r = value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
+	// If value is empty or null, return the default value
+	if (!value || strlen(value) == 0) {
+		r = default_value;
+	}
+	else if (value[0] == 't') {
+		r = TRUE;
+	}
+	else {
+		r = atoi(value);
+	}
 	return r;
 }
 
