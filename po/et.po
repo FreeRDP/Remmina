@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-05-15 08:01+0000\n"
+"PO-Revision-Date: 2025-05-15 10:01+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -418,9 +418,8 @@ msgid "Multi monitor"
 msgstr "Mitu monitori"
 
 #: src/rcw.c:2472
-#, fuzzy
 msgid "Toggle dynamic resolution update"
-msgstr "Dünaamilise eraldusvõime uuendamise lülitamine"
+msgstr "Lülita dünaamiline eraldusvõime uuendamise sisse/välja"
 
 #: src/rcw.c:2482
 msgid "Toggle scaled mode"
@@ -460,9 +459,9 @@ msgid "Disconnect"
 msgstr "Ühenda lahti"
 
 #: src/rcw.c:4437
-#, fuzzy, c-format
+#, c-format
 msgid "The file “%s” is corrupted, unreadable, or could not be found."
-msgstr "Faili \"%s\" on rikutud, ei saa lugeda või seda ei leitud."
+msgstr "Fail „%s“ on katkine, seda ei saa lugeda või seda ei leidu."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
 #. TRANSLATORS: 'GtkSocket feature is not available'.
@@ -526,9 +525,8 @@ msgstr[1] "%d salasõna on muudetud."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
-#, fuzzy
 msgid "Show 'About'"
-msgstr "Näita 'About'"
+msgstr "Näita rakenduse teavet"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
@@ -545,22 +543,21 @@ msgstr "FAIL"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:106
-#, fuzzy
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Ühendus failis kirjeldatud töölauaga (.remmina või pluginaga toetatud tüüp)"
+"Ühenda failis kirjeldatud töölauaga (.remmina või lisamooduliga toetatud "
+"tüüp)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
-#, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
 msgstr ""
-"Kirjeldatud töölauaühenduse muutmine failis (.remmina või pluginaga toetatud "
-"tüüp)"
+"Muuda failis kirjeldatud töölauaühendust (.remmina või lisamooduliga "
+"toetatud tüüp)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:111
@@ -588,7 +585,6 @@ msgstr "Välju"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:124
-#, fuzzy
 msgid "Use default server name (for --new)"
 msgstr "Kasuta vaikimisi serveri nime (kui --new)"
 
@@ -750,19 +746,19 @@ msgstr ""
 "--set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:347
-#, fuzzy, c-format
+#, c-format
 msgid "Address is too long for UNIX socket_path: %s"
 msgstr "Aadress on UNIX socket_pathi jaoks liiga pikk: %s"
 
 #: src/remmina_public.c:357
-#, fuzzy, c-format
+#, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "UNIX-soketi loomine ebaõnnestus: %s"
+msgstr "UNIX-sokli loomine ei õnnestunud: %s"
 
 #: src/remmina_public.c:363
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "Ühendamine UNIX-soketiga ebaõnnestus: %s"
+msgstr "UNIX-i sokliga ühendamine ei õnnestunud: %s"
 
 #: src/remmina_public.c:634
 msgid "Please enter format 'widthxheight'."
@@ -831,19 +827,16 @@ msgid "Refresh"
 msgstr "Uuenda"
 
 #: src/remmina_ftp_client.c:782
-#, fuzzy
 msgid "Refresh current folder"
 msgstr "Värskenda praegust kausta"
 
 #: src/remmina_ftp_client.c:787
-#, fuzzy
 msgid "Download from server"
-msgstr "Lae serverist"
+msgstr "Laadi serverist"
 
 #: src/remmina_ftp_client.c:794
-#, fuzzy
 msgid "Upload to server"
-msgstr "Lae serverisse"
+msgstr "Laadi serverisse"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
 #: data/ui/remmina_main.glade:252
@@ -852,9 +845,8 @@ msgid "Delete"
 msgstr "Kustuta"
 
 #: src/remmina_ftp_client.c:799
-#, fuzzy
 msgid "Delete files on server"
-msgstr "Failide kustutamine serveris"
+msgstr "Kustuta failid serverist"
 
 #: src/remmina_ftp_client.c:928 src/remmina_ftp_client.c:1005
 msgid "Filename"
@@ -874,26 +866,22 @@ msgid "Group"
 msgstr "Grupp"
 
 #: src/remmina_ftp_client.c:961
-#, fuzzy
 msgid "Permission"
-msgstr "Kasutusõigus"
+msgstr "Õigused"
 
 #: src/remmina_ftp_client.c:969
 msgid "Modified"
 msgstr "Muudetud"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2975
-#, fuzzy
 msgid "Remote"
-msgstr "Kaug"
+msgstr "Kaugseade"
 
 #: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2974
-#, fuzzy
 msgid "Local"
 msgstr "Kohalik"
 
 #: src/remmina_ftp_client.c:1042
-#, fuzzy
 msgid "Progress"
 msgstr "Edenemine"
 
@@ -903,9 +891,8 @@ msgid "Open SFTP transfer…"
 msgstr "Avatud turvaline failiedastus…"
 
 #: src/remmina_protocol_widget.c:327
-#, fuzzy
 msgid "Executing external commands…"
-msgstr "Väliste käskude täitmine…"
+msgstr "Käivitan välisi käske…"
 
 #. TRANSLATORS: “%s” is a placeholder for the connection profile name
 #: src/remmina_protocol_widget.c:335
@@ -921,25 +908,25 @@ msgstr "Ühendumine seadmega '%s'…"
 
 #. TRANSLATORS: “%i” is a placeholder for a TCP port number.
 #: src/remmina_protocol_widget.c:1206
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection on port %i…"
-msgstr "Ootab sissetulevat SSH ühendust portil %i…"
+msgstr "Ootad sissetulevat SSH ühendust porti %i…"
 
 #: src/remmina_protocol_widget.c:1259
-#, fuzzy, c-format
+#, c-format
 msgid "The “%s” command is not available on the SSH server."
-msgstr "Käsk \"%s\" ei ole SSH-serveris saadaval."
+msgstr "„%s“ käsk ei ole SSH-serveris saadaval."
 
 #: src/remmina_protocol_widget.c:1264
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the “%s” command on the SSH server (status = %i)."
-msgstr "SSH-serveril ei õnnestunud käivitada käsku \"%s\" (staatus = %i)."
+msgstr "SSH-serveris ei õnnestunud käivitada käsku „%s“ (olek = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:1272
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "Ei saanud käsku käivitada. %s"
+msgstr "Käsu käivitamine ei õnnestunud. %s"
 
 #. TRANSLATORS: “%s” is a placeholder for a hostname or IP address.
 #: src/remmina_protocol_widget.c:1342
@@ -952,45 +939,38 @@ msgid "Type in SSH username and password."
 msgstr "Sisesta SSH kasutajanimi ja salasõna."
 
 #: src/remmina_protocol_widget.c:1802 src/remmina_protocol_widget.c:1834
-#, fuzzy
 msgid "Fingerprint automatically accepted"
 msgstr "Sõrmejälg automaatselt aktsepteeritud"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1810
-#, fuzzy
 msgid "Certificate details:"
 msgstr "Sertifikaadi üksikasjad:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1812 src/remmina_protocol_widget.c:1844
-#, fuzzy
 msgid "Subject:"
 msgstr "Teema:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
 #: src/remmina_protocol_widget.c:1814 src/remmina_protocol_widget.c:1846
-#, fuzzy
 msgid "Issuer:"
 msgstr "Väljaandja:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1816
-#, fuzzy
 msgid "Fingerprint:"
 msgstr "Sõrmejälg:"
 
 #. TRANSLATORS: The user is asked to accept or refuse a new SSL certificate.
 #: src/remmina_protocol_widget.c:1818
-#, fuzzy
 msgid "Accept certificate?"
-msgstr "Tunnistus vastu võtta?"
+msgstr "Kas nõustud sertifikaadiga?"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1842
-#, fuzzy
 msgid "The certificate changed! Details:"
-msgstr "Sertifikaat muutus! Üksikasjad:"
+msgstr "See sertifikaat on muutunud! Üksikasjad:"
 
 #. TRANSLATORS: An SSL certificate fingerprint, is a hash of a certificate calculated on all certificate's data and its signature.
 #: src/remmina_protocol_widget.c:1848
@@ -1019,15 +999,14 @@ msgstr "Autentimine ei õnnestunud. Proovin taasühendada…"
 
 #: src/remmina_protocol_widget.c:2083 src/remmina_file_editor.c:465
 #: src/remmina_file_editor.c:1289 data/ui/remmina_main.glade:518
-#, fuzzy
 msgid "Server"
 msgstr "Server"
 
 #. TRANSLATORS: “%s” is a placeholder for a protocol name, like “RDP”.
 #: src/remmina_protocol_widget.c:2101
-#, fuzzy, c-format
+#, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Installige kõigepealt %s protokolli plugin."
+msgstr "Esmalt paigalda %s protokolli lisamoodul."
 
 #: src/remmina_ssh.c:745
 #, c-format
@@ -1052,15 +1031,15 @@ msgstr "Ei õnnestunud autentida avaliku SSH-võtmega. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:845
-#, fuzzy, c-format
+#, c-format
 msgid "SSH certificate cannot be imported. %s"
 msgstr "SSH-sertifikaati ei saa importida. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:854
-#, fuzzy, c-format
+#, c-format
 msgid "SSH certificate cannot be copied into the private SSH key. %s"
-msgstr "SSH-sertifikaati ei saa kopeerida privaatsesse SSH-võtmesse. %s"
+msgstr "SSH-sertifikaati ei saa kopeerida SSH privaatvõtmesse. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:864
@@ -1069,19 +1048,16 @@ msgid "Could not authenticate using SSH certificate. %s"
 msgstr "Ei õnnestunud autentida SSH-sertifikaadi abil. %s"
 
 #: src/remmina_ssh.c:878
-#, fuzzy
 msgid "SSH identity file not selected."
 msgstr "SSH identiteedifail ei ole valitud."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
 msgid "No username found. Asking user to enter it."
-msgstr ""
-"Ei ole salvestatud SSH paroolifraasi. Palutakse kasutajal see sisestada."
+msgstr "Kasutajanime ei leidu. Palun sisesta see."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
-#, fuzzy, c-format
+#, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "Avalikku SSH-võtit ei saa importida. %s"
 
@@ -1101,9 +1077,8 @@ msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
 msgstr "Autentimine SSH GSSAPI/Kerberose liidestuse abil ei õnnestunud. %s"
 
 #: src/remmina_ssh.c:1113
-#, fuzzy
 msgid "The public SSH key changed!"
-msgstr "Avalik SSH-võti muutus!"
+msgstr "Avalik SSH-võti on muutunud!"
 
 #: src/remmina_ssh.c:1226
 #, c-format
@@ -1117,48 +1092,45 @@ msgstr "Ei õnnestunud automaatselt autentida SSH avaliku võtme abil. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1436
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr "Ei õnnestunud hankida serveri avalikku SSH-võtit. %s"
+msgstr "Ei õnnestunud laadida serveri avalikku SSH võtit. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1443
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Ei suutnud saada avalikku SSH-võtit. %s"
+msgstr "Ei suutnud laadida avalikku SSH-võtit. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1451
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum of the public SSH key. %s"
-msgstr "Ei õnnestunud saada avaliku SSH-võtme kontrollsummat. %s"
+msgstr "Ei õnnestunud laadida avaliku SSH võtme kontrollsummat. %s"
 
 #: src/remmina_ssh.c:1464
-#, fuzzy
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr "Server on tundmatu. Avaliku võtme sõrmejälg on:"
+msgstr "See server on tundmatu. Avaliku võtme sõrmejälg on:"
 
 #: src/remmina_ssh.c:1466 src/remmina_ssh.c:1472
-#, fuzzy
 msgid "Do you trust the new public key?"
-msgstr "Kas te usaldate uut avalikku võtit?"
+msgstr "Kas sa usaldad uut avalikku võtit?"
 
 #: src/remmina_ssh.c:1469
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means you are either "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"Hoiatus: Server on muutnud oma avalikku võtit. See tähendab, et teid kas "
+"Hoiatus: Server on muutnud oma avalikku võtit. See tähendab, et sind kas "
 "rünnatakse,\n"
 "või administraator on võtit muutnud. Uus avaliku võtme sõrmejälg on:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1494
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "Ei suutnud kontrollida tuntud SSH-hostide nimekirja. %s"
+msgstr "Ei suutnud kontrollida tuntud teadaolevate SSH hostide nimekirja. %s"
 
 #: src/remmina_ssh.c:1503
 msgid "SSH password"
@@ -1169,7 +1141,6 @@ msgid "Password for private SSH key"
 msgstr "Salasõna privaatvõtme avamiseks"
 
 #: src/remmina_ssh.c:1515
-#, fuzzy
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
@@ -1178,45 +1149,40 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Sisesta TOTP/OTP/2FA-kood"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
 msgid "SSH tunnel private key credentials"
-msgstr "SSH-tunneli volitused"
+msgstr "SSH-tunneli privaatvõtme autentimine"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
 msgid "SSH private key credentials"
-msgstr "SSH privaatne võtmefail"
+msgstr "SSH privaatvõtme salasõna"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
-#, fuzzy
 msgid "SSH tunnel credentials"
-msgstr "SSH-tunneli volitused"
+msgstr "SSH tunneli salasõna"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
-#, fuzzy
 msgid "SSH credentials"
-msgstr "SSH volitused"
+msgstr "SSH salasõna ja kasutajanimi"
 
 #: src/remmina_ssh.c:1663
-#, fuzzy
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
 msgstr "Interaktiivne sisselogimine klaviatuuriga, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2363
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
-msgstr "Ei saanud kanalit luua. %s"
+msgstr "Kanali loomine ei õnnestunud. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2374
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr "SSH-tunneliga ei õnnestunud ühendust luua. %s"
+msgstr "Ei õnnestunud luua ühendust SSH tunneliga. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2445 src/remmina_ssh.c:2466 src/remmina_ssh.c:2475
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Ei saanud taotleda portide suunamist. %s"
 
@@ -1346,9 +1312,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Kas sa oled kindel, et soovid „%s“ kustutada?"
 
 #: src/remmina_main.c:1025
-#, fuzzy
 msgid "Are you sure you want to delete the selected files?"
-msgstr "Kas soovid valitud serverifailid kustutada?"
+msgstr "Kas oled kindel, et soovid valitud failid kustutada?"
 
 #: src/remmina_main.c:1036
 msgid "Failed to delete files!"
@@ -1586,7 +1551,6 @@ msgid "Before connecting"
 msgstr "Enne ühendamist"
 
 #: src/remmina_file_editor.c:1181
-#, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "käsk %h %u %t %U %p %g --option"
 
@@ -1603,9 +1567,8 @@ msgid "Start-up"
 msgstr "Käivita"
 
 #: src/remmina_file_editor.c:1195
-#, fuzzy
 msgid "Auto-start this profile"
-msgstr "Selle profiili automaatne käivitamine"
+msgstr "Käivita see profiil automaatselt"
 
 #: src/remmina_file_editor.c:1199
 msgid "Connection profile security"
@@ -1624,9 +1587,8 @@ msgid "Keep window from closing if not disconnected by Remmina"
 msgstr ""
 
 #: src/remmina_file_editor.c:1242
-#, fuzzy
 msgid "SSH Tunnel"
-msgstr "SSH-tunnel"
+msgstr "SSH tunnel"
 
 #: src/remmina_file_editor.c:1243
 #, fuzzy
@@ -1634,51 +1596,44 @@ msgid "Enable SSH tunnel"
 msgstr "SSH tunneli lubamine"
 
 #: src/remmina_file_editor.c:1250
-#, fuzzy
 msgid "Tunnel via loopback address"
 msgstr "Tunnel tagasiside aadressi kaudu"
 
 #: src/remmina_file_editor.c:1260
-#, fuzzy, c-format
+#, c-format
 msgid "Same server at port %i"
-msgstr "Sama server sadamas %i"
+msgstr "Sama server pordis %i"
 
 #: src/remmina_file_editor.c:1310 plugins/rdp/rdp_plugin.c:3155
 msgid "Start-up path"
 msgstr "Baasrada"
 
 #: src/remmina_file_editor.c:1319
-#, fuzzy
 msgid "SSH Authentication"
-msgstr "SSH Autentimine"
+msgstr "SSH autentimine"
 
 #: src/remmina_file_editor.c:1346
-#, fuzzy
 msgid "SSH private key file"
-msgstr "SSH privaatne võtmefail"
+msgstr "SSH privaatvõtme fail"
 
 #: src/remmina_file_editor.c:1352 src/remmina_ssh_plugin.c:1508
-#, fuzzy
 msgid "SSH certificate file"
 msgstr "SSH sertifikaadi fail"
 
 #: src/remmina_file_editor.c:1409
-#, fuzzy
 msgid "Basic"
-msgstr "Tavaline"
+msgstr "Põhiseadistused"
 
 #: src/remmina_file_editor.c:1415
-#, fuzzy
 msgid "Advanced"
-msgstr "Lisaseaded"
+msgstr "Lisaseadistused"
 
 #: src/remmina_file_editor.c:1426 data/ui/remmina_main.glade:532
-#, fuzzy
 msgid "Notes"
 msgstr "Märkmed"
 
 #: src/remmina_file_editor.c:1558
-#, fuzzy, c-format
+#, c-format
 msgid "(%s: %i): Can't validate setting '%s' since 'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): Ei saa valideerida seadistust '%s', kuna 'value' või 'gfe' on NULL!"
@@ -3096,9 +3051,9 @@ msgid "Export connection in Windows .rdp file format"
 msgstr "Ekspordi ühendus Windowsi .rdp failiformaadis"
 
 #: plugins/rdp/rdp_event.c:363
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "Ühendumine seadmega '%s'…"
+msgstr "Ühenduse loomise katse %d/%d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1191
@@ -3649,9 +3604,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "Tundmatu vara"
+msgstr "Tundmatu omadus: %i"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 #, fuzzy
@@ -3676,11 +3631,12 @@ msgid "Could not get currently selected row (session)!"
 msgstr "Ei saanud valitud reast seansi ID-d kätte!"
 
 #: plugins/x2go/x2go_plugin.c:790
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
-msgstr "ainult üks seanss peaks olema võimalik valida."
+msgstr ""
+"Vaid üks sessioon peaks olema valitav, aga %i rida (sessiooni) on valitud."
 
 #: plugins/x2go/x2go_plugin.c:840
 #, fuzzy
@@ -3715,11 +3671,13 @@ msgid ""
 msgstr "Vajalik PyHoca-CLI protsess on sattunud internetiühenduse probleemi."
 
 #: plugins/x2go/x2go_plugin.c:982
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "PyHoca-CLI (%i) ei õnnestunud käivitada: '%s'"
+msgstr ""
+"PyHoca-CLI käivitamine ei õnnestunud: \n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, fuzzy, c-format
@@ -4571,7 +4529,6 @@ msgid "Verify password"
 msgstr "Kinnita salasõna"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4580,21 +4537,12 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Uudised on välja lülitatud</b></big></big>\n"
+"<big><b>Uudised on välja lülitatud</b></big>\n"
 "\n"
 "<span>\n"
-"Uudiste sisselülitamine tähendab, et programm ühendub Remmina serveriga, et "
-"laadida alla väljalaskeinfot.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Versioonikontrolli saab aktiveerida ainult kompileerimise ajal.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>Külastage veebisaiti, et lugeda versioonimärkusi</i></"
-"a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
+"\"Remmina release notes\"><i>Teavet uute versioonide kohta leiad meie "
+"lähtekoodihoidlast</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_key_chooser.glade:23
