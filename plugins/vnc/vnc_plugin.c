@@ -1164,7 +1164,7 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 handle_buffered:
 		if (!HandleRFBServerMessage(cl)) {
 			gpdata->running = FALSE;
-			// TCP_USER_TIMEOUT, TCP_KEEPIDLE, TCP_KEEPCNT, TCP_KEEPINTVL should handle connection timeout
+			// TCP_USER_TIMEOUT should handle connection timeout
 			remmina_plugin_service->protocol_plugin_set_error(gp, "VNC connection timed out");
 			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp)) {
 				remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
@@ -1337,36 +1337,6 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 				else {
 					REMMINA_PLUGIN_DEBUG("TCP KeepAlive enabled");
 				}
-#ifdef TCP_KEEPIDLE
-				// TCP_KEEPIDLE = idle connection time before beginning keepalive probes
-				optval = remmina_plugin_service->file_get_int(remminafile, "vnc_tcp_keepidle", 20);
-				if (setsockopt(cl->sock, IPPROTO_TCP, TCP_KEEPIDLE, &optval, sizeof(optval)) < 0) {
-					REMMINA_PLUGIN_DEBUG("TCP_KEEPIDLE not set");
-				}
-				else {
-					REMMINA_PLUGIN_DEBUG("TCP_KEEPIDLE set to %i seconds", optval);
-				}
-#endif // TCP_KEEPIDLE
-#ifdef TCP_KEEPCNT
-				// TCP_KEEPCNT = max number of keepalive probes before dropping connection
-				optval = remmina_plugin_service->file_get_int(remminafile, "vnc_tcp_keepcnt", 3);
-				if (setsockopt(cl->sock, IPPROTO_TCP, TCP_KEEPCNT, &optval, sizeof(optval)) < 0) {
-					REMMINA_PLUGIN_DEBUG("TCP_KEEPCNT not set");
-				}
-				else {
-					REMMINA_PLUGIN_DEBUG("TCP_KEEPCNT set to %i", optval);
-				}
-#endif // TCP_KEEPCNT
-#ifdef TCP_KEEPINTVL
-				// TCP_KEEPINTVL = interval between keepalive probes (seconds)
-				optval = remmina_plugin_service->file_get_int(remminafile, "vnc_tcp_keepintvl", 10);
-				if (setsockopt(cl->sock, IPPROTO_TCP, TCP_KEEPINTVL, &optval, sizeof(optval)) < 0) {
-					REMMINA_PLUGIN_DEBUG("TCP_KEEPINTVL not set");
-				}
-				else {
-					REMMINA_PLUGIN_DEBUG("TCP_KEEPINTVL set to %i seconds", optval);
-				}
-#endif // TCP_KEEPINTVL
 #ifdef TCP_USER_TIMEOUT
 				optval = remmina_plugin_service->file_get_int(remminafile, "vnc_timeout", 60) * 1000;
 				if (setsockopt(cl->sock, IPPROTO_TCP, TCP_USER_TIMEOUT, &optval, sizeof(optval)) < 0) {
@@ -2150,18 +2120,11 @@ static gchar vncencodings_tooltip[] =
 	   "  • “Good” sets encoding to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
 	   "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile corre rre raw”");
 
+#ifdef TCP_USER_TIMEOUT
 static gchar vnc_timeout_tooltip[] =
     N_("VNC timeout length in seconds\n"
 	   "  • This timeout controls how long the client will try to contact the server before dropping the connection");
-
-static gchar vnc_tcp_keepidle_tooltip[] =
-	N_("Idle connection time in seconds before beginning keepalive probes");
-
-static gchar vnc_tcp_keepcnt_tooltip[] =
-	N_("Max number of keepalive probes before dropping connection");
-
-static gchar vnc_tcp_keepintvl_tooltip[] =
-	N_("Time interval in seconds between keepalive probes");
+#endif // TCP_USER_TIMEOUT	   
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -2217,10 +2180,9 @@ static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "encodings",		 N_("Override pre-set VNC encodings"),	        FALSE, NULL, vncencodings_tooltip },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "aspect_ratio",		 N_("Dynamic resolution enforced aspect ratio"),	        FALSE, NULL, aspect_ratio_tooltip },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "vnc_timeout",    N_("TCP_USER_TIMEOUT length (seconds)"),   FALSE, NULL, vnc_timeout_tooltip },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "vnc_tcp_keepidle",    N_("TCP_KEEPIDLE time (seconds)"),   FALSE, NULL, vnc_tcp_keepidle_tooltip },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "vnc_tcp_keepcnt",    N_("TCP_KEEPCNT probes"),   FALSE, NULL, vnc_tcp_keepcnt_tooltip },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "vnc_tcp_keepintvl",    N_("TCP_KEEPINTVL time (seconds)"),   FALSE, NULL, vnc_tcp_keepintvl_tooltip },
+#ifdef TCP_USER_TIMEOUT
+	{ REMMINA_PROTOCOL_SETTING_TYPE_INT,  "vnc_timeout",    N_("TCP_USER_TIMEOUT length (seconds)"),   FALSE, NULL, vnc_timeout_tooltip },
+#endif // TCP_USER_TIMEOUT
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "tightencoding", N_("Force tight encoding"),			TRUE, NULL, N_("Enabling this may help when the remote desktop looks scrambled") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablesmoothscrolling", N_("Disable smooth scrolling"),		FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"),		TRUE,  NULL, NULL },
