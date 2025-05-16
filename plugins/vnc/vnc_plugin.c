@@ -39,6 +39,10 @@
 #include "vnc_plugin.h"
 #include <rfb/rfbclient.h>
 
+#ifdef HAVE_NETINET_TCP_H
+#include <netinet/tcp.h>
+#endif
+
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY            1
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY           2
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT 3
@@ -1160,8 +1164,11 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 handle_buffered:
 		if (!HandleRFBServerMessage(cl)) {
 			gpdata->running = FALSE;
-			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp))
+			// TCP_USER_TIMEOUT should handle connection timeout
+			remmina_plugin_service->protocol_plugin_set_error(gp, "VNC connection timed out");
+			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp)) {
 				remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+			}
 			return FALSE;
 		}
 	}
@@ -1177,6 +1184,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 	rfbClient *cl = NULL;
 	gchar *host;
 	gchar *s = NULL;
+	gint optval;
 	
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	gpdata->running = TRUE;
@@ -1319,6 +1327,30 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		}
 
 		if (rfbInitClient(cl, NULL, NULL)) {
+			if (cl->sock) {
+#ifdef HAVE_NETINET_TCP_H
+				// SO_KEEPALIVE = good connection should not be closed due to inactivity
+				optval = 1;
+				if (setsockopt(cl->sock, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof(optval)) < 0) {
+					REMMINA_PLUGIN_DEBUG("TCP KeepAlive not set");
+				}
+				else {
+					REMMINA_PLUGIN_DEBUG("TCP KeepAlive enabled");
+				}
+#ifdef TCP_USER_TIMEOUT
+				optval = remmina_plugin_service->file_get_int(remminafile, "vnc_timeout", 60) * 1000;
+				if (setsockopt(cl->sock, IPPROTO_TCP, TCP_USER_TIMEOUT, &optval, sizeof(optval)) < 0) {
+					REMMINA_PLUGIN_DEBUG("TCP_USER_TIMEOUT not set");
+				}
+				else {
+					REMMINA_PLUGIN_DEBUG("TCP_USER_TIMEOUT set to %i seconds", optval/1000);
+				}
+#endif // TCP_USER_TIMEOUT
+#endif // HAVE_NETINET_TCP_H
+			}
+			else {
+				REMMINA_PLUGIN_DEBUG("Unable to set socket TCP settings");
+			}
 			REMMINA_PLUGIN_DEBUG("Client initialization successful");
 			break;
 		} else {
@@ -2088,6 +2120,12 @@ static gchar vncencodings_tooltip[] =
 	   "  • “Good” sets encoding to “tight zrle ultra copyrect hextile zlib corre rre raw”\n"
 	   "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile corre rre raw”");
 
+#ifdef TCP_USER_TIMEOUT
+static gchar vnc_timeout_tooltip[] =
+    N_("VNC timeout length in seconds\n"
+	   "  • This timeout controls how long the client will try to contact the server before dropping the connection");
+#endif // TCP_USER_TIMEOUT	   
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -2141,7 +2179,10 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "encodings",		 N_("Override pre-set VNC encodings"),	        FALSE, NULL, vncencodings_tooltip },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "aspect_ratio",		 N_("Dynamic resolution enforced aspec ratio"),	        FALSE, NULL, aspect_ratio_tooltip },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "aspect_ratio",		 N_("Dynamic resolution enforced aspect ratio"),	        FALSE, NULL, aspect_ratio_tooltip },
+#ifdef TCP_USER_TIMEOUT
+	{ REMMINA_PROTOCOL_SETTING_TYPE_INT,  "vnc_timeout",    N_("TCP_USER_TIMEOUT length (seconds)"),   FALSE, NULL, vnc_timeout_tooltip },
+#endif // TCP_USER_TIMEOUT
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "tightencoding", N_("Force tight encoding"),			TRUE, NULL, N_("Enabling this may help when the remote desktop looks scrambled") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablesmoothscrolling", N_("Disable smooth scrolling"),		FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"),		TRUE,  NULL, NULL },
