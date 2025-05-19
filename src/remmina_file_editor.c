@@ -852,11 +852,6 @@ static GtkWidget *remmina_file_editor_create_check(RemminaFileEditor *gfe, GtkWi
 	return widget;
 }
 
-static void remmina_file_editor_export_settings(RemminaFileEditor* rfe)
-{
-	RemminaFileEditorPriv *priv = rfe->priv;
-}
-
 static void remmina_file_editor_save_ssh_tunnel_tab(RemminaFileEditor *gfe, RemminaFile* ssh_file)
 {
 	TRACE_CALL(__func__);
@@ -1021,13 +1016,11 @@ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gin
 		if (cs != NULL){
 			gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_username_entry), cs);
 		}
-		g_free(cs);
 		//get password
 		cs = remmina_file_get_string(import_rf, "ssh_tunnel_password");
 		if (cs != NULL){
 			gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_auth_password), cs);
 		}
-		g_free(cs);
 		//get private key
 		cs = remmina_file_get_string(import_rf, "ssh_tunnel_privatekey");
 		if (cs != NULL){
@@ -1035,7 +1028,6 @@ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gin
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), TRUE);
 			gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(priv->ssh_tunnel_privatekey_chooser), cs);
 		}
-		g_free(cs);
 		//get certificate
 		cs = remmina_file_get_string(import_rf, "ssh_tunnel_certfile");
 		if (cs != NULL){
@@ -1043,7 +1035,6 @@ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gin
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), TRUE);
 			gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(priv->ssh_tunnel_certfile_chooser), cs);
 		}
-		g_free(cs);
 		//get key passoword
 		cs = remmina_file_get_string(import_rf, "ssh_tunnel_passphrase");
 		if (cs != NULL){
@@ -1054,7 +1045,6 @@ static void remmina_file_editor_run_import_export_dialog(gpointer user_data, gin
 		if (cs != NULL){
 			gtk_entry_set_text(GTK_ENTRY(priv->ssh_tunnel_startup_command_entry), cs);
 		}
-		g_free(cs);
 	}	
 	gtk_widget_destroy(dialog);
 #endif
@@ -1472,12 +1462,6 @@ static void remmina_file_editor_create_behavior_tab(RemminaFileEditor *gfe)
 	/* Autostart profile option */
 	priv->behavior_disconnect = remmina_file_editor_create_check(gfe, grid, 18, 1, _("Keep window from closing if not disconnected by Remmina"),
 								     remmina_file_get_int(priv->remmina_file, "disconnect-prompt", FALSE), "disconnect-prompt");
-}
-
-
-static gboolean
-remmina_file_editor_ssh_tunnel_import_settings(GtkFileChooserButton* self, gpointer user_data){
-	g_debug("Importing settings from %s", gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(self)));
 }
 
 static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, RemminaProtocolSSHSetting ssh_setting)

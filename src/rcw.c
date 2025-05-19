@@ -2811,14 +2811,14 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
 			if (remmina_pref_get_boolean("grab_color_switch")) {
-				gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_NORMAL, &rgba);
+				gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_FLAG_NORMAL, &rgba);
 				format = g_strconcat("<span bgcolor=\"", bg, "\" size=\"large\"><b>(G: ON) - \%s</b></span>", NULL);
 			} else {
-				gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_NORMAL, NULL);
+				gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_FLAG_NORMAL, NULL);
 				format = "<big><b>(G: ON) - \%s</b></big>";
 			}
 		} else {
-			gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_NORMAL, NULL);
+			gtk_widget_override_background_color(priv->overlay_ftb_fr, GTK_STATE_FLAG_NORMAL, NULL);
 			format = "<big><b>(G:OFF) - \%s</b></big>";
 		}
 		gchar *markup;
@@ -3211,7 +3211,6 @@ static void rcw_create_floating_toolbar(RemminaConnectionWindow *cnnwin, gint mo
 	GtkWidget *vbox;
 	GtkWidget *hbox;
 	GtkWidget *label;
-	GtkWidget *pinbutton;
 	GtkWidget *tb;
 
 
@@ -3578,11 +3577,13 @@ static GtkWidget *rco_create_tab_label(RemminaConnectionObject *cnnobj)
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, FALSE, FALSE, 0);
 
-	gchar* label = remmina_file_get_string(cnnobj->remmina_file, "name");
+	gchar* label = g_strdup(remmina_file_get_string(cnnobj->remmina_file, "name"));
 	if (strlen(label) > 100){
 		label[99] = 0;
 	}
 	widget = gtk_label_new(label);
+	g_free(label);
+
 	gtk_widget_set_valign(widget, GTK_ALIGN_CENTER);
 	gtk_widget_set_halign(widget, GTK_ALIGN_CENTER);
 

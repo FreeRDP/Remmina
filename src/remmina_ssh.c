@@ -1899,7 +1899,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		char *token = strtok(command_args, " ");
 		while (token != NULL){
 			args[arg_count] = token;
-			token = token = strtok(NULL, " ");
+			token = strtok(NULL, " ");
 			arg_count += 1;
 		}
 		args[arg_count] = NULL;
@@ -2113,7 +2113,7 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	ssh->allow_ssh_rsa = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_allow_ssh_rsa" : "ssh_allow_ssh_rsa", 0);
 	gint c = remmina_file_get_int(remminafile, is_tunnel ? "ssh_tunnel_compression" : "ssh_compression", 0);
 	ssh->compression = (c == 1) ? "yes" : "no";
-	ssh->command_args = remmina_file_get_string(remminafile, "ssh_tunnel_command_args");
+	ssh->command_args = g_strdup(remmina_file_get_string(remminafile, "ssh_tunnel_command_args"));
 
 	REMMINA_DEBUG("ssh->user: %s", ssh->user);
 	REMMINA_DEBUG("ssh->password: %s", ssh->password);
