@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-05-21 13:03+0000\n"
+"PO-Revision-Date: 2025-05-21 14:05+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -99,7 +99,7 @@ msgstr "SFTP - Turvaline failiedastus"
 
 #: src/remmina_log.c:131
 msgid "Remmina debugging window"
-msgstr "Ava Remmina veaotsingu aken"
+msgstr "Remmina veaotsingu vaade"
 
 #: src/remmina_log.c:135
 msgid "Paste system info in the Remmina debugging window"
@@ -114,6 +114,12 @@ msgid ""
 "There is more info about debugging Remmina on https://gitlab.com/Remmina/"
 "Remmina/-/wikis/Usage/Remmina-debugging\n"
 msgstr ""
+"Siin vaates saad otsida ühendusvigade põhjuseid.\n"
+"Logimist saad sisse/välja lülitada suurest nupust tiitliribal.\n"
+"Üldinfo nupust (Ctrl+T) saad vigadest teatamisel lisada teavet antud "
+"süsteemi kohta.\n"
+"Lisateave veaotsingu kohta Remminas: https://gitlab.com/Remmina/Remmina/-/"
+"wikis/Usage/Remmina-debugging\n"
 
 #: src/remmina_plugin_manager.c:86 src/remmina_file_editor.c:2119
 msgid "Protocol"
@@ -822,7 +828,6 @@ msgstr "Mine ülemkausta"
 
 #: src/remmina_ftp_client.c:781 plugins/rdp/rdp_plugin.c:3207
 #: plugins/vnc/vnc_plugin.c:2154
-#, fuzzy
 msgid "Refresh"
 msgstr "Uuenda"
 
@@ -840,7 +845,6 @@ msgstr "Laadi serverisse"
 
 #: src/remmina_ftp_client.c:798 data/ui/remmina_main.glade:198
 #: data/ui/remmina_main.glade:252
-#, fuzzy
 msgid "Delete"
 msgstr "Kustuta"
 
@@ -1339,7 +1343,7 @@ msgstr "Kõik failid"
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
 msgid "Import"
-msgstr "Impordi"
+msgstr "Importimine"
 
 #: src/remmina_main.c:1300
 msgid "Select the connection profile."
@@ -1590,9 +1594,8 @@ msgid "SSH Tunnel"
 msgstr "SSH tunnel"
 
 #: src/remmina_file_editor.c:1243
-#, fuzzy
 msgid "Enable SSH tunnel"
-msgstr "SSH tunneli lubamine"
+msgstr "Kasuta SSH tunnelit"
 
 #: src/remmina_file_editor.c:1250
 msgid "Tunnel via loopback address"
@@ -1638,13 +1641,13 @@ msgstr ""
 "(%s: %i): Ei saa valideerida seadistust '%s', kuna 'value' või 'gfe' on NULL!"
 
 #: src/remmina_file_editor.c:1562
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
 msgstr ""
 "(%s: %i): Ei saa valideerida kasutaja sisendit, kuna "
-"'setting_name_to_validate', 'value' või 'gfe' on NULL!"
+"„setting_name_to_validate“, „value“ või „gfe“ väärtuseks on NULL!"
 
 #. TRANSLATORS: Meta-error. Shouldn't be visible.
 #: src/remmina_file_editor.c:1566 plugins/x2go/x2go_plugin.c:2574
@@ -1676,9 +1679,8 @@ msgstr ""
 "Kasuta praeguseid seadistusi vaikimisi kõigi uute ühendusprofiilide puhul"
 
 #: src/remmina_file_editor.c:1938 data/ui/remmina_main.glade:161
-#, fuzzy
 msgid "Connect"
-msgstr "Ühendu"
+msgstr "Ühenda"
 
 #: src/remmina_file_editor.c:1941
 msgid "_Save and Connect"
@@ -1702,24 +1704,22 @@ msgid "Label1,Label2"
 msgstr "Silt1,Silt2"
 
 #: src/remmina_file_editor.c:2180 src/remmina_file_editor.c:2199
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the file “%s”."
-msgstr "Ei leitud faili \"%s\"."
+msgstr "„%s“ faili ei leidunud."
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:495 src/remmina_file.c:541
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"Remmina eelistuste faili parameetri \"resolutsioon\" kasutamine on aegunud.\n"
+"Remmina eelistuste failis on „resolution“ parameetri kasutamine aegunud.\n"
 
 #: src/remmina_icon.c:143
-#, fuzzy
 msgid "Enable Service Discovery"
-msgstr "Teenuse avastamise lubamine"
+msgstr "Luba teenuste tuvastamise protokollide kasutamine"
 
 #: src/remmina_icon.c:157 data/ui/remmina_main.glade:428
 msgid "_Quit"
@@ -1730,27 +1730,23 @@ msgid "_About"
 msgstr "R_akenduse teave"
 
 #: src/remmina_icon.c:167 data/ui/remmina_main.glade:279
-#, fuzzy
 msgid "_Preferences"
 msgstr "_Eelistused"
 
 #: src/remmina_icon.c:172
-#, fuzzy
 msgid "Open Main Window"
-msgstr "Avatud põhiaken"
+msgstr "Ava põhiaken"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:306 src/remmina_icon.c:472
-#, fuzzy
 msgid "Remmina Applet"
 msgstr "Remmina rakend"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:308 src/remmina_icon.c:474
-#, fuzzy
 msgid "Connect to remote desktops through the applet menu"
-msgstr "Ühendamine kaugtöölaudadega rakenduse menüü kaudu"
+msgstr "Ühenda kaugtöölaudadega rakendi menüüst"
 
 #: src/remmina_icon.c:377
 #, fuzzy
@@ -1765,10 +1761,10 @@ msgstr "%s - sinu töölaud toetab seda"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
-#, fuzzy, c-format
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
 msgstr ""
-"%s ja Remmina on sisseehitatud (kompileeritud) tugi libappindicatorile."
+"%s ja Remminas on sisseehitatud (kompileeritud) tugi libappindicatorile."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:389
@@ -1855,22 +1851,18 @@ msgid "Disconnected from %s:%d via SSH"
 msgstr "SSH-ga loodud ühendus %s:%d aadressiga on katkestatud"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
-#, fuzzy
 msgid "Copy"
 msgstr "Kopeeri"
 
 #: src/remmina_ssh_plugin.c:1473
-#, fuzzy
 msgid "_Copy"
 msgstr "_Kopeeri"
 
 #: src/remmina_ssh_plugin.c:1474
-#, fuzzy
 msgid "Paste"
-msgstr "Asetamine"
+msgstr "Aseta"
 
 #: src/remmina_ssh_plugin.c:1474
-#, fuzzy
 msgid "_Paste"
 msgstr "_Aseta"
 
@@ -1879,9 +1871,8 @@ msgid "Select all"
 msgstr "Vali kõik"
 
 #: src/remmina_ssh_plugin.c:1475
-#, fuzzy
 msgid "_Select all"
-msgstr "_Valige kõik"
+msgstr "_Vali kõik"
 
 #: src/remmina_ssh_plugin.c:1476
 msgid "Increase font size"
@@ -1914,13 +1905,11 @@ msgstr "Kasutaja salasõna"
 
 #: src/remmina_ssh_plugin.c:1511
 msgid "Opening command"
-msgstr ""
+msgstr "Avan käsku"
 
 #: src/remmina_ssh_plugin.c:1512
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Käivituse programm"
+msgstr "Taustarakendus käivitamisel"
 
 #: src/remmina_ssh_plugin.c:1517
 #, fuzzy
@@ -2158,7 +2147,7 @@ msgstr "Sisesta RDP-lüüsi autentimisandmed"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "Sisest RDP kiipkaardi PIN-kood"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -2167,13 +2156,13 @@ msgid "Disconnected from %s via RDP"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2463
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account locked out."
 msgstr ""
-"Ei saanud juurdepääsu RDP-serverile \"%s\".\n"
-"Konto on lukustatud."
+"Ei saanud juurdepääsu RDP-serverile „%s“.\n"
+"Kasutajakonto on lukustatud."
 
 #: plugins/rdp/rdp_plugin.c:2470
 #, c-format
@@ -2282,13 +2271,12 @@ msgid "The “%s” server refused the connection."
 msgstr "„%s“ server keeldus ühendusest."
 
 #: plugins/rdp/rdp_plugin.c:2548
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Remote Desktop Gateway \"%s\" keelas kasutajale \"%s\\%s\" juurdepääsu "
-"poliitika tõttu."
+"RDP lüüs „%s“ keelas „%s\\%s“ kasutajale juurdepääsu teenuse reeglite alusel."
 
 #: plugins/rdp/rdp_plugin.c:2558
 #, c-format
@@ -2398,19 +2386,19 @@ msgstr "NLA-protokolli laiendatud turvalisus"
 
 #: plugins/rdp/rdp_plugin.c:2994
 msgid "Every 1 min"
-msgstr ""
+msgstr "Iga minut"
 
 #: plugins/rdp/rdp_plugin.c:2995
 msgid "Every 3 min"
-msgstr ""
+msgstr "Iga 3 minuti järel"
 
 #: plugins/rdp/rdp_plugin.c:2996
 msgid "Every 5 min"
-msgstr ""
+msgstr "Iga 5 minuti järel"
 
 #: plugins/rdp/rdp_plugin.c:2997
 msgid "Every 10 min"
-msgstr ""
+msgstr "Iga 10 minuti järel"
 
 #: plugins/rdp/rdp_plugin.c:3011 plugins/spice/spice_plugin.c:622
 #: plugins/spice/spice_plugin.c:640
@@ -2500,7 +2488,6 @@ msgstr ""
 "  - sys:alsa"
 
 #: plugins/rdp/rdp_plugin.c:3052
-#, fuzzy
 msgid ""
 "Options for redirection of USB device:\n"
 "  • [dbg,][id:<vid>:<pid>#…,][addr:<bus>:<addr>#…,][auto]\n"
@@ -2513,14 +2500,13 @@ msgstr ""
 "  • id:054c:0268#4669:6e6b,addr:04:0c"
 
 #: plugins/rdp/rdp_plugin.c:3058
-#, fuzzy
 msgid ""
 "Advanced setting for high latency links:\n"
 "Adjusts the connection timeout. Use if your connection times out.\n"
 "The highest possible value is 600000 ms (10 minutes).\n"
 msgstr ""
 "Täiustatud seadistus suure latentsusega ühenduste jaoks:\n"
-"Reguleerib ühenduse aegumistähtaega. Kasutage, kui ühendus aegub.\n"
+"Reguleerib ühenduse aegumistähtaega. Kasuta, kui ühendus aegub.\n"
 "Suurim võimalik väärtus on 600000 ms (10 minutit).\n"
 
 #: plugins/rdp/rdp_plugin.c:3063
@@ -2712,94 +2698,76 @@ msgstr "Info koormuse tasakaalu kohta"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
 #: plugins/rdp/rdp_plugin.c:3158
-#, fuzzy
 msgid "Override printer drivers"
-msgstr "Printeri draiverite ületamine"
+msgstr "Asenda printeri draiverid"
 
 #: plugins/rdp/rdp_plugin.c:3158
-#, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
-"MF410\": \"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon MF410\":"
+" \"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:3159
-#, fuzzy
 msgid "USB device redirection"
-msgstr "USB-seadme ümbersuunamine"
+msgstr "Suuna USB-seade ümber"
 
 #: plugins/rdp/rdp_plugin.c:3160
-#, fuzzy
 msgid "Local serial name"
-msgstr "Kohalik seerianimi"
+msgstr "Jadapordi kohalik nimi"
 
 #: plugins/rdp/rdp_plugin.c:3160
-#, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2 jne."
 
 #: plugins/rdp/rdp_plugin.c:3161
-#, fuzzy
 msgid "Local serial driver"
-msgstr "Kohalik jadaajam"
+msgstr "Jadapordi kohalik draiver"
 
 #: plugins/rdp/rdp_plugin.c:3161
-#, fuzzy
 msgid "Serial"
-msgstr "Seeriaviisiline"
+msgstr "Jadaport"
 
 #: plugins/rdp/rdp_plugin.c:3162
-#, fuzzy
 msgid "Local serial path"
-msgstr "Kohalik jadapikkus"
+msgstr "Jadapordi kohalik asukoht"
 
 #: plugins/rdp/rdp_plugin.c:3162
-#, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1 jne."
 
 #: plugins/rdp/rdp_plugin.c:3163
-#, fuzzy
 msgid "Local parallel name"
-msgstr "Kohaliku paralleeli nimi"
+msgstr "Paralleelpordi kohalik nimi"
 
 #: plugins/rdp/rdp_plugin.c:3164
-#, fuzzy
 msgid "Local parallel device"
-msgstr "Kohalik paralleelne seade"
+msgstr "Paralleelpordi kohalik seade"
 
 #: plugins/rdp/rdp_plugin.c:3165
-#, fuzzy
 msgid "Name of smart card"
-msgstr "Nutikaardi nimi"
+msgstr "Kiipkaardi nimi"
 
 #: plugins/rdp/rdp_plugin.c:3166
-#, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "Dünaamiline virtuaalne kanal"
 
 #: plugins/rdp/rdp_plugin.c:3166 plugins/rdp/rdp_plugin.c:3167
-#, fuzzy
 msgid "<channel>[,<options>]"
-msgstr "<kanal>[,<options>]"
+msgstr "<kanal>[,<valikud>]"
 
 #: plugins/rdp/rdp_plugin.c:3167
-#, fuzzy
 msgid "Static virtual channel"
 msgstr "Staatiline virtuaalne kanal"
 
 #: plugins/rdp/rdp_plugin.c:3168
-#, fuzzy
-#| msgid "Per connection"
 msgid "TCP redirection"
 msgstr "TCP ümbersuunamine"
 
 #: plugins/rdp/rdp_plugin.c:3168
-#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr "/PATH/TO/rdp2tcp"
+msgstr "/ASUKOHT/SIIA/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
 msgid "Move mouse when connection is idle"
@@ -2807,12 +2775,11 @@ msgstr "Kui ühendus on jõude, siis liiguta hiirt"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "Proovi ühendust abistusrežiimis"
 
 #: plugins/rdp/rdp_plugin.c:3173
-#, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr "IPv6 AAAA kirje eelistamine IPv4 A-kirjele"
+msgstr "Eelista IPv6 AAAA kirjet IPv4 A-kirjele"
 
 #: plugins/rdp/rdp_plugin.c:3174
 msgid "Share printers"
@@ -2866,9 +2833,8 @@ msgid "Turn off fast-path"
 msgstr "Lülita kiire tee välja"
 
 #: plugins/rdp/rdp_plugin.c:3185
-#, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
-msgstr "Serveri tuvastamine Remote Desktop Gateway abil"
+msgstr "Tuvasta server RDP lüüsi abil"
 
 #: plugins/rdp/rdp_plugin.c:3187
 msgid "Use system proxy settings"
@@ -2924,7 +2890,6 @@ msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - kaugtöölaua protokoll"
 
 #: plugins/rdp/rdp_plugin.c:3249
-#, fuzzy
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP failikäsitleja"
 
@@ -3013,9 +2978,8 @@ msgid "Use TLS encryption"
 msgstr "Kasuta TLS krüpteerimist"
 
 #: plugins/spice/spice_plugin.c:682
-#, fuzzy
 msgid "Server CA certificate"
-msgstr "Serveri CA sertifikaat"
+msgstr "Serveri sertifitseerimiskeskuse sertifikaat"
 
 #: plugins/spice/spice_plugin.c:700
 msgid "Preferred video codec"
@@ -3047,7 +3011,6 @@ msgid "Select USB devices for redirection"
 msgstr "Vali USB-seadmed ümbersuunamiseks"
 
 #: plugins/spice/spice_plugin.c:733
-#, fuzzy
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - Sõltumatute arvutuskeskkondade lihtne protokoll"
 
@@ -3175,7 +3138,6 @@ msgid "Repeater"
 msgstr "Kordaja"
 
 #: plugins/vnc/vnc_plugin.c:2109
-#, fuzzy
 msgid "Listen on port"
 msgstr "Kuula porti"
 
@@ -3196,76 +3158,62 @@ msgid "Enabling this may help when the remote desktop looks scrambled"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:2134 plugins/gvnc/gvnc_plugin.c:867
-#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr "Ignoreeri kaugkella sõnumeid"
+msgstr "Eira kaugkella sõnumeid"
 
 #: plugins/vnc/vnc_plugin.c:2135 plugins/vnc/vnc_plugin.c:2153
-#, fuzzy
 msgid "Prevent local interaction on the server"
-msgstr "Vältida lokaalset suhtlemist serveris"
+msgstr "Väldi kohalike interaktsioone serveris"
 
 #: plugins/vnc/vnc_plugin.c:2136
-#, fuzzy
 msgid "Show remote cursor"
 msgstr "Näita kaugkursorit"
 
 #: plugins/vnc/vnc_plugin.c:2138
-#, fuzzy
 msgid "Turn off encryption"
-msgstr "Krüpteerimise väljalülitamine"
+msgstr "Lülita krüpteerimine välja"
 
 #: plugins/vnc/vnc_plugin.c:2155
-#, fuzzy
 msgid "Open Chat…"
-msgstr "Avatud vestlus…"
+msgstr "Ava vestlus…"
 
 #: plugins/vnc/vnc_plugin.h:42
-#, fuzzy
 msgid "Remmina VNC Plugin"
 msgstr "Remmina VNC plugin"
 
 #: plugins/vnc/vnc_plugin.h:47
-#, fuzzy
 msgid "Remmina VNC listener Plugin"
 msgstr "Remmina VNC kuulaja plugin"
 
 #: plugins/www/www_config.h:43
-#, fuzzy
 msgid "Remmina web-browser plugin"
 msgstr "Remmina veebibrauseri plugin"
 
 #: plugins/www/www_plugin.c:99
-#, fuzzy
 msgid "File downloaded"
-msgstr "Allalaaditud fail"
+msgstr "Fail on alla laaditud"
 
 #: plugins/www/www_plugin.c:592
 msgid "Enter WWW authentication credentials"
 msgstr "Sisesta WWW autentimisandmed"
 
 #: plugins/www/www_plugin.c:907
-#, fuzzy
 msgid "URL"
-msgstr "URL"
+msgstr "Võrguaadress"
 
 #: plugins/www/www_plugin.c:907
-#, fuzzy
 msgid "http://address or https://address"
 msgstr "http://address või https://address"
 
 #: plugins/www/www_plugin.c:924
-#, fuzzy
 msgid "User agent"
-msgstr "Kasutajaprogramm"
+msgstr "Brauseri tunnus"
 
 #: plugins/www/www_plugin.c:925
-#, fuzzy
 msgid "Proxy URL"
-msgstr "Proxy URL"
+msgstr "Proksi võrguaadress"
 
 #: plugins/www/www_plugin.c:925
-#, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "Nt https://example.org, socks://mysocks:1080"
 
@@ -3319,21 +3267,18 @@ msgid "Command"
 msgstr "Käsk"
 
 #: plugins/exec/exec_plugin.c:298
-#, fuzzy
 msgid "Asynchronous execution"
 msgstr "Asünkroonne täitmine"
 
 #: plugins/exec/exec_plugin.c:299
 msgid "Kill process on disconnect"
-msgstr ""
+msgstr "Ühenduse katkestamisel sulge protsessid jõuga"
 
 #: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
 msgid "Execute a command"
-msgstr "Käsu täitmine"
+msgstr "Käivita käsk"
 
 #: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
 msgid "Hello, World!"
 msgstr "Tere, maailm!"
 
@@ -3342,12 +3287,12 @@ msgid "Secured password storage in the GNOME keyring"
 msgstr "Salasõna turvaline salvestamine GNOME-i võtmerõngas"
 
 #: plugins/x2go/x2go_plugin.c:71
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
-"Käsurea funktsioon '%s' ei ole saadaval! PyHoca-CLI käivitamise katse ilma "
+"Käsurea funktsioon „%s“ ei ole saadaval! Proovin PyHoca-CLI käivitamist ilma "
 "seda funktsiooni kasutamata…"
 
 #: plugins/x2go/x2go_plugin.c:296 plugins/x2go/x2go_plugin.c:428
@@ -3366,7 +3311,7 @@ msgstr ""
 #: plugins/x2go/x2go_plugin.c:3304 plugins/x2go/x2go_plugin.c:3319
 #: plugins/x2go/x2go_plugin.c:3324 plugins/x2go/x2go_plugin.c:3329
 #: plugins/x2go/x2go_plugin.c:3334
-#, fuzzy, c-format
+#, c-format
 msgid "Internal error: %s"
 msgstr "Sisemine viga: %s"
 
@@ -3376,14 +3321,12 @@ msgid "Parameter 'custom_data' is not initialized!"
 msgstr "Parameeter „custom_data“ ei ole initsialiseeritud!"
 
 #: plugins/x2go/x2go_plugin.c:310
-#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr "Broken `DialogData`! Katkestus…"
+msgstr "Katkine „DialogData“! Katkestan…"
 
 #: plugins/x2go/x2go_plugin.c:314
-#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "Ei saa kätte `DialogData`! Katkestab…"
+msgstr "Ei saa kätte „DialogData“! Katkestan…"
 
 #: plugins/x2go/x2go_plugin.c:476
 #, fuzzy
@@ -3391,23 +3334,18 @@ msgid "X Display"
 msgstr "Ekraan"
 
 #: plugins/x2go/x2go_plugin.c:477
-#, fuzzy
 msgid "Status"
 msgstr "Olek"
 
 #: plugins/x2go/x2go_plugin.c:478
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "Seansi ID"
+msgstr "Sessiooni ID"
 
 #: plugins/x2go/x2go_plugin.c:479
-#, fuzzy
 msgid "Create date"
-msgstr "Loo kuupäev"
+msgstr "Loomise kuupäev"
 
 #: plugins/x2go/x2go_plugin.c:480
-#, fuzzy
 msgid "Suspended since"
 msgstr "Peatatud alates"
 
@@ -3416,12 +3354,10 @@ msgid "Agent PID"
 msgstr "Agendi PID"
 
 #: plugins/x2go/x2go_plugin.c:483
-#, fuzzy
 msgid "Hostname"
 msgstr "Hostinimi"
 
 #: plugins/x2go/x2go_plugin.c:484
-#, fuzzy
 msgid "Cookie"
 msgstr "Küpsis"
 
@@ -3449,10 +3385,8 @@ msgstr ""
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Tapa"
+msgstr "_Tapa"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:539
@@ -3603,9 +3537,9 @@ msgid "Resuming session: '%s'"
 msgstr "Seansi jätkamine: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:1411
-#, fuzzy, c-format
+#, c-format
 msgid "Terminating session: '%s'"
-msgstr "Seansi jätkamine: '%s'"
+msgstr "Lõpetan sessiooni: „%s“"
 
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
@@ -3727,7 +3661,7 @@ msgid "No session was selected. Creating a new one."
 msgstr "Ühtegi seanssi ei valitud. Luuakse uus."
 
 #: plugins/x2go/x2go_plugin.c:2356
-#, fuzzy, c-format
+#, c-format
 msgid "A non-critical error happened: %s"
 msgstr "Juhtus mittekriitiline viga: %s"
 
@@ -3738,24 +3672,22 @@ msgstr "Kasutaja otsustas jätkata sessiooni tunnusega „%s“"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
-#, fuzzy, c-format
+#, c-format
 msgid "Resuming session '%s'…"
-msgstr "Seansi '%s' jätkamine…"
+msgstr "Jätkan „%s“ sessiooni…"
 
 #: plugins/x2go/x2go_plugin.c:2513
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
-"DPI seade on väljaspool piire. Palun reguleerige seda profiili seadetes."
+"DPI seade on väljaspool piire. Palun reguleeri seda profiili seadistustes."
 
 #: plugins/x2go/x2go_plugin.c:2576
 msgid "Could not start X2Go session…"
 msgstr "X2Go sessiooni ei õnnestunud käivitada…"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy
 msgid "Could not start X2Go session."
-msgstr "X2Go seanssi ei õnnestunud käivitada."
+msgstr "X2Go sessiooni ei õnnestunud käivitada."
 
 #: plugins/x2go/x2go_plugin.c:2584
 #, c-format
@@ -3787,9 +3719,9 @@ msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr "Võtab kasutusele järgmised PyHoca-CLI käsurea funktsioonid:"
 
 #: plugins/x2go/x2go_plugin.c:2722
-#, fuzzy, c-format
+#, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr "Saadaval funktsioon[%i]: '%s''"
+msgstr "Saadaval funktsionaalsus[%i]: %s''"
 
 #: plugins/x2go/x2go_plugin.c:2747
 #, c-format
@@ -3883,7 +3815,7 @@ msgid "Parameters 'key' or 'value' are 'NULL'!"
 msgstr "Parameetrid 'key' või 'value' on 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:3241
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
 msgstr "Lubatud väärtused on %s."
 
@@ -3893,62 +3825,50 @@ msgid "The only allowed value is '%s'."
 msgstr "Ainus lubatud väärtus on „%s“."
 
 #: plugins/x2go/x2go_plugin.c:3290
-#, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "Alumine piir ei ole kehtiv täisarv!"
 
 #: plugins/x2go/x2go_plugin.c:3295
-#, fuzzy
 msgid "The lower limit is too high!"
 msgstr "Alumine piir on liiga kõrge!"
 
 #: plugins/x2go/x2go_plugin.c:3300
-#, fuzzy
 msgid "The lower limit is too low!"
 msgstr "Alumine piir on liiga madal!"
 
 #: plugins/x2go/x2go_plugin.c:3305 plugins/x2go/x2go_plugin.c:3335
 #: plugins/x2go/x2go_plugin.c:3355
-#, fuzzy
 msgid "Something unknown went wrong."
 msgstr "Midagi tundmatut läks valesti."
 
 #: plugins/x2go/x2go_plugin.c:3310 plugins/x2go/x2go_plugin.c:3340
-#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
-msgstr ""
-"Palun kontrollige võimalike vigade osas massiivi RemminaProtocolSetting."
+msgstr "Palun kontrolli võimalike vigade osas massiivi RemminaProtocolSetting."
 
 #: plugins/x2go/x2go_plugin.c:3320
-#, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "Ülempiir ei ole kehtiv täisarv!"
 
 #: plugins/x2go/x2go_plugin.c:3325
-#, fuzzy
 msgid "The upper limit is too high!"
 msgstr "Ülempiir on liiga kõrge!"
 
 #: plugins/x2go/x2go_plugin.c:3330
-#, fuzzy
 msgid "The upper limit is too low!"
 msgstr "Ülempiir on liiga madal!"
 
 #: plugins/x2go/x2go_plugin.c:3350
-#, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "Sisend ei ole kehtiv täisarv!"
 
 #: plugins/x2go/x2go_plugin.c:3352 plugins/x2go/x2go_plugin.c:3369
-#, fuzzy, c-format
+#, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Sisend peab olema number vahemikus %i kuni %i."
 
 #: plugins/x2go/x2go_plugin.c:3398
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Startup program"
-msgstr "Käivituse programm"
+msgstr "Käivitusprogramm"
 
 #: plugins/x2go/x2go_plugin.c:3400
 msgid "Which command should be executed after creating the X2Go session?"
@@ -3963,30 +3883,23 @@ msgid "Keyboard type (auto)"
 msgstr "Klaviatuuri tüüp (automaatne)"
 
 #: plugins/x2go/x2go_plugin.c:3404
-#, fuzzy
 msgid "Audio support"
-msgstr "Audio tugi"
+msgstr "Helitugi"
 
 #: plugins/x2go/x2go_plugin.c:3406
-#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr "X2Go serveri helisüsteem (vaikimisi: \"pulse\")."
+msgstr "X2Go serveri helisüsteem (vaikimisi: „pulse“)."
 
 #: plugins/x2go/x2go_plugin.c:3409
-#, fuzzy
-#| msgid "Per connection"
 msgid "Clipboard direction"
-msgstr "Lõikeplaadi suund"
+msgstr "Lõikelaua suund"
 
 #: plugins/x2go/x2go_plugin.c:3411
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
-"Millises suunas tuleks lõikelaua sisu kopeerida? (vaikimisi: \"mõlemad\")."
+"Millises suunas peaksime lõikelaua sisu kopeerima? (vaikimisi: „mõlemad“)."
 
 #: plugins/x2go/x2go_plugin.c:3415
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "DPI eraldusvõime"
 
@@ -4029,26 +3942,18 @@ msgid "Use server settings"
 msgstr "Kasuta serveri seadistusi"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "True colour (24 bpp)"
 msgid "True colour (24 bits)"
 msgstr "True color (24 bitti)"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "High colour (16 bpp)"
 msgid "High colour (16 bits)"
 msgstr "Kõrge värvsus (16 bitti)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "256 colours (8 bpp)"
 msgid "Low colour (8 bits)"
 msgstr "Madal värvus (8 bitti)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "True colour (32 bpp)"
 msgid "Ultra low colour (3 bits)"
 msgstr "Ülimadalad värvid (3 bitti)"
 
@@ -4057,24 +3962,20 @@ msgid "VNC password"
 msgstr "VNC salasõna"
 
 #: plugins/gvnc/gvnc_plugin.c:849
-#, fuzzy
 msgid "Use JPEG Compression"
-msgstr "Kasutage JPEG pakkimist"
+msgstr "Kasuta JPEG pakkimist"
 
 #: plugins/gvnc/gvnc_plugin.c:849
 msgid "This might not work on all VNC servers"
 msgstr "See ei pruugi toimida kõigis VNC-serverites"
 
 #: plugins/gvnc/gvnc_plugin.c:850
-#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr "GTK-VNC silumise lubamine"
+msgstr "Kasuta GTK-VNC silumist"
 
 #: plugins/gvnc/gvnc_plugin.c:870
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
-msgstr "Ühine ühendus"
+msgstr "Jagatud ühendus"
 
 #: plugins/gvnc/gvnc_plugin.c:870
 #, fuzzy
@@ -4101,17 +4002,14 @@ msgid "Send Ctrl+Alt+_F2"
 msgstr "Saada Ctrl+Alt+_F2"
 
 #: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
 msgid "Send Ctrl+Alt+_F3"
 msgstr "Saada Ctrl+Alt+_F3"
 
 #: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
 msgid "Send Ctrl+Alt+_F4"
 msgstr "Saada Ctrl+Alt+_F4"
 
 #: plugins/gvnc/gvnc_plugin.c:886
-#, fuzzy
 msgid "Send Ctrl+Alt+_F5"
 msgstr "Saada Ctrl+Alt+_F5"
 
@@ -4148,31 +4046,27 @@ msgid "Reboot remote host"
 msgstr "Taaskäivita kaugseade"
 
 #: plugins/gvnc/gvnc_plugin.c:896
-#, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr "Remote host'i lähtestamine (kõva taaskäivitamine)"
+msgstr "Käivita kaugseade uuesti (täisrestart)"
 
 #: plugins/gvnc/gvnc_plugin.c:897
-#, fuzzy
 msgid "Shutdown remote host"
-msgstr "Kaugjuhtimisplatvormi väljalülitamine"
+msgstr "Lülita kaugseade välja"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
 "%s soovib jagada oma töölauda.\n"
-"Kas te nõustute?"
+"Kas sa nõustud?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
-#, fuzzy
 msgid "Desktop sharing invitation"
 msgstr "Töölaua jagamise kutse"
 
 #: plugins/telepathy/telepathy_plugin.c:57
-#, fuzzy
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepaatia - töölaua jagamine"
 
@@ -4206,9 +4100,8 @@ msgstr ""
 "sisestada terminaliaknas järgmised käsud:"
 
 #: data/ui/remmina_snap_info_dialog.glade:157
-#, fuzzy
 msgid "<big>Permissions</big>"
-msgstr "<big>Õigus</big>"
+msgstr "<big>Õigused</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:193
 msgid ""
@@ -4221,62 +4114,52 @@ msgstr ""
 "Remmina eelistustes."
 
 #: data/ui/remmina_snap_info_dialog.glade:213
-#, fuzzy
 msgid "Change where Remmina profiles are stored"
-msgstr "Muuda, kus Remmina profiilid salvestatakse"
+msgstr "Muuda Remmina profiilide salvestuskohta"
 
 #: data/ui/remmina_snap_info_dialog.glade:252
-#, fuzzy
 msgid "<big>Snap settings</big>"
-msgstr "<big>Snap seaded</big>"
+msgstr "<big>Snapi seadistused</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:265
-#, fuzzy
 msgid "Do not show this message again"
-msgstr "Ärge näidake seda sõnumit uuesti"
+msgstr "Ära näita seda sõnumit uuesti"
 
 #: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
-#, fuzzy
 msgid "Search"
 msgstr "Otsi"
 
 #: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
-#, fuzzy
 msgid "Search for previous occurrence"
 msgstr "Otsi eelmist esinemist"
 
 #: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
-#, fuzzy
 msgid "Search for next occurrence"
 msgstr "Otsi järgmist juhtumit"
 
 #: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
-#, fuzzy
 msgid "Toggle search options"
-msgstr "Otsinguvõimaluste vahetamine"
+msgstr "Vaheta otsinguvõimalused"
 
 #: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
 msgid "_Match case"
 msgstr "Kasuta sa_mu suur- ja väiketähti"
 
 #: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
-#, fuzzy
 msgid "Match _entire word only"
 msgstr "Vastab ainult _täielik sõna"
 
 #: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
-#, fuzzy
 msgid "Match as _regular expression"
-msgstr "Vastus kui _reeglipärane väljendus"
+msgstr "Vastus kui _regulaaravaldis"
 
 #: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
 msgid "_Wrap around"
 msgstr "_Alusta algusest"
 
 #: data/ui/remmina_about.glade:32 data/ui/remmina_main.glade:419
-#, fuzzy
 msgid "About"
-msgstr "kohta"
+msgstr "Rakenduse teave"
 
 #: data/ui/remmina_about.glade:36
 msgid ""
@@ -4333,10 +4216,8 @@ msgid "Gateway Username"
 msgstr "Lüüsi kasutajanimi"
 
 #: data/ui/remmina_mpc.glade:349
-#, fuzzy
-#| msgid "Remote Desktop Gateway domain"
 msgid "Gateway Domain"
-msgstr "Kaugtöölaua eelistus"
+msgstr "Lüüsi domeen"
 
 #: data/ui/remmina_mpc.glade:415
 msgid "Gateway Password"
@@ -4377,9 +4258,8 @@ msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>Mitme salasõna vahetaja</span>"
 
 #: data/ui/remmina_passwd.glade:35
-#, fuzzy
 msgid "OK"
-msgstr "_Olgu"
+msgstr "Sovib"
 
 #: data/ui/remmina_passwd.glade:85
 msgid "Verify password"
@@ -4411,23 +4291,20 @@ msgid "Allow key modifiers"
 msgstr ""
 
 #: data/ui/remmina_key_chooser.glade:121
-#, fuzzy
 msgid "Please press the new key…"
-msgstr "Palun vajutage uut klahvi…"
+msgstr "Palun vajuta uut klahvi…"
 
 #: data/ui/remmina_main.glade:36
-#, fuzzy
 msgid "Hide or show the search bar"
-msgstr "Otsinguriba peitmine või kuvamine"
+msgstr "Peida või näita otsinguriba"
 
 #: data/ui/remmina_main.glade:42
 msgid "Add a new connection profile"
 msgstr "Lisa uus ühendusprofiil"
 
 #: data/ui/remmina_main.glade:48
-#, fuzzy
 msgid "Switch from grouped to list view"
-msgstr "Üleminek rühmitatud vaatest nimekirjavaatele"
+msgstr "Vaheta rühmitatud vaatest loendivaatele"
 
 #: data/ui/remmina_main.glade:80
 #, fuzzy
@@ -4440,13 +4317,11 @@ msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr "\"Quick Connect\" otsingustring või serveri nimi/IP-aadress"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#, fuzzy
 msgid "Server name or IP address"
 msgstr "Serveri nimi või IP-aadress"
 
 #: data/ui/remmina_main.glade:103 data/ui/remmina_main.glade:105
 #: data/ui/remmina_preferences.glade:447
-#, fuzzy
 msgid "Clear"
 msgstr "Tühjenda"
 
@@ -4455,12 +4330,10 @@ msgid "Edit"
 msgstr "Muuda"
 
 #: data/ui/remmina_main.glade:218
-#, fuzzy
 msgid "Collapse all"
-msgstr "Kokkupõrge kõik"
+msgstr "Ahenda kõik"
 
 #: data/ui/remmina_main.glade:228
-#, fuzzy
 msgid "Expand all"
 msgstr "Laienda kõiki"
 
@@ -4469,14 +4342,12 @@ msgid "Multi password changer"
 msgstr "Mitme salasõna vahetaja"
 
 #: data/ui/remmina_main.glade:300
-#, fuzzy
 msgid "Debugging"
-msgstr "Vigade kõrvaldamine"
+msgstr "Veaotsing"
 
 #: data/ui/remmina_main.glade:320
-#, fuzzy
 msgid "Export"
-msgstr "Ekspordi"
+msgstr "Eksportimine"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
@@ -4487,19 +4358,16 @@ msgid "Make Remmina your default remote desktop client"
 msgstr "Muuda Remmina oma vaikimisi kaugtöölaua kliendiks"
 
 #: data/ui/remmina_main.glade:372
-#, fuzzy
 msgid "Homepage"
-msgstr "Kodulehekülg"
+msgstr "Remmina koduleht"
 
 #: data/ui/remmina_main.glade:382
-#, fuzzy
 msgid "Donations"
-msgstr "Annetused"
+msgstr "Toeta arendajaid"
 
 #: data/ui/remmina_main.glade:392
-#, fuzzy
 msgid "Wiki"
-msgstr "Wiki"
+msgstr "Viki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:402
@@ -4520,23 +4388,20 @@ msgid "New connection profile"
 msgstr "Uus ühenduse profiil"
 
 #: data/ui/remmina_main.glade:621
-#, fuzzy
 msgid "Show search bar"
 msgstr "Näita otsinguriba"
 
 #: data/ui/remmina_main.glade:641
 msgid "Remmina main menu"
-msgstr "Remmina rakend"
+msgstr "Remmina põhimenüü"
 
 #: data/ui/remmina_main.glade:648
-#, fuzzy
 msgid "Actions"
 msgstr "Toimingud"
 
 #: data/ui/remmina_main.glade:663
-#, fuzzy
 msgid "Toggle view"
-msgstr "Vaate muutmine"
+msgstr "Vaheta vaadet"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
@@ -4582,19 +4447,16 @@ msgid "Remmina Report Bug"
 msgstr "kasutaja parool"
 
 #: data/ui/remmina_spinner.glade:54
-#, fuzzy
 msgid "Please wait…"
 msgstr "Palun oota…"
 
 #: data/ui/remmina_preferences.glade:63
-#, fuzzy
 msgid "Double-click action"
-msgstr "Topeltklõpsu tegevus"
+msgstr "Tegevus topeltklõpsamisel"
 
 #: data/ui/remmina_preferences.glade:79
-#, fuzzy
 msgid "Open connection"
-msgstr "Avatud ühendus"
+msgstr "Käivita ühendus"
 
 #: data/ui/remmina_preferences.glade:80
 #, fuzzy
@@ -4766,13 +4628,10 @@ msgid "Disable tip of the day"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:618
-#, fuzzy
-#| msgid "Default settings saved."
 msgid "General"
-msgstr "Üldised seaded"
+msgstr "Üldised seadistused"
 
 #: data/ui/remmina_preferences.glade:643
-#, fuzzy
 msgid "Always show tabs"
 msgstr "Näita alati vahekaarte"
 
@@ -4790,9 +4649,8 @@ msgid "Automatic"
 msgstr "Automaatne"
 
 #: data/ui/remmina_preferences.glade:695
-#, fuzzy
 msgid "Scrolled window"
-msgstr "Veeretatud aken"
+msgstr "Keritud aken"
 
 #: data/ui/remmina_preferences.glade:697
 #, fuzzy
@@ -4801,10 +4659,9 @@ msgstr "Vaateakna täisekraan"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:713
-#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
-msgstr "Registrite rühmitamine"
+msgstr "Vahekaartide rühmitamine"
 
 #: data/ui/remmina_preferences.glade:725
 msgid "By group"
@@ -4828,9 +4685,8 @@ msgid "Peeking"
 msgstr "Kiika"
 
 #: data/ui/remmina_preferences.glade:763
-#, fuzzy
 msgid "Hidden"
-msgstr "Nähtamatu"
+msgstr "Peidetud"
 
 #: data/ui/remmina_preferences.glade:780
 #, fuzzy
@@ -4843,9 +4699,8 @@ msgid "Hide the search bar shown in the main window"
 msgstr "Peab otsinguriba, mis on kuvatud põhiaknas, välja peidetud"
 
 #: data/ui/remmina_preferences.glade:806
-#, fuzzy
 msgid "Prefer dark theme"
-msgstr "Eelista tumedat teemat"
+msgstr "Eelista tumedat kujundust"
 
 #: data/ui/remmina_preferences.glade:810
 #, fuzzy
@@ -4857,9 +4712,8 @@ msgstr ""
 "asemel."
 
 #: data/ui/remmina_preferences.glade:823
-#, fuzzy
 msgid "Always show notes"
-msgstr "Näita alati vahekaarte"
+msgstr "Näita alati märkmeid"
 
 #: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
@@ -4888,17 +4742,14 @@ msgstr ""
 "\"Kõik klaviatuurisündmused haarata\" olekuvärvi sisse/välja lülitamine"
 
 #: data/ui/remmina_preferences.glade:938
-#, fuzzy
 msgid "Appearance"
 msgstr "Välimus"
 
 #: data/ui/remmina_preferences.glade:964
-#, fuzzy
 msgid "Show new connection on top of the menu"
-msgstr "Uue ühenduse kuvamine menüü ülaosas"
+msgstr "Näita uut ühendust  menüü ülaosas"
 
 #: data/ui/remmina_preferences.glade:983
-#, fuzzy
 msgid "Hide total count shown in the group menu"
 msgstr "Peida grupimenüüs kuvatav koguarv"
 
@@ -4908,17 +4759,14 @@ msgid "No tray icon"
 msgstr "Puudub salve ikoon"
 
 #: data/ui/remmina_preferences.glade:1020
-#, fuzzy
 msgid "Start in tray upon user login"
-msgstr "Kasutaja sisselogimisel käivitub salve"
+msgstr "Kasutaja sisselogimisel käivitub süsteemisalve"
 
 #: data/ui/remmina_preferences.glade:1051
-#, fuzzy
 msgid "Applet"
-msgstr "Applet"
+msgstr "Rakend"
 
 #: data/ui/remmina_preferences.glade:1083
-#, fuzzy
 msgid "Host key"
 msgstr "Hosti võti"
 
@@ -4958,22 +4806,18 @@ msgid "Send-clipboard"
 msgstr "Saada lõikelaua sisu"
 
 #: data/ui/remmina_preferences.glade:1517
-#, fuzzy
 msgid "Keyboard"
 msgstr "Klaviatuur"
 
 #: data/ui/remmina_preferences.glade:1548
-#, fuzzy
 msgid "Local SSH port"
 msgstr "Kohalik SSH port"
 
 #: data/ui/remmina_preferences.glade:1572
-#, fuzzy
 msgid "Parse ~/.ssh/config"
-msgstr "Parseeri ~/.ssh/config"
+msgstr "Kasuta ~/.ssh/config faili"
 
 #: data/ui/remmina_preferences.glade:1596
-#, fuzzy
 msgid "No logging at all"
 msgstr "Ei mingit logimist"
 
@@ -4998,9 +4842,8 @@ msgid "Function entering and leaving"
 msgstr "Funktsioon sisenemine ja lahkumine"
 
 #: data/ui/remmina_preferences.glade:1617
-#, fuzzy
 msgid "SSH log level"
-msgstr "SSH logi tase"
+msgstr "SSH logimistase"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1688
@@ -5034,7 +4877,6 @@ msgstr ""
 "TCP-ühenduse sunniviisilist sulgemist."
 
 #: data/ui/remmina_preferences.glade:1762
-#, fuzzy
 msgid "SSH options"
 msgstr "SSH valikud"
 
@@ -5055,13 +4897,12 @@ msgid "Remmina password"
 msgstr "Remmina salasõna"
 
 #: data/ui/remmina_preferences.glade:1807
-#, fuzzy
 msgid "Use secret key authentication for some widgets"
-msgstr "Kasutage mõne vidina puhul salajase võtme autentimist"
+msgstr "Kasuta mõne vidina puhul autentimist salajase võtmega"
 
 #: data/ui/remmina_preferences.glade:1827
 msgid "Valid for"
-msgstr ""
+msgstr "Kehtiv kuni"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Number of seconds to keep password valid for"
@@ -5142,29 +4983,24 @@ msgid "Trust all certificates"
 msgstr "Usalda kõiki sõrmejälgi ja sertifikaate"
 
 #: data/ui/remmina_preferences.glade:2048
-#, fuzzy
 msgid "Security"
 msgstr "Turvalisus"
 
 #: data/ui/remmina_preferences.glade:2079
-#, fuzzy
 msgid "Terminal font"
-msgstr "Terminal font"
+msgstr "Terminali kirjatüüp"
 
 #: data/ui/remmina_preferences.glade:2092
-#, fuzzy
 msgid "Scrollback lines"
-msgstr "Scrollback read"
+msgstr "Tagasikeritavaid ridu"
 
 #: data/ui/remmina_preferences.glade:2140
-#, fuzzy
 msgid "Shortcuts for copying and pasting"
-msgstr "Kopeerimise ja kleepimise otseteed"
+msgstr "Kopeerimise ja asetamise kiirklahvid"
 
 #: data/ui/remmina_preferences.glade:2153
-#, fuzzy
 msgid "Select all shortcuts"
-msgstr "Valige kõik otseteed"
+msgstr "Vali kõik kiirklahvid"
 
 #: data/ui/remmina_preferences.glade:2166
 #: data/ui/remmina_preferences.glade:2183
@@ -5177,9 +5013,8 @@ msgid "(Host key+)"
 msgstr "(Host klahv+)"
 
 #: data/ui/remmina_preferences.glade:2201
-#, fuzzy
 msgid "Use default system font"
-msgstr "Kasutage süsteemi vaikimisi kirjastiili"
+msgstr "Kasutage süsteemi vaikimisi kirjatüüpi"
 
 #: data/ui/remmina_preferences.glade:2226
 #, fuzzy
@@ -5214,122 +5049,99 @@ msgid "Pick a terminal colouring file"
 msgstr "Valige terminali värvimisfail"
 
 #: data/ui/remmina_preferences.glade:2286
-#, fuzzy
 msgid "Bright colours"
-msgstr "Heledad värvid"
+msgstr "Eredad värvid"
 
 #: data/ui/remmina_preferences.glade:2300
-#, fuzzy
 msgid "Pick a light black colour"
-msgstr "Valige heledat musta värvi"
+msgstr "Vali hele must värv"
 
 #: data/ui/remmina_preferences.glade:2314
-#, fuzzy
 msgid "Pick a light red colour"
-msgstr "Valige helepunane värvus"
+msgstr "Vali helepunane värv"
 
 #: data/ui/remmina_preferences.glade:2328
-#, fuzzy
 msgid "Pick a bright green colour"
-msgstr "Valige erksavärviline roheline"
+msgstr "Vali erksavärviline roheline värv"
 
 #: data/ui/remmina_preferences.glade:2342
-#, fuzzy
 msgid "Pick a bright yellow colour"
-msgstr "Valige helekollane värv"
+msgstr "Vali helekollane värv"
 
 #: data/ui/remmina_preferences.glade:2356
-#, fuzzy
 msgid "Pick a bright blue colour"
-msgstr "Valige helesinine värv"
+msgstr "Vali helesinine värv"
 
 #: data/ui/remmina_preferences.glade:2370
-#, fuzzy
 msgid "Pick a light magenta colour"
-msgstr "Valige hele magenta värv"
+msgstr "Vali hele fuksiapunane värv"
 
 #: data/ui/remmina_preferences.glade:2384
-#, fuzzy
 msgid "Pick a light cyan colour"
-msgstr "Valige heledat tsüaani värvi"
+msgstr "Valige hele rohekassinine värv"
 
 #: data/ui/remmina_preferences.glade:2398
-#, fuzzy
 msgid "Pick a light white colour"
-msgstr "Valige helevalge värvus"
+msgstr "Vali helevalge värv"
 
 #: data/ui/remmina_preferences.glade:2412
-#, fuzzy
 msgid "Pick a black colour"
-msgstr "Valige must värv"
+msgstr "Vali must värv"
 
 #: data/ui/remmina_preferences.glade:2426
-#, fuzzy
 msgid "Pick a red colour"
-msgstr "Valige punane värv"
+msgstr "Vali punane värv"
 
 #: data/ui/remmina_preferences.glade:2440
-#, fuzzy
 msgid "Pick a green colour"
-msgstr "Valige roheline värv"
+msgstr "Vali roheline värv"
 
 #: data/ui/remmina_preferences.glade:2454
-#, fuzzy
 msgid "Pick a yellow colour"
-msgstr "Valige kollane värv"
+msgstr "Vali kollane värv"
 
 #: data/ui/remmina_preferences.glade:2468
-#, fuzzy
 msgid "Pick a blue colour"
-msgstr "Valige sinine värv"
+msgstr "Vali sinine värv"
 
 #: data/ui/remmina_preferences.glade:2482
-#, fuzzy
 msgid "Pick a magenta colour"
-msgstr "Valige magenta värv"
+msgstr "Vali fuksiapunane värv"
 
 #: data/ui/remmina_preferences.glade:2496
-#, fuzzy
 msgid "Pick a cyan colour"
-msgstr "Valige tsüaanne värv"
+msgstr "Vali rohekassinine värv"
 
 #: data/ui/remmina_preferences.glade:2510
-#, fuzzy
 msgid "Pick a white colour"
-msgstr "Valige valge värv"
+msgstr "Vali valge värv"
 
 #: data/ui/remmina_preferences.glade:2523
-#, fuzzy
 msgid "Normal colours"
 msgstr "Tavalised värvid"
 
 #: data/ui/remmina_preferences.glade:2536
 #: data/ui/remmina_preferences.glade:2551
-#, fuzzy
 msgid "Cursor colour"
 msgstr "Kursori värvus"
 
 #: data/ui/remmina_preferences.glade:2565
 #: data/ui/remmina_preferences.glade:2580
-#, fuzzy
 msgid "Background colour"
 msgstr "Taustavärv"
 
 #: data/ui/remmina_preferences.glade:2596
 #: data/ui/remmina_preferences.glade:2610
-#, fuzzy
 msgid "Foreground colour"
-msgstr "Esiplaanil olev värv"
+msgstr "Esiplaani värv"
 
 #: data/ui/remmina_preferences.glade:2623
-#, fuzzy
 msgid "Increase and decrease font size"
 msgstr "Suurendada ja vähendada kirjasuurust"
 
 #: data/ui/remmina_preferences.glade:2653
-#, fuzzy
 msgid "Search text shortcut"
-msgstr "Otsi teksti otsingukombinatsioon"
+msgstr "Otsingusõna kiirklahv"
 
 #: data/ui/remmina_preferences.glade:2684
 #: data/ui/remmina_preferences.glade:2699
@@ -5338,35 +5150,28 @@ msgstr "256 värvi"
 
 #: data/ui/remmina_preferences.glade:2713
 #: data/ui/remmina_preferences.glade:2754
-#, fuzzy
-#| msgid "High colour (16 bpp)"
 msgid "Highlight colour"
-msgstr "Värvi esiletõstmine"
+msgstr "Esiletõstmise värv"
 
 #: data/ui/remmina_preferences.glade:2726
 #: data/ui/remmina_preferences.glade:2770
-#, fuzzy
 msgid "Highlight foreground colour"
-msgstr "Esiplaanil oleva värvi esiletõstmine"
+msgstr "Esiplaanil oleva esiletõstmise värv"
 
 #: data/ui/remmina_preferences.glade:2739
 #: data/ui/remmina_preferences.glade:2786
-#, fuzzy
 msgid "Cursor foreground colour"
-msgstr "Kursori esiplaanivärv"
+msgstr "Kursori esiplaani värv"
 
 #: data/ui/remmina_preferences.glade:2842
-#, fuzzy
 msgid "Terminal"
 msgstr "Terminal"
 
 #: data/ui/remmina_preferences.glade:2856
-#, fuzzy
 msgid "Remmina Preferences"
 msgstr "Remmina eelistused"
 
 #: data/ui/remmina_unlock.glade:30
-#, fuzzy
 msgid "Unlock Remmina"
 msgstr "Ava Remmina"
 
