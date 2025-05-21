@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-05-21 12:39+0000\n"
+"PO-Revision-Date: 2025-05-21 13:03+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -1350,7 +1350,6 @@ msgid "Remmina couldn't export."
 msgstr "Remmina ei suutnud eksportida."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
-#, fuzzy
 msgid "_Save"
 msgstr "_Salvesta"
 
@@ -1564,7 +1563,7 @@ msgstr "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 
 #: src/remmina_file_editor.c:1192
 msgid "Start-up"
-msgstr "Käivita"
+msgstr "Tegevus rakenduse käivitamisel"
 
 #: src/remmina_file_editor.c:1195
 msgid "Auto-start this profile"
@@ -1584,7 +1583,7 @@ msgstr "Ühenduse ootamatu katkemine"
 
 #: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr "Väldi akna sulgemist, Remmina pole ühendust katkestatud"
+msgstr "Kui Remmina pole ühendust katkestatud, siis väldi akna sulgemist"
 
 #: src/remmina_file_editor.c:1242
 msgid "SSH Tunnel"
@@ -1606,7 +1605,7 @@ msgstr "Sama server pordis %i"
 
 #: src/remmina_file_editor.c:1310 plugins/rdp/rdp_plugin.c:3155
 msgid "Start-up path"
-msgstr "Baasrada"
+msgstr "Kaust käivitamisel"
 
 #: src/remmina_file_editor.c:1319
 msgid "SSH Authentication"
@@ -1655,23 +1654,21 @@ msgstr "Sisemine viga."
 
 #: src/remmina_file_editor.c:1809 src/remmina_file_editor.c:1845
 #: src/remmina_file_editor.c:1866 src/remmina_file_editor.c:1889
-#, fuzzy, c-format
+#, c-format
 msgid "Couldn't validate user input. %s"
 msgstr "Ei suutnud kasutaja sisestust valideerida. %s"
 
 #: src/remmina_file_editor.c:1833
-#, fuzzy
 msgid "Default settings saved."
-msgstr "Vaikeseaded salvestatud."
+msgstr "Vaikimisi seadistused on salvestatud."
 
 #: src/remmina_file_editor.c:1923
 msgid "Remote Connection Profile"
 msgstr "Kaugühenduse profiil"
 
 #: src/remmina_file_editor.c:1929
-#, fuzzy
 msgid "Save as Default"
-msgstr "Salvesta vaikimisi"
+msgstr "Salvesta vaikeväärtuseks"
 
 #: src/remmina_file_editor.c:1930
 msgid "Use the current settings as the default for all new connection profiles"
@@ -1688,7 +1685,6 @@ msgid "_Save and Connect"
 msgstr "_Salvesta ja ühenda"
 
 #: src/remmina_file_editor.c:2065
-#, fuzzy
 msgid "Quick Connect"
 msgstr "Kiirühendus"
 
@@ -2450,7 +2446,6 @@ msgid "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP), 7601 (Windows Vista/7), 9600 (Windows 8 ja uuemad)"
 
 #: plugins/rdp/rdp_plugin.c:3025
-#, fuzzy
 msgid ""
 "Used i.a. by terminal services in a smart card channel to distinguish client "
 "capabilities:\n"
@@ -3635,14 +3630,12 @@ msgstr ""
 "vigade suhtes. Veenduge ka, et kaugserver on kättesaadav."
 
 #: plugins/x2go/x2go_plugin.c:1709
-#, fuzzy
 msgid "Can't save empty username!"
 msgstr "Tühja kasutajanime ei saa salvestada!"
 
 #: plugins/x2go/x2go_plugin.c:1723
-#, fuzzy
 msgid "Could not save new credentials."
-msgstr "Ei saanud salvestada uusi volitusi."
+msgstr "Ei saanud salvestada uusi autentimisandmeid."
 
 #: plugins/x2go/x2go_plugin.c:1726
 #, fuzzy
@@ -3765,9 +3758,9 @@ msgid "Could not start X2Go session."
 msgstr "X2Go seanssi ei õnnestunud käivitada."
 
 #: plugins/x2go/x2go_plugin.c:2584
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "PyHoca-CLI (%i) ei õnnestunud käivitada: '%s'"
+msgstr "PyHoca-CLI (%i) käivitamine ei õnnestunud: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
 #, fuzzy
@@ -3958,19 +3951,14 @@ msgid "Startup program"
 msgstr "Käivituse programm"
 
 #: plugins/x2go/x2go_plugin.c:3400
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "Milline käsk tuleks käivitada pärast X2Go seansi loomist?"
+msgstr "Missugune käsk tuleks käivitada pärast X2Go seansi loomist?"
 
 #: plugins/x2go/x2go_plugin.c:3402
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
 msgstr "Klaviatuuri paigutus (automaatne)"
 
 #: plugins/x2go/x2go_plugin.c:3403
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
 msgstr "Klaviatuuri tüüp (automaatne)"
 
@@ -4003,13 +3991,12 @@ msgid "DPI resolution"
 msgstr "DPI eraldusvõime"
 
 #: plugins/x2go/x2go_plugin.c:3416
-#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
 msgstr ""
-"Käivitage seanss kindla resolutsiooniga (punktide arvu tolli kohta). Peab "
-"olema vahemikus 20 ja 400."
+"Käivita sessioon kindla resolutsiooniga (punktides tolli kohta). Peab olema "
+"vahemikus 20 ja 400."
 
 #: plugins/x2go/x2go_plugin.c:3420
 msgid "Your private key"
@@ -4021,7 +4008,7 @@ msgstr "X2Go lisamoodul on laaditud."
 
 #: plugins/x2go/x2go_plugin.h:43
 msgid "X2Go - Launch an X2Go session"
-msgstr "X2Go - X2Go seansi käivitamine"
+msgstr "X2Go - käivita X2Go sessioon"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
@@ -4224,14 +4211,13 @@ msgid "<big>Permissions</big>"
 msgstr "<big>Õigus</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:193
-#, fuzzy
 msgid ""
 "Since Snap packages run confined from the rest of the system, Remmina "
 "profiles are saved inside the Snap file system by default. You can change "
 "the location in the Remmina preferences."
 msgstr ""
 "Kuna Snap-paketid töötavad ülejäänud süsteemist eraldi, salvestatakse "
-"Remmina profiilid vaikimisi Snap-failisüsteemi sees. Asukohta saab muuta "
+"Remmina profiilid vaikimisi Snap-failisüsteemi sees. Asukohta saad muuta "
 "Remmina eelistustes."
 
 #: data/ui/remmina_snap_info_dialog.glade:213
@@ -4641,7 +4627,6 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:131
-#, fuzzy
 msgid "Step size for auto-scroll"
 msgstr "Automaatse kerimise sammu suurus"
 
@@ -4801,7 +4786,6 @@ msgid "Default view"
 msgstr "Vaikimisi vaade"
 
 #: data/ui/remmina_preferences.glade:694
-#, fuzzy
 msgid "Automatic"
 msgstr "Automaatne"
 
@@ -4943,9 +4927,8 @@ msgid "Show/hide fullscreen"
 msgstr "Täisekraanvaate sisse- ja väljalülitamine"
 
 #: data/ui/remmina_preferences.glade:1146
-#, fuzzy
 msgid "Auto-fit window"
-msgstr "Automaatne aken"
+msgstr "Mahuta aknasse automaatselt"
 
 #: data/ui/remmina_preferences.glade:1223
 #, fuzzy
@@ -5150,9 +5133,8 @@ msgid "Auditing log"
 msgstr "Seadete muutmine"
 
 #: data/ui/remmina_preferences.glade:2008
-#, fuzzy
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Võtta automaatselt vastu kõik sõrmejäljed ja sertifikaadid"
+msgstr "Nõustu automaatselt kõikide sõrmejäljede ja sertifikaatidega"
 
 #: data/ui/remmina_preferences.glade:2013
 #, fuzzy
