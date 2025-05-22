@@ -869,7 +869,9 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 			{
 				gchar *data;
 				gsize buffersize;
-				gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "png", NULL, NULL);
+				if (gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "png", NULL, NULL) == FALSE){
+					break;
+				}
 				outbuf = (UINT8 *)malloc(buffersize);
 				memcpy(outbuf, data, buffersize);
 				size = buffersize;
@@ -880,7 +882,9 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 			{
 				gchar *data;
 				gsize buffersize;
-				gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "jpeg", NULL, NULL);
+				if (gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "jpeg", NULL, NULL) == FALSE){
+					break;
+				}
 				outbuf = (UINT8 *)malloc(buffersize);
 				memcpy(outbuf, data, buffersize);
 				size = buffersize;
@@ -892,7 +896,9 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget *gp, RemminaPl
 			{
 				gchar *data;
 				gsize buffersize;
-				gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "bmp", NULL, NULL);
+				if (gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "bmp", NULL, NULL) == FALSE){
+					break;
+				}
 				size = buffersize - 14;
 				outbuf = (UINT8 *)malloc(size);
 				memcpy(outbuf, data + 14, size);
