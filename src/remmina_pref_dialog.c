@@ -337,6 +337,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	else
 		remmina_pref.vte_font = g_strdup(gtk_font_chooser_get_font(GTK_FONT_CHOOSER(remmina_pref_dialog->fontbutton_terminal_font)));
 	remmina_pref.vte_allow_bold_text = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_terminal_bold));
+	remmina_pref.color_file = gtk_file_chooser_get_filename(remmina_pref_dialog->button_term_cs);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_foreground), &color);
 	remmina_pref.color_pref.foreground = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_background), &color);
@@ -577,6 +578,10 @@ static void remmina_pref_dialog_init(void)
 		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->fontbutton_terminal_font), FALSE);
 	}
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_terminal_bold), remmina_pref.vte_allow_bold_text);
+
+
+	gtk_file_chooser_set_filename(remmina_pref_dialog->button_term_cs, remmina_pref.color_file);
+
 
 	/* Foreground color option */
 	gdk_rgba_parse(&color, remmina_pref.color_pref.foreground);

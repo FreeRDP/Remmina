@@ -216,6 +216,7 @@ typedef struct _RemminaPref {
 	guint			vte_shortcutkey_increase_font;
 	guint			vte_shortcutkey_decrease_font;
 	guint			vte_shortcutkey_search_text;
+	gchar * 		color_file;
 	/* In View menu */
 	gboolean		hide_toolbar;
 	gboolean		small_toolbutton;
