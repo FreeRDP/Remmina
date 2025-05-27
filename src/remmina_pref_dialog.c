@@ -136,6 +136,28 @@ void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data
 	g_object_unref(source);
 }
 
+void remmina_pref_on_color_scheme_removed(GtkWidget *widget, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	gchar *remmina_dir;
+	gchar *destpath;
+	GFile *destination;
+
+	remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", NULL);
+	/* /home/foo/.config/remmina */
+	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
+	destination = g_file_new_for_path(destpath);
+	if (g_file_test(destpath, G_FILE_TEST_IS_REGULAR)) {
+		g_file_delete(destination, NULL, NULL);
+		/* Here we should reinitialize the widget */
+		gtk_file_chooser_unselect_file(remmina_pref_dialog->button_term_cs, destination);
+	}
+	g_free(remmina_dir);
+	g_free(destpath);
+	g_free(destination);
+	
+}
+
 void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
@@ -579,8 +601,19 @@ static void remmina_pref_dialog_init(void)
 	}
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_terminal_bold), remmina_pref.vte_allow_bold_text);
 
-
-	gtk_file_chooser_set_filename(remmina_pref_dialog->button_term_cs, remmina_pref.color_file);
+	if (remmina_pref.color_file && remmina_pref.color_file[0] != '\0'){
+		gchar* remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", NULL);
+		/* /home/foo/.config/remmina */
+		gchar* destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
+		GFile* color_file = g_file_new_for_path(destpath);
+		if (g_file_query_exists(color_file, NULL)){
+			gtk_file_chooser_set_filename(remmina_pref_dialog->button_term_cs, remmina_pref.color_file);
+		}
+		g_free(color_file);
+		g_free(remmina_dir);
+		g_free(destpath);
+	}
+	
 
 
 	/* Foreground color option */
