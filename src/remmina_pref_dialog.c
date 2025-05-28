@@ -100,64 +100,6 @@ void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
-/* Re-initialize the remmina_pref_init to reload the color scheme when a color scheme
- * file is selected*/
-void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data)
-{
-	TRACE_CALL(__func__);
-	gchar *sourcepath;
-	gchar *remmina_dir;
-	gchar *destpath;
-	GFile *source;
-	GFile *destination;
-
-	sourcepath = gtk_file_chooser_get_filename(remmina_pref_dialog->button_term_cs);
-	source = g_file_new_for_path(sourcepath);
-
-	remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", NULL);
-	/* /home/foo/.config/remmina */
-	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
-	destination = g_file_new_for_path(destpath);
-
-	if (g_file_test(sourcepath, G_FILE_TEST_IS_REGULAR)) {
-		g_file_copy(source,
-			    destination,
-			    G_FILE_COPY_OVERWRITE,
-			    NULL,
-			    NULL,
-			    NULL,
-			    NULL);
-		/* Here we should reinitialize the widget */
-		gtk_file_chooser_set_file(remmina_pref_dialog->button_term_cs, source, NULL);
-	}
-	g_free(sourcepath);
-	g_free(remmina_dir);
-	g_free(destpath);
-	g_object_unref(source);
-}
-
-void remmina_pref_on_color_scheme_removed(GtkWidget *widget, gpointer user_data)
-{
-	TRACE_CALL(__func__);
-	gchar *remmina_dir;
-	gchar *destpath;
-	GFile *destination;
-
-	remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", NULL);
-	/* /home/foo/.config/remmina */
-	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
-	destination = g_file_new_for_path(destpath);
-	if (g_file_test(destpath, G_FILE_TEST_IS_REGULAR)) {
-		g_file_delete(destination, NULL, NULL);
-		/* Here we should reinitialize the widget */
-		gtk_file_chooser_unselect_file(remmina_pref_dialog->button_term_cs, destination);
-	}
-	g_free(remmina_dir);
-	g_free(destpath);
-	g_free(destination);
-	
-}
-
 void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
@@ -470,7 +412,7 @@ static void remmina_pref_dialog_set_button_label(GtkButton *button, guint keyval
 }
 
 /* Remmina preferences initialization */
-static void remmina_pref_dialog_init(void)
+static void remmina_pref_dialog_init(gboolean load_plugins)
 {
 	TRACE_CALL(__func__);
 	gchar buf[100];
@@ -743,13 +685,81 @@ static void remmina_pref_dialog_init(void)
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_decrease_font, remmina_pref.vte_shortcutkey_decrease_font);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_search_text, remmina_pref.vte_shortcutkey_search_text);
 
-	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PREF, remmina_pref_dialog_add_pref_plugin, remmina_pref_dialog->dialog);
+	if (load_plugins){
+		remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PREF, remmina_pref_dialog_add_pref_plugin, remmina_pref_dialog->dialog);
+	}
+	
 
 	g_signal_connect(G_OBJECT(remmina_pref_dialog->dialog), "destroy", G_CALLBACK(remmina_pref_on_dialog_destroy), NULL);
 
 	g_object_set_data(G_OBJECT(remmina_pref_dialog->dialog), "tag", "remmina-pref-dialog");
 	remmina_widget_pool_register(GTK_WIDGET(remmina_pref_dialog->dialog));
 }
+
+
+/* Re-initialize the remmina_pref_init to reload the color scheme when a color scheme
+ * file is selected*/
+void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	gchar *sourcepath;
+	gchar *remmina_dir;
+	gchar *destpath;
+	GFile *source;
+	GFile *destination;
+
+	sourcepath = gtk_file_chooser_get_filename(remmina_pref_dialog->button_term_cs);
+	source = g_file_new_for_path(sourcepath);
+
+	remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", NULL);
+	/* /home/foo/.config/remmina */
+	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
+	destination = g_file_new_for_path(destpath);
+
+	if (g_file_test(sourcepath, G_FILE_TEST_IS_REGULAR)) {
+		g_file_copy(source,
+			    destination,
+			    G_FILE_COPY_OVERWRITE,
+			    NULL,
+			    NULL,
+			    NULL,
+			    NULL);
+		/* Here we should reinitialize the widget */
+		remmina_pref_init();
+		remmina_pref_dialog_init(FALSE);
+		gtk_file_chooser_set_file(remmina_pref_dialog->button_term_cs, source, NULL);
+	}
+	g_free(sourcepath);
+	g_free(remmina_dir);
+	g_free(destpath);
+	g_object_unref(source);
+}
+
+
+void remmina_pref_on_color_scheme_removed(GtkWidget *widget, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	gchar *remmina_dir;
+	gchar *destpath;
+	GFile *destination;
+
+	remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", NULL);
+	/* /home/foo/.config/remmina */
+	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
+	destination = g_file_new_for_path(destpath);
+	if (g_file_test(destpath, G_FILE_TEST_IS_REGULAR)) {
+		g_file_delete(destination, NULL, NULL);
+		/* Here we should reinitialize the widget */
+		remmina_pref_init();
+		remmina_pref_dialog_init(FALSE);
+		gtk_file_chooser_unselect_file(remmina_pref_dialog->button_term_cs, destination);
+	}
+	g_free(remmina_dir);
+	g_free(destpath);
+	g_free(destination);
+	
+}
+
 
 /* RemminaPrefDialog instance */
 GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
@@ -912,7 +922,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_pref_dialog->builder, NULL);
 	/* Initialize the window and load the preferences */
-	remmina_pref_dialog_init();
+	remmina_pref_dialog_init(TRUE);
 
 	if (default_tab > 0)
 		gtk_notebook_set_current_page(remmina_pref_dialog->notebook_preferences, default_tab);
