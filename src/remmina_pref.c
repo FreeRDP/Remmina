@@ -786,8 +786,6 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.vte_shortcutkey_search_text = GDK_KEY_g;
 
-	remmina_pref_file_load_colors(gkeyfile, &remmina_pref.color_pref);
-
 	if (g_key_file_has_key(gkeyfile, "remmina_info", "periodic_news_last_checksum", NULL)) {
 		remmina_pref.periodic_news_last_checksum = g_key_file_get_string(gkeyfile, "remmina_info", "periodic_news_last_checksum", NULL);
 	}
@@ -828,6 +826,13 @@ void remmina_pref_init(void)
 		info_disable_tip = remmina_pref.disable_tip;
 	}
 
+	if (g_key_file_has_key(gkeyfile, "remmina_info", "ssh_color_file", NULL)) {
+		remmina_pref.color_file = g_key_file_get_string(gkeyfile, "remmina_info", "ssh_color_file", NULL);
+	}
+	else {
+		remmina_pref.color_file = NULL;
+	}
+
 	#ifdef DISABLE_NEWS
 	info_disable_news = 1;
 	remmina_pref.disable_news = TRUE;
@@ -852,12 +857,6 @@ void remmina_pref_init(void)
 	}
 
 
-	/* If we have a color scheme file, we switch to it, GIO will merge it in the
-	 * remmina.pref file */
-	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
-		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
-		g_remove(remmina_colors_file);
-	}
 
 	/* Default settings */
 	if (!g_key_file_has_key(gkeyfile, "remmina", "name", NULL)) {
@@ -866,6 +865,15 @@ void remmina_pref_init(void)
 		g_key_file_set_integer(gkeyfile, "remmina", "enable-plugins", 1);
 		remmina_pref_save();
 	}
+
+	/* If we have a color scheme file, we switch to it, GIO will merge it in the
+	* remmina.pref file */
+	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
+		// g_remove(remmina_colors_file);
+	}
+
+	remmina_pref_file_load_colors(gkeyfile, &remmina_pref.color_pref);
 
 	g_key_file_free(gkeyfile);
 
@@ -1022,6 +1030,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color13", remmina_pref.color_pref.color13 ? remmina_pref.color_pref.color13 : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color14", remmina_pref.color_pref.color14 ? remmina_pref.color_pref.color14 : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color15", remmina_pref.color_pref.color15 ? remmina_pref.color_pref.color15 : "");
+	g_key_file_set_string(gkeyfile, "remmina_info", "ssh_color_file", remmina_pref.color_file ? remmina_pref.color_file : "");
 	g_key_file_set_boolean(gkeyfile, "remmina_info", "periodic_news_permitted", !remmina_pref.disable_news);
 	g_key_file_set_string(gkeyfile, "remmina_info", "periodic_news_last_checksum", remmina_pref.periodic_news_last_checksum ? remmina_pref.periodic_news_last_checksum: "");
 	g_key_file_set_boolean(gkeyfile, "remmina_info", "periodic_usage_stats_permitted", !remmina_pref.disable_stats);

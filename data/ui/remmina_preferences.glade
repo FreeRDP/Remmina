@@ -2324,6 +2324,37 @@ Except the "Weak" method, all the others are recommended, "Keystore" is the defa
                         <property name="width">8</property>
                       </packing>
                     </child>
+
+                    <child>
+                      <object class="GtkLabel" id="label_color_file_remover">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="margin-start">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="label" translatable="yes">Remove colour theme</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">18</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="button_term_cs_remover">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">6</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="label" translatable="yes">Remove</property>
+                        <signal name="clicked" handler="remmina_pref_on_color_scheme_removed" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">18</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
                     <child>
                       <object class="GtkLabel" id="label_terminal_bright_colors">
                         <property name="visible">True</property>
