@@ -3897,15 +3897,17 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 
 	priv = cnnwin->priv;
 
+
+	if (priv->overlay_ftb_fr != NULL) {
+		gtk_widget_destroy(priv->overlay_ftb_fr);
+		priv->overlay_ftb_fr = NULL;
+	}
 	if (priv->overlay_ftb_overlay != NULL) {
 		gtk_widget_destroy(priv->overlay_ftb_overlay);
 		priv->overlay_ftb_overlay = NULL;
 		priv->revealer = NULL;
 	}
-	if (priv->overlay_ftb_fr != NULL) {
-		gtk_widget_destroy(priv->overlay_ftb_fr);
-		priv->overlay_ftb_fr = NULL;
-	}
+	
 
 	rcw_create_floating_toolbar(cnnwin, priv->fss_view_mode);
 
