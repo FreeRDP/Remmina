@@ -183,6 +183,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 		if ((unlock_password == NULL) || (g_strcmp0(unlock_password, "") == 0)) {
 			if (remmina_passwd (GTK_WINDOW(remmina_unlock_dialog->dialog), &unlock_password)) {
 				remmina_pref_set_value("unlock_password", g_strdup(unlock_password));
+				remmina_pref.unlock_password = g_strdup(unlock_password);
 				remmina_unlock_dialog->retval = TRUE;
 			} else {
 				remmina_unlock_dialog->retval = FALSE;
