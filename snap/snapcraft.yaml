@@ -221,11 +221,14 @@ parts:
       - -DWITH_GVNC=ON
       - -DWITH_X2GO=ON
       - -DWITH_PYTHON=ON
-      - -DCMAKE_PREFIX_PATH=$CRAFT_STAGE/usr
       - -DSNAP_BUILD=on
 
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$CRAFT_PROJECT_NAME/current/usr
+
+    build-environment:
+      - CMAKE_PREFIX_PATH: $CRAFT_STAGE/usr
+
 
     organize:
       snap/remmina/current/usr: usr
