@@ -8,13 +8,14 @@
 # Štěpán Adamec <adamec@yasas.org>, 2022, 2023.
 # Václav Koterec <kot.va@centrum.cz>, 2022.
 # Petr Kadlec <mormegil@centrum.cz>, 2023, 2025.
+# Jakub Kalousek <jkalousek@posteo.cz>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-02-23 18:11+0000\n"
-"Last-Translator: Petr Kadlec <mormegil@centrum.cz>\n"
+"PO-Revision-Date: 2025-06-04 07:01+0000\n"
+"Last-Translator: Jakub Kalousek <jkalousek@posteo.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
 "Language: cs\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.10.1-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -84,7 +85,7 @@ msgstr "Uživatelské jméno"
 #: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1324
 #: src/remmina_ssh_plugin.c:1503
 msgid "Authentication type"
-msgstr "Typ ověřování se"
+msgstr "Typ ověření"
 
 #: src/remmina_sftp_plugin.c:356 src/remmina_file_editor.c:1357
 #: src/remmina_ssh_plugin.c:1510
@@ -526,10 +527,8 @@ msgid "The passwords do not match"
 msgstr "Do každé z kolonek pro heslo jste napsali něco jiného"
 
 #: src/remmina_mpchange.c:276
-#, fuzzy
-#| msgid "The passwords do not match"
 msgid "The Gateway passwords do not match"
-msgstr "Do každé z kolonek pro heslo jste napsali něco jiného"
+msgstr "Hesla pro bránu se neshodují"
 
 #: src/remmina_mpchange.c:290
 msgid "Resetting passwords, please wait…"
@@ -664,16 +663,12 @@ msgid "Encrypt a password"
 msgstr "Heslo zašifrovat"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable encryption"
 msgid "Disable news"
-msgstr "Nešifrovat"
+msgstr "Vypnout novinky"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "Vypnout panel nástrojů"
+msgstr "Vypnout statistiky"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -700,12 +695,6 @@ msgstr "Zakázat ikonu v oznamovací oblasti panelu"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
@@ -713,7 +702,8 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
 "Remmina nezaznamenává všechny výstupní příkazy. Chcete-li povolit "
-"podrobnější výstup, použijte jako proměnnou prostředí G_MESSAGES_DEBUG=all.\n"
+"podrobnější výstup, použijte jako proměnnou prostředí "
+"\"G_MESSAGES_DEBUG=remmina\"\n"
 "Více informací je k dispozici na Reminna wiki na:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -1061,11 +1051,9 @@ msgid "Could not authenticate with SSH password. %s"
 msgstr "Nepodařilo se ověřit pomocí SSH hesla: %s"
 
 #: src/remmina_ssh.c:831 src/remmina_ssh.c:904
-#, fuzzy
-#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgid "No saved SSH password supplied. Asking user to enter it."
 msgstr ""
-"Nebyla zadána žádná uložená přístupová fráze SSH. Vyzývá uživatele k jejímu "
+"Nebylo poskytnuto žádné uložené heslo pro SSH. Vyzývám uživatele k jeho "
 "zadání."
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1098,12 +1086,9 @@ msgid "SSH identity file not selected."
 msgstr "Soubor s SSH klíčem doposud nebyl nastaven."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH passphrase supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
 msgstr ""
-"Nebyla zadána žádná uložená přístupová fráze SSH. Vyzývá uživatele k jejímu "
-"zadání."
+"Nebylo nalezeno žádné uživatelské jméno. Vyzývám uživatele k jeho zadání."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1201,16 +1186,12 @@ msgid "Enter TOTP/OTP/2FA code"
 msgstr "Zadejte kód TOTP/OTP/2FA"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "přihlašovací údaje pro SSH tunel"
+msgstr "pověřovací údaje privátního klíče k SSH tunelu"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "Soubor se soukromým SSH klíčem"
+msgstr "SSH pověřovací údaje privátního klíče"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1386,16 +1367,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "Soubor"
+msgstr "RDP Soubory"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "Soubor"
+msgstr "Všechny Soubory"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1403,15 +1380,12 @@ msgid "Import"
 msgstr "Naimportovat"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "Vytvořit nový profil připojení"
+msgstr "Vybrat profil připojení."
 
 #: src/remmina_main.c:1309
-#, fuzzy
 msgid "Remmina couldn't export."
-msgstr "Složka s daty Remmina"
+msgstr "Remmina nemohla exportovat."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -1509,12 +1483,6 @@ msgid "The following file already exists in the target folder:"
 msgstr "Následující soubor už v cílové složce existuje:"
 
 #: src/remmina_file_editor.c:61
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1531,20 +1499,6 @@ msgstr ""
 "- unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:70
-#, fuzzy
-#| msgid ""
-#| "<tt><big>• command in PATH args %h\n"
-#| "• /path/to/foo -options %h %u\n"
-#| "• %h is substituted with the server name\n"
-#| "• %t is substituted with the SSH server name\n"
-#| "• %u is substituted with the username\n"
-#| "• %U is substituted with the SSH username\n"
-#| "• %p is substituted with Remmina profile name\n"
-#| "• %g is substituted with Remmina profile group name\n"
-#| "• %d is substituted with local date and time in ISO 8601 format\n"
-#| "Do not run in background if you want the command to be executed before "
-#| "connecting.\n"
-#| "</big></tt>"
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1559,7 +1513,7 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"<tt><big>• příkaz v PATH argumenty %h\n"
+"<big>• příkaz v PATH argumenty %h\n"
 "• /popis/umisteni/neceho -options %h %u\n"
 "• za %h je dosazen název serveru\n"
 "• za %t je dosazen název SSH serveru\n"
@@ -1567,20 +1521,12 @@ msgstr ""
 "• za %U je dosazeno uživatelské jméno pro SSH\n"
 "• za %p je dosazen název Remmina profilu\n"
 "• za %g je dosazen název skupiny Remmina profilu\n"
-"• za %d je dosazeno lokální datum a čas ve formátu dle normy iso8601\n"
-"Nespouštějte na pozadí, pokud chcete aby příkaz byl vykonán před "
-"připojením.\n"
-"</big></tt>"
+"• za %d je dosazeno lokální datum a čas ve formátu dle normy ISO 8601\n"
+"Nespouštějte na pozadí, pokud chcete aby příkaz byl vykonán před připojením."
+"\n"
+"</big>"
 
 #: src/remmina_file_editor.c:84
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• :port\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1729,7 +1675,7 @@ msgstr ""
 "(%s: %i): Nelze ověřit nastavení „%s“, protože „value“ nebo „gfe“ jsou NULL!"
 
 #: src/remmina_file_editor.c:1562
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "(%s: %i): Can't validate user input since 'setting_name_to_validate', "
 "'value' or 'gfe' are NULL!"
@@ -1799,15 +1745,13 @@ msgstr "Nedaří se najít soubor „%s“."
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:495 src/remmina_file.c:541
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
 msgstr ""
-"Použití parametru \"rozlišení\" v souboru předvoleb Remmina je zastaralé.\n"
+"Použití parametru \"resolution\" v souboru předvoleb Remmina je zastaralé.\n"
 
 #: src/remmina_icon.c:143
-#, fuzzy
 msgid "Enable Service Discovery"
 msgstr "Zapnout objevování služeb"
 
@@ -1824,45 +1768,39 @@ msgid "_Preferences"
 msgstr "_Nastavení"
 
 #: src/remmina_icon.c:172
-#, fuzzy
 msgid "Open Main Window"
 msgstr "Otevřít hlavní okno"
 
 #. TRANSLATORS: Applet name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:306 src/remmina_icon.c:472
-#, fuzzy
 msgid "Remmina Applet"
 msgstr "Miniaplikace Remmina"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:308 src/remmina_icon.c:474
-#, fuzzy
 msgid "Connect to remote desktops through the applet menu"
-msgstr ""
-"Připojovat se ke vzdáleným plochám prostřednictvím nabídky miniaplikace"
+msgstr "Připojovat se ke vzdáleným plochám prostřednictvím nabídky miniaplikace"
 
 #: src/remmina_icon.c:377
-#, fuzzy
 msgid "StatusNotifier/Appindicator support in “"
-msgstr "Podpora indikátoru stavu/aplikátoru v \""
+msgstr "Podpora StatusNotifier/Appindicator  v \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, fuzzy, c-format
+#, c-format
 msgid "%s your desktop does support it"
 msgstr "%s váš počítač to podporuje"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
-#, fuzzy, c-format
+#, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr ""
-"%s a Remmina má vestavěnou (zkompilovanou) podporu pro libappindicator."
+msgstr "%s a Remmina má vestavěnou (zkompilovanou) podporu pro libappindicator."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:389
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
@@ -1872,74 +1810,67 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:393
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
 msgstr ""
 "%s Možná bude nutné nainstalovat a používat stavový applet aplikace XApp"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:396
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use KStatusNotifierItem"
-msgstr "%s Možná budete muset nainstalovat a používat KStatusNotifierItem"
+msgstr "%s Možná bude nutné nainstalovat a používat KStatusNotifierItem"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:399
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use XEmbed SNI Proxy"
 msgstr "%s Možná bude nutné nainstalovat a používat XEmbed SNI Proxy."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:402
-#, fuzzy, c-format
+#, c-format
 msgid "%s You may need to install, and use Gnome Shell Extension Appindicator"
 msgstr ""
-"%s Možná budete muset nainstalovat a používat rozšíření Gnome Shell "
+"%s Možná bude nutné nainstalovat a používat rozšíření Gnome Shell "
 "Appindicator"
 
 #: src/remmina_ssh_plugin.c:343
-#, fuzzy, c-format
+#, c-format
 msgid "Connected to %s:%d via SSH"
-msgstr "Připojování k „%s“ prostřednictvím SSH…"
+msgstr "Připojování k %s:%d prostřednictvím SSH"
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_ssh_plugin.c:551
-#, fuzzy, c-format
+#, c-format
 msgid "Error: %s"
 msgstr "Chyba: %s"
 
 #: src/remmina_ssh_plugin.c:568
-#, fuzzy
 msgid "Terminal content saved in"
 msgstr "Obsah terminálu uložen v"
 
 #: src/remmina_ssh_plugin.c:834
-#, fuzzy
 msgid "Select All (host+A)"
 msgstr "Vybrat vše (host+A)"
 
 #: src/remmina_ssh_plugin.c:835
-#, fuzzy
 msgid "Copy (host+C)"
 msgstr "Kopírovat (host+C)"
 
 #: src/remmina_ssh_plugin.c:836
-#, fuzzy
 msgid "Paste (host+V)"
 msgstr "Vložit (host+V)"
 
 #: src/remmina_ssh_plugin.c:837
-#, fuzzy
 msgid "Save session to file"
 msgstr "Uložit relaci do souboru"
 
 #: src/remmina_ssh_plugin.c:838
-#, fuzzy
 msgid "Increase font size (host+Page Up)"
 msgstr "Zvětšit velikost písma (host+Page Up)"
 
 #: src/remmina_ssh_plugin.c:839
-#, fuzzy
 msgid "Decrease font size (host+Page Down)"
 msgstr "Zmenšit velikost písma (host+Page Down)"
 
@@ -1948,9 +1879,9 @@ msgid "Find text (host+G)"
 msgstr "Hledat text (host+G)"
 
 #: src/remmina_ssh_plugin.c:896
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from %s:%d via SSH"
-msgstr "Připojování k „%s“ prostřednictvím SSH…"
+msgstr "Odpojen od %s:%d prostřednictvím SSH"
 
 #: src/remmina_ssh_plugin.c:1473 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -1977,7 +1908,6 @@ msgid "_Select all"
 msgstr "_Vybrat vše"
 
 #: src/remmina_ssh_plugin.c:1476
-#, fuzzy
 msgid "Increase font size"
 msgstr "Zvětšit velikost písma"
 
@@ -3439,11 +3369,11 @@ msgstr "Vynucený poměr stran dynamického rozlišení"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Vynutit přísnější enkódování"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Enabling this may help when the remote desktop looks scrambled"
-msgstr ""
+msgstr "Povolení může pomoci, pokud vypadá vzdálená obrazovka rozházeně"
 
 #: plugins/vnc/vnc_plugin.c:2134 plugins/gvnc/gvnc_plugin.c:867
 #, fuzzy
