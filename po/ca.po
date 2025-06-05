@@ -7,7 +7,7 @@
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2022, 2023.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
-# Ecron <ecron_89@hotmail.com>, 2020, 2021, 2023, 2024.
+# Ecron <ecron_89@hotmail.com>, 2020, 2021, 2023, 2024, 2025.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 # BennyBeat <bennybeat@gmail.com>, 2020, 2021.
 # Gil Obradors <gil.obradors@gmail.com>, 2021.
@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-07-09 13:09+0000\n"
+"PO-Revision-Date: 2025-06-05 15:01+0000\n"
 "Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -1328,12 +1328,12 @@ msgid "Could not create PTY device."
 msgstr "No s'ha pogut crear el dispositiu PTY."
 
 #: src/remmina_exec.c:128
-#, fuzzy
-#| msgid "Are you sure you want to close this last active connection?"
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
-msgstr "Estàs segur que vols tancar aquesta última connexió activa?"
+msgstr ""
+"Segur que voleu tancar completament el Remmina?\n"
+" Això tancarà qualsevol connexió activa."
 
 #: src/remmina_exec.c:505
 #, c-format
@@ -1554,7 +1554,6 @@ msgstr ""
 "• usuari@servidor[:port] (només protocol SSH)</big>"
 
 #: src/remmina_file_editor.c:172
-#, fuzzy
 msgid "Input is invalid."
 msgstr "L'entrada no és vàlida."
 
@@ -1963,10 +1962,8 @@ msgid "Opening command"
 msgstr "Ordre d'obertura"
 
 #: src/remmina_ssh_plugin.c:1512
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Start-up background program"
-msgstr "Programa d’inici"
+msgstr "Programa d’inici del rerefons"
 
 #: src/remmina_ssh_plugin.c:1517
 msgid ""
@@ -2286,16 +2283,13 @@ msgid "Could not find the address for the RDP server “%s”."
 msgstr "No s'ha pogut trobar l'adreça del servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:2518
-#, fuzzy, c-format
-#| msgid ""
-#| "Could not connect to the RDP server “%s” via TLS. Check that client and "
-#| "server support a common TLS version."
+#, c-format
 msgid ""
 "Could not connect to the RDP server “%s” via TLS. See the DEBUG traces from "
 "a terminal for more information."
 msgstr ""
-"No s'ha pogut connectar al servidor RDP «%s» a través de TLS. Comproveu que "
-"el client i el servidor són compatibles amb la mateixa versió de TLS."
+"No s'ha pogut connectar al servidor RDP «%s» a través de TLS. Mireu les "
+"traces DEBUG des d'un terminal per a més informació."
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2522
