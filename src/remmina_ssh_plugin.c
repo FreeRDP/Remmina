@@ -1412,6 +1412,7 @@ static gpointer ssh_auth[] =
 	"2", N_("SSH agent"),
 	"3", N_("Public key (automatic)"),
 	"4", N_("Kerberos (GSSAPI)"),
+	"5", N_("Keyboard Interactive"),
 	NULL
 };
 

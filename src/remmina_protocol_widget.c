@@ -106,7 +106,8 @@ enum panel_type {
 	RPWDT_AUTH,
 	RPWDT_QUESTIONYESNO,
 	RPWDT_AUTHX509,
-	RPWDT_ACCEPT
+	RPWDT_ACCEPT,
+	RPWDT_PROMPT
 };
 
 G_DEFINE_TYPE(RemminaProtocolWidget, remmina_protocol_widget, GTK_TYPE_EVENT_BOX)
@@ -1582,6 +1583,8 @@ static void authpanel_mt_cb(void *user_data, int button)
 			d->gp->priv->cacrl = remmina_message_panel_field_get_filename(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_CACRLFILE);
 			d->gp->priv->clientcert = remmina_message_panel_field_get_filename(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_CLIENTCERTFILE);
 			d->gp->priv->clientkey = remmina_message_panel_field_get_filename(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_CLIENTKEYFILE);
+		} else if (d->dtype == RPWDT_PROMPT) {
+			d->gp->priv->password = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_PASSWORD);
 		}
 	}
 
@@ -1625,6 +1628,8 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, (d->default_password == NULL || d->default_password[0] == 0) ? FALSE: TRUE);
 	} else if (d->dtype == RPWDT_QUESTIONYESNO) {
 		remmina_message_panel_setup_question(mp, d->title, authpanel_mt_cb, d, FALSE);
+	} else if (d->dtype == RPWDT_PROMPT) {
+		remmina_message_panel_setup_prompt(mp, d->title, authpanel_mt_cb, d);
 	} else if (d->dtype == RPWDT_ACCEPT) {
 		remmina_message_panel_setup_question(mp, d->title, authpanel_mt_cb, d, TRUE);
 	} else if (d->dtype == RPWDT_AUTHX509) {
@@ -1756,6 +1761,12 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 	g_free(d->default_domain);
 	g_free(d);
 	return rcbutton;
+}
+
+gchar* remmina_protocol_widget_panel_prompt(RemminaProtocolWidget *gp, const char *msg)
+{
+	remmina_protocol_widget_dialog(RPWDT_PROMPT, gp, 0, msg, NULL, NULL, NULL, NULL);
+	return gp->priv->password;
 }
 
 gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget *gp, const char *msg)
