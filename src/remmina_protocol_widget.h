@@ -143,6 +143,7 @@ gint remmina_protocol_widget_panel_auth(RemminaProtocolWidget *gp, RemminaMessag
 gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget *gp, const gchar *subject, const gchar *issuer, const gchar *fingerprint);
 gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp, const gchar *subject, const gchar *issuer, const gchar *new_fingerprint, const gchar *old_fingerprint);
 gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget *gp, const char *msg);
+gchar* remmina_protocol_widget_panel_prompt(RemminaProtocolWidget *gp, const char *msg);
 gint remmina_protocol_widget_panel_question_accept(RemminaProtocolWidget *gp, const char *msg);
 
 void remmina_protocol_widget_panel_show(RemminaProtocolWidget *gp);

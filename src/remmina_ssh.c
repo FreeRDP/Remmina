@@ -667,22 +667,17 @@ remmina_ssh_set_application_error(RemminaSSH *ssh, const gchar *fmt, ...)
 }
 
 static enum remmina_ssh_auth_result
-remmina_ssh_auth_interactive(RemminaSSH *ssh)
+remmina_ssh_auth_interactive(RemminaSSH *ssh, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	gint ret;
 	gint n;
 	gint i;
-	const gchar *name, *instruction = NULL;
+	const gchar *name, *instruction, *prompt = NULL;
 
 	ret = SSH_AUTH_ERROR;
 	if (ssh->authenticated) return REMMINA_SSH_AUTH_SUCCESS;
-	/* TODO: What if I have an empty password? */
-	if (ssh->password == NULL) {
-		remmina_ssh_set_error(ssh, "OTP code is empty");
-		REMMINA_DEBUG("OTP code is empty, returning");
-		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
-	}
+
 	REMMINA_DEBUG("OTP code has been set to: %s", ssh->password);
 
 	ret = ssh_userauth_kbdint(ssh->session, NULL, NULL);
@@ -698,8 +693,17 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 		else
 			REMMINA_DEBUG("SSH kbd-interactive instruction is empty");
 		n = ssh_userauth_kbdint_getnprompts(ssh->session);
-		for (i = 0; i < n; i++)
-			ssh_userauth_kbdint_setanswer(ssh->session, i, ssh->password);
+		for (i = 0; i < n; i++){
+			prompt = ssh_userauth_kbdint_getprompt(ssh->session, i, FALSE);
+			gchar* prompt_response = NULL;
+			if (strlen(prompt) > 0){
+				REMMINA_DEBUG("SSH kbd-interactive prompt: %s", prompt);
+				prompt_response = remmina_protocol_widget_panel_prompt(gp, prompt);
+			}
+			else
+				REMMINA_DEBUG("SSH kbd-interactive prompt is empty");
+			ssh_userauth_kbdint_setanswer(ssh->session, i, prompt_response);
+		}
 		ret = ssh_userauth_kbdint(ssh->session, NULL, NULL);
 	}
 
@@ -1155,7 +1159,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 		if (!ssh->authenticated && (method & SSH_AUTH_METHOD_INTERACTIVE)) {
 			/* SSH server is requesting us to do interactive auth. */
 			REMMINA_DEBUG("SSH using remmina_ssh_auth_interactive after password has failed");
-			rv = remmina_ssh_auth_interactive(ssh);
+			rv = remmina_ssh_auth_interactive(ssh, gp);
 		}
 		if (rv == REMMINA_SSH_AUTH_PARTIAL) {
 			if (ssh->password) {
@@ -1189,7 +1193,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	case SSH_AUTH_KBDINTERACTIVE:
 		REMMINA_DEBUG("SSH using remmina_ssh_auth_interactive");
 		if (method & SSH_AUTH_METHOD_INTERACTIVE) {
-			rv = remmina_ssh_auth_interactive(ssh);
+			rv = remmina_ssh_auth_interactive(ssh, gp);
 			if (rv == REMMINA_SSH_AUTH_PARTIAL) {
 				if (ssh->password) {
 					g_free(ssh->password);
@@ -1641,38 +1645,6 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 				g_free(current_user);
 				return REMMINA_SSH_AUTH_USERCANCEL;
 			}
-		} else if (remmina_ssh_auth_type == REMMINA_SSH_AUTH_KBDINTERACTIVE) {
-			REMMINA_DEBUG("Showing panel for keyboard interactive login\n");
-			/**
-			 * gp
-			 * flags
-			 * title
-			 * default_username
-			 * default_password
-			 * default_domain
-			 * password_prompt
-			 */
-			ret = remmina_protocol_widget_panel_auth(
-				gp,
-				0,
-				_("Keyboard interactive login, TOTP/OTP/2FA"),
-				NULL,
-				NULL,
-				NULL,
-				instruction);
-			if (ret == GTK_RESPONSE_OK) {
-				g_free(current_pwd);
-				current_pwd = remmina_protocol_widget_get_password(gp);
-				REMMINA_DEBUG("OTP code is: %s", current_pwd);
-				ssh->password = g_strdup(current_pwd);
-			} else {
-				g_free(current_pwd);
-				return REMMINA_SSH_AUTH_USERCANCEL;
-			}
-		} else {
-			g_print("Unimplemented.");
-			g_free(current_pwd);
-			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 		REMMINA_DEBUG("Retrying authentication");
 		ret = remmina_ssh_auth(ssh, current_pwd, gp, remminafile);

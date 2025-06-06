@@ -291,6 +291,100 @@ void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *
 
 }
 
+
+void remmina_message_panel_setup_prompt(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data)
+{
+	/*
+	 * Setup a message panel to prompt a question like "One time code:",
+	 * and a text field for a user response
+	 */
+
+	TRACE_CALL(__func__);
+	GtkWidget *grid;
+	GtkWidget *bbox;
+	GtkWidget *w;
+	GtkWidget *button_ok;
+	GtkWidget *button_cancel;
+	RemminaMessagePanelPrivate *priv = remmina_message_panel_get_instance_private(mp);
+
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		printf("WARNING: %s called in a subthread. This should not happen. Raising SIGINT for debugging.\n", __func__);
+		raise(SIGINT);
+	}
+
+	/* Create grid */
+	grid = gtk_grid_new();
+	gtk_widget_set_halign(GTK_WIDGET(grid), GTK_ALIGN_CENTER);
+	gtk_widget_set_valign(GTK_WIDGET(grid), GTK_ALIGN_CENTER);
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 6);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 6);
+
+	/* A message, */
+	w = gtk_label_new(message);
+
+
+	gtk_widget_set_halign(GTK_WIDGET(w), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(w), GTK_ALIGN_FILL);
+	gtk_widget_set_margin_top (GTK_WIDGET(w), 18);
+	gtk_widget_set_margin_bottom (GTK_WIDGET(w), 9);
+	gtk_widget_set_margin_start (GTK_WIDGET(w), 18);
+	gtk_widget_set_margin_end (GTK_WIDGET(w), 18);
+	gtk_widget_show(w);
+	gtk_grid_attach(GTK_GRID(grid), w, 0, 0, 2, 1);
+
+	// Entry field
+	GtkWidget* password_entry = gtk_entry_new();
+	gtk_widget_set_halign(GTK_WIDGET(password_entry), GTK_ALIGN_FILL);
+	gtk_widget_set_valign(GTK_WIDGET(password_entry), GTK_ALIGN_FILL);
+	gtk_widget_set_margin_top (GTK_WIDGET(password_entry), 3);
+	gtk_widget_set_margin_bottom (GTK_WIDGET(password_entry), 3);
+	gtk_widget_set_margin_start (GTK_WIDGET(password_entry), 6);
+	gtk_widget_set_margin_end (GTK_WIDGET(password_entry), 18);
+	gtk_entry_set_activates_default (GTK_ENTRY(password_entry), TRUE);
+	gtk_grid_attach(GTK_GRID(grid), password_entry, 1, 1, 2, 1);
+	gtk_entry_set_max_length(GTK_ENTRY(password_entry), 0);
+	gtk_entry_set_visibility(GTK_ENTRY(password_entry), FALSE);
+	gtk_entry_set_icon_from_icon_name(GTK_ENTRY(password_entry), GTK_ENTRY_ICON_SECONDARY, "org.remmina.Remmina-password-reveal-symbolic");
+	gtk_entry_set_icon_activatable(GTK_ENTRY(password_entry), GTK_ENTRY_ICON_SECONDARY, TRUE);
+	g_signal_connect(password_entry, "icon-press", G_CALLBACK(remmina_main_toggle_password_view), NULL);
+	
+	/* Buttons, ok and cancel */
+	bbox = gtk_button_box_new(GTK_ORIENTATION_HORIZONTAL);
+	gtk_button_box_set_layout (GTK_BUTTON_BOX (bbox), GTK_BUTTONBOX_EDGE);
+	gtk_box_set_spacing (GTK_BOX (bbox), 40);
+	gtk_widget_set_margin_top (GTK_WIDGET(bbox), 9);
+	gtk_widget_set_margin_bottom (GTK_WIDGET(bbox), 18);
+	gtk_widget_set_margin_start (GTK_WIDGET(bbox), 18);
+	gtk_widget_set_margin_end (GTK_WIDGET(bbox), 18);
+	button_ok = gtk_button_new_with_label(_("_OK"));
+	gtk_button_set_use_underline(GTK_BUTTON(button_ok), TRUE);
+	gtk_widget_set_can_default(button_ok, TRUE);
+	gtk_container_add (GTK_CONTAINER (bbox), button_ok);
+	/* Buttons, ok and cancel */
+	button_cancel = gtk_button_new_with_label(_("_Cancel"));
+	gtk_button_set_use_underline(GTK_BUTTON(button_cancel), TRUE);
+	gtk_container_add (GTK_CONTAINER (bbox), button_cancel);
+	gtk_grid_attach(GTK_GRID(grid), bbox, 0, 2, 3, 1);
+	/* Pack it into the panel */
+	gtk_box_pack_start(GTK_BOX(mp), grid, TRUE, TRUE, 4);
+
+	priv->response_callback = response_callback;
+	priv->response_callback_data = response_callback_data;
+	priv->w[REMMINA_MESSAGE_PANEL_PASSWORD] = password_entry;
+
+	g_object_set_data(G_OBJECT(button_cancel), btn_response_key, (void *)GTK_RESPONSE_CANCEL);
+	g_signal_connect(G_OBJECT(button_cancel), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
+	g_object_set_data(G_OBJECT(button_ok), btn_response_key, (void *)GTK_RESPONSE_OK);
+	g_signal_connect(G_OBJECT(button_ok), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
+
+	gtk_box_pack_start(GTK_BOX(mp), GTK_WIDGET(grid), TRUE, TRUE, 0);
+
+	gtk_widget_show_all(GTK_WIDGET(mp));
+
+}
+
+
 void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePanelCallback response_callback, gpointer response_callback_data, const gchar *title, const gchar *password_prompt, unsigned flags)
 {
 	TRACE_CALL(__func__);
