@@ -3237,9 +3237,21 @@ static void rcw_create_floating_toolbar(RemminaConnectionWindow *cnnwin, gint mo
 	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM || 
 		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT || 
 		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT) {
-		gtk_box_pack_start(GTK_BOX(vbox), tb, FALSE, FALSE, 0);
+			if (remmina_pref.fullscreen_toolbar_visibility != FLOATING_TOOLBAR_VISIBILITY_MINIMAL){
+				gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+				gtk_box_pack_start(GTK_BOX(vbox), tb, FALSE, FALSE, 0);
+			}
+			else{
+				gtk_box_pack_start(GTK_BOX(vbox), tb, FALSE, FALSE, 0);
+			}
 	} else {
-		gtk_box_pack_start(GTK_BOX(vbox), tb, FALSE, FALSE, 0);
+		if (remmina_pref.fullscreen_toolbar_visibility != FLOATING_TOOLBAR_VISIBILITY_MINIMAL){
+			gtk_box_pack_start(GTK_BOX(vbox), tb, FALSE, FALSE, 0);
+			gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+		}
+		else{
+			gtk_box_pack_start(GTK_BOX(vbox), tb, FALSE, FALSE, 0);
+		}
 	}
 
 	priv->floating_toolbar_widget = ftb_widget;
