@@ -9,15 +9,15 @@
 # Oğuz Ersen <oguzersen@protonmail.com>, 2019, 2020, 2021, 2022.
 # Oğuzcan Küçükbayrak <o.kucukbayrak@gmail.com>, 2019, 2021.
 # Deleted User <noreply+16368@weblate.org>, 2020, 2021.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2020, 2021, 2022.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020, 2021, 2022, 2025.
 # Oğuz Ersen <oguz@ersen.moe>, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2024-02-09 18:02+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"PO-Revision-Date: 2025-06-17 18:02+0000\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.12.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -784,12 +784,12 @@ msgstr "Adres, UNIX socket_path için çok uzun: %s"
 #: src/remmina_public.c:357
 #, c-format
 msgid "Creating UNIX socket failed: %s"
-msgstr "UNIX soketi oluşturulamadı: %s"
+msgstr "UNIX yuvası oluşturulamadı: %s"
 
 #: src/remmina_public.c:363
 #, c-format
 msgid "Connecting to UNIX socket failed: %s"
-msgstr "UNIX soketine bağlanma başarısız oldu: %s"
+msgstr "UNIX yuvasına bağlanma başarısız oldu: %s"
 
 #: src/remmina_public.c:634
 msgid "Please enter format 'widthxheight'."
@@ -1235,7 +1235,7 @@ msgstr "SSH kanalına yazılamadı. %s"
 #: src/remmina_ssh.c:2599
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "Tünel dinleme soketinden okunamadı: %s"
+msgstr "Tünel dinleme yuvasından okunamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2619
@@ -1253,7 +1253,7 @@ msgstr "SSH kanalı bloklanmayan bir şekilde okunamadı. %s"
 #: src/remmina_ssh.c:2645
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "Tünel dinleme soketine veri gönderilemedi: %s"
+msgstr "Tünel dinleme yuvasına veri gönderilemedi: %s"
 
 #: src/remmina_ssh.c:2747
 msgid "Assign a destination port."
@@ -1261,11 +1261,11 @@ msgstr "Hedef bağlantı noktası ata."
 
 #: src/remmina_ssh.c:2754
 msgid "Could not create socket."
-msgstr "Soket oluşturulamadı."
+msgstr "Yuva oluşturulamadı."
 
 #: src/remmina_ssh.c:2764
 msgid "Could not bind server socket to local port."
-msgstr "Sunucu soketi yerel bağlantı noktasına bağlanamadı."
+msgstr "Sunucu yuvası yerel bağlantı noktasına bağlanamadı."
 
 #: src/remmina_ssh.c:2770
 msgid "Could not listen to local port."
@@ -1309,7 +1309,7 @@ msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
 msgstr ""
-"Remmina'dan tamamen çıkmak istediğinizden emin misiniz?\n"
+"Remmina’dan tümüyle çıkmak istediğinize emin misiniz?\n"
 " Bu, tüm etkin bağlantıları kapatacaktır."
 
 #: src/remmina_exec.c:505
@@ -1488,7 +1488,7 @@ msgstr ""
 "• sunucu[:bağlantınoktası]\n"
 "Ek VNC biçimleri\n"
 "• ID:yineleyici kimlik numarası\n"
-"• unix:///yol/soket.sock</big>"
+"• unix:///yol/yuva.sock</big>"
 
 #: src/remmina_file_editor.c:70
 msgid ""
@@ -1541,7 +1541,7 @@ msgstr "Uzak Masaüstü Sunucusunu Seç"
 #: src/remmina_file_editor.c:489
 #, c-format
 msgid "Browse the network to find a %s server"
-msgstr "Bulmak için ağa göz at %s sunucu"
+msgstr "%s sunucusu bulmak için ağa göz at"
 
 #: src/remmina_file_editor.c:597
 msgid "Resolution"
@@ -2001,8 +2001,8 @@ msgstr "SSH oturumunu eşzamansız olarak günlüğe kaydet"
 #: src/remmina_ssh_plugin.c:1548
 msgid "Saving the session asynchronously may have a notable performance impact"
 msgstr ""
-"Oturumu eşzamansız olarak kaydetmenin performans üzerinde kayda değer bir "
-"etkisi olabilir"
+"Oturumu eşzamansız olarak kaydetmenin başarımda kayda değer bir etkisi "
+"olabilir"
 
 #: src/remmina_ssh_plugin.c:1549
 msgid "Audible terminal bell"
@@ -2368,7 +2368,7 @@ msgstr "Modem"
 
 #: plugins/rdp/rdp_plugin.c:2962
 msgid "Low performance broadband"
-msgstr "Düşük performanslı geniş bant"
+msgstr "Düşük başarımlı geniş bant"
 
 #: plugins/rdp/rdp_plugin.c:2963
 msgid "Satellite"
@@ -2376,7 +2376,7 @@ msgstr "Uydu"
 
 #: plugins/rdp/rdp_plugin.c:2964
 msgid "High performance broadband"
-msgstr "Yüksek performanslı geniş bant"
+msgstr "Yüksek başarımlı geniş bant"
 
 #: plugins/rdp/rdp_plugin.c:2965
 msgid "WAN"
@@ -2470,8 +2470,8 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(),\n"
 "    SCardGetDeviceTypeId()"
 msgstr ""
-"İstemci yeteneklerini ayırt etmek için, örneğin bir akıllı kart kanalındaki "
-"uçbirim hizmetleri tarafından kullanılır:\n"
+"İstemci yeteneklerini ayırt etmede, örneğin bir akıllı kart kanalındaki "
+"uçbirim hizmetlerince kullanılır:\n"
 "  • < 4034: Windows XP temel akıllı kart işlevleri\n"
 "  • 4034-7064: Windows Vista/7: SCardReadCache(),\n"
 "    SCardWriteCache(), SCardGetTransmitCount()\n"
@@ -2542,7 +2542,7 @@ msgid ""
 "Using auto-detection is advised.\n"
 "If “Auto-detect” fails, choose the most appropriate option in the list.\n"
 msgstr ""
-"Ağ bağlantı türüne göre performans iyileştirmeleri:\n"
+"Ağ bağlantı türüne göre başarım iyileştirmeleri:\n"
 "Kendiliğinden algılamanın kullanılması önerilir.\n"
 "“Kendiliğinden algıla” başarısız olursa, listeden en uygununu seçin.\n"
 
@@ -2659,7 +2659,7 @@ msgstr "FreeRDP günlük kaydı düzeyi"
 
 #: plugins/rdp/rdp_plugin.c:3143
 msgid "FreeRDP log filters"
-msgstr "FreeRDP günlük filtreleri"
+msgstr "FreeRDP günlük süzgeçleri"
 
 #: plugins/rdp/rdp_plugin.c:3143
 msgid "tag:level[,tag:level[,…]]"
@@ -2788,7 +2788,7 @@ msgstr "/SISTEM/YOLU/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
 msgid "Move mouse when connection is idle"
-msgstr "Bağlantı boştayken fareyi hareket ettir"
+msgstr "Bağlantı boştayken fareyi oynat"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
@@ -2796,7 +2796,7 @@ msgstr "Yardım kipinde bağlanmayı dene"
 
 #: plugins/rdp/rdp_plugin.c:3173
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr "IPv4 A kaydı yerine IPv6 AAAA kaydını tercih et"
+msgstr "IPv4 A kaydı yerine IPv6 AAAA kaydını yeğle"
 
 #: plugins/rdp/rdp_plugin.c:3174
 msgid "Share printers"
@@ -2808,7 +2808,7 @@ msgstr "Seri bağlantı noktası paylaş"
 
 #: plugins/rdp/rdp_plugin.c:3176
 msgid "(SELinux) permissive mode for serial ports"
-msgstr "(SELinux) Seri bağlantı noktaları için izin verici kip"
+msgstr "(SELinux) seri bağlantı noktaları için izin verici kip"
 
 #: plugins/rdp/rdp_plugin.c:3177
 msgid "Share parallel ports"
@@ -2824,7 +2824,7 @@ msgstr "Pano eşzamanlamayı kapat"
 
 #: plugins/rdp/rdp_plugin.c:3180
 msgid "Ignore certificate"
-msgstr "Sertifikayı yoksay"
+msgstr "Sertifikayı yok say"
 
 #: plugins/rdp/rdp_plugin.c:3181
 msgid "Use the old license workflow"
@@ -2850,7 +2850,7 @@ msgstr "Fast-path'i kapat"
 
 #: plugins/rdp/rdp_plugin.c:3185
 msgid "Server detection using Remote Desktop Gateway"
-msgstr "Uzak Masaüstü Ağ Geçidi kullanarak sunucu algılama"
+msgstr "Uzak Masaüstü Ağ Geçidi kullanarak sunucu algıla"
 
 #: plugins/rdp/rdp_plugin.c:3187
 msgid "Use system proxy settings"
@@ -2870,11 +2870,11 @@ msgstr "Glyph önbelleği"
 
 #: plugins/rdp/rdp_plugin.c:3192
 msgid "Enable multitransport protocol (UDP)"
-msgstr "Çoklu aktarım protokolünü etkinleştir (UDP)"
+msgstr "Çoklu aktarım iletişim kuralını etkinleştir (UDP)"
 
 #: plugins/rdp/rdp_plugin.c:3192
 msgid "Using the UDP protocol may improve performance"
-msgstr "UDP protokolünü kullanmak performansı artırabilir"
+msgstr "UDP iletişim kuralını kullanmak başarımı artırabilir"
 
 #: plugins/rdp/rdp_plugin.c:3193
 msgid "Use base credentials for gateway too"
@@ -2882,7 +2882,7 @@ msgstr "Ağ geçidi için de temel kimlik bilgilerini kullan"
 
 #: plugins/rdp/rdp_plugin.c:3195
 msgid "Enable Gateway websockets support"
-msgstr "Ağ geçidi web soketi desteğini etkinleştir"
+msgstr "Ağ geçidi web yuvası desteğini etkinleştir"
 
 #: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
@@ -2951,7 +2951,7 @@ msgstr "%s dosyası aktarıldı"
 
 #: plugins/spice/spice_plugin.c:341
 msgid "Enter SPICE password"
-msgstr "SPICE parolasını girin"
+msgstr "SPICE parolasını gir"
 
 #: plugins/spice/spice_plugin.c:388
 #, c-format
@@ -3039,11 +3039,11 @@ msgstr "USB yönlendirme hatası"
 
 #: plugins/vnc/vnc_plugin.c:792
 msgid "Enter VNC password"
-msgstr "VNC parolası girin"
+msgstr "VNC parolası gir"
 
 #: plugins/vnc/vnc_plugin.c:845 plugins/gvnc/gvnc_plugin.c:538
 msgid "Enter VNC authentication credentials"
-msgstr "VNC kimlik doğrulama bilgilerini girin"
+msgstr "VNC kimlik doğrulama bilgilerini gir"
 
 #: plugins/vnc/vnc_plugin.c:953
 msgid "Unable to connect to VNC server"
@@ -3135,7 +3135,7 @@ msgstr ""
 "   • En boy oranı ondalık sayı olarak girilmelidir, ör. 1.777\n"
 "   • 16:9 kabaca 1,7777'ye karşılık gelir, 4:3 kabaca 1,333'e karşılık "
 "gelir\n"
-"   • Varsayılan değer olan 0, herhangi bir en boy oranını zorlamaz"
+"   • Öntanımlı değer olan 0, herhangi bir en boy oranını zorlamaz"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3221,7 +3221,7 @@ msgstr "Dosya indirildi"
 
 #: plugins/www/www_plugin.c:592
 msgid "Enter WWW authentication credentials"
-msgstr "WWW kimlik doğrulama bilgilerini girin"
+msgstr "WWW kimlik doğrulama bilgilerini gir"
 
 #: plugins/www/www_plugin.c:907
 msgid "URL"
@@ -3241,7 +3241,7 @@ msgstr "Vekil sunucu URL"
 
 #: plugins/www/www_plugin.c:925
 msgid "E.g. https://example.org, socks://mysocks:1080"
-msgstr "Örn. https://example.org, socks://mysocks:1080"
+msgstr "Örn. https://ornek.org, socks://yuvalarim:1080"
 
 #: plugins/www/www_plugin.c:926
 msgid "Turn on Java support"
@@ -3253,7 +3253,7 @@ msgstr "Düzgün kaydırmayı aç"
 
 #: plugins/www/www_plugin.c:928
 msgid "Turn on spatial navigation"
-msgstr "Uzaysal navigasyonu aç"
+msgstr "Uzaysal gezinimi aç"
 
 #: plugins/www/www_plugin.c:931
 msgid "Turn on plugin support"
@@ -3269,7 +3269,7 @@ msgstr "HTML5 ses desteğini aç"
 
 #: plugins/www/www_plugin.c:935
 msgid "Ignore TLS errors"
-msgstr "TLS hatalarını yoksay"
+msgstr "TLS hatalarını yok say"
 
 #: plugins/www/www_plugin.c:938
 msgid "Turn on Web Inspector"
@@ -3611,9 +3611,9 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
-"İpucu: 'Parolayı kaydet' onay kutusunu işaretleyin veya daha hızlı oturum "
-"açmak üzere saklamak için profil ayarlarında X2Go kullanıcı adınızı ve "
-"parolanızı elle girin."
+"İpucu: 'Parolayı kaydet' onay kutusunu imleyin ya da daha hızlı oturum açmak "
+"üzere saklamak için profil ayarlarında X2Go kullanıcı adınızı ve parolanızı "
+"elle girin."
 
 #: plugins/x2go/x2go_plugin.c:1831
 msgid "Enter X2Go credentials"
@@ -4091,9 +4091,9 @@ msgid ""
 "following commands in a terminal window:"
 msgstr ""
 "Anahtarlıkta parola kaydetmek ve RDP yazıcı paylaşımı gibi kimi önemli "
-"özelliklere erişmek için, lütfen yazılım merkezinizi açın ve Remmina’ya "
-"uygun izinleri verin. Alternatif olarak, aşağıdaki komutları uçbirim "
-"penceresinde girebilirsiniz:"
+"özelliklere erişmek için lütfen yazılım merkezinizi açın ve Remmina’ya uygun "
+"izinleri verin. Alternatif olarak, aşağıdaki komutları uçbirim penceresinde "
+"girebilirsiniz:"
 
 #: data/ui/remmina_snap_info_dialog.glade:157
 msgid "<big>Permissions</big>"
@@ -4299,19 +4299,19 @@ msgstr "Yeni bir bağlantı profili ekle"
 
 #: data/ui/remmina_main.glade:48
 msgid "Switch from grouped to list view"
-msgstr "Gruplanmış durumdan liste görünümüne geç"
+msgstr "Kümelenmiş durumdan liste görünümüne geç"
 
 #: data/ui/remmina_main.glade:80
 msgid "Select the protocol to use with the quick connect bar."
-msgstr "Hızlı bağlantı çubuğuyla kullanılacak protokolü seç."
+msgstr "Hızlı bağlantı çubuğuyla kullanılacak iletişim kuralı seç."
 
 #: data/ui/remmina_main.glade:98
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "\"Hızlı Bağlantı\" için string veya sunucu adı/IP adresi ara"
+msgstr "\"Hızlı Bağlantı\" için sunucu adı/IP adresi ya da dizge ara"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
 msgid "Server name or IP address"
-msgstr "Sunucu adı veya IP adresi"
+msgstr "Sunucu adı ya da IP adresi"
 
 #: data/ui/remmina_main.glade:103 data/ui/remmina_main.glade:105
 #: data/ui/remmina_preferences.glade:447
@@ -4493,11 +4493,11 @@ msgstr "Ekran görüntüleri için klasör"
 
 #: data/ui/remmina_preferences.glade:233
 msgid "Choose a folder to save screenshots from Remmina in."
-msgstr "Remmina ekran görüntülerini kaydetmek için bir klasör seçin."
+msgstr "Remmina ekran görüntülerini kaydetmek için klasör seçin."
 
 #: data/ui/remmina_preferences.glade:237 data/ui/remmina_preferences.glade:323
 msgid "Select a folder"
-msgstr "Bir klasör seçin"
+msgstr "Klasör seç"
 
 #: data/ui/remmina_preferences.glade:248
 msgid "Set up"
@@ -4530,7 +4530,7 @@ msgstr "Remmina veri klasörü"
 
 #: data/ui/remmina_preferences.glade:318
 msgid "Choose a folder to save connection profiles from Remmina in."
-msgstr "Remmina bağlantı profillerini kaydetmek için bir klasör seçin."
+msgstr "Remmina bağlantı profillerini kaydetmek için klasör seç."
 
 #: data/ui/remmina_preferences.glade:336
 msgid "Remember last view for each connection"
@@ -4538,15 +4538,15 @@ msgstr "Her bağlantı için son görünümü anımsa"
 
 #: data/ui/remmina_preferences.glade:340
 msgid "Remember last view mode"
-msgstr "Son görüntüleme kipini hatırla"
+msgstr "Son görüntüleme kipini anımsa"
 
 #: data/ui/remmina_preferences.glade:366
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
-"Bir biçimlendirme dizgisi kullanarak Remmina bağlantı profilleriniz için "
-"özel bir dosya adı belirleyin."
+"Biçimlendirme dizgisi kullanarak Remmina bağlantı profilleriniz için özel "
+"dosya adı belirleyin."
 
 #: data/ui/remmina_preferences.glade:370
 msgid "Template for profile filenames"
@@ -4623,7 +4623,7 @@ msgstr "Kaydırmalı pencere"
 
 #: data/ui/remmina_preferences.glade:697
 msgid "Viewport fullscreen"
-msgstr "Normal tam ekran"
+msgstr "Görüş alanında tam ekran"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:713
@@ -4680,7 +4680,7 @@ msgstr "Notları her zaman göster"
 
 #: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
-msgstr "Bir bağlantıyla ilişkili notları görüntüleyen bir sütun ekle."
+msgstr "Bağlantıyla ilişkili notları görüntüleyen sütun ekle."
 
 #: data/ui/remmina_preferences.glade:847
 msgid "“Grab all keyboard events” status colour"
@@ -4772,7 +4772,7 @@ msgstr "Yerel SSH bağlantı noktası"
 
 #: data/ui/remmina_preferences.glade:1572
 msgid "Parse ~/.ssh/config"
-msgstr "Ayrıştırma ~/.ssh/config"
+msgstr "Ayrıştır: ~/.ssh/config"
 
 #: data/ui/remmina_preferences.glade:1596
 msgid "No logging at all"
