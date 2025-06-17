@@ -60,6 +60,7 @@ extern const char *remmina_RSA_PubKey_v1;
 extern const char *remmina_RSA_PubKey_v2;
 extern const char *remmina_EC_PubKey;
 G_BEGIN_DECLS
+gchar *remmina_utils_get_flatpak_command(gchar* cmd);
 gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
 gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);
 

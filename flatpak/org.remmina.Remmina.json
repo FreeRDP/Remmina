@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
+    "runtime-version": "48",
     "sdk": "org.gnome.Sdk",
     "command": "remmina",
     "cleanup": [
@@ -39,6 +39,7 @@
         "--talk-name=org.ayatana.indicator.application",
         "--talk-name=org.gnome.Shell",
         "--talk-name=com.canonical.Unity",
+        "--talk-name=org.freedesktop.Flatpak",
         "--system-talk-name=org.freedesktop.Avahi",
         "--filesystem=xdg-run/pipewire-0",
         "--filesystem=xdg-run/gvfsd",
@@ -60,8 +61,8 @@
         }
     },
     "cleanup-commands": [
-        "mkdir -p ${FLATPAK_DEST}/lib/ffmpeg",
-        "mkdir -p ${FLATPAK_DEST}/lib/openh264"
+        "mkdir -p /app/lib/ffmpeg",
+        "mkdir -p /app/lib/openh264"
     ],
     "modules": [
         "shared-modules/intltool/intltool-0.51.json",
@@ -73,8 +74,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.7.tar.xz",
-                    "sha256": "4436e3148bb91a162406230d9f736a49ca8b50b74790015dc15d78d6ce8e825f",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xprop-1.2.8.tar.xz",
+                    "sha256": "d689e2adb7ef7b439f6469b51cda8a7daefc83243854c2a3b8f84d0f029d67ee",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 14958,
@@ -103,8 +104,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://xorg.freedesktop.org/archive/individual/app/xauth-1.1.3.tar.xz",
-                    "sha256": "e7075498bae332f917f01d660f9b940c0752b2556a8da61ccb62a44d0ffe9d33",
+                    "url": "https://xorg.freedesktop.org/archive/individual/app/xauth-1.1.4.tar.xz",
+                    "sha256": "e9318141464ad7b4dc0f8564a580f0d20f977c85a388cc40d5a766206151c690",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 5253,
@@ -126,8 +127,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4.10.tar.gz",
-                    "sha256": "f51b9edd631db1830b967101b51f0045c8c239ae799dff89f0399f3e47a95c02",
+                    "url": "https://github.com/OpenPrinting/cups/archive/refs/tags/v2.4.12.tar.gz",
+                    "sha256": "7a4d32822b320aa2999b18fdfc4ce5ca9ad204fe6302ff69e6c24b21f8d0eaa0",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 380,
@@ -262,7 +263,7 @@
             },
             "config-opts": [
                 "-Dvapi=enabled",
-                "-Dwebdav=enabled",
+                "-Dwebdav=disabled",
                 "-Dgtk_doc=disabled"
             ],
             "sources": [
@@ -291,8 +292,8 @@
                     "sources": [
                         {
                             "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/9d/ea/6d76df31432a0e6fdf81681a895f009a4bb47b3c39036db3e1b528191d52/pyparsing-3.1.2-py3-none-any.whl",
-                            "sha256": "f9db75911801ed778fe61bb643079ff86601aca99fcae6345aa67292038fb742",
+                            "url": "https://files.pythonhosted.org/packages/05/e7/df2285f3d08fee213f2d041540fa4fc9ca6c2d44cf36d3a035bf2a8d2bcc/pyparsing-3.2.3-py3-none-any.whl",
+                            "sha256": "a749938e02d6fd0b59b356ca504a24982314bb090c383e3cf201c95ef7e2bfcf",
                             "x-checker-data": {
                                 "type": "pypi",
                                 "name": "pyparsing",
@@ -334,8 +335,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/lz4/lz4/archive/v1.9.4/lz4-1.9.4.tar.gz",
-                            "sha256": "0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b",
+                            "url": "https://github.com/lz4/lz4/archive/v1.10.0/lz4-1.10.0.tar.gz",
+                            "sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 1865,
@@ -387,13 +388,14 @@
                     "name": "usbredir",
                     "buildsystem": "meson",
                     "config-opts": [
-                        "-Dtools=disabled"
+                        "-Dtools=disabled",
+                        "-Dgit_werror=disabled"
                     ],
                     "sources": [
                         {
                             "type": "git",
                             "url": "https://gitlab.freedesktop.org/spice/usbredir.git",
-                            "commit": "456d2715973fa28fc4daf70378c125825645e193"
+                            "commit": "5fc0e1c43194d948545941d408f4c10d084eb6ed"
                         }
                     ]
                 }
@@ -431,12 +433,12 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libssh.org/files/0.10/libssh-0.10.6.tar.xz",
-                    "sha256": "1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1",
+                    "url": "https://www.libssh.org/files/0.11/libssh-0.11.1.tar.xz",
+                    "sha256": "14b7dcc72e91e08151c58b981a7b570ab2663f630e7d2837645d5a9c612c1b79",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 1729,
-                        "url-template": "https://www.libssh.org/files/0.10/libssh-$version.tar.xz"
+                        "url-template": "https://www.libssh.org/files/0.11/libssh-$version.tar.xz"
                     }
                 }
             ]
@@ -514,8 +516,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "3.14.1",
-                    "commit": "4019dcd4097d550d02dd6b70ee88b6a1189be26c",
+                    "tag": "3.15.0",
+                    "commit": "0ce68ddd1cd6ed067392a17d9858c739f2bf37ec",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"

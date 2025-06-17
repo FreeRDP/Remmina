@@ -59,6 +59,7 @@
 #include <gdk/gdkwayland.h>
 #endif
 #include "remmina_public.h"
+#include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
 GtkWidget*
@@ -467,7 +468,9 @@ gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 		display = gdk_display_get_name(gdk_display_get_default());
 
 	g_snprintf(buf, sizeof(buf), "xauth list %s", display);
-	ret = g_spawn_command_line_sync(buf, &out, NULL, NULL, &error);
+	gchar* first_cmd = g_strdup(buf);
+	gchar* cmd = remmina_utils_get_flatpak_command(first_cmd);
+	ret = g_spawn_command_line_sync(cmd, &out, NULL, NULL, &error);
 	if (ret) {
 		if ((ptr = g_strrstr(out, "MIT-MAGIC-COOKIE-1")) == NULL) {
 			*msg = g_strdup_printf("xauth returns %s", out);
@@ -482,6 +485,7 @@ gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 	}else  {
 		*msg = g_strdup(error->message);
 	}
+	g_free(cmd);
 	return ret;
 }
 
