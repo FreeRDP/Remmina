@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-06-22 12:01+0000\n"
+"PO-Revision-Date: 2025-06-22 14:04+0000\n"
 "Last-Translator: Anucha Lhaononkor <achn.syps@gmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/remmina/remmina/th/>"
 "\n"
@@ -1327,11 +1327,11 @@ msgstr[0] "ทั้งหมด %i รายการ"
 
 #: src/remmina_main.c:746
 msgid "Network status: fully online"
-msgstr ""
+msgstr "สถานะเครือข่าย: ออนไลน์เต็มรูปแบบ"
 
 #: src/remmina_main.c:749
 msgid "Network status: offline"
-msgstr ""
+msgstr "สถานะเครือข่าย: ออฟไลน์"
 
 #: src/remmina_main.c:1003
 #, c-format
@@ -1339,14 +1339,12 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "คุณแน่ใจหรือไม่ที่จะลบ \"%s\"?"
 
 #: src/remmina_main.c:1025
-#, fuzzy
-#| msgid "Are you sure to delete the selected files on server?"
 msgid "Are you sure you want to delete the selected files?"
-msgstr "คุณแน่ใจหรือไม่ที่จะลบไฟล์ที่เลือกบนเซิร์ฟเวอร์?"
+msgstr "คุณแน่ใจต้องการลบไฟล์ที่เลือกหรือไม่?"
 
 #: src/remmina_main.c:1036
 msgid "Failed to delete files!"
-msgstr ""
+msgstr "การลบไฟล์ล้มเหลว!"
 
 #: src/remmina_main.c:1219
 #, c-format
@@ -1358,16 +1356,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "ไฟล์"
+msgstr "ไฟล์ RDP"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "ไฟล์"
+msgstr "ไฟล์ RDP"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1375,15 +1369,12 @@ msgid "Import"
 msgstr "นำเข้า"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "สร้างโปรไฟล์การเชื่อมต่อใหม่"
+msgstr "เลือกโปรไฟล์ที่จะเชื่อมต่อ"
 
 #: src/remmina_main.c:1309
-#, fuzzy
 msgid "Remmina couldn't export."
-msgstr "สร้างโฟลเดอร์ข้อมูลใหม่"
+msgstr "Remmina ไม่สามารถส่งออกได้"
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -1398,9 +1389,8 @@ msgid "Remmina Remote Desktop Client"
 msgstr "โปรแกรมไคลเอนต์เดสก์ท็อประยะไกล Remmina"
 
 #: src/remmina_main.c:1660
-#, fuzzy
 msgid "Remmina Kiosk"
-msgstr "ตู้เรมมินา"
+msgstr "Remmina  คีออสก์"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
@@ -1466,32 +1456,22 @@ msgid "Could not delete “%s”. %s"
 msgstr "ไม่สามารถลบ '%s' ได้: %s"
 
 #: src/remmina_sftp_client.c:967
-#, fuzzy
 msgid "The file exists already"
-msgstr "มีแฟ้มอยู่แล้ว"
+msgstr "ไฟล์มีอยู่แล้ว"
 
 #: src/remmina_sftp_client.c:970
-#, fuzzy
 msgid "Resume"
-msgstr "เล่นต่อ"
+msgstr "ดำเนินการต่อ"
 
 #: src/remmina_sftp_client.c:971
-#, fuzzy
 msgid "Overwrite"
 msgstr "เขียนทับ"
 
 #: src/remmina_sftp_client.c:989
-#, fuzzy
 msgid "The following file already exists in the target folder:"
-msgstr "แฟ้มต่อไปนี้มีอยู่แล้วในโฟลเดอร์เป้าหมาย:"
+msgstr "ไฟล์ต่อไปนี้มีอยู่แล้วในโฟลเดอร์ปลายทาง:"
 
 #: src/remmina_file_editor.c:61
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
@@ -1500,15 +1480,13 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<big> รูปแบบที่สนับสนุน\n"
-"• เซิร์ฟเวอร์\n"
-"• เซิร์ฟเวอร์[:p ort]\n"
-"รูปแบบเพิ่มเติมของ VNC\n"
-"• ID:หมายเลข ID ทวน\n"
+"<big>รูปแบบที่รองรับ \n"
+"• เซิร์ฟเวอร์ \n"
+"• server[:port] รูปแบบเพิ่มเติมของ VNC\n"
+"• ID: หมายเลข ID ของรีพีทเตอร์\n"
 "• unix:///path/socket.sock</big>"
 
 #: src/remmina_file_editor.c:70
-#, fuzzy
 msgid ""
 "<big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1523,41 +1501,32 @@ msgid ""
 "connecting.\n"
 "</big>"
 msgstr ""
-"คําสั่ง <big>• ใน PATH args %h\n"
+"<big>• คำสั่งใน PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
 "• %h ถูกแทนที่ด้วยชื่อเซิร์ฟเวอร์\n"
-"• %t ใช้แทนชื่อเซิร์ฟเวอร์ SSH\n"
+"• %t ถูกแทนที่ด้วยชื่อเซิร์ฟเวอร์ SSH\n"
 "• %u ถูกแทนที่ด้วยชื่อผู้ใช้\n"
 "• %U ถูกแทนที่ด้วยชื่อผู้ใช้ SSH\n"
-"• %p ถูกแทนที่ด้วยชื่อส่วนกําหนดค่า Remmina\n"
+"• %p ถูกแทนที่ด้วยชื่อโปรไฟล์ Remmina\n"
 "• %g ถูกแทนที่ด้วยชื่อกลุ่มโปรไฟล์ Remmina\n"
-"• %d ถูกแทนที่ด้วยวันที่และเวลาท้องถิ่นในรูปแบบ ISO 8601\n"
-"ห้ามรันแบบแบ็คกราวนี้\n"
-"</big>"
+"• %d ถูกแทนที่ด้วยวันที่และเวลาท้องถิ่นในรูปแบบ ISO 8601 "
+"อย่ารันในพื้นหลังหากคุณต้องการให้คำสั่งดำเนินการก่อนเชื่อมต่อ </big>"
 
 #: src/remmina_file_editor.c:84
-#, fuzzy
-#| msgid ""
-#| "<tt><big>Supported formats\n"
-#| "• :port\n"
-#| "• server\n"
-#| "• server:port\n"
-#| "• [server]:port\n"
-#| "• username@server:port (SSH protocol only)</big></tt>"
 msgid ""
 "<big>Supported formats\n"
 "• server\n"
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<big> รูปแบบที่สนับสนุน\n"
+"<big>รูปแบบที่รองรับ\n"
 "• เซิร์ฟเวอร์\n"
-"• เซิร์ฟเวอร์[:p ort]\n"
-"• username@server[:p ort] (เฉพาะโปรโตคอล SSH)</big>"
+"• เซิร์ฟเวอร์[:พอร์ต]\n"
+"• ชื่อผู้ใช้@เซิร์ฟเวอร์[:พอร์ต] (เฉพาะโปรโตคอล SSH เท่านั้น)</big>"
 
 #: src/remmina_file_editor.c:172
 msgid "Input is invalid."
-msgstr ""
+msgstr "ข้อมูลอินพุตไม่ถูกต้อง"
 
 #: src/remmina_file_editor.c:250
 msgid "Choose a Remote Desktop Server"
@@ -1573,7 +1542,6 @@ msgid "Resolution"
 msgstr "ความละเอียด"
 
 #: src/remmina_file_editor.c:604
-#, fuzzy
 msgid "Use initial window size"
 msgstr "ใช้ขนาดหน้าต่างเริ่มต้น"
 
@@ -1587,19 +1555,17 @@ msgstr "กำหนดเอง"
 
 #: src/remmina_file_editor.c:658
 msgid "Assistance Mode"
-msgstr ""
+msgstr "โหมดช่วยเหลือ"
 
 #: src/remmina_file_editor.c:1045
 msgid "Keyboard mapping"
 msgstr "การแมปแป้นพิมพ์"
 
 #: src/remmina_file_editor.c:1172
-#, fuzzy
 msgid "Behavior"
 msgstr "พฤติกรรม"
 
 #: src/remmina_file_editor.c:1175
-#, fuzzy
 msgid "Execute a Command"
 msgstr "ดําเนินการคําสั่ง"
 
@@ -1608,7 +1574,6 @@ msgid "Before connecting"
 msgstr "ก่อนการเชื่อมต่อ"
 
 #: src/remmina_file_editor.c:1181
-#, fuzzy
 msgid "command %h %u %t %U %p %g --option"
 msgstr "คําสั่ง %h %u %t %u %p %g --option"
 
@@ -1617,7 +1582,6 @@ msgid "After connecting"
 msgstr "หลังการเชื่อมต่อ"
 
 #: src/remmina_file_editor.c:1188
-#, fuzzy
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
 msgstr "/path/to/command -opt1 arg %h %t -opt2 %U %p %g"
 
@@ -1626,27 +1590,24 @@ msgid "Start-up"
 msgstr "เมื่อเปิดโปรแกรม"
 
 #: src/remmina_file_editor.c:1195
-#, fuzzy
 msgid "Auto-start this profile"
-msgstr "เริ่มต้นโปรไฟล์นี้อัตโนมัติ"
+msgstr "เริ่มโปรไฟล์นี้โดยอัตโนมัติ"
 
 #: src/remmina_file_editor.c:1199
-#, fuzzy
-#| msgid "New connection profile"
 msgid "Connection profile security"
-msgstr "การเชื่อมต่อใหม่"
+msgstr "ความปลอดภัยเชื่อมต่อของโปรไฟล์"
 
 #: src/remmina_file_editor.c:1202
 msgid "Require password to connect or edit the profile"
-msgstr ""
+msgstr "ต้องใช้รหัสผ่านเพื่อเชื่อมต่อหรือแก้ไขโปรไฟล์"
 
 #: src/remmina_file_editor.c:1206
 msgid "Unexpected disconnect"
-msgstr ""
+msgstr "การเชื่อมต่อถูกตัดที่ไม่คาดคิด"
 
 #: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr ""
+msgstr "ป้องกันไม่ให้หน้าต่างปิดลงหากไม่ได้ตัดการเชื่อมต่อโดย Remmina"
 
 #: src/remmina_file_editor.c:1242
 #, fuzzy
