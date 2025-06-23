@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-06-18 23:04+0000\n"
+"PO-Revision-Date: 2025-06-23 06:07+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12.1\n"
+"X-Generator: Weblate 5.13-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -147,7 +147,7 @@ msgstr "Saladus"
 
 #: src/remmina_plugin_manager.c:86
 msgid "Language Wrapper"
-msgstr ""
+msgstr "Programmeerimiskeele ümbris"
 
 #: src/remmina_plugin_manager.c:773
 msgid "Plugin Download"
@@ -2815,9 +2815,8 @@ msgid "Attach to console (2003/2003 R2)"
 msgstr "Kinnita konsoolile (2003/2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:3184
-#, fuzzy
 msgid "Turn off fast-path"
-msgstr "Lülita kiire tee välja"
+msgstr "Lülita „fast-path“ välja"
 
 #: plugins/rdp/rdp_plugin.c:3185
 msgid "Server detection using Remote Desktop Gateway"
@@ -2832,9 +2831,8 @@ msgid "Turn off automatic reconnection"
 msgstr "Lülita automaatne taasühendamine välja"
 
 #: plugins/rdp/rdp_plugin.c:3190
-#, fuzzy
 msgid "Relax order checks"
-msgstr "Lõdvestage tellimuse kontrollimist"
+msgstr "Leevenda järjekorrakontrolle"
 
 #: plugins/rdp/rdp_plugin.c:3191
 msgid "Glyph cache"
@@ -3080,7 +3078,6 @@ msgstr ""
 "connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:2055
-#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -3090,7 +3087,7 @@ msgid ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
 "Kaugvõrgu VNC-ühenduse kuulamine:\n"
-"  - Väljal \"Listen on port\" on port, mida Remmina kuulab,\n"
+"  - Väljal „Listen on port“ on port, mida Remmina kuulab,\n"
 "    nt 8888\n"
 "  - Kaug-VNC-serverist luuakse ühendus\n"
 "    Remminaga, nt x11vnc abil:\n"
@@ -3314,9 +3311,8 @@ msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "Ei saa kätte „DialogData“! Katkestan…"
 
 #: plugins/x2go/x2go_plugin.c:476
-#, fuzzy
 msgid "X Display"
-msgstr "Ekraan"
+msgstr "X-ekraan"
 
 #: plugins/x2go/x2go_plugin.c:477
 msgid "Status"
@@ -3347,7 +3343,6 @@ msgid "Cookie"
 msgstr "Küpsis"
 
 #: plugins/x2go/x2go_plugin.c:485
-#, fuzzy
 msgid "Graphic port"
 msgstr "Graafiline port"
 
@@ -3394,9 +3389,8 @@ msgid "Unknown property '%i'"
 msgstr "Tundmatu omadus: %i"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
-#, fuzzy
 msgid "Could not find child GtkTreeView of session chooser dialog."
-msgstr "Ei leitud sessiooni valiku dialoogi GtkTreeView last."
+msgstr "Ei leidu GtkTreeView sessiooni valiku vaate järglasprotsessi."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
@@ -3405,11 +3399,12 @@ msgid ""
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:736
-#, fuzzy
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
-msgstr "Ei leitud sessiooni valiku dialoogi GtkTreeView last."
+msgstr ""
+"Teadmata põhjusel ei suuda kasutada „GtkTreeModelFilter*“ meetodit "
+"sessioonivaliku vaatest."
 
 #: plugins/x2go/x2go_plugin.c:771
 msgid "Could not get currently selected row (session)!"
@@ -3424,36 +3419,31 @@ msgstr ""
 "Vaid üks sessioon peaks olema valitav, aga %i rida (sessiooni) on valitud."
 
 #: plugins/x2go/x2go_plugin.c:840
-#, fuzzy
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr "Ei õnnestunud täita 'GtkTreeIter'."
+msgstr "Ei õnnestunud täita „GtkTreeIter“ meetodit."
 
 #: plugins/x2go/x2go_plugin.c:906
-#, fuzzy
 msgid "parameter 'argv' is 'NULL'."
-msgstr "parameeter 'argv' on 'NULL'."
+msgstr "parameetri „argv“ väärtus on „NULL“."
 
 #: plugins/x2go/x2go_plugin.c:917
-#, fuzzy
 msgid "parameter 'error' is 'NULL'."
-msgstr "parameeter 'error' on 'NULL'."
+msgstr "parameetri „error“ väärtus on „NULL“."
 
 #: plugins/x2go/x2go_plugin.c:925
-#, fuzzy
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr "parameeter 'env' on kas vigane või mitteinitsialiseeritud."
+msgstr "parameeter „env“ on kas vigane või valmendamata."
 
 #: plugins/x2go/x2go_plugin.c:941 plugins/x2go/x2go_plugin.c:2553
-#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "Käivitati PyHoca-CLI järgmiste argumentidega:"
+msgstr "PyHoca-CLI on käivitatud järgmiste argumentidega:"
 
 #: plugins/x2go/x2go_plugin.c:972
-#, fuzzy
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
-msgstr "Vajalik PyHoca-CLI protsess on sattunud internetiühenduse probleemi."
+msgstr ""
+"Vajalikul PyHoca-CLI protsessil on probleem internetiühenduse kasutamisega."
 
 #: plugins/x2go/x2go_plugin.c:982
 #, c-format
@@ -3465,24 +3455,22 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:993
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
-msgstr "PyHoca-CLI käivitamisel tekkis tundmatu viga. Väljalangemiskood: %i"
+msgstr "PyHoca-CLI käivitamisel tekkis tundmatu viga. Väljundkood: %i"
 
 #: plugins/x2go/x2go_plugin.c:1000
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
-"PyHoca-CLI käivitamisel tekkis tundmatu viga. Väljalangemiskood: %i. Viga: "
-"\"%s"
+"PyHoca-CLI käivitamisel tekkis tundmatu viga. Väljundkood:„ %i“. Viga: „%s“"
 
 #: plugins/x2go/x2go_plugin.c:1044
-#, fuzzy
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr "parameeter 'env' on kas vigane või mitteinitsialiseeritud."
+msgstr "Ei „env“ ega „dialog“ parameetrid pole valmendatud."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
@@ -3511,9 +3499,8 @@ msgid "An error occured."
 msgstr "Tekkis viga."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
-#, fuzzy
 msgid "Could not get session ID from session chooser dialog."
-msgstr "Seansi ID ei õnnestunud seansi valiku dialoogist saada."
+msgstr "Seansivaliku vaatest ei õnnestunud tuvastada seansi tunnust."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
@@ -3531,9 +3518,8 @@ msgid "Disconnected from %s:%d via X2Go"
 msgstr ""
 
 #: plugins/x2go/x2go_plugin.c:1657
-#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
-msgstr "PyHoca-CLI väljus ootamatult. See ühendus suletakse nüüd."
+msgstr "PyHoca-CLI lõpetas ootamatult töö. See ühendus suletakse nüüd."
 
 #: plugins/x2go/x2go_plugin.c:1666
 #, fuzzy
