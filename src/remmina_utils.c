@@ -408,89 +408,19 @@ gchar *remmina_utils_get_kernel_arch()
 	return g_strdup(u.machine);
 }
 
-/**
- * Print the Distributor as specified by the lsb_release command.
- * @return the distributor ID string or NULL. Caller must free it with g_free().
- */
-gchar *remmina_utils_get_lsb_id()
+gchar *remmina_utils_run_command(gchar* command)
 {
-	TRACE_CALL(__func__);
-	gchar *lsb_id = NULL;
-	gchar* cmd = remmina_utils_get_flatpak_command(g_strdup("/usr/bin/lsb_release -si"));
-	if (g_spawn_command_line_sync(cmd, &lsb_id, NULL, NULL, NULL)){
+	gchar *std_out = NULL;
+	gchar *std_err = NULL;
+	gchar* cmd = remmina_utils_get_flatpak_command(g_strdup(command));
+	if (g_spawn_command_line_sync(cmd, &std_out, &std_err, NULL, NULL)){
 		g_free(cmd);
-		return lsb_id;
+		g_free(std_err);
+		return std_out;
 	}
 	g_free(cmd);
 	return NULL;
-}
 
-/**
- * Print the Distribution description as specified by the lsb_release command.
- * @return the Distribution description string or NULL. Caller must free it with g_free().
- */
-gchar *remmina_utils_get_lsb_description()
-{
-	TRACE_CALL(__func__);
-	gchar *lsb_description = NULL;
-	gchar* cmd = remmina_utils_get_flatpak_command(g_strdup("/usr/bin/lsb_release -sd"));
-	if (g_spawn_command_line_sync(cmd, &lsb_description, NULL, NULL, NULL)){
-		g_free(cmd);
-		return lsb_description;
-	}
-	g_free(cmd);
-	return NULL;
-}
-
-/**
- * Print the Distribution release name as specified by the lsb_release command.
- * @return the Distribution release name string or NULL. Caller must free it with g_free().
- */
-gchar *remmina_utils_get_lsb_release()
-{
-	TRACE_CALL(__func__);
-	gchar *lsb_release = NULL;
-	gchar* cmd = remmina_utils_get_flatpak_command(g_strdup("/usr/bin/lsb_release -sr"));
-	if (g_spawn_command_line_sync(cmd, &lsb_release, NULL, NULL, NULL)){
-		g_free(cmd);
-		return lsb_release;
-	}
-	g_free(cmd);
-	return NULL;
-}
-
-/**
- * Print the Distribution codename as specified by the lsb_release command.
- * @return the codename string or NULL. Caller must free it with g_free().
- */
-gchar *remmina_utils_get_lsb_codename()
-{
-	TRACE_CALL(__func__);
-	gchar *lsb_codename = NULL;
-	gchar* cmd = remmina_utils_get_flatpak_command(g_strdup("/usr/bin/lsb_release -sc"));
-	if (g_spawn_command_line_sync(cmd, &lsb_codename, NULL, NULL, NULL)){
-		g_free(cmd);
-		return lsb_codename;
-	}
-	g_free(cmd);
-	return NULL;
-}
-
-/**
- * Print the process list as specified by the ps command.
- * @return the list string or NULL. Caller must free it with g_free().
- */
-gchar *remmina_utils_get_process_list()
-{
-	TRACE_CALL(__func__);
-	gchar *list = NULL;
-	gchar* cmd = remmina_utils_get_flatpak_command(g_strdup("ps aux"));
-	if (g_spawn_command_line_sync(cmd, &list, NULL, NULL, NULL)){
-		g_free(cmd);
-		return list;
-	}
-	g_free(cmd);	
-	return NULL;
 }
 
 
@@ -528,21 +458,18 @@ GHashTable *remmina_utils_get_etc_release()
 gchar *remmina_utils_get_dev()
 {
 	TRACE_CALL(__func__);
-	gchar *dif;
 	gint pos = 0;
 	GString *dev;
-	gchar* cmd = remmina_utils_get_flatpak_command(g_strdup("ip route show default"));
-	if (g_spawn_command_line_sync(cmd, &dif, NULL, NULL, NULL)) {
-		dev = g_string_new(dif);
-		g_free(dif);
+	gchar* cmd = remmina_utils_run_command("ip route show default");
+	if (cmd != NULL) {
+		dev = g_string_new(cmd);
+		g_free(cmd);
 		pos = remmina_utils_string_find(dev, pos, -1, "dev ");
 		dev = g_string_erase(dev, 0, pos + 4);
 		pos = remmina_utils_string_find(dev, 0, -1, " ");
 		dev = g_string_truncate(dev, pos);
-		g_free(cmd);
 		return g_string_free(dev, FALSE);
 	}
-	g_free(cmd);
 	return NULL;
 }
 
@@ -554,7 +481,6 @@ gchar *remmina_utils_get_logical()
 {
 	TRACE_CALL(__func__);
 	gchar *dev = NULL;
-	gchar *dlog;
 	gint pos = 0;
 
 	dev = remmina_utils_get_dev();
@@ -564,11 +490,10 @@ gchar *remmina_utils_get_logical()
 		g_free(dev);
 	}
 
-	gchar *cmd = remmina_utils_get_flatpak_command(g_strdup(lbuf->str));
-	if (g_spawn_command_line_sync(cmd, &dlog, NULL, NULL, NULL)) {
+	gchar *cmd = remmina_utils_run_command(lbuf->str);
+	if (cmd != NULL) {
 		g_string_free(lbuf, TRUE);
-		GString *log = g_string_new(dlog);
-		g_free(dlog);
+		GString *log = g_string_new(cmd);
 		pos = remmina_utils_string_find(log, pos, -1, "inet ");
 		log = g_string_erase(log, 0, pos + 5);
 		pos = remmina_utils_string_find(log, 0, -1, " ");
@@ -577,7 +502,6 @@ gchar *remmina_utils_get_logical()
 		return g_string_free(log, FALSE);
 	}
 	g_string_free(lbuf, TRUE);
-	g_free(cmd);
 	return NULL;
 }
 
@@ -589,7 +513,6 @@ gchar *remmina_utils_get_link()
 {
 	TRACE_CALL(__func__);
 	gchar *dev = NULL;
-	gchar *plink;
 	gint pos = 0;
 
 	dev = remmina_utils_get_dev();
@@ -598,12 +521,11 @@ gchar *remmina_utils_get_link()
 		pbuf = g_string_append(pbuf, dev);
 		g_free(dev);
 	}
-	gchar *cmd = remmina_utils_get_flatpak_command(g_strdup(pbuf->str));
-	if (g_spawn_command_line_sync(cmd, &plink, NULL, NULL, NULL))
+	gchar *cmd = remmina_utils_run_command(pbuf->str);
+	if (cmd != NULL)
 	{
 		g_string_free(pbuf, TRUE);
-		GString *link = g_string_new(plink);
-		g_free(plink);
+		GString *link = g_string_new(cmd);
 		pos = remmina_utils_string_find(link, pos, -1, "link/ether ");
 		link = g_string_erase(link, 0, pos + 11);
 		pos = remmina_utils_string_find(link, 0, -1, " ");
@@ -612,7 +534,6 @@ gchar *remmina_utils_get_link()
 		return g_string_free(link, FALSE);
 	}
 	g_string_free(pbuf, TRUE);
-	g_free(cmd);
 	return NULL;
 }
 
@@ -623,19 +544,16 @@ gchar *remmina_utils_get_link()
 gchar *remmina_utils_get_python()
 {
 	TRACE_CALL(__func__);
-	gchar *version;
+	gchar *cmd = remmina_utils_run_command("python -V");
+	if (cmd == NULL || cmd[0] == 0){
+		cmd = remmina_utils_run_command("python3 -V");
+	}
 
-	gchar *cmd1 = remmina_utils_get_flatpak_command(g_strdup("python -V"));
-	gchar *cmd2 = remmina_utils_get_flatpak_command(g_strdup("python3 -V"));
+	if (cmd != NULL){
+		cmd = remmina_utils_string_strip(cmd);
+	}
 
-	version = (g_spawn_command_line_sync(cmd1, &version, NULL, NULL, NULL)) ||
-		(g_spawn_command_line_sync(cmd2, &version, NULL, NULL, NULL)) ? version : NULL;
-	if (version != NULL)
-		version = remmina_utils_string_strip(version);
-
-	g_free(cmd1);
-	g_free(cmd2);
-	return version;
+	return cmd;
 }
 
 
