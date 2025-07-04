@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Remmina v1.4.39\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-02-12 06:02+0000\n"
+"PO-Revision-Date: 2025-07-04 18:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/remmina/remmina/ta/"
 ">\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
 #: src/remmina_protocol_widget.c:1729 src/remmina_protocol_widget.c:1748
@@ -696,7 +696,8 @@ msgstr ""
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:447
 msgid "- or protocol://username:encryptedpassword@host:port"
-msgstr "- or protocol://username:encryptedpassword@host:port"
+msgstr ""
+"- அல்லது வழிமுறை://பயனர்பெயர்:மறைகுறிக்கப்பட்டகடவுச்சொல்@புரவலன்:துறைமுகஎண்"
 
 #: src/remmina.c:450
 msgid ""
@@ -750,17 +751,18 @@ msgstr ""
 "\n"
 " Remmina -c rdp: // பயனர்பெயர்: மறைகுறியாக்கப்பட்ட -பாச்வேர்ட்@சேவையகம்\n"
 " Remmina -c vnc: // பயனர்பெயர்: மறைகுறியாக்கப்பட்ட -பாச்வேர்ட்@சேவையகம்\n"
-" Remmina -c vnc: // server?\n"
+" Remmina -c vnc: // server?VncUsername=username\\&VncPassword=encrypted-"
+"password\n"
 "\n"
-" யூரி உடன் பயன்படுத்த கடவுச்சொல்லை குறியாக்க:\n"
+" யூரி உடன் பயன்படுத்தக் கடவுச்சொல்லை குறியாக்க:\n"
 "\n"
 " ரெமினா-என்கிரிப்ட்-பாச்வேர்ட்\n"
 "\n"
 " பயனர்பெயர் மற்றும் கடவுச்சொல்லைப் புதுப்பிக்க மற்றும் ரெமினா இணைப்பு சுயவிவரத்தின் வேறு "
 "தெளிவுத்திறன் பயன்முறையை அமைக்க, பயன்படுத்தவும்:\n"
 "\n"
-" எதிரொலி \"பயனர்பெயர் \\ நாபாச்வேர்ட்\" | remmina --update-profile/path/to/foo."
-"remmina --set-option பயனர்பெயர்-Set-option repution_mode = 2--Set-option "
+" எதிரொலி \"பயனர்பெயர் \\ நாபாச்வேர்ட்\" | remmina --update-profile/path/to/"
+"foo.remmina --set-option பயனர்பெயர்-Set-option repution_mode = 2--Set-option "
 "கடவுச்சொல்\n"
 
 #: src/remmina_public.c:347
@@ -1003,9 +1005,9 @@ msgstr "மாற்றப்பட்ட சான்றிதழை ஏற்�
 
 #. TRANSLATORS: “%i” is a placeholder for a port number. “%s”  is a placeholder for a protocol name (VNC).
 #: src/remmina_protocol_widget.c:1995
-#, fuzzy, c-format
+#, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "உள்வரும் %s இணைப்புக்காக துறைமுகம் %i ஐக் கேட்பது…"
+msgstr "துறைமுகம் %i ஐக் கேட்கிறது, உள்வரும் %s இணைப்புக்காக…"
 
 #: src/remmina_protocol_widget.c:2020
 msgid "Could not authenticate, attempting reconnection…"
@@ -1307,10 +1309,10 @@ msgid "The latest successful connection attempt, or a pre-computed date"
 msgstr "அண்மைக் கால வெற்றிகரமான இணைப்பு முயற்சி அல்லது முன்-கணக்கிடப்பட்ட தேதி"
 
 #: src/remmina_main.c:738
-#, fuzzy, c-format
+#, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "மொத்த %நான் உருப்படி."
+msgstr[0] "மொத்த %i உருப்படி."
 msgstr[1] "மொத்த %i உருப்படிகள்."
 
 #: src/remmina_main.c:746
@@ -1468,7 +1470,7 @@ msgid ""
 "• ID:repeater ID number\n"
 "• unix:///path/socket.sock</big>"
 msgstr ""
-"<பெரிய> உதவி வடிவங்கள்\n"
+"<big>உதவி வடிவங்கள்\n"
 " • சேவையகம்\n"
 " • சேவையகம் [: போர்ட்]\n"
 " வி.என்.சி கூடுதல் வடிவங்கள்\n"
@@ -1510,7 +1512,7 @@ msgid ""
 "• server[:port]\n"
 "• username@server[:port] (SSH protocol only)</big>"
 msgstr ""
-"<பெரிய> உதவி வடிவங்கள்\n"
+"<big> உதவி வடிவங்கள்\n"
 " • சேவையகம்\n"
 " • சேவையகம் [: போர்ட்]\n"
 " • பயனர்பெயர்@சேவையகம் [: போர்ட்] (SSH நெறிமுறை மட்டும்) </big>"
@@ -1734,11 +1736,11 @@ msgstr "பணி கண்டுபிடிப்பை இயக்கவு�
 
 #: src/remmina_icon.c:157 data/ui/remmina_main.glade:428
 msgid "_Quit"
-msgstr "_Quit"
+msgstr "வெளியேறு"
 
 #: src/remmina_icon.c:162
 msgid "_About"
-msgstr "_About"
+msgstr "பற்றி"
 
 #: src/remmina_icon.c:167 data/ui/remmina_main.glade:279
 msgid "_Preferences"
@@ -1765,9 +1767,9 @@ msgstr "StatusNotifier / AppInditor உதவி \""
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
-#, fuzzy, c-format
+#, c-format
 msgid "%s your desktop does support it"
-msgstr "உங்கள் டெச்க்டாப் அதை ஆதரிக்கிறது"
+msgstr "%s உங்கள் டெச்க்டாப் அதை ஆதரிக்கிறது"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
@@ -1777,12 +1779,12 @@ msgstr "%s மற்றும் ரெம்மினா லிபாப்ப�
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:389
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
-"உங்கள் டெச்க்டாப் சூழலால் சொந்தமாக ஆதரிக்கப்படவில்லை. லிபாப்பிண்டிகேட்டர் gtkstatusicon/"
+"%s உங்கள் டெச்க்டாப் சூழலால் சொந்தமாக ஆதரிக்கப்படவில்லை. லிபாப்பிண்டிகேட்டர் gtkstatusicon/"
 "Xembed க்கு குறைய முயற்சிக்கும்"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
@@ -3406,9 +3408,9 @@ msgid "Terminating X2Go sessions can take a moment."
 msgstr "X2GO அமர்வுகளை நிறுத்துவதற்கு ஒரு கணம் ஆகலாம்."
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown property '%i'"
-msgstr "அறியப்படாத சொத்து '%நான்'"
+msgstr "அறியப்படாத சொத்து '%i'"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 msgid "Could not find child GtkTreeView of session chooser dialog."
@@ -3756,9 +3758,9 @@ msgstr "Pthread ஐ துவக்க முடியவில்லை. தி
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:3150 plugins/x2go/x2go_plugin.c:3168
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
-msgstr "%மணல் '%s'"
+msgstr "%s மற்றும் '%s'"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
