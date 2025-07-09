@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-07-06 07:01+0000\n"
+"PO-Revision-Date: 2025-07-09 10:03+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -2152,7 +2152,7 @@ msgstr "Sisest RDP kiipkaardi PIN-kood"
 #: plugins/rdp/rdp_plugin.c:1269
 #, c-format
 msgid "Disconnected from %s via RDP"
-msgstr ""
+msgstr "Ühendus RDP-serveriga „%s“ on katkestatud"
 
 #: plugins/rdp/rdp_plugin.c:2463
 #, c-format
@@ -3057,7 +3057,7 @@ msgstr "Ühendatud %s:%d aadressiga VNC abil"
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Ühendus VNC-serveriga „%s:%d“ on katkestatud"
 
 #: plugins/vnc/vnc_plugin.c:2046
 msgid ""
@@ -3516,7 +3516,7 @@ msgstr "Lõpetan sessiooni: „%s“"
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Ühendus X2Go-serveriga „%s:%d“ on katkestatud"
 
 #: plugins/x2go/x2go_plugin.c:1657
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
@@ -3591,9 +3591,8 @@ msgstr "Leidsin juba olemasoleva X2Go sessiooni tunnusega „%s“"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
-#, fuzzy
 msgid "Suspended"
-msgstr "Peatatud alates"
+msgstr "Peatatud"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2142
@@ -3657,28 +3656,26 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "PyHoca-CLI (%i) käivitamine ei õnnestunud: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
 "used for now."
 msgstr ""
-"Ei saanud PyHoca-CLI käsurea funktsioone. See näitab, et see on kas liiga "
-"vana või ei ole paigaldatud. Praegu kasutatakse vanu piiratud funktsioone."
+"PyHoca-CLI käsurea funktsioonide laadimine ei õnnestunud. See näitab, et "
+"teek on kas liiga vana või ei ole paigaldatud. Seni kasutatan vanu "
+"funktsioone piiratud arvus."
 
 #: plugins/x2go/x2go_plugin.c:2708
-#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Ei suutnud analüüsida PyHoca-CLI käsurea funktsioone. Kasutatakse praegu "
+"Ei suutnud analüüsida PyHoca-CLI käsurea funktsioonaalsus. Kasutatan praegu "
 "piiratud funktsioonikomplekti."
 
 #: plugins/x2go/x2go_plugin.c:2714
-#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
-msgstr "Võtab kasutusele järgmised PyHoca-CLI käsurea funktsioonid:"
+msgstr "Võtan kasutusele järgmised PyHoca-CLI käsurea funktsioonid:"
 
 #: plugins/x2go/x2go_plugin.c:2722
 #, c-format
@@ -4260,14 +4257,12 @@ msgid "Switch from grouped to list view"
 msgstr "Vaheta rühmitatud vaatest loendivaatele"
 
 #: data/ui/remmina_main.glade:80
-#, fuzzy
 msgid "Select the protocol to use with the quick connect bar."
-msgstr "Valige kiirühendusriba abil kasutatav protokoll."
+msgstr "Vali kiirühendusriba abil kasutatav protokoll."
 
 #: data/ui/remmina_main.glade:98
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "\"Quick Connect\" otsingustring või serveri nimi/IP-aadress"
+msgstr "Otsingusõna või serveri nimi/IP-aadress kiirühenduse jaoks"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
 msgid "Server name or IP address"
@@ -4328,9 +4323,8 @@ msgid "Community"
 msgstr "Kogukond"
 
 #: data/ui/remmina_main.glade:546
-#, fuzzy
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Lisamoodul"
 
 #: data/ui/remmina_main.glade:560
 msgid "Last used"
@@ -4431,9 +4425,8 @@ msgid "Bilinear"
 msgstr "Bilineaarne"
 
 #: data/ui/remmina_preferences.glade:115
-#, fuzzy
 msgid "Hyper"
-msgstr "Hyper"
+msgstr "Hüperklahv"
 
 #: data/ui/remmina_preferences.glade:131
 msgid "Step size for auto-scroll"
@@ -4460,9 +4453,8 @@ msgid "Select a folder"
 msgstr "Vali kaust"
 
 #: data/ui/remmina_preferences.glade:248
-#, fuzzy
 msgid "Set up"
-msgstr "Seadistamine"
+msgstr "Seadista"
 
 #: data/ui/remmina_preferences.glade:270
 msgid "Screenshot filenames"
@@ -4583,9 +4575,8 @@ msgid "Scrolled window"
 msgstr "Keritud aken"
 
 #: data/ui/remmina_preferences.glade:697
-#, fuzzy
 msgid "Viewport fullscreen"
-msgstr "Vaateakna täisekraan"
+msgstr "Vaateava täisekraanivaade"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:713
@@ -4606,9 +4597,8 @@ msgid "Per connection"
 msgstr "Ühenduse alusel"
 
 #: data/ui/remmina_preferences.glade:739
-#, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
-msgstr "Täisekraan samal ekraanil kui ühendusaken"
+msgstr "Täisekraan on samal ekraanil kui ühendusaken"
 
 #: data/ui/remmina_preferences.glade:762
 msgid "Peeking"
@@ -4619,9 +4609,8 @@ msgid "Hidden"
 msgstr "Peidetud"
 
 #: data/ui/remmina_preferences.glade:780
-#, fuzzy
 msgid "Fullscreen toolbar visibility"
-msgstr "Täisekraani tööriistariba nähtavus"
+msgstr "Tööriistariba nähtavus täisekraanivaates"
 
 #: data/ui/remmina_preferences.glade:790
 msgid "Hide the search bar shown in the main window"
@@ -4648,26 +4637,22 @@ msgid "Add a column displaying any notes associated with a connection."
 msgstr "Lisa veerg, kus kuvatakse ühendusega seotud kõiki märkusi."
 
 #: data/ui/remmina_preferences.glade:847
-#, fuzzy
 msgid "“Grab all keyboard events” status colour"
-msgstr "\"Haara kõik klaviatuurisündmused\" olekuvärv"
+msgstr "„Kaaperda kõik klaviatuurisündmused“ olekuvärv"
 
 #: data/ui/remmina_preferences.glade:858
-#, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
-"Hexadecimal- või värvinimed (punane, #ff0000).\n"
+"Värvid kuueteistkümnendarvuna või nimena (punane, #ff0000).\n"
 "See muudab ühenduse nimede taustavärvi Remmina ühenduse tööriistaribal (kui "
-"see on täisekraanil)."
+"see on täisekraanivates)."
 
 #: data/ui/remmina_preferences.glade:875
-#, fuzzy
 msgid "Enable/Disable “Grab all keyboard events” status colour"
-msgstr ""
-"\"Kõik klaviatuurisündmused haarata\" olekuvärvi sisse/välja lülitamine"
+msgstr "Lülita sisse/välja „Kaaperda kõik klaviatuurisündmused“ olekuvärv"
 
 #: data/ui/remmina_preferences.glade:938
 msgid "Appearance"
@@ -4706,14 +4691,12 @@ msgid "Auto-fit window"
 msgstr "Mahuta aknasse automaatselt"
 
 #: data/ui/remmina_preferences.glade:1223
-#, fuzzy
 msgid "Apply/remove scaling"
-msgstr "Kanna/eemalda skaleerimine"
+msgstr "Kasuta skaleerimist või eemalda see"
 
 #: data/ui/remmina_preferences.glade:1254
-#, fuzzy
 msgid "Grab keyboard"
-msgstr "Haara klaviatuur"
+msgstr "Klaviatuuri kaaperdamine"
 
 #: data/ui/remmina_preferences.glade:1347
 msgid "Show/hide toolbar"
@@ -4749,24 +4732,20 @@ msgid "No logging at all"
 msgstr "Ei mingit logimist"
 
 #: data/ui/remmina_preferences.glade:1597
-#, fuzzy
 msgid "Rare conditions or warnings"
 msgstr "Harvaesinevad tingimused või hoiatused"
 
 #: data/ui/remmina_preferences.glade:1598
-#, fuzzy
 msgid "API-accessible entrypoints"
-msgstr "API-juurdepääsetavad sisenemispunktid"
+msgstr "APIle juurdepääsetavad sisenemispunktid"
 
 #: data/ui/remmina_preferences.glade:1599
-#, fuzzy
 msgid "Lower level protocol info, packet level"
 msgstr "Alama taseme protokolli info, pakettide tase"
 
 #: data/ui/remmina_preferences.glade:1600
-#, fuzzy
 msgid "Function entering and leaving"
-msgstr "Funktsioon sisenemine ja lahkumine"
+msgstr "Funktsiooni sisenemine ja väljumine"
 
 #: data/ui/remmina_preferences.glade:1617
 msgid "SSH log level"
@@ -4774,28 +4753,23 @@ msgstr "SSH logimistase"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1688
-#, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
-msgstr ""
-"Sekundid, mil ühendus on tühikäigul enne TCP keepalive proovide saatmist."
+msgstr "Sekundeid, mil ühendus on jõude enne TCP elumärksõnumite saatmist."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1704
-#, fuzzy
 msgid "Seconds between each keepalive probe."
-msgstr "Sekundid iga keepalive-sondi vahel."
+msgstr "Sekundeid elumärksõnumite vahel."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1720
-#, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
-"TCP-ühenduse kaudu saadetud keepalive-testide arv enne selle katkestamist."
+"TCP-ühenduse kaudu saadetud elumärksõnumite arv enne selle katkestamist."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1736
-#, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -4817,7 +4791,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
-msgstr ""
+msgstr "Lisa salasõna, mida välistab Remmina volitamatu kasutamise."
 
 #: data/ui/remmina_preferences.glade:1796
 msgid "Remmina password"
@@ -4941,13 +4915,12 @@ msgid "Use default system font"
 msgstr "Kasutage süsteemi vaikimisi kirjatüüpi"
 
 #: data/ui/remmina_preferences.glade:2226
-#, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
-"Valides \"SGR 1\", lülitatakse ka 8 esimese värvipaleti värvi heledad vasted "
-"(lisaks sellele, et tekst muutub paksuks)."
+"Valides „SGR 1“, lülitatakse ka 8 esimese värvipaleti värvi heledad vasted ("
+"lisaks sellele, et tekst muutub paksuks)."
 
 #: data/ui/remmina_preferences.glade:2242
 msgid "Show bold text in bright colors"
