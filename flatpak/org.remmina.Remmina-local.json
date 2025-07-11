@@ -61,8 +61,8 @@
         }
     },
     "cleanup-commands": [
-        "mkdir -p /app/lib/ffmpeg",
-        "mkdir -p /app/lib/openh264"
+        "mkdir -p ${FLATPAK_DEST}/lib/ffmpeg",
+        "mkdir -p ${FLATPAK_DEST}/lib/openh264"
     ],
     "modules": [
         "shared-modules/intltool/intltool-0.51.json",
