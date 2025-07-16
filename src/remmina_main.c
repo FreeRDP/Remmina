@@ -800,14 +800,38 @@ void remmina_main_load_files_cb(GtkEntry *entry, char *string, gpointer user_dat
 	remmina_main_load_files();
 }
 
+
+static void remmina_main_load_by_group_callback(RemminaFile *remminafile, gpointer user_data)
+{
+	
+	const gchar* group = remmina_file_get_string(remminafile, "group");
+
+	if (g_strcmp0(remminamain->priv->selected_name, group) == 0 ){
+		if (remmina_pref_get_boolean("use_primary_password")
+			&& remmina_pref_get_boolean("lock_connect")
+			&& remmina_unlock_new(remminamain->window) == 0)
+			return;
+		if (remmina_file_get_int (remminafile, "profile-lock", FALSE) == 1
+				&& remmina_unlock_new(remminamain->window) == 0)
+			return;
+
+		remmina_file_touch(remminafile);
+		rcw_open_from_filename(remminafile->filename);
+	}
+}
+
 void remmina_main_on_action_connection_connect(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
 
 	RemminaFile *remminafile;
 
-	if (!remminamain->priv->selected_filename)
+	if (!remminamain->priv->selected_filename){
+		if (remminamain->priv->selected_name){
+			remmina_file_manager_iterate((GFunc)remmina_main_load_by_group_callback, NULL);
+		}
 		return;
+	}
 
 	remminafile = remmina_file_load(remminamain->priv->selected_filename);
 
@@ -1090,6 +1114,8 @@ void remmina_main_on_action_connection_connect_multiple(GSimpleAction *action, G
 
 		remmina_file_touch(remminafile);
 		rcw_open_from_filename(file_to_load);
+
+		
 
 		if (remminafile) {
 			remmina_file_free(remminafile);
