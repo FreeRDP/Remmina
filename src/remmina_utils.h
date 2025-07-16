@@ -60,6 +60,7 @@ extern const char *remmina_RSA_PubKey_v1;
 extern const char *remmina_RSA_PubKey_v2;
 extern const char *remmina_EC_PubKey;
 G_BEGIN_DECLS
+gchar *remmina_utils_get_flatpak_command(gchar* cmd);
 gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
 gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);
 
@@ -70,11 +71,7 @@ gchar *remmina_utils_get_lang();
 gchar *remmina_utils_get_kernel_name();
 gchar *remmina_utils_get_kernel_release();
 gchar *remmina_utils_get_kernel_arch();
-gchar *remmina_utils_get_lsb_id();
-gchar *remmina_utils_get_lsb_description();
-gchar *remmina_utils_get_lsb_release();
-gchar *remmina_utils_get_lsb_codename();
-gchar *remmina_utils_get_process_list();
+gchar *remmina_utils_run_command(gchar* command);
 GHashTable *remmina_utils_get_etc_release();
 gchar *remmina_utils_get_dev();
 gchar *remmina_utils_get_logical();

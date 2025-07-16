@@ -299,7 +299,7 @@ JsonNode *remmina_info_stats_get_os_info()
 	g_free(kernel_arch);
 
 	json_builder_set_member_name(b, "lsb_distributor");
-	id = remmina_utils_get_lsb_id();
+	id = remmina_utils_run_command("/usr/bin/lsb_release -si");
 	if (!id || id[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {
@@ -308,7 +308,7 @@ JsonNode *remmina_info_stats_get_os_info()
 	g_free(id);
 
 	json_builder_set_member_name(b, "lsb_distro_description");
-	description = remmina_utils_get_lsb_description();
+	description = remmina_utils_run_command("/usr/bin/lsb_release -sd");
 	if (!description || description[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {
@@ -317,7 +317,7 @@ JsonNode *remmina_info_stats_get_os_info()
 	g_free(description);
 
 	json_builder_set_member_name(b, "lsb_distro_release");
-	release = remmina_utils_get_lsb_release();
+	release = remmina_utils_run_command("/usr/bin/lsb_release -sr");
 	if (!release || release[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {
@@ -326,7 +326,7 @@ JsonNode *remmina_info_stats_get_os_info()
 	g_free(release);
 
 	json_builder_set_member_name(b, "lsb_distro_codename");
-	codename = remmina_utils_get_lsb_codename();
+	codename = remmina_utils_run_command("/usr/bin/lsb_release -sc");
 	if (!codename || codename[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {
@@ -398,7 +398,7 @@ JsonNode *remmina_info_stats_get_user_env()
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "process_list");
-	plist = remmina_utils_get_process_list();
+	plist = remmina_utils_run_command("ps aux");
 	if (!plist || plist[0] == '\0') {
 		json_builder_add_null_value(b);
 	}else {

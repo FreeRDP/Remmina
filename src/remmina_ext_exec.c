@@ -85,8 +85,11 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 		return FALSE;
 
 	cmd = remmina_file_format_properties(remminafile, cmd);
+	if (cmd != NULL && *cmd != 0) {
+		cmd = remmina_utils_get_flatpak_command(cmd);
+	}
 	g_debug("[%s] updated to: %s", remmina_ext_exec_type, cmd);
-	if (*cmd != 0) {
+	if (cmd != NULL && *cmd != 0) {
 
 		pcspinner = g_new(PCon_Spinner, 1);
 		builder = remmina_public_gtk_builder_new_from_resource("/org/remmina/Remmina/src/../data/ui/remmina_spinner.glade");

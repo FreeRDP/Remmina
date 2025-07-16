@@ -18,6 +18,7 @@
 # Boston, MA  02110-1301, USA.
 
 find_package(PkgConfig)
+set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/app/lib64/pkgconfig/")
 pkg_check_modules(PC_LIBVNCSERVER libvncserver)
 pkg_check_modules(PC_LIBVNCCLIENT libvncclient)
 
