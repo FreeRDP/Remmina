@@ -234,22 +234,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="menuitem_delete_rc">
+              <object class="GtkMenuItem" id="menuitem_multi">
                 <property name="app-paintable">True</property>
                 <property name="can-focus">False</property>
                 <property name="label">Popup menu for delete</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu_popup_delete_rc">
+                  <object class="GtkMenu" id="menu_popup_multi">
                     <property name="visible">True</property>
                     <property name="app-paintable">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkMenuItem" id="menuitem_popup_delete_rc">
+                      <object class="GtkMenuItem" id="menuitem_popup_delete_multi">
                         <property name="visible">True</property>
                         <property name="app-paintable">True</property>
                         <property name="can-focus">False</property>
                         <property name="action-name">main.delete_multiple</property>
                         <property name="label" translatable="yes">Delete</property>
+                        <property name="use-underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_popup_connect_multi">
+                        <property name="visible">True</property>
+                        <property name="app-paintable">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="action-name">main.connect_multiple</property>
+                        <property name="label" translatable="yes">Connect</property>
                         <property name="use-underline">True</property>
                       </object>
                     </child>

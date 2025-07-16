@@ -53,7 +53,7 @@ typedef struct _RemminaMain {
 	GtkMenu *		menu_popup;
 	GtkMenuButton *		menu_header_button;
 	GtkMenu *		menu_popup_full;
-	GtkMenu *       menu_popup_delete_rc;
+	GtkMenu *       menu_popup_multi;
 	GtkRadioMenuItem *	menuitem_view_mode_list;
 	GtkRadioMenuItem *	menuitem_view_mode_tree;
 	GtkMenuItem *		menuitem_connection_quit;
@@ -129,6 +129,7 @@ void remmina_main_on_action_connection_connect(GSimpleAction *action, GVariant *
 void remmina_main_on_action_connection_copy(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_connection_delete_multiple(GSimpleAction *action, GVariant *param, gpointer data);
+void remmina_main_on_action_connection_connect_multiple(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_connection_edit(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_connection_external_tools(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *param, gpointer data);
