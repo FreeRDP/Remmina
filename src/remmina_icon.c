@@ -295,8 +295,24 @@ static void remmina_icon_save_autostart_file(GKeyFile *gkeyfile)
 static void remmina_icon_create_autostart_file(void)
 {
 	TRACE_CALL(__func__);
-	if (g_file_test(remmina_icon.autostart_file, G_FILE_TEST_EXISTS))
+
+	gchar *autostart_dir;
+	autostart_dir = g_build_path("/", g_get_user_config_dir(), "autostart", NULL);
+
+	// If autostart file already exists, return
+	// If not, check if the autostart directory exists
+	if (g_file_test(remmina_icon.autostart_file, G_FILE_TEST_EXISTS)) {
+		g_free(autostart_dir);
 		return;
+	}
+	else if (!g_file_test(autostart_dir, G_FILE_TEST_IS_DIR)) {
+		gint result = g_mkdir_with_parents(autostart_dir, 0755);
+		if (result != 0) {
+			REMMINA_WARNING("Unable to create autostart directory and autostart file.");
+			g_free(autostart_dir);
+			return;
+		}
+	}
 
 	GKeyFile *gkeyfile;
 
@@ -318,6 +334,7 @@ static void remmina_icon_create_autostart_file(void)
 	g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", FALSE);
 	remmina_icon_save_autostart_file(gkeyfile);
 	g_key_file_free(gkeyfile);
+	g_free(autostart_dir);
 }
 
 /**
