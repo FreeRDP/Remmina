@@ -923,7 +923,7 @@ remmina_plugin_terminal_close(VteTerminal *vteterminal, RemminaProtocolWidget *g
 	gpdata->closed = TRUE;
 
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
-	return FALSE;
+	return;
 }
 
 static gboolean
@@ -963,7 +963,7 @@ remmina_plugin_terminal_close_connection(RemminaProtocolWidget *gp)
 	REMMINA_DEBUG("Requesting to close the connection");
 
 	if (gpdata->closed) {
-		return;
+		return FALSE;
 	}
 	
 	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
