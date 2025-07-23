@@ -297,7 +297,7 @@ static void remmina_icon_create_autostart_file(void)
 	TRACE_CALL(__func__);
 
 	gchar *autostart_dir;
-	autostart_dir = g_build_path("/", g_get_user_config_dir(), "autostart", NULL);
+	autostart_dir = g_strdup_printf("%s/.config/autostart", g_get_home_dir());
 
 	// If autostart file already exists, return
 	// If not, check if the autostart directory exists
