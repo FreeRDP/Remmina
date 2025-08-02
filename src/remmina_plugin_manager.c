@@ -427,9 +427,9 @@ void remmina_plugin_manager_load_plugins(GPtrArray *plugin_dirs, int array_size,
 			plugin = (RemminaPlugin*)g_ptr_array_index(remmina_plugin_table, j);
 			if (plugin->type == REMMINA_PLUGIN_TYPE_LANGUAGE_WRAPPER) {
 				RemminaLanguageWrapperPlugin* wrapper_plugin = (RemminaLanguageWrapperPlugin*)plugin;
-				const gchar** supported_extention = wrapper_plugin->supported_extentions;
-				while (*supported_extention) {
-					if (g_str_equal(*supported_extention, ext)) {
+				const gchar** supported_extension = wrapper_plugin->supported_extensions;
+				while (*supported_extension) {
+					if (g_str_equal(*supported_extension, ext)) {
 						if (!g_ptr_array_find_with_equal_func(loaded_plugins, name, g_str_equal, NULL)){
 							has_loaded = wrapper_plugin->load(wrapper_plugin, name);
 							if (has_loaded) {
@@ -440,7 +440,7 @@ void remmina_plugin_manager_load_plugins(GPtrArray *plugin_dirs, int array_size,
 							}
 						}
 					}
-					supported_extention++;
+					supported_extension++;
 				}
 				if (has_loaded) break;
 			}

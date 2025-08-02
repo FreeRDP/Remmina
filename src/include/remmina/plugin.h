@@ -170,7 +170,7 @@ typedef struct _RemminaLanguageWrapperPlugin {
 	const gchar *		description;
 	const gchar *		domain;
 	const gchar *		version;
-	const gchar **		supported_extentions;
+	const gchar **		supported_extensions;
 
 	gboolean (*init)(struct _RemminaLanguageWrapperPlugin* instance);
 	gboolean (*load)(struct _RemminaLanguageWrapperPlugin* instance, const gchar* plugin_file);
