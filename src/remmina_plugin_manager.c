@@ -448,6 +448,10 @@ void remmina_plugin_manager_load_plugins(GPtrArray *plugin_dirs, int array_size,
 
 		if (!has_loaded) {
 			g_print("%s: Skip unsupported file type '%s'\n", name, ext);
+
+			if (g_ascii_strcasecmp(ext, "py") == 0) {
+				g_print("%s: Is propably a Python plugin. Is the Python wrapper plugin installed?\n", name);
+			}
 		}
 
 		g_free(name);
