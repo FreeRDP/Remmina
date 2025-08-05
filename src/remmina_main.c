@@ -1075,7 +1075,7 @@ void remmina_main_on_action_connection_connect_multiple(GSimpleAction *action, G
 	GtkTreeSelection *sel = gtk_tree_view_get_selection(remminamain->tree_files_list);
 	GtkTreeModel *model = gtk_tree_view_get_model(remminamain->tree_files_list);
 	GList *list = gtk_tree_selection_get_selected_rows(sel, &model);
-	gchar *file_to_load;
+	gchar *file_to_load = NULL;
 
 
 	while (list) {
@@ -1095,22 +1095,38 @@ void remmina_main_on_action_connection_connect_multiple(GSimpleAction *action, G
 		gtk_tree_model_get(model, &iter, 
 				FILENAME_COLUMN, &file_to_load, -1);
 
+		if (file_to_load == NULL){
+			gtk_tree_model_get(model, &iter, 
+				GROUP_COLUMN, &file_to_load, -1);
+
+			REMMINA_DEBUG("Group column is %s", file_to_load);
+			if (remminamain->priv->selected_name){
+				remmina_file_manager_iterate((GFunc)remmina_main_load_by_group_callback, NULL);
+			}
+		}
+
 		RemminaFile *remminafile = remmina_file_load(file_to_load);
 
-		if (remminafile == NULL)
-			return;
+		if (remminafile == NULL){
+			list = g_list_next(list);
+			continue;
+		}
 
 		if (((remmina_pref_get_boolean("lock_edit")
 				&& remmina_pref_get_boolean("use_primary_password"))
 				|| remmina_file_get_int (remminafile, "profile-lock", FALSE))
-			&& remmina_unlock_new(remminamain->window) == 0)
-			return;
-
+			&& remmina_unlock_new(remminamain->window) == 0){
+				list = g_list_next(list);
+				continue;
+			}
 
 
 		if (remmina_file_get_int (remminafile, "profile-lock", FALSE) == 1
-			&& remmina_unlock_new(remminamain->window) == 0)
-				return;
+			&& remmina_unlock_new(remminamain->window) == 0){
+				list = g_list_next(list);
+				continue;
+			}
+				
 
 		remmina_file_touch(remminafile);
 		rcw_open_from_filename(file_to_load);
