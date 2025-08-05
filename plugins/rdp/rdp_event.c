@@ -1108,7 +1108,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget *gp)
 #endif
 }
 
-void remmina_rdp_event_free_event(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *obj)
+void remmina_rdp_event_free_event(RemminaPluginRdpUiObject *obj)
 {
 	TRACE_CALL(__func__);
 
@@ -1146,7 +1146,7 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget *gp)
 		rfi->ui_handler = 0;
 	}
 	while ((ui = (RemminaPluginRdpUiObject *)g_async_queue_try_pop(rfi->ui_queue)) != NULL)
-		remmina_rdp_event_free_event(gp, ui);
+		remmina_rdp_event_free_event(ui);
 	if (rfi->surface) {
 		cairo_surface_mark_dirty(rfi->surface);
 		cairo_surface_destroy(rfi->surface);
@@ -1477,7 +1477,7 @@ static gboolean remmina_rdp_event_process_ui_queue(RemminaProtocolWidget *gp)
 			pthread_cond_signal(&ui->sync_wait_cond);
 			pthread_mutex_unlock(&ui->sync_wait_mutex);
 		} else {
-			remmina_rdp_event_free_event(gp, ui);
+			remmina_rdp_event_free_event(ui);
 		}
 
 		pthread_mutex_unlock(&rfi->ui_queue_mutex);
@@ -1551,7 +1551,7 @@ int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget *gp, RemminaPlu
 	ui->sync = TRUE;
 	remmina_rdp_event_queue_ui(gp, ui);
 	retval = ui->retval;
-	remmina_rdp_event_free_event(gp, ui);
+	remmina_rdp_event_free_event(ui);
 	return retval;
 }
 
@@ -1563,6 +1563,6 @@ void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget *gp, RemminaP
 	ui->sync = TRUE;
 	remmina_rdp_event_queue_ui(gp, ui);
 	rp = ui->retptr;
-	remmina_rdp_event_free_event(gp, ui);
+	remmina_rdp_event_free_event(ui);
 	return rp;
 }

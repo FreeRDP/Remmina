@@ -1387,7 +1387,6 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	gchar *message;
 	gchar *current_pwd;
 	gchar *current_user;
-	const gchar *instruction = NULL;
 	gint ret;
 	size_t len;
 	guchar *pubkey;
@@ -1515,7 +1514,6 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		remmina_ssh_auth_type = REMMINA_SSH_AUTH_KRBTOKEN;
 		break;
 	case SSH_AUTH_KBDINTERACTIVE:
-		instruction = _("Enter TOTP/OTP/2FA code");
 		remmina_ssh_auth_type = REMMINA_SSH_AUTH_KBDINTERACTIVE;
 		pwdfkey = ssh->is_tunnel ? "ssh_tunnel_password" : "password";
 		break;

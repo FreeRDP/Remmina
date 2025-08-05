@@ -148,6 +148,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaFile* remminafile;
 	const gchar *cmd;
+	gchar* flat_cmd;
 	gchar *stdout_buffer;
 	gchar *stderr_buffer;
 	char **argv;
@@ -170,9 +171,9 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	}
 	gchar *flatpak_info = g_build_filename(g_get_user_runtime_dir(), "flatpak-info", NULL);
 	if (g_file_test(flatpak_info, G_FILE_TEST_EXISTS)) {
-		cmd = g_strconcat("flatpak-spawn --host ", cmd, NULL);
-		g_shell_parse_argv(cmd, NULL, &argv, &error);
-		g_free(cmd);
+		flat_cmd = g_strconcat("flatpak-spawn --host ", cmd, NULL);
+		g_shell_parse_argv(flat_cmd, NULL, &argv, &error);
+		g_free(flat_cmd);
 	} else{
 		g_shell_parse_argv(cmd, NULL, &argv, &error);
 	}
