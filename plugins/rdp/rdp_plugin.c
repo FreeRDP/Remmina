@@ -2243,8 +2243,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	}
 #endif
 
-	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE)
+	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE){
 		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_PreferIPv6OverIPv4, TRUE);
+	        if (remmina_plugin_service->file_get_int(remminafile, "forceipvx", FALSE) ? TRUE : FALSE)
+			freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_ForceIPvX, 6);
+	}else if (remmina_plugin_service->file_get_int(remminafile, "forceipvx", FALSE) ? TRUE : FALSE)
+                freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_ForceIPvX, 4);
+
 
 	freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_RedirectClipboard, remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE : TRUE);
 
@@ -3259,6 +3264,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 
 	{ REMMINA_PROTOCOL_SETTING_TYPE_ASSISTANCE,	  "assistance_mode",	    N_("Attempt to connect in assistance mode"),	TRUE,	NULL																 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "preferipv6",		    N_("Prefer IPv6 AAAA record over IPv4 A record"),	 TRUE,	NULL,		  NULL														 },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "forceipvx",		    N_("Force preferred IPv4 A record or IPv6 AAAA record"),	 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,		  NULL														 },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),	 TRUE,	NULL,		  NULL														 },
