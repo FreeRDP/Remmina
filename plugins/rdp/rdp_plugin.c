@@ -2243,13 +2243,17 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	}
 #endif
 
+#if FREERDP_CHECK_VERSION(3, 6, 2)
 	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE){
 		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_PreferIPv6OverIPv4, TRUE);
 	        if (remmina_plugin_service->file_get_int(remminafile, "forceipvx", FALSE) ? TRUE : FALSE)
 			freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_ForceIPvX, 6);
 	}else if (remmina_plugin_service->file_get_int(remminafile, "forceipvx", FALSE) ? TRUE : FALSE)
                 freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_ForceIPvX, 4);
-
+#else
+	if (remmina_plugin_service->file_get_int(remminafile, "preferipv6", FALSE) ? TRUE : FALSE)
+		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_PreferIPv6OverIPv4, TRUE);
+#endif
 
 	freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_RedirectClipboard, remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE : TRUE);
 
