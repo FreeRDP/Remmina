@@ -15,13 +15,14 @@
 # WonYong Jung <hirameki@gmail.com>, 2022.
 # maboroshin <maboroshin@users.noreply.hosted.weblate.org>, 2023.
 # nyiyui <nyiyui@nyiyui.ca>, 2025.
+# sugusan <sugusan.development@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-02-10 19:02+0000\n"
-"Last-Translator: nyiyui <nyiyui@nyiyui.ca>\n"
+"PO-Revision-Date: 2025-08-21 16:02+0000\n"
+"Last-Translator: sugusan <sugusan.development@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -29,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -158,10 +159,8 @@ msgid "Language Wrapper"
 msgstr "言語ラッパー"
 
 #: src/remmina_plugin_manager.c:773
-#, fuzzy
-#| msgid "Download"
 msgid "Plugin Download"
-msgstr "ダウンロード"
+msgstr "プラグインのダウンロード"
 
 #: src/remmina_plugin_manager.c:773 src/remmina_message_panel.c:455
 #: src/remmina_message_panel.c:624 src/remmina_ftp_client.c:411
@@ -1374,16 +1373,12 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "ファイル"
+msgstr "RDP ファイル"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "ファイル"
+msgstr "すべてのファイル"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1582,7 +1577,7 @@ msgstr "カスタム"
 
 #: src/remmina_file_editor.c:658
 msgid "Assistance Mode"
-msgstr ""
+msgstr "アシスタンスモード"
 
 #: src/remmina_file_editor.c:1045
 msgid "Keyboard mapping"
@@ -1630,11 +1625,11 @@ msgstr "プロファイルへの接続や編集にはパスワードが必要"
 
 #: src/remmina_file_editor.c:1206
 msgid "Unexpected disconnect"
-msgstr ""
+msgstr "予期しない切断時"
 
 #: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr ""
+msgstr "Remmina によって切断されていない場合はウィンドウを閉じずに維持する"
 
 #: src/remmina_file_editor.c:1242
 msgid "SSH Tunnel"
@@ -2808,14 +2803,12 @@ msgid "/PATH/TO/rdp2tcp"
 msgstr "/PATH/TO/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
-#, fuzzy
-#| msgid "Remote Connection Profile"
 msgid "Move mouse when connection is idle"
-msgstr "リモート接続プロファイル"
+msgstr "接続がアイドル状態のときにマウスを動かす"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "アシスタンスモードでの接続を試みる"
 
 #: plugins/rdp/rdp_plugin.c:3173
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
@@ -2977,10 +2970,9 @@ msgid "Enter SPICE password"
 msgstr "SPICE パスワードを入力してください"
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "SPICE サーバー “%s” から切断されました。"
+msgstr "SPICE %s から切断されました。"
 
 #: plugins/spice/spice_plugin.c:390
 #, c-format
@@ -3154,6 +3146,11 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"動的な解像度が有効なときにアスペクト比を固定します。\n"
+"\n"
+"  • アスペクト比は小数で入力する必要があります (例: 1.777)\n"
+"  • 16:9 は約 1.7777 に、 4:3 は約 1.333 に対応します\n"
+"  • デフォルト値の 0 はアスペクト比を強制しません"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3167,6 +3164,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"プリセットの VNC エンコード品質を上書きします。\n"
+"\n"
+"  • 「低 (最速)」は、エンコーディングを「copyrect zlib hextile raw」"
+"に設定します\n"
+"  • 「中」は、エンコーディングを「tight zrle ultra copyrect hextile zlib "
+"corre rre raw」に設定します\n"
+"  • 「高」は、エンコーディングを「tight zrle ultra copyrect hextile zlib "
+"corre rre raw」に設定します\n"
+"  • 「最高 (最低速)」は、エンコーディングを「copyrect zrle ultra zlib "
+"hextile corre rre raw」に設定します"
 
 #: plugins/vnc/vnc_plugin.c:2097
 msgid "Repeater"
