@@ -3035,7 +3035,10 @@ remmina_ssh_shell_thread(gpointer data)
 
 		REMMINA_DEBUG("proto: %s - cookie: %s", proto, cookie);
 		ret = ssh_channel_request_x11(channel, 0, proto, cookie, 0);
-		if (ret != SSH_OK) return NULL;
+		if (ret != SSH_OK) {
+			REMMINA_WARNING("ssh_channel_request_x11 failed.");
+			return NULL;
+		}
 	}
 
 	if (shell->exec && shell->exec[0]) {
