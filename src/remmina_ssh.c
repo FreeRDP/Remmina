@@ -129,7 +129,6 @@ static const gchar *common_identities[] =
 *                           X11 Channels                                      *
 *-----------------------------------------------------------------------------*/
 #define _PATH_UNIX_X    "/tmp/.X11-unix/X%d"
-#define _XAUTH_CMD      "/usr/bin/xauth list %s 2>/dev/null"
 
 typedef struct item {
 	ssh_channel channel;
@@ -328,10 +327,19 @@ remmina_ssh_x11_get_proto(const char *display, char **_proto, char **_cookie)
 		display = xdisplay;
 	}
 
-	snprintf(cmd, sizeof(cmd), _XAUTH_CMD, display);
-	REMMINA_DEBUG("xauth cmd: %s", cmd);
+	gchar *xauth_path = g_find_program_in_path("xauth");
+	if (xauth_path == NULL) {
+		REMMINA_WARNING("Could not find 'xauth' command in PATH.");
+		return 1;
+	}
 
-	f = popen(cmd, "r");
+	gchar *cmd_str = g_strdup_printf("\"%s\" list %s 2>/dev/null", xauth_path, display);
+	REMMINA_DEBUG("xauth cmd: %s", cmd_str);
+
+	f = popen(cmd_str, "r");
+
+	g_free(xauth_path);
+	g_free(cmd_str);
 	if (f && fgets(line, sizeof(line), f) && sscanf(line, "%*s %511s %511s", proto, cookie) == 2) {
 		ret = 0;
 	} else {
@@ -3027,7 +3035,10 @@ remmina_ssh_shell_thread(gpointer data)
 
 		REMMINA_DEBUG("proto: %s - cookie: %s", proto, cookie);
 		ret = ssh_channel_request_x11(channel, 0, proto, cookie, 0);
-		if (ret != SSH_OK) return NULL;
+		if (ret != SSH_OK) {
+			REMMINA_WARNING("ssh_channel_request_x11 failed.");
+			return NULL;
+		}
 	}
 
 	if (shell->exec && shell->exec[0]) {
