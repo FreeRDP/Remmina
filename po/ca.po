@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-06-05 17:01+0000\n"
+"PO-Revision-Date: 2025-09-18 12:01+0000\n"
 "Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_sftp_plugin.c:309 src/remmina_sftp_plugin.c:353
@@ -2293,16 +2293,13 @@ msgstr ""
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:2522
-#, fuzzy, c-format
-#| msgid ""
-#| "Unable to establish a connection to the RDP server “%s”. Check \"Security "
-#| "protocol negotiation\"."
+#, c-format
 msgid ""
 "Unable to establish a connection to the RDP server “%s”. Check “Security "
 "protocol negotiation”."
 msgstr ""
-"No s'ha pogut establir una connexió amb el servidor RDP «%s». Comproveu la "
-"«Negociació del protocol de seguretat»."
+"No s'ha pogut establir una connexió amb el servidor RDP «%s». Comproveu la «"
+"Negociació del protocol de seguretat»."
 
 #: plugins/rdp/rdp_plugin.c:2530
 #, c-format
@@ -2329,10 +2326,7 @@ msgid "The “%s” server refused the connection."
 msgstr "El servidor «%s» ha rebutjat la connexió."
 
 #: plugins/rdp/rdp_plugin.c:2548
-#, fuzzy, c-format
-#| msgid ""
-#| "The Remote Desktop Gateway “%s” denied the user \"%s\\%s\" access due to "
-#| "policy."
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
@@ -2824,10 +2818,8 @@ msgid "/PATH/TO/rdp2tcp"
 msgstr "/CAMÍ/A/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
-#, fuzzy
-#| msgid "Remote Connection Profile"
 msgid "Move mouse when connection is idle"
-msgstr "Perfil de connexió remota"
+msgstr "Mou el cursor quan la connexió s'inactivi"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
@@ -2993,10 +2985,9 @@ msgid "Enter SPICE password"
 msgstr "Introduïu la contrasenya SPICE"
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "S'ha desconnectat del servidor SPICE «%s»."
+msgstr "S'ha desconnectat del SPICE %s."
 
 #: plugins/spice/spice_plugin.c:390
 #, c-format
@@ -3149,7 +3140,6 @@ msgstr ""
 "    x11vnc -connect repeater=ID:123456789+10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:2055
-#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -3159,10 +3149,10 @@ msgid ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
 "S'està escoltant la connexió VNC remota:\n"
-"  • El camp \"Escolta al port\" és el port que Remmina escoltarà,\n"
-"    Per exemple, 8888\n"
+"  • El camp «Escolta el port» és el port que Remmina escoltarà,\n"
+"    p. ex., 8888\n"
 "  • Des del servidor VNC remot, us connectareu a\n"
-"    Remmina, per exemple, amb x11vnc:\n"
+"    Remmina, p. ex. amb x11vnc:\n"
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 
 #: plugins/vnc/vnc_plugin.c:2063
@@ -3181,7 +3171,6 @@ msgstr ""
 "  • El valor predefinit de 0 no imposa cap relació d'aspecte"
 
 #: plugins/vnc/vnc_plugin.c:2070
-#, fuzzy
 msgid ""
 "Overriding the pre-set VNC encoding quality:\n"
 "\n"
@@ -3193,16 +3182,16 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
-"Anulant la qualitat de codificació VNC predeterminada:\n"
+"Sobreescriure la qualitat de codificació VNC predeterminada:\n"
 "\n"
-"  • \"Pobre (més ràpid)\" estableix la codificació en \"copyrect zlib "
-"hextile raw\"\n"
-"  • \"Mitjà\" estableix la codificació en \"tight zrle ultra copyrect "
-"hextile zlib corre rre raw\"\n"
-"  • \"Bona\" estableix la codificació en \"tight zrle ultra copyrect hextile "
-"zlib corre rre raw\"\n"
-"  • “Millor (més lent)” estableix la codificació en “copyrect zrle ultra "
-"zlib hextile corre rre raw”"
+"  • «Pobra (més ràpid)» estableix la codificació en «copyrect zlib hextile "
+"raw»\n"
+"  • «Mitjana» estableix la codificació en «tight zrle ultra copyrect hextile "
+"zlib corre rre raw»\n"
+"  • «Bona» estableix la codificació en «tight zrle ultra copyrect hextile "
+"zlib corre rre raw»\n"
+"  • «Millor (més lent)» estableix la codificació en «copyrect zrle ultra "
+"zlib hextile corre rre raw»"
 
 #: plugins/vnc/vnc_plugin.c:2097
 msgid "Repeater"
@@ -3392,29 +3381,24 @@ msgid "Parameter 'custom_data' is not initialized!"
 msgstr "El paràmetre 'custom_data' no està inicialitzat!"
 
 #: plugins/x2go/x2go_plugin.c:310
-#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr "Trencat 'DialogData'! S'està avortant…"
+msgstr "S'ha trencat «DialogData». S'està avortant…"
 
 #: plugins/x2go/x2go_plugin.c:314
 msgid "Can't retrieve `DialogData`! Aborting…"
 msgstr "No es pot recuperar 'DialogData'! S'està avortant…"
 
 #: plugins/x2go/x2go_plugin.c:476
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "Visualització"
+msgstr "X Display"
 
 #: plugins/x2go/x2go_plugin.c:477
 msgid "Status"
 msgstr "Estat"
 
 #: plugins/x2go/x2go_plugin.c:478
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "Permisos"
+msgstr "ID de la sessió"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Create date"
@@ -3429,10 +3413,8 @@ msgid "Agent PID"
 msgstr "Agent PID"
 
 #: plugins/x2go/x2go_plugin.c:483
-#, fuzzy
-#| msgid "Username"
 msgid "Hostname"
-msgstr "Nom d'usuari"
+msgstr "Nom de l'amfitrió"
 
 #: plugins/x2go/x2go_plugin.c:484
 msgid "Cookie"
@@ -3455,23 +3437,19 @@ msgid "Visible"
 msgstr "Visible"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "No es pot recuperar 'DialogData'! S'està avortant…"
+msgstr ""
+"No s'ha pogut recuperar «DialogData» ni «sessions_list». S'està avortant…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Finalitza"
+msgstr "Finali_tza"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:539
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Reprèn"
+msgstr "_Reprèn"
 
 #: plugins/x2go/x2go_plugin.c:541
 msgid "_New"
@@ -3494,12 +3472,11 @@ msgstr ""
 "No s'ha pogut trobar fill de GtkTreeView del diàleg de selecció de sessions."
 
 #: plugins/x2go/x2go_plugin.c:727
-#, fuzzy
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
-"Ni els paràmetres \"dialog\" ni \"treeview\" estan inicialitzats! S'ha de "
+"Cap dels paràmetres «dialog» ni «treeview» estan inicialitzats. S'ha de "
 "donar almenys un d'ells."
 
 #: plugins/x2go/x2go_plugin.c:736
@@ -3587,10 +3564,8 @@ msgstr "El 'camí' del GtkTreePath descriu una fila inexistent!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
-#, fuzzy
-#| msgid "Per connection"
 msgid "'Invalid connection data.'"
-msgstr "Connexió compartida"
+msgstr "«Dades de connexió no vàlides.»"
 
 #: plugins/x2go/x2go_plugin.c:1154
 msgid "Parameter 'custom_data' is not fully initialized!"
@@ -3636,34 +3611,32 @@ msgstr ""
 "El PiHoca-CLI va sortir inesperadament. Aquesta connexió ja estarà tancada."
 
 #: plugins/x2go/x2go_plugin.c:1666
-#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable and you're using the "
 "right credentials."
 msgstr ""
-"El procés infantil necessari 'pihoca-cli' es va aturar inesperadament.\n"
+"El procés fill necessari «pihoca-cli» s'ha aturat inesperadament.\n"
 "Comproveu la configuració del perfil i la sortida de PyHoca-CLI per "
-"possibles errors. Assegureu-vos que el servidor remot és accessible."
+"possibles errors. Assegureu-vos que el servidor remot és accessible i que "
+"utilitzeu les credencials correctes."
 
 #: plugins/x2go/x2go_plugin.c:1709
 msgid "Can't save empty username!"
 msgstr "No es pot desar el nom d'usuari buit!"
 
 #: plugins/x2go/x2go_plugin.c:1723
-#, fuzzy
 msgid "Could not save new credentials."
-msgstr "Error intern: no s'han pogut desar les credencials noves."
+msgstr "No s'han pogut desar les credencials noves."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"S'ha produït un error en intentar desar les credencials noves: no s'han "
-"definit les cadenes \"s_password\" o \"s_username\"."
+"No s'han pogut desar les credencials noves: no s'han definit les cadenes "
+"«s_password» o «s_username»."
 
 #: plugins/x2go/x2go_plugin.c:1758
 msgid "Enter password to unlock the SSH key:"
@@ -3719,10 +3692,8 @@ msgstr "Executant"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2145
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "Finalitza"
+msgstr "Finalitzada"
 
 #: plugins/x2go/x2go_plugin.c:2178
 msgid ""
@@ -3734,9 +3705,8 @@ msgid "Choose a session to resume:"
 msgstr "Trieu una sessió per reprendre:"
 
 #: plugins/x2go/x2go_plugin.c:2276
-#, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "S'està esperant que PyHoca-CLI mostri la finestra de la sessió…"
+msgstr "S'està esperant que l'usuari seleccioni una sessió…"
 
 #: plugins/x2go/x2go_plugin.c:2284
 msgid "No session was selected. Creating a new one."
@@ -3777,7 +3747,6 @@ msgid "Could not start PyHoca-CLI (%i): '%s'"
 msgstr "No s'ha pogut iniciar el PyHoca-CLI (%i): «%s»"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
@@ -3830,9 +3799,8 @@ msgstr ""
 "malament…"
 
 #: plugins/x2go/x2go_plugin.c:3077
-#, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "Error intern: RemminaProtocolWidget* gp és NULL!"
+msgstr "El RemminaProtocolWidget* gp és «NULL»!"
 
 #: plugins/x2go/x2go_plugin.c:3098
 #, c-format
@@ -3942,8 +3910,6 @@ msgid "Input must be a number between %i and %i."
 msgstr "L'entrada ha de ser un nombre entre %i i %i."
 
 #: plugins/x2go/x2go_plugin.c:3398
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Startup program"
 msgstr "Programa d’inici"
 
@@ -3990,10 +3956,8 @@ msgstr ""
 "ser d'entre 20 i 400."
 
 #: plugins/x2go/x2go_plugin.c:3420
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "Your private key"
-msgstr "Contrasenya de la clau privada SSH"
+msgstr "La vostra clau privada"
 
 #: plugins/x2go/x2go_plugin.c:3460
 msgid "X2Go plugin loaded."
@@ -4022,14 +3986,10 @@ msgid "Use server settings"
 msgstr "Utilitza la configuració del servidor"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "Color real (24 bits)"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
 msgstr "Qualitat alta (16 bits)"
 
@@ -4070,8 +4030,6 @@ msgstr ""
 "altres clients"
 
 #: plugins/gvnc/gvnc_plugin.c:880
-#, fuzzy
-#| msgid "Send Ctrl+Alt+Del"
 msgid "Send Ctrl+Alt+_Del"
 msgstr "Envia un Ctrl+Alt+Supr"
 
@@ -4247,17 +4205,13 @@ msgid "About"
 msgstr "Quant a"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
+"Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "Més detalls al COPYING"
@@ -4301,28 +4255,20 @@ msgid "Set new password"
 msgstr "Establiu una contrasenya nova"
 
 #: data/ui/remmina_mpc.glade:320
-#, fuzzy
-#| msgid "Username"
 msgid "Gateway Username"
-msgstr "Nom d'usuari"
+msgstr "Nom d'usuari de la passarel·la"
 
 #: data/ui/remmina_mpc.glade:349
-#, fuzzy
-#| msgid "Remote Desktop Gateway domain"
 msgid "Gateway Domain"
-msgstr "Domini de la passarel·la de l'escriptori remot"
+msgstr "Domini de la passarel·la"
 
 #: data/ui/remmina_mpc.glade:415
-#, fuzzy
-#| msgid "Master password"
 msgid "Gateway Password"
-msgstr "Contrasenya mestra"
+msgstr "Contrasenya de la passarel·la"
 
 #: data/ui/remmina_mpc.glade:440
-#, fuzzy
-#| msgid "Confirm password"
 msgid "Confirm Gateway Password"
-msgstr "Confirmació de contrasenya"
+msgstr "Confirmació de la contrasenya de la passarel·la"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
@@ -4346,12 +4292,9 @@ msgid "Domain\\Username"
 msgstr "Domini o nom d’usuari"
 
 #: data/ui/remmina_mpc.glade:548
-#, fuzzy
-#| msgctxt "Multi password changer table"
-#| msgid "Domain\\Username"
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "Domini o nom d’usuari"
+msgstr "Domini o nom d’usuari de la passarel·la"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -4359,35 +4302,14 @@ msgstr ""
 "<span weight='bold' size='larger'>Canviador de contrasenyes múltiple</span>"
 
 #: data/ui/remmina_passwd.glade:35
-#, fuzzy
-#| msgid "_OK"
 msgid "OK"
-msgstr "_D'acord"
+msgstr "D'acord"
 
 #: data/ui/remmina_passwd.glade:85
-#, fuzzy
-#| msgid "User password"
 msgid "Verify password"
-msgstr "Contrasenya de l'usuari"
+msgstr "Verifica la contrasenya"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4396,21 +4318,12 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Les novetats estan desactivades</b></big>\n"
+"<big><b>Les novetats no s'han pogut carregar</b></big>\n"
 "\n"
 "<span>\n"
-"Activar les novetats vol dir que el programa connecta amb el servidor del "
-"Remmina per a baixar les notes de la versió.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"La comprovació de la versió només es pot activar al moment de compilar.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Notes de la "
-"versió del Remmina\"><i>Visiteu el lloc web per a llegir les notes de la "
-"versió</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
+"\"Notes de la versió del Remmina\"><i>Visiteu el lloc web per a llegir les "
+"notes de la versió</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_key_chooser.glade:23
@@ -4545,10 +4458,8 @@ msgid "Submit"
 msgstr ""
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Nom d'usuari"
+msgstr "Nom/Nom d'usuari:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
@@ -4563,10 +4474,8 @@ msgid "Bug Title"
 msgstr ""
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Descripció"
+msgstr "Descripció de l'error"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
@@ -4575,10 +4484,8 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "User password"
 msgid "Remmina Report Bug"
-msgstr "Contrasenya de l'usuari"
+msgstr "Informe d'error del Remmina"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
@@ -4696,14 +4603,6 @@ msgstr "Plantilla per als noms de fitxers de perfil"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:382
-#, fuzzy
-#| msgid ""
-#| "%G Group name (slash will be converted to - automatically)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4712,7 +4611,7 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Nom del grup (les barres es converteixen en guions de manera automàtica)\n"
+"%G Nom del grup (les barres \\/ es converteixen en guions)\n"
 "%P Nom del protocol\n"
 "%N Nom de la connexió\n"
 "%h Nom de l'amfitrió/IP\n"
@@ -4733,32 +4632,24 @@ msgid "Confirm before closing multiple tabs"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
-#| msgid "Send anonymous statistics"
 msgid "Disable anonymous statistics"
-msgstr "Envia estadístiques anònimes"
+msgstr "Desactiva les estadístiques anònimes"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Recull novetats de <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
+"Desactiva les novetats de <a href=\"https://remmina.org\" title="
+"\"Remmina news site\">remmina.org</a> (*)"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:618
-#, fuzzy
-#| msgid "Quality settings"
 msgid "General"
-msgstr "Configuració general"
+msgstr "General"
 
 #: data/ui/remmina_preferences.glade:643
 msgid "Always show tabs"
@@ -4835,10 +4726,8 @@ msgstr ""
 "configurat."
 
 #: data/ui/remmina_preferences.glade:823
-#, fuzzy
-#| msgid "Always show tabs"
 msgid "Always show notes"
-msgstr "Sempre mostra les pestanyes"
+msgstr "Mostra sempre les notes"
 
 #: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
@@ -4918,8 +4807,6 @@ msgid "View-only mode"
 msgstr "Mode de només visualització"
 
 #: data/ui/remmina_preferences.glade:1477
-#, fuzzy
-#| msgid "Send clipboard content as keystrokes"
 msgid "Send clipboard as keystrokes"
 msgstr "Envia el contingut del porta-retalls com a pulsacions de tecles"
 
@@ -5007,10 +4894,8 @@ msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1796
-#, fuzzy
-#| msgid "User password"
 msgid "Remmina password"
-msgstr "Contrasenya de l'usuari"
+msgstr "Contrasenya del Remmina"
 
 #: data/ui/remmina_preferences.glade:1807
 msgid "Use secret key authentication for some widgets"
@@ -5029,17 +4914,13 @@ msgid "timeout in seconds (default 300)"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1855
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
-msgstr "Emmagatzematge segur de contrasenyes al KDE Wallet"
+msgstr "Introduïu la contrasenya del Remmina per a connectar"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1859
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "Emmagatzematge segur de contrasenyes al KDE Wallet"
+msgstr "Demana-la per a connectar"
 
 #: data/ui/remmina_preferences.glade:1870
 msgid "Creation, editing, copying, and deletions require the Remmina password"
@@ -5051,23 +4932,17 @@ msgid "Require to modify"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1885
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to view passwords"
-msgstr "Emmagatzematge segur de contrasenyes al KDE Wallet"
+msgstr "Introduïu la contrasenya del Remmina per a veure les contrasenyes"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1889
-#, fuzzy
-#| msgid "Set new password"
 msgid "Require to view passwords"
-msgstr "Establiu una contrasenya nova"
+msgstr "Demana-la per a veure les contrasenyes"
 
 #: data/ui/remmina_preferences.glade:1945
-#, fuzzy
-#| msgid "File encryption"
 msgid "Encryption"
-msgstr "Xifratge de fitxers"
+msgstr "Xifratge"
 
 #: data/ui/remmina_preferences.glade:1956
 msgid ""
@@ -5093,20 +4968,16 @@ msgid "Sensitive (+1 GiB, ~2014 CPU)"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1983
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auditing log"
-msgstr "Edita la configuració"
+msgstr "Registre d'auditoria"
 
 #: data/ui/remmina_preferences.glade:2008
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Accepta automàticament totes les empremtes i certificats"
 
 #: data/ui/remmina_preferences.glade:2013
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Confia amb totes les empremtes i certificats digitals"
+msgstr "Confia en tots els certificats"
 
 #: data/ui/remmina_preferences.glade:2048
 msgid "Security"
