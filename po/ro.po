@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-09-19 23:41+0000\n"
+"PO-Revision-Date: 2025-09-20 02:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ro/>\n"
@@ -79,7 +79,7 @@ msgstr "Conectați-vă prin SSH de la un terminal nou"
 #: plugins/x2go/x2go_plugin.c:482 plugins/x2go/x2go_plugin.c:3396
 #: data/ui/remmina_mpc.glade:122
 msgid "Username"
-msgstr "Nume de utilizator"
+msgstr "Numele utilizatorului"
 
 #: src/remmina_sftp_plugin.c:354 src/remmina_file_editor.c:1324
 #: src/remmina_ssh_plugin.c:1503
@@ -104,10 +104,8 @@ msgid "Remmina debugging window"
 msgstr "Fereastra de depanare a Remmina"
 
 #: src/remmina_log.c:135
-#, fuzzy
-#| msgid "Open Main Window"
 msgid "Paste system info in the Remmina debugging window"
-msgstr "Deschideți fereastra principală Remmina"
+msgstr "Lipiți informațiile despre sistem în fereastra de depanare Remmina"
 
 #: src/remmina_log.c:156
 msgid ""
@@ -2370,52 +2368,64 @@ msgstr ""
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account expired."
-msgstr "Comanda %s nu a fost găsită pe serverul SSH"
+msgstr ""
+"Nu s-a putut accesa serverul RDP „%s”.\n"
+"Cont expirat."
 
 #: plugins/rdp/rdp_plugin.c:2477
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Password expired."
-msgstr "Comanda %s nu a fost găsită pe serverul SSH"
+msgstr ""
+"Nu s-a putut accesa serverul RDP „%s”.\n"
+"Parolă expirată."
 
 #: plugins/rdp/rdp_plugin.c:2484
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account disabled."
-msgstr "Comanda %s nu a fost găsită pe serverul SSH"
+msgstr ""
+"Nu s-a putut accesa serverul RDP „%s”.\n"
+"Cont dezactivat."
 
 #: plugins/rdp/rdp_plugin.c:2490
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Insufficient user privileges."
-msgstr "Comanda %s nu a fost găsită pe serverul SSH"
+msgstr ""
+"Nu s-a putut accesa serverul RDP „%s”.\n"
+"Privilegii insuficiente ale utilizatorului."
 
 #: plugins/rdp/rdp_plugin.c:2498
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Account restricted."
-msgstr "Comanda %s nu a fost găsită pe serverul SSH"
+msgstr ""
+"Nu s-a putut accesa serverul RDP „%s”.\n"
+"Cont restricționat."
 
 #: plugins/rdp/rdp_plugin.c:2506
 #, c-format
 msgid ""
 "Could not access the RDP server “%s”.\n"
 "Change user password before connecting."
-msgstr "Comanda %s nu a fost găsită pe serverul SSH"
+msgstr ""
+"Nu s-a putut accesa serverul RDP „%s”.\n"
+"Schimbați parola utilizatorului înainte de conectare."
 
 #: plugins/rdp/rdp_plugin.c:2511
 #, c-format
 msgid "Lost connection to the RDP server “%s”."
-msgstr "Nu se poate realiza conexiunea la serverul RDP %s"
+msgstr "Conexiune pierdută cu serverul RDP „%s”."
 
 #: plugins/rdp/rdp_plugin.c:2514
 #, c-format
 msgid "Could not find the address for the RDP server “%s”."
-msgstr "Comanda %s nu a fost găsită pe serverul SSH"
+msgstr "Nu s-a putut găsi adresa serverului RDP „%s”."
 
 #: plugins/rdp/rdp_plugin.c:2518
 #, fuzzy, c-format
@@ -2442,7 +2452,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:2530
 #, c-format
 msgid "Cannot connect to the RDP server “%s”."
-msgstr "Nu se poate realiza conexiunea la serverul RDP %s"
+msgstr "Nu se poate realiza conexiunea la serverul RDP „%s”."
 
 #: plugins/rdp/rdp_plugin.c:2533
 #, fuzzy
@@ -2464,41 +2474,36 @@ msgid "The “%s” server refused the connection."
 msgstr "Serverul \"%s\" a refuzat conexiunea."
 
 #: plugins/rdp/rdp_plugin.c:2548
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway “%s” denied the user “%s\\%s” access due to "
 "policy."
 msgstr ""
-"Remote Desktop Gateway \"%s\" a refuzat accesul utilizatorului \"%s\\%s\" "
-"din cauza politicii."
+"Poarta de acces a biroului de la distanță „%s” a refuzat accesul "
+"utilizatorului „%s\\%s” din cauza politicii."
 
 #: plugins/rdp/rdp_plugin.c:2558
 #, c-format
 msgid "Cannot connect to the “%s” RDP server."
-msgstr "Nu se poate realiza conexiunea la serverul RDP %s"
+msgstr "Nu se poate realiza conexiunea la serverul RDP „%s”."
 
 #: plugins/rdp/rdp_plugin.c:2918
-#, fuzzy
 msgid "Automatic (32 bpp) (Server chooses its best format)"
 msgstr "Automat (32 bpp) (Serverul alege cel mai bun format)"
 
 #: plugins/rdp/rdp_plugin.c:2919
-#, fuzzy
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2920
-#, fuzzy
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2921
-#, fuzzy
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:2922
-#, fuzzy
 msgid "GFX RFX Progressive (32 bpp)"
 msgstr "GFX RFX progresiv (32 bpp)"
 
@@ -2926,75 +2931,62 @@ msgstr "Program pornire"
 
 #: plugins/rdp/rdp_plugin.c:3156
 msgid "Load balance info"
-msgstr "  "
+msgstr "Informații privind echilibrarea sarcinii"
 
 #. TRANSLATORS: Do not use typographic quotation marks, these must stay as "double quote", also know as “Typewriter ("programmer's") quote, ambidextrous.”
 #: plugins/rdp/rdp_plugin.c:3158
-#, fuzzy
 msgid "Override printer drivers"
-msgstr "Suprascrieți driverele de imprimantă"
+msgstr "Înlocuiți controlorii imprimantei"
 
 #: plugins/rdp/rdp_plugin.c:3158
-#, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\": \"Samsung CLX-3300 Series PS\"; \"Canon "
-"MF410\": \"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:3159
-#, fuzzy
 msgid "USB device redirection"
-msgstr "Redirecționarea dispozitivelor USB"
+msgstr "Redirecționarea dispozitivului USB"
 
 #: plugins/rdp/rdp_plugin.c:3160
-#, fuzzy
 msgid "Local serial name"
-msgstr "Numele serialului local"
+msgstr "Numele portului serial local"
 
 #: plugins/rdp/rdp_plugin.c:3160
-#, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, etc."
 
 #: plugins/rdp/rdp_plugin.c:3161
-#, fuzzy
 msgid "Local serial driver"
-msgstr "Driver serial local"
+msgstr "Controkorul portului serial local"
 
 #: plugins/rdp/rdp_plugin.c:3161
-#, fuzzy
 msgid "Serial"
 msgstr "Serial"
 
 #: plugins/rdp/rdp_plugin.c:3162
-#, fuzzy
 msgid "Local serial path"
-msgstr "Calea serială locală"
+msgstr "Ruta portului serial local"
 
 #: plugins/rdp/rdp_plugin.c:3162
-#, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
 #: plugins/rdp/rdp_plugin.c:3163
-#, fuzzy
 msgid "Local parallel name"
-msgstr "Denumirea paralelă locală"
+msgstr "Numele portului paralel local"
 
 #: plugins/rdp/rdp_plugin.c:3164
-#, fuzzy
 msgid "Local parallel device"
-msgstr "Dispozitiv paralel local"
+msgstr "Dispozitiv de port paralel local"
 
 #: plugins/rdp/rdp_plugin.c:3165
-#, fuzzy
 msgid "Name of smart card"
-msgstr "Denumirea cardului inteligent"
+msgstr "Numele cardului inteligent"
 
 #: plugins/rdp/rdp_plugin.c:3166
-#, fuzzy
 msgid "Dynamic virtual channel"
 msgstr "Canal virtual dinamic"
 
@@ -3235,7 +3227,7 @@ msgstr "Eroare de conexiune TLS."
 
 #: plugins/spice/spice_plugin.c:411
 msgid "Connection to the SPICE server dropped."
-msgstr "Nu se poate realiza conexiunea la serverul RDP %s"
+msgstr "Conexiunea la serverul SPICE a fost întreruptă."
 
 #: plugins/spice/spice_plugin.c:642
 msgid "Auto GLZ"
@@ -5460,7 +5452,7 @@ msgstr "Editați setările"
 
 #: data/ui/remmina_preferences.glade:2008
 msgid "Automatically accept all fingerprints and certificates"
-msgstr "Acceptați certificatul?"
+msgstr "Acceptă automat toate amprentele digitale și certificatele"
 
 #: data/ui/remmina_preferences.glade:2013
 #, fuzzy
