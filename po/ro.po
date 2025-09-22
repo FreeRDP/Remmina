@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-09-21 01:02+0000\n"
+"PO-Revision-Date: 2025-09-22 02:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ro/>\n"
@@ -186,7 +186,7 @@ msgstr "Instalare"
 #: src/remmina_file_editor.c:2051 data/ui/remmina_main.glade:466
 #: data/ui/remmina_bug_report.glade:128
 msgid "Name"
-msgstr "Denumire"
+msgstr "Nume"
 
 #: src/remmina_plugin_manager.c:1426 src/remmina_plugin_manager.c:1431
 msgid "Type"
@@ -755,7 +755,7 @@ msgstr ""
 "Pentru a vă conecta rapid utilizând o adresă URI:\n"
 "\n"
 "\tremmina -c rdp://nume-utilizator@server\n"
-"\tremmina -c rdp://domeniu\\\\n"
+"\tremmina -c rdp://domeniu\\n"
 "ume-utilizator@server\n"
 "\tremmina -c vnc://nume-utilizator@server\n"
 "\tremmina -c vnc://server?VncUsername=nume-utilizator\n"
@@ -2034,7 +2034,7 @@ msgstr "Clopoțel de terminal audibil"
 
 #: src/remmina_ssh_plugin.c:1550
 msgid "SSH X11 Forwarding"
-msgstr "Redirecționarea X11 via SSH."
+msgstr "Redirecționarea X11 via SSH"
 
 #: src/remmina_ssh_plugin.c:1551
 msgid "SSH compression"
@@ -2071,7 +2071,7 @@ msgstr "<Alegeți un nivel de calitate pentru a edita...>"
 #: plugins/rdp/rdp_settings.c:300 plugins/rdp/rdp_plugin.c:2949
 #: plugins/vnc/vnc_plugin.c:2041
 msgid "Poor (fastest)"
-msgstr "Scăzută (cel mai rapid)"
+msgstr "Scăzută (cea mai rapidă)"
 
 #: plugins/rdp/rdp_settings.c:302 plugins/rdp/rdp_plugin.c:2950
 #: plugins/vnc/vnc_plugin.c:2040
@@ -2724,7 +2724,7 @@ msgstr "Parolă poartă de acces pentru mediul de birou la distanță"
 
 #: plugins/rdp/rdp_plugin.c:3151
 msgid "Remote Desktop Gateway domain"
-msgstr "Domeniur poartă de acces pentru mediul de birou la distanță"
+msgstr "Domeniu poartă de acces pentru mediul de birou la distanță"
 
 #: plugins/rdp/rdp_plugin.c:3152
 msgid "Client name"
@@ -2800,63 +2800,50 @@ msgid "Dynamic virtual channel"
 msgstr "Canal virtual dinamic"
 
 #: plugins/rdp/rdp_plugin.c:3166 plugins/rdp/rdp_plugin.c:3167
-#, fuzzy
 msgid "<channel>[,<options>]"
 msgstr "<canal>[,<opțiuni>]"
 
 #: plugins/rdp/rdp_plugin.c:3167
-#, fuzzy
 msgid "Static virtual channel"
 msgstr "Canal virtual static"
 
 #: plugins/rdp/rdp_plugin.c:3168
-#, fuzzy
-#| msgid "Per connection"
 msgid "TCP redirection"
 msgstr "Redirecționarea TCP"
 
 #: plugins/rdp/rdp_plugin.c:3168
-#, fuzzy
 msgid "/PATH/TO/rdp2tcp"
-msgstr "/PATH/TO/rdp2tcp"
+msgstr "/RUTA/CĂTRE/rdp2tcp"
 
 #: plugins/rdp/rdp_plugin.c:3170
-#, fuzzy
-#| msgid "Remote Connection Profile"
 msgid "Move mouse when connection is idle"
-msgstr "Conexiunea VNC a eșuat: %s"
+msgstr "Mișcă mouse-ul când conexiunea este inactivă"
 
 #: plugins/rdp/rdp_plugin.c:3172
 msgid "Attempt to connect in assistance mode"
-msgstr ""
+msgstr "Încercare de conectare în modul de asistență"
 
 #: plugins/rdp/rdp_plugin.c:3173
-#, fuzzy
 msgid "Prefer IPv6 AAAA record over IPv4 A record"
-msgstr "Preferați înregistrarea IPv6 AAAA în locul înregistrării IPv4 A"
+msgstr "Preferă înregistrarea IPv6 AAAA față de înregistrarea IPv4 A"
 
 #: plugins/rdp/rdp_plugin.c:3174
-#, fuzzy
 msgid "Share printers"
-msgstr "Imprimante Share"
+msgstr "Partajare imprimante"
 
 #: plugins/rdp/rdp_plugin.c:3175
-#, fuzzy
 msgid "Share serial ports"
 msgstr "Partajarea porturilor seriale"
 
 #: plugins/rdp/rdp_plugin.c:3176
-#, fuzzy
 msgid "(SELinux) permissive mode for serial ports"
 msgstr "(SELinux) modul permisiv pentru porturile seriale"
 
 #: plugins/rdp/rdp_plugin.c:3177
-#, fuzzy
 msgid "Share parallel ports"
 msgstr "Partajarea porturilor paralele"
 
 #: plugins/rdp/rdp_plugin.c:3178
-#, fuzzy
 msgid "Share a smart card"
 msgstr "Partajarea unui card inteligent"
 
@@ -2865,83 +2852,70 @@ msgid "Turn off clipboard sync"
 msgstr "Dezactivează sincronizarea pentru clipboard"
 
 #: plugins/rdp/rdp_plugin.c:3180
-#, fuzzy
 msgid "Ignore certificate"
 msgstr "Ignoră certificatul"
 
 #: plugins/rdp/rdp_plugin.c:3181
-#, fuzzy
 msgid "Use the old license workflow"
 msgstr "Utilizați vechiul flux de lucru al licenței"
 
 #: plugins/rdp/rdp_plugin.c:3181
-#, fuzzy
 msgid "It disables CAL and hwId is set to 0"
-msgstr "Se dezactivează CAL și hwId este setat la 0"
+msgstr "Aceasta dezactivează CAL și hwId este stabilit la 0"
 
 #: plugins/rdp/rdp_plugin.c:3182 plugins/spice/spice_plugin.c:708
 #: plugins/vnc/vnc_plugin.c:2133 plugins/www/www_plugin.c:936
 #: plugins/gvnc/gvnc_plugin.c:866
 msgid "Forget passwords after use"
-msgstr "Parola %s"
+msgstr "Uită parolele după utilizare"
 
 #: plugins/rdp/rdp_plugin.c:3183
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Atașare la consolă (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:3184
-#, fuzzy
 msgid "Turn off fast-path"
-msgstr "Dezactivați calea rapidă"
+msgstr "Dezactivează „fast-path”"
 
 #: plugins/rdp/rdp_plugin.c:3185
-#, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
-msgstr "Detectarea serverului utilizând Remote Desktop Gateway"
+msgstr "Detectarea serverului utilizând RDP"
 
 #: plugins/rdp/rdp_plugin.c:3187
-#, fuzzy
 msgid "Use system proxy settings"
-msgstr "Utilizați setările proxy ale sistemului"
+msgstr "Utilizează configurația proxy a sistemului"
 
 #: plugins/rdp/rdp_plugin.c:3189
-#, fuzzy
 msgid "Turn off automatic reconnection"
-msgstr "Dezactivați reconectarea automată"
+msgstr "Dezactivează reconectarea automată"
 
 #: plugins/rdp/rdp_plugin.c:3190
-#, fuzzy
 msgid "Relax order checks"
-msgstr "Verificări de ordine de relaxare"
+msgstr "Relaxează ordinea verificărilor"
 
 #: plugins/rdp/rdp_plugin.c:3191
-#, fuzzy
 msgid "Glyph cache"
-msgstr "Ghișeu de glife"
+msgstr "Spațiu prestocare glife"
 
 #: plugins/rdp/rdp_plugin.c:3192
-#, fuzzy
 msgid "Enable multitransport protocol (UDP)"
-msgstr "Activați protocolul multi-transport (UDP)"
+msgstr "Activează protocolul multi-transport (UDP)"
 
 #: plugins/rdp/rdp_plugin.c:3192
-#, fuzzy
 msgid "Using the UDP protocol may improve performance"
 msgstr "Utilizarea protocolului UDP poate îmbunătăți performanța"
 
 #: plugins/rdp/rdp_plugin.c:3193
-#, fuzzy
 msgid "Use base credentials for gateway too"
-msgstr "Utilizați acreditările de bază și pentru gateway"
+msgstr "Utilizează acreditările de bază și pentru poarta de acces"
 
 #: plugins/rdp/rdp_plugin.c:3195
-#, fuzzy
 msgid "Enable Gateway websockets support"
-msgstr "Activați suportul pentru websockets Gateway"
+msgstr "Activează suportul websockets pentru poarta de acces"
 
 #: plugins/rdp/rdp_plugin.c:3197
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Actualizează „framebuffer-ul” chiar și atunci când nu este vizibil"
 
 #: plugins/rdp/rdp_plugin.c:3206 plugins/spice/spice_plugin.c:711
 #: plugins/spice/spice_plugin.c:719 plugins/vnc/vnc_plugin.c:2139
@@ -2952,17 +2926,16 @@ msgstr "Numai vizualizare"
 
 #: plugins/rdp/rdp_plugin.c:3211 plugins/spice/spice_plugin.c:721
 #: plugins/vnc/vnc_plugin.c:2156
-#, fuzzy
 msgid "Send Ctrl+Alt+Delete"
-msgstr "Trimite Ctrl+Alt+Delete"
+msgstr "Trimite «Ctrl+Alt+Delete»"
 
 #: plugins/rdp/rdp_plugin.c:3224
 msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - Protocol desktop la distanță"
+msgstr "RDP - Protocol pentru mediu de birou la distanță"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "RDP - RDP File Handler"
-msgstr "Gestionar fișier RDP - RDP"
+msgstr "RDP - Gestionar de fișiere RDP"
 
 #: plugins/rdp/rdp_plugin.c:3264
 msgid "RDP - Preferences"
@@ -2970,12 +2943,12 @@ msgstr "RDP - Preferințe"
 
 #: plugins/rdp/rdp_plugin.c:3317
 msgid "Export connection in Windows .rdp file format"
-msgstr "Exportă conexiunea în format de fișier Windows .rdp"
+msgstr "Exportă conexiunea în formatul Windows de fișier .rdp"
 
 #: plugins/rdp/rdp_event.c:363
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "Se conectează la „%s”…"
+msgstr "Încercarea de reconectare %d din %d…"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_event.c:1191
@@ -2984,45 +2957,40 @@ msgid "Connected to %s via RDP"
 msgstr "Conectat la %s prin RDP"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
-#, fuzzy
 msgid "File Transfers"
 msgstr "Transferuri de fișiere"
 
 #: plugins/spice/spice_plugin_file_transfer.c:219
-#, fuzzy
 msgid "Transfer error"
 msgstr "Eroare de transfer"
 
 #: plugins/spice/spice_plugin_file_transfer.c:220
-#, fuzzy, c-format
+#, c-format
 msgid "%s: %s"
 msgstr "%s: %s"
 
 #: plugins/spice/spice_plugin_file_transfer.c:223
-#, fuzzy
 msgid "Transfer completed"
 msgstr "Transfer finalizat"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, fuzzy, c-format
+#, c-format
 msgid "The %s file has been transferred"
 msgstr "Fișierul %s a fost transferat"
 
 #: plugins/spice/spice_plugin.c:341
 msgid "Enter SPICE password"
-msgstr "Parola SSH"
+msgstr "Introduceți parola SPICE"
 
 #: plugins/spice/spice_plugin.c:388
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from the SPICE %s."
-msgstr "Nu se poate realiza conexiunea la serverul RDP %s"
+msgstr "Deconectat de la SPICE %s."
 
 #: plugins/spice/spice_plugin.c:390
-#, fuzzy, c-format
-#| msgid "Disconnected from the SPICE server “%s”."
+#, c-format
 msgid "Disconnected from %s via SPICE"
-msgstr "Nu se poate realiza conexiunea la serverul RDP %s"
+msgstr "Deconectat de la %s prin SPICE"
 
 #: plugins/spice/spice_plugin.c:393
 #, c-format
@@ -3030,7 +2998,6 @@ msgid "Connected to %s via SPICE"
 msgstr "Conectat la %s prin SPICE"
 
 #: plugins/spice/spice_plugin.c:405
-#, fuzzy
 msgid "TLS connection error."
 msgstr "Eroare de conexiune TLS."
 
@@ -3043,39 +3010,32 @@ msgid "Auto GLZ"
 msgstr "Auto-GLZ"
 
 #: plugins/spice/spice_plugin.c:643
-#, fuzzy
 msgid "Auto LZ"
 msgstr "Auto LZ"
 
 #: plugins/spice/spice_plugin.c:656
-#, fuzzy
 msgid "Disable video overlay if videos are not displayed properly.\n"
 msgstr ""
-"Dezactivați suprapunerea video în cazul în care videoclipurile nu sunt "
+"Dezactivează suprapunerea imaginilor video în cazul în care acestea nu sunt "
 "afișate corect.\n"
 
 #: plugins/spice/spice_plugin.c:681
-#, fuzzy
 msgid "Use TLS encryption"
-msgstr "Utilizați criptarea TLS"
+msgstr "Utilizează criptarea TLS"
 
 #: plugins/spice/spice_plugin.c:682
-#, fuzzy
 msgid "Server CA certificate"
 msgstr "Certificatul CA al serverului"
 
 #: plugins/spice/spice_plugin.c:700
-#, fuzzy
-#| msgid "Prefered video codec"
 msgid "Preferred video codec"
-msgstr "Preferințe"
+msgstr "Codec video preferat"
 
 #: plugins/spice/spice_plugin.c:701
 msgid "Turn off GStreamer overlay"
-msgstr "Dezactivează intrarea pe server"
+msgstr "Dezactivează suprapunerea video GStreamer"
 
 #: plugins/spice/spice_plugin.c:704
-#, fuzzy
 msgid "Preferred image compression"
 msgstr "Comprimarea preferată a imaginii"
 
@@ -3085,49 +3045,42 @@ msgid "No clipboard sync"
 msgstr "Dezactivează sincronizarea pentru clipboard"
 
 #: plugins/spice/spice_plugin.c:709 plugins/gvnc/gvnc_plugin.c:868
-#, fuzzy
 msgid "Enable audio channel"
-msgstr "Activați canalul audio"
+msgstr "Activează canalul audio"
 
 #: plugins/spice/spice_plugin.c:710
-#, fuzzy
 msgid "Share smart card"
-msgstr "Card inteligent de partajare"
+msgstr "Partajează cardul inteligent"
 
 #: plugins/spice/spice_plugin.c:722 plugins/spice/spice_plugin_usb.c:51
-#, fuzzy
 msgid "Select USB devices for redirection"
 msgstr "Selectați dispozitivele USB pentru redirecționare"
 
 #: plugins/spice/spice_plugin.c:733
-#, fuzzy
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr ""
 "SPICE - Protocol simplu pentru medii de calcul independente (Simple Protocol "
 "for Independent Computing Environments)"
 
 #: plugins/spice/spice_plugin_usb.c:54
-#, fuzzy
 msgid "_Close"
 msgstr "În_chide"
 
 #: plugins/spice/spice_plugin_usb.c:94
-#, fuzzy
 msgid "USB redirection error"
 msgstr "Eroare de redirecționare USB"
 
 #: plugins/vnc/vnc_plugin.c:792
 msgid "Enter VNC password"
-msgstr "Salvați parola"
+msgstr "Introduceți parola VNC"
 
 #: plugins/vnc/vnc_plugin.c:845 plugins/gvnc/gvnc_plugin.c:538
-#, fuzzy
 msgid "Enter VNC authentication credentials"
 msgstr "Introduceți acreditările de autentificare VNC"
 
 #: plugins/vnc/vnc_plugin.c:953
 msgid "Unable to connect to VNC server"
-msgstr "Nu se poate realiza conexiunea la serverul VNC"
+msgstr "Nu se poate efectua conectarea la serverul VNC"
 
 #: plugins/vnc/vnc_plugin.c:954
 #, c-format
@@ -3144,12 +3097,11 @@ msgid "Your connection has been rejected."
 msgstr "Conexiunea dumneavoastră a fost respinsă."
 
 #: plugins/vnc/vnc_plugin.c:983
-#, fuzzy, c-format
+#, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "Serverul VNC a solicitat o metodă de autentificare necunoscută. %s"
 
 #: plugins/vnc/vnc_plugin.c:985
-#, fuzzy
 msgid "Please retry after turning on encryption for this profile."
 msgstr ""
 "Vă rugăm să încercați din nou după ce activați criptarea pentru acest profil."
@@ -3167,10 +3119,9 @@ msgstr "Conectat la %s %d prin VNC"
 #: plugins/vnc/vnc_plugin.c:1749
 #, c-format
 msgid "Disconnected from %s:%d via VNC"
-msgstr ""
+msgstr "Deconectat de la %s:%d prin VNC"
 
 #: plugins/vnc/vnc_plugin.c:2046
-#, fuzzy
 msgid ""
 "Connect to VNC using a repeater:\n"
 "  • The server field must contain the repeater ID, e.g. ID:123456789\n"
@@ -3183,15 +3134,14 @@ msgstr ""
 "Conectați-vă la VNC utilizând un repetor:\n"
 "  - Câmpul server trebuie să conțină ID-ul repetorului, de exemplu "
 "ID:123456789.\n"
-"  - Câmpul repetorului trebuie să fie setat la IP-ul și portul repetorului, "
-"de exemplu:\n"
+"  - Câmpul repetorului trebuie să fie definit la IP-ul și portul "
+"repetorului, de exemplu:\n"
 "    10.10.10.12:5901\n"
 "  - De pe serverul VNC la distanță, vă veți conecta la\n"
-"    repetorul, de exemplu, cu x11vnc:\n"
+"    repetor, de exemplu, cu x11vnc:\n"
 "    x11vnc -connect repeater=ID:123456789+10.10.10.10.12:5500"
 
 #: plugins/vnc/vnc_plugin.c:2055
-#, fuzzy
 msgid ""
 "Listening for remote VNC connection:\n"
 "  • The “Listen on port” field is the port Remmina will listen to,\n"
@@ -3201,8 +3151,7 @@ msgid ""
 "    x11vnc -display :0 -connect 192.168.1.36:8888"
 msgstr ""
 "Ascultarea conexiunii VNC la distanță:\n"
-"  - Câmpul \"Listen on port\" (Asculta pe port) este portul pe care Remmina "
-"îl va asculta,\n"
+"  - Câmpul „Ascultă pe portul” este portul pe care Remmina va asculta,\n"
 "    de exemplu, 8888\n"
 "  - De pe serverul VNC la distanță, vă veți conecta la\n"
 "    Remmina, de exemplu, cu x11vnc:\n"
@@ -3216,6 +3165,12 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"Blocați raportul de aspect când rezoluția dinamică este activată:\n"
+"\n"
+"  • Raportul de aspect trebuie introdus ca număr zecimal, de exemplu 1,777.\n"
+"  • 16:9 corespunde aproximativ cu 1,7777, iar 4:3 corespunde aproximativ cu "
+"1,333.\n"
+"  • Valoarea implicită 0 nu impune niciun raport de aspect"
 
 #: plugins/vnc/vnc_plugin.c:2070
 msgid ""
@@ -3229,40 +3184,50 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"Suprascrierea calității de codificare VNC prestabilite: \n"
+"\n"
+"   • „Scăzută (cea mai rapidă)” stabilește codificarea la „copyrect zlib "
+"hextile raw”\n"
+"  • „Medie” stabilește codificarea la „tight zrle ultra copyrect hextile "
+"zlib corre rre raw”\n"
+"  • „Bună” stabilește codificarea la „tight zrle ultra copyrect hextile zlib "
+"corre rre raw”\n"
+"  • „Cea mai bună (cea mai lentă)” stabilește codificarea la „copyrect zrle "
+"ultra zlib hextile corre rre raw”"
 
 #: plugins/vnc/vnc_plugin.c:2097
 msgid "Repeater"
-msgstr "Repetator"
+msgstr "Repetor"
 
 #: plugins/vnc/vnc_plugin.c:2109
 msgid "Listen on port"
-msgstr "Ascultă pe port"
+msgstr "Ascultă pe portul"
 
 #: plugins/vnc/vnc_plugin.c:2129
 msgid "Override pre-set VNC encodings"
-msgstr ""
+msgstr "Suprascrie codificările VNC prestabilite"
 
 #: plugins/vnc/vnc_plugin.c:2130
 msgid "Dynamic resolution enforced aspec ratio"
-msgstr ""
+msgstr "Rezoluție dinamică cu raport de aspect impus"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Force tight encoding"
-msgstr ""
+msgstr "Forțați codificarea strictă"
 
 #: plugins/vnc/vnc_plugin.c:2131
 msgid "Enabling this may help when the remote desktop looks scrambled"
 msgstr ""
+"Activarea acestei opțiuni poate fi de ajutor atunci când mediul de birou de "
+"la distanță pare dezordonat."
 
 #: plugins/vnc/vnc_plugin.c:2134 plugins/gvnc/gvnc_plugin.c:867
-#, fuzzy
 msgid "Ignore remote bell messages"
-msgstr "Ignoră mesajele de sonerie la distanță"
+msgstr "Ignoră mesajele de clopoțel de la distanță"
 
 #: plugins/vnc/vnc_plugin.c:2135 plugins/vnc/vnc_plugin.c:2153
-#, fuzzy
 msgid "Prevent local interaction on the server"
-msgstr "Împiedicați interacțiunea locală pe server"
+msgstr "Previne interacțiunea locală pe server"
 
 #: plugins/vnc/vnc_plugin.c:2136
 msgid "Show remote cursor"
@@ -3270,7 +3235,7 @@ msgstr "Arată cursorul de la distanță"
 
 #: plugins/vnc/vnc_plugin.c:2138
 msgid "Turn off encryption"
-msgstr "Dezactivează sincronizarea pentru clipboard"
+msgstr "Dezactivează criptarea"
 
 #: plugins/vnc/vnc_plugin.c:2155
 msgid "Open Chat…"
@@ -3285,126 +3250,105 @@ msgid "Remmina VNC listener Plugin"
 msgstr "Modulul de ascultare VNC al Remmina"
 
 #: plugins/www/www_config.h:43
-#, fuzzy
 msgid "Remmina web-browser plugin"
-msgstr "Remmina web-browser plugin"
+msgstr "Modulul pentru navigator web al Remmina"
 
 #: plugins/www/www_plugin.c:99
-#, fuzzy
 msgid "File downloaded"
 msgstr "Fișier descărcat"
 
 #: plugins/www/www_plugin.c:592
-#, fuzzy
 msgid "Enter WWW authentication credentials"
 msgstr "Introduceți credențialele de autentificare WWW"
 
 #: plugins/www/www_plugin.c:907
-#, fuzzy
 msgid "URL"
-msgstr "URL"
+msgstr "Adresa URL"
 
 #: plugins/www/www_plugin.c:907
-#, fuzzy
 msgid "http://address or https://address"
-msgstr "http://address sau https://address"
+msgstr "http://adresa sau https://adresa"
 
 #: plugins/www/www_plugin.c:924
-#, fuzzy
 msgid "User agent"
 msgstr "Agent utilizator"
 
 #: plugins/www/www_plugin.c:925
-#, fuzzy
 msgid "Proxy URL"
 msgstr "URL-ul Proxy"
 
 #: plugins/www/www_plugin.c:925
-#, fuzzy
 msgid "E.g. https://example.org, socks://mysocks:1080"
 msgstr "De exemplu, https://example.org, socks://mysocks:1080"
 
 #: plugins/www/www_plugin.c:926
-#, fuzzy
 msgid "Turn on Java support"
-msgstr "Activați suportul Java"
+msgstr "Activează suportul Java"
 
 #: plugins/www/www_plugin.c:927
 msgid "Turn on smooth scrolling"
-msgstr "Îmbunătățire font"
+msgstr "Activează derularea lină"
 
 #: plugins/www/www_plugin.c:928
-#, fuzzy
 msgid "Turn on spatial navigation"
-msgstr "Activați navigația spațială"
+msgstr "Activează navigarea spațială"
 
 #: plugins/www/www_plugin.c:931
-#, fuzzy
 msgid "Turn on plugin support"
-msgstr "Activați suportul pentru plugin-uri"
+msgstr "Activează suportul pentru module"
 
 #: plugins/www/www_plugin.c:932
-#, fuzzy
 msgid "Turn on WebGL support"
-msgstr "Activați suportul WebGL"
+msgstr "Activează suportul WebGL"
 
 #: plugins/www/www_plugin.c:934
-#, fuzzy
 msgid "Turn on HTML5 audio support"
-msgstr "Activați suportul audio HTML5"
+msgstr "Activează suportul audio HTML5"
 
 #: plugins/www/www_plugin.c:935
-#, fuzzy
 msgid "Ignore TLS errors"
 msgstr "Ignoră erorile TLS"
 
 #: plugins/www/www_plugin.c:938
-#, fuzzy
 msgid "Turn on Web Inspector"
-msgstr "Activați Inspectorul Web"
+msgstr "Activează inspectorul Web"
 
 #: plugins/exec/exec_plugin.c:167
-#, fuzzy
 msgid "You did not set any command to be executed"
-msgstr "Nu ați setat nicio comandă care să fie executată"
+msgstr "Nu ați definit nicio comandă care să fie executată"
 
 #: plugins/exec/exec_plugin.c:214
-#, fuzzy
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"Avertisment: Executarea unei comenzi în mod sincron poate face ca Remmina să "
-"nu răspundă.\n"
-"Chiar doriți să continuați?"
+"Avertisment: Executarea sincronă a unei comenzi poate determina Remmina să "
+"nu mai răspundă.\n"
+"Doriți cu adevărat să continuați?"
 
 #: plugins/exec/exec_plugin.c:297
-#, fuzzy
 msgid "Command"
 msgstr "Comandă"
 
 #: plugins/exec/exec_plugin.c:298
-#, fuzzy
 msgid "Asynchronous execution"
 msgstr "Execuție asincronă"
 
 #: plugins/exec/exec_plugin.c:299
 msgid "Kill process on disconnect"
-msgstr ""
+msgstr "Omoară procesul la deconectare"
 
 #: plugins/exec/exec_plugin_config.h:41
-#, fuzzy
 msgid "Execute a command"
-msgstr "Executarea unei comenzi"
+msgstr "Execută o comandă"
 
 #: plugins/tool_hello_world/plugin_config.h:40
-#, fuzzy
 msgid "Hello, World!"
-msgstr "Bună ziua, lume!"
+msgstr "Salutare, lume!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secured password storage in the GNOME keyring"
-msgstr "Parola %s"
+msgstr "Stocarea securizată a parolelor în inelul de chei GNOME"
 
 #: plugins/x2go/x2go_plugin.c:71
 #, c-format
@@ -3412,6 +3356,8 @@ msgid ""
 "The command-line feature '%s' is not available! Attempting to start PyHoca-"
 "CLI without using this feature…"
 msgstr ""
+"Funcția liniei de comandă „%s” nu este disponibilă! Se încearcă pornirea "
+"PyHoca-CLI fără utilizarea acestei funcții…"
 
 #: plugins/x2go/x2go_plugin.c:296 plugins/x2go/x2go_plugin.c:428
 #: plugins/x2go/x2go_plugin.c:517 plugins/x2go/x2go_plugin.c:624
@@ -3436,129 +3382,119 @@ msgstr "Eroare internă: %s"
 #: plugins/x2go/x2go_plugin.c:297 plugins/x2go/x2go_plugin.c:429
 #: plugins/x2go/x2go_plugin.c:518 plugins/x2go/x2go_plugin.c:1349
 msgid "Parameter 'custom_data' is not initialized!"
-msgstr ""
+msgstr "Parametrul „custom_data” nu este inițializat!"
 
 #: plugins/x2go/x2go_plugin.c:310
-#, fuzzy
 msgid "Broken `DialogData`! Aborting…"
-msgstr "`DialogData` stricat! Abandonarea…"
+msgstr "„DialogData” stricat! Se abandonează…"
 
 #: plugins/x2go/x2go_plugin.c:314
-#, fuzzy
 msgid "Can't retrieve `DialogData`! Aborting…"
-msgstr "Nu se poate prelua `DialogData`! Anulare…"
+msgstr "Nu se poate prelua „DialogData”! Se abandonează…"
 
 #: plugins/x2go/x2go_plugin.c:476
-#, fuzzy
-#| msgid "Display"
 msgid "X Display"
-msgstr "Afișaj"
+msgstr "Afișaj X"
 
 #: plugins/x2go/x2go_plugin.c:477
 msgid "Status"
 msgstr "Stare"
 
 #: plugins/x2go/x2go_plugin.c:478
-#, fuzzy
-#| msgid "Permission"
 msgid "Session ID"
-msgstr "Permisiuni"
+msgstr "ID-ul sesiunii"
 
 #: plugins/x2go/x2go_plugin.c:479
 msgid "Create date"
-msgstr ""
+msgstr "Data creării"
 
 #: plugins/x2go/x2go_plugin.c:480
 msgid "Suspended since"
-msgstr ""
+msgstr "Suspendat din"
 
 #: plugins/x2go/x2go_plugin.c:481
 msgid "Agent PID"
-msgstr ""
+msgstr "PID-ul agentului"
 
 #: plugins/x2go/x2go_plugin.c:483
-#, fuzzy
-#| msgid "Username"
 msgid "Hostname"
-msgstr "Nume de utilizator"
+msgstr "Nume-gazdă"
 
 #: plugins/x2go/x2go_plugin.c:484
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
 #: plugins/x2go/x2go_plugin.c:485
 msgid "Graphic port"
-msgstr ""
+msgstr "Port grafic"
 
 #: plugins/x2go/x2go_plugin.c:486
 msgid "SND port"
-msgstr ""
+msgstr "Port SND"
 
 #: plugins/x2go/x2go_plugin.c:487
-#, fuzzy
 msgid "SSHFS port"
-msgstr "Port SSH local"
+msgstr "Port SSHFS"
 
 #: plugins/x2go/x2go_plugin.c:488
-#, fuzzy
 msgid "Visible"
 msgstr "Vizibil"
 
 #: plugins/x2go/x2go_plugin.c:527
-#, fuzzy
 msgid "Could not retrieve valid `DialogData` or `sessions_list`! Aborting…"
-msgstr "Nu se poate prelua `DialogData`! Anulare…"
+msgstr ""
+"Nu s-a putut prelua „DialogData” sau „sessions_list” valide! Se abandonează…"
 
 #. TRANSLATORS: Stick to x2goclient's translation for terminate.
 #: plugins/x2go/x2go_plugin.c:536
-#, fuzzy
-#| msgid "Terminate"
 msgid "_Terminate"
-msgstr "Terminare"
+msgstr "_Terminare"
 
 #. TRANSLATORS: Stick to x2goclient's translation for resume.
 #: plugins/x2go/x2go_plugin.c:539
-#, fuzzy
-#| msgid "Resume"
 msgid "_Resume"
-msgstr "Continuare"
+msgstr "_Reluare"
 
 #: plugins/x2go/x2go_plugin.c:541
 msgid "_New"
-msgstr ""
+msgstr "_Nou"
 
 #. TRANSLATORS: Tooltip for terminating button inside Session-Chooser-Dialog.
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:550
 msgid "Terminating X2Go sessions can take a moment."
-msgstr ""
+msgstr "Terminarea sesiunilor X2Go poate dura un timp."
 
 #: plugins/x2go/x2go_plugin.c:625 plugins/x2go/x2go_plugin.c:627
 #, c-format
 msgid "Unknown property '%i'"
-msgstr ""
+msgstr "Proprietate necunoscută „%i”"
 
 #: plugins/x2go/x2go_plugin.c:715 plugins/x2go/x2go_plugin.c:762
 msgid "Could not find child GtkTreeView of session chooser dialog."
 msgstr ""
+"Nu s-a putut găsi procesul-copil GtkTreeView al dialogului de selectare a "
+"sesiunii."
 
 #: plugins/x2go/x2go_plugin.c:727
 msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Nici parametrul „dialog”, nici parametrul „treeview” nu sunt inițializate! "
+"Cel puțin unul dintre ele trebuie să fie specificat."
 
 #: plugins/x2go/x2go_plugin.c:736
 msgid ""
 "Could not obtain \"GtkTreeModelFilter*\" of the session chooser dialog, for "
 "unknown reason."
 msgstr ""
+"Nu s-a putut obține „GtkTreeModelFilter*” din dialogul de selectare a "
+"sesiunii, din motive necunoscute."
 
 #: plugins/x2go/x2go_plugin.c:771
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not get currently selected row (session)!"
-msgstr "Nu s-a putut începe sesiunea X2Go."
+msgstr "Nu s-a putut obține rândul selectat în prezent (sesiune)!"
 
 #: plugins/x2go/x2go_plugin.c:790
 #, c-format
@@ -3566,46 +3502,52 @@ msgid ""
 "Exactly one session should be selectable but '%i' rows (sessions) are "
 "selected."
 msgstr ""
+"Ar trebui să poată fi selectată exact o sesiune, dar sunt selectate „%i” "
+"rânduri (sesiuni)."
 
 #: plugins/x2go/x2go_plugin.c:840
 msgid "Failed to fill 'GtkTreeIter'."
-msgstr ""
+msgstr "Nu s-a reușit completarea „GtkTreeIter”."
 
 #: plugins/x2go/x2go_plugin.c:906
 msgid "parameter 'argv' is 'NULL'."
-msgstr ""
+msgstr "parametrul „argv” este „NULL”."
 
 #: plugins/x2go/x2go_plugin.c:917
 msgid "parameter 'error' is 'NULL'."
-msgstr ""
+msgstr "parametrul „error” este „NULL”."
 
 #: plugins/x2go/x2go_plugin.c:925
 msgid "parameter 'env' is either invalid or uninitialized."
-msgstr ""
+msgstr "parametrul „env” este fie nevalid, fie neinițializat."
 
 #: plugins/x2go/x2go_plugin.c:941 plugins/x2go/x2go_plugin.c:2553
-#, fuzzy
 msgid "Started PyHoca-CLI with the following arguments:"
-msgstr "A pornit PyHoca-CLI cu următoarele argumente:"
+msgstr "S-a inițiat PyHoca-CLI cu următoarele argumente:"
 
 #: plugins/x2go/x2go_plugin.c:972
 msgid ""
 "The necessary PyHoca-CLI process has encountered a internet connection "
 "problem."
 msgstr ""
+"Procesul PyHoca-CLI necesar a întâmpinat o problemă de conexiune la internet."
 
 #: plugins/x2go/x2go_plugin.c:982
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not start PyHoca-CLI:\n"
 "%s"
-msgstr "Nu s-a putut porni PyHoca-CLI (%i): '%s'"
+msgstr ""
+"Nu s-a putut iniția PyHoca-CLI:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:993
 #, c-format
 msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
+"A apărut o eroare necunoscută la încercarea de inițiere a PyHoca-CLI. Cod de "
+"ieșire: %i"
 
 #: plugins/x2go/x2go_plugin.c:1000
 #, c-format
@@ -3613,100 +3555,95 @@ msgid ""
 "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
+"A apărut o eroare necunoscută la încercarea de inițiere a PyHoca-CLI. Cod de "
+"ieșire: %i. Eroare: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:1044
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
-msgstr ""
+msgstr "Nici parametrul „path”, nici parametrul „dialog” nu sunt inițializați."
 
 #: plugins/x2go/x2go_plugin.c:1060
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath „path” descrie un rând inexistent!"
 
 #: plugins/x2go/x2go_plugin.c:1112 plugins/x2go/x2go_plugin.c:1122
 #: plugins/x2go/x2go_plugin.c:2211
-#, fuzzy
-#| msgid "Per connection"
 msgid "'Invalid connection data.'"
-msgstr "Conexiune partajată"
+msgstr "„Date de conexiune nevalide.”"
 
 #: plugins/x2go/x2go_plugin.c:1154
 msgid "Parameter 'custom_data' is not fully initialized!"
-msgstr ""
+msgstr "Parametrul „custom_data” nu este complet inițializat!"
 
 #: plugins/x2go/x2go_plugin.c:1276
-#, fuzzy, c-format
-#| msgid "Could not start SSH session. %s"
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "Nu s-a putut începe sesiunea X2Go."
+msgstr ""
+"Nu s-a putut termina sesiunea X2Go „%s”:\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1288 plugins/x2go/x2go_plugin.c:1665
-#, fuzzy
 msgid "An error occured."
-msgstr "S-a produs o eroare."
+msgstr "A apărut o eroare."
 
 #: plugins/x2go/x2go_plugin.c:1389 plugins/x2go/x2go_plugin.c:1404
 msgid "Could not get session ID from session chooser dialog."
 msgstr ""
+"Nu s-a putut obține ID-ul sesiunii din dialogul de selectare a sesiunii."
 
 #: plugins/x2go/x2go_plugin.c:1396
 #, c-format
 msgid "Resuming session: '%s'"
-msgstr ""
+msgstr "Se reia sesiunea: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:1411
 #, c-format
 msgid "Terminating session: '%s'"
-msgstr ""
+msgstr "Se încheie sesiunea: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:1585
 #, c-format
 msgid "Disconnected from %s:%d via X2Go"
-msgstr ""
+msgstr "Deconectat de la %s:%d prin X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1657
-#, fuzzy
 msgid "PyHoca-CLI exited unexpectedly. This connection will now be closed."
 msgstr ""
 "PyHoca-CLI a ieșit în mod neașteptat. Această conexiune va fi închisă acum."
 
 #: plugins/x2go/x2go_plugin.c:1666
-#, fuzzy
 msgid ""
 "The necessary child process 'pyhoca-cli' stopped unexpectedly.\n"
 "Please check your profile settings and PyHoca-CLI's output for possible "
 "errors. Also ensure the remote server is reachable and you're using the "
 "right credentials."
 msgstr ""
-"Procesul copil necesar 'pyhoca-cli' s-a oprit în mod neașteptat.\n"
-"Vă rugăm să verificați setările profilului dvs. și ieșirea PyHoca-CLI pentru "
-"posibile erori. De asemenea, asigurați-vă că serverul la distanță este "
-"accesibil."
+"Procesul-copil necesar „pyhoca-cli” s-a oprit în mod neașteptat.\n"
+"Verificați parametrii profilului dvs. și ieșirea PyHoca-CLI pentru posibile "
+"erori. Asigurați-vă, de asemenea, că serverul de la distanță este accesibil "
+"și că utilizați acreditările corecte."
 
 #: plugins/x2go/x2go_plugin.c:1709
-#, fuzzy
 msgid "Can't save empty username!"
-msgstr "Nu pot salva un nume de utilizator gol!"
+msgstr "Nu se poate salva un nume de utilizator gol!"
 
 #: plugins/x2go/x2go_plugin.c:1723
-#, fuzzy
 msgid "Could not save new credentials."
-msgstr "Eroare internă: Nu s-a putut salva noile credențiale."
+msgstr "Nu s-au putut salva noile credențiale."
 
 #: plugins/x2go/x2go_plugin.c:1726
-#, fuzzy
 msgid ""
 "Could not save new credentials: 's_password' or 's_username' strings were "
 "not set."
 msgstr ""
-"S-a produs o eroare în timpul încercării de a salva noi acreditări: șirurile "
-"de caractere \"s_password\" sau \"s_username\" nu au fost setate."
+"Nu s-au putut salva noile acreditări: șirurile „s_password” sau „s_username” "
+"nu au fost definite."
 
 #: plugins/x2go/x2go_plugin.c:1758
-#, fuzzy
 msgid "Enter password to unlock the SSH key:"
-msgstr "Parola pentru deblocarea cheii private"
+msgstr "Introduceți parola pentru a debloca cheia SSH:"
 
 #: plugins/x2go/x2go_plugin.c:1769
 msgid "Password input cancelled. Aborting…"
@@ -3717,9 +3654,11 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Sfat: Bifați căsuța de selectare „Salvare parolă” sau introduceți manual "
+"numele de utilizator și parola X2Go în parametrii profilului pentru a le "
+"stoca și a facilita autentificarea mai rapidă."
 
 #: plugins/x2go/x2go_plugin.c:1831
-#, fuzzy
 msgid "Enter X2Go credentials"
 msgstr "Introduceți acreditările X2Go"
 
@@ -3732,75 +3671,72 @@ msgid ""
 "Could not parse the output of PyHoca-CLI's --list-sessions option. Creating "
 "a new session now."
 msgstr ""
+"Nu s-a putut analiza ieșirea opțiunii „--list-sessions” din PyHoca-CLI. Se "
+"creează o sesiune nouă acum."
 
 #: plugins/x2go/x2go_plugin.c:2086
 msgid "Could not allocate enough memory!"
-msgstr ""
+msgstr "Nu s-a putut aloca suficientă memorie!"
 
 #: plugins/x2go/x2go_plugin.c:2096
 #, c-format
 msgid "Found already existing X2Go session with ID: '%s'"
-msgstr ""
+msgstr "S-a găsit o sesiune X2Go deja existentă cu ID-ul: „%s”"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2139
 msgid "Suspended"
-msgstr ""
+msgstr "Suspendată"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2142
-#, fuzzy
 msgid "Running"
-msgstr "Rulare"
+msgstr "În execuție"
 
 #. TRANSLATORS: Please stick to X2GoClient's translation.
 #: plugins/x2go/x2go_plugin.c:2145
-#, fuzzy
-#| msgid "Terminate"
 msgid "Terminated"
-msgstr "Terminare"
+msgstr "Terminată"
 
 #: plugins/x2go/x2go_plugin.c:2178
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"Nu s-au găsit sesiuni pe mașina de la distanță. Se creează o sesiune nouă "
+"acum."
 
 #: plugins/x2go/x2go_plugin.c:2233
-#, fuzzy
-#| msgid "Choose a file to upload"
 msgid "Choose a session to resume:"
-msgstr "Alegeți un fișier pentru încărcare"
+msgstr "Alegeți o sesiune pentru a o relua:"
 
 #: plugins/x2go/x2go_plugin.c:2276
-#, fuzzy
 msgid "Waiting for user to select a session…"
-msgstr "Așteptând ca PyHoca-CLI să afișeze fereastra sesiunii…"
+msgstr "Se așteaptă ca utilizatorul să selecteze o sesiune…"
 
 #: plugins/x2go/x2go_plugin.c:2284
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "Nu a fost selectată nicio sesiune. Se creează una nouă."
 
 #: plugins/x2go/x2go_plugin.c:2356
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "A apărut o eroare necritică: %s"
 
 #: plugins/x2go/x2go_plugin.c:2361
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "Utilizatorul a ales să reia sesiunea cu ID-ul: „%s”"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "Se reia sesiunea „%s”'…"
 
 #: plugins/x2go/x2go_plugin.c:2513
-#, fuzzy
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr ""
-"Setarea DPI este în afara limitelor. Vă rugăm să o ajustați în setările "
+"Valoarea DPI este în afara limitelor. Vă rugăm să o ajustați în configurația "
 "profilului."
 
 #: plugins/x2go/x2go_plugin.c:2576
@@ -3808,46 +3744,41 @@ msgid "Could not start X2Go session…"
 msgstr "Nu s-a putut iniția sesiunea X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2583
-#, fuzzy
-#| msgid "Could not start SSH session. %s"
 msgid "Could not start X2Go session."
-msgstr "Nu s-a putut începe sesiunea X2Go."
+msgstr "Nu s-a putut iniția sesiunea X2Go."
 
 #: plugins/x2go/x2go_plugin.c:2584
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start PyHoca-CLI (%i): '%s'"
-msgstr "Nu s-a putut porni PyHoca-CLI (%i): '%s'"
+msgstr "Nu s-a putut iniția PyHoca-CLI (%i): „%s”"
 
 #: plugins/x2go/x2go_plugin.c:2699
-#, fuzzy
 msgid ""
 "Could not get PyHoca-CLI's command-line features. This indicates it is "
 "either too old, or not installed. An old limited set of features will be "
 "used for now."
 msgstr ""
-"Nu am putut obține caracteristicile PyHoca-CLI din linia de comandă. Acest "
+"Nu s-au putut obține caracteristicile PyHoca-CLI din linia de comandă. Acest "
 "lucru indică faptul că este fie prea vechi, fie nu este instalat. Deocamdată "
 "va fi utilizat un set limitat de caracteristici vechi."
 
 #: plugins/x2go/x2go_plugin.c:2708
-#, fuzzy
 msgid ""
 "Could not parse PyHoca-CLI's command-line features. Using a limited feature-"
 "set for now."
 msgstr ""
-"Nu a putut analiza caracteristicile liniei de comandă a PyHoca-CLI. "
+"Nu s-au putut analiza caracteristicile liniei de comandă a PyHoca-CLI. "
 "Deocamdată se utilizează un set limitat de caracteristici."
 
 #: plugins/x2go/x2go_plugin.c:2714
-#, fuzzy
 msgid "Retrieved the following PyHoca-CLI command-line features:"
 msgstr ""
-"Ați recuperat următoarele caracteristici ale liniei de comandă PyHoca-CLI:"
+"S-au preluat următoarele caracteristici ale liniei de comandă PyHoca-CLI:"
 
 #: plugins/x2go/x2go_plugin.c:2722
-#, fuzzy, c-format
+#, c-format
 msgid "Available feature[%i]: '%s'"
-msgstr "Caracteristică disponibilă[%i]: '%s]'"
+msgstr "Caracteristică disponibilă[%i]: „%s”"
 
 #: plugins/x2go/x2go_plugin.c:2747
 #, c-format
@@ -3855,40 +3786,33 @@ msgid "Connected to %s:%d via X2Go"
 msgstr "Conectat la %s:%d prin X2Go"
 
 #: plugins/x2go/x2go_plugin.c:2841
-#, fuzzy
-#| msgid "Could not open channel. %s"
 msgid "Could not open X11 DISPLAY."
-msgstr "Nu s-a putut deschide X11 DISPLAY."
+msgstr "Nu s-a putut deschide X11 DISPLAY (afișajul X11)."
 
 #: plugins/x2go/x2go_plugin.c:2881
-#, fuzzy
 msgid "Waiting for window of X2Go Agent to appear…"
 msgstr "Așteptând să apară fereastra agentului X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2907
-#, fuzzy
 msgid "Waiting for PyHoca-CLI to show the session's window…"
 msgstr "Așteptând ca PyHoca-CLI să afișeze fereastra sesiunii…"
 
 #: plugins/x2go/x2go_plugin.c:2958
-#, fuzzy
 msgid "No X2Go session window appeared. Something went wrong…"
 msgstr "Nu a apărut nicio fereastră de sesiune X2Go. Ceva nu a mers bine…"
 
 #: plugins/x2go/x2go_plugin.c:3077
-#, fuzzy
 msgid "RemminaProtocolWidget* gp is 'NULL'!"
-msgstr "Eroare internă: RemminaProtocolWidget* gp este NULL!"
+msgstr "RemminaProtocolWidget* gp este „NULL”!"
 
 #: plugins/x2go/x2go_plugin.c:3098
-#, fuzzy, c-format
+#, c-format
 msgid "The %s protocol is unavailable because GtkSocket only works under X.org"
 msgstr ""
-"Protocolul %s nu este disponibil deoarece GtkSocket funcționează doar sub X."
-"org."
+"Protocolul %s nu este disponibil deoarece GtkSocket funcționează doar sub "
+"X.org"
 
 #: plugins/x2go/x2go_plugin.c:3107
-#, fuzzy
 msgid "Could not initialize pthread. Falling back to non-threaded mode…"
 msgstr "Nu s-a putut inițializa pthread. Revenind la modul non-threaded…"
 
@@ -3901,9 +3825,9 @@ msgstr "Nu s-a putut inițializa pthread. Revenind la modul non-threaded…"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:3150 plugins/x2go/x2go_plugin.c:3168
-#, fuzzy, c-format
+#, c-format
 msgid "%sand '%s'"
-msgstr "%sși \"%s"
+msgstr "%sși „%s”"
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
@@ -3912,148 +3836,122 @@ msgstr "%sși \"%s"
 #. (Except your listing-grammar differs from english.)
 #. 'value1' and 'value2'
 #: plugins/x2go/x2go_plugin.c:3155 plugins/x2go/x2go_plugin.c:3173
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s' "
-msgstr "%s'%s "
+msgstr "%s„%s” "
 
 #. TRANSLATORS: Presumably you just want to leave it english.
 #. (Except your listing-grammar differs from english.)
 #. 'value1', 'value2', 'valueN-1' and 'valueN'
 #: plugins/x2go/x2go_plugin.c:3160
-#, fuzzy, c-format
+#, c-format
 msgid "%s'%s', "
-msgstr "%s'%s', "
+msgstr "%s„%s”, "
 
 #: plugins/x2go/x2go_plugin.c:3199
-#, fuzzy
 msgid "Invalid validation data in ProtocolSettings array!"
 msgstr "Date de validare nevalabile în matricea ProtocolSettings!"
 
 #: plugins/x2go/x2go_plugin.c:3214 plugins/x2go/x2go_plugin.c:3279
-#, fuzzy
 msgid "Validation data in ProtocolSettings array is invalid!"
 msgstr "Datele de validare din matricea ProtocolSettings nu sunt valide!"
 
 #: plugins/x2go/x2go_plugin.c:3223
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Parametrul „key” sau „value” este „NULL”!"
 
 #: plugins/x2go/x2go_plugin.c:3241
-#, fuzzy, c-format
+#, c-format
 msgid "Allowed values are %s."
 msgstr "Valorile admise sunt %s."
 
 #: plugins/x2go/x2go_plugin.c:3243
-#, fuzzy, c-format
+#, c-format
 msgid "The only allowed value is '%s'."
-msgstr "Singura valoare permisă este \"%s\"."
+msgstr "Singura valoare permisă este „%s”."
 
 #: plugins/x2go/x2go_plugin.c:3290
-#, fuzzy
 msgid "The lower limit is not a valid integer!"
 msgstr "Limita inferioară nu este un număr întreg valid!"
 
 #: plugins/x2go/x2go_plugin.c:3295
-#, fuzzy
 msgid "The lower limit is too high!"
 msgstr "Limita inferioară este prea mare!"
 
 #: plugins/x2go/x2go_plugin.c:3300
-#, fuzzy
 msgid "The lower limit is too low!"
 msgstr "Limita inferioară este prea mică!"
 
 #: plugins/x2go/x2go_plugin.c:3305 plugins/x2go/x2go_plugin.c:3335
 #: plugins/x2go/x2go_plugin.c:3355
-#, fuzzy
 msgid "Something unknown went wrong."
-msgstr "Ceva a mers prost."
+msgstr "Ceva necunoscut a mers prost."
 
 #: plugins/x2go/x2go_plugin.c:3310 plugins/x2go/x2go_plugin.c:3340
-#, fuzzy
 msgid "Please check the RemminaProtocolSetting array for possible errors."
 msgstr ""
 "Vă rugăm să verificați matricea RemminaProtocolSetting pentru posibile erori."
 
 #: plugins/x2go/x2go_plugin.c:3320
-#, fuzzy
 msgid "The upper limit is not a valid integer!"
 msgstr "Limita superioară nu este un număr întreg valid!"
 
 #: plugins/x2go/x2go_plugin.c:3325
-#, fuzzy
 msgid "The upper limit is too high!"
 msgstr "Limita superioară este prea mare!"
 
 #: plugins/x2go/x2go_plugin.c:3330
-#, fuzzy
 msgid "The upper limit is too low!"
 msgstr "Limita superioară este prea mică!"
 
 #: plugins/x2go/x2go_plugin.c:3350
-#, fuzzy
 msgid "The input is not a valid integer!"
 msgstr "Intrarea nu este un număr întreg valid!"
 
 #: plugins/x2go/x2go_plugin.c:3352 plugins/x2go/x2go_plugin.c:3369
-#, fuzzy, c-format
+#, c-format
 msgid "Input must be a number between %i and %i."
 msgstr "Intrarea trebuie să fie un număr cuprins între %i și %i."
 
 #: plugins/x2go/x2go_plugin.c:3398
-#, fuzzy
-#| msgid "Start-up program"
 msgid "Startup program"
-msgstr "Program pornire"
+msgstr "Program de inițiere"
 
 #: plugins/x2go/x2go_plugin.c:3400
-#, fuzzy
 msgid "Which command should be executed after creating the X2Go session?"
-msgstr "Ce comandă trebuie executată după crearea sesiunii X2Go?"
+msgstr "Ce comandă trebuie să fie executată după crearea sesiunii X2Go?"
 
 #: plugins/x2go/x2go_plugin.c:3402
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout (auto)"
-msgstr "Dispunerea tastaturii (auto)"
+msgstr "Aranjamentul tastaturii (auto)"
 
 #: plugins/x2go/x2go_plugin.c:3403
-#, fuzzy
-#| msgid "Keyboard layout"
 msgid "Keyboard type (auto)"
-msgstr "Tip de tastatură (auto)"
+msgstr "Tipul de tastatură (auto)"
 
 #: plugins/x2go/x2go_plugin.c:3404
-#, fuzzy
 msgid "Audio support"
 msgstr "Suport audio"
 
 #: plugins/x2go/x2go_plugin.c:3406
-#, fuzzy
 msgid "The sound system of the X2Go server (default: 'pulse')."
-msgstr "Sistemul de sunet al serverului X2Go (implicit: \"pulse\")."
+msgstr "Sistemul de sunet al serverului X2Go (implicit: „pulse”)."
 
 #: plugins/x2go/x2go_plugin.c:3409
-#, fuzzy
-#| msgid "Per connection"
 msgid "Clipboard direction"
 msgstr "Direcția clipboard-ului"
 
 #: plugins/x2go/x2go_plugin.c:3411
-#, fuzzy
 msgid "Which direction should clipboard content be copied? (default: 'both')."
 msgstr ""
 "În ce direcție trebuie copiat conținutul clipboard-ului? (implicit: "
-"\"ambele\")."
+"„ambele”)."
 
 #: plugins/x2go/x2go_plugin.c:3415
-#, fuzzy
-#| msgid "Resolution"
 msgid "DPI resolution"
 msgstr "Rezoluția DPI"
 
 #: plugins/x2go/x2go_plugin.c:3416
-#, fuzzy
 msgid ""
 "Launch session with a specific resolution (in dots per inch). Must be "
 "between 20 and 400."
@@ -4062,91 +3960,68 @@ msgstr ""
 "între 20 și 400."
 
 #: plugins/x2go/x2go_plugin.c:3420
-#, fuzzy
-#| msgid "SSH private key passphrase"
 msgid "Your private key"
-msgstr "Fișier cu cheie privată SSH"
+msgstr "Cheia dvs. privată"
 
 #: plugins/x2go/x2go_plugin.c:3460
-#, fuzzy
 msgid "X2Go plugin loaded."
-msgstr "Plugin-ul X2Go a fost încărcat."
+msgstr "Modulul X2Go a fost încărcat."
 
 #: plugins/x2go/x2go_plugin.h:43
-#, fuzzy
 msgid "X2Go - Launch an X2Go session"
-msgstr "X2Go - Lansarea unei sesiuni X2Go"
+msgstr "X2Go - Lansează o sesiune X2Go"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
-#, fuzzy
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina VNC plugin pentru GNOME și KVM"
+msgstr "Modulul VNC al Remmina pentru GNOME și KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:476
-#, fuzzy, c-format
+#, c-format
 msgid "Unsupported authentication type %u"
 msgstr "Tip de autentificare neacceptat %u"
 
 #: plugins/gvnc/gvnc_plugin.c:488
-#, fuzzy, c-format
-#| msgid "SSH Authentication"
+#, c-format
 msgid "Authentication failure: %s"
 msgstr "Eșecul autentificării: %s"
 
 #: plugins/gvnc/gvnc_plugin.c:819
-#, fuzzy
 msgid "Use server settings"
-msgstr "Utilizați setările serverului"
+msgstr "Utilizează configurația serverului"
 
 #: plugins/gvnc/gvnc_plugin.c:820
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "True colour (24 bits)"
 msgstr "Culoare adevărată (24 biți)"
 
 #: plugins/gvnc/gvnc_plugin.c:821
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "High colour (16 bits)"
-msgstr "Culoare înaltă (16 biți)"
+msgstr "Culoare de înaltă calitate (16 biți)"
 
 #: plugins/gvnc/gvnc_plugin.c:822
-#, fuzzy
-#| msgid "High colour (16 bit)"
 msgid "Low colour (8 bits)"
-msgstr "Culoare redusă (8 biți)"
+msgstr "Culoare de calitate scăzută (8 biți)"
 
 #: plugins/gvnc/gvnc_plugin.c:823
-#, fuzzy
-#| msgid "True colour (24 bit)"
 msgid "Ultra low colour (3 bits)"
-msgstr "Culoare foarte joasă (3 biți)"
+msgstr "Culoare de calitate foarte scăzută (3 biți)"
 
 #: plugins/gvnc/gvnc_plugin.c:847
-#, fuzzy
-#| msgid "Enter VNC password"
 msgid "VNC password"
 msgstr "Parola VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:849
-#, fuzzy
 msgid "Use JPEG Compression"
-msgstr "Utilizați compresia JPEG"
+msgstr "Utilizează compresia JPEG"
 
 #: plugins/gvnc/gvnc_plugin.c:849
-#, fuzzy
-#| msgid "Browse the network to find a %s server"
 msgid "This might not work on all VNC servers"
 msgstr "Este posibil ca acest lucru să nu funcționeze pe toate serverele VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:850
-#, fuzzy
 msgid "Enable GTK-VNC debug"
-msgstr "Activați depanarea GTK-VNC"
+msgstr "Activează depanarea GTK-VNC"
 
 #: plugins/gvnc/gvnc_plugin.c:870
-#, fuzzy
-#| msgid "Per connection"
 msgid "Shared connection"
 msgstr "Conexiune partajată"
 
@@ -4159,72 +4034,58 @@ msgstr ""
 "lăsând alți clienți conectați"
 
 #: plugins/gvnc/gvnc_plugin.c:880
-#, fuzzy
 msgid "Send Ctrl+Alt+_Del"
-msgstr "Trimiteți Ctrl+Alt+_Del"
+msgstr "Trimite Ctrl+Alt+_Del"
 
 #: plugins/gvnc/gvnc_plugin.c:881
-#, fuzzy
 msgid "Send Ctrl+Alt+_Backspace"
-msgstr "Trimiteți Ctrl+Alt+_Backspace"
+msgstr "Trimite Ctrl+Alt+_Backspace"
 
 #: plugins/gvnc/gvnc_plugin.c:882
-#, fuzzy
 msgid "Send Ctrl+Alt+_F1"
 msgstr "Trimite Ctrl+Alt+_F1"
 
 #: plugins/gvnc/gvnc_plugin.c:883
-#, fuzzy
 msgid "Send Ctrl+Alt+_F2"
 msgstr "Trimite Ctrl+Alt+_F2"
 
 #: plugins/gvnc/gvnc_plugin.c:884
-#, fuzzy
 msgid "Send Ctrl+Alt+_F3"
 msgstr "Trimite Ctrl+Alt+_F3"
 
 #: plugins/gvnc/gvnc_plugin.c:885
-#, fuzzy
 msgid "Send Ctrl+Alt+_F4"
 msgstr "Trimite Ctrl+Alt+_F4"
 
 #: plugins/gvnc/gvnc_plugin.c:886
-#, fuzzy
 msgid "Send Ctrl+Alt+_F5"
 msgstr "Trimite Ctrl+Alt+_F5"
 
 #: plugins/gvnc/gvnc_plugin.c:887
-#, fuzzy
 msgid "Send Ctrl+Alt+_F6"
 msgstr "Trimite Ctrl+Alt+_F6"
 
 #: plugins/gvnc/gvnc_plugin.c:888
-#, fuzzy
 msgid "Send Ctrl+Alt+_F7"
 msgstr "Trimite Ctrl+Alt+_F7"
 
 #: plugins/gvnc/gvnc_plugin.c:889
-#, fuzzy
 msgid "Send Ctrl+Alt+_F8"
 msgstr "Trimite Ctrl+Alt+_F8"
 
 #: plugins/gvnc/gvnc_plugin.c:890
-#, fuzzy
 msgid "Send Ctrl+Alt+_F9"
 msgstr "Trimite Ctrl+Alt+_F9"
 
 #: plugins/gvnc/gvnc_plugin.c:891
-#, fuzzy
 msgid "Send Ctrl+Alt+_F10"
 msgstr "Trimite Ctrl+Alt+_F10"
 
 #: plugins/gvnc/gvnc_plugin.c:892
-#, fuzzy
 msgid "Send Ctrl+Alt+_F11"
 msgstr "Trimite Ctrl+Alt+_F11"
 
 #: plugins/gvnc/gvnc_plugin.c:893
-#, fuzzy
 msgid "Send Ctrl+Alt+_F12"
 msgstr "Trimite Ctrl+Alt+_F12"
 
@@ -4233,15 +4094,12 @@ msgid "Reboot remote host"
 msgstr "Repornește gazda la distanță"
 
 #: plugins/gvnc/gvnc_plugin.c:896
-#, fuzzy
 msgid "Reset remote host (hard reboot)"
-msgstr "Resetarea gazdei de la distanță (repornire dură)"
+msgstr "Reinițiază gazda de la distanță (repornire dură)"
 
 #: plugins/gvnc/gvnc_plugin.c:897
-#, fuzzy
-#| msgid "Show remote cursor"
 msgid "Shutdown remote host"
-msgstr "Oprire gazdă la distanță"
+msgstr "Oprește gazdă de la distanță"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -4269,7 +4127,7 @@ msgid ""
 "Some Remmina functions need to be set up to work properly.\n"
 "</span>\n"
 msgstr ""
-"<big><b>Remmina Snap package</b></big>\n"
+"<big><b>Pachet Snap Remmina</b></big>\n"
 "\n"
 "<span>\n"
 "Remmina rulează pe sistemul dumneavoastră ca pachet Snap.\n"
@@ -4277,7 +4135,6 @@ msgstr ""
 "</span>\n"
 
 #: data/ui/remmina_snap_info_dialog.glade:112
-#, fuzzy
 msgid ""
 "To enable access to some important features, like password saving in your "
 "keyring and RDP printer sharing, please open your software center and give "
@@ -4285,8 +4142,8 @@ msgid ""
 "following commands in a terminal window:"
 msgstr ""
 "Pentru a permite accesul la unele caracteristici importante, cum ar fi "
-"salvarea parolei în breloc și partajarea imprimantei RDP, vă rugăm să "
-"deschideți centrul software și să acordați permisiunile corespunzătoare "
+"salvarea parolei în inelul de chei și partajarea imprimantei RDP, vă rugăm "
+"să deschideți centrul software și să acordați permisiunile corespunzătoare "
 "pentru Remmina. Ca alternativă, puteți introduce următoarele comenzi într-o "
 "fereastră de terminal:"
 
@@ -4295,7 +4152,6 @@ msgid "<big>Permissions</big>"
 msgstr "<big>Permisiuni</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:193
-#, fuzzy
 msgid ""
 "Since Snap packages run confined from the rest of the system, Remmina "
 "profiles are saved inside the Snap file system by default. You can change "
@@ -4306,7 +4162,6 @@ msgstr ""
 "schimba locația în preferințele Remmina."
 
 #: data/ui/remmina_snap_info_dialog.glade:213
-#, fuzzy
 msgid "Change where Remmina profiles are stored"
 msgstr "Modificați locul în care sunt stocate profilurile Remmina"
 
@@ -4315,70 +4170,56 @@ msgid "<big>Snap settings</big>"
 msgstr "<big>Opțiuni Snap</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:265
-#, fuzzy
 msgid "Do not show this message again"
-msgstr "Nu mai afișați acest mesaj"
+msgstr "Nu mai afișa acest mesaj"
 
 #: data/ui/remmina_search_popover.glade:56 data/ui/remmina_search.glade:61
-#, fuzzy
 msgid "Search"
 msgstr "Caută"
 
 #: data/ui/remmina_search_popover.glade:70 data/ui/remmina_search.glade:75
-#, fuzzy
 msgid "Search for previous occurrence"
-msgstr "Căutarea apariției anterioare"
+msgstr "Caută apariția anterioară"
 
 #: data/ui/remmina_search_popover.glade:93 data/ui/remmina_search.glade:98
-#, fuzzy
 msgid "Search for next occurrence"
-msgstr "Căutați următoarea apariție"
+msgstr "Caută apariția următoare"
 
 #: data/ui/remmina_search_popover.glade:125 data/ui/remmina_search.glade:130
-#, fuzzy
 msgid "Toggle search options"
-msgstr "Comutați opțiunile de căutare"
+msgstr "Comută opțiunile de căutare"
 
 #: data/ui/remmina_search_popover.glade:186 data/ui/remmina_search.glade:191
-#, fuzzy
 msgid "_Match case"
-msgstr "Caz de potrivire"
+msgstr "Distinge _majuscule/minuscule"
 
 #: data/ui/remmina_search_popover.glade:203 data/ui/remmina_search.glade:208
-#, fuzzy
 msgid "Match _entire word only"
-msgstr "Potrivește doar _întregul cuvânt"
+msgstr "Potrivire numai cu cuvântul într_eg"
 
 #: data/ui/remmina_search_popover.glade:220 data/ui/remmina_search.glade:225
-#, fuzzy
 msgid "Match as _regular expression"
-msgstr "Potrivire ca _expresie regulată"
+msgstr "Potrivire ca expresie _regulată"
 
 #: data/ui/remmina_search_popover.glade:237 data/ui/remmina_search.glade:242
-#, fuzzy
 msgid "_Wrap around"
-msgstr "Înfășurați în jurul"
+msgstr "Căutare _circulară"
 
 #: data/ui/remmina_about.glade:32 data/ui/remmina_main.glade:419
-#, fuzzy
 msgid "About"
 msgstr "Despre"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-"Copyright © 2009–2014 Vic Lee\n"
-"Mai multe detalii în COPYING"
+"Drepturi de autor © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
+"Drepturi de autor © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Drepturi de autor © 2009–2014 Vic Lee\n"
+"Mai multe detalii în fișierul COPYING"
 
 #: data/ui/remmina_about.glade:41
 #, fuzzy
@@ -4391,58 +4232,48 @@ msgstr "Adaugă"
 
 #: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
 #: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-#, fuzzy
 msgid "_Remove"
-msgstr "Înlătură"
+msgstr "_Elimină"
 
 #: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
 msgid "Move up"
 msgstr "Mută sus"
 
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-#, fuzzy
 msgid "Move down"
-msgstr "Mutarea în jos"
+msgstr "Mută jos"
 
 #: data/ui/remmina_mpc.glade:19
 msgid "Change"
 msgstr "Schimbă"
 
 #: data/ui/remmina_mpc.glade:180
-#, fuzzy
 msgid "Selection criteria"
 msgstr "Criterii de selecție"
 
 #: data/ui/remmina_mpc.glade:244
-#, fuzzy
 msgid "Confirm password"
 msgstr "Confirmați parola"
 
 #: data/ui/remmina_mpc.glade:271 data/ui/remmina_passwd.glade:6
 msgid "Set new password"
-msgstr "Salvați parola"
+msgstr "Definiți o nouă parolă"
 
 #: data/ui/remmina_mpc.glade:320
-#, fuzzy
-#| msgid "Username"
 msgid "Gateway Username"
-msgstr "Nume de utilizator"
+msgstr "Nume-utilizator poartă de acces"
 
 #: data/ui/remmina_mpc.glade:349
-#, fuzzy
-#| msgid "Remote Desktop Gateway domain"
 msgid "Gateway Domain"
-msgstr "Preferințe pentru desktop la distanță"
+msgstr "Domeniu poartă de acces"
 
 #: data/ui/remmina_mpc.glade:415
-#, fuzzy
 msgid "Gateway Password"
-msgstr "Parola principală"
+msgstr "Parolă poartă de acces"
 
 #: data/ui/remmina_mpc.glade:440
-#, fuzzy
 msgid "Confirm Gateway Password"
-msgstr "Confirmați parola"
+msgstr "Confirmați parola pentru poarta de acces"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:503
@@ -4453,7 +4284,7 @@ msgstr "Selectează"
 #: data/ui/remmina_mpc.glade:515
 msgctxt "Multi password changer table"
 msgid "Name"
-msgstr "Denumire"
+msgstr "Nume"
 
 #: data/ui/remmina_mpc.glade:526
 msgctxt "Multi password changer table"
@@ -4461,49 +4292,28 @@ msgid "Group"
 msgstr "Grup"
 
 #: data/ui/remmina_mpc.glade:537
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
-msgstr "Nume domeniu\\Numele de utilizator"
+msgstr "Domeniu\\Nume de utilizator"
 
 #: data/ui/remmina_mpc.glade:548
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Gateway Domain\\Username"
-msgstr "Nume domeniu\\Numele de utilizator"
+msgstr "Domeniu-poartă_de_acces\\Nume de utilizator"
 
 #: data/ui/remmina_mpc.glade:588
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>Schimbător de parole multiple</span>"
 
 #: data/ui/remmina_passwd.glade:35
-#, fuzzy
 msgid "OK"
-msgstr "_OK"
+msgstr "Ok"
 
 #: data/ui/remmina_passwd.glade:85
-#, fuzzy
 msgid "Verify password"
-msgstr "Parola utilizatorului"
+msgstr "Verificați parola"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4512,106 +4322,84 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>Știrile sunt închise</b></big>\n"
+"<big><b>Noutățile nu s-au încărcat</b></big>\n"
 "\n"
 "<span>\n"
-"Activarea noutăților înseamnă că programul se conectează la un server "
-"Remmina pentru a descărca notele de lansare.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"Verificarea versiunilor poate fi activată numai în momentul compilării.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i><i>Vizitați site-ul web pentru a citi notele de lansare</"
-"i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
+"\"Remmina release notes\"><i>Vizitați situl web pentru a citi notele de "
+"versiune.</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_key_chooser.glade:23
-#, fuzzy
 msgid "Choose a new key"
-msgstr "Alegeți o nouă cheie"
+msgstr "Alegeți o nouă tastă"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "Permite modificatori de taste"
 
 #: data/ui/remmina_key_chooser.glade:121
-#, fuzzy
 msgid "Please press the new key…"
 msgstr "Vă rugăm să apăsați noua tastă…"
 
 #: data/ui/remmina_main.glade:36
-#, fuzzy
 msgid "Hide or show the search bar"
-msgstr "Ascundeți sau afișați bara de căutare"
+msgstr "Ascunde sau afișează bara de căutare"
 
 #: data/ui/remmina_main.glade:42
 msgid "Add a new connection profile"
-msgstr "Conexiunea VNC a eșuat: %s"
+msgstr "Adaugă un nou profil de conexiune"
 
 #: data/ui/remmina_main.glade:48
-#, fuzzy
 msgid "Switch from grouped to list view"
-msgstr "Treceți de la vizualizare grupată la vizualizare listă"
+msgstr "Trece de la vizualizarea grupată la vizualizarea de listă"
 
 #: data/ui/remmina_main.glade:80
-#, fuzzy
 msgid "Select the protocol to use with the quick connect bar."
 msgstr ""
 "Selectați protocolul care urmează să fie utilizat cu ajutorul barei de "
 "conectare rapidă."
 
 #: data/ui/remmina_main.glade:98
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Șir de căutare sau nume de server/adresa IP pentru \"Quick Connect\""
+msgstr "Șir de căutare sau nume de server/adresa IP pentru «Conectare rapidă»"
 
 #: data/ui/remmina_main.glade:102 data/ui/remmina_main.glade:104
-#, fuzzy
 msgid "Server name or IP address"
 msgstr "Numele serverului sau adresa IP"
 
 #: data/ui/remmina_main.glade:103 data/ui/remmina_main.glade:105
 #: data/ui/remmina_preferences.glade:447
 msgid "Clear"
-msgstr "Curațare"
+msgstr "Curățare"
 
 #: data/ui/remmina_main.glade:188
-#, fuzzy
 msgid "Edit"
-msgstr "Editați"
+msgstr "Editare"
 
 #: data/ui/remmina_main.glade:218
-#, fuzzy
 msgid "Collapse all"
 msgstr "Restrânge tot"
 
 #: data/ui/remmina_main.glade:228
-#, fuzzy
 msgid "Expand all"
-msgstr "Extinde toate"
+msgstr "Extinde tot"
 
 #: data/ui/remmina_main.glade:290
-#, fuzzy
 msgid "Multi password changer"
 msgstr "Schimbător de parole multiple"
 
 #: data/ui/remmina_main.glade:300
-#, fuzzy
 msgid "Debugging"
 msgstr "Depanare"
 
 #: data/ui/remmina_main.glade:320
-#, fuzzy
 msgid "Export"
 msgstr "Export"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Raportați o eroare"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4619,189 +4407,164 @@ msgstr ""
 "Stabiliți Remmina drept client de mediu grafic de birou la distanță implicit"
 
 #: data/ui/remmina_main.glade:372
-#, fuzzy
 msgid "Homepage"
-msgstr "Pagină de start"
+msgstr "Pagina principală a miniaplicației"
 
 #: data/ui/remmina_main.glade:382
-#, fuzzy
 msgid "Donations"
 msgstr "Donații"
 
 #: data/ui/remmina_main.glade:392
-#, fuzzy
 msgid "Wiki"
-msgstr "wiki"
+msgstr "Pagina wiki a miniaplicației"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:402
-#, fuzzy
 msgid "Community"
 msgstr "Comunitate"
 
 #: data/ui/remmina_main.glade:546
-#, fuzzy
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Modul"
 
 #: data/ui/remmina_main.glade:560
-#, fuzzy
 msgid "Last used"
-msgstr "Ultima utilizate"
+msgstr "Utilizată ultima dată"
 
 #: data/ui/remmina_main.glade:609
 msgid "New connection profile"
-msgstr "Conexiunea VNC a eșuat: %s"
+msgstr "Profil de conexiune nou"
 
 #: data/ui/remmina_main.glade:621
-#, fuzzy
 msgid "Show search bar"
-msgstr "Afișați bara de căutare"
+msgstr "Afișează bara de căutare"
 
 #: data/ui/remmina_main.glade:641
 msgid "Remmina main menu"
-msgstr "Miniaplicație Remmina"
+msgstr "Meniul principal al Remmina"
 
 #: data/ui/remmina_main.glade:648
-#, fuzzy
 msgid "Actions"
 msgstr "Acţiuni"
 
 #: data/ui/remmina_main.glade:663
-#, fuzzy
 msgid "Toggle view"
 msgstr "Schimbă vizualizarea"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Include informațiile despre sistem"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Include datele de depanare"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "Trimite"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "Nume de utilizator"
+msgstr "Nume/Nume de utilizator:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "E-mail:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "Adresa de poștă electronică"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "Titlul erorii"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "Descriere"
+msgstr "Descrierea erorii"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"La apăsarea butonului «Trimite», informațiile vor fi trimise către pagina "
+"GitLab a Remmina și se va crea automat o nouă intrare în sistemul de "
+"urmărire a erorilor."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
 msgid "Remmina Report Bug"
-msgstr "Parola utilizatorului"
+msgstr "Raportare eroare de Remmina"
 
 #: data/ui/remmina_spinner.glade:54
-#, fuzzy
 msgid "Please wait…"
 msgstr "Vă rugăm să așteptați…"
 
 #: data/ui/remmina_preferences.glade:63
-#, fuzzy
 msgid "Double-click action"
-msgstr "Acțiune cu dublu clic"
+msgstr "Acțiune la dublu-clic"
 
 #: data/ui/remmina_preferences.glade:79
-#, fuzzy
 msgid "Open connection"
-msgstr "Conexiune deschisă"
+msgstr "Deschide o conexiune"
 
 #: data/ui/remmina_preferences.glade:80
-#, fuzzy
 msgid "Edit settings"
-msgstr "Editați setările"
+msgstr "Editați parametrii"
 
 #: data/ui/remmina_preferences.glade:96
 msgid "Scaling quality"
-msgstr "Local - calitate înaltă"
+msgstr "Calitatea scalării"
 
 #: data/ui/remmina_preferences.glade:112
-#, fuzzy
 msgid "Nearest"
 msgstr "Cea mai apropiată"
 
 #: data/ui/remmina_preferences.glade:113
-#, fuzzy
 msgid "Tiles"
 msgstr "Gresie"
 
 #: data/ui/remmina_preferences.glade:114
-#, fuzzy
 msgid "Bilinear"
 msgstr "Biliniar"
 
 #: data/ui/remmina_preferences.glade:115
-#, fuzzy
 msgid "Hyper"
-msgstr "Hyper"
+msgstr "Hiper"
 
 #: data/ui/remmina_preferences.glade:131
-#, fuzzy
 msgid "Step size for auto-scroll"
-msgstr "Mărimea pasului pentru auto-scroll"
+msgstr "Mărimea pasului pentru derularea automată"
 
 #: data/ui/remmina_preferences.glade:160
-#, fuzzy
 msgid "Maximal amount of recent items"
 msgstr "Cantitatea maximă de elemente recente"
 
 #: data/ui/remmina_preferences.glade:175
-#, fuzzy
 msgid "Screen resolutions"
 msgstr "Rezoluțiile ecranului"
 
 #: data/ui/remmina_preferences.glade:221
 msgid "Folder for screenshots"
-msgstr "Eșec la pornirea sesiunii SSH: %s"
+msgstr "Dosar pentru capturi de ecran"
 
 #: data/ui/remmina_preferences.glade:233
-#, fuzzy
 msgid "Choose a folder to save screenshots from Remmina in."
-msgstr "Alegeți un dosar în care să salvați capturi de ecran din Remmina."
+msgstr "Alegeți un dosar în care să salvați capturile de ecran din Remmina."
 
 #: data/ui/remmina_preferences.glade:237 data/ui/remmina_preferences.glade:323
 msgid "Select a folder"
-msgstr "Dosar partajat"
+msgstr "Selectați un dosar"
 
 #: data/ui/remmina_preferences.glade:248
-#, fuzzy
 msgid "Set up"
-msgstr "Setați"
+msgstr "Configurați"
 
 #: data/ui/remmina_preferences.glade:270
 msgid "Screenshot filenames"
-msgstr "Dosar partajat"
+msgstr "Numele fișierelor capturilor de ecran"
 
 #: data/ui/remmina_preferences.glade:282
-#, fuzzy
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4812,52 +4575,44 @@ msgstr ""
 "%Y Anul, %m Luna, %d Ziua, %H Ora, %M Minutul, %S Secundele (ora UTC)\n"
 
 #: data/ui/remmina_preferences.glade:301
-#, fuzzy
 msgid ""
 "The folder connection profiles are saved in, it defaults to the XDG_USER_DATA"
 msgstr ""
 "Dosarul în care sunt salvate profilurile de conectare, în mod implicit în "
-"folderul XDG_USER_DATA."
+"dosarul semnalat de variabila de mediu XDG_USER_DATA"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:306
-#, fuzzy
 msgid "Remmina data folder"
 msgstr "Dosarul de date Remmina"
 
 #: data/ui/remmina_preferences.glade:318
-#, fuzzy
 msgid "Choose a folder to save connection profiles from Remmina in."
 msgstr ""
 "Alegeți un dosar în care să salvați profilurile de conectare din Remmina."
 
 #: data/ui/remmina_preferences.glade:336
-#, fuzzy
 msgid "Remember last view for each connection"
-msgstr "Rețineți ultima vizualizare pentru fiecare conexiune"
+msgstr "Reține ultimul mod de vizualizare pentru fiecare conexiune"
 
 #: data/ui/remmina_preferences.glade:340
-#, fuzzy
 msgid "Remember last view mode"
-msgstr "Rețineți ultimul mod de vizualizare"
+msgstr "Reține ultimul mod de vizualizare"
 
 #: data/ui/remmina_preferences.glade:366
-#, fuzzy
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
-"Setați un nume de fișier personalizat pentru profilurile de conectare "
+"Definiți un nume de fișier personalizat pentru profilurile de conectare "
 "Remmina, utilizând un șir de formatare."
 
 #: data/ui/remmina_preferences.glade:370
-#, fuzzy
 msgid "Template for profile filenames"
 msgstr "Șablon pentru numele fișierelor de profil"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:382
-#, fuzzy
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4866,7 +4621,8 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Numele grupului (bara oblică va fi convertită automat în -)\n"
+"%G Numele grupului (bara oblică „/” și bara oblică inversă „\\” vor fi "
+"convertite automat în liniuță de unire „-”)\n"
 "%P Numele protocolului\n"
 "%N Numele conexiunii\n"
 "%h Numele gazdei/IP\n"
@@ -4874,46 +4630,40 @@ msgstr ""
 "\n"
 
 #: data/ui/remmina_preferences.glade:404
-#, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr "Salvați doar capturile de ecran generate, nu le copiați în clipboard."
+msgstr "Salvează doar capturile de ecran generate, nu le copiază în clipboard."
 
 #: data/ui/remmina_preferences.glade:408
-#, fuzzy
 msgid "Prevent screenshots from entering clipboard"
-msgstr "Împiedicați capturile de ecran să intre în clipboard"
+msgstr "Împiedică capturile de ecran să intre în clipboard"
 
 #: data/ui/remmina_preferences.glade:469
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "Confirmați înainte de a închide mai multe file"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
 msgid "Disable anonymous statistics"
-msgstr "Trimiteți statistici anonime"
+msgstr "Dezactivează statisticile anonime"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"Obține știri de pe <a href=\"https://remmina.org\" title=\"Remmina news "
-"site\">remmina.org</a> (*)"
+"Dezactivează știrile de la <a href=\"https://remmina.org\" title="
+"\"Situl de știri Remmina\">remmina.org</a> (*)"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "Dezactivează sfatul zilei"
 
 #: data/ui/remmina_preferences.glade:618
-#, fuzzy
 msgid "General"
-msgstr "Setări generale"
+msgstr "Opțiuni generale"
 
 #: data/ui/remmina_preferences.glade:643
-#, fuzzy
 msgid "Always show tabs"
-msgstr "Afișați întotdeauna filele"
+msgstr "Afișează întotdeauna filele"
 
 #: data/ui/remmina_preferences.glade:659
 msgid "Hide the toolbar shown in the tabbed interface"
@@ -4921,16 +4671,15 @@ msgstr "Ascunde bara de instrumente afișată în interfața cu file"
 
 #: data/ui/remmina_preferences.glade:680
 msgid "Default view"
-msgstr "Implicit"
+msgstr "Modul de vizualizare implicit"
 
 #: data/ui/remmina_preferences.glade:694
 msgid "Automatic"
 msgstr "Automat"
 
 #: data/ui/remmina_preferences.glade:695
-#, fuzzy
 msgid "Scrolled window"
-msgstr "Fereastra derulată"
+msgstr "Fereastră cu bare de derulare"
 
 #: data/ui/remmina_preferences.glade:697
 msgid "Viewport fullscreen"
@@ -4938,7 +4687,6 @@ msgstr "Vizualizare a biroului de la distanță în modul de ecran complet"
 
 #. How tabs are grouped in the Remmina connection window
 #: data/ui/remmina_preferences.glade:713
-#, fuzzy
 msgctxt "Appearance preferences"
 msgid "Tabs grouping"
 msgstr "Gruparea filelor"
@@ -4956,18 +4704,17 @@ msgid "Per connection"
 msgstr "Conexiune nouă"
 
 #: data/ui/remmina_preferences.glade:739
-#, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
-msgstr "Ecran complet pe același ecran cu fereastra de conectare"
+msgstr ""
+"Afișare în modul de ecran complet pe același ecran cu fereastra de conectare"
 
 #: data/ui/remmina_preferences.glade:762
 msgid "Peeking"
 msgstr "Aruncând o privire"
 
 #: data/ui/remmina_preferences.glade:763
-#, fuzzy
 msgid "Hidden"
-msgstr "Ascuns"
+msgstr "Ascunsă"
 
 #: data/ui/remmina_preferences.glade:780
 msgid "Fullscreen toolbar visibility"
@@ -4995,20 +4742,19 @@ msgstr "Afișează întotdeauna notele"
 
 #: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
-msgstr ""
+msgstr "Adaugă o coloană care afișează orice note asociate cu o conexiune."
 
 #: data/ui/remmina_preferences.glade:847
 msgid "“Grab all keyboard events” status colour"
 msgstr "Culoarea de stare „Capturează toate evenimentele de la tastatură”"
 
 #: data/ui/remmina_preferences.glade:858
-#, fuzzy
 msgid ""
 "Hexadecimal- or colour names (red, #ff0000).\n"
 "It changes the background colour of connection names in the Remmina "
 "connection toolbar (when in fullscreen)."
 msgstr ""
-"Hexadecimal sau nume de culori (roșu, #ff0000).\n"
+"Nume de culori (în engleză) sau valori hexazecimale (red, #ff0000).\n"
 "Schimbă culoarea de fundal a numelor de conexiuni din bara de instrumente de "
 "conexiuni Remmina (când este în ecran complet)."
 
@@ -5031,9 +4777,8 @@ msgid "Hide total count shown in the group menu"
 msgstr "Ascunde numărul total afișat în meniul grupului"
 
 #: data/ui/remmina_preferences.glade:1001
-#, fuzzy
 msgid "No tray icon"
-msgstr "Nici o pictogramă de tavă"
+msgstr "Fără pictogramă în zona de notificare"
 
 #: data/ui/remmina_preferences.glade:1020
 msgid "Start in tray upon user login"
@@ -5044,27 +4789,24 @@ msgid "Applet"
 msgstr "Miniaplicație"
 
 #: data/ui/remmina_preferences.glade:1083
-#, fuzzy
 msgid "Host key"
-msgstr "Cheia gazdă"
+msgstr "Tasta gazdă"
 
 #: data/ui/remmina_preferences.glade:1115
 msgid "Show/hide fullscreen"
-msgstr "Comutare mod pe tot ecranul"
+msgstr "Afișează/ascunde modul de ecran complet"
 
 #: data/ui/remmina_preferences.glade:1146
-#, fuzzy
 msgid "Auto-fit window"
-msgstr "Fereastra de auto-fit"
+msgstr "Ajustează automat dimensiunea ferestrei"
 
 #: data/ui/remmina_preferences.glade:1223
 msgid "Apply/remove scaling"
 msgstr "Aplică/elimină scalarea"
 
 #: data/ui/remmina_preferences.glade:1254
-#, fuzzy
 msgid "Grab keyboard"
-msgstr "Prindeți tastatura"
+msgstr "Capturează evenimentele de la tastatură"
 
 #: data/ui/remmina_preferences.glade:1347
 msgid "Show/hide toolbar"
@@ -5072,14 +4814,12 @@ msgstr "Afișează/ascunde bara de instrumente"
 
 #: data/ui/remmina_preferences.glade:1410
 #: data/ui/remmina_preferences.glade:1420
-#, fuzzy
 msgid "View-only mode"
-msgstr "Mod de vizualizare exclusivă"
+msgstr "Modul numai-vizualizare (doar-citire)"
 
 #: data/ui/remmina_preferences.glade:1477
-#, fuzzy
 msgid "Send clipboard as keystrokes"
-msgstr "Trimiteți conținutul clipboard-ului ca apăsări de taste"
+msgstr "Trimite conținutul clipboard-ului ca apăsări de taste"
 
 #: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
@@ -5098,9 +4838,8 @@ msgid "Parse ~/.ssh/config"
 msgstr "Analizează „~/.ssh/config”"
 
 #: data/ui/remmina_preferences.glade:1596
-#, fuzzy
 msgid "No logging at all"
-msgstr "Nu se înregistrează deloc"
+msgstr "Nu se înregistrează nimic"
 
 #: data/ui/remmina_preferences.glade:1597
 msgid "Rare conditions or warnings"
@@ -5116,7 +4855,7 @@ msgstr "Informații de protocol de nivel inferior, la nivel de pachet"
 
 #: data/ui/remmina_preferences.glade:1600
 msgid "Function entering and leaving"
-msgstr "Funcția de intrare și ieșire"
+msgstr "Intrarea și ieșirea din funcții"
 
 #: data/ui/remmina_preferences.glade:1617
 msgid "SSH log level"
@@ -5124,30 +4863,26 @@ msgstr "Nivelul de jurnalizare al SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1688
-#, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
-"Secunde de inactivitate a conexiunii înainte de a fi trimise sondele TCP "
-"keepalive."
+"Secunde de inactivitate a conexiunii înainte de a fi trimise sondajele TCP "
+"„keepalive”."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1704
-#, fuzzy
 msgid "Seconds between each keepalive probe."
-msgstr "Secunde între fiecare sondă keepalive."
+msgstr "Secunde între fiecare sondaj „keepalive”."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1720
-#, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
-"Numărul de sonde de păstrare a semnalului trimis prin conexiunea TCP înainte "
-"de a fi abandonată."
+"Numărul de sondări „keepalive” trimis prin conexiunea TCP înainte de a fi "
+"abandonată."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1736
-#, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
@@ -5164,72 +4899,67 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Timpul în secunde înainte ca Remmina să blocheze sesiunea și să solicite din "
+"nou parola. Implicit: 300 de secunde."
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Definiți și utilizați o cheie secretă pentru a proteja Remmina împotriva "
+"utilizării neautorizate."
 
 #: data/ui/remmina_preferences.glade:1796
-#, fuzzy
 msgid "Remmina password"
-msgstr "Parola utilizatorului"
+msgstr "Parola pentru Remmina"
 
 #: data/ui/remmina_preferences.glade:1807
 msgid "Use secret key authentication for some widgets"
-msgstr "Autentificarea cu cheia publică SSH a eșuat: %s"
+msgstr ""
+"Utilizați autentificarea cu cheie secretă pentru anumite elemente "
+"interactive ale interfeței (widgets)"
 
 #: data/ui/remmina_preferences.glade:1827
 msgid "Valid for"
-msgstr ""
+msgstr "Validă pentru"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Numărul de secunde în care parola rămâne valabilă"
 
 #: data/ui/remmina_preferences.glade:1843
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "timpul de expirare în secunde (implicit 300)"
 
 #: data/ui/remmina_preferences.glade:1855
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to connect"
-msgstr "Parola %s"
+msgstr "Introduceți parola Remmina pentru a vă conecta"
 
 #. “Require to connect” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1859
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Require to connect"
-msgstr "Parola %s"
+msgstr "Necesară pentru conectare"
 
 #: data/ui/remmina_preferences.glade:1870
 msgid "Creation, editing, copying, and deletions require the Remmina password"
-msgstr ""
+msgstr "Crearea, editarea, copierea și ștergerea necesită parola Remmina."
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1874
 msgid "Require to modify"
-msgstr ""
+msgstr "Necesară pentru orice modificare"
 
 #: data/ui/remmina_preferences.glade:1885
-#, fuzzy
-#| msgid "Secured password storage in KWallet"
 msgid "Enter your Remmina password to view passwords"
-msgstr "Parola %s"
+msgstr "Introduceți parola Remmina pentru a vizualiza parolele"
 
 #. “Require to view passwords” is “Require the Remmina password before to connect”, the Remmina password is the Master/Principal Password, that is used to protect Remmina from unauthorized use.
 #: data/ui/remmina_preferences.glade:1889
-#, fuzzy
-#| msgid "Set new password"
 msgid "Require to view passwords"
-msgstr "Salvați parola"
+msgstr "Este necesară pentru vizualizarea parolelor"
 
 #: data/ui/remmina_preferences.glade:1945
-#, fuzzy
-#| msgid "Description"
 msgid "Encryption"
-msgstr "Descriere"
+msgstr "Criptare"
 
 #: data/ui/remmina_preferences.glade:1956
 msgid ""
@@ -5241,33 +4971,39 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Acestea sunt metodele de criptare utilizate de Remmina pentru stocarea "
+"parolelor.\n"
+"\n"
+"Cu excepția metodei „Weak”, toate celelalte sunt recomandate, „Keystore” "
+"fiind cea implicită, deoarece se integrează cu KDE/Plasma și GNOME.\n"
+"\n"
+"„Intermediară” nu utilizează atât de multă memorie sau putere de procesare, "
+"iar „Sensibilă” este mai sigură, dar utilizează +1 Gio de RAM și multe "
+"cicluri CPU. "
 
 #: data/ui/remmina_preferences.glade:1965
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Intermediară (+64 Mio RAM)"
 
 #: data/ui/remmina_preferences.glade:1966
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Puternică (+256 Mio, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1967
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Sensibilă (+1 Gio, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1983
-#, fuzzy
 msgid "Auditing log"
-msgstr "Editați setările"
+msgstr "Jurnal de auditare"
 
 #: data/ui/remmina_preferences.glade:2008
 msgid "Automatically accept all fingerprints and certificates"
 msgstr "Acceptă automat toate amprentele digitale și certificatele"
 
 #: data/ui/remmina_preferences.glade:2013
-#, fuzzy
-#| msgid "Trust all fingerprints and certificates"
 msgid "Trust all certificates"
-msgstr "Acceptați certificatul?"
+msgstr "Aveți încredere în toate certificatele"
 
 #: data/ui/remmina_preferences.glade:2048
 msgid "Security"
@@ -5278,17 +5014,14 @@ msgid "Terminal font"
 msgstr "Font terminal"
 
 #: data/ui/remmina_preferences.glade:2092
-#, fuzzy
 msgid "Scrollback lines"
 msgstr "Linii de derulare înapoi"
 
 #: data/ui/remmina_preferences.glade:2140
-#, fuzzy
 msgid "Shortcuts for copying and pasting"
 msgstr "Comenzi rapide pentru copiere și lipire"
 
 #: data/ui/remmina_preferences.glade:2153
-#, fuzzy
 msgid "Select all shortcuts"
 msgstr "Selectați toate comenzile rapide"
 
@@ -5298,26 +5031,24 @@ msgstr "Selectați toate comenzile rapide"
 #: data/ui/remmina_preferences.glade:2666
 #: data/ui/remmina_preferences.glade:2800
 #: data/ui/remmina_preferences.glade:2817
-#, fuzzy
 msgid "(Host key+)"
-msgstr "(tasta gazda+)"
+msgstr "(tasta gazdă+)"
 
 #: data/ui/remmina_preferences.glade:2201
 msgid "Use default system font"
 msgstr "Utilizează fontul implicit al sistemului"
 
 #: data/ui/remmina_preferences.glade:2226
-#, fuzzy
 msgid ""
 "Selecting “SGR 1” also switches to the bright counterparts of the first 8 "
 "palette colours (in addition to making text bold)."
 msgstr ""
 "Selectarea \"SGR 1\" trece, de asemenea, la variantele luminoase ale "
-"primelor 8 culori din paletă (pe lângă faptul că textul devine bold)."
+"primelor 8 culori din paletă (pe lângă faptul că textul devine aldin)."
 
 #: data/ui/remmina_preferences.glade:2242
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Afișează textul în caractere aldine în culori vii"
 
 #: data/ui/remmina_preferences.glade:2256
 msgid "Colour theme"
@@ -5424,12 +5155,10 @@ msgid "Foreground colour"
 msgstr "Culoare de prim-plan"
 
 #: data/ui/remmina_preferences.glade:2623
-#, fuzzy
 msgid "Increase and decrease font size"
-msgstr "Creșteți și micșorați dimensiunea fontului"
+msgstr "Mărește și micșorează dimensiunea fontului"
 
 #: data/ui/remmina_preferences.glade:2653
-#, fuzzy
 msgid "Search text shortcut"
 msgstr "Scurtătură de text pentru căutare"
 
@@ -5470,7 +5199,6 @@ msgid "Unlock"
 msgstr "Deblochează"
 
 #: data/ui/remmina_unlock.glade:109
-#, fuzzy
 msgid "Master password"
 msgstr "Parola principală"
 
