@@ -1032,6 +1032,7 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 		case AUTH_SMARTCARD_PIN:
 			key_title = _("Enter RDP SmartCard PIN");
 			key_password = "smartcard_pin";
+			cfg_key_password = FreeRDP_Password;
 			flags = 0;
 			break;
 		default:
@@ -1043,11 +1044,20 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 	if (!disablepasswordstoring)
 		flags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
 
+	if(key_user)
+		s_username = remmina_plugin_service->file_get_string(remminafile, key_user);
+
+	if(key_password)
+		s_password = remmina_plugin_service->file_get_string(remminafile, key_password);
+
+	if(key_domain)
+		s_domain = remmina_plugin_service->file_get_string(remminafile, key_domain);
+
 	ret = remmina_plugin_service->protocol_plugin_init_auth(gp, flags,
 								key_title,
-								remmina_plugin_service->file_get_string(remminafile, key_user),
-								remmina_plugin_service->file_get_string(remminafile, key_password),
-								remmina_plugin_service->file_get_string(remminafile, key_domain),
+								s_username,
+								s_password,
+								s_domain,
 								NULL);
 	if (ret == GTK_RESPONSE_OK) {
 		if (cfg_key_user != FreeRDP_STRING_UNUSED)
@@ -2085,6 +2095,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_settings_set_uint32(rfi->clientContext.context.settings, FreeRDP_TlsSecLevel, i);
 	}
 
+	if (remmina_plugin_service->file_get_int(remminafile, "smartcard-logon", FALSE)) {
+		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_SmartcardLogon, TRUE);
+		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_RedirectSmartCards, TRUE);
+		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_PasswordIsSmartcardPin, TRUE);
+	}
+
 	freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_CompressionEnabled, TRUE);
 	if (remmina_plugin_service->file_get_int(remminafile, "disable_fastpath", FALSE)) {
 		freerdp_settings_set_bool(rfi->clientContext.context.settings, FreeRDP_FastPathInput, FALSE);
@@ -2522,8 +2538,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_LOGON_FAILURE
 			case FREERDP_ERROR_CONNECT_LOGON_FAILURE:
 #endif
-				/* Logon failure, will retry with interactive authentication */
-				rfi->attempt_interactive_authentication = TRUE;
+				if (freerdp_settings_get_bool(rfi->clientContext.context.settings, FreeRDP_SmartcardLogon)) {
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not authenticate using smartcard."));
+				} else {
+					/* Logon failure, will retry with interactive authentication */
+					rfi->attempt_interactive_authentication = TRUE;
+				}
 				break;
 			case STATUS_ACCOUNT_LOCKED_OUT:
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT
@@ -3206,6 +3226,8 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "drive",			N_("Share folder"),			  FALSE, NULL,		  drive_tooltip,								NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "restricted-admin",		N_("Restricted admin mode"),		  FALSE, NULL,		  NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "pth",			N_("Password hash"),			  FALSE, NULL,		  N_("Restricted admin mode password hash"),					NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "smartcard-logon",		N_("Use a smartcard for logon"),	  FALSE, NULL,		  NULL,										NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "smartcard_pin",		N_("Smartcard PIN"),			  FALSE, NULL,		  NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "left-handed",		N_("Left-handed mouse support"),	  TRUE,	 NULL,		  N_("Swap left and right mouse buttons for left-handed mouse support"),	NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable-smooth-scrolling", N_("Disable smooth scrolling"),		  TRUE,	 NULL,		  NULL,										NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "multimon",			N_("Enable multi monitor"),		  TRUE,	 NULL,		  NULL,										NULL, NULL },
