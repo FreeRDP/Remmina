@@ -640,6 +640,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_PEEKING;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "fullscreen_toolbar_delay", NULL))
+		remmina_pref.fullscreen_toolbar_delay = g_key_file_get_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_delay", NULL);
+	else
+		remmina_pref.fullscreen_toolbar_delay = 0;
+
 	if (disabletoolbar)
 		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_DISABLE;
 
@@ -981,6 +986,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_mode", remmina_pref.default_mode);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "tab_mode", remmina_pref.tab_mode);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_visibility", remmina_pref.fullscreen_toolbar_visibility);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_delay", remmina_pref.fullscreen_toolbar_delay);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "auto_scroll_step", remmina_pref.auto_scroll_step);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "hostkey", remmina_pref.hostkey);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_fullscreen", remmina_pref.shortcutkey_fullscreen);

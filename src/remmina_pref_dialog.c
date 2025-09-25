@@ -219,6 +219,9 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.default_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_view_mode);
 	remmina_pref.tab_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_tab_interface);
 	remmina_pref.fullscreen_toolbar_visibility = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_fullscreen_toolbar_visibility);
+	remmina_pref.fullscreen_toolbar_delay = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_fullscreen_toolbar_delay));;
+	if (remmina_pref.fullscreen_toolbar_delay <= 0)
+		remmina_pref.fullscreen_toolbar_delay = 0;
 	remmina_pref.scale_quality = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_scale_quality);
 	remmina_pref.ssh_loglevel = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_ssh_loglevel);
 	remmina_pref.sshtunnel_port = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_ssh_port));
@@ -650,6 +653,8 @@ static void remmina_pref_dialog_init(gboolean load_plugins)
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_appearance_tab_interface, remmina_pref.tab_mode);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_security_enc_method, remmina_pref.enc_mode);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_appearance_fullscreen_toolbar_visibility, remmina_pref.fullscreen_toolbar_visibility);
+	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.fullscreen_toolbar_delay);
+	gtk_entry_set_text(remmina_pref_dialog->entry_fullscreen_toolbar_delay, buf);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_scale_quality, remmina_pref.scale_quality);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_ssh_loglevel, remmina_pref.ssh_loglevel);
 	if (remmina_pref.datadir_path != NULL && strlen(remmina_pref.datadir_path) > 0)
@@ -815,6 +820,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->comboboxtext_appearance_view_mode = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_appearance_view_mode"));
 	remmina_pref_dialog->comboboxtext_appearance_tab_interface = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_appearance_tab_interface"));
 	remmina_pref_dialog->comboboxtext_appearance_fullscreen_toolbar_visibility = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_appearance_fullscreen_toolbar_visibility"));
+	remmina_pref_dialog->entry_fullscreen_toolbar_delay = GTK_ENTRY(GET_OBJECT("entry_fullscreen_toolbar_delay"));
 	remmina_pref_dialog->comboboxtext_options_scale_quality = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_options_scale_quality"));
 	remmina_pref_dialog->checkbutton_options_ssh_parseconfig = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_options_ssh_parseconfig"));
 	remmina_pref_dialog->comboboxtext_options_ssh_loglevel = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_options_ssh_loglevel"));
