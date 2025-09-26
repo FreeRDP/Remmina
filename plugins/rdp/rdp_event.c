@@ -877,7 +877,8 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 					}
 				}
 			}
-#if FREERDP_CHECK_VERSION(3, 11, 0)			guint32 keyboard_type = freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_KeyboardType);
+#if FREERDP_CHECK_VERSION(3, 11, 0)			
+			guint32 keyboard_type = freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_KeyboardType);
 			if (keyboard_type == 0){
 				keyboard_type = WINPR_KBD_TYPE_IBM_ENHANCED;
 			}
