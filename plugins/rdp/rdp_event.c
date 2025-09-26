@@ -877,8 +877,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 					}
 				}
 			}
-#if FREERDP_VERSION_MAJOR >= 3
-			guint32 keyboard_type = freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_KeyboardType);
+#if FREERDP_CHECK_VERSION(3, 11, 0)			guint32 keyboard_type = freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_KeyboardType);
 			if (keyboard_type == 0){
 				keyboard_type = WINPR_KBD_TYPE_IBM_ENHANCED;
 			}
@@ -915,7 +914,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget *widget, GdkEventKey *event, 
 			    unicode_keyval == 0 ||                                                      // Impossible to translate
 			    (event->state & (GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SUPER_MASK)) != 0   // A modifier not recognized by gdk_keyval_to_unicode()
 			    ) {
-#if FREERDP_VERSION_MAJOR >= 3
+#if FREERDP_CHECK_VERSION(3, 11, 0)
 
 				guint32 keyboard_type = freerdp_settings_get_uint32(rfi->clientContext.context.settings, FreeRDP_KeyboardType);
 				if (keyboard_type == 0){
