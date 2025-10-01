@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-09-26 09:01+0000\n"
+"PO-Revision-Date: 2025-10-01 08:01+0000\n"
 "Last-Translator: Ecron <ecron_89@hotmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
@@ -3699,6 +3699,7 @@ msgstr "Finalitzada"
 msgid ""
 "Could not find any sessions on remote machine. Creating a new session now."
 msgstr ""
+"No s'ha trobat cap sessió a la màquina remota. Se n'està creant una ara."
 
 #: plugins/x2go/x2go_plugin.c:2233
 msgid "Choose a session to resume:"
@@ -3710,23 +3711,23 @@ msgstr "S'està esperant que l'usuari seleccioni una sessió…"
 
 #: plugins/x2go/x2go_plugin.c:2284
 msgid "No session was selected. Creating a new one."
-msgstr ""
+msgstr "No s'ha seleccionat cap sessió. Se n'està creant una."
 
 #: plugins/x2go/x2go_plugin.c:2356
 #, c-format
 msgid "A non-critical error happened: %s"
-msgstr ""
+msgstr "S'ha produït un error no crític: %s"
 
 #: plugins/x2go/x2go_plugin.c:2361
 #, c-format
 msgid "User chose to resume session with ID: '%s'"
-msgstr ""
+msgstr "L'usuari ha triat reprendre la sessió amb ID: '%s'"
 
 #. TRANSLATORS: Please stick to X2GoClient's way of translating.
 #: plugins/x2go/x2go_plugin.c:2382
 #, c-format
 msgid "Resuming session '%s'…"
-msgstr ""
+msgstr "S'està reprenent la sessió '%s'…"
 
 #: plugins/x2go/x2go_plugin.c:2513
 msgid "DPI setting is out of bounds. Please adjust it in profile settings."
@@ -3855,7 +3856,7 @@ msgstr "Les dades de validació del vector de ProtocolSettings no són vàlides!
 
 #: plugins/x2go/x2go_plugin.c:3223
 msgid "Parameters 'key' or 'value' are 'NULL'!"
-msgstr ""
+msgstr "Els paràmetres 'key' o 'value' són 'NULL'!"
 
 #: plugins/x2go/x2go_plugin.c:3241
 #, c-format
@@ -4332,7 +4333,7 @@ msgstr "Trieu una altra tecla"
 
 #: data/ui/remmina_key_chooser.glade:84 data/ui/remmina_key_chooser.glade:88
 msgid "Allow key modifiers"
-msgstr ""
+msgstr "Permet els modificadors de claus"
 
 #: data/ui/remmina_key_chooser.glade:121
 msgid "Please press the new key…"
@@ -4394,7 +4395,7 @@ msgstr "Exporta"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "Notifica un error"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4447,11 +4448,11 @@ msgstr "Commuta la visualització"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "Inclou la informació del sistema"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "Inclou les dades de depuració"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
@@ -4482,6 +4483,8 @@ msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
 msgstr ""
+"Fer clic a «Envia» ho enviarà a la pàgina de GitLab del Remmina i crearà un "
+"issue nou de manera automàtica al gestor d'issues."
 
 #: data/ui/remmina_bug_report.glade:296
 msgid "Remmina Report Bug"
@@ -4629,7 +4632,7 @@ msgstr "Evita que les captures entren al porta-retalls"
 
 #: data/ui/remmina_preferences.glade:469
 msgid "Confirm before closing multiple tabs"
-msgstr ""
+msgstr "Confirmació abans de tancar diverses pestanyes"
 
 #: data/ui/remmina_preferences.glade:501
 msgid "Disable anonymous statistics"
@@ -4731,7 +4734,7 @@ msgstr "Mostra sempre les notes"
 
 #: data/ui/remmina_preferences.glade:827
 msgid "Add a column displaying any notes associated with a connection."
-msgstr ""
+msgstr "Afegeix una columna mostrant qualsevol nota associada amb una connexió."
 
 #: data/ui/remmina_preferences.glade:847
 msgid "“Grab all keyboard events” status colour"
@@ -4812,7 +4815,7 @@ msgstr "Envia el contingut del porta-retalls com a pulsacions de tecles"
 
 #: data/ui/remmina_preferences.glade:1487
 msgid "Send-clipboard"
-msgstr ""
+msgstr "Envia-porta-retalls"
 
 #: data/ui/remmina_preferences.glade:1517
 msgid "Keyboard"
@@ -4888,10 +4891,14 @@ msgid ""
 "Time in seconds before Remmina will lock the session and asks for a password "
 "again. Default: 300 Seconds."
 msgstr ""
+"Temps en segons abans que el Remmina bloqui la sessió i demani la "
+"contrasenya. Predefinit: 300 segons."
 
 #: data/ui/remmina_preferences.glade:1791
 msgid "Set and use a secret key to protect Remmina from unauthorized use."
 msgstr ""
+"Definiu i utilitzeu una clau secreta per a protegir el Remmina d'usos no "
+"autoritzats."
 
 #: data/ui/remmina_preferences.glade:1796
 msgid "Remmina password"
@@ -4907,11 +4914,11 @@ msgstr "Vàlid per"
 
 #: data/ui/remmina_preferences.glade:1838
 msgid "Number of seconds to keep password valid for"
-msgstr ""
+msgstr "Nombre de segons per a mantenir la contrasenya vàlida"
 
 #: data/ui/remmina_preferences.glade:1843
 msgid "timeout in seconds (default 300)"
-msgstr ""
+msgstr "temps límit en segons (predefinit 300)"
 
 #: data/ui/remmina_preferences.glade:1855
 msgid "Enter your Remmina password to connect"
@@ -4924,12 +4931,12 @@ msgstr "Demana-la per a connectar"
 
 #: data/ui/remmina_preferences.glade:1870
 msgid "Creation, editing, copying, and deletions require the Remmina password"
-msgstr ""
+msgstr "Cal la contrasenya del Remmina per a crear, editar, copiar i suprimir"
 
 #. Creation, editing, copying, and deletions require the primary password
 #: data/ui/remmina_preferences.glade:1874
 msgid "Require to modify"
-msgstr ""
+msgstr "Demana per a modificar"
 
 #: data/ui/remmina_preferences.glade:1885
 msgid "Enter your Remmina password to view passwords"
@@ -4954,18 +4961,27 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Aquests són els mètodes de xifratge utilitzat pel Remmina per a emmagatzemar "
+"contrasenyes.\n"
+"\n"
+"Excepte al mètode «Feble», es recomanen tots els altres, «Keystore» és el "
+"predefinit, donat que s'integra amb KDE/Plasma i GNOME.\n"
+"\n"
+"«Intermedi» no fa servir tanta memòria o potència de processament, i "
+"«Delicat» és més segur, però fa servir +1 GiB de memòria RAM i més cicles de "
+"la CPU. "
 
 #: data/ui/remmina_preferences.glade:1965
 msgid "Intermediate (+64 MiB RAM)"
-msgstr ""
+msgstr "Intermedi (+64 MiB RAM)"
 
 #: data/ui/remmina_preferences.glade:1966
 msgid "Strong (+256 MiB, ~2009 CPU)"
-msgstr ""
+msgstr "Fort (+256 MiB, ~2009 CPU)"
 
 #: data/ui/remmina_preferences.glade:1967
 msgid "Sensitive (+1 GiB, ~2014 CPU)"
-msgstr ""
+msgstr "Delicat (+1 GiB, ~2014 CPU)"
 
 #: data/ui/remmina_preferences.glade:1983
 msgid "Auditing log"
@@ -5022,7 +5038,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2242
 msgid "Show bold text in bright colors"
-msgstr ""
+msgstr "Mostra el text en negreta en colors brillants"
 
 #: data/ui/remmina_preferences.glade:2256
 msgid "Colour theme"
