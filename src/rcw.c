@@ -2880,6 +2880,7 @@ static gboolean rcw_floating_toolbar_on_enter(GtkWidget *widget, GdkEventCrossin
 {
 	TRACE_CALL(__func__);
 	rcw_floating_toolbar_show(cnnwin, TRUE);
+	sleep(remmina_pref.fullscreen_toolbar_delay);
 	return TRUE;
 }
 
