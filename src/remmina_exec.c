@@ -253,7 +253,15 @@ static void remmina_exec_connect(const gchar *data)
 	gchar **querystringpartkv;
 	gchar *value;
 	gchar *temp;
+	gchar **conn_name = NULL;
+	gchar *connection_name = NULL;
 	GError *error = NULL;
+
+	if (strstr(data, "\%") != NULL){
+		conn_name = g_strsplit(data, "\%", 2);
+		connection_name = conn_name[1];
+		data = conn_name[0];
+	}
 
 	protocol = NULL;
 	if (strncmp("rdp://", data, 6) == 0 || strncmp("RDP://", data, 6) == 0)
@@ -380,11 +388,17 @@ static void remmina_exec_connect(const gchar *data)
 	g_free(server);
 	server = temp;
 
+	if (connection_name == NULL){
+		connection_name = g_strdup(server);
+	}
+
 	remmina_file_set_string(remminafile, "server", server);
-	remmina_file_set_string(remminafile, "name", server);
+	remmina_file_set_string(remminafile, "name", connection_name);
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "protocol", protocol);
+	g_free(conn_name);
 	g_free(server);
+	g_free(connection_name);
 	g_strfreev(protocolserver);
 	rcw_open_from_file(remminafile);
 }
