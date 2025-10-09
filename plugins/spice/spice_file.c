@@ -58,7 +58,7 @@ gboolean remmina_spice_file_import_test(RemminaFilePlugin *plugin, const gchar *
 }
 
 
-static void remmina_spice_file_import_field(RemminaFile *remminafile, const gchar *key, const gchar *value, char* host, char* port)
+static void remmina_spice_file_import_field(RemminaFile *remminafile, const gchar *key, const gchar *value)
 {
 	TRACE_CALL(__func__);
     int viewmode = 0;
@@ -78,14 +78,8 @@ static void remmina_spice_file_import_field(RemminaFile *remminafile, const gcha
 		remmina_plugin_service->file_set_string(remminafile, "name", value);
 	} else if (g_strcmp0(key, "proxy") == 0) {
 		remmina_plugin_service->file_set_string(remminafile, "proxy", value);
-	} else if (g_strcmp0(key, "host") == 0) {
-        strncpy(host, value, 200);
-    } else if (g_strcmp0(key, "port") == 0) {
-        strncpy(port, value, 10);
     }
-
 }
-
 
 static RemminaFile *remmina_spice_file_import_channel(GIOChannel *channel)
 {
@@ -131,9 +125,8 @@ static RemminaFile *remmina_spice_file_import_channel(GIOChannel *channel)
 
     //host and port are stored seperately in vv file, so save each as we get to it to append 
     //together in the remmina server format
-    char host[200] = "";
-    char port[10] = "";
-    char final[210] = "";
+    const char *host = NULL, *port = NULL;
+    char *final = NULL;
 
 	while (g_io_channel_read_line(channel, &line, NULL, &bytes_read, &error) == G_IO_STATUS_NORMAL) {
 		if (line == NULL)
@@ -144,20 +137,27 @@ static RemminaFile *remmina_spice_file_import_channel(GIOChannel *channel)
 
 		if (p) {
 			*p++ = '\0';
-            remmina_spice_file_import_field(remminafile, line, p, host, port);
+            remmina_spice_file_import_field(remminafile, line, p);
+            if (g_strcmp0(line, "host") == 0) {
+                host = p;
+            }
+            if (g_strcmp0(line, "port") == 0) {
+                port = p;
+            }
 		}
 
 		g_free(line);
 	}
-    if (port[0] != 0){
-        strncat(final, host, strlen(host));
-        strncat(final + strlen(host), port, strlen(port));
+    if (host != NULL && port != NULL){
+        final = g_alloca(strlen(host)+strlen(port)+1);
+        strcat(final, host);
+        strcat(final + strlen(host), port);
         remmina_plugin_service->file_set_string(remminafile, "server", final);
+        g_free(final);
     }
-    else {
+    else if (host != NULL) {
         remmina_plugin_service->file_set_string(remminafile, "server", host);
     }
-
 
     if (remmina_plugin_service->file_get_string(remminafile, "name") == NULL){
         remmina_plugin_service->file_set_string(remminafile, "name",
