@@ -72,6 +72,7 @@
 #define KEYFILE_GROUP_STATE "Remmina Connection States"
 
 static struct timespec times[2];
+static gboolean remmina_using_libsecret = FALSE;
 
 static RemminaFile *
 remmina_file_new_empty(void)
@@ -346,6 +347,10 @@ static void upgrade_sshkeys_202001(RemminaFile *remminafile)
 	}
 }
 
+void remmina_file_use_libsecret(gboolean use_libsecret) {
+    remmina_using_libsecret = use_libsecret;
+}
+
 RemminaFile *
 remmina_file_load(const gchar *filename)
 {
@@ -407,7 +412,7 @@ remmina_file_load(const gchar *filename)
 		 * - password = .         // secret_service
 		 * - password = $argon2id$v=19$m=262144,t=3,p=…    // libsodium
 		 */
-		if (protocol_plugin && remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
+        if (remmina_using_libsecret && protocol_plugin && remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
 			s = g_key_file_get_string(gkeyfile, KEYFILE_GROUP_REMMINA, key, NULL);
 #if 0
 			switch (remmina_pref.enc_mode) {
