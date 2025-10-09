@@ -4364,6 +4364,11 @@ gboolean rcw_delayed_window_present(gpointer user_data)
 	return G_SOURCE_REMOVE;
 }
 
+static gpointer remmina_file_save_thread(gpointer user_data) {
+	REMMINA_DEBUG("Saving credentials (async)");
+	remmina_file_save((RemminaFile*)user_data);
+}
+
 void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
@@ -4386,10 +4391,13 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 					remmina_file_get_string(cnnobj->remmina_file, "server"));
 	REMMINA_DEBUG("We save the last successful connection date");
 	remmina_file_state_last_success(cnnobj->remmina_file);
-
-	REMMINA_DEBUG("Saving credentials");
+	
 	/* Save credentials */
-	remmina_file_save(cnnobj->remmina_file);
+	GThread *thread;
+	thread = g_thread_new("remmina_file_save", remmina_file_save_thread, cnnobj->remmina_file);
+    if (!thread) {
+        REMMINA_ERROR("Failed creating remmina_file_save thread");
+    }
 
 	if (cnnobj->cnnwin->priv->floating_toolbar_widget)
 		gtk_widget_show(cnnobj->cnnwin->priv->floating_toolbar_widget);
