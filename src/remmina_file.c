@@ -516,7 +516,7 @@ const gchar *
 remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 {
 	TRACE_CALL(__func__);
-	gchar *value;
+    const gchar *value;
 
 	/* Returned value is a pointer to the string stored on the hash table,
 	 * please do not free it or the hash table will contain invalid pointer */
@@ -543,7 +543,7 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 		return NULL;
 	}
 
-	value = (gchar *)g_hash_table_lookup(remminafile->settings, setting);
+    value = (const gchar *)g_hash_table_lookup(remminafile->settings, setting);
 	return value && value[0] ? value : NULL;
 }
 

@@ -62,7 +62,6 @@ static void remmina_spice_file_import_field(RemminaFile *remminafile, const gcha
 {
 	TRACE_CALL(__func__);
     int viewmode = 0;
-    const gchar *unix_string = "unix://";
 
 	if (g_strcmp0(key, "fullscreen") == 0) {
         viewmode = atoi(value);
@@ -199,6 +198,7 @@ gboolean remmina_spice_file_export_channel(RemminaFile *remminafile, FILE *fp)
 {
 	TRACE_CALL(__func__);
 	const gchar *cs;
+    gchar *csm;
     const gchar *port;
     const gchar *host;
     const gchar *unix_string = "unix://";
@@ -206,13 +206,13 @@ gboolean remmina_spice_file_export_channel(RemminaFile *remminafile, FILE *fp)
 
 	fprintf(fp, "[virt-viewer]\r\n");
     fprintf(fp, "type=spice\r\n");
-    cs = remmina_plugin_service->file_get_string(remminafile, "server");
-    if (cs){
-        if(strncmp(cs, unix_string, strlen(unix_string)) == 0){
-            fprintf(fp, "host=%s\r\n", cs);
+    csm = g_strdup(remmina_plugin_service->file_get_string(remminafile, "server"));
+    if (csm){
+        if(strncmp(csm, unix_string, strlen(unix_string)) == 0){
+            fprintf(fp, "host=%s\r\n", csm);
         }
         else {
-            host = strtok(cs, ":");
+            host = strtok(csm, ":");
             port = strtok(NULL, ":");
             if (port){
                 fprintf(fp, "host=%s\r\n", host);
@@ -222,7 +222,7 @@ gboolean remmina_spice_file_export_channel(RemminaFile *remminafile, FILE *fp)
                 fprintf(fp, "host=%s\r\n", host);
             }
         }
-        
+        g_free(csm);
     }
 
     w = remmina_plugin_service->file_get_int(remminafile, "viewmode", 0);
