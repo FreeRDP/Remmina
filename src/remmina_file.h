@@ -86,6 +86,7 @@ void remmina_file_set_statefile(RemminaFile *remminafile);
 void remmina_file_state_last_success(RemminaFile *remminafile);
 const gchar *remmina_file_get_filename(RemminaFile *remminafile);
 const gchar *remmina_file_get_statefile(RemminaFile *remminafile);
+void remmina_file_use_libsecret(gboolean use_libsecret);
 /* Load a new .remmina file and return the allocated RemminaFile object */
 RemminaFile *remmina_file_load(const gchar *filename);
 /* Settings get/set functions */

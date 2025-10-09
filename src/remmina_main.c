@@ -708,6 +708,7 @@ static void remmina_main_load_files()
 		break;
 	}
 
+    remmina_file_use_libsecret(FALSE);
 	switch (view_file_mode) {
 	case REMMINA_VIEW_FILE_TREE:
 		/* Create new GtkTreeStore model */
@@ -730,6 +731,7 @@ static void remmina_main_load_files()
 		items_count = remmina_file_manager_iterate((GFunc)remmina_main_load_file_list_callback, (gpointer)newmodel);
 		break;
 	}
+    remmina_file_use_libsecret(TRUE);
 
 	/* Set note column visibility*/
 	always_show_notes = remmina_pref.always_show_notes;

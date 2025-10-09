@@ -286,6 +286,8 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	if (!executed)
 		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
 
+    /* Now we will fetch secrets when needed */
+    remmina_file_use_libsecret(TRUE);
 	return status;
 }
 
@@ -329,7 +331,9 @@ static void remmina_on_startup(GApplication *app)
 		if (!secret_plugin->is_service_available(secret_plugin))
 			g_print("Warning: Remmina is running with a secrecy plugin, but it cannot connect to a secrecy service.\n");
 
-	remmina_exec_command(REMMINA_COMMAND_AUTOSTART, NULL);
+    /* No need to ask secrets unlock all entries on startup */
+    remmina_file_use_libsecret(FALSE);
+    remmina_exec_command(REMMINA_COMMAND_AUTOSTART, NULL);
 }
 
 static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *opts, gpointer user_data)

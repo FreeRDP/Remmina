@@ -58,6 +58,7 @@ static SecretSchema remmina_file_secret_schema =
 #ifdef LIBSECRET_VERSION_0_18
 static SecretService* secretservice;
 static SecretCollection* defaultcollection;
+static gboolean unlocked = FALSE;
 #endif
 
 
@@ -83,6 +84,10 @@ static void remmina_plugin_glibsecret_unlock_secret_service(RemminaSecretPlugin*
 	GList *objects, *ul;
 	gchar* lbl;
 
+    if (unlocked) {
+        return;
+	}
+
 	if (secretservice && defaultcollection) {
 		if (secret_collection_get_locked(defaultcollection)) {
 			lbl = secret_collection_get_label(defaultcollection);
@@ -104,6 +109,7 @@ void remmina_plugin_glibsecret_store_password(RemminaSecretPlugin* plugin, Remmi
 	const gchar *path;
 	gchar *s;
 
+    remmina_plugin_glibsecret_unlock_secret_service(plugin);
 	path = remmina_plugin_service->file_get_path(remminafile);
 	s = g_strdup_printf("Remmina: %s - %s", remmina_plugin_service->file_get_string(remminafile, "name"), key);
 	secret_password_store_sync(&remmina_file_secret_schema, SECRET_COLLECTION_DEFAULT, s, password,
@@ -126,6 +132,7 @@ remmina_plugin_glibsecret_get_password(RemminaSecretPlugin* plugin, RemminaFile 
 	gchar *password;
 	gchar *p;
 
+    remmina_plugin_glibsecret_unlock_secret_service(plugin);
 	path = remmina_plugin_service->file_get_path(remminafile);
 	password = secret_password_lookup_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
 	if (r == NULL) {
@@ -144,6 +151,7 @@ void remmina_plugin_glibsecret_delete_password(RemminaSecretPlugin* plugin, Remm
 	GError *r = NULL;
 	const gchar *path;
 
+    remmina_plugin_glibsecret_unlock_secret_service(plugin);
 	path = remmina_plugin_service->file_get_path(remminafile);
 	secret_password_clear_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
 	if (r == NULL)
@@ -172,8 +180,7 @@ gboolean remmina_plugin_glibsecret_init(RemminaSecretPlugin* plugin)
 		g_print("[glibsecret] unable to get secret service default collection: %s\n", error->message);
 		return FALSE;
 	}
-
-	remmina_plugin_glibsecret_unlock_secret_service(plugin);
+    unlocked = FALSE;
 	return TRUE;
 
 #else
