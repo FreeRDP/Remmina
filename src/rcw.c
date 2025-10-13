@@ -4668,6 +4668,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 	/* Create the scrolled container */
 	scalemode = get_current_allowed_scale_mode(cnnobj, NULL, NULL);
 	cnnobj->scrolled_container = rco_create_scrolled_container(scalemode, view_mode);
+    remmina_protocol_widget_set_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), scalemode);
 
 	gtk_container_add(GTK_CONTAINER(cnnobj->scrolled_container), cnnobj->viewport);
 
