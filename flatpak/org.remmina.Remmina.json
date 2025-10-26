@@ -485,6 +485,33 @@
             ]
         },
         {
+            "builddir": true,
+            "buildsystem": "cmake-ninja",
+            "cleanup": [],
+            "config-opts": [
+                "-DCMAKE_VERBOSE_MAKEFILE=ON",
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
+                "-DENABLE_CJSON_TEST:BOOL=OFF",
+                "-DENABLE_CJSON_UTILS:BOOL=OFF"
+            ],
+            "name": "cjson",
+            "sources": [
+                {
+                    "sha256": "3aa806844a03442c00769b83e99970be70fbef03735ff898f4811dd03b9f5ee5",
+                    "type": "archive",
+                    "url": "https://github.com/DaveGamble/cJSON/archive/refs/tags/v1.7.18.tar.gz",
+                    "x-checker-data": {
+                        "project-id": 21330,
+                        "stable-only": true,
+                        "type": "anitya",
+                        "url-template":
+                            "https://github.com/DaveGamble/cJSON/archive/refs/tags/v${version0}.${version1}.${version2}.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
             "name": "freerdp",
             "buildsystem": "cmake-ninja",
             "cleanup": [],
@@ -510,6 +537,8 @@
                 "-DWITH_FUSE:BOOL=OFF",
                 "-DWITH_WEBVIEW:BOOL=OFF",
                 "-DWITH_PKCS11:BOOL=ON",
+                "-DWITH_WINPR_JSON:BOOL=ON",
+                "-DWITH_AAD:BOOL=ON",
                 "-DALLOW_IN_SOURCE_BUILD=ON"
             ],
             "sources": [
