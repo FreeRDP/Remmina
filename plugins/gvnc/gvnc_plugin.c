@@ -50,7 +50,7 @@
 #endif
 
 enum {
-	GVNC_PLUGIN_FEATURE_PREF_VIEWONLY = 1,
+	GVNC_PLUGIN_FEATURE_VIEWONLY = 1,
 	GVNC_PLUGIN_FEATURE_DYNRESUPDATE,
 	GVNC_PLUGIN_FEATURE_PREF_DISABLECLIPBOARD,
 	GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTDEL,
@@ -351,7 +351,7 @@ static void gvnc_plugin_call_feature(RemminaProtocolWidget *gp, const RemminaPro
 	guint keys[3];
 
 	switch (feature->id) {
-	case GVNC_PLUGIN_FEATURE_PREF_VIEWONLY:
+	case GVNC_PLUGIN_FEATURE_VIEWONLY:
 		gpdata->viewonly = remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE);
 		break;
 	case GVNC_PLUGIN_FEATURE_DYNRESUPDATE:
@@ -853,7 +853,7 @@ static const RemminaProtocolSetting gvnc_plugin_advanced_settings[] =
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature gvnc_plugin_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	      GVNC_PLUGIN_FEATURE_PREF_VIEWONLY,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",	       N_("View only")	       },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_VIEWONLY,	  GVNC_PLUGIN_FEATURE_VIEWONLY,	                 GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",	       N_("View only")	       },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	      GVNC_PLUGIN_FEATURE_PREF_DISABLECLIPBOARD,     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("No clipboard sync") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTDEL,	     N_("Send Ctrl+Alt+_Del"),				   NULL,	       NULL		       },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTBACKSPACE, N_("Send Ctrl+Alt+_Backspace"),			   NULL,	       NULL		       },
