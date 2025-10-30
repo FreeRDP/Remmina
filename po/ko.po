@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2024-02-08 11:49+0000\n"
-"PO-Revision-Date: 2025-10-30 11:02+0000\n"
+"PO-Revision-Date: 2025-10-30 16:02+0000\n"
 "Last-Translator: Jung Hoe Hyeong <commaniakr@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/remmina/remmina/"
 "ko/>\n"
@@ -147,11 +147,11 @@ msgstr "설정"
 
 #: src/remmina_plugin_manager.c:86
 msgid "Secret"
-msgstr "보안"
+msgstr "보안 키"
 
 #: src/remmina_plugin_manager.c:86
 msgid "Language Wrapper"
-msgstr "번역 언어"
+msgstr "언어 호환 레이어"
 
 #: src/remmina_plugin_manager.c:773
 msgid "Plugin Download"
@@ -204,7 +204,7 @@ msgstr "버전"
 #: src/remmina_chat_window.c:177
 #, c-format
 msgid "Chat with %s"
-msgstr "%s 와(/과) 대화"
+msgstr "%s 와(과) 대화"
 
 #: src/remmina_chat_window.c:229
 msgid "_Send"
@@ -401,11 +401,11 @@ msgstr ""
 
 #: src/rcw.c:2212
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "스크린 샷 왜곡 방지를 위해서 크기 조정 끄기."
+msgstr "스크린샷 왜곡 방지를 위해서 크기 조정 끄기."
 
 #: src/rcw.c:2272 plugins/www/www_plugin.c:868
 msgid "Screenshot taken"
-msgstr "스크린 샷을 성공했습니다"
+msgstr "스크린샷 촬영 완료"
 
 #: src/rcw.c:2362
 msgid "_Menu"
@@ -417,11 +417,11 @@ msgstr "메뉴"
 
 #: src/rcw.c:2372
 msgid "Open the Remmina main window"
-msgstr "Remmina 기본 창 열기"
+msgstr "리미너 기본 창 열기"
 
 #: src/rcw.c:2382
 msgid "Duplicate current connection"
-msgstr "현재 연결 중복"
+msgstr "현재 연결 복제하기"
 
 #: src/rcw.c:2399
 msgid "Resize the window to fit in remote resolution"
@@ -450,7 +450,7 @@ msgstr "탭 페이지 전환"
 
 #: src/rcw.c:2532
 msgid "Grab all keyboard events"
-msgstr "모든 키보드 이벤트 기록"
+msgstr "모든 키보드 이벤트 전달"
 
 #: src/rcw.c:2549
 msgid "Preferences"
@@ -538,13 +538,13 @@ msgstr "다중 비밀번호 변경도구는 비밀 유지(secrecy) 플러그인�
 
 #: src/remmina_mpchange.c:384
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr "다중 비밀번호 변경도구는 비밀 유지(secrecy) 플러그인이 필요합니다.\n"
+msgstr "다중 비밀번호 변경도구는 비밀 유지(secrecy) 서비스가 필요합니다.\n"
 
 #: src/remmina_mpchange.c:479
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] "%d 개의 비밀번호가 변경되었습니다."
+msgstr[0] "%d개의 비밀번호가 변경되었습니다."
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:102
@@ -569,22 +569,21 @@ msgstr "파일"
 msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
-msgstr ""
-"파일에 기술된 데스크톱에 연결 (.remmina 또는 플러그인에서 지원하는 파일 형식)"
+msgstr "파일이 가리키는 데스크톱에 연결 (.remmina 또는 플러그인에서 지원하는 파일 형"
+"식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
 msgid ""
 "Edit desktop connection described in file (.remmina or a filetype supported "
 "by plugin)"
-msgstr ""
-"파일에 기술된 데스크톱 연결 편집 (.remmina 또는 플러그인에서 지원하는 파일 형"
-"식)"
+msgstr "파일이 가리키는 데스크톱 연결 편집 (.remmina 또는 플러그인에서 지원하는 파일 "
+"형식)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:111
 msgid "Start in kiosk mode"
-msgstr "키오스크 모드 시작"
+msgstr "키오스크 모드로 시작"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:113
@@ -608,7 +607,7 @@ msgstr "종료"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:124
 msgid "Use default server name (for --new)"
-msgstr "기본 서버 이름 사용 (--new)"
+msgstr "기본 서버 이름 사용 (--new 옵션 시)"
 
 #: src/remmina.c:124
 msgid "SERVER"
@@ -617,7 +616,7 @@ msgstr "서버"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:126
 msgid "Use default protocol (for --new)"
-msgstr "기본 프로토콜 사용 (--new)"
+msgstr "기본 프로토콜 사용 (--new 옵션 시)"
 
 #: src/remmina.c:126
 msgid "PROTOCOL"
@@ -653,16 +652,12 @@ msgid "Encrypt a password"
 msgstr "비밀번호 암호화"
 
 #: src/remmina.c:138
-#, fuzzy
-#| msgid "Disable news notification"
 msgid "Disable news"
-msgstr "뉴스 알림 비활성화"
+msgstr "새로운 소식 비활성화"
 
 #: src/remmina.c:139
-#, fuzzy
-#| msgid "Disable toolbar"
 msgid "Disable stats"
-msgstr "도구 모음 비활성화"
+msgstr "통계 비활성화"
 
 #: src/remmina.c:140
 msgid "Disable toolbar"
@@ -689,20 +684,14 @@ msgstr "트레이 아이콘기능을 비활성화"
 #. * to log more verbose statements.
 #.
 #: src/remmina.c:393
-#, fuzzy
-#| msgid ""
-#| "Remmina does not log all output statements. Turn on more verbose output "
-#| "by using \"G_MESSAGES_DEBUG=all\" as an environment variable.\n"
-#| "More info available on the Remmina wiki at:\n"
-#| "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgid ""
 "Remmina does not log all output statements. Turn on more verbose output by "
 "using \"G_MESSAGES_DEBUG=remmina\" as an environment variable.\n"
 "More info available on the Remmina wiki at:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 msgstr ""
-"Remmina가 모든 출력문을 기록하는 것은 아닙니다. 환경변수로 "
-"\"G_MESSAGES_DEBUG=all\"을 사용하여 보다 자세한 출력을 켜십시오.\n"
+"리미너가 모든 출력문을 기록하는 것은 아닙니다. 환경변수로 "
+"\"G_MESSAGES_DEBUG=remmina\"을 사용하여 보다 자세한 출력을 켜십시오.\n"
 "자세한 내용은 다음 URL의 Remmina Wiki에서 확인할 수 있습니다:\n"
 "https://gitlab.com/Remmina/Remmina/-/wikis/Usage/Remmina-debugging"
 
@@ -752,7 +741,7 @@ msgstr ""
 "\n"
 "URI를 사용하여 빠르게 연결하려면:\n"
 "\n"
-"\tremmina -c rdp://username@server\n"
+"        remmina -c rdp://username@server\n"
 "\tremmina -c rdp://domain\\\\username@server\n"
 "\tremmina -c vnc://username@server\n"
 "\tremmina -c vnc://server?VncUsername=username\n"
@@ -769,13 +758,12 @@ msgstr ""
 "URI와 함께 사용할 비밀번호를 암호화하려면:\n"
 "\n"
 "\tremmina --encrypt-password\n"
-"\n"
-"유저아이디(username)와 비밀번호(password)를 업데이트하고 Remmina 연결 프로필"
+"사용자 이름(username)와 비밀번호(password)를 업데이트하고 리미너 연결 프로필"
 "의 다른 확인 모드를 설정하려면, 다음 명령 사용: \n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/FOO."
-"remmina --set-option username --set-option resolution_mode=2 --set-option "
-"password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #: src/remmina_public.c:347
 #, c-format
@@ -794,7 +782,7 @@ msgstr "UNIX 소켓에 연결하지 못했습니다: %s"
 
 #: src/remmina_public.c:634
 msgid "Please enter format 'widthxheight'."
-msgstr "'너비x높이' 형식을 입력하세요."
+msgstr "'너비x높이' 형식으로 입력하세요."
 
 #: src/remmina_public.c:656
 msgid "Change security settings"
@@ -803,7 +791,9 @@ msgstr "보안 설정 변경"
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:53
 msgid "translator-credits"
-msgstr "이정희 <daemul72@gmail.com>"
+msgstr ""
+"이정희 <daemul72@gmail.com>\n"
+"정회형 <commaniakr@gmail.com>"
 
 #: src/remmina_ftp_client.c:409
 msgid "Choose download location"
@@ -811,7 +801,7 @@ msgstr "내려받기 위치 선택"
 
 #: src/remmina_ftp_client.c:549
 msgid "Are you sure to delete the selected files on server?"
-msgstr "선택한 파일을 삭제 하시겠습니까?"
+msgstr "선택한 파일을 삭제하시겠습니까?"
 
 #: src/remmina_ftp_client.c:606
 msgid "Choose a file to upload"
@@ -824,7 +814,7 @@ msgstr "업로드"
 
 #: src/remmina_ftp_client.c:613
 msgid "Upload folder"
-msgstr "업로드 위치"
+msgstr "업로드 폴더"
 
 #: src/remmina_ftp_client.c:669 src/remmina_ftp_client.c:786
 msgid "Download"
@@ -903,11 +893,11 @@ msgstr "수정됨"
 
 #: src/remmina_ftp_client.c:1021 plugins/rdp/rdp_plugin.c:2975
 msgid "Remote"
-msgstr "원격"
+msgstr "원격 기기"
 
 #: src/remmina_ftp_client.c:1028 plugins/rdp/rdp_plugin.c:2974
 msgid "Local"
-msgstr "로컬"
+msgstr "이 기기"
 
 #: src/remmina_ftp_client.c:1042
 msgid "Progress"
@@ -964,21 +954,21 @@ msgstr "SSH로 '%s'에 연결하는 중…"
 
 #: src/remmina_protocol_widget.c:1747
 msgid "Type in SSH username and password."
-msgstr "SSH 유저아이디와 비밀번호를 입력하세요."
+msgstr "SSH 사용자 이름과 비밀번호를 입력하세요."
 
 #: src/remmina_protocol_widget.c:1802 src/remmina_protocol_widget.c:1834
 msgid "Fingerprint automatically accepted"
-msgstr "핑거프린트가 자동으로 수락되었습니다"
+msgstr "핑거프린트가 자동으로 인가되었습니다"
 
 #. TRANSLATORS: The user is asked to verify a new SSL certificate.
 #: src/remmina_protocol_widget.c:1810
 msgid "Certificate details:"
-msgstr "인증서 세부정보:"
+msgstr "인증서 세부 정보:"
 
 #. TRANSLATORS: An SSL certificate subject is usually the remote server the user connect to.
 #: src/remmina_protocol_widget.c:1812 src/remmina_protocol_widget.c:1844
 msgid "Subject:"
-msgstr "주제:"
+msgstr "대상:"
 
 #. TRANSLATORS: The name or email of the entity that have issued the SSL certificate
 #: src/remmina_protocol_widget.c:1814 src/remmina_protocol_widget.c:1846
@@ -1039,7 +1029,7 @@ msgstr "먼저 %s 프로토콜 플러그인을 설치하십시오."
 #: src/remmina_ssh.c:745
 #, c-format
 msgid "Could not authenticate with TOTP/OTP/2FA. %s"
-msgstr "SSH 비밀번호로 인증 할 수 없습니다. %s"
+msgstr "TOTP/OTP/2FA로 인증할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:804 src/remmina_ssh.c:1191
 #, c-format
@@ -1080,10 +1070,8 @@ msgid "SSH identity file not selected."
 msgstr "SSH 키 파일이 선택되지 않았습니다."
 
 #: src/remmina_ssh.c:884
-#, fuzzy
-#| msgid "No saved SSH password supplied. Asking user to enter it."
 msgid "No username found. Asking user to enter it."
-msgstr "저장된 SSH 비밀번호가 없습니다. 사용자에게 입력을 요청합니다."
+msgstr "사용자 이름이 없습니다. 사용자에게 입력을 요청합니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:895
@@ -1094,17 +1082,17 @@ msgstr "공개 SSH 키를 가져올 수 없습니다. %s"
 #: src/remmina_ssh.c:993
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "공개 SSH 키로는 자동인증을 할 수 없습니다. %s"
+msgstr "공개 SSH 키로는 자동 인증을 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:1038
 #, c-format
 msgid "Could not authenticate automatically with SSH agent. %s"
-msgstr "SSH 접속에서는 자동인증을 할 수 없습니다. %s"
+msgstr "SSH 접속에서는 자동 인증을 할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:1084 src/remmina_ssh.c:1371
 #, c-format
 msgid "Could not authenticate with SSH GSSAPI/Kerberos. %s"
-msgstr "SSH GSSAPI/커버러스로 인증할 수 없습니다. %s"
+msgstr "SSH GSSAPI/Kerberos로 인증할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:1113
 msgid "The public SSH key changed!"
@@ -1113,12 +1101,12 @@ msgstr "공개 SSH 키가 변경되었습니다!"
 #: src/remmina_ssh.c:1226
 #, c-format
 msgid "Could not authenticate with keyboard-interactive. %s"
-msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
+msgstr "키보드 대화형 인증으로 인증할 수 없습니다. %s"
 
 #: src/remmina_ssh.c:1328
 #, c-format
 msgid "Could not authenticate with automatic public SSH key. %s"
-msgstr "공개 SSH 키로 인증 할 수 없습니다. %s"
+msgstr "공개 SSH 키로 자동 인증할 수 없습니다. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1436
@@ -1140,12 +1128,11 @@ msgstr "SSH 공개 키에 대한 체크섬을 가져올 수 없습니다. %s"
 
 #: src/remmina_ssh.c:1464
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr ""
-"알려지지 않은 서버입니다. 서버의 공개 키의 핑거프린트는 다음과 같습니다 :"
+msgstr "알려지지 않은 서버입니다. 공개 키 핑거프린트는 다음과 같습니다:"
 
 #: src/remmina_ssh.c:1466 src/remmina_ssh.c:1472
 msgid "Do you trust the new public key?"
-msgstr "새 공개 키를 신뢰하도록 하겠습니까?"
+msgstr "새 공개 키를 신뢰하시겠습니까?"
 
 #: src/remmina_ssh.c:1469
 msgid ""
@@ -1156,7 +1143,7 @@ msgstr ""
 "주의: 서버의 공개 키가 변경되었습니다. 이것은 귀하가 공격을 받고 있는 경우 또"
 "는\n"
 "관리자가 키를 변경한 경우에 발생합니다. 새로운 공개 키의 핑거프린트는 다음과 "
-"같습니다 :"
+"같습니다:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1494
@@ -1174,23 +1161,19 @@ msgstr "SSH 개인 키 비밀번호"
 
 #: src/remmina_ssh.c:1515
 msgid "SSH Kerberos/GSSAPI"
-msgstr "SSH 커버러스/GSSAPI"
+msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:1520
 msgid "Enter TOTP/OTP/2FA code"
 msgstr "TOTP/OTP/2FA 코드 입력"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH tunnel credentials"
 msgid "SSH tunnel private key credentials"
-msgstr "SSH 터널 자격"
+msgstr "SSH 터널 개인 키 자격 증명"
 
 #: src/remmina_ssh.c:1552
-#, fuzzy
-#| msgid "SSH private key file"
 msgid "SSH private key credentials"
-msgstr "SSH 개인 키 파일"
+msgstr "SSH 개인 키 자격 증명"
 
 #: src/remmina_ssh.c:1586 src/remmina_ssh.c:1612
 msgid "SSH tunnel credentials"
@@ -1202,7 +1185,7 @@ msgstr "SSH 자격 증명"
 
 #: src/remmina_ssh.c:1663
 msgid "Keyboard interactive login, TOTP/OTP/2FA"
-msgstr "키보드 인터렉티브 로그인, TOTP/OTP/2FA"
+msgstr "키보드 대화형 로그인, TOTP/OTP/2FA"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2363
@@ -1280,7 +1263,7 @@ msgstr "로컬 포트에 리스닝할 수 없습니다."
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:2780 src/remmina_ssh.c:2797 src/remmina_ssh.c:2815
 msgid "Could not start pthread."
-msgstr "스레드를 시작할 수 없습니다."
+msgstr "pthread를 시작할 수 없습니다."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:2907
@@ -1315,13 +1298,13 @@ msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
 msgstr ""
-"Remmina를 완전히 종료하시겠습니까?\n"
-" 이 작업은 모든 활성 연결을든지 닫게 됩니다."
+"정말 리미너를 완전히 종료하시겠습니까?\n"
+" 종료하면 모든 열려 있는 연결을 닫게 됩니다."
 
 #: src/remmina_exec.c:505
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr "%s 는 등록되지 않은 플러그인 입니다."
+msgstr "%s 는 등록되지 않은 플러그인입니다."
 
 #: src/remmina_main.c:736
 msgid "The latest successful connection attempt, or a pre-computed date"
@@ -1344,15 +1327,15 @@ msgstr "네트워크 상태: 오프라인"
 #: src/remmina_main.c:1003
 #, c-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "\"%s\"을(를) 삭제 하시겠습니까?"
+msgstr "\"%s\"을(를) 삭제하시겠습니까?"
 
 #: src/remmina_main.c:1025
 msgid "Are you sure you want to delete the selected files?"
-msgstr "선택한 파일을 삭제 하시겠습니까?"
+msgstr "선택한 파일을 삭제하시겠습니까?"
 
 #: src/remmina_main.c:1036
 msgid "Failed to delete files!"
-msgstr "파일을 삭제하지 못 했습니다!"
+msgstr "파일을 삭제하지 못했습니다!"
 
 #: src/remmina_main.c:1219
 #, c-format
@@ -1360,20 +1343,16 @@ msgid ""
 "Unable to import:\n"
 "%s"
 msgstr ""
-"가져 올 수 없음:\n"
+"가져올 수 없음:\n"
 "%s"
 
 #: src/remmina_main.c:1247
-#, fuzzy
-#| msgid "File"
 msgid "RDP Files"
-msgstr "파일"
+msgstr "RDP 파일"
 
 #: src/remmina_main.c:1256
-#, fuzzy
-#| msgid "File"
 msgid "All Files"
-msgstr "파일"
+msgstr "모든 파일"
 
 #: src/remmina_main.c:1266 src/remmina_main.c:1267
 #: data/ui/remmina_main.glade:310
@@ -1381,16 +1360,12 @@ msgid "Import"
 msgstr "가져오기"
 
 #: src/remmina_main.c:1300
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Select the connection profile."
-msgstr "새 연결 프로필 생성"
+msgstr "연결 프로필 선택."
 
 #: src/remmina_main.c:1309
-#, fuzzy
-#| msgid "Remmina data folder"
 msgid "Remmina couldn't export."
-msgstr "Remmina 데이터 폴더"
+msgstr "리미너에서 내보내기 실패."
 
 #: src/remmina_main.c:1318 src/remmina_file_editor.c:1933
 msgid "_Save"
@@ -1402,11 +1377,11 @@ msgstr "이 프로토콜은 '내보내기'를 지원하지 않습니다."
 
 #: src/remmina_main.c:1658
 msgid "Remmina Remote Desktop Client"
-msgstr "Remmina 원격 데스크톱 클라이언트"
+msgstr "리미너 원격 데스크톱 클라이언트"
 
 #: src/remmina_main.c:1660
 msgid "Remmina Kiosk"
-msgstr "Remmina 키오스크"
+msgstr "리미너 키오스크"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
@@ -1464,7 +1439,7 @@ msgstr "폴더에서 읽을 수 없습니다. %s"
 
 #: src/remmina_sftp_client.c:848
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "전송 중인 파일을 취소 하시겠습니까?"
+msgstr "현재 전송 중인 파일을 취소하시겠습니까?"
 
 #: src/remmina_sftp_client.c:882
 #, c-format
@@ -1485,7 +1460,7 @@ msgstr "덮어쓰기"
 
 #: src/remmina_sftp_client.c:989
 msgid "The following file already exists in the target folder:"
-msgstr "이미 존재하는 파일이 다음 폴더에 있음:"
+msgstr "대상 폴더에 다음 파일이 이미 존재합니다:"
 
 #: src/remmina_file_editor.c:61
 msgid ""
@@ -1524,8 +1499,8 @@ msgstr ""
 "• %t 는 SSH 서버 이름으로 대체됩니다\n"
 "• %u 는 사용자 이름으로 대체됩니다\n"
 "• %U 는 SSH 사용자 이름으로 대체됩니다\n"
-"• %p 는 레미나 프로필 이름으로 대체됩니다\n"
-"• %g 는 레미나 프로필 그룹 이름으로 대체됩니다\n"
+"• %p 는 리미너 프로필 이름으로 대체됩니다\n"
+"• %g 는 리미너 프로필 그룹 이름으로 대체됩니다\n"
 "• %d 는 iso8601 형식의 현지 날짜 시간으로 대체됩니다\n"
 "연결하기 전에 명령을 실행하려면 백그라운드에서 실행하지 마세요. \n"
 "</big>"
@@ -1561,7 +1536,7 @@ msgstr "해상도"
 
 #: src/remmina_file_editor.c:604
 msgid "Use initial window size"
-msgstr "초기 윈도 크기 사용"
+msgstr "초기 창 크기 사용"
 
 #: src/remmina_file_editor.c:608
 msgid "Use client resolution"
@@ -1577,7 +1552,7 @@ msgstr "지원 모드"
 
 #: src/remmina_file_editor.c:1045
 msgid "Keyboard mapping"
-msgstr "사용자키 지정"
+msgstr "키보드 매핑"
 
 #: src/remmina_file_editor.c:1172
 msgid "Behavior"
@@ -1589,19 +1564,19 @@ msgstr "명령 실행"
 
 #: src/remmina_file_editor.c:1179
 msgid "Before connecting"
-msgstr "연결 시작"
+msgstr "연결 전"
 
 #: src/remmina_file_editor.c:1181
 msgid "command %h %u %t %U %p %g --option"
-msgstr "command %h %u %t %U %p %g --option"
+msgstr "명령 %h %u %t %U %p %g --옵션"
 
 #: src/remmina_file_editor.c:1186
 msgid "After connecting"
-msgstr "연결 시작"
+msgstr "연결 시작 후"
 
 #: src/remmina_file_editor.c:1188
 msgid "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g"
-msgstr "/경로/대상/명령 -opt1 arg %h %u %t -opt2 %U %p %g"
+msgstr "/명령/경로 -옵션1 변수 %h %u %t -옵션2 %U %p %g"
 
 #: src/remmina_file_editor.c:1192
 msgid "Start-up"
@@ -1609,7 +1584,7 @@ msgstr "시작"
 
 #: src/remmina_file_editor.c:1195
 msgid "Auto-start this profile"
-msgstr "프로필에 대해 \"자동 시작\" 키기"
+msgstr "이 프로필에 대해 \"자동 시작\" 키기"
 
 #: src/remmina_file_editor.c:1199
 msgid "Connection profile security"
@@ -1621,11 +1596,11 @@ msgstr "프로필을 연결하거나 편집하려면 비밀번호가 필요합�
 
 #: src/remmina_file_editor.c:1206
 msgid "Unexpected disconnect"
-msgstr "예상치 않은 연결해제"
+msgstr "예기치 못한 연결 해제"
 
 #: src/remmina_file_editor.c:1209
 msgid "Keep window from closing if not disconnected by Remmina"
-msgstr "Remmina에 의해 연결해제 되지 않은 경우 닫히는 작업에서 창 유지하기"
+msgstr "리미너에 의해 연결 해제되지 않은 경우 창 닫지 않기"
 
 #: src/remmina_file_editor.c:1242
 msgid "SSH Tunnel"
@@ -1650,7 +1625,7 @@ msgstr "시작 프로그램 경로"
 
 #: src/remmina_file_editor.c:1319
 msgid "SSH Authentication"
-msgstr "SSH 확인"
+msgstr "SSH 인증"
 
 #: src/remmina_file_editor.c:1346
 msgid "SSH private key file"
@@ -1670,7 +1645,7 @@ msgstr "고급 설정"
 
 #: src/remmina_file_editor.c:1426 data/ui/remmina_main.glade:532
 msgid "Notes"
-msgstr "노트"
+msgstr "메모"
 
 #: src/remmina_file_editor.c:1558
 #, c-format
@@ -1726,20 +1701,20 @@ msgstr "저장 및 연결(_S)"
 
 #: src/remmina_file_editor.c:2065
 msgid "Quick Connect"
-msgstr "빠른 접속"
+msgstr "빠른 연결"
 
 #: src/remmina_file_editor.c:2089
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr "'%s' 하위그룹 구분자 사용"
+msgstr "'%s'를 하위 그룹 구분자로 사용"
 
 #: src/remmina_file_editor.c:2094 data/ui/remmina_main.glade:502
 msgid "Labels"
-msgstr "레이블"
+msgstr "라벨"
 
 #: src/remmina_file_editor.c:2108
 msgid "Label1,Label2"
-msgstr "레이블1,레이블2"
+msgstr "라벨1,라벨2"
 
 #: src/remmina_file_editor.c:2180 src/remmina_file_editor.c:2199
 #, c-format
@@ -1752,9 +1727,8 @@ msgstr "\"%s\" 파일을 찾을 수 없습니다."
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
-msgstr ""
-"Remmina 기본 설정 파일에서 «해상도» 매개변수를 사용하는 것은 더 이상 사용되"
-"지 않습니다.\n"
+msgstr "리미너 기본 설정 파일에서 «해상도» 매개변수를 사용하는 것은 더 이상 지원하지 "
+"않습니다.\n"
 
 #: src/remmina_icon.c:143
 msgid "Enable Service Discovery"
@@ -1780,7 +1754,7 @@ msgstr "기본 창 열기"
 #. TRANSLATORS: Applet Name as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:306 src/remmina_icon.c:472
 msgid "Remmina Applet"
-msgstr "Remmina 애플릿"
+msgstr "리미너 애플릿"
 
 #. TRANSLATORS: Applet comment/description as per the Freedesktop Desktop entry specification https://specifications.freedesktop.org/desktop-entry-spec/latest/
 #: src/remmina_icon.c:308 src/remmina_icon.c:474
@@ -1789,19 +1763,20 @@ msgstr "애플릿 메뉴를 통해 원격 데스크톱에 연결"
 
 #: src/remmina_icon.c:377
 msgid "StatusNotifier/Appindicator support in “"
-msgstr "상태알림이/앱표시기 지원 “"
+msgstr "StatusNotifier/Appindicator 지원 “"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:384
 #, c-format
 msgid "%s your desktop does support it"
-msgstr "%s 바탕화면이 지원합니다"
+msgstr "%s 사용 중인 데스크탑이 지원합니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:386
 #, c-format
 msgid "%s and Remmina has built-in (compiled) support for libappindicator."
-msgstr "%s 및 Remmina에는 libappindicator에 대한 내장(컴파일) 지원이 있습니다."
+msgstr "%s 및 리미너에는 libappindicator에 대한 내장(컴파일) 지원이 포함되어 있습니다"
+"."
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:389
@@ -1810,14 +1785,14 @@ msgid ""
 "%s not supported natively by your Desktop Environment. libappindicator will "
 "try to fallback to GtkStatusIcon/xembed"
 msgstr ""
-"%s는 데스크탑 환경에서 기본적으로 지원되지 않습니다. libappindicator는 "
-"GtkStatusIcon/xembed로 폴백을 시도합니다"
+"%s는 사용 중인 데스크탑 환경에서 기본적으로 지원되지 않습니다. libappindicato"
+"r는 GtkStatusIcon/xembed로 폴백을 시도합니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:393
 #, c-format
 msgid "%s You may need to install, and use XApp Status Applet"
-msgstr "%s XAPP 상태 애플릿 설치 및 사용이 필요할 수 있습니다"
+msgstr "%s XAPP 상태 애플릿을 설치하여 사용해야 할 수 있습니다"
 
 #. TRANSLATORS: %s is a placeholder for "StatusNotifier/Appindicator suppor in “DESKTOP NAME”: "
 #: src/remmina_icon.c:396
@@ -1850,7 +1825,7 @@ msgstr "오류: %s"
 
 #: src/remmina_ssh_plugin.c:568
 msgid "Terminal content saved in"
-msgstr "터미널 내용 저장됨 -"
+msgstr "터미널 내용 저장됨:"
 
 #: src/remmina_ssh_plugin.c:834
 msgid "Select All (host+A)"
@@ -2179,7 +2154,7 @@ msgstr "RDP 게이트웨이 인증 자격을 입력하세요"
 
 #: plugins/rdp/rdp_plugin.c:1007
 msgid "Enter RDP SmartCard PIN"
-msgstr ""
+msgstr "RDP 스마트 카드 PIN 입력"
 
 #. TRANSLATORS: the placeholder may be either an IP/FQDN or a server hostname
 #: plugins/rdp/rdp_plugin.c:1269
@@ -4151,18 +4126,14 @@ msgid "About"
 msgstr "정보"
 
 #: data/ui/remmina_about.glade:36
-#, fuzzy
-#| msgid ""
-#| "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
-#| "Copyright © 2009–2014 Vic Lee\n"
-#| "More details in COPYING"
 msgid ""
 "Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
 "Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 msgstr ""
-"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo.\n"
+"Copyright © 2023–2024 Hiroyuki Tanaka, Sunil Bhat\n"
+"Copyright © 2014–2023 Antenore Gatta, Giovanni Panozzo\n"
 "Copyright © 2009–2014 Vic Lee\n"
 "More details in COPYING"
 
@@ -4258,23 +4229,6 @@ msgid "Verify password"
 msgstr "비밀번호 확인"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4283,20 +4237,12 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>뉴스가 꺼져 있습니다</b></big>\n"
+"<big><b>새로운 소식을 불러오는 데 실패했습니다</b></big>\n"
 "\n"
 "<span>\n"
-"뉴스를 켜면, 프로그램이 Remmina 서버에 연결하여 릴리스 정보를 다운로드 합니"
-"다.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"버전 확인은 컴파일 시에만 활성화할 수 있습니다.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-"release notes\"><i>릴리스 정보를 읽으려면 웹 사이트를 방문하십시오</i></a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title="
+"\"Remmina release notes\"><i>릴리스 정보를 읽으려면 웹 사이트를 방문하십시오<"
+"/i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_key_chooser.glade:23
@@ -4366,7 +4312,7 @@ msgstr "내보내기"
 
 #: data/ui/remmina_main.glade:339
 msgid "Report Bug"
-msgstr ""
+msgstr "버그 제보"
 
 #: data/ui/remmina_main.glade:356
 msgid "Make Remmina your default remote desktop client"
@@ -4419,51 +4365,46 @@ msgstr "뷰 토글"
 
 #: data/ui/remmina_bug_report.glade:43
 msgid "Include System Info"
-msgstr ""
+msgstr "시스템 정보 포함"
 
 #: data/ui/remmina_bug_report.glade:59
 msgid "Include Debug Data"
-msgstr ""
+msgstr "디버그 데이터 포함"
 
 #: data/ui/remmina_bug_report.glade:75
 msgid "Submit"
-msgstr ""
+msgstr "제출"
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "유저아이디"
+msgstr "이름/사용자 이름:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
-msgstr ""
+msgstr "이메일:"
 
 #: data/ui/remmina_bug_report.glade:154
 msgid "Email"
-msgstr ""
+msgstr "이메일"
 
 #: data/ui/remmina_bug_report.glade:173 data/ui/remmina_bug_report.glade:188
 msgid "Bug Title"
-msgstr ""
+msgstr "버그 제목"
 
 #: data/ui/remmina_bug_report.glade:200
-#, fuzzy
-#| msgid "Description"
 msgid "Bug Description"
-msgstr "설명"
+msgstr "버그 설명"
 
 #: data/ui/remmina_bug_report.glade:245
 msgid ""
 "Clicking \"Submit\" will send this to Remmina's GitLab page and "
 "automatically create a new issue on the issue tracker."
-msgstr ""
+msgstr "\"제출\" 버튼을 누르면 리미너의 GitLab 페이지에 전송되며 이슈 트래커에 자동으"
+"로 새 이슈를 추가합니다."
 
 #: data/ui/remmina_bug_report.glade:296
-#, fuzzy
-#| msgid "Remmina password"
 msgid "Remmina Report Bug"
-msgstr "Remmina 비밀번호"
+msgstr "리미너 버그 제보"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
@@ -4607,26 +4548,20 @@ msgid "Confirm before closing multiple tabs"
 msgstr "여러 탭을 닫기 전에 확인하기"
 
 #: data/ui/remmina_preferences.glade:501
-#, fuzzy
-#| msgid "Send anonymous statistics"
 msgid "Disable anonymous statistics"
-msgstr "remmina.org에 사용량 보내기"
+msgstr "익명 통계 비활성화"
 
 #: data/ui/remmina_preferences.glade:533
-#, fuzzy
-#| msgid ""
-#| "Fetch news from <a href=\"https://remmina.org\" title=\"Remmina news "
-#| "site\">remmina.org</a> (*)"
 msgid ""
 "Disable news from <a href=\"https://remmina.org\" title=\"Remmina news "
 "site\">remmina.org</a>"
 msgstr ""
-"<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org</a> "
-"(*)에서 뉴스 가져오기"
+"<a href=\"https://remmina.org\" title=\"Remmina news site\">remmina.org</a>에"
+"서 새로운 소식 불러오지 않기"
 
 #: data/ui/remmina_preferences.glade:566
 msgid "Disable tip of the day"
-msgstr ""
+msgstr "오늘의 팁 안 보기"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "General"
