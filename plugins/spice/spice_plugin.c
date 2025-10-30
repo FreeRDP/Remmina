@@ -38,7 +38,7 @@
 #define XSPICE_DEFAULT_PORT 5900
 
 enum {
-	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
+	REMMINA_PLUGIN_SPICE_FEATURE_VIEWONLY = 1,
 	REMMINA_PLUGIN_SPICE_FEATURE_DYNRESUPDATE,
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
@@ -628,7 +628,7 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	switch (feature->id) {
-	case REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY:
+	case REMMINA_PLUGIN_SPICE_FEATURE_VIEWONLY:
 		g_object_set(gpdata->session,
 			"read-only",
 			remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
@@ -761,7 +761,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY,	    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "viewonly",	  N_("View only")},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_VIEWONLY,  REMMINA_PLUGIN_SPICE_FEATURE_VIEWONLY,	    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "viewonly",	  N_("View only")},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,  GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "disableclipboard",	N_("No clipboard sync")},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,    N_("Send Ctrl+Alt+Delete"),					   NULL,		NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,	    N_("Select USB devices for redirection"),			   NULL,		NULL},
