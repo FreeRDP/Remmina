@@ -118,6 +118,7 @@ struct _RemminaConnectionWindowPriv {
 	GtkToolItem *					toolitem_switch_page;
 	GtkToolItem *					toolitem_dynres;
 	GtkToolItem *					toolitem_scale;
+	GtkToolItem *					toolitem_viewonly;
 	GtkToolItem *					toolitem_grab;
 	GtkToolItem *					toolitem_multimon;
 	GtkToolItem *					toolitem_preferences;
@@ -1736,6 +1737,28 @@ static void rcw_toolbar_scaled_mode(GtkToolItem *toggle, RemminaConnectionWindow
 	rco_change_scalemode(cnnobj, bdyn, bscale);
 }
 
+static void rcw_toolbar_viewonly_mode(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+{
+	// Add viewonly mode to rcw toolbar
+	// This will only be available to plugins that support viewonly
+	TRACE_CALL(__func__);
+	RemminaConnectionObject *cnnobj;
+	gboolean bactive;
+
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) {
+		return;
+	}
+
+	// When opening connection, take viewonly value from remmina file
+	if (cnnobj->connected) {
+		bactive = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle));
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnobj->cnnwin->priv->toolitem_viewonly), bactive);
+	}
+
+	// Update remmina file and let the plugin handle the viewonly
+	remmina_file_set_int(cnnobj->remmina_file, "viewonly", bactive);
+}
+
 static void rcw_toolbar_multi_monitor_mode(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -2548,6 +2571,17 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode, gboolean is_float
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_scaled_mode), cnnwin);
 	priv->toolitem_scale = toolitem;
 
+	/* View only mode */
+	// Widget set_sensitive setting is determined in rco_update_toolbar by the plugin protocol
+	toolitem = gtk_toggle_tool_button_new();
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "org.remmina.Remmina-password-reveal-symbolic");
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("View only mode"), remmina_pref.shortcutkey_viewonly, 0);
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_set_name(GTK_WIDGET(toolitem), "viewonly");
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_viewonly_mode), cnnwin);
+	priv->toolitem_viewonly = toolitem;
+
 	/* Scaler aspect ratio dropdown menu */
 	toolitem = gtk_tool_item_new();
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2712,7 +2746,7 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	GtkToolItem *toolitem;
-	gboolean bval, dynres_avail, scale_avail;
+	gboolean bval, dynres_avail, scale_avail, viewonly_avail;
 	gboolean test_floating_toolbar;
 	RemminaScaleMode scalemode;
 
@@ -2735,6 +2769,9 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 	scalemode = get_current_allowed_scale_mode(cnnobj, &dynres_avail, &scale_avail);
 	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_dynres), dynres_avail && cnnobj->connected);
 	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_scale), scale_avail && cnnobj->connected);
+
+	viewonly_avail = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), REMMINA_PROTOCOL_FEATURE_TYPE_VIEWONLY);
+	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_viewonly), viewonly_avail && cnnobj->connected);
 
 	switch (scalemode) {
 	case REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE:
