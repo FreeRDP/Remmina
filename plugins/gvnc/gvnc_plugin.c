@@ -50,7 +50,7 @@
 #endif
 
 enum {
-	GVNC_PLUGIN_FEATURE_PREF_VIEWONLY = 1,
+	GVNC_PLUGIN_FEATURE_VIEWONLY = 1,
 	GVNC_PLUGIN_FEATURE_DYNRESUPDATE,
 	GVNC_PLUGIN_FEATURE_PREF_DISABLECLIPBOARD,
 	GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTDEL,
@@ -351,7 +351,7 @@ static void gvnc_plugin_call_feature(RemminaProtocolWidget *gp, const RemminaPro
 	guint keys[3];
 
 	switch (feature->id) {
-	case GVNC_PLUGIN_FEATURE_PREF_VIEWONLY:
+	case GVNC_PLUGIN_FEATURE_VIEWONLY:
 		gpdata->viewonly = remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE);
 		break;
 	case GVNC_PLUGIN_FEATURE_DYNRESUPDATE:
@@ -821,12 +821,12 @@ static gpointer colordepth_list[] =
  */
 static const RemminaProtocolSetting gvnc_plugin_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	    NULL,			FALSE, NULL,		NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("VNC password"),		FALSE, NULL,		NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "depth_profile",  N_("Colour depth"),		FALSE, colordepth_list, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "lossy_encoding", N_("Use JPEG Compression"), TRUE,  NULL,		N_("This might not work on all VNC servers"), NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gvncdebug",	    N_("Enable GTK-VNC debug"), FALSE, NULL,		NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			FALSE, NULL,		NULL, NULL, NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	        NULL,			            FALSE, NULL,		    NULL,                                         NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("VNC password"),		    FALSE, NULL,		    NULL,                                         NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "depth_profile",  N_("Colour depth"),		    FALSE, colordepth_list, NULL,                                         NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "lossy_encoding", N_("Use JPEG Compression"), TRUE,  NULL,		    N_("This might not work on all VNC servers"), NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gvncdebug",	    N_("Enable GTK-VNC debug"), FALSE, NULL,		    NULL,                                         NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		        NULL,			            FALSE, NULL,		    NULL,                                         NULL, NULL }
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -840,43 +840,43 @@ static const RemminaProtocolSetting gvnc_plugin_basic_settings[] =
  */
 static const RemminaProtocolSetting gvnc_plugin_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard",	 N_("No clipboard sync"),	    TRUE,  NULL, NULL											},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"),  FALSE, NULL, NULL											},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverbell",	 N_("Ignore remote bell messages"), TRUE,  NULL, NULL											},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enableaudio",		 N_("Enable audio channel"),	    FALSE, NULL, NULL											},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly",		 N_("View only"),		    TRUE,  NULL, NULL											},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shared",		 N_("Shared connection"),	    TRUE,  NULL, N_("If the server should try to share the desktop by leaving other clients connected") },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			 NULL,				    TRUE,  NULL, NULL											}
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard",	     N_("No clipboard sync"),	        TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Forget passwords after use"),  FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverbell",	     N_("Ignore remote bell messages"), TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enableaudio",		     N_("Enable audio channel"),	    FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly",		         N_("View only"),		            TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shared",		         N_("Shared connection"),	        TRUE,  NULL, N_("If the server should try to share the desktop by leaving other clients connected") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			         NULL,				                TRUE,  NULL, NULL }
 };
 
 /* Array for available features.
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature gvnc_plugin_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	      GVNC_PLUGIN_FEATURE_PREF_VIEWONLY,	     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",	       N_("View only")	       },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_VIEWONLY,	  GVNC_PLUGIN_FEATURE_VIEWONLY,	                 GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",	       N_("View only")	       },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	      GVNC_PLUGIN_FEATURE_PREF_DISABLECLIPBOARD,     GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("No clipboard sync") },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTDEL,	     N_("Send Ctrl+Alt+_Del"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTBACKSPACE, N_("Send Ctrl+Alt+_Backspace"),			   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF1,	     N_("Send Ctrl+Alt+_F1"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF2,	     N_("Send Ctrl+Alt+_F2"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF3,	     N_("Send Ctrl+Alt+_F3"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF4,	     N_("Send Ctrl+Alt+_F4"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF5,	     N_("Send Ctrl+Alt+_F5"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF6,	     N_("Send Ctrl+Alt+_F6"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF7,	     N_("Send Ctrl+Alt+_F7"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF8,	     N_("Send Ctrl+Alt+_F8"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF9,	     N_("Send Ctrl+Alt+_F9"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF10,	     N_("Send Ctrl+Alt+_F10"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF11,	     N_("Send Ctrl+Alt+_F11"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF12,	     N_("Send Ctrl+Alt+_F12"),				   NULL,	       NULL		       },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTDEL,	     N_("Send Ctrl+Alt+_Del"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTBACKSPACE, N_("Send Ctrl+Alt+_Backspace"),			           NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF1,	     N_("Send Ctrl+Alt+_F1"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF2,	     N_("Send Ctrl+Alt+_F2"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF3,	     N_("Send Ctrl+Alt+_F3"),				               NULL,	           NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF4,	     N_("Send Ctrl+Alt+_F4"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF5,	     N_("Send Ctrl+Alt+_F5"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF6,	     N_("Send Ctrl+Alt+_F6"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF7,	     N_("Send Ctrl+Alt+_F7"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF8,	     N_("Send Ctrl+Alt+_F8"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF9,	     N_("Send Ctrl+Alt+_F9"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF10,	     N_("Send Ctrl+Alt+_F10"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF11,	     N_("Send Ctrl+Alt+_F11"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SENDCTRLALTF12,	     N_("Send Ctrl+Alt+_F12"),				               NULL,	           NULL	},
 #ifdef HAVE_VNC_POWER_CONTROL
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_REBOOT,		     N_("Reboot remote host"),				   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_RESET,		     N_("Reset remote host (hard reboot)"),		   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SHUTDOWN,	     N_("Shutdown remote host"),			   NULL,	       NULL		       },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_REBOOT,		         N_("Reboot remote host"),				               NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_RESET,		         N_("Reset remote host (hard reboot)"),		           NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      GVNC_PLUGIN_FEATURE_TOOL_SHUTDOWN,	         N_("Shutdown remote host"),			               NULL,	           NULL	},
 #endif
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, GVNC_PLUGIN_FEATURE_DYNRESUPDATE,		     NULL,						   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,	      GVNC_PLUGIN_FEATURE_SCALE,		     NULL,						   NULL,	       NULL		       },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,	      0,					     NULL,						   NULL,	       NULL		       }
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, GVNC_PLUGIN_FEATURE_DYNRESUPDATE,		         NULL,						                           NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,	      GVNC_PLUGIN_FEATURE_SCALE,		             NULL,						                           NULL,	           NULL	},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,	      0,					                         NULL,						                           NULL,	           NULL	}
 };
 
 /* Protocol plugin definition and features */

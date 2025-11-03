@@ -38,7 +38,7 @@
 #define XSPICE_DEFAULT_PORT 5900
 
 enum {
-	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
+	REMMINA_PLUGIN_SPICE_FEATURE_VIEWONLY = 1,
 	REMMINA_PLUGIN_SPICE_FEATURE_DYNRESUPDATE,
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
@@ -628,7 +628,7 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	switch (feature->id) {
-	case REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY:
+	case REMMINA_PLUGIN_SPICE_FEATURE_VIEWONLY:
 		g_object_set(gpdata->session,
 			"read-only",
 			remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
@@ -719,14 +719,14 @@ static gchar disablegstvideooverlay_tooltip[] =
  */
 static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,		"server",		NULL,				FALSE,	NULL, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,	"password",		N_("User password"),	 	FALSE,	NULL, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,		"usetls",		N_("Use TLS encryption"),	FALSE,	NULL, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,		"cacert",		N_("Server CA certificate"),	FALSE,	NULL, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,		"sharefolder",		N_("Share folder"),		FALSE,	NULL, NULL, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT,       "proxy",                N_("Proxy"),                 FALSE,  NULL, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,		"usbredir",		N_("USB device redirection"),	FALSE,  NULL, NULL, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,		NULL,			NULL,				FALSE,	NULL, NULL, NULL, NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",		 NULL,				           FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	 N_("User password"),	 	   FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "usetls",		 N_("Use TLS encryption"),	   FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "cacert",		 N_("Server CA certificate"),  FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "sharefolder", N_("Share folder"),		   FALSE, NULL, NULL, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT,     "proxy",       N_("Proxy"),                  FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "usbredir",	 N_("USB device redirection"), FALSE, NULL, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			 NULL,				           FALSE, NULL, NULL, NULL, NULL }
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -742,32 +742,32 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 35, 0)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	    N_("Preferred video codec"),		FALSE, videocodec_list, NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay",	    N_("Turn off GStreamer overlay"),		FALSE,	NULL,	disablegstvideooverlay_tooltip},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"videocodec",	          N_("Preferred video codec"),		 FALSE, videocodec_list,       NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablegstvideooverlay", N_("Turn off GStreamer overlay"),	 FALSE,	NULL,	               disablegstvideooverlay_tooltip},
 #  endif
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	    N_("Preferred image compression"),		FALSE, imagecompression_list, NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	"imagecompression",	      N_("Preferred image compression"), FALSE, imagecompression_list, NULL},
 #  endif
 #endif
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	    N_("No clipboard sync"),		TRUE,	NULL,	NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring",   N_("Forget passwords after use"),		TRUE,	NULL,	NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"enableaudio",		    N_("Enable audio channel"),			TRUE,	NULL,	NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sharesmartcard",	    N_("Share smart card"),			TRUE,	NULL,	NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"viewonly",		    N_("View only"),				TRUE,	NULL,	NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			    NULL,					TRUE,	NULL,	NULL}
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disableclipboard",	      N_("No clipboard sync"),		     TRUE,	NULL,	               NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Forget passwords after use"),	 TRUE,	NULL,	               NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"enableaudio",		      N_("Enable audio channel"),		 TRUE,	NULL,	               NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sharesmartcard",	      N_("Share smart card"),			 TRUE,	NULL,	               NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"viewonly",		          N_("View only"),				     TRUE,	NULL,	               NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			          NULL,					             TRUE,	NULL,	               NULL}
 };
 
 /* Array for available features.
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY,	    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "viewonly",	  N_("View only")},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,  GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "disableclipboard",	N_("No clipboard sync")},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,    N_("Send Ctrl+Alt+Delete"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,	    N_("Select USB devices for redirection"),			   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE,  REMMINA_PLUGIN_SPICE_FEATURE_DYNRESUPDATE,	    NULL,	   NULL,	NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_SPICE_FEATURE_SCALE,		    NULL,							   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,   0,						    NULL,							   NULL,		NULL}
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_VIEWONLY,     REMMINA_PLUGIN_SPICE_FEATURE_VIEWONLY,	          GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly",	        N_("View only")},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,         REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	"disableclipboard",	N_("No clipboard sync")},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,         REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,   N_("Send Ctrl+Alt+Delete"),					        NULL,		        NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,         REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,	      N_("Select USB devices for redirection"),			    NULL,		        NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, REMMINA_PLUGIN_SPICE_FEATURE_DYNRESUPDATE,	      NULL,	                                                NULL,	            NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,        REMMINA_PLUGIN_SPICE_FEATURE_SCALE,		          NULL,							                        NULL,		        NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,          0,						                          NULL,							                        NULL,		        NULL}
 };
 
 
