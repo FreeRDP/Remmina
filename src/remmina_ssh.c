@@ -2878,7 +2878,7 @@ remmina_sftp_new_from_file(RemminaFile *remminafile)
 	TRACE_CALL(__func__);
 	RemminaSFTP *sftp;
 
-	sftp = g_new(RemminaSFTP, 1);
+	sftp = g_new0(RemminaSFTP, 1);
 
 	remmina_ssh_init_from_file(REMMINA_SSH(sftp), remminafile, FALSE);
 
@@ -2893,7 +2893,7 @@ remmina_sftp_new_from_ssh(RemminaSSH *ssh)
 	TRACE_CALL(__func__);
 	RemminaSFTP *sftp;
 
-	sftp = g_new(RemminaSFTP, 1);
+	sftp = g_new0(RemminaSFTP, 1);
 
 	remmina_ssh_init_from_ssh(REMMINA_SSH(sftp), ssh);
 
