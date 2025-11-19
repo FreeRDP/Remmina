@@ -41,7 +41,8 @@ add_library(remmina-plugin-spice MODULE ${REMMINA_PLUGIN_SPICE_SRCS})
 set_target_properties(remmina-plugin-spice PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-spice PROPERTIES NO_SONAME 1)
 
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${SPICE_INCLUDE_DIRS})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
+include_directories(SYSTEM ${SPICE_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-spice ${REMMINA_COMMON_LIBRARIES} ${SPICE_LIBRARIES})
 
 install(TARGETS remmina-plugin-spice DESTINATION ${REMMINA_PLUGINDIR})
