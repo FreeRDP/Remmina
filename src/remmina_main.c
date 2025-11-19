@@ -1570,6 +1570,7 @@ static gboolean remmina_main_quickconnect(void)
 
 	remminafile = remmina_file_new();
 	server = g_strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
+	server = g_strstrip(server);
 	if (g_hostname_to_ascii(server) == NULL) {
 		g_free(server), server = NULL;
 		return FALSE;
