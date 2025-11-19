@@ -250,9 +250,8 @@ void _remmina_message(const gchar *fmt, ...)
 	TRACE_CALL(__func__);
 
 	va_list args;
-	g_autofree gchar *text;
 	va_start(args, fmt);
-	text = g_strdup_vprintf(fmt, args);
+	g_autofree gchar * text = g_strdup_vprintf(fmt, args);
 	va_end(args);
 
 	// Append text to remmina_log_file.log

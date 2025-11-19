@@ -939,10 +939,9 @@ void remmina_file_state_last_success(RemminaFile *remminafile)
 	g_autoptr(GKeyFile) key_remminafile = g_key_file_new();
 	GError *error = NULL;
 
-	const gchar *date = NULL;
-	GDateTime *d = g_date_time_new_now_utc();
+	g_autoptr(GDateTime) d = g_date_time_new_now_utc();
 
-	date = g_strdup_printf("%d%02d%02d",
+	gchar* date = g_strdup_printf("%d%02d%02d",
 			       g_date_time_get_year(d),
 			       g_date_time_get_month(d),
 			       g_date_time_get_day_of_month(d));
@@ -953,12 +952,14 @@ void remmina_file_state_last_success(RemminaFile *remminafile)
 	if (!g_key_file_save_to_file(key_statefile, remminafile->statefile, &error)) {
 		REMMINA_CRITICAL("Could not save the key file. %s", error->message);
 		g_error_free(error);
+		g_free(date);
 		error = NULL;
 		return;
 	}
 	/* Delete old pre-1.5 keys */
 	g_key_file_remove_key(key_remminafile, KEYFILE_GROUP_REMMINA, "last_success", NULL);
 	REMMINA_DEBUG("Last connection made on %s.", date);
+	g_free(date);
 }
 
 void remmina_file_unsave_passwords(RemminaFile *remminafile)
