@@ -358,10 +358,10 @@ void _remmina_audit(const gchar *fun, const gchar *fmt, ...)
 	gchar *isodate = g_time_val_to_iso8601(&tv);
 #endif
 
-	g_autofree gchar *buf = g_strdup("");
+	gchar *buf = g_strdup("");
 
 	if (isodate) {
-
+		g_free(buf);
 		buf = g_strconcat(
 				"[", isodate, "] - ",
 				g_get_host_name (),
@@ -378,6 +378,8 @@ void _remmina_audit(const gchar *fun, const gchar *fmt, ...)
 		_remmina_message(buf);
 	else
 		_remmina_debug(fun, buf);
+	g_free(buf);
+	g_free(isodate);
 }
 
 // !!! Calling this function will crash Remmina !!!

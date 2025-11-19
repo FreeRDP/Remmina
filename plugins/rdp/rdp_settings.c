@@ -45,7 +45,11 @@ static void remmina_rdp_settings_kbd_init(void)
 {
 	TRACE_CALL(__func__);
 #if FREERDP_CHECK_VERSION(3, 0, 0)
+#if !defined(WITHOUT_FREERDP_3x_DEPRECATED)
 	keyboard_layout = freerdp_keyboard_init(rdp_keyboard_layout);
+#else
+#warning "TODO: freerdp_keyboard_init not implemented!"
+#endif
 #else
 	rdp_keyboard_remapping_list = g_strdup(
 			remmina_plugin_service->pref_get_value("rdp_kbd_remap"));

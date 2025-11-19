@@ -1373,10 +1373,13 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget *gp, RemminaPluginRdp
 		break;
 
 	case REMMINA_RDP_POINTER_NULL:
-		gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area),
-				      gdk_cursor_new_for_display(gdk_display_get_default(),
-								 GDK_BLANK_CURSOR));
+	{
+		GdkWindow* da = gtk_widget_get_window(rfi->drawing_area);
+		GdkCursor* cursor = gdk_cursor_new_for_display(gdk_display_get_default(), GDK_BLANK_CURSOR);
+		gdk_window_set_cursor(da, cursor);
+		g_object_unref(cursor);
 		ui->retval = 1;
+	}
 		break;
 
 	case REMMINA_RDP_POINTER_DEFAULT:
