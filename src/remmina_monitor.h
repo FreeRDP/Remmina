@@ -51,7 +51,7 @@ typedef struct _RemminaMonitor {
 G_BEGIN_DECLS
 
 gboolean remmina_network_monitor_status (RemminaMonitor *rm_monitor);
-RemminaMonitor *remmina_network_monitor_new ();
+RemminaMonitor *remmina_network_monitor_new (void);
 gchar *remmina_monitor_can_reach(RemminaFile *remminafile, RemminaMonitor *monitor);
 
 G_END_DECLS

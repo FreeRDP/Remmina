@@ -129,7 +129,7 @@ static void onMainThread_schedule_callback_and_wait(struct onMainThread_cb_data 
  * Function check_for_endianness() returns 1, if architecture
  * is little endian, 0 in case of big endian.
  */
-static gboolean check_for_endianness()
+static gboolean check_for_endianness(void)
 {
 	unsigned int x = 1;
 	char *c = (char *)&x;

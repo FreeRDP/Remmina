@@ -136,7 +136,7 @@ gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer
 	return n;
 }
 
-gint remmina_widget_pool_count()
+gint remmina_widget_pool_count(void)
 {
 	TRACE_CALL(__func__);
 	return remmina_widget_pool->len;

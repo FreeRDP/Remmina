@@ -70,7 +70,7 @@ typedef struct _RemminaSFTPClientClass {
 
 GType remmina_sftp_client_get_type(void) G_GNUC_CONST;
 
-RemminaSFTPClient *remmina_sftp_client_new();
+RemminaSFTPClient *remmina_sftp_client_new(void);
 
 void remmina_sftp_client_open(RemminaSFTPClient *client, RemminaSFTP *sftp);
 gint remmina_sftp_client_confirm_resume(RemminaSFTPClient *client, const gchar *path);

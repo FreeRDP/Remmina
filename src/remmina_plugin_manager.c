@@ -166,7 +166,7 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 	return TRUE;
 }
 
-gboolean remmina_gtksocket_available()
+gboolean remmina_gtksocket_available(void)
 {
 	GdkDisplayManager* dm;
 	GdkDisplay* d;
@@ -348,7 +348,7 @@ static gint compare_secret_plugin_init_order(gconstpointer a, gconstpointer b)
 	return 0;
 }
 
-gchar* remmina_plugin_manager_create_alt_plugin_dir()
+gchar* remmina_plugin_manager_create_alt_plugin_dir(void)
 {
 	gchar *plugin_dir;
 	plugin_dir = g_build_path("/", g_get_user_config_dir(), "remmina", "plugins", NULL);
@@ -492,7 +492,7 @@ void remmina_plugin_manager_load_plugins(GPtrArray *plugin_dirs, int array_size,
 	g_ptr_array_free(alternative_language_plugins, TRUE);
 }
 
-void remmina_plugin_manager_init()
+void remmina_plugin_manager_init(void)
 {
 	TRACE_CALL(__func__);
 
@@ -533,7 +533,7 @@ void remmina_plugin_manager_init()
  * @returns NULL if there is an error creating the json builder object. Otherwise, return the JsonNode object with the plugin data.
  *
  */
-JsonNode *remmina_plugin_manager_get_installed_plugins()
+JsonNode *remmina_plugin_manager_get_installed_plugins(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -563,7 +563,7 @@ JsonNode *remmina_plugin_manager_get_installed_plugins()
 	}
 }
 
-gboolean remmina_plugin_manager_is_python_wrapper_installed()
+gboolean remmina_plugin_manager_is_python_wrapper_installed(void)
 {
 	gchar* name = "Python Wrapper";
 	RemminaPlugin *plugin;
@@ -584,7 +584,7 @@ gboolean remmina_plugin_manager_is_python_wrapper_installed()
  * @returns NULL if there is an error creating the json builder object. Otherwise, return the JsonNode object with the plugin data.
  *
  */
-JsonNode *remmina_plugin_manager_plugin_stats_get_all()
+JsonNode *remmina_plugin_manager_plugin_stats_get_all(void)
 {
 	JsonNode *n;
 	gchar *unenc_p, *enc_p, *uid;
@@ -740,7 +740,7 @@ static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugi
 	return FALSE;
 }
 
-void remmina_plugin_manager_show_stdout()
+void remmina_plugin_manager_show_stdout(void)
 {
 	TRACE_CALL(__func__);
 	g_print("%-20s%-16s%-64s%-10s\n", "NAME", "TYPE", "DESCRIPTION", "PLUGIN AND LIBRARY VERSION");
@@ -1284,7 +1284,7 @@ gboolean remmina_plugin_manager_verify_duplicate_plugins(RemminaPlugin *availabl
 }
 
 
-void* remmina_plugin_manager_get_available_plugins()
+void* remmina_plugin_manager_get_available_plugins(void)
 {
 	TRACE_CALL(__func__);
 

@@ -155,7 +155,7 @@ static int remmina_ssh_x11_get_proto(const char *display, char **_proto, char **
 static void remmina_ssh_set_nodelay(int fd);
 static int remmina_ssh_connect_local_xsocket_path(const char *pathname);
 static int remmina_ssh_connect_local_xsocket(int display_number);
-static int remmina_ssh_x11_connect_display();
+static int remmina_ssh_x11_connect_display(void);
 
 // Send data to channel
 static int remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata);
@@ -391,7 +391,7 @@ remmina_ssh_connect_local_xsocket(int display_number)
 }
 
 static int
-remmina_ssh_x11_connect_display()
+remmina_ssh_x11_connect_display(void)
 {
 	TRACE_CALL(__func__);
 

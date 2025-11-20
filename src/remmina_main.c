@@ -182,7 +182,7 @@ static void remmina_main_save_expanded_group(void)
  * Save the Remmina Main Window size and the expanded group before to close Remmina.
  * This function uses remmina_main_save_size and remmina_main_save_expanded_group.
  */
-void remmina_main_save_before_destroy()
+void remmina_main_save_before_destroy(void)
 {
 	TRACE_CALL(__func__);
 	if (!remminamain || !remminamain->window)
@@ -195,7 +195,7 @@ void remmina_main_save_before_destroy()
 	remmina_pref_save();
 }
 
-void remmina_main_destroy()
+void remmina_main_destroy(void)
 {
 	TRACE_CALL(__func__);
 
@@ -250,7 +250,7 @@ gboolean remmina_main_idle_destroy(gpointer data)
 /**
  * Called when the remminamain->window widget is destroyed (glade event handler)
  */
-void remmina_main_on_destroy_event()
+void remmina_main_on_destroy_event(void)
 {
 	TRACE_CALL(__func__);
 
@@ -678,7 +678,7 @@ static void remmina_main_select_file(const gchar *filename)
 	}
 }
 
-static void remmina_main_load_files()
+static void remmina_main_load_files(void)
 {
 	TRACE_CALL(__func__);
 	gint items_count;
@@ -948,7 +948,7 @@ static gboolean remmina_main_tree_row_activated(GtkTreeView *tree, GtkTreePath *
 	return TRUE;
 }
 
-void remmina_main_on_view_toggle()
+void remmina_main_on_view_toggle(void)
 {
 	if (gtk_toggle_button_get_active(remminamain->view_toggle_button)) {
 		if (remmina_pref.view_file_mode != REMMINA_VIEW_FILE_LIST) {
@@ -1212,7 +1212,7 @@ void remmina_main_on_accel_application_preferences(GSimpleAction *action, GVaria
 	remmina_main_on_action_application_preferences(NULL, v, NULL);
 }
 
-void remmina_main_reload_preferences()
+void remmina_main_reload_preferences(void)
 {
 	GtkSettings *settings;
 	settings = gtk_settings_get_default();
@@ -1288,7 +1288,7 @@ void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *pa
 	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
 }
 
-void remmina_main_on_date_column_sort_clicked()
+void remmina_main_on_date_column_sort_clicked(void)
 {
 	if (remmina_pref.view_file_mode != REMMINA_VIEW_FILE_LIST) {
 		remmina_pref.view_file_mode = REMMINA_VIEW_FILE_LIST;
@@ -1955,7 +1955,7 @@ GtkWidget *remmina_main_new(void)
 	return GTK_WIDGET(remminamain->window);
 }
 
-GtkWindow *remmina_main_get_window()
+GtkWindow *remmina_main_get_window(void)
 {
 	if (!remminamain)
 		return NULL;

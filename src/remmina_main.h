@@ -144,6 +144,6 @@ void remmina_main_on_action_expand(GSimpleAction *action, GVariant *param, gpoin
 void remmina_main_on_action_collapse(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_search_toggle(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_toggle_password_view(GtkWidget *widget, gpointer data);
-void remmina_main_reload_preferences();
+void remmina_main_reload_preferences(void);
 
 G_END_DECLS

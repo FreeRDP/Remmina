@@ -935,7 +935,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	return remmina_pref_dialog->dialog;
 }
 
-GtkWidget *remmina_pref_dialog_get_dialog()
+GtkWidget *remmina_pref_dialog_get_dialog(void)
 {
 	if (!remmina_pref_dialog)
 		return NULL;

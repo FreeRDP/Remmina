@@ -832,7 +832,7 @@ void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar 
 
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
-gboolean remmina_plugin_spice_is_lz4_supported() {
+gboolean remmina_plugin_spice_is_lz4_supported(void) {
 	gboolean result = FALSE;
 	GOptionContext *context;
 	GOptionGroup *spiceGroup;

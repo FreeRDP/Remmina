@@ -60,6 +60,6 @@ void python_wrapper_protocol_widget_type_ready(void);
 /**
  * Creates a new instance of PyRemminaProtocolWidget and initializes its fields.
  */
-PyRemminaProtocolWidget* python_wrapper_protocol_widget_create();
+PyRemminaProtocolWidget* python_wrapper_protocol_widget_create(void);
 
 G_END_DECLS

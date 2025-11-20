@@ -54,7 +54,7 @@ static RemminaUnlockDialog *remmina_unlock_dialog;
 GTimer *timer;
 gboolean unlocked;
 
-static void remmina_unlock_timer_init()
+static void remmina_unlock_timer_init(void)
 {
 	TRACE_CALL(__func__);
 
@@ -70,7 +70,7 @@ static void remmina_unlock_timer_reset(gpointer user_data)
 	REMMINA_DEBUG("Validity timer for Remmina password reset");
 }
 
-void remmina_unlock_timer_destroy()
+void remmina_unlock_timer_destroy(void)
 {
 	TRACE_CALL(__func__);
 

@@ -346,7 +346,7 @@ static gchar *remmina_utils_read_distrofile(gchar *filename)
  * Return the current language defined in the LC_ALL.
  * @return a language string or en_US.
  */
-gchar *remmina_utils_get_lang()
+gchar *remmina_utils_get_lang(void)
 {
 	TRACE_CALL(__func__);
 	gchar *lang = setlocale(LC_ALL, NULL);
@@ -367,7 +367,7 @@ gchar *remmina_utils_get_lang()
  * Return the OS name as in "uname -s".
  * @return The OS name or NULL.
  */
-gchar *remmina_utils_get_kernel_name()
+gchar *remmina_utils_get_kernel_name(void)
 {
 	TRACE_CALL(__func__);
 	struct utsname u;
@@ -382,7 +382,7 @@ gchar *remmina_utils_get_kernel_name()
  * Return the OS version as in "uname -r".
  * @return The OS release or NULL.
  */
-gchar *remmina_utils_get_kernel_release()
+gchar *remmina_utils_get_kernel_release(void)
 {
 	TRACE_CALL(__func__);
 	struct utsname u;
@@ -397,7 +397,7 @@ gchar *remmina_utils_get_kernel_release()
  * Return the machine hardware name as in "uname -m".
  * @return The machine hardware name or NULL.
  */
-gchar *remmina_utils_get_kernel_arch()
+gchar *remmina_utils_get_kernel_arch(void)
 {
 	TRACE_CALL(__func__);
 	struct utsname u;
@@ -429,7 +429,7 @@ gchar *remmina_utils_run_command(gchar* command)
  * Test each known distribution specific information file and print it’s content.
  * @return a string or NULL. Caller must free it with g_free().
  */
-GHashTable *remmina_utils_get_etc_release()
+GHashTable *remmina_utils_get_etc_release(void)
 {
 	TRACE_CALL(__func__);
 	gchar *etc_release = NULL;
@@ -455,7 +455,7 @@ GHashTable *remmina_utils_get_etc_release()
  * Print device associated with default route.
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_dev()
+gchar *remmina_utils_get_dev(void)
 {
 	TRACE_CALL(__func__);
 	gint pos = 0;
@@ -477,7 +477,7 @@ gchar *remmina_utils_get_dev()
  * Print address associated with default route.
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_logical()
+gchar *remmina_utils_get_logical(void)
 {
 	TRACE_CALL(__func__);
 	gchar *dev = NULL;
@@ -509,7 +509,7 @@ gchar *remmina_utils_get_logical()
  * Print link associated with default route.
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_link()
+gchar *remmina_utils_get_link(void)
 {
 	TRACE_CALL(__func__);
 	gchar *dev = NULL;
@@ -541,7 +541,7 @@ gchar *remmina_utils_get_link()
  * Print python version.
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_python()
+gchar *remmina_utils_get_python(void)
 {
 	TRACE_CALL(__func__);
 	gchar *cmd = remmina_utils_run_command("python -V");
@@ -561,7 +561,7 @@ gchar *remmina_utils_get_python()
  * Print machine age.
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_mage()
+gchar *remmina_utils_get_mage(void)
 {
 	TRACE_CALL(__func__);
 	gchar *mage = malloc(21);
@@ -669,7 +669,7 @@ DONE:
  * Generate a random sting of chars to be used as part of UID for news or stats
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_gen_random_uuid()
+gchar *remmina_gen_random_uuid(void)
 {
 	TRACE_CALL(__func__);
 	gchar *result;
