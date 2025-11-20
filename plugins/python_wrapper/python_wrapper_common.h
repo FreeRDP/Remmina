@@ -141,7 +141,7 @@ typedef struct
  */
 typedef struct
 {
-	PyObject_HEAD;
+	PyObject_HEAD
 	RemminaTypeHint type_hint;
 	gpointer raw;
 } PyGeneric;

@@ -198,28 +198,33 @@ RemminaFile *remmina_spice_file_import(RemminaFilePlugin *plugin,const gchar *fr
 gboolean remmina_spice_file_export_channel(RemminaFile *remminafile, FILE *fp)
 {
 	TRACE_CALL(__func__);
-	const gchar *cs;
-    const gchar *port;
-    const gchar *host;
     const gchar *unix_string = "unix://";
 	int w;
 
 	fprintf(fp, "[virt-viewer]\r\n");
     fprintf(fp, "type=spice\r\n");
-    cs = remmina_plugin_service->file_get_string(remminafile, "server");
+    const gchar* cs = remmina_plugin_service->file_get_string(remminafile, "server");
     if (cs){
         if(strncmp(cs, unix_string, strlen(unix_string)) == 0){
             fprintf(fp, "host=%s\r\n", cs);
         }
         else {
-            host = strtok(cs, ":");
-            port = strtok(NULL, ":");
-            if (port){
-                fprintf(fp, "host=%s\r\n", host);
-                fprintf(fp, "port=%s\r\n", port);
-            }
-            else{
-                fprintf(fp, "host=%s\r\n", host);
+            g_autofree gchar* s = g_strdup(cs);
+            if (s) {
+                const gchar* host = s;
+                gchar* sep = strchr(s, ':');
+                const gchar* port = NULL;
+                if (sep) {
+                    *sep++ = '\0';
+                    port = sep;
+                }
+                if (port){
+                    fprintf(fp, "host=%s\r\n", host);
+                    fprintf(fp, "port=%s\r\n", port);
+                }
+                else{
+                    fprintf(fp, "host=%s\r\n", host);
+                }
             }
         }
         
