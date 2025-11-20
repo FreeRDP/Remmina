@@ -982,21 +982,22 @@ JsonNode *remmina_info_stats_get_kiosk_mode()
 JsonNode *remmina_info_stats_get_python()
 {
 	TRACE_CALL(__func__);
-	JsonBuilder *b;
 	JsonNode *r;
-	gchar *version;
 
-	version = remmina_utils_get_python();
-	b = json_builder_new();
+	JsonBuilder* b = json_builder_new();
 	if(b != NULL)
 	{
 		json_builder_begin_object(b);
 		json_builder_set_member_name(b, "version");
+        
+		gchar* version = remmina_utils_get_python();
+        
 		if (!version || version[0] == '\0') {
 			json_builder_add_null_value(b);
 		} else {
 			json_builder_add_string_value(b, version);
 		}
+		g_free(version);
 		
 		json_builder_end_object(b);
 		r = json_builder_get_root(b);

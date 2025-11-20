@@ -44,7 +44,7 @@ RemminaStringArray*
 remmina_string_array_new(void)
 {
 	TRACE_CALL(__func__);
-	return g_ptr_array_new();
+	return g_ptr_array_new_with_free_func(g_free);
 }
 
 RemminaStringArray*

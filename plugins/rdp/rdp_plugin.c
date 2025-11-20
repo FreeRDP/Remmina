@@ -983,7 +983,9 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
                                 char** domain, rdp_auth_reason reason)
 {
 	TRACE_CALL(__func__);
-	gchar *s_username = NULL, *s_password = NULL, *s_domain = NULL;
+	const gchar *s_username = NULL;
+	const gchar *s_password = NULL;
+	const gchar *s_domain = NULL;
 	const gchar* key_user = NULL;
 	const gchar* key_domain = NULL;
 	const gchar* key_password = NULL;
@@ -1060,27 +1062,34 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 								s_password,
 								s_domain,
 								NULL);
+	BOOL rc = FALSE;
 	if (ret == GTK_RESPONSE_OK) {
 		if (cfg_key_user != FreeRDP_STRING_UNUSED)
 		{
-			s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
+			gchar* s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
 			if (s_username)
 				freerdp_settings_set_string(rfi->clientContext.context.settings, cfg_key_user, s_username);
 			remmina_plugin_service->file_set_string(remminafile, key_user, s_username);
+			g_free(s_username);
 		}
 
+		gchar* s_pwd_copy = NULL;
+		if (s_password)
+			s_pwd_copy= strdup(s_password);
 		if (cfg_key_password != FreeRDP_STRING_UNUSED)
 		{
-			s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
-			if (s_password)
-				freerdp_settings_set_string(rfi->clientContext.context.settings, cfg_key_password, s_password);
+			g_free(s_pwd_copy);
+			s_pwd_copy = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+			if (s_pwd_copy)
+				freerdp_settings_set_string(rfi->clientContext.context.settings, cfg_key_password, s_pwd_copy);
 		}
 
 		if (cfg_key_domain != FreeRDP_STRING_UNUSED) {
-			s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
+			gchar* s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
 			if (s_domain)
 				freerdp_settings_set_string(rfi->clientContext.context.settings, cfg_key_domain, s_domain);
 			remmina_plugin_service->file_set_string(remminafile, key_domain, s_domain);
+			g_free(s_domain);
 		}
 
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
@@ -1088,22 +1097,16 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 			// User has requested to save credentials. We put the password
 			// into remminafile->settings. It will be saved later, on successful connection, by
 			// rcw.c
-			remmina_plugin_service->file_set_string(remminafile, key_password, s_password);
+			remmina_plugin_service->file_set_string(remminafile, key_password, s_pwd_copy);
 		} else {
 			remmina_plugin_service->file_set_string(remminafile, key_password, NULL);
 		}
+		g_free(s_pwd_copy);
 
-
-		if (s_username) g_free(s_username);
-		if (s_password) g_free(s_password);
-		if (s_domain) g_free(s_domain);
-
-		return TRUE;
-	} else {
-		return FALSE;
+		rc = TRUE;
 	}
 
-	return TRUE;
+	return rc;
 }
 
 static BOOL remmina_rdp_choose_smartcard(freerdp* instance, SmartcardCertInfo** cert_list, DWORD count,
@@ -1244,7 +1247,10 @@ static void remmina_rdp_post_disconnect(freerdp *instance)
 	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
 
 	// With FreeRDP3 only resources allocated in PostConnect and later are cleaned up here.
-
+#if FREERDP_CHECK_VERSION(3, 11, 0)
+	freerdp_keyboard_remap_free(rfi->remap_table);
+	rfi->remap_table = NULL;
+#endif
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
@@ -1613,8 +1619,12 @@ static gchar *remmina_get_rdp_kbd_remap(const gchar *keymap)
 	rdp_kbd_remap = g_malloc0(512);
 	display = XOpenDisplay(0);
 	for (i = 0; table[i] > 0; i += 2) {
+#if !defined(WITHOUT_FREERDP_3x_DEPRECATED)
 		g_snprintf(keys, sizeof(keys), "0x%02x=0x%02x", freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i])),
 			freerdp_keyboard_get_rdp_scancode_from_x11_keycode(XKeysymToKeycode(display, table[i + 1])));
+#else
+#warning "TODO: freerdp_keyboard_get_rdp_scancode_from_x11_keycode not implemented!"
+#endif
 		if (i > 0)
 			g_strlcat(rdp_kbd_remap, ",", 512);
 		g_strlcat(rdp_kbd_remap, keys, 512);
@@ -1651,10 +1661,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
+	gchar* ddir = remmina_plugin_service->file_get_user_datadir();
 	datapath = g_build_path("/",
-				remmina_plugin_service->file_get_user_datadir(),
+				ddir,
 				"RDP",
 				NULL);
+	g_free(ddir);
+
 	REMMINA_PLUGIN_DEBUG("RDP data path is %s", datapath);
 
 	if ((datapath != NULL) && (datapath[0] != '\0'))
@@ -2168,7 +2181,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 			CLPARAM **p;
 			size_t count;
 
-			p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("audin", g_strdup(cs), &count);
+			p = remmina_rdp_CommandLineParseCommaSeparatedValuesEx("audin", cs, &count);
 
 			freerdp_client_add_dynamic_channel(rfi->clientContext.context.settings, count, p);
 			g_free(p);
@@ -2193,7 +2206,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	if (cs != NULL && cs[0] != '\0')
 		REMMINA_PLUGIN_DEBUG("Log level set to to %s", cs);
 	else
-		cs = g_strdup("INFO");
+		cs = "INFO";
 	wLog *root = WLog_GetRoot();
 	WLog_SetStringLogLevel(root, cs);
 

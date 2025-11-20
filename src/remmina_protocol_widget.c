@@ -329,7 +329,10 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget *gp)
 	remmina_message_panel_setup_progress(mp, _("Executing external commands…"), NULL, NULL);
 	rco_show_message_panel(gp->cnnobj, mp);
 
-	remmina_ext_exec_new(gp->priv->remmina_file, "precommand");
+	GtkDialog* dialog = remmina_ext_exec_new(gp->priv->remmina_file, "precommand");
+	if (dialog)
+		g_object_unref(dialog);
+
 	rco_destroy_message_panel(gp->cnnobj, mp);
 
 	name = remmina_file_get_string(gp->priv->remmina_file, "name");
@@ -354,7 +357,9 @@ static gboolean conn_closed_real(gpointer data, int button){
 	remmina_protocol_widget_close_all_tunnels(gp);
 #endif
 	/* Exec postcommand */
-	remmina_ext_exec_new(gp->priv->remmina_file, "postcommand");
+	GtkDialog* dialog = remmina_ext_exec_new(gp->priv->remmina_file, "postcommand");
+	if (dialog)
+		g_object_unref(dialog);
 	/* Notify listeners (usually rcw) that the connection is closed */
 	g_signal_emit_by_name(G_OBJECT(gp), "disconnect");
 	return G_SOURCE_REMOVE;
