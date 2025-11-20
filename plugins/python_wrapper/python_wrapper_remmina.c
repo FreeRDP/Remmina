@@ -366,7 +366,7 @@ static PyMemberDef python_protocol_feature_members[] = {
 	{ NULL }
 };
 
-PyObject* python_protocol_feature_new(PyTypeObject* type, PyObject* kws, PyObject* args)
+static PyObject* python_protocol_feature_new(PyTypeObject* type, PyObject* kws, PyObject* args)
 {
 	TRACE_CALL(__func__);
 
@@ -445,7 +445,7 @@ static PyMemberDef python_screenshot_data_members[] = {
 	{ NULL }
 };
 
-PyObject* python_screenshot_data_new(PyTypeObject* type, PyObject* kws, PyObject* args)
+static PyObject* python_screenshot_data_new(PyTypeObject* type, PyObject* kws, PyObject* args)
 {
 	TRACE_CALL(__func__);
 
@@ -515,7 +515,7 @@ static PyMemberDef python_wrapper_generic_members[] = {
 	{ NULL }
 };
 
-PyObject* python_wrapper_generic_type_new(PyTypeObject* type, PyObject* kws, PyObject* args)
+static PyObject* python_wrapper_generic_type_new(PyTypeObject* type, PyObject* kws, PyObject* args)
 {
 	TRACE_CALL(__func__);
 
@@ -617,7 +617,9 @@ static PyObject* python_wrapper_generic_to_string(PyGeneric* self, PyObject* arg
  * Is called from the Python engine when it initializes the 'remmina' module.
  * @details This function is only called by the Python engine!
  */
-PyMODINIT_FUNC python_wrapper_module_initialize(void)
+PyMODINIT_FUNC python_wrapper_module_initialize(void);
+
+PyObject* python_wrapper_module_initialize(void)
 {
 	TRACE_CALL(__func__);
 

@@ -53,7 +53,7 @@ typedef struct _RemminaPluginSpiceXferWidgets {
 static RemminaPluginSpiceXferWidgets * remmina_plugin_spice_xfer_widgets_new(SpiceFileTransferTask *);
 static void remmina_plugin_spice_xfer_widgets_free(RemminaPluginSpiceXferWidgets *widgets);
 
-void remmina_plugin_spice_file_transfer_new_cb(SpiceMainChannel *main_channel, SpiceFileTransferTask *task, RemminaProtocolWidget *gp)
+static void remmina_plugin_spice_file_transfer_new_cb(SpiceMainChannel *main_channel, SpiceFileTransferTask *task, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 

@@ -227,7 +227,7 @@ static gboolean remmina_main_dexit(gpointer data)
 	return FALSE;
 }
 
-gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+static gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	remmina_main_save_before_destroy();
@@ -237,7 +237,7 @@ gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpoint
 	return FALSE;
 }
 
-gboolean remmina_main_idle_destroy(gpointer data)
+static gboolean remmina_main_idle_destroy(gpointer data)
 {
 	TRACE_CALL(__func__);
 
@@ -794,7 +794,7 @@ static void remmina_main_load_files(void)
 
 }
 
-void remmina_main_load_files_cb(GtkEntry *entry, char *string, gpointer user_data)
+static void remmina_main_load_files_cb(GtkEntry *entry, char *string, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	remmina_main_load_files();
@@ -948,7 +948,7 @@ static gboolean remmina_main_tree_row_activated(GtkTreeView *tree, GtkTreePath *
 	return TRUE;
 }
 
-void remmina_main_on_view_toggle(void)
+static void remmina_main_on_view_toggle(void)
 {
 	if (gtk_toggle_button_get_active(remminamain->view_toggle_button)) {
 		if (remmina_pref.view_file_mode != REMMINA_VIEW_FILE_LIST) {
@@ -1204,7 +1204,7 @@ void remmina_main_on_action_connection_delete_multiple(GSimpleAction *action, GV
 	remmina_main_clear_selection_data();
 }
 
-void remmina_main_on_accel_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
+static void remmina_main_on_accel_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
 	GVariant *v = g_variant_new("i", 0);
@@ -1288,7 +1288,7 @@ void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *pa
 	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
 }
 
-void remmina_main_on_date_column_sort_clicked(void)
+static void remmina_main_on_date_column_sort_clicked(void)
 {
 	if (remmina_pref.view_file_mode != REMMINA_VIEW_FILE_LIST) {
 		remmina_pref.view_file_mode = REMMINA_VIEW_FILE_LIST;
@@ -1610,7 +1610,7 @@ static gboolean remmina_main_quickconnect(void)
 	return FALSE;
 }
 
-gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_data)
+static gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	if (!kioskmode && kioskmode == FALSE)
@@ -1619,7 +1619,7 @@ gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_dat
 }
 
 /* Select all the text inside the quick search box if there is anything */
-void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data)
+static void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data)
 {
 	if (gtk_entry_get_text(remminamain->entry_quick_connect_server))
 		gtk_editable_select_region(GTK_EDITABLE(remminamain->entry_quick_connect_server), 0, -1);
@@ -1648,7 +1648,7 @@ void remmina_main_on_action_search_toggle(GSimpleAction *action, GVariant *param
 	}
 }
 
-void remmina_main_on_accel_search_toggle(RemminaMain *remminamain)
+static void remmina_main_on_accel_search_toggle(RemminaMain *remminamain)
 {
 	TRACE_CALL(__func__);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remminamain->search_toggle), TRUE);
@@ -1661,7 +1661,7 @@ void remmina_main_on_action_expand(GSimpleAction *action, GVariant *param, gpoin
 }
 
 /* Handle double click on a row in the connections list */
-void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
+static void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 /* If a connection was selected then execute the default action */
@@ -1679,7 +1679,7 @@ void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *pat
 }
 
 /* Show the popup menu by the right button mouse click */
-gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
+static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	if (event->button == MOUSE_BUTTON_RIGHT) {
@@ -1702,7 +1702,7 @@ gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButto
 }
 
 /* Show the popup menu by the menu key */
-gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
+static gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	if (event->keyval == GDK_KEY_Menu) {
@@ -1717,14 +1717,14 @@ gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *eve
 	return FALSE;
 }
 
-void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data)
+static void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	if (icon_pos == GTK_ENTRY_ICON_SECONDARY)
 		gtk_entry_set_text(entry, "");
 }
 
-void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data)
+static void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	/* If a search text was input then temporary set the file mode to list */
@@ -1744,7 +1744,7 @@ void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_d
 	gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
 }
 
-void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y,
+static void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y,
 					GtkSelectionData *data, guint info, guint time, gpointer user_data)
 {
 	TRACE_CALL(__func__);
@@ -1775,7 +1775,7 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 	return FALSE;
 }
 
-gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
+static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	return FALSE;
@@ -1852,7 +1852,7 @@ static void remmina_main_init(void)
 }
 
 /* Signal handler for "show" on remminamain->window */
-void remmina_main_on_show(GtkWidget *w, gpointer user_data)
+static void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 #ifdef SNAP_BUILD

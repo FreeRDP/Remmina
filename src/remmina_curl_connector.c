@@ -71,7 +71,7 @@ enum ShowValue {ShowNews, ShowTip, ShowNone};
 
 // If we receive a response from the server parse out the message
 // and call the appropiate functions to handle the message.
-void handle_resp(struct curl_msg * message){
+static void handle_resp(struct curl_msg * message){
 	gchar *news_checksum = NULL;
 	JsonParser *parser = NULL;
 	enum ShowValue to_show = ShowNone;
@@ -196,7 +196,7 @@ void handle_resp(struct curl_msg * message){
 
 
 // Allocate memory to hold response from the server in msg->response
-size_t remmina_curl_process_response(void *buffer, size_t size, size_t nmemb, void *userp){
+static size_t remmina_curl_process_response(void *buffer, size_t size, size_t nmemb, void *userp){
 	size_t realsize = size * nmemb;
 	struct curl_msg *msg = (struct curl_msg *)userp;
  
@@ -214,7 +214,7 @@ size_t remmina_curl_process_response(void *buffer, size_t size, size_t nmemb, vo
 }
 
 
-void remmina_curl_send_message(gpointer data)
+static void remmina_curl_send_message(gpointer data)
 {
 	gchar *result_message = NULL;
     gchar *marked_up_message = NULL;

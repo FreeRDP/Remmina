@@ -75,7 +75,7 @@ static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 	return TRUE;
 }
 
-const gchar* remmina_exec_get_build_config(void)
+static const gchar* remmina_exec_get_build_config(void)
 {
 	static const gchar build_config[] =
 	    "Build configuration: " BUILD_CONFIG "\n"

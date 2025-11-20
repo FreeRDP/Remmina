@@ -535,7 +535,7 @@ remmina_plugin_ssh_vte_paste_clipboard(GtkMenuItem *menuitem, gpointer vte)
 	vte_terminal_paste_clipboard(VTE_TERMINAL(vte));
 }
 
-void
+static void
 remmina_plugin_ssh_vte_save_session(GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -712,7 +712,7 @@ remmina_search_widget_search_backward(RemminaPluginSshData *gpdata)
 	vte_terminal_search_find_previous(VTE_TERMINAL(gpdata->vte));
 }
 
-GtkWidget *remmina_plugin_pop_search_new(GtkWidget *relative_to, RemminaProtocolWidget *gp)
+static GtkWidget *remmina_plugin_pop_search_new(GtkWidget *relative_to, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
@@ -769,7 +769,7 @@ GtkWidget *remmina_plugin_pop_search_new(GtkWidget *relative_to, RemminaProtocol
 	return search_widget->window;
 }
 
-void remmina_plugin_pop_search(GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
+static void remmina_plugin_pop_search(GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
@@ -789,7 +789,7 @@ void remmina_plugin_pop_search(GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
 	REMMINA_DEBUG("After popover");
 }
 
-void remmina_plugin_ssh_call_sftp(GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
+static void remmina_plugin_ssh_call_sftp(GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	remmina_protocol_widget_call_feature_by_type(gp, REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PROTOCOL_FEATURE_TOOL_SFTP);
@@ -811,7 +811,7 @@ remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *men
 	return FALSE;
 }
 
-gboolean
+static gboolean
 remmina_ssh_plugin_copy_selection(GtkWidget *widget, GdkEvent *event, GtkWidget *menu)
 {
 	if ((event->type == GDK_BUTTON_RELEASE) && (((GdkEventButton *)event)->button == 1)) {
@@ -836,7 +836,7 @@ remmina_ssh_plugin_copy_selection(GtkWidget *widget, GdkEvent *event, GtkWidget 
  * .
  *
  */
-void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
+static void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
@@ -1737,7 +1737,7 @@ compare(gconstpointer a, gconstpointer b)
 	return strcmp((gchar *)a, (gchar *)b);
 }
 
-void
+static void
 remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 {
 	unsigned int preset_rec_size = sizeof(ssh_terminal_palette) / sizeof(gpointer);

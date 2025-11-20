@@ -61,7 +61,7 @@ static SecretCollection* defaultcollection;
 #endif
 
 
-gboolean remmina_plugin_glibsecret_is_service_available(RemminaSecretPlugin* plugin)
+static gboolean remmina_plugin_glibsecret_is_service_available(RemminaSecretPlugin* plugin)
 {
 #ifdef LIBSECRET_VERSION_0_18
 	if (secretservice && defaultcollection)
@@ -97,7 +97,7 @@ static void remmina_plugin_glibsecret_unlock_secret_service(RemminaSecretPlugin*
 	return;
 }
 
-void remmina_plugin_glibsecret_store_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key, const gchar *password)
+static void remmina_plugin_glibsecret_store_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key, const gchar *password)
 {
 	TRACE_CALL(__func__);
 	GError *r = NULL;
@@ -117,7 +117,7 @@ void remmina_plugin_glibsecret_store_password(RemminaSecretPlugin* plugin, Remmi
 	}
 }
 
-gchar*
+static gchar*
 remmina_plugin_glibsecret_get_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key)
 {
 	TRACE_CALL(__func__);
@@ -138,7 +138,7 @@ remmina_plugin_glibsecret_get_password(RemminaSecretPlugin* plugin, RemminaFile 
 	}
 }
 
-void remmina_plugin_glibsecret_delete_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key)
+static void remmina_plugin_glibsecret_delete_password(RemminaSecretPlugin* plugin, RemminaFile *remminafile, const gchar *key)
 {
 	TRACE_CALL(__func__);
 	GError *r = NULL;
@@ -152,7 +152,7 @@ void remmina_plugin_glibsecret_delete_password(RemminaSecretPlugin* plugin, Remm
 		REMMINA_PLUGIN_DEBUG("password “%s” cannot be deleted for file %s", key, path);
 }
 
-gboolean remmina_plugin_glibsecret_init(RemminaSecretPlugin* plugin)
+static gboolean remmina_plugin_glibsecret_init(RemminaSecretPlugin* plugin)
 {
 #ifdef LIBSECRET_VERSION_0_18
 	GError *error;
@@ -196,7 +196,9 @@ static RemminaSecretPlugin remmina_plugin_glibsecret =
   remmina_plugin_glibsecret_delete_password
 };
 
-G_MODULE_EXPORT gboolean
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service);
+
+gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL(__func__);

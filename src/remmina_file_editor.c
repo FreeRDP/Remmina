@@ -1131,7 +1131,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor *gfe, GtkWidget *grid, gint
 }
 
 // used to filter out invalid characters for REMMINA_PROTOCOL_SETTING_TYPE_INT
-void remmina_file_editor_int_setting_filter(GtkEditable *editable, const gchar *text,
+static void remmina_file_editor_int_setting_filter(GtkEditable *editable, const gchar *text,
 					    gint length, gint *position, gpointer data)
 {
 	for (int i = 0; i < length; i++) {
@@ -1145,7 +1145,7 @@ void remmina_file_editor_int_setting_filter(GtkEditable *editable, const gchar *
 // used to filter out invalid characters for REMMINA_PROTOCOL_SETTING_TYPE_DOUBLE
 // '.' and ',' can't be used interchangeably! It depends on the language setting
 // of the user.
-void remmina_file_editor_double_setting_filter(GtkEditable *editable, const gchar *text,
+static void remmina_file_editor_double_setting_filter(GtkEditable *editable, const gchar *text,
 					       gint length, gint *position, gpointer data)
 {
 	for (int i = 0; i < length; i++) {

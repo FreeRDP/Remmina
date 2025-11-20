@@ -195,7 +195,7 @@ RemminaFile *remmina_spice_file_import(RemminaFilePlugin *plugin,const gchar *fr
 
 
 
-gboolean remmina_spice_file_export_channel(RemminaFile *remminafile, FILE *fp)
+static gboolean remmina_spice_file_export_channel(RemminaFile *remminafile, FILE *fp)
 {
 	TRACE_CALL(__func__);
     const gchar *unix_string = "unix://";

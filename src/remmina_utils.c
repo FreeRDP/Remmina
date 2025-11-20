@@ -167,7 +167,7 @@ const char *remmina_RSA_PubKey_v2 =
 		"-----END PUBLIC KEY-----\n";
 
 
-gint remmina_utils_strpos(const gchar *haystack, const gchar *needle)
+static gint remmina_utils_strpos(const gchar *haystack, const gchar *needle)
 {
 	TRACE_CALL(__func__);
 	const gchar *sub;

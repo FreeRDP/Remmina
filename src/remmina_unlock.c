@@ -70,7 +70,7 @@ static void remmina_unlock_timer_reset(gpointer user_data)
 	REMMINA_DEBUG("Validity timer for Remmina password reset");
 }
 
-void remmina_unlock_timer_destroy(void)
+static void remmina_unlock_timer_destroy(void)
 {
 	TRACE_CALL(__func__);
 

@@ -52,7 +52,7 @@ void python_wrapper_file_init(void)
 	TRACE_CALL(__func__);
 }
 
-gboolean python_wrapper_file_import_test_func_wrapper(RemminaFilePlugin* instance, const gchar* from_file)
+static gboolean python_wrapper_file_import_test_func_wrapper(RemminaFilePlugin* instance, const gchar* from_file)
 {
 	TRACE_CALL(__func__);
 
@@ -68,7 +68,7 @@ gboolean python_wrapper_file_import_test_func_wrapper(RemminaFilePlugin* instanc
 	return result == Py_None || result != Py_False;
 }
 
-RemminaFile* python_wrapper_file_import_func_wrapper(RemminaFilePlugin* instance, const gchar* from_file)
+static RemminaFile* python_wrapper_file_import_func_wrapper(RemminaFilePlugin* instance, const gchar* from_file)
 {
 	TRACE_CALL(__func__);
 
@@ -90,7 +90,7 @@ RemminaFile* python_wrapper_file_import_func_wrapper(RemminaFilePlugin* instance
 	return ((PyRemminaFile*)result)->file;
 }
 
-gboolean python_wrapper_file_export_test_func_wrapper(RemminaFilePlugin* instance, RemminaFile* file)
+static gboolean python_wrapper_file_export_test_func_wrapper(RemminaFilePlugin* instance, RemminaFile* file)
 {
 	TRACE_CALL(__func__);
 
@@ -108,7 +108,7 @@ gboolean python_wrapper_file_export_test_func_wrapper(RemminaFilePlugin* instanc
 	return result == Py_None || result != Py_False;
 }
 
-gboolean
+static gboolean
 python_wrapper_file_export_func_wrapper(RemminaFilePlugin* instance, RemminaFile* file, const gchar* to_file)
 {
 	TRACE_CALL(__func__);

@@ -372,7 +372,7 @@ JsonNode *remmina_info_stats_get_os_info(void)
  *
  * @return a JSON Node structure containing the user’s environment.
  */
-JsonNode *remmina_info_stats_get_user_env(void)
+static JsonNode *remmina_info_stats_get_user_env(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -434,7 +434,7 @@ JsonNode *remmina_info_stats_get_user_env(void)
 	return r;
 }
 
-JsonNode *remmina_info_stats_get_host(void) {
+static JsonNode *remmina_info_stats_get_host(void) {
 
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -474,7 +474,7 @@ JsonNode *remmina_info_stats_get_host(void) {
 	return r;
 }
 
-JsonNode *remmina_info_stats_get_version(void)
+static JsonNode *remmina_info_stats_get_version(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -519,7 +519,7 @@ JsonNode *remmina_info_stats_get_version(void)
 	return r;
 }
 
-JsonNode *remmina_info_stats_get_gtk_version(void)
+static JsonNode *remmina_info_stats_get_gtk_version(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -547,7 +547,7 @@ JsonNode *remmina_info_stats_get_gtk_version(void)
 	return r;
 }
 
-JsonNode *remmina_info_stats_get_gtk_backend(void)
+static JsonNode *remmina_info_stats_get_gtk_backend(void)
 {
 	TRACE_CALL(__func__);
 	JsonNode *r;
@@ -579,7 +579,7 @@ JsonNode *remmina_info_stats_get_gtk_backend(void)
 
 }
 
-JsonNode *remmina_info_stats_get_wm_name(void)
+static JsonNode *remmina_info_stats_get_wm_name(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -622,7 +622,7 @@ JsonNode *remmina_info_stats_get_wm_name(void)
 	return r;
 }
 
-JsonNode *remmina_info_stats_get_indicator(void)
+static JsonNode *remmina_info_stats_get_indicator(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -807,7 +807,7 @@ static void remmina_info_profiles_get_data(RemminaFile *remminafile, gpointer us
  * @return a JSON Node structure containing the protocol usage statistics.
  *
  */
-JsonNode *remmina_info_stats_get_profiles(void)
+static JsonNode *remmina_info_stats_get_profiles(void)
 {
 	TRACE_CALL(__func__);
 
@@ -884,7 +884,7 @@ JsonNode *remmina_info_stats_get_profiles(void)
  * @return a JSON Node structure containing the secret plugin in use
  *
  */
-JsonNode *remmina_info_stats_get_secret_plugin(void)
+static JsonNode *remmina_info_stats_get_secret_plugin(void)
 {
 	TRACE_CALL(__func__);
 
@@ -917,7 +917,7 @@ JsonNode *remmina_info_stats_get_secret_plugin(void)
  * @return a JSON Node structure containing the status of the primary password
  *
  */
-JsonNode *remmina_info_stats_get_primary_password_status(void)
+static JsonNode *remmina_info_stats_get_primary_password_status(void)
 {
 	TRACE_CALL(__func__);
 
@@ -951,7 +951,7 @@ JsonNode *remmina_info_stats_get_primary_password_status(void)
  * @return a JSON Node structure containing the status of the primary password
  *
  */
-JsonNode *remmina_info_stats_get_kiosk_mode(void)
+static JsonNode *remmina_info_stats_get_kiosk_mode(void)
 {
 	TRACE_CALL(__func__);
 
@@ -1285,7 +1285,7 @@ gpointer remmina_info_stats_collector(void)
 	return NULL;
 }
 
-void remmina_info_request(gpointer data)
+static void remmina_info_request(gpointer data)
 {
 	// send initial handshake here, in a callback decide how to handle response
 

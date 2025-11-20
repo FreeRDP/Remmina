@@ -262,7 +262,7 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	remmina_plugin_service->protocol_plugin_update_align(gp);
 }
 
-gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
+static gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
@@ -2262,8 +2262,9 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
 	NULL                                            // RCW unmap event
 };
 
-G_MODULE_EXPORT gboolean
-remmina_plugin_entry(RemminaPluginService *service)
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service);
+
+gboolean remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL(__func__);
 	remmina_plugin_service = service;

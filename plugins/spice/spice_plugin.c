@@ -64,7 +64,7 @@ void remmina_plugin_spice_file_transfer_new_cb(SpiceMainChannel *, SpiceFileTran
 #  endif        /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
 #endif          /* SPICE_GTK_CHECK_VERSION */
 
-gchar* str_replace(const gchar *string, const gchar *search, const gchar *replacement)
+static gchar* str_replace(const gchar *string, const gchar *search, const gchar *replacement)
 {
 	TRACE_CALL(__func__);
 	gchar *str, **arr;
@@ -811,7 +811,7 @@ static RemminaFilePlugin remmina_spicef =
 	NULL
 };
 
-void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar *option_to_remove) {
+static void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar *option_to_remove) {
 	gpointer *src, *dst;
 
 	TRACE_CALL(__func__);
@@ -832,7 +832,7 @@ void remmina_plugin_spice_remove_list_option(gpointer *option_list, const gchar 
 
 #ifdef SPICE_GTK_CHECK_VERSION
 #  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
-gboolean remmina_plugin_spice_is_lz4_supported(void) {
+static gboolean remmina_plugin_spice_is_lz4_supported(void) {
 	gboolean result = FALSE;
 	GOptionContext *context;
 	GOptionGroup *spiceGroup;
@@ -869,8 +869,9 @@ gboolean remmina_plugin_spice_is_lz4_supported(void) {
 #  endif
 #endif
 
-G_MODULE_EXPORT gboolean
-remmina_plugin_entry(RemminaPluginService *service)
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service);
+
+gboolean remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL(__func__);
 	remmina_plugin_service = service;

@@ -1670,7 +1670,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	return ret;
 }
 
-void
+static void
 remmina_ssh_log_callback(ssh_session session, int priority, const char *message, void *userdata)
 {
 	TRACE_CALL(__func__);

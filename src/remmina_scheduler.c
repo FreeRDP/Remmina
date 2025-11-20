@@ -81,7 +81,7 @@ void *remmina_scheduler_setup(GSourceFunc	cb,
 	return (void *)rssd;
 }
 
-void remmina_schedluer_remove(void *s)
+static void remmina_schedluer_remove(void *s)
 {
 	TRACE_CALL(__func__);
 	rsSchedData *rssd = (rsSchedData *)s;
