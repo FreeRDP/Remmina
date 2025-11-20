@@ -769,7 +769,7 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 		return NULL;
 	}
 
-	if (EVP_PKEY_encrypt_init_ex(ctx, NULL) <= 0) {;
+	if (EVP_PKEY_encrypt_init_ex(ctx, NULL) <= 0) {
 		EVP_PKEY_CTX_free(ctx);
 		g_free(ebuf);
 		return NULL;
@@ -805,7 +805,7 @@ gchar *remmina_rsa_encrypt_string(EVP_PKEY *pubkey, const char *instr)
 			return NULL;
 		}
 
-		if (EVP_PKEY_encrypt(ctx, outptr, &out_blksz, (const unsigned char *)instr, blksz) <= 0) {;
+		if (EVP_PKEY_encrypt(ctx, outptr, &out_blksz, (const unsigned char *)instr, blksz) <= 0) {
 			EVP_PKEY_CTX_free(ctx);
 			g_free(ebuf);
 			return NULL;

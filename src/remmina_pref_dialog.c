@@ -219,7 +219,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.default_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_view_mode);
 	remmina_pref.tab_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_tab_interface);
 	remmina_pref.fullscreen_toolbar_visibility = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_fullscreen_toolbar_visibility);
-	remmina_pref.fullscreen_toolbar_delay = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_fullscreen_toolbar_delay));;
+	remmina_pref.fullscreen_toolbar_delay = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_fullscreen_toolbar_delay));
 	if (remmina_pref.fullscreen_toolbar_delay <= 0)
 		remmina_pref.fullscreen_toolbar_delay = 0;
 	remmina_pref.scale_quality = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_scale_quality);

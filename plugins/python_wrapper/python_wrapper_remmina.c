@@ -565,7 +565,7 @@ PyGeneric* python_wrapper_generic_new(void)
 
 static PyObject* python_wrapper_generic_to_int(PyGeneric* self, PyObject* args)
 {
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (self->raw == NULL)
 	{
@@ -584,7 +584,7 @@ static PyObject* python_wrapper_generic_to_int(PyGeneric* self, PyObject* args)
 }
 static PyObject* python_wrapper_generic_to_bool(PyGeneric* self, PyObject* args)
 {
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (self->raw == NULL)
 	{
@@ -599,7 +599,7 @@ static PyObject* python_wrapper_generic_to_bool(PyGeneric* self, PyObject* args)
 }
 static PyObject* python_wrapper_generic_to_string(PyGeneric* self, PyObject* args)
 {
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (self->raw == NULL)
 	{

@@ -268,7 +268,7 @@ gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GdkCursor *cur;
 
-	LOCK_BUFFER(FALSE);
+	LOCK_BUFFER(FALSE)
 	gpdata->queuecursor_handler = 0;
 
 	if (gpdata->queuecursor_surface) {
@@ -281,7 +281,7 @@ gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 	} else {
 		gdk_window_set_cursor(gtk_widget_get_window(gpdata->drawing_area), NULL);
 	}
-	UNLOCK_BUFFER(FALSE);
+	UNLOCK_BUFFER(FALSE)
 
 	return FALSE;
 }
@@ -314,13 +314,13 @@ static RemminaPluginVncEvent *remmina_plugin_vnc_event_queue_pop_head(RemminaPlu
 {
 	RemminaPluginVncEvent *event;
 
-	CANCEL_DEFER;
+	CANCEL_DEFER
 	pthread_mutex_lock(&gpdata->vnc_event_queue_mutex);
 
 	event = g_queue_pop_head(gpdata->vnc_event_queue);
 
 	pthread_mutex_unlock(&gpdata->vnc_event_queue_mutex);
-	CANCEL_ASYNC;
+	CANCEL_ASYNC
 
 	return event;
 }
@@ -511,7 +511,7 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 		return FALSE;
 	old_surface = gpdata->rgb_buffer;
 
-	LOCK_BUFFER(TRUE);
+	LOCK_BUFFER(TRUE)
 
 	remmina_plugin_service->protocol_plugin_set_width(gp, width);
 	remmina_plugin_service->protocol_plugin_set_height(gp, height);
@@ -523,7 +523,7 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 	gpdata->vnc_buffer = (guchar *)g_malloc(size);
 	cl->frameBuffer = gpdata->vnc_buffer;
 
-	UNLOCK_BUFFER(TRUE);
+	UNLOCK_BUFFER(TRUE)
 
 	if (old_surface)
 		cairo_surface_destroy(old_surface);
@@ -560,13 +560,13 @@ static gboolean remmina_plugin_vnc_queue_draw_area_real(RemminaProtocolWidget *g
 	gint x, y, w, h;
 
 	if (GTK_IS_WIDGET(gp) && gpdata->connected) {
-		LOCK_BUFFER(FALSE);
+		LOCK_BUFFER(FALSE)
 		x = gpdata->queuedraw_x;
 		y = gpdata->queuedraw_y;
 		w = gpdata->queuedraw_w;
 		h = gpdata->queuedraw_h;
 		gpdata->queuedraw_handler = 0;
-		UNLOCK_BUFFER(FALSE);
+		UNLOCK_BUFFER(FALSE)
 
 		gtk_widget_queue_draw_area(GTK_WIDGET(gp), x, y, w, h);
 	}
@@ -579,7 +579,7 @@ static void remmina_plugin_vnc_queue_draw_area(RemminaProtocolWidget *gp, gint x
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint nx2, ny2, ox2, oy2;
 
-	LOCK_BUFFER(TRUE);
+	LOCK_BUFFER(TRUE)
 	if (gpdata->queuedraw_handler) {
 		nx2 = x + w;
 		ny2 = y + h;
@@ -596,7 +596,7 @@ static void remmina_plugin_vnc_queue_draw_area(RemminaProtocolWidget *gp, gint x
 		gpdata->queuedraw_h = h;
 		gpdata->queuedraw_handler = IDLE_ADD((GSourceFunc)remmina_plugin_vnc_queue_draw_area_real, gp);
 	}
-	UNLOCK_BUFFER(TRUE);
+	UNLOCK_BUFFER(TRUE)
 }
 
 static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient *cl, guchar *dest, gint dest_rowstride, guchar *src,
@@ -695,7 +695,7 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient *cl, int x, int y, int w, 
 	gint rowstride;
 	gint width;
 
-	LOCK_BUFFER(TRUE);
+	LOCK_BUFFER(TRUE)
 
 	if (w >= 1 || h >= 1) {
 		width = remmina_plugin_service->protocol_plugin_get_width(gp);
@@ -711,7 +711,7 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient *cl, int x, int y, int w, 
 	if ((remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE))
 		remmina_plugin_vnc_scale_area(gp, &x, &y, &w, &h);
 
-	UNLOCK_BUFFER(TRUE);
+	UNLOCK_BUFFER(TRUE)
 
 	remmina_plugin_vnc_queue_draw_area(gp, x, y, w, h);
 }
@@ -925,9 +925,9 @@ static void remmina_plugin_vnc_rfb_cursor_shape(rfbClient *cl, int xhot, int yho
 			return;
 		}
 
-		LOCK_BUFFER(TRUE);
+		LOCK_BUFFER(TRUE)
 		remmina_plugin_vnc_queuecursor(gp, surface, xhot, yhot);
-		UNLOCK_BUFFER(TRUE);
+		UNLOCK_BUFFER(TRUE)
 	}
 }
 
@@ -1976,11 +1976,11 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 	gint width, height;
 	GtkAllocation widget_allocation;
 
-	LOCK_BUFFER(FALSE);
+	LOCK_BUFFER(FALSE)
 
 	surface = gpdata->rgb_buffer;
 	if (!surface) {
-		UNLOCK_BUFFER(FALSE);
+		UNLOCK_BUFFER(FALSE)
 		return FALSE;
 	}
 
@@ -1998,7 +1998,7 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 	cairo_set_source_surface(context, surface, 0, 0);
 	cairo_fill(context);
 
-	UNLOCK_BUFFER(FALSE);
+	UNLOCK_BUFFER(FALSE)
 	return TRUE;
 }
 

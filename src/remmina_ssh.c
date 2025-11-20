@@ -3238,7 +3238,7 @@ remmina_ssh_shell_free(RemminaSSHShell *shell)
 		g_free(shell->run_line);
 		shell->run_line = NULL;
 	}
-	/* It’s not necessary to close shell->slave since the other end (vte) will close it */;
+	/* It’s not necessary to close shell->slave since the other end (vte) will close it */
 	remmina_ssh_free(REMMINA_SSH(shell));
 }
 

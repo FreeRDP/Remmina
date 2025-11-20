@@ -58,11 +58,12 @@
 
 G_DEFINE_TYPE(RemminaSFTPClient, remmina_sftp_client, REMMINA_TYPE_FTP_CLIENT)
 
-#define SET_CURSOR(cur) \
+#define SET_CURSOR(cur) do { \
 	if (GDK_IS_WINDOW(gtk_widget_get_window(GTK_WIDGET(client)))) \
 	{ \
 		gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(client)), cur); \
-	}
+	} \
+	} while(0)
 
 static void
 remmina_sftp_client_class_init(RemminaSFTPClientClass *klass)
@@ -70,7 +71,7 @@ remmina_sftp_client_class_init(RemminaSFTPClientClass *klass)
 	TRACE_CALL(__func__);
 }
 
-#define GET_SFTPATTR_TYPE(a, type) \
+#define GET_SFTPATTR_TYPE(a, type) do { \
 	if (a->type == 0) \
 	{ \
 		type = ((a->permissions & 040000) ? REMMINA_FTP_FILE_TYPE_DIR : REMMINA_FTP_FILE_TYPE_FILE); \
@@ -80,7 +81,8 @@ remmina_sftp_client_class_init(RemminaSFTPClientClass *klass)
 	{ \
 		type = (a->type == SSH_FILEXFER_TYPE_DIRECTORY ? REMMINA_FTP_FILE_TYPE_DIR : REMMINA_FTP_FILE_TYPE_FILE); \
 		if (a->type == SSH_FILEXFER_TYPE_SYMLINK ) type = REMMINA_FTP_FILE_TYPE_LINK; \
-	}
+	} \
+	} while(0)
 
 /* ------------------------ The Task Thread routines ----------------------------- */
 

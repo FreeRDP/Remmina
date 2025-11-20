@@ -54,7 +54,7 @@
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY "overwrite_all"
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_RESUME_ALL_KEY    "resume_all"
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginSftpData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSftpData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 typedef struct _RemminaPluginSftpData {
 	RemminaSFTPClient *	client;

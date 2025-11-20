@@ -296,7 +296,7 @@ gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, Remm
 	WebKitResponsePolicyDecision *response_decision =
 		WEBKIT_RESPONSE_POLICY_DECISION(decision);
 	WebKitURIResponse *response =
-		webkit_response_policy_decision_get_response(response_decision);;
+		webkit_response_policy_decision_get_response(response_decision);
 	const gchar *request_uri = webkit_uri_response_get_uri(response);
 
 	WebKitURIRequest *request;

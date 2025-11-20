@@ -69,7 +69,7 @@
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_DECREASE_FONT 5
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_SEARCH 6
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginSshData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSshData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 /** Palette colors taken from sakura */
 #define PALETTE_SIZE 16

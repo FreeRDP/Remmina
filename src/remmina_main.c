@@ -1531,13 +1531,13 @@ void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *p
 {
 	TRACE_CALL(__func__);
 	remmina_about_open(remminamain->window);
-};
+}
 
 void remmina_main_on_action_application_bug_report(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
 	remmina_bug_report_open(remminamain->window);
-};
+}
 
 static gboolean is_empty(const gchar *s)
 {
