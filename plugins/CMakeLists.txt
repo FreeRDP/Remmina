@@ -45,7 +45,7 @@ set(REMMINA_COMMON_LIBRARIES ${GTK_LIBRARIES} ${Intl_LIBRARIES} ${CMAKE_THREAD_L
 find_suggested_package(LIBSSH)
 if(LIBSSH_FOUND)
     add_definitions(-DHAVE_LIBSSH)
-    include_directories(${SSH_INCLUDE_DIRS})
+    include_directories(SYSTEM ${SSH_INCLUDE_DIRS})
     target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 

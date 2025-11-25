@@ -59,10 +59,11 @@ add_library(remmina-plugin-python_wrapper MODULE ${REMMINA_PLUGIN_PYTHON_WRAPPER
 set_target_properties(remmina-plugin-python_wrapper PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-python_wrapper PROPERTIES NO_SONAME 1)
 
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${PYTHON_WRAPPER_INCLUDE_DIRS})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
+include_directories(SYSTEM ${PYTHON_WRAPPER_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-python_wrapper ${REMMINA_COMMON_LIBRARIES} ${PYTHON_WRAPPER_LIBRARIES})
 
 install(TARGETS remmina-plugin-python_wrapper DESTINATION ${REMMINA_PLUGINDIR})
 
-target_include_directories(remmina-plugin-python_wrapper PRIVATE ${PYTHON_INCLUDE_DIRS})
+target_include_directories(remmina-plugin-python_wrapper SYSTEM PRIVATE ${PYTHON_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-python_wrapper ${PYTHON_LIBRARIES})
