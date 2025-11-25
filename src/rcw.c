@@ -3876,6 +3876,7 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 	GtkSettings *settings = gtk_settings_get_default();
 
 	cnnwin = rcw_new(FALSE, 0);
+	gtk_widget_set_name(GTK_WIDGET(cnnwin), "remmina-connection-window-scrolled");
 	gtk_widget_realize(GTK_WIDGET(cnnwin));
 
 	gtk_window_set_default_size(GTK_WINDOW(cnnwin), width, height);
