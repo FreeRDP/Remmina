@@ -94,6 +94,8 @@ struct _RemminaConnectionWindowPriv {
 	GtkWidget *					revealer;
 	GtkWidget *					overlay_ftb_overlay;
 	GtkWidget *					overlay_ftb_fr;
+	gint						ftb_move_horiz;
+	gint						ftb_move_vert;
 
 	GtkWidget *					floating_toolbar_label;
 	gdouble						floating_toolbar_opacity;
@@ -142,6 +144,7 @@ struct _RemminaConnectionWindowPriv {
 	/* This is the current view mode, i.e. VIEWPORT_FULLSCREEN_MODE,
 	 * as saved on the "viwemode" profile preference file */
 	gint						view_mode;
+	gboolean					multi_mon;
 
 	/* Status variables used when in fullscreen mode. Needed
 	 * to restore a fullscreen mode after coming from scrolled */
@@ -188,7 +191,7 @@ static guint rcw_signals[LAST_SIGNAL] =
 { 0 };
 
 static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gboolean maximize);
-static RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode);
+static RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode, gboolean multi_mon);
 static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboolean release);
 static GtkWidget *rco_create_tab_page(RemminaConnectionObject *cnnobj);
 static GtkWidget *rco_create_tab_label(RemminaConnectionObject *cnnobj);
@@ -199,7 +202,7 @@ static void rcw_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sib
 static void rco_update_toolbar(RemminaConnectionObject *cnnobj);
 static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin);
 static GtkWidget *rcw_append_new_page(RemminaConnectionWindow *cnnwin, RemminaConnectionObject *cnnobj);
-
+static void rcw_ftb_multimon_move_toolbar(RemminaConnectionWindowPriv *priv);
 
 static void rcw_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data);
 
@@ -1344,7 +1347,7 @@ static void rcw_switch_viewmode(RemminaConnectionWindow *cnnwin, int newmode)
 			gtk_window_get_size(GTK_WINDOW(cnnwin), &old_width, &old_height);
 			s = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnwin)));
 		}
-		newwin = rcw_create_fullscreen(GTK_WINDOW(cnnwin), cnnwin->priv->fss_view_mode);
+		newwin = rcw_create_fullscreen(GTK_WINDOW(cnnwin), cnnwin->priv->fss_view_mode, cnnwin->priv->multi_mon);
 		rcw_migrate(cnnwin, newwin);
 		if (old_mode == SCROLLED_WINDOW_MODE) {
 			newwin->priv->ss_maximized = (s & GDK_WINDOW_STATE_MAXIMIZED) ? TRUE : FALSE;
@@ -1388,8 +1391,10 @@ static void rcw_toolbar_fullscreen(GtkToolItem *toggle, RemminaConnectionWindow 
 
 	if ((toggle != NULL && toggle == cnnwin->priv->toolitem_fullscreen)) {
 		if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toggle))) {
-			if (remmina_protocol_widget_get_multimon(gp) >= 1)
+			if (remmina_protocol_widget_get_multimon(gp) >= 1) {
 				gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_multimon), TRUE);
+				cnnwin->priv->multi_mon = TRUE;
+			}
 			rcw_switch_viewmode(cnnwin, cnnwin->priv->fss_view_mode);
 		} else {
 			rcw_switch_viewmode(cnnwin, SCROLLED_WINDOW_MODE);
@@ -1410,7 +1415,7 @@ static void rco_viewport_fullscreen_mode(GtkWidget *widget, RemminaConnectionObj
 	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
 		return;
 	cnnobj->cnnwin->priv->fss_view_mode = VIEWPORT_FULLSCREEN_MODE;
-	newwin = rcw_create_fullscreen(GTK_WINDOW(cnnobj->cnnwin), VIEWPORT_FULLSCREEN_MODE);
+	newwin = rcw_create_fullscreen(GTK_WINDOW(cnnobj->cnnwin), VIEWPORT_FULLSCREEN_MODE, cnnobj->cnnwin->priv->multi_mon);
 	rcw_migrate(cnnobj->cnnwin, newwin);
 }
 
@@ -1422,7 +1427,7 @@ static void rco_scrolled_fullscreen_mode(GtkWidget *widget, RemminaConnectionObj
 	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
 		return;
 	cnnobj->cnnwin->priv->fss_view_mode = SCROLLED_FULLSCREEN_MODE;
-	newwin = rcw_create_fullscreen(GTK_WINDOW(cnnobj->cnnwin), SCROLLED_FULLSCREEN_MODE);
+	newwin = rcw_create_fullscreen(GTK_WINDOW(cnnobj->cnnwin), SCROLLED_FULLSCREEN_MODE, cnnobj->cnnwin->priv->multi_mon);
 	rcw_migrate(cnnobj->cnnwin, newwin);
 }
 
@@ -1664,6 +1669,7 @@ void rco_update_toolbar_autofit_button(RemminaConnectionObject *cnnobj)
 			gtk_widget_set_sensitive(GTK_WIDGET(toolitem), sc == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE);
 		}
 	}
+	rcw_ftb_multimon_move_toolbar(cnnobj->cnnwin->priv);
 }
 
 static void rco_change_scalemode(RemminaConnectionObject *cnnobj, gboolean bdyn, gboolean bscale)
@@ -1775,8 +1781,10 @@ static void rcw_toolbar_multi_monitor_mode(GtkToolItem *toggle, RemminaConnectio
 		remmina_file_save(cnnobj->remmina_file);
 		remmina_protocol_widget_call_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 							     REMMINA_PROTOCOL_FEATURE_TYPE_MULTIMON, 0);
-		if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen)))
-			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen), TRUE);
+		if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen))) {
+			cnnwin->priv->multi_mon = TRUE;
+ 			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnwin->priv->toolitem_fullscreen), TRUE);
+		}
 	} else {
 		REMMINA_DEBUG("Saving multimon as 0");
 		remmina_file_set_int(cnnobj->remmina_file, "multimon", 0);
@@ -3333,6 +3341,9 @@ static void rcw_init(RemminaConnectionWindow *cnnwin)
 	priv->ss_height = 480;
 	priv->ss_maximized = FALSE;
 
+	priv->ftb_move_horiz = 0;
+	priv->ftb_move_vert = 0;
+
 	remmina_widget_pool_register(GTK_WIDGET(cnnwin));
 }
 
@@ -3939,6 +3950,89 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 	return cnnwin;
 }
 
+static gint find_monitor_at_point  (GtkWidget *widget, gint x, gint y) {
+	GdkDisplay* d = gtk_widget_get_display(widget);
+	GdkMonitor* m = gdk_display_get_monitor_at_point(d, x, y);
+
+	if (m == NULL)
+		m = gdk_display_get_primary_monitor(d);
+
+	return remmina_get_monitor_num(d, m);
+}
+
+// Fix toolbar position in case of multiple monitors
+static void rcw_ftb_multimon_move_toolbar(RemminaConnectionWindowPriv *priv) {
+	GdkRectangle rec_monref;
+	int area_width = 0, area_height = 0;
+	GtkWidget* tboverlay = priv->overlay_ftb_fr;
+	GdkDisplay* d = gtk_widget_get_display(tboverlay);
+
+	if (!priv->multi_mon) {
+		return;
+	}
+
+	if (remmina_pref.toolbar_fix_position_multimon == FALSE) {
+		REMMINA_DEBUG("Toolbar position adjustment not active");
+		return;
+	}
+
+	if (GDK_IS_WAYLAND_DISPLAY(d)) {
+		REMMINA_DEBUG("Multimonitor not effective in Wayland mode");
+		return;
+	}
+
+
+	for (int i = 0 ; i < gdk_display_get_n_monitors(d) ; i++) {
+		GdkRectangle display_placement;
+		gdk_monitor_get_workarea(gdk_display_get_monitor(gtk_widget_get_display(tboverlay), i), &display_placement);
+		area_width = MAX(area_width, display_placement.x + display_placement.width);
+		area_height = MAX(area_height, display_placement.y + display_placement.height);
+	}
+	REMMINA_DEBUG("Total working area is %dx%d", area_width, area_height);
+	gdk_monitor_get_workarea(gdk_display_get_monitor(gtk_widget_get_display(tboverlay), remmina_pref.floating_toolbar_monitor), &rec_monref);
+	REMMINA_DEBUG("Toolbar monitor (%d) is at %d %d, size = %dx%d", remmina_pref.floating_toolbar_monitor,
+				 rec_monref.x, rec_monref.y, rec_monref.width, rec_monref.height);
+
+	int move_horiz = 0;		// move right if positive
+	int move_vert = 0;		// move up if positive
+
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM ||
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT ||
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT) {
+			move_vert = area_height - rec_monref.height - rec_monref.y;
+	}
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP ||
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP_RIGHT ||
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP_LEFT) {
+			move_vert = - rec_monref.y;
+	}
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM ||
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP) {
+			move_horiz = rec_monref.x + rec_monref.width / 2 - priv->ss_width / 2;		// Calculate from left (widget is GTK_ALIGN_START)
+	}
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP_LEFT ||
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT) {
+			move_horiz = rec_monref.x;
+	}
+	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_TOP_RIGHT ||
+		remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM_RIGHT) {
+			move_horiz = - (area_width - rec_monref.width - rec_monref.x);
+	}
+
+	REMMINA_DEBUG("Toolbar adjustment for placement %d on monitor %d move h:%d, move v:%d", remmina_pref.floating_toolbar_placement, remmina_pref.floating_toolbar_monitor, move_horiz, move_vert);
+
+	if (move_vert > 0)
+		gtk_widget_set_margin_bottom(tboverlay, move_vert);
+	else if (move_vert < 0)
+		gtk_widget_set_margin_top(tboverlay, -move_vert);
+	if (move_horiz > 0)
+		gtk_widget_set_margin_start(tboverlay, move_horiz);
+	else if (move_horiz < 0)
+		gtk_widget_set_margin_end(tboverlay, -move_horiz);
+	priv->ftb_move_horiz = move_horiz;
+	priv->ftb_move_vert = move_vert;
+}
+
 static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -3984,7 +4078,10 @@ static void rcw_create_overlay_ftb_overlay(RemminaConnectionWindow *cnnwin)
 		gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_END);
 	}
 	else{
-		gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_CENTER);
+		if (!priv->multi_mon)
+			gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_CENTER);
+		else
+			gtk_widget_set_halign(GTK_WIDGET(priv->overlay_ftb_overlay), GTK_ALIGN_START);	// in multi_mon we will adujust from left reference
 	}
 
 	if (remmina_pref.floating_toolbar_placement == FLOATING_TOOLBAR_PLACEMENT_BOTTOM || 
@@ -4058,11 +4155,16 @@ static gboolean rcw_ftb_drag_drop(GtkWidget *widget, GdkDragContext *context,
 				  gint x, gint y, guint time, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
-	GtkAllocation wa;
+	GdkRectangle wa;
 	gint new_floating_toolbar_placement;
 	RemminaConnectionObject *cnnobj;
 
-	gtk_widget_get_allocation(widget, &wa);
+	// read placement in current monitor
+	gint new_floating_toolbar_monitor = find_monitor_at_point(widget, x, y);
+	gdk_monitor_get_geometry(gdk_display_get_monitor(gtk_widget_get_display(widget), new_floating_toolbar_monitor), &wa);
+	x = x - wa.x;
+	y = y - wa.y;
+
 
 	if (y >= wa.height / 2 && x < wa.width / 3)
 		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_BOTTOM_LEFT;
@@ -4079,13 +4181,18 @@ static gboolean rcw_ftb_drag_drop(GtkWidget *widget, GdkDragContext *context,
 
 	gtk_drag_finish(context, TRUE, TRUE, time);
 
-	if (new_floating_toolbar_placement != remmina_pref.floating_toolbar_placement) {
+	if (new_floating_toolbar_placement != remmina_pref.floating_toolbar_placement ||
+		new_floating_toolbar_monitor != remmina_pref.floating_toolbar_monitor) {
 		/* Destroy and recreate the FTB */
 		remmina_pref.floating_toolbar_placement = new_floating_toolbar_placement;
+		remmina_pref.floating_toolbar_monitor = new_floating_toolbar_monitor;
 		remmina_pref_save();
 		rcw_create_overlay_ftb_overlay(cnnwin);
 		cnnobj = rcw_get_visible_cnnobj(cnnwin);
-		if (cnnobj) rco_update_toolbar(cnnobj);
+		if (cnnobj) {
+			rco_update_toolbar(cnnobj);
+			rcw_ftb_multimon_move_toolbar(cnnwin->priv);
+		}
 	}
 
 	return TRUE;
@@ -4100,9 +4207,13 @@ static void rcw_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpoin
 	GtkAllocation wa;
 	double dashes[] = { 10 };
 
+	RemminaConnectionWindow *cnnwin = (RemminaConnectionWindow*)user_data;
+	guint hmargin = abs(cnnwin->priv->ftb_move_horiz);
+	guint vmargin = abs(cnnwin->priv->ftb_move_vert);
+
 	gtk_widget_get_allocation(widget, &wa);
 
-	surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, wa.width, wa.height);
+	surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, wa.width - hmargin, wa.height - vmargin);
 	cr = cairo_create(surface);
 	cairo_set_source_rgb(cr, 0.6, 0.6, 0.6);
 	cairo_set_line_width(cr, 2);
@@ -4114,7 +4225,7 @@ static void rcw_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpoin
 	gtk_drag_set_icon_surface(context, surface);
 }
 
-RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
+RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode, gboolean multi_mon)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindow *cnnwin;
@@ -4155,6 +4266,7 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 
 	if (!view_mode)
 		view_mode = VIEWPORT_FULLSCREEN_MODE;
+	cnnwin->priv->multi_mon = multi_mon;
 
 	notebook = rcw_create_notebook(cnnwin);
 
@@ -4727,7 +4839,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 		switch (view_mode) {
 		case SCROLLED_FULLSCREEN_MODE:
 		case VIEWPORT_FULLSCREEN_MODE:
-			cnnobj->cnnwin = rcw_create_fullscreen(NULL, view_mode);
+			cnnobj->cnnwin = rcw_create_fullscreen(NULL, view_mode, ismultimon);
 			break;
 		case SCROLLED_WINDOW_MODE:
 		default:

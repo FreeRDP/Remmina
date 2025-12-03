@@ -1141,3 +1141,18 @@ int remmina_compress_from_file_to_file(GFile *source, GFile *dest)
 	g_free(converted);
 	return total_read;
 }
+
+gint remmina_get_monitor_num(GdkDisplay* d, GdkMonitor* m) {
+	for (int i = 0 ; i < gdk_display_get_n_monitors(d) ; i++) {
+		if (m == gdk_display_get_monitor(d, i))
+			return i;
+	}
+	return 0;
+}
+
+gint remmina_get_primary_monitor_num() {
+	GdkDisplay* d = gdk_display_get_default();
+	GdkMonitor* m = gdk_display_get_primary_monitor(d);
+
+	return remmina_get_monitor_num(d, m);
+}

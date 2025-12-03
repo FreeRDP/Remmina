@@ -42,6 +42,7 @@
 
 #include <glib.h>
 #include <gio/gio.h>
+#include <gdk/gdk.h>
 #include <openssl/rsa.h>
 #include <openssl/evp.h>
 
@@ -87,4 +88,6 @@ int remmina_decompress_from_memory_to_file(guchar *source, int len, GFile* plugi
 int remmina_compress_from_file_to_file(GFile *source, GFile *dest);
 gboolean remmina_verify_plugin_signature(const guchar *signature, GFile* plugin_file, size_t message_length, size_t signature_length);
 gboolean remmina_execute_plugin_signature_verification(GFile* plugin_file, size_t msg_len, const guchar *sig, size_t sig_len, EVP_PKEY* public_key);
+gint remmina_get_monitor_num(GdkDisplay* d, GdkMonitor* m);
+gint remmina_get_primary_monitor_num();
 G_END_DECLS
