@@ -53,6 +53,7 @@
 #include "remmina_public.h"
 #include "remmina_string_array.h"
 #include "remmina_pref.h"
+#include "remmina_utils.h"
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -370,6 +371,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_TOP;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "floating_toolbar_monitor", NULL))
+		remmina_pref.floating_toolbar_monitor = g_key_file_get_integer(gkeyfile, "remmina_pref", "floating_toolbar_monitor", NULL);
+	else
+		remmina_pref.floating_toolbar_monitor = remmina_get_primary_monitor_num();
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", NULL))
 		remmina_pref.prevent_snap_welcome_message = g_key_file_get_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", NULL);
 	else
@@ -412,6 +418,12 @@ void remmina_pref_init(void)
 		remmina_pref.start_dynres = g_key_file_get_boolean(gkeyfile, "remmina_pref", "start_dynres", NULL);
 	else
 		remmina_pref.start_dynres = FALSE;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "toolbar_fix_position_multimon", NULL))
+		remmina_pref.toolbar_fix_position_multimon = g_key_file_get_boolean(gkeyfile, "remmina_pref", "toolbar_fix_position_multimon", NULL);
+	else
+		remmina_pref.toolbar_fix_position_multimon = TRUE;
+		
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL))
 		remmina_pref.hide_connection_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
@@ -945,6 +957,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "audit", remmina_pref.audit);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "trust_all", remmina_pref.trust_all);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_monitor", remmina_pref.floating_toolbar_monitor);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", remmina_pref.prevent_snap_welcome_message);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "last_quickconnect_protocol", remmina_pref.last_quickconnect_protocol);
@@ -954,6 +967,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "mp_left", remmina_pref.mp_left);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "start_fullscreen", remmina_pref.start_fullscreen);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "start_dynres", remmina_pref.start_dynres);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "toolbar_fix_position_multimon", remmina_pref.toolbar_fix_position_multimon);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_connection_toolbar", remmina_pref.hide_connection_toolbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_searchbar", remmina_pref.hide_searchbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
