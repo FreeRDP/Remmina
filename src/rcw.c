@@ -3030,6 +3030,12 @@ gboolean rco_enter_protocol_widget(GtkWidget *widget, GdkEventCrossing *event,
 		rcw_floating_toolbar_show(cnnobj->cnnwin, FALSE);
 
 	priv->pointer_entered = TRUE;
+	if (!cnnobj->connected) {
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING: Not connected yet, abort\n");
+#endif
+		return FALSE;
+	}
 
 	if (event->mode == GDK_CROSSING_UNGRAB) {
 		// Someone steal our grab, take note and do not attempt to regrab
@@ -4546,6 +4552,15 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	rco_update_toolbar(cnnobj);
 
+	if (cnnobj->cnnwin->priv->pointer_entered) {
+		/* Check if we need grabbing */
+		gboolean active = gtk_window_is_active(GTK_WINDOW(cnnobj->cnnwin));
+		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE) && active) {
+			rcw_keyboard_grab(cnnobj->cnnwin);
+			rcw_pointer_grab(cnnobj->cnnwin);
+		}
+	}
+
 	REMMINA_DEBUG("Trying to present the window");
 	/* Try to present window */
 	cnnobj->cnnwin->priv->dwp_eventsourceid = g_timeout_add(200, rcw_delayed_window_present, (gpointer)cnnobj->cnnwin);
@@ -4574,6 +4589,8 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 		gtk_container_remove(GTK_CONTAINER(pparent), cnnobj->proto);
 	}
 
+	rcw_kp_ungrab(cnnobj->cnnwin);
+	rcw_pointer_ungrab(cnnobj->cnnwin);
 	cnnobj->connected = FALSE;
 
 	if (remmina_pref.save_view_mode) {
