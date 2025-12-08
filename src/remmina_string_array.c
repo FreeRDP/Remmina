@@ -170,7 +170,6 @@ remmina_string_array_to_string(RemminaStringArray* array)
 void remmina_string_array_free(RemminaStringArray *array)
 {
 	TRACE_CALL(__func__);
-	g_ptr_array_foreach(array, (GFunc)g_free, NULL);
 	g_ptr_array_free(array, TRUE);
 }
 
