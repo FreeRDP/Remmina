@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Yaron Shahrabani <sh.yaron@gmail.com>, 2019, 2020, 2021, 2022, 2023.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2019, 2020, 2021, 2022, 2023, 2025.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # Allan Nordhøy <epost@anotheragency.no>, 2021, 2022, 2023.
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2021, 2022.
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2023-05-26 13:49+0000\n"
+"PO-Revision-Date: 2025-12-11 15:00+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_icon.c:143
@@ -160,12 +160,12 @@ msgid "<None>"
 msgstr "<אין>"
 
 #: src/remmina_exec.c:129
-#, fuzzy
-#| msgid "Are you sure you want to close this last active connection?"
 msgid ""
 "Are you sure you want to fully quit Remmina?\n"
 " This will close any active connections."
-msgstr "לסגור את החיבור הפעיל האחרון?"
+msgstr ""
+"לצאת מ־Remmina לחלוטין?\n"
+" הפעולה הזאת תסגור את כל החיבורים הפעילים באשר הם."
 
 #: src/remmina_exec.c:529
 #, fuzzy, c-format
@@ -568,15 +568,12 @@ msgid "SSH - Secure Shell"
 msgstr "SSH - מעטפת מאובטחת"
 
 #: src/remmina_ssh_plugin.c:1708
-#, fuzzy
-#| msgid "Terminal"
 msgid "Local Terminal"
-msgstr "מסוף"
+msgstr "מסוף מקומי"
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
 #: src/remmina_file.c:494 src/remmina_file.c:540
-#, fuzzy
 msgid ""
 "Using the «resolution» parameter in the Remmina preferences file is "
 "deprecated.\n"
@@ -600,9 +597,9 @@ msgstr "לא נשמרה מילת צופן ל־SSH. נשלחת בבקשה למש�
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:842 src/remmina_ssh.c:883 src/remmina_ssh.c:915
 #: src/remmina_ssh.c:954 src/remmina_ssh.c:1267
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr "לא ניתן להזדהות עם מפתח ה־SSH הציבורי. %s"
+msgstr "לא ניתן להזדהות עם מפתח SSH ציבורי. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:851
@@ -692,9 +689,8 @@ msgid "The server is unknown. The public key fingerprint is:"
 msgstr "השרת אינו ידוע. טביעת האצבע הציבורית היא:"
 
 #: src/remmina_ssh.c:1471 src/remmina_ssh.c:1477
-#, fuzzy
 msgid "Do you trust the new public key?"
-msgstr "המפתח הציבורי החדש מהימן בעיניך?"
+msgstr "לתת אמון במפתח הציבורי החדש?"
 
 #: src/remmina_ssh.c:1474
 msgid ""
@@ -1235,9 +1231,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "למחוק את „%s”?"
 
 #: src/remmina_main.c:1088
-#, fuzzy
 msgid "Failed to load files!"
-msgstr "התקבל קובץ"
+msgstr "טעינת הקבצים נכשלה!"
 
 #: src/remmina_main.c:1159
 #, fuzzy
@@ -1280,14 +1275,12 @@ msgid "Import"
 msgstr "ייבוא"
 
 #: src/remmina_main.c:1439
-#, fuzzy
 msgid "Select the connection profile."
-msgstr "יצירת פרופיל חיבור חדש"
+msgstr "בחירת פרופיל החיבור."
 
 #: src/remmina_main.c:1448
-#, fuzzy
 msgid "Remmina couldn't export."
-msgstr "תיקיית הנתונים של Remmina"
+msgstr "ל־Remmina אין איך לייצא."
 
 #: src/remmina_main.c:1457 src/remmina_file_editor.c:2153
 msgid "_Save"
@@ -1536,36 +1529,30 @@ msgid "SSH private key file"
 msgstr "קובץ מפתח SSH פרטי"
 
 #: src/remmina_file_editor.c:1640
-#, fuzzy
-#| msgid "SSH Proxy Command"
 msgid "SSH Command"
-msgstr "פקודת מתווך SSH"
+msgstr "פקודת SSH"
 
 #: src/remmina_file_editor.c:1644
-#, fuzzy
 msgid "Startup command"
-msgstr "תכנית להתחלה"
+msgstr "פקודה להתחלה"
 
 #: src/remmina_file_editor.c:1651
 msgid "Export ssh tunnel settings"
-msgstr ""
+msgstr "ייצוא הגדרות תעלת ssh"
 
 #: src/remmina_file_editor.c:1657
 msgid "Import ssh tunnel settings"
-msgstr ""
+msgstr "ייבוא הגדרות תעלת ssh"
 
 #: src/remmina_file_editor.c:1692
-#, fuzzy
 msgid "Basic"
 msgstr "בסיסי"
 
 #: src/remmina_file_editor.c:1698
-#, fuzzy
 msgid "Advanced"
 msgstr "מתקדם"
 
 #: src/remmina_file_editor.c:1709 data/ui/remmina_main.glade:542
-#, fuzzy
 msgid "Notes"
 msgstr "הערות"
 
@@ -1983,9 +1970,8 @@ msgid "Are you sure you want to close this last active connection?"
 msgstr "לסגור את החיבור הפעיל האחרון?"
 
 #: src/rcw.c:1464
-#, fuzzy
 msgid "Viewport fullscreen mode"
-msgstr "מצב מסך מלא בלתי מתואם"
+msgstr "מצב מסך מלא אשנב"
 
 #: src/rcw.c:1472 data/ui/remmina_preferences.glade:692
 msgid "Scrolled fullscreen"
@@ -2631,11 +2617,13 @@ msgid "Parameter 'custom_data' is not fully initialized!"
 msgstr "המשתנה ‚custom_data’ אינו מאותחל!"
 
 #: plugins/x2go/x2go_plugin.c:1223
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not terminate X2Go session '%s':\n"
 "%s"
-msgstr "אי אפשר להתחיל הפעלת X2Go."
+msgstr ""
+"אי אפשר להתחיל הפעלת X2Go‏ ‚%s’.\n"
+"%s"
 
 #: plugins/x2go/x2go_plugin.c:1235
 #, fuzzy
@@ -2704,16 +2692,12 @@ msgstr ""
 "‚s_username’ לא הוגדרו."
 
 #: plugins/x2go/x2go_plugin.c:1699
-#, fuzzy
-#| msgid "Password to unlock private key"
 msgid "Enter password to unlock the SSH key:"
-msgstr "סיסמה לשחרור המפתח הפרטי"
+msgstr "נא למלא סיסמה לשחרור נעילת מפתח ה־SSH:"
 
 #: plugins/x2go/x2go_plugin.c:1710
-#, fuzzy
-#| msgid "Authentication failure: %s"
 msgid "Password input cancelled. Aborting…"
-msgstr "כשל באימות: %s"
+msgstr "מילוי סיסמה בוטל. מתבצע ביטול גורף…"
 
 #: plugins/x2go/x2go_plugin.c:1741
 msgid ""
@@ -2727,10 +2711,8 @@ msgid "Enter X2Go credentials"
 msgstr "נא להקליד פרטי גישה ל־X2Go"
 
 #: plugins/x2go/x2go_plugin.c:1801
-#, fuzzy
-#| msgid "Authentication failure: %s"
 msgid "Authentication cancelled. Aborting…"
-msgstr "כשל באימות: %s"
+msgstr "האימות בוטל. מתבצע ביטול גורף…"
 
 #: plugins/x2go/x2go_plugin.c:1988
 #, fuzzy
@@ -2813,9 +2795,8 @@ msgid "DPI setting is out of bounds. Please adjust it in profile settings."
 msgstr "הגדרת נק׳ לאינטש היא מחוץ לתחום. נא להתאים אותה בהגדרות הפרופיל."
 
 #: plugins/x2go/x2go_plugin.c:2503
-#, fuzzy
 msgid "Could not start X2Go session…"
-msgstr "אי אפשר להתחיל הפעלת X2Go."
+msgstr "אי אפשר להתחיל הפעלת X2Go…"
 
 #: plugins/x2go/x2go_plugin.c:2510
 #, fuzzy
@@ -3109,10 +3090,8 @@ msgid "Disconnected from %s via RDP"
 msgstr "מנותק מ־%s דרך RDP"
 
 #: plugins/rdp/rdp_plugin.c:2556
-#, fuzzy
-#| msgid "Could not authenticate using SSH certificate. %s"
 msgid "Could not authenticate using smartcard."
-msgstr "לא ניתן להזדהות עם אישור SSH.‏ %s"
+msgstr "לא ניתן להזדהות עם כרטיס חכם."
 
 #: plugins/rdp/rdp_plugin.c:2566
 #, c-format
@@ -4594,23 +4573,6 @@ msgid "Please press the new key…"
 msgstr "נא ללחוץ על המקש החדש…"
 
 #: data/ui/remmina_info.glade:90
-#, fuzzy
-#| msgid ""
-#| "<big><b>The news are turned off</b></big>\n"
-#| "\n"
-#| "<span>\n"
-#| "Turning on news means the program connects to a Remmina server to "
-#| "download the release notes.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "Version checking can only be activated at compile time.\n"
-#| "</span>\n"
-#| "\n"
-#| "<span>\n"
-#| "<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
-#| "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
-#| "</span>"
 msgid ""
 "<big><b>The news failed to load</b></big>\n"
 "\n"
@@ -4619,20 +4581,11 @@ msgid ""
 "release notes\"><i>Visit the website to read the release notes</i></a>.\n"
 "</span>"
 msgstr ""
-"<big><b>החדשות כבויות</b></big>\n"
+"<big><b>טעינת החדשות נכשלה</b></big>\n"
 "\n"
 "<span>\n"
-"הפעלת החדשות גוררת התחברות של התכנית לשרתי Remmina כדי להוריד את הערות "
-"הגרסה.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"ניתן להפעיל בדיקת גרסאות רק בזמן ההידור.\n"
-"</span>\n"
-"\n"
-"<span>\n"
-"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"הערות הגרסה "
-"של Remmina\">ניתן לבקר באתר כדי לקרוא את הערות הגרסה</a>.\n"
+"<a href=\"https://gitlab.com/Remmina/Remmina/-/tags/\" title=\"Remmina "
+"release notes\"><i>אפשר לבקר באתר כדי לקרוא את הערות ההוצאה לאור</i></a>.\n"
 "</span>"
 
 #: data/ui/remmina_about.glade:32 data/ui/remmina_main.glade:429
@@ -4781,7 +4734,6 @@ msgid "Screenshot filenames"
 msgstr "שמות קובצי צילומי המסך"
 
 #: data/ui/remmina_preferences.glade:282
-#, fuzzy
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4789,7 +4741,7 @@ msgid ""
 msgstr ""
 "%p שם הפרופיל\n"
 "%h שם השרת/כתובת IP\n"
-"%Y שנה, %m חודש, %d יום, %H שעות, %M דקות, %S שניות (אזור זמן UTC)\n"
+"%Y שנה, %m חודש, %d יום, %H שעות, %M דקות, %S שניות (אזור זמן UTC)"
 
 #: data/ui/remmina_preferences.glade:300
 msgid ""
@@ -4832,7 +4784,6 @@ msgstr "תבנית לשמות קובצי פרופילים"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:381
-#, fuzzy
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4841,10 +4792,8 @@ msgid ""
 msgstr ""
 "‎%G שם קבוצה (לוכסן יומר למינוס - אוטומטית)\n"
 "‎%P שם הפרוטוקול\n"
-"‎%N שם ההתחברות\n"
-"‎%h שם מארח/IP\n"
-"\n"
-"\n"
+"‎%N שם החיבור\n"
+"‎%h שם מארח/IP "
 
 #: data/ui/remmina_preferences.glade:400
 #, fuzzy
@@ -5516,10 +5465,8 @@ msgid "Submit"
 msgstr ""
 
 #: data/ui/remmina_bug_report.glade:114
-#, fuzzy
-#| msgid "Username"
 msgid "Name/Username:"
-msgstr "שם משתמש"
+msgstr "שם/שם משתמש:"
 
 #: data/ui/remmina_bug_report.glade:141
 msgid "E-mail:"
