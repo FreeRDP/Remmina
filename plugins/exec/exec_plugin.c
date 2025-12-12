@@ -230,7 +230,6 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 			default:
 				gtk_widget_destroy(GTK_WIDGET(dialog));
 				return FALSE;
-				break;
 		}
 		gtk_widget_destroy(GTK_WIDGET(dialog));
 		REMMINA_PLUGIN_DEBUG("[%s] Run Sync", PLUGIN_NAME);

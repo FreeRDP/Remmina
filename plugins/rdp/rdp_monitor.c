@@ -194,8 +194,13 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	}
 #if FREERDP_CHECK_VERSION(3, 11, 0)
 	freerdp_settings_set_monitor_def_array_sorted(settings, rdp_monitors, index);
+	free(rdp_monitors);
+#else
+    freerdp_settings_set_pointer(settings, FreeRDP_MonitorDefArray, rdp_monitors);
 #endif
 	freerdp_settings_set_uint32(settings, FreeRDP_MonitorCount, index);
+	rdpMonitor* srdp_monitors = freerdp_settings_get_pointer_writable(settings, FreeRDP_MonitorDefArray);
+	
 	/* Subtract monitor shift from monitor variables for server-side use.
 	 * We maintain monitor shift value as Window requires the primary monitor to have a
 	 * coordinate of 0,0 In some X configurations, no monitor may have a coordinate of 0,0. This
@@ -205,7 +210,7 @@ void remmina_rdp_monitor_get (rfContext *rfi, gchar **monitorids, guint32 *maxwi
 	 */
 	for (gint i = 0; i < freerdp_settings_get_uint32(settings, FreeRDP_MonitorCount); i++)
 	{
-		rdpMonitor* current = &rdp_monitors[i];
+		rdpMonitor* current = &srdp_monitors[i];
 		current->x =
 			current->x - freerdp_settings_get_uint32(settings, FreeRDP_MonitorLocalShiftX);
 		REMMINA_PLUGIN_DEBUG("Monitor n %d calculated x: %d", i, current->x);

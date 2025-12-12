@@ -79,13 +79,14 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 	if (remmina_ext_exec_type != NULL && (
 				strcmp(remmina_ext_exec_type, pre) |
 				strcmp(remmina_ext_exec_type, post) )) {
-		cmd = g_strdup(remmina_file_get_string(remminafile, remmina_ext_exec_type));
-		g_debug("[%s] %s", remmina_ext_exec_type, cmd);
+		const gchar* ccmd = remmina_file_get_string(remminafile, remmina_ext_exec_type);
+		g_debug("[%s] %s", remmina_ext_exec_type, ccmd);
 	} else
 		return FALSE;
 
 	cmd = remmina_file_format_properties(remminafile, cmd);
 	if (cmd != NULL && *cmd != 0) {
+        g_free(cmd);
 		cmd = remmina_utils_get_flatpak_command(cmd);
 	}
 	g_debug("[%s] updated to: %s", remmina_ext_exec_type, cmd);
