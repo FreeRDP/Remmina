@@ -46,7 +46,7 @@
 static RemminaPasswdDialog *remmina_passwd_dialog;
 #define GET_OBJ(object_name) gtk_builder_get_object(remmina_passwd_dialog->builder, object_name)
 
-static void remmina_passwd_repwd_on_changed(GtkEditable *editable, RemminaPasswdDialog *dialog)
+void remmina_passwd_repwd_on_changed(GtkEditable *editable, RemminaPasswdDialog *dialog)
 {
 	TRACE_CALL(__func__);
 	GtkCssProvider *provider;

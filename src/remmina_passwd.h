@@ -54,5 +54,6 @@ typedef struct _RemminaPasswdDialog {
 G_BEGIN_DECLS
 
 gboolean remmina_passwd(GtkWindow *parent, gchar **password_setting);
+void remmina_passwd_repwd_on_changed(GtkEditable *editable, RemminaPasswdDialog *dialog);
 
 G_END_DECLS

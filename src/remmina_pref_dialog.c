@@ -68,7 +68,7 @@ static GActionEntry pref_actions[] = {
 
 
 /* Show a key chooser dialog */
-static void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
+void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	RemminaKeyChooserArguments *arguments;
@@ -85,7 +85,7 @@ static void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_
 }
 
 /* Show the available resolutions list dialog */
-static void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user_data)
+void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GtkDialog *dialog = remmina_string_list_new(FALSE, NULL);
@@ -100,7 +100,7 @@ static void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpoint
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
-static void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
+void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GtkDialog *dialog;
@@ -114,7 +114,7 @@ static void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_da
 }
 
 /* Configure custom keystrokes to send to the plugins */
-static void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_data)
+void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GtkDialog *dialog = remmina_string_list_new(TRUE, STRING_DELIMITOR2);
@@ -171,13 +171,13 @@ void remmina_pref_dialog_on_action_close(GSimpleAction *action, GVariant *param,
 	remmina_main_reload_preferences();
 }
 
-static void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog)
+void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
 	TRACE_CALL(__func__);
 	gtk_widget_destroy(GTK_WIDGET(remmina_pref_dialog->dialog));
 }
 
-static void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
+void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	gboolean b;
@@ -388,13 +388,13 @@ static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *
 	return FALSE;
 }
 
-static void remmina_pref_dialog_vte_font_on_toggled(GtkSwitch *widget, RemminaPrefDialog *dialog)
+void remmina_pref_dialog_vte_font_on_toggled(GtkSwitch *widget, RemminaPrefDialog *dialog)
 {
 	TRACE_CALL(__func__);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->fontbutton_terminal_font), !gtk_switch_get_active(widget));
 }
 
-static void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog)
+void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
 	TRACE_CALL(__func__);
 	gboolean b;
@@ -704,7 +704,7 @@ static void remmina_pref_dialog_init(gboolean load_plugins)
 
 /* Re-initialize the remmina_pref_init to reload the color scheme when a color scheme
  * file is selected*/
-static void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data)
+void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	gchar *sourcepath;
@@ -740,8 +740,7 @@ static void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer us
 	g_object_unref(source);
 }
 
-
-static void remmina_pref_on_color_scheme_removed(GtkWidget *widget, gpointer user_data)
+void remmina_pref_on_color_scheme_removed(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	gchar *remmina_dir;

@@ -113,6 +113,7 @@ void remmina_main_add_network_status(gchar* key, gchar* value);
 
 void remmina_main_destroy(void);
 void remmina_main_on_destroy_event(void);
+gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpointer user_data);
 void remmina_main_save_before_destroy(void);
 
 void remmina_main_show_dialog(GtkMessageType msg, GtkButtonsType buttons, const gchar* message);
@@ -145,5 +146,20 @@ void remmina_main_on_action_collapse(GSimpleAction *action, GVariant *param, gpo
 void remmina_main_on_action_search_toggle(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_toggle_password_view(GtkWidget *widget, gpointer data);
 void remmina_main_reload_preferences(void);
+
+void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data);
+void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data);
+void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data);
+void remmina_main_on_view_toggle(void);
+void remmina_main_on_date_column_sort_clicked(void);
+void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data);
+gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data);
+gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, gpointer user_data);
+void remmina_main_load_files_cb(GtkEntry *entry, char *string, gpointer user_data);
+gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_data);
+gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data);
+void remmina_main_on_show(GtkWidget *w, gpointer user_data);
+void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y,
+					GtkSelectionData *data, guint info, guint time, gpointer user_data);
 
 G_END_DECLS

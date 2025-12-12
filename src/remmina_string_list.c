@@ -58,7 +58,7 @@ static void remmina_string_list_update_buttons_state(void)
 }
 
 /* Check the text inserted in the list */
-static void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *path_string, const gchar *new_text)
+void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *path_string, const gchar *new_text)
 {
 	TRACE_CALL(__func__);
 	gchar *text;
@@ -101,7 +101,7 @@ static void remmina_string_list_move_iter(GtkTreeIter *from, GtkTreeIter *to)
 }
 
 /* Move down the selected TreeRow */
-static void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_data)
+void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GtkTreeIter iter;
@@ -116,7 +116,7 @@ static void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_
 }
 
 /* Move up the selected TreeRow */
-static void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data)
+void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GtkTreeIter iter;
@@ -136,7 +136,7 @@ static void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_da
 }
 
 /* Add a new TreeRow to the list */
-static void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
+void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GtkTreeIter iter;
@@ -155,7 +155,7 @@ static void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_d
 }
 
 /* Remove the selected TreeRow from the list */
-static void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data)
+void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GtkTreeIter iter;

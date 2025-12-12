@@ -80,5 +80,10 @@ gchar *remmina_string_list_get_text(void);
 void remmina_string_list_set_titles(gchar *title1, gchar *title2);
 /* Set a function that will be used to validate the new rows */
 void remmina_string_list_set_validation_func(RemminaStringListValidationFunc func);
+void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_data);
+void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data);
+void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data);
+void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data);
+void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *path_string, const gchar *new_text);
 
 G_END_DECLS
