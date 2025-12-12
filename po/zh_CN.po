@@ -13,14 +13,15 @@
 # Eric <hamburger1024@mailbox.org>, 2022.
 # Eric <hamburger1024@duck.com>, 2022.
 # Eric <hamburger2048@users.noreply.hosted.weblate.org>, 2023.
-# 大王叫我来巡山 <hamburger2048@users.noreply.hosted.weblate.org>, 2024.
+# 大王叫我来巡山 <hamburger2048@users.noreply.hosted.weblate.org>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2024-09-10 04:09+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
+"PO-Revision-Date: 2025-12-12 01:00+0000\n"
+"Last-Translator: 大王叫我来巡山 "
+"<hamburger2048@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/remmina/remmina/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_icon.c:143
@@ -221,7 +222,7 @@ msgstr "关闭"
 
 #: src/remmina_message_panel.c:255
 msgid "Do you accept?"
-msgstr ""
+msgstr "接受吗？"
 
 #: src/remmina_message_panel.c:261 src/remmina_message_panel.c:270
 msgid "Yes"
@@ -372,10 +373,8 @@ msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
 #: src/remmina_ssh_plugin.c:1501
-#, fuzzy
-#| msgid "Keyboard type (auto)"
 msgid "Keyboard Interactive"
-msgstr "键盘类型 (自动)"
+msgstr "键盘交互"
 
 #: src/remmina_ssh_plugin.c:1576 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -544,21 +543,19 @@ msgstr "严格的主机密钥检查"
 
 #: src/remmina_ssh_plugin.c:1657
 msgid "Copy text on selection"
-msgstr ""
+msgstr "复制选中文本"
 
 #: src/remmina_ssh_plugin.c:1658
 msgid "Allow keys using ssh-rsa (insecure)"
-msgstr ""
+msgstr "允许密钥使用 ssh-rsa （不安全）"
 
 #: src/remmina_ssh_plugin.c:1678
 msgid "SSH - Secure Shell"
 msgstr "SSH - 安全 Shell 连接"
 
 #: src/remmina_ssh_plugin.c:1708
-#, fuzzy
-#| msgid "Terminal"
 msgid "Local Terminal"
-msgstr "终端"
+msgstr "本地终端"
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
@@ -1200,10 +1197,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "确认要删除 “%s”吗？"
 
 #: src/remmina_main.c:1088
-#, fuzzy
-#| msgid "Failed to delete files!"
 msgid "Failed to load files!"
-msgstr "删除文件失败！"
+msgstr "加载文件失败！"
 
 #: src/remmina_main.c:1159
 msgid "Are you sure you want to delete the selected files?"
@@ -1228,7 +1223,7 @@ msgstr "RDP 文件"
 
 #: src/remmina_main.c:1390
 msgid "Virt-Viewer Files"
-msgstr ""
+msgstr "Virt-Viewer 文件"
 
 #: src/remmina_main.c:1395
 msgid "All Files"
@@ -1361,27 +1356,23 @@ msgstr "辅助模式"
 
 #: src/remmina_file_editor.c:957
 msgid "Save to..."
-msgstr ""
+msgstr "保存到…"
 
 #: src/remmina_file_editor.c:958
-#, fuzzy
-#| msgid "_Save"
 msgid "Save"
-msgstr "保存(_S)"
+msgstr "保存"
 
 #: src/remmina_file_editor.c:961
 msgid "Open ssh tunnel config"
-msgstr ""
+msgstr "打开 ssh 隧道配置"
 
 #: src/remmina_file_editor.c:970
-#, fuzzy
-#| msgid "Remmina Kiosk"
 msgid "Remmina Files"
-msgstr "Remmina 终端"
+msgstr "Remmina 文件"
 
 #: src/remmina_file_editor.c:973
 msgid "ssh_export.remssh"
-msgstr ""
+msgstr "ssh_export.remssh"
 
 #: src/remmina_file_editor.c:1288
 msgid "Keyboard mapping"
@@ -1454,7 +1445,7 @@ msgstr "相同主机上的 %i 端口"
 
 #: src/remmina_file_editor.c:1527
 msgid "Command arguments"
-msgstr ""
+msgstr "命令变量"
 
 #: src/remmina_file_editor.c:1528
 msgid ""
@@ -1464,6 +1455,11 @@ msgid ""
 "Example: <-l username -p port>\n"
 "<-l user localhost> would not set localhost as there is no flag"
 msgstr ""
+"覆盖所有其他选项\n"
+"并非所有选项都支持\n"
+"仅接受标志-参数对\n"
+"示例：<-l username -p port>\n"
+"<-l user localhost> 不会设置 localhost，因为没有标志"
 
 #: src/remmina_file_editor.c:1559 plugins/rdp/rdp_plugin.c:3286
 msgid "Start-up path"
@@ -1478,24 +1474,20 @@ msgid "SSH private key file"
 msgstr "SSH 私钥文件"
 
 #: src/remmina_file_editor.c:1640
-#, fuzzy
-#| msgid "SSH Proxy Command"
 msgid "SSH Command"
-msgstr "SSH 代理命令"
+msgstr "SSH 命令"
 
 #: src/remmina_file_editor.c:1644
-#, fuzzy
-#| msgid "Startup program"
 msgid "Startup command"
-msgstr "启动程序"
+msgstr "启动命令"
 
 #: src/remmina_file_editor.c:1651
 msgid "Export ssh tunnel settings"
-msgstr ""
+msgstr "导出 ssh 隧道设置"
 
 #: src/remmina_file_editor.c:1657
 msgid "Import ssh tunnel settings"
-msgstr ""
+msgstr "导入 ssh 隧道设置"
 
 #: src/remmina_file_editor.c:1692
 msgid "Basic"
@@ -1589,17 +1581,13 @@ msgstr "显示关于对话框"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
-#, fuzzy
-#| msgid ""
-#| "Connect either to a desktop described in a file (.remmina or a filetype "
-#| "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH, HTTP, HTTPS or "
 "SPICE)"
 msgstr ""
 "连接到文件(.remmina或插件支持的文件类型)描述的桌面，或支持的URI (RDP、VNC、"
-"SSH或SPICE)"
+"SSH、HTTP、HTTPS 或 SPICE)"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
@@ -1739,39 +1727,7 @@ msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- 或者 协议://用户名:加密密码@主机:端口"
 
 #: src/remmina.c:448
-#, fuzzy, c-format
-#| msgid ""
-#| "Examples:\n"
-#| "To connect using an existing connection profile, use:\n"
-#| "\n"
-#| "\tremmina -c FILE.remmina\n"
-#| "\n"
-#| "To quick connect using a URI:\n"
-#| "\n"
-#| "\tremmina -c rdp://username@server\n"
-#| "\tremmina -c rdp://domain\\\\username@server\n"
-#| "\tremmina -c vnc://username@server\n"
-#| "\tremmina -c vnc://server?VncUsername=username\n"
-#| "\tremmina -c ssh://user@server\n"
-#| "\tremmina -c spice://server\n"
-#| "\n"
-#| "To quick connect using a URI along with an encrypted password:\n"
-#| "\n"
-#| "\tremmina -c rdp://username:encrypted-password@server\n"
-#| "\tremmina -c vnc://username:encrypted-password@server\n"
-#| "\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
-#| "password\n"
-#| "\n"
-#| "To encrypt a password for use with a URI:\n"
-#| "\n"
-#| "\tremmina --encrypt-password\n"
-#| "\n"
-#| "To update username and password and set a different resolution mode of a "
-#| "Remmina connection profile, use:\n"
-#| "\n"
-#| "\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/"
-#| "FOO.remmina --set-option username --set-option resolution_mode=2 --set-"
-#| "option password\n"
+#, c-format
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -1811,12 +1767,12 @@ msgid ""
 "FOO.remmina --set-option username --set-option resolution_mode=2 --set-"
 "option password\n"
 msgstr ""
-"示例:\n"
-"要使用现有的连接配置文件进行连接，请使用:\n"
+"示例：\n"
+"用现有连接配置文件进行连接，使用：\n"
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
-"快速连接使用 URI:\n"
+"用 URI 快速连接：\n"
 "\n"
 "\tremmina -c rdp://username@server\n"
 "\tremmina -c rdp://domain\\\\username@server\n"
@@ -1824,23 +1780,29 @@ msgstr ""
 "\tremmina -c vnc://server?VncUsername=username\n"
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
+"\tremmina -c https://example.com\n"
 "\n"
-"使用 URI 和加密密码快速连接 :\n"
+"快速连接并命名连接\n"
+"\n"
+"\tremmina -c ssh://user@server%connection_name\n"
+"\n"
+"用 URI 及加密密码快速连接：\n"
 "\n"
 "\tremmina -c rdp://username:encrypted-password@server\n"
+"\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
 "\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
 "password\n"
 "\n"
-"加密用于 URI 的密码 :\n"
+"对密码加密用于 URI:\n"
 "\n"
 "\tremmina --encrypt-password\n"
 "\n"
-"要更新用户名和密码并设置 Remmina 连接配置文件的不同分辨率模式，请使用 :\n"
+"更新 Remmina 连接配置文件的用户名和密码，并设置不同的分辨率模式，使用：\n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/"
-"FOO.remmina --set-option username --set-option resolution_mode=2 --set-"
-"option password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
@@ -2026,8 +1988,6 @@ msgid "Toggle scaled mode"
 msgstr "切换缩放模式"
 
 #: src/rcw.c:2586
-#, fuzzy
-#| msgid "View-only mode"
 msgid "View only mode"
 msgstr "仅查看模式"
 
@@ -2061,10 +2021,8 @@ msgid "Minimize window"
 msgstr "最小化窗口"
 
 #: src/rcw.c:2701
-#, fuzzy
-#| msgid "Connect"
 msgid "Reconnect"
-msgstr "连接"
+msgstr "重连"
 
 #: src/rcw.c:2709 data/ui/remmina_preferences.glade:1410
 msgid "Disconnect"
@@ -2246,10 +2204,8 @@ msgid "Share folder"
 msgstr "共享目录"
 
 #: plugins/spice/spice_plugin.c:727
-#, fuzzy
-#| msgid "Proxy URL"
 msgid "Proxy"
-msgstr "代理网址"
+msgstr "代理"
 
 #: plugins/spice/spice_plugin.c:728 plugins/rdp/rdp_plugin.c:3290
 msgid "USB device redirection"
@@ -2304,13 +2260,11 @@ msgstr "SPICE - 独立计算环境的简单协议"
 
 #: plugins/spice/spice_plugin.c:803
 msgid "SPICE vv file"
-msgstr ""
+msgstr "SPICE vv 文件"
 
 #: plugins/spice/spice_plugin.c:895
-#, fuzzy
-#| msgid "Export connection in Windows .rdp file format"
 msgid "Export connection in virt-viewer .vv file format"
-msgstr "使用 Windows .rdp 文件格式导出连接"
+msgstr "使用 virt-viewer .vv 文件格式导出连接"
 
 #: plugins/x2go/x2go_plugin.c:71
 #, c-format
@@ -2492,22 +2446,17 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:948
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i"
 msgstr "尝试启动 PyHoca-CLI 时发生了一个未知的错误。退出代码：%i"
 
 #: plugins/x2go/x2go_plugin.c:955
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
-#| "Error: '%s'"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
-msgstr "尝试启动PyHoca-CLI时发生了一个未知的错误。退出代码：%i。错误：'%s'"
+msgstr "启动 PyHoca-CLI 时发生了一个未知的错误。退出代码：%i。错误：'%s'"
 
 #: plugins/x2go/x2go_plugin.c:999
 msgid "Neither the 'path' nor 'dialog' parameters are initialized."
@@ -2536,8 +2485,6 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:1235
-#, fuzzy
-#| msgid "An error occured."
 msgid "An error occurred."
 msgstr "发生了一个错误。"
 
@@ -2943,10 +2890,8 @@ msgid "Disconnected from %s via RDP"
 msgstr "通过 RDP 断开和 %s 的连接"
 
 #: plugins/rdp/rdp_plugin.c:2556
-#, fuzzy
-#| msgid "Could not authenticate using SSH certificate. %s"
 msgid "Could not authenticate using smartcard."
-msgstr "无法使用 SSH 证书进行身份验证。%s"
+msgstr "无法使用 smartcard 进行身份认证。"
 
 #: plugins/rdp/rdp_plugin.c:2566
 #, c-format
@@ -3012,10 +2957,9 @@ msgstr ""
 "用户必须在连接前更改密码。"
 
 #: plugins/rdp/rdp_plugin.c:2614
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server “%s”."
+#, c-format
 msgid "Failed to connect to the RDP server “%s”."
-msgstr "无法连接到 RDP 服务器 “%s”。"
+msgstr "未能连接到 RDP 服务器 “%s”。"
 
 #: plugins/rdp/rdp_plugin.c:2617
 #, c-format
@@ -3207,18 +3151,16 @@ msgid "Every 10 min"
 msgstr "每隔 10 分钟"
 
 #: plugins/rdp/rdp_plugin.c:3114
-#, fuzzy
-#| msgid "Every 3 min"
 msgid "Every 30 sec"
-msgstr "每隔 3 分钟"
+msgstr "每隔 30 秒"
 
 #: plugins/rdp/rdp_plugin.c:3124
 msgid "ALT_L + Tab"
-msgstr ""
+msgstr "ALT_L + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3125
 msgid "Win + Tab"
-msgstr ""
+msgstr "Win + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3140
 msgid "0 — Windows 7 compatible"
@@ -3390,16 +3332,12 @@ msgid "Restricted admin mode password hash"
 msgstr "受限管理员模式的密码哈希"
 
 #: plugins/rdp/rdp_plugin.c:3243
-#, fuzzy
-#| msgid "Share a smart card"
 msgid "Use a smartcard for logon"
-msgstr "共享智能卡"
+msgstr "使用智能卡登录"
 
 #: plugins/rdp/rdp_plugin.c:3244
-#, fuzzy
-#| msgid "Enter RDP SmartCard PIN"
 msgid "Smartcard PIN"
-msgstr "输入 RDP 智能卡 PIN 码"
+msgstr "智能卡 PIN 码"
 
 #: plugins/rdp/rdp_plugin.c:3245
 msgid "Left-handed mouse support"
@@ -3420,7 +3358,7 @@ msgstr "启用多显视器"
 
 #: plugins/rdp/rdp_plugin.c:3248
 msgid "Force multi monitor when toggled"
-msgstr ""
+msgstr "切换时强制多显示器"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "Span screen over multiple monitors"
@@ -3599,16 +3537,12 @@ msgid "Move mouse when connection is idle"
 msgstr "连接空闲时移动鼠标"
 
 #: plugins/rdp/rdp_plugin.c:3302
-#, fuzzy
-#| msgid "Move mouse when connection is idle"
 msgid "Press keys when connection is idle"
-msgstr "连接空闲时移动鼠标"
+msgstr "连接空闲时按键"
 
 #: plugins/rdp/rdp_plugin.c:3303
-#, fuzzy
-#| msgid "Desktop orientation"
 msgid "Keys combination"
-msgstr "桌面方向"
+msgstr "组合键"
 
 #: plugins/rdp/rdp_plugin.c:3305
 msgid "Attempt to connect in assistance mode"
@@ -3619,10 +3553,8 @@ msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "优先使用 IPv6 AAAA 记录而不是 IPv4 A 记录"
 
 #: plugins/rdp/rdp_plugin.c:3308
-#, fuzzy
-#| msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgid "Force preferred IPv4 A record or IPv6 AAAA record"
-msgstr "优先使用 IPv6 AAAA 记录而不是 IPv4 A 记录"
+msgstr "强制优先使用 IPv4 A 记录或 IPv6 AAAA 记录"
 
 #: plugins/rdp/rdp_plugin.c:3310
 msgid "Share printers"
@@ -3710,7 +3642,7 @@ msgstr "即使不可见时也更新帧缓存"
 
 #: plugins/rdp/rdp_plugin.c:3334
 msgid "Allow sending empty password"
-msgstr ""
+msgstr "允许发送空密码"
 
 #: plugins/rdp/rdp_plugin.c:3360
 msgid "RDP - Remote Desktop Protocol"
@@ -3832,18 +3764,16 @@ msgid "General settings"
 msgstr "常规设置"
 
 #: plugins/rdp/rdp_settings.c:723
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auth settings"
-msgstr "编辑设置"
+msgstr "身份认证设置"
 
 #: plugins/rdp/rdp_settings.c:730
 msgid "FreeRDP auth-pkg-list"
-msgstr ""
+msgstr "FreeRDP auth-pkg-list"
 
 #: plugins/rdp/rdp_settings.c:743
 msgid "Authentication package filter(comma-separated list, use '!' to exclude)"
-msgstr ""
+msgstr "身份认证包过滤器（英文逗号分隔的列表，使用“!”排除）"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
@@ -4215,6 +4145,8 @@ msgid ""
 "  • This timeout controls how long the client will try to contact the server "
 "before dropping the connection"
 msgstr ""
+"VNC 超时秒数\n"
+"  • 该超时空置客户端在丢弃连接前会尝试联系服务器多长时间"
 
 #: plugins/vnc/vnc_plugin.c:2149
 msgid "Repeater"
@@ -4229,14 +4161,12 @@ msgid "Override pre-set VNC encodings"
 msgstr "绕过预设 VNC 编码"
 
 #: plugins/vnc/vnc_plugin.c:2182
-#, fuzzy
-#| msgid "Dynamic resolution enforced aspec ratio"
 msgid "Dynamic resolution enforced aspect ratio"
 msgstr "动态分辨率强制使用长宽比"
 
 #: plugins/vnc/vnc_plugin.c:2184
 msgid "TCP_USER_TIMEOUT length (seconds)"
-msgstr ""
+msgstr "TCP_USER_TIMEOUT 秒数"
 
 #: plugins/vnc/vnc_plugin.c:2186
 msgid "Force tight encoding"
@@ -4259,10 +4189,8 @@ msgid "Turn off encryption"
 msgstr "关闭 TLS 加密"
 
 #: plugins/vnc/vnc_plugin.c:2195
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Close on connection failure"
-msgstr "创建一个新的连接配置文件"
+msgstr "连接失败时关闭"
 
 #: plugins/vnc/vnc_plugin.c:2207
 msgid "Open Chat…"
@@ -4434,11 +4362,6 @@ msgid "Screenshot filenames"
 msgstr "截屏文件名"
 
 #: data/ui/remmina_preferences.glade:282
-#, fuzzy
-#| msgid ""
-#| "%p Profile name\n"
-#| "%h Server name/IP\n"
-#| "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4446,7 +4369,7 @@ msgid ""
 msgstr ""
 "%p 配置文件名\n"
 "%h 服务器名/IP\n"
-"%Y 年, %m 月, %d 日, %H 时, %M 分, %S 秒（UTC 时间）\n"
+"%Y 年, %m 月, %d 日, %H 时, %M 分, %S 秒（UTC 时间）"
 
 #: data/ui/remmina_preferences.glade:300
 msgid ""
@@ -4482,14 +4405,6 @@ msgstr "配置文件名模板"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:381
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4499,9 +4414,7 @@ msgstr ""
 "%G 组名（斜杠 \\/ 将转换为 -）\n"
 "%P 协议名称\n"
 "%N 连接名称\n"
-"%h 主机名/ IP\n"
-"\n"
-"\n"
+"%h 主机名/ IP "
 
 #: data/ui/remmina_preferences.glade:400
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -4596,17 +4509,15 @@ msgstr "隐藏"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Minimal"
-msgstr ""
+msgstr "最小"
 
 #: data/ui/remmina_preferences.glade:777
 msgid "Fullscreen toolbar visibility"
 msgstr "全屏工具栏可见"
 
 #: data/ui/remmina_preferences.glade:792
-#, fuzzy
-#| msgid "Fullscreen toolbar visibility"
 msgid "Fullscreen toolbar delay (in seconds)"
-msgstr "全屏工具栏可见"
+msgstr "全屏工具栏延迟秒数"
 
 #: data/ui/remmina_preferences.glade:816
 msgid "Hide the search bar shown in the main window"
@@ -4632,19 +4543,19 @@ msgstr "添加一列，显示与连接关联的任何注释。"
 
 #: data/ui/remmina_preferences.glade:866
 msgid "Display message prompts on the left side of the screen"
-msgstr ""
+msgstr "在屏幕左侧显示消息提示"
 
 #: data/ui/remmina_preferences.glade:883
 msgid "If supported, launch in fullscreen by default"
-msgstr ""
+msgstr "如支持，默认全屏启动"
 
 #: data/ui/remmina_preferences.glade:900
 msgid "If supported, launch with dynamic resolution by default"
-msgstr ""
+msgstr "如支持，默认以动态分辨率启动"
 
 #: data/ui/remmina_preferences.glade:917
 msgid "Multimonitor: performs adjustments on the toolbar position"
-msgstr ""
+msgstr "多显示器：调整工具栏位置"
 
 #: data/ui/remmina_preferences.glade:941
 msgid "“Grab all keyboard events” status colour"
@@ -4952,16 +4863,12 @@ msgid "Pick a terminal colouring file"
 msgstr "选择一个终端配色文件"
 
 #: data/ui/remmina_preferences.glade:2382
-#, fuzzy
-#| msgid "Colour theme"
 msgid "Remove colour theme"
-msgstr "配色主题"
+msgstr "删除配色主题"
 
 #: data/ui/remmina_preferences.glade:2396
-#, fuzzy
-#| msgid "_Remove"
 msgid "Remove"
-msgstr "移除(_R)"
+msgstr "删除"
 
 #: data/ui/remmina_preferences.glade:2411
 msgid "Bright colours"
