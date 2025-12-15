@@ -21,13 +21,14 @@
 # Сергей <asvmail.as@gmail.com>, 2022, 2023, 2024.
 # AHOHNMYC <lqwh2h2cwa@protonmail.com>, 2022.
 # Dmitriy Kulikov <kulikov@dima.perm.ru>, 2023.
+# korn3r <korn3r@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2024-03-01 12:00+0000\n"
-"Last-Translator: Сергей <asvmail.as@gmail.com>\n"
+"PO-Revision-Date: 2025-12-15 15:01+0000\n"
+"Last-Translator: korn3r <korn3r@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
 "Language: ru\n"
@@ -36,7 +37,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.15.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Poedit-Flags-xgettext: --add-comments\n"
 
@@ -239,7 +240,7 @@ msgstr "Закрыть"
 
 #: src/remmina_message_panel.c:255
 msgid "Do you accept?"
-msgstr ""
+msgstr "Вы принимаете?"
 
 #: src/remmina_message_panel.c:261 src/remmina_message_panel.c:270
 msgid "Yes"
@@ -390,10 +391,8 @@ msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
 #: src/remmina_ssh_plugin.c:1501
-#, fuzzy
-#| msgid "Keyboard type (auto)"
 msgid "Keyboard Interactive"
-msgstr "Тип клавиатуры (авто)"
+msgstr "Интерактивный ввод с клавиатуры"
 
 #: src/remmina_ssh_plugin.c:1576 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -564,21 +563,19 @@ msgstr "Строгая проверка ключей хоста"
 
 #: src/remmina_ssh_plugin.c:1657
 msgid "Copy text on selection"
-msgstr ""
+msgstr "Копировать выделенный текст"
 
 #: src/remmina_ssh_plugin.c:1658
 msgid "Allow keys using ssh-rsa (insecure)"
-msgstr ""
+msgstr "Разрешить ключи ssh-rsa (небезопасно)"
 
 #: src/remmina_ssh_plugin.c:1678
 msgid "SSH - Secure Shell"
 msgstr "SSH - безопасная оболочка"
 
 #: src/remmina_ssh_plugin.c:1708
-#, fuzzy
-#| msgid "Terminal"
 msgid "Local Terminal"
-msgstr "Терминал"
+msgstr "Локальный терминал"
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
@@ -1233,10 +1230,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Вы действительно хотите удалить \"%s\"?"
 
 #: src/remmina_main.c:1088
-#, fuzzy
-#| msgid "Failed to delete files!"
 msgid "Failed to load files!"
-msgstr "Не удалось удалить файлы!"
+msgstr "Не удалось загрузить файлы!"
 
 #: src/remmina_main.c:1159
 msgid "Are you sure you want to delete the selected files?"
@@ -1261,7 +1256,7 @@ msgstr "Файлы RDP"
 
 #: src/remmina_main.c:1390
 msgid "Virt-Viewer Files"
-msgstr ""
+msgstr "Файлы Virt-Viewer"
 
 #: src/remmina_main.c:1395
 msgid "All Files"
@@ -1395,27 +1390,23 @@ msgstr "Режим ассистента"
 
 #: src/remmina_file_editor.c:957
 msgid "Save to..."
-msgstr ""
+msgstr "Сохранить в..."
 
 #: src/remmina_file_editor.c:958
-#, fuzzy
-#| msgid "_Save"
 msgid "Save"
-msgstr "_Сохранить"
+msgstr "Сохранить"
 
 #: src/remmina_file_editor.c:961
 msgid "Open ssh tunnel config"
-msgstr ""
+msgstr "Открыть конфигурацию туннеля ssh"
 
 #: src/remmina_file_editor.c:970
-#, fuzzy
-#| msgid "Remmina Kiosk"
 msgid "Remmina Files"
-msgstr "Киоск Remmina"
+msgstr "Файлы Remmina"
 
 #: src/remmina_file_editor.c:973
 msgid "ssh_export.remssh"
-msgstr ""
+msgstr "ssh_export.remssh"
 
 #: src/remmina_file_editor.c:1288
 msgid "Keyboard mapping"
@@ -1488,7 +1479,7 @@ msgstr "Этот же сервер на порту %i"
 
 #: src/remmina_file_editor.c:1527
 msgid "Command arguments"
-msgstr ""
+msgstr "Аргументы команды"
 
 #: src/remmina_file_editor.c:1528
 msgid ""
@@ -1498,6 +1489,12 @@ msgid ""
 "Example: <-l username -p port>\n"
 "<-l user localhost> would not set localhost as there is no flag"
 msgstr ""
+"Перезаписывает все остальные параметры\n"
+"Могут поддерживаться не все параметры\n"
+"Принимаются только пары пары флаг-аргумент\n"
+"Пример: <-l имяпользователя -p порт>\n"
+"<-l пользователь localhost> не задаст localhost т.к. для него отсутствует "
+"флаг"
 
 #: src/remmina_file_editor.c:1559 plugins/rdp/rdp_plugin.c:3286
 msgid "Start-up path"
@@ -1512,24 +1509,20 @@ msgid "SSH private key file"
 msgstr "Файл закрытого ключа SSH"
 
 #: src/remmina_file_editor.c:1640
-#, fuzzy
-#| msgid "SSH Proxy Command"
 msgid "SSH Command"
-msgstr "Команда прокси SSH"
+msgstr "Команда SSH"
 
 #: src/remmina_file_editor.c:1644
-#, fuzzy
-#| msgid "Startup program"
 msgid "Startup command"
-msgstr "Стартовая программа"
+msgstr "Стартовая команда"
 
 #: src/remmina_file_editor.c:1651
 msgid "Export ssh tunnel settings"
-msgstr ""
+msgstr "Экспорт параметров туннеля ssh"
 
 #: src/remmina_file_editor.c:1657
 msgid "Import ssh tunnel settings"
-msgstr ""
+msgstr "Импорт параметров туннеля ssh"
 
 #: src/remmina_file_editor.c:1692
 msgid "Basic"
@@ -1627,17 +1620,14 @@ msgstr "Показать \"О программе\""
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
-#, fuzzy
-#| msgid ""
-#| "Connect either to a desktop described in a file (.remmina or a filetype "
-#| "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH, HTTP, HTTPS or "
 "SPICE)"
 msgstr ""
 "Подключиться к рабочему столу, описанному в файле (.remmina или тип файла, "
-"поддерживаемый модулем), или к поддерживаему URI (RDP, VNC, SSH или SPICE)"
+"поддерживаемый модулем), или к поддерживаему URI (RDP, VNC, SSH, HTTP, HTTPS "
+"или SPICE)"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
@@ -1869,6 +1859,11 @@ msgstr ""
 "\tremmina -c vnc://сервер?VncUsername=имя\n"
 "\tremmina -c ssh://пользователь@сервер\n"
 "\tremmina -c spice://сервер\n"
+"\tremmina -c https://example.com\n"
+"\n"
+"Для быстрого подключения с заданием названия подключения\n"
+"\n"
+"\tremmina -c ssh://user@server%название_подключения\n"
 "\n"
 "Для быстрого подключения с помощью URI вместе с зашифрованным паролем:\n"
 "\n"
@@ -1883,8 +1878,9 @@ msgstr ""
 "Чтобы обновить имя пользователя и пароль, а также установить другой режим "
 "разрешения профиля соединения Remmina, используйте:\n"
 "\n"
-"\techo \"имя\\naпароль\" | remmina --update-profile /ПУТЬ/ДО/ФАЙЛА.remmina --"
-"set-option имя --set-option resolution_mode=2 --set-option пароль\n"
+"\techo \"имя\\n"
+"aпароль\" | remmina --update-profile /ПУТЬ/ДО/ФАЙЛА.remmina --set-option "
+"имя --set-option resolution_mode=2 --set-option пароль\n"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
@@ -2111,10 +2107,8 @@ msgid "Minimize window"
 msgstr "Свернуть окно"
 
 #: src/rcw.c:2701
-#, fuzzy
-#| msgid "Connect"
 msgid "Reconnect"
-msgstr "Подключить"
+msgstr "Переподключить"
 
 #: src/rcw.c:2709 data/ui/remmina_preferences.glade:1410
 msgid "Disconnect"
@@ -2300,10 +2294,8 @@ msgid "Share folder"
 msgstr "Общая папка"
 
 #: plugins/spice/spice_plugin.c:727
-#, fuzzy
-#| msgid "Proxy URL"
 msgid "Proxy"
-msgstr "Прокси URL"
+msgstr "Прокси"
 
 #: plugins/spice/spice_plugin.c:728 plugins/rdp/rdp_plugin.c:3290
 msgid "USB device redirection"
@@ -2358,13 +2350,11 @@ msgstr "SPICE - Простой протокол для независимых в
 
 #: plugins/spice/spice_plugin.c:803
 msgid "SPICE vv file"
-msgstr ""
+msgstr "Файл SPICE vv"
 
 #: plugins/spice/spice_plugin.c:895
-#, fuzzy
-#| msgid "Export connection in Windows .rdp file format"
 msgid "Export connection in virt-viewer .vv file format"
-msgstr "Экспортировать подключение в формате .rdp (Windows)"
+msgstr "Экспортировать подключение в формате virt-viewer .vv"
 
 #: plugins/x2go/x2go_plugin.c:71
 #, c-format
@@ -2602,10 +2592,8 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:1235
-#, fuzzy
-#| msgid "An error occured."
 msgid "An error occurred."
-msgstr "Случилась ошибка."
+msgstr "Произошла ошибка."
 
 #: plugins/x2go/x2go_plugin.c:1330 plugins/x2go/x2go_plugin.c:1345
 msgid "Could not get session ID from session chooser dialog."
@@ -3025,10 +3013,8 @@ msgid "Disconnected from %s via RDP"
 msgstr "Отключение от %s через RDP"
 
 #: plugins/rdp/rdp_plugin.c:2556
-#, fuzzy
-#| msgid "Could not authenticate using SSH certificate. %s"
 msgid "Could not authenticate using smartcard."
-msgstr "Аутентификация SSH по сертификату не удалась. %s"
+msgstr "Не удалось аутентифицироваться через SmartCard."
 
 #: plugins/rdp/rdp_plugin.c:2566
 #, c-format
@@ -3094,10 +3080,9 @@ msgstr ""
 "Пользователь должен сменить пароль перед соединением."
 
 #: plugins/rdp/rdp_plugin.c:2614
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server “%s”."
+#, c-format
 msgid "Failed to connect to the RDP server “%s”."
-msgstr "Невозможно подключиться к RDP серверу \"%s\"."
+msgstr "Не удалось подключиться к RDP серверу \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:2617
 #, c-format
@@ -3294,18 +3279,16 @@ msgid "Every 10 min"
 msgstr "Каждые 10 минут"
 
 #: plugins/rdp/rdp_plugin.c:3114
-#, fuzzy
-#| msgid "Every 3 min"
 msgid "Every 30 sec"
-msgstr "Каждые 3 минуты"
+msgstr "Каждые 30 секунд"
 
 #: plugins/rdp/rdp_plugin.c:3124
 msgid "ALT_L + Tab"
-msgstr ""
+msgstr "ALT_L + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3125
 msgid "Win + Tab"
-msgstr ""
+msgstr "Win + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3140
 msgid "0 — Windows 7 compatible"
@@ -3480,16 +3463,12 @@ msgid "Restricted admin mode password hash"
 msgstr "Хеш пароля режима ограниченного администрирования"
 
 #: plugins/rdp/rdp_plugin.c:3243
-#, fuzzy
-#| msgid "Share a smart card"
 msgid "Use a smartcard for logon"
-msgstr "Сделать смарт-карту общей"
+msgstr "Использовать SmartCard для входа"
 
 #: plugins/rdp/rdp_plugin.c:3244
-#, fuzzy
-#| msgid "Enter RDP SmartCard PIN"
 msgid "Smartcard PIN"
-msgstr "Введите ПИН-код SmartCard RDP"
+msgstr "ПИН-код SmartCard"
 
 #: plugins/rdp/rdp_plugin.c:3245
 msgid "Left-handed mouse support"
@@ -3511,7 +3490,7 @@ msgstr "Разрешить несколько мониторов"
 
 #: plugins/rdp/rdp_plugin.c:3248
 msgid "Force multi monitor when toggled"
-msgstr ""
+msgstr "Принудительный многомониторный режим при переключении"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "Span screen over multiple monitors"
@@ -3692,16 +3671,12 @@ msgid "Move mouse when connection is idle"
 msgstr "Перемещать мышь, когда соединение неактивно"
 
 #: plugins/rdp/rdp_plugin.c:3302
-#, fuzzy
-#| msgid "Move mouse when connection is idle"
 msgid "Press keys when connection is idle"
-msgstr "Перемещать мышь, когда соединение неактивно"
+msgstr "Нажатие клавиш когда соединение неактивно"
 
 #: plugins/rdp/rdp_plugin.c:3303
-#, fuzzy
-#| msgid "Desktop orientation"
 msgid "Keys combination"
-msgstr "Ориентация рабочего стола"
+msgstr "Комбинация клавиш"
 
 #: plugins/rdp/rdp_plugin.c:3305
 msgid "Attempt to connect in assistance mode"
@@ -3712,10 +3687,8 @@ msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Предпочитать запись IPv6 AAAA вместо IPv4 A"
 
 #: plugins/rdp/rdp_plugin.c:3308
-#, fuzzy
-#| msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgid "Force preferred IPv4 A record or IPv6 AAAA record"
-msgstr "Предпочитать запись IPv6 AAAA вместо IPv4 A"
+msgstr "Принудительно предпочитаемая IPv4 A или IPv6 AAAA запись"
 
 #: plugins/rdp/rdp_plugin.c:3310
 msgid "Share printers"
@@ -3803,7 +3776,7 @@ msgstr "Обновлять буфер кадров, даже если он не 
 
 #: plugins/rdp/rdp_plugin.c:3334
 msgid "Allow sending empty password"
-msgstr ""
+msgstr "Разрешить отправку пустого пароля"
 
 #: plugins/rdp/rdp_plugin.c:3360
 msgid "RDP - Remote Desktop Protocol"
@@ -3927,18 +3900,18 @@ msgid "General settings"
 msgstr "Общие настройки"
 
 #: plugins/rdp/rdp_settings.c:723
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auth settings"
-msgstr "Изменить настройки"
+msgstr "Настройки аутентификации"
 
 #: plugins/rdp/rdp_settings.c:730
 msgid "FreeRDP auth-pkg-list"
-msgstr ""
+msgstr "FreeRDP auth-pkg-list"
 
 #: plugins/rdp/rdp_settings.c:743
 msgid "Authentication package filter(comma-separated list, use '!' to exclude)"
 msgstr ""
+"Фильтр пакета аутентификации (список разделенный запятыми, используйте '!' "
+"для исключений)"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
@@ -4317,6 +4290,9 @@ msgid ""
 "  • This timeout controls how long the client will try to contact the server "
 "before dropping the connection"
 msgstr ""
+"Таймаут VNC в секундах\n"
+"  • Этот таймаут определяет как долго клиент будет пытаться связаться с "
+"сервером перед тем как оборвать соединение"
 
 #: plugins/vnc/vnc_plugin.c:2149
 msgid "Repeater"
@@ -4331,14 +4307,12 @@ msgid "Override pre-set VNC encodings"
 msgstr "Отмена предустановленных кодировок VNC"
 
 #: plugins/vnc/vnc_plugin.c:2182
-#, fuzzy
-#| msgid "Dynamic resolution enforced aspec ratio"
 msgid "Dynamic resolution enforced aspect ratio"
-msgstr "Соотношение сторон с принудительным динамическим разрешением"
+msgstr "Принудительное соотношение сторон с динамическим разрешением"
 
 #: plugins/vnc/vnc_plugin.c:2184
 msgid "TCP_USER_TIMEOUT length (seconds)"
-msgstr ""
+msgstr "Размер TCP_USER_TIMEOUT (секунды)"
 
 #: plugins/vnc/vnc_plugin.c:2186
 msgid "Force tight encoding"
@@ -4363,10 +4337,8 @@ msgid "Turn off encryption"
 msgstr "Отключить шифрование"
 
 #: plugins/vnc/vnc_plugin.c:2195
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Close on connection failure"
-msgstr "Создать новый профиль соединения"
+msgstr "Закрыть при ошибке подключения"
 
 #: plugins/vnc/vnc_plugin.c:2207
 msgid "Open Chat…"
@@ -4541,11 +4513,6 @@ msgid "Screenshot filenames"
 msgstr "Шаблон имени файлов снимков экрана"
 
 #: data/ui/remmina_preferences.glade:282
-#, fuzzy
-#| msgid ""
-#| "%p Profile name\n"
-#| "%h Server name/IP\n"
-#| "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4553,7 +4520,7 @@ msgid ""
 msgstr ""
 "%p Имя профиля\n"
 "%h Имя сервера/IP\n"
-"%Y Год, %m Месяц, %d День, %H Час, %M Минута, %S Секунды (UTC)\n"
+"%Y Год, %m Месяц, %d День, %H Час, %M Минута, %S Секунды (UTC)"
 
 #: data/ui/remmina_preferences.glade:300
 msgid ""
@@ -4591,14 +4558,6 @@ msgstr "Шаблон для имён файлов профиля"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:381
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4608,9 +4567,7 @@ msgstr ""
 "%G Имя группы (косая черта \\/ будет преобразована в тире - автоматически)\n"
 "%P Протокол\n"
 "%N Соединение\n"
-"%h Хост/IP\n"
-"\n"
-"\n"
+"%h Хост/IP "
 
 #: data/ui/remmina_preferences.glade:400
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -4705,17 +4662,15 @@ msgstr "Скрытый"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Minimal"
-msgstr ""
+msgstr "Минимально"
 
 #: data/ui/remmina_preferences.glade:777
 msgid "Fullscreen toolbar visibility"
 msgstr "Видимость полноэкранной панели инструментов"
 
 #: data/ui/remmina_preferences.glade:792
-#, fuzzy
-#| msgid "Fullscreen toolbar visibility"
 msgid "Fullscreen toolbar delay (in seconds)"
-msgstr "Видимость полноэкранной панели инструментов"
+msgstr "Задержка полноэкранной панели инструментов (в секундах)"
 
 #: data/ui/remmina_preferences.glade:816
 msgid "Hide the search bar shown in the main window"
@@ -4743,19 +4698,22 @@ msgstr "Добавить столбец показывающий все прим
 
 #: data/ui/remmina_preferences.glade:866
 msgid "Display message prompts on the left side of the screen"
-msgstr ""
+msgstr "Отображать всплывающие сообщения в левой части экрана"
 
 #: data/ui/remmina_preferences.glade:883
 msgid "If supported, launch in fullscreen by default"
-msgstr ""
+msgstr "Если поддерживается, по-умолчанию запускать в полноэкранном режиме"
 
 #: data/ui/remmina_preferences.glade:900
 msgid "If supported, launch with dynamic resolution by default"
 msgstr ""
+"Если поддерживается, по-умолчанию запускать с динамическим обновлением "
+"разрешения"
 
 #: data/ui/remmina_preferences.glade:917
 msgid "Multimonitor: performs adjustments on the toolbar position"
 msgstr ""
+"Многомониторный режим: производит регулировки на позиции панели инструментов"
 
 #: data/ui/remmina_preferences.glade:941
 msgid "“Grab all keyboard events” status colour"
@@ -5077,16 +5035,12 @@ msgid "Pick a terminal colouring file"
 msgstr "Выбор файла цветовой схемы терминала"
 
 #: data/ui/remmina_preferences.glade:2382
-#, fuzzy
-#| msgid "Colour theme"
 msgid "Remove colour theme"
-msgstr "Цветовая схема"
+msgstr "Удалить цветовую схему"
 
 #: data/ui/remmina_preferences.glade:2396
-#, fuzzy
-#| msgid "_Remove"
 msgid "Remove"
-msgstr "_Убрать"
+msgstr "Удалить"
 
 #: data/ui/remmina_preferences.glade:2411
 msgid "Bright colours"

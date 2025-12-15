@@ -10,14 +10,14 @@
 # Oğuzcan Küçükbayrak <o.kucukbayrak@gmail.com>, 2019, 2021.
 # Deleted User <noreply+16368@weblate.org>, 2020, 2021.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2020, 2021, 2022, 2025.
-# Oğuz Ersen <oguz@ersen.moe>, 2022, 2023, 2024.
+# Oğuz Ersen <oguz@ersen.moe>, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2025-06-17 18:02+0000\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"PO-Revision-Date: 2025-12-15 15:00+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12.1\n"
+"X-Generator: Weblate 5.15.1-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_icon.c:143
@@ -222,7 +222,7 @@ msgstr "Kapat"
 
 #: src/remmina_message_panel.c:255
 msgid "Do you accept?"
-msgstr ""
+msgstr "Kabul ediyor musunuz?"
 
 #: src/remmina_message_panel.c:261 src/remmina_message_panel.c:270
 msgid "Yes"
@@ -373,10 +373,8 @@ msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
 #: src/remmina_ssh_plugin.c:1501
-#, fuzzy
-#| msgid "Keyboard type (auto)"
 msgid "Keyboard Interactive"
-msgstr "Klavye türü (kendiliğinden)"
+msgstr "Klavye etkileşimi"
 
 #: src/remmina_ssh_plugin.c:1576 data/ui/remmina_main.glade:178
 msgid "Copy"
@@ -547,21 +545,19 @@ msgstr "Sıkı ana makine anahtar denetimi"
 
 #: src/remmina_ssh_plugin.c:1657
 msgid "Copy text on selection"
-msgstr ""
+msgstr "Seçildiğinde metni kopyala"
 
 #: src/remmina_ssh_plugin.c:1658
 msgid "Allow keys using ssh-rsa (insecure)"
-msgstr ""
+msgstr "ssh-rsa kullanan anahtarlara izin ver (güvenli değil)"
 
 #: src/remmina_ssh_plugin.c:1678
 msgid "SSH - Secure Shell"
 msgstr "SSH - Güvenli Kabuk"
 
 #: src/remmina_ssh_plugin.c:1708
-#, fuzzy
-#| msgid "Terminal"
 msgid "Local Terminal"
-msgstr "Uçbirim"
+msgstr "Yerel Uçbirim"
 
 #. TRANSLATORS: This is a message that pops up when an external Remmina plugin tries to set the window resolution using a legacy parameter.
 #. TRANSLATORS: This is a message that pop-up when an external Remmina plugin tries to set the windows resolution using a legacy parameter.
@@ -1199,10 +1195,8 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "“%s”i silmek istediğinizden emin misiniz?"
 
 #: src/remmina_main.c:1088
-#, fuzzy
-#| msgid "Failed to delete files!"
 msgid "Failed to load files!"
-msgstr "Dosyalar silinemedi!"
+msgstr "Dosyalar yüklenemedi!"
 
 #: src/remmina_main.c:1159
 msgid "Are you sure you want to delete the selected files?"
@@ -1227,7 +1221,7 @@ msgstr "RDP Dosyaları"
 
 #: src/remmina_main.c:1390
 msgid "Virt-Viewer Files"
-msgstr ""
+msgstr "Virt-Viewer Dosyaları"
 
 #: src/remmina_main.c:1395
 msgid "All Files"
@@ -1361,27 +1355,23 @@ msgstr "Yardım Kipi"
 
 #: src/remmina_file_editor.c:957
 msgid "Save to..."
-msgstr ""
+msgstr "Şuraya kaydet..."
 
 #: src/remmina_file_editor.c:958
-#, fuzzy
-#| msgid "_Save"
 msgid "Save"
-msgstr "_Kaydet"
+msgstr "Kaydet"
 
 #: src/remmina_file_editor.c:961
 msgid "Open ssh tunnel config"
-msgstr ""
+msgstr "SSH tüneli yapılandırmasını aç"
 
 #: src/remmina_file_editor.c:970
-#, fuzzy
-#| msgid "Remmina Kiosk"
 msgid "Remmina Files"
-msgstr "Remmina Kiosk"
+msgstr "Remmina Dosyaları"
 
 #: src/remmina_file_editor.c:973
 msgid "ssh_export.remssh"
-msgstr ""
+msgstr "ssh_export.remssh"
 
 #: src/remmina_file_editor.c:1288
 msgid "Keyboard mapping"
@@ -1454,7 +1444,7 @@ msgstr "%i bağlantı noktasında aynı sunucu"
 
 #: src/remmina_file_editor.c:1527
 msgid "Command arguments"
-msgstr ""
+msgstr "Komut değişkenleri"
 
 #: src/remmina_file_editor.c:1528
 msgid ""
@@ -1464,6 +1454,11 @@ msgid ""
 "Example: <-l username -p port>\n"
 "<-l user localhost> would not set localhost as there is no flag"
 msgstr ""
+"Diğer tüm seçenekleri geçersiz kılar\n"
+"Tüm seçenekler desteklenmeyebilir\n"
+"Yalnızca işaret-değişken çiftlerini kabul eder\n"
+"Örnek: <-l kullanıcıadı -p bağlantınoktası>\n"
+"<-l kullanıcı localhost> işaret olmadığı için localhost ayarlanmaz"
 
 #: src/remmina_file_editor.c:1559 plugins/rdp/rdp_plugin.c:3286
 msgid "Start-up path"
@@ -1478,24 +1473,20 @@ msgid "SSH private key file"
 msgstr "SSH özel anahtar dosyası"
 
 #: src/remmina_file_editor.c:1640
-#, fuzzy
-#| msgid "SSH Proxy Command"
 msgid "SSH Command"
-msgstr "SSH Vekil Sunucu Komutu"
+msgstr "SSH Komutu"
 
 #: src/remmina_file_editor.c:1644
-#, fuzzy
-#| msgid "Startup program"
 msgid "Startup command"
-msgstr "Başlangıç programı"
+msgstr "Başlangıç komutu"
 
 #: src/remmina_file_editor.c:1651
 msgid "Export ssh tunnel settings"
-msgstr ""
+msgstr "SSH tüneli ayarlarını dışa aktar"
 
 #: src/remmina_file_editor.c:1657
 msgid "Import ssh tunnel settings"
-msgstr ""
+msgstr "SSH tüneli ayarlarını içe aktar"
 
 #: src/remmina_file_editor.c:1692
 msgid "Basic"
@@ -1591,17 +1582,13 @@ msgstr "'Hakkında'yı göster"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
-#, fuzzy
-#| msgid ""
-#| "Connect either to a desktop described in a file (.remmina or a filetype "
-#| "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH, HTTP, HTTPS or "
 "SPICE)"
 msgstr ""
 "Dosyada açıklanan masaüstüne (.remmina veya eklentice desteklenen dosya "
-"türü) veya desteklenen URI'ya (RDP, VNC, SSH veya SPICE) bağlan"
+"türü) veya desteklenen URI'ya (RDP, VNC, SSH, HTTP, HTTPS veya SPICE) bağlan"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
@@ -1834,10 +1821,16 @@ msgstr ""
 "\tremmina -c vnc://sunucu?VncUsername=kullaniciadi\n"
 "\tremmina -c ssh://kullanici@sunucu\n"
 "\tremmina -c spice://sunucu\n"
+"\tremmina -c https://example.com\n"
+"\n"
+"Hızlıca bağlanmak ve bağlantıyı adlandırmak için:\n"
+"\n"
+"\tremmina -c ssh://kullanici@sunucu%baglanti_adi\n"
 "\n"
 "URI ile birlikte şifrelenmiş parola kullanarak hızlıca bağlanmak için:\n"
 "\n"
 "\tremmina -c rdp://kullaniciadi:sifrelenmis-parola@sunucu\n"
+"\n"
 "\tremmina -c vnc://kullaniciadi:sifrelenmis-parola@sunucu\n"
 "\tremmina -c vnc://sunucu?VncUsername=kullaniciadi\\&VncPassword=sifrelenmis-"
 "parola\n"
@@ -1849,9 +1842,9 @@ msgstr ""
 "Remmina bağlantı profiline başka çözünürlük kipi belirlemek, kullanıcı adı "
 "ve parola güncellemek için:\n"
 "\n"
-"\techo \"kullaniciadi\\nparola\" | remmina --update-profile /KONUM/YOL/"
-"ornek.remmina --set-option username --set-option resolution_mode=2 --set-"
-"option password\n"
+"\techo \"kullaniciadi\\n"
+"parola\" | remmina --update-profile /KONUM/YOL/ornek.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
@@ -2042,8 +2035,6 @@ msgid "Toggle scaled mode"
 msgstr "Ölçeklendirilmiş kipi değiştir"
 
 #: src/rcw.c:2586
-#, fuzzy
-#| msgid "View-only mode"
 msgid "View only mode"
 msgstr "Yalnızca görüntüleme kipi"
 
@@ -2077,10 +2068,8 @@ msgid "Minimize window"
 msgstr "Pencereyi küçült"
 
 #: src/rcw.c:2701
-#, fuzzy
-#| msgid "Connect"
 msgid "Reconnect"
-msgstr "Bağlan"
+msgstr "Yeniden bağlan"
 
 #: src/rcw.c:2709 data/ui/remmina_preferences.glade:1410
 msgid "Disconnect"
@@ -2266,10 +2255,8 @@ msgid "Share folder"
 msgstr "Klasör paylaş"
 
 #: plugins/spice/spice_plugin.c:727
-#, fuzzy
-#| msgid "Proxy URL"
 msgid "Proxy"
-msgstr "Vekil sunucu URL"
+msgstr "Vekil sunucu"
 
 #: plugins/spice/spice_plugin.c:728 plugins/rdp/rdp_plugin.c:3290
 msgid "USB device redirection"
@@ -2324,13 +2311,11 @@ msgstr "SPICE - Bağımsız Bilgi İşlem Ortamları İçin Basit İletişim Kur
 
 #: plugins/spice/spice_plugin.c:803
 msgid "SPICE vv file"
-msgstr ""
+msgstr "SPICE vv dosyası"
 
 #: plugins/spice/spice_plugin.c:895
-#, fuzzy
-#| msgid "Export connection in Windows .rdp file format"
 msgid "Export connection in virt-viewer .vv file format"
-msgstr "Bağlantıyı Windows .rdp dosya biçiminde dışarı aktar"
+msgstr "Bağlantıyı virt-viewer .vv dosya biçiminde dışarı aktar"
 
 #: plugins/x2go/x2go_plugin.c:71
 #, c-format
@@ -2521,9 +2506,7 @@ msgstr ""
 "'%s'"
 
 #: plugins/x2go/x2go_plugin.c:948
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
@@ -2531,10 +2514,7 @@ msgstr ""
 "%i"
 
 #: plugins/x2go/x2go_plugin.c:955
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
-#| "Error: '%s'"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
@@ -2569,8 +2549,6 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:1235
-#, fuzzy
-#| msgid "An error occured."
 msgid "An error occurred."
 msgstr "Hata oluştu."
 
@@ -2989,10 +2967,8 @@ msgid "Disconnected from %s via RDP"
 msgstr "RDP ile %s'den bağlantı kesildi"
 
 #: plugins/rdp/rdp_plugin.c:2556
-#, fuzzy
-#| msgid "Could not authenticate using SSH certificate. %s"
 msgid "Could not authenticate using smartcard."
-msgstr "SSH sertifikası kullanılarak kimlik doğrulanamadı. %s"
+msgstr "Akıllı kart kullanılarak kimlik doğrulanamadı."
 
 #: plugins/rdp/rdp_plugin.c:2566
 #, c-format
@@ -3058,10 +3034,9 @@ msgstr ""
 "Bağlanmadan önce kullanıcı parolasını değiştirin."
 
 #: plugins/rdp/rdp_plugin.c:2614
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server “%s”."
+#, c-format
 msgid "Failed to connect to the RDP server “%s”."
-msgstr "“%s” RDP sunucusuna bağlanılamıyor."
+msgstr "“%s” RDP sunucusuna bağlanılamadı."
 
 #: plugins/rdp/rdp_plugin.c:2617
 #, c-format
@@ -3257,18 +3232,16 @@ msgid "Every 10 min"
 msgstr "Her 10 dakikada bir"
 
 #: plugins/rdp/rdp_plugin.c:3114
-#, fuzzy
-#| msgid "Every 3 min"
 msgid "Every 30 sec"
-msgstr "Her 3 dakikada bir"
+msgstr "Her 30 saniyede bir"
 
 #: plugins/rdp/rdp_plugin.c:3124
 msgid "ALT_L + Tab"
-msgstr ""
+msgstr "ALT_L + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3125
 msgid "Win + Tab"
-msgstr ""
+msgstr "Win + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3140
 msgid "0 — Windows 7 compatible"
@@ -3441,16 +3414,12 @@ msgid "Restricted admin mode password hash"
 msgstr "Kısıtlı yönetici kipi parola özeti"
 
 #: plugins/rdp/rdp_plugin.c:3243
-#, fuzzy
-#| msgid "Share a smart card"
 msgid "Use a smartcard for logon"
-msgstr "Akıllı kartı paylaş"
+msgstr "Oturum açmak için akıllı kart kullan"
 
 #: plugins/rdp/rdp_plugin.c:3244
-#, fuzzy
-#| msgid "Enter RDP SmartCard PIN"
 msgid "Smartcard PIN"
-msgstr "RDP akıllı kart PIN kodunu girin"
+msgstr "Akıllı kart PIN kodu"
 
 #: plugins/rdp/rdp_plugin.c:3245
 msgid "Left-handed mouse support"
@@ -3472,7 +3441,7 @@ msgstr "Çoklu ekranı etkinleştir"
 
 #: plugins/rdp/rdp_plugin.c:3248
 msgid "Force multi monitor when toggled"
-msgstr ""
+msgstr "Değiştirildiğinde çoklu ekrana zorla"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "Span screen over multiple monitors"
@@ -3653,16 +3622,12 @@ msgid "Move mouse when connection is idle"
 msgstr "Bağlantı boştayken fareyi oynat"
 
 #: plugins/rdp/rdp_plugin.c:3302
-#, fuzzy
-#| msgid "Move mouse when connection is idle"
 msgid "Press keys when connection is idle"
-msgstr "Bağlantı boştayken fareyi oynat"
+msgstr "Bağlantı boştayken tuşlara bas"
 
 #: plugins/rdp/rdp_plugin.c:3303
-#, fuzzy
-#| msgid "Desktop orientation"
 msgid "Keys combination"
-msgstr "Masaüstü yönelimi"
+msgstr "Tuş dizisi"
 
 #: plugins/rdp/rdp_plugin.c:3305
 msgid "Attempt to connect in assistance mode"
@@ -3673,10 +3638,8 @@ msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "IPv4 A kaydı yerine IPv6 AAAA kaydını yeğle"
 
 #: plugins/rdp/rdp_plugin.c:3308
-#, fuzzy
-#| msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgid "Force preferred IPv4 A record or IPv6 AAAA record"
-msgstr "IPv4 A kaydı yerine IPv6 AAAA kaydını yeğle"
+msgstr "Yeğlenen IPv4 A kaydı veya IPv6 AAAA kaydına zorla"
 
 #: plugins/rdp/rdp_plugin.c:3310
 msgid "Share printers"
@@ -3764,7 +3727,7 @@ msgstr "Görünmüyorken bile çerçeve arabelleğini güncelle"
 
 #: plugins/rdp/rdp_plugin.c:3334
 msgid "Allow sending empty password"
-msgstr ""
+msgstr "Boş parola gönderilmesine izin ver"
 
 #: plugins/rdp/rdp_plugin.c:3360
 msgid "RDP - Remote Desktop Protocol"
@@ -3888,18 +3851,18 @@ msgid "General settings"
 msgstr "Genel ayarlar"
 
 #: plugins/rdp/rdp_settings.c:723
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auth settings"
-msgstr "Ayarları düzenle"
+msgstr "Kimlik doğrulama ayarları"
 
 #: plugins/rdp/rdp_settings.c:730
 msgid "FreeRDP auth-pkg-list"
-msgstr ""
+msgstr "FreeRDP auth-pkg-list"
 
 #: plugins/rdp/rdp_settings.c:743
 msgid "Authentication package filter(comma-separated list, use '!' to exclude)"
 msgstr ""
+"Kimlik doğrulama paketi süzgeci (virgülle ayrılmış liste, hariç tutmak için "
+"'!' kullanın)"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
@@ -4275,6 +4238,9 @@ msgid ""
 "  • This timeout controls how long the client will try to contact the server "
 "before dropping the connection"
 msgstr ""
+"Saniye cinsinden VNC zaman aşımı süresi\n"
+"  • Bu zaman aşımı, istemcinin bağlantıyı kesmeden önce sunucuya ne kadar "
+"süre boyunca bağlanmaya çalışacağını belirler"
 
 #: plugins/vnc/vnc_plugin.c:2149
 msgid "Repeater"
@@ -4289,14 +4255,12 @@ msgid "Override pre-set VNC encodings"
 msgstr "Önceden tanımlı VNC kodlamalarını görmezden gel"
 
 #: plugins/vnc/vnc_plugin.c:2182
-#, fuzzy
-#| msgid "Dynamic resolution enforced aspec ratio"
 msgid "Dynamic resolution enforced aspect ratio"
 msgstr "Dinamik çözünürlük zorunlu en boy oranı"
 
 #: plugins/vnc/vnc_plugin.c:2184
 msgid "TCP_USER_TIMEOUT length (seconds)"
-msgstr ""
+msgstr "TCP_USER_TIMEOUT süresi (saniye)"
 
 #: plugins/vnc/vnc_plugin.c:2186
 msgid "Force tight encoding"
@@ -4319,10 +4283,8 @@ msgid "Turn off encryption"
 msgstr "Şifrelemeyi kapat"
 
 #: plugins/vnc/vnc_plugin.c:2195
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Close on connection failure"
-msgstr "Yeni bağlantı profili oluştur"
+msgstr "Bağlantı hatası durumunda kapat"
 
 #: plugins/vnc/vnc_plugin.c:2207
 msgid "Open Chat…"
@@ -4495,11 +4457,6 @@ msgid "Screenshot filenames"
 msgstr "Ekran görüntüsü dosya adları"
 
 #: data/ui/remmina_preferences.glade:282
-#, fuzzy
-#| msgid ""
-#| "%p Profile name\n"
-#| "%h Server name/IP\n"
-#| "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4507,7 +4464,7 @@ msgid ""
 msgstr ""
 "%p Profil adı\n"
 "%h Sunucu adı/IP\n"
-"%Y Yıl, %m Ay, %d Gün, %H Saat, %M Dakika, %S Saniye (UTC zamanı)\n"
+"%Y Yıl, %m Ay, %d Gün, %H Saat, %M Dakika, %S Saniye (UTC zamanı)"
 
 #: data/ui/remmina_preferences.glade:300
 msgid ""
@@ -4546,14 +4503,6 @@ msgstr "Profil dosya adları için şablon"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:381
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4563,9 +4512,7 @@ msgstr ""
 "%G Küme adı (eğik çizgiler \\/ kendiliğinden tireye - dönüştürülür)\n"
 "%P İletişim kuralı adı\n"
 "%N Bağlantı adı\n"
-"%h Ana makine adı/IP\n"
-"\n"
-"\n"
+"%h Ana makine adı/IP "
 
 #: data/ui/remmina_preferences.glade:400
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -4660,17 +4607,15 @@ msgstr "Gizli"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Minimal"
-msgstr ""
+msgstr "Küçültülmüş"
 
 #: data/ui/remmina_preferences.glade:777
 msgid "Fullscreen toolbar visibility"
 msgstr "Tam ekran araç çubuğu görünürlüğü"
 
 #: data/ui/remmina_preferences.glade:792
-#, fuzzy
-#| msgid "Fullscreen toolbar visibility"
 msgid "Fullscreen toolbar delay (in seconds)"
-msgstr "Tam ekran araç çubuğu görünürlüğü"
+msgstr "Tam ekran araç çubuğu gecikmesi (saniye cinsinden)"
 
 #: data/ui/remmina_preferences.glade:816
 msgid "Hide the search bar shown in the main window"
@@ -4697,19 +4642,19 @@ msgstr "Bağlantıyla ilişkili notları görüntüleyen sütun ekle."
 
 #: data/ui/remmina_preferences.glade:866
 msgid "Display message prompts on the left side of the screen"
-msgstr ""
+msgstr "İleti istemlerini ekranın sol tarafında görüntüle"
 
 #: data/ui/remmina_preferences.glade:883
 msgid "If supported, launch in fullscreen by default"
-msgstr ""
+msgstr "Destekleniyorsa, öntanımlı olarak tam ekran kipinde başlat"
 
 #: data/ui/remmina_preferences.glade:900
 msgid "If supported, launch with dynamic resolution by default"
-msgstr ""
+msgstr "Destekleniyorsa, öntanımlı olarak değişken çözünürlükle başlat"
 
 #: data/ui/remmina_preferences.glade:917
 msgid "Multimonitor: performs adjustments on the toolbar position"
-msgstr ""
+msgstr "Çoklu ekran: araç çubuğunun konumunda ayarlamalar yapar"
 
 #: data/ui/remmina_preferences.glade:941
 msgid "“Grab all keyboard events” status colour"
@@ -5031,16 +4976,12 @@ msgid "Pick a terminal colouring file"
 msgstr "Uçbirim renklendirme dosyası seç"
 
 #: data/ui/remmina_preferences.glade:2382
-#, fuzzy
-#| msgid "Colour theme"
 msgid "Remove colour theme"
-msgstr "Renk teması"
+msgstr "Renk temasını kaldır"
 
 #: data/ui/remmina_preferences.glade:2396
-#, fuzzy
-#| msgid "_Remove"
 msgid "Remove"
-msgstr "_Kaldır"
+msgstr "Kaldır"
 
 #: data/ui/remmina_preferences.glade:2411
 msgid "Bright colours"

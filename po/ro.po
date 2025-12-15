@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2025-12-12 09:20+0000\n"
+"PO-Revision-Date: 2025-12-15 15:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ro/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_icon.c:143
@@ -1813,9 +1813,9 @@ msgstr ""
 "\tremmina -c spice://server\n"
 "\tremmina -c https://example.com\n"
 "\n"
-"Pentru a vă conecta rapid și denumi conexiunea\n"
+"Pentru a vă conecta rapid și denumi conexiunea:\n"
 "\n"
-"\tremmina -c ssh://utilizator@server%conexiune-denumire\n"
+"\tremmina -c ssh://utilizator@server%conexiune-nume-nou\n"
 "\n"
 "Pentru a vă conecta rapid utilizând o adresă URI împreună cu o parolă "
 "criptată:\n"
@@ -2027,8 +2027,6 @@ msgid "Toggle scaled mode"
 msgstr "Activează/dezactivează modul scalat"
 
 #: src/rcw.c:2586
-#, fuzzy
-#| msgid "View-only mode"
 msgid "View only mode"
 msgstr "Modul numai-vizualizare (doar-citire)"
 
@@ -2062,14 +2060,12 @@ msgid "Minimize window"
 msgstr "Minimizare fereastră"
 
 #: src/rcw.c:2701
-#, fuzzy
-#| msgid "Connect"
 msgid "Reconnect"
-msgstr "Conectare"
+msgstr "Reconectare"
 
 #: src/rcw.c:2709 data/ui/remmina_preferences.glade:1410
 msgid "Disconnect"
-msgstr "Deconectează"
+msgstr "Deconectare"
 
 #: src/rcw.c:4677
 #, c-format
@@ -2255,10 +2251,8 @@ msgid "Share folder"
 msgstr "Dosar partajat"
 
 #: plugins/spice/spice_plugin.c:727
-#, fuzzy
-#| msgid "Proxy URL"
 msgid "Proxy"
-msgstr "URL-ul Proxy"
+msgstr "Proxy"
 
 #: plugins/spice/spice_plugin.c:728 plugins/rdp/rdp_plugin.c:3290
 msgid "USB device redirection"
@@ -2315,13 +2309,11 @@ msgstr ""
 
 #: plugins/spice/spice_plugin.c:803
 msgid "SPICE vv file"
-msgstr ""
+msgstr "Fișier SPICE vv"
 
 #: plugins/spice/spice_plugin.c:895
-#, fuzzy
-#| msgid "Export connection in Windows .rdp file format"
 msgid "Export connection in virt-viewer .vv file format"
-msgstr "Exportă conexiunea în formatul Windows de fișier .rdp"
+msgstr "Exportă conexiunea în formatul virt-viewer de fișier .vv"
 
 #: plugins/x2go/x2go_plugin.c:71
 #, c-format
@@ -2515,9 +2507,7 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:948
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
@@ -2525,10 +2515,7 @@ msgstr ""
 "ieșire: %i"
 
 #: plugins/x2go/x2go_plugin.c:955
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
-#| "Error: '%s'"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
@@ -2563,8 +2550,6 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:1235
-#, fuzzy
-#| msgid "An error occured."
 msgid "An error occurred."
 msgstr "A apărut o eroare."
 
@@ -2993,7 +2978,7 @@ msgstr "Deconectat de la %s prin RDP"
 
 #: plugins/rdp/rdp_plugin.c:2556
 msgid "Could not authenticate using smartcard."
-msgstr "Nu s-a putut autentifica folosind smartcard-ul."
+msgstr "Nu s-a putut autentifica folosind cardul inteligent."
 
 #: plugins/rdp/rdp_plugin.c:2566
 #, c-format
@@ -3059,10 +3044,9 @@ msgstr ""
 "Schimbați parola utilizatorului înainte de conectare."
 
 #: plugins/rdp/rdp_plugin.c:2614
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server “%s”."
+#, c-format
 msgid "Failed to connect to the RDP server “%s”."
-msgstr "Nu se poate realiza conexiunea la serverul RDP „%s”."
+msgstr "Conectarea la serverul RDP „%s” a eșuat."
 
 #: plugins/rdp/rdp_plugin.c:2617
 #, c-format
@@ -3258,18 +3242,16 @@ msgid "Every 10 min"
 msgstr "La fiecare 10 minute"
 
 #: plugins/rdp/rdp_plugin.c:3114
-#, fuzzy
-#| msgid "Every 3 min"
 msgid "Every 30 sec"
-msgstr "La fiecare 3 minute"
+msgstr "La fiecare 30 de secunde"
 
 #: plugins/rdp/rdp_plugin.c:3124
 msgid "ALT_L + Tab"
-msgstr ""
+msgstr "«ALT_L + Tab»"
 
 #: plugins/rdp/rdp_plugin.c:3125
 msgid "Win + Tab"
-msgstr ""
+msgstr "«Win + Tab»"
 
 #: plugins/rdp/rdp_plugin.c:3140
 msgid "0 — Windows 7 compatible"
@@ -3447,16 +3429,12 @@ msgid "Restricted admin mode password hash"
 msgstr "Hash de parolă în modul de administrare restricționată"
 
 #: plugins/rdp/rdp_plugin.c:3243
-#, fuzzy
-#| msgid "Share a smart card"
 msgid "Use a smartcard for logon"
-msgstr "Partajarea unui card inteligent"
+msgstr "Utilizează un card inteligent pentru autentificare"
 
 #: plugins/rdp/rdp_plugin.c:3244
-#, fuzzy
-#| msgid "Enter RDP SmartCard PIN"
 msgid "Smartcard PIN"
-msgstr "Introduceți codul PIN al SmartCard-ului RDP"
+msgstr "Codul PIN al SmartCard-ului"
 
 #: plugins/rdp/rdp_plugin.c:3245
 msgid "Left-handed mouse support"
@@ -3479,7 +3457,7 @@ msgstr "Activează monitorul multiplu"
 
 #: plugins/rdp/rdp_plugin.c:3248
 msgid "Force multi monitor when toggled"
-msgstr ""
+msgstr "Forțează utilizarea mai multor monitoare când este activată"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "Span screen over multiple monitors"
@@ -3659,16 +3637,12 @@ msgid "Move mouse when connection is idle"
 msgstr "Mișcă mouse-ul când conexiunea este inactivă"
 
 #: plugins/rdp/rdp_plugin.c:3302
-#, fuzzy
-#| msgid "Move mouse when connection is idle"
 msgid "Press keys when connection is idle"
-msgstr "Mișcă mouse-ul când conexiunea este inactivă"
+msgstr "Apasă taste când conexiunea este inactivă"
 
 #: plugins/rdp/rdp_plugin.c:3303
-#, fuzzy
-#| msgid "Desktop orientation"
 msgid "Keys combination"
-msgstr "Orientarea mediului de birou"
+msgstr "Combinația de taste"
 
 #: plugins/rdp/rdp_plugin.c:3305
 msgid "Attempt to connect in assistance mode"
@@ -3679,10 +3653,8 @@ msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Preferă înregistrarea IPv6 AAAA față de înregistrarea IPv4 A"
 
 #: plugins/rdp/rdp_plugin.c:3308
-#, fuzzy
-#| msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgid "Force preferred IPv4 A record or IPv6 AAAA record"
-msgstr "Preferă înregistrarea IPv6 AAAA față de înregistrarea IPv4 A"
+msgstr "Forțează preferarea înregistrării IPv4 A sau a înregistrării IPv6 AAAA"
 
 #: plugins/rdp/rdp_plugin.c:3310
 msgid "Share printers"
@@ -3770,7 +3742,7 @@ msgstr "Actualizează „framebuffer-ul” chiar și atunci când nu este vizibi
 
 #: plugins/rdp/rdp_plugin.c:3334
 msgid "Allow sending empty password"
-msgstr ""
+msgstr "Permite trimiterea parolei goale"
 
 #: plugins/rdp/rdp_plugin.c:3360
 msgid "RDP - Remote Desktop Protocol"
@@ -3894,18 +3866,18 @@ msgid "General settings"
 msgstr "Configurări generale"
 
 #: plugins/rdp/rdp_settings.c:723
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auth settings"
-msgstr "Editați parametrii"
+msgstr "Parametri autentificare"
 
 #: plugins/rdp/rdp_settings.c:730
 msgid "FreeRDP auth-pkg-list"
-msgstr ""
+msgstr "FreeRDP auth-pkg-list"
 
 #: plugins/rdp/rdp_settings.c:743
 msgid "Authentication package filter(comma-separated list, use '!' to exclude)"
 msgstr ""
+"Filtru pachet de autentificare (listă separată prin virgule, utilizați „!” "
+"pentru a exclude)"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
@@ -4285,6 +4257,9 @@ msgid ""
 "  • This timeout controls how long the client will try to contact the server "
 "before dropping the connection"
 msgstr ""
+"Durata timpului de așteptare VNC în secunde\n"
+"  • Acest timp de așteptare controlează cât timp clientul va încerca să "
+"contacteze serverul înainte de a întrerupe conexiunea."
 
 #: plugins/vnc/vnc_plugin.c:2149
 msgid "Repeater"
@@ -4299,14 +4274,12 @@ msgid "Override pre-set VNC encodings"
 msgstr "Suprascrie codificările VNC prestabilite"
 
 #: plugins/vnc/vnc_plugin.c:2182
-#, fuzzy
-#| msgid "Dynamic resolution enforced aspec ratio"
 msgid "Dynamic resolution enforced aspect ratio"
 msgstr "Rezoluție dinamică cu raport de aspect impus"
 
 #: plugins/vnc/vnc_plugin.c:2184
 msgid "TCP_USER_TIMEOUT length (seconds)"
-msgstr ""
+msgstr "Durata TCP_USER_TIMEOUT (secunde)"
 
 #: plugins/vnc/vnc_plugin.c:2186
 msgid "Force tight encoding"
@@ -4331,10 +4304,8 @@ msgid "Turn off encryption"
 msgstr "Dezactivează criptarea"
 
 #: plugins/vnc/vnc_plugin.c:2195
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Close on connection failure"
-msgstr "Creează un nou profil de conexiune"
+msgstr "Închidere la eșuarea conexiunii"
 
 #: plugins/vnc/vnc_plugin.c:2207
 msgid "Open Chat…"
@@ -4556,14 +4527,6 @@ msgstr "Șablon pentru numele fișierelor de profil"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:381
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4574,9 +4537,7 @@ msgstr ""
 "convertite automat în liniuță de unire „-”)\n"
 "%P Numele protocolului\n"
 "%N Numele conexiunii\n"
-"%h Numele gazdei/IP\n"
-"\n"
-"\n"
+"%h Numele gazdei/IP "
 
 #: data/ui/remmina_preferences.glade:400
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -4672,17 +4633,16 @@ msgstr "Ascunsă"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Minimal"
-msgstr ""
+msgstr "Minimal"
 
 #: data/ui/remmina_preferences.glade:777
 msgid "Fullscreen toolbar visibility"
 msgstr "Vizibilitatea barei de instrumente în modul de ecran complet"
 
 #: data/ui/remmina_preferences.glade:792
-#, fuzzy
-#| msgid "Fullscreen toolbar visibility"
 msgid "Fullscreen toolbar delay (in seconds)"
-msgstr "Vizibilitatea barei de instrumente în modul de ecran complet"
+msgstr ""
+"Vizibilitatea barei de instrumente în modul de ecran complet (în secunde)"
 
 #: data/ui/remmina_preferences.glade:816
 msgid "Hide the search bar shown in the main window"
@@ -4710,19 +4670,23 @@ msgstr "Adaugă o coloană care afișează orice note asociate cu o conexiune."
 
 #: data/ui/remmina_preferences.glade:866
 msgid "Display message prompts on the left side of the screen"
-msgstr ""
+msgstr "Afișează mesaje de avertizare în partea stângă a ecranului"
 
 #: data/ui/remmina_preferences.glade:883
 msgid "If supported, launch in fullscreen by default"
 msgstr ""
+"Dacă există suportul necesar pentru acesta, pornește în mod implicit în "
+"modul de ecran complet."
 
 #: data/ui/remmina_preferences.glade:900
 msgid "If supported, launch with dynamic resolution by default"
 msgstr ""
+"Dacă există suportul necesar pentru acesta, pornește cu rezoluție dinamică "
+"în mod implicit"
 
 #: data/ui/remmina_preferences.glade:917
 msgid "Multimonitor: performs adjustments on the toolbar position"
-msgstr ""
+msgstr "Multimonitor: efectuează ajustări privind poziția barei de instrumente"
 
 #: data/ui/remmina_preferences.glade:941
 msgid "“Grab all keyboard events” status colour"
@@ -5048,16 +5012,12 @@ msgid "Pick a terminal colouring file"
 msgstr "Alegeți un fișier de colorare a terminalului"
 
 #: data/ui/remmina_preferences.glade:2382
-#, fuzzy
-#| msgid "Colour theme"
 msgid "Remove colour theme"
-msgstr "Adâncime culoare"
+msgstr "Elimină tema de culori"
 
 #: data/ui/remmina_preferences.glade:2396
-#, fuzzy
-#| msgid "_Remove"
 msgid "Remove"
-msgstr "_Elimină"
+msgstr "Elimină"
 
 #: data/ui/remmina_preferences.glade:2411
 msgid "Bright colours"
