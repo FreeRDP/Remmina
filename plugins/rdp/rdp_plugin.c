@@ -996,7 +996,7 @@ static BOOL remmina_rdp_authenticate_ex(freerdp* instance, char** username, char
 	gboolean save;
 	gboolean disablepasswordstoring;
 	RemminaFile *remminafile;
-	RemminaMessagePanelFlags flags = REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD | REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_DOMAIN;
+	RemminaMessagePanelFlags flags =  REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_DOMAIN;
 
 	rfi = (rfContext *)instance->context;
 	gp = rfi->protocol_widget;
