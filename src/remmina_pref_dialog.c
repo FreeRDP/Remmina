@@ -131,14 +131,14 @@ void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
-void remmina_prefdiag_on_grab_color_activated(GtkSwitch *widget, gpointer user_data)
+static void remmina_prefdiag_on_grab_color_activated(GtkSwitch *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->entry_grab_color), gtk_switch_get_active(widget));
 }
 
 /* connect to notify::active or toggled (in this case ::toggled */
-void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_data)
+static void remmina_prefdiag_on_use_password_activated(GtkSwitch *sw, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	if (gtk_switch_get_active(sw)) {
@@ -223,7 +223,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.default_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_view_mode);
 	remmina_pref.tab_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_tab_interface);
 	remmina_pref.fullscreen_toolbar_visibility = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_fullscreen_toolbar_visibility);
-	remmina_pref.fullscreen_toolbar_delay = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_fullscreen_toolbar_delay));;
+	remmina_pref.fullscreen_toolbar_delay = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_fullscreen_toolbar_delay));
 	if (remmina_pref.fullscreen_toolbar_delay <= 0)
 		remmina_pref.fullscreen_toolbar_delay = 0;
 	remmina_pref.scale_quality = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_scale_quality);
@@ -749,7 +749,6 @@ void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data
 	g_object_unref(source);
 }
 
-
 void remmina_pref_on_color_scheme_removed(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL(__func__);
@@ -945,7 +944,7 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	return remmina_pref_dialog->dialog;
 }
 
-GtkWidget *remmina_pref_dialog_get_dialog()
+GtkWidget *remmina_pref_dialog_get_dialog(void)
 {
 	if (!remmina_pref_dialog)
 		return NULL;

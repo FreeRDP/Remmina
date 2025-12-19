@@ -53,7 +53,7 @@ static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEv
 }
 
 /* User option to use key modifiers when selecting keyboard shortcuts */
-void remmina_key_chooser_dialog_set_option_modifier(GtkWidget *widget, gboolean state, RemminaKeyChooserArguments *arguments)
+static void remmina_key_chooser_dialog_set_option_modifier(GtkWidget *widget, gboolean state, RemminaKeyChooserArguments *arguments)
 {
 	TRACE_CALL(__func__);
 	gtk_switch_set_state(GTK_SWITCH(widget), state);

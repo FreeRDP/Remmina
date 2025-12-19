@@ -774,7 +774,7 @@ static void rcw_destroy(GtkWidget *widget, gpointer data)
 	g_free(priv);
 }
 
-gboolean rcw_notify_widget_toolbar_placement(GtkWidget *widget, gpointer data)
+static gboolean rcw_notify_widget_toolbar_placement(GtkWidget *widget, gpointer data)
 {
 	TRACE_CALL(__func__);
 	GType rcwtype;
@@ -871,7 +871,7 @@ static void rcw_tb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpoint
 	gtk_drag_set_icon_surface(context, surface);
 }
 
-void rcw_update_toolbar_opacity(RemminaConnectionWindow *cnnwin)
+static void rcw_update_toolbar_opacity(RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
@@ -940,7 +940,7 @@ static void rco_get_desktop_size(RemminaConnectionObject *cnnobj, gint *width, g
 	}
 }
 
-void rco_set_scrolled_policy(RemminaScaleMode scalemode, GtkScrolledWindow *scrolled_window)
+static void rco_set_scrolled_policy(RemminaScaleMode scalemode, GtkScrolledWindow *scrolled_window)
 {
 	TRACE_CALL(__func__);
 
@@ -968,7 +968,7 @@ static GtkWidget *rco_create_scrolled_container(RemminaScaleMode scalemode, int 
 	return scrolled_container;
 }
 
-gboolean rcw_toolbar_autofit_restore(RemminaConnectionWindow *cnnwin)
+static gboolean rcw_toolbar_autofit_restore(RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 
@@ -1441,7 +1441,7 @@ static void rcw_fullscreen_option_popdown(GtkWidget *widget, RemminaConnectionWi
 	rcw_floating_toolbar_show(cnnwin, FALSE);
 }
 
-void rcw_toolbar_fullscreen_option(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+static void rcw_toolbar_fullscreen_option(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj;
@@ -1581,7 +1581,7 @@ static void rcw_toolbar_scaler_option(GtkToolItem *toggle, RemminaConnectionWind
 #endif
 }
 
-void rco_switch_page_activate(GtkMenuItem *menuitem, RemminaConnectionObject *cnnobj)
+static void rco_switch_page_activate(GtkMenuItem *menuitem, RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
@@ -1591,7 +1591,7 @@ void rco_switch_page_activate(GtkMenuItem *menuitem, RemminaConnectionObject *cn
 	gtk_notebook_set_current_page(GTK_NOTEBOOK(priv->notebook), page_num);
 }
 
-void rcw_toolbar_switch_page_popdown(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
+static void rcw_toolbar_switch_page_popdown(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
@@ -1653,7 +1653,7 @@ static void rcw_toolbar_switch_page(GtkToolItem *toggle, RemminaConnectionWindow
 #endif
 }
 
-void rco_update_toolbar_autofit_button(RemminaConnectionObject *cnnobj)
+static void rco_update_toolbar_autofit_button(RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
@@ -1818,7 +1818,7 @@ static void rcw_toolbar_preferences_popdown(GtkToolItem *toggle, RemminaConnecti
 	rcw_floating_toolbar_show(cnnwin, FALSE);
 }
 
-void rcw_toolbar_menu_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+static void rcw_toolbar_menu_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
@@ -1832,7 +1832,7 @@ void rcw_toolbar_menu_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnw
 	rcw_floating_toolbar_show(cnnwin, FALSE);
 }
 
-void rcw_toolbar_tools_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
+static void rcw_toolbar_tools_popdown(GtkToolItem *toggle, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
@@ -1882,7 +1882,7 @@ static void rco_call_protocol_feature_activate(GtkMenuItem *menuitem, RemminaCon
 	remmina_protocol_widget_call_feature_by_ref(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), feature);
 }
 
-void rcw_toolbar_preferences_radio(RemminaConnectionObject *cnnobj, RemminaFile *remminafile,
+static void rcw_toolbar_preferences_radio(RemminaConnectionObject *cnnobj, RemminaFile *remminafile,
 				   GtkWidget *menu, const RemminaProtocolFeature *feature, const gchar *domain, gboolean enabled)
 {
 	TRACE_CALL(__func__);
@@ -1916,7 +1916,7 @@ void rcw_toolbar_preferences_radio(RemminaConnectionObject *cnnobj, RemminaFile 
 	}
 }
 
-void rcw_toolbar_preferences_check(RemminaConnectionObject *cnnobj,
+static void rcw_toolbar_preferences_check(RemminaConnectionObject *cnnobj,
 				   GtkWidget *menu, const RemminaProtocolFeature *feature,
 				   const gchar *domain, gboolean enabled)
 {
@@ -3014,7 +3014,7 @@ static gboolean rco_leave_protocol_widget(GtkWidget *widget, GdkEventCrossing *e
 }
 
 
-gboolean rco_enter_protocol_widget(GtkWidget *widget, GdkEventCrossing *event,
+static gboolean rco_enter_protocol_widget(GtkWidget *widget, GdkEventCrossing *event,
 				   RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
@@ -3584,7 +3584,7 @@ static GtkWidget *nb_find_page_by_cnnobj(GtkNotebook *notebook, RemminaConnectio
 }
 
 
-void rco_closewin(RemminaProtocolWidget *gp)
+static void rco_closewin(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj = gp->cnnobj;
@@ -3619,7 +3619,7 @@ void rco_closewin(RemminaProtocolWidget *gp)
 	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
 }
 
-void rco_on_close_button_clicked(GtkButton *button, RemminaConnectionObject *cnnobj)
+static void rco_on_close_button_clicked(GtkButton *button, RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
 	if (REMMINA_IS_PROTOCOL_WIDGET(cnnobj->proto)) {
@@ -4508,7 +4508,7 @@ static RemminaConnectionWindow *rcw_find(RemminaFile *remminafile)
 	return RCW(remmina_widget_pool_find(REMMINA_TYPE_CONNECTION_WINDOW, tag));
 }
 
-gboolean rcw_delayed_window_present(gpointer user_data)
+static gboolean rcw_delayed_window_present(gpointer user_data)
 {
 	RemminaConnectionWindow *cnnwin = (RemminaConnectionWindow *)user_data;
 
@@ -4520,7 +4520,7 @@ gboolean rcw_delayed_window_present(gpointer user_data)
 	return G_SOURCE_REMOVE;
 }
 
-void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
+static void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 {
 	TRACE_CALL(__func__);
 
@@ -4572,7 +4572,7 @@ static void cb_lasterror_confirmed(void *cbdata, int btn)
 	rco_closewin((RemminaProtocolWidget *)cbdata);
 }
 
-void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
+static void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj = gp->cnnobj;
@@ -4624,7 +4624,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	}
 }
 
-void rco_on_desktop_resize(RemminaProtocolWidget *gp, gpointer data)
+static void rco_on_desktop_resize(RemminaProtocolWidget *gp, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj = gp->cnnobj;
@@ -4633,7 +4633,7 @@ void rco_on_desktop_resize(RemminaProtocolWidget *gp, gpointer data)
 		rco_check_resize(cnnobj);
 }
 
-void rco_on_update_align(RemminaProtocolWidget *gp, gpointer data)
+static void rco_on_update_align(RemminaProtocolWidget *gp, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj = gp->cnnobj;
@@ -4641,7 +4641,7 @@ void rco_on_update_align(RemminaProtocolWidget *gp, gpointer data)
 	remmina_protocol_widget_update_alignment(cnnobj);
 }
 
-void rco_on_lock_dynres(RemminaProtocolWidget *gp, gpointer data)
+static void rco_on_lock_dynres(RemminaProtocolWidget *gp, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj = gp->cnnobj;
@@ -4650,7 +4650,7 @@ void rco_on_lock_dynres(RemminaProtocolWidget *gp, gpointer data)
 	rco_update_toolbar(cnnobj);
 }
 
-void rco_on_unlock_dynres(RemminaProtocolWidget *gp, gpointer data)
+static void rco_on_unlock_dynres(RemminaProtocolWidget *gp, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj = gp->cnnobj;

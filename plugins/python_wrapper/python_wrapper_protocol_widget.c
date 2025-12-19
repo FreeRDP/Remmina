@@ -257,14 +257,14 @@ void python_wrapper_protocol_widget_type_ready(void)
 static PyObject* protocol_widget_get_viewport(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 	return (PyObject*)new_pywidget(G_OBJECT(python_wrapper_get_service()->protocol_widget_gtkviewport(self->gp)));
 }
 
 static PyObject* protocol_widget_get_width(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_get_width(self->gp));
 }
@@ -272,7 +272,7 @@ static PyObject* protocol_widget_get_width(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_set_width(PyRemminaProtocolWidget* self, PyObject* var_width)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!var_width)
 	{
@@ -295,7 +295,7 @@ static PyObject* protocol_widget_set_width(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_get_height(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_get_height(self->gp));
 }
@@ -303,7 +303,7 @@ static PyObject* protocol_widget_get_height(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_set_height(PyRemminaProtocolWidget* self, PyObject* var_height)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!var_height)
 	{
@@ -326,7 +326,7 @@ static PyObject* protocol_widget_set_height(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_get_current_scale_mode(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_get_current_scale_mode(self->gp));
 }
@@ -334,7 +334,7 @@ static PyObject* protocol_widget_get_current_scale_mode(PyRemminaProtocolWidget*
 static PyObject* protocol_widget_get_expand(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_get_expand(self->gp));
 }
@@ -342,7 +342,7 @@ static PyObject* protocol_widget_get_expand(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_set_expand(PyRemminaProtocolWidget* self, PyObject* var_expand)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!var_expand)
 	{
@@ -364,7 +364,7 @@ static PyObject* protocol_widget_set_expand(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_has_error(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_has_error(self->gp));
 }
@@ -372,7 +372,7 @@ static PyObject* protocol_widget_has_error(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_set_error(PyRemminaProtocolWidget* self, PyObject* var_msg)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!var_msg)
 	{
@@ -395,7 +395,7 @@ static PyObject* protocol_widget_set_error(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_is_closed(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_is_closed(self->gp));
 }
@@ -403,7 +403,7 @@ static PyObject* protocol_widget_is_closed(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_get_file(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	RemminaFile* file = python_wrapper_get_service()->protocol_widget_get_file(self->gp);
 	return (PyObject*)python_wrapper_remmina_file_to_python(file);
@@ -412,7 +412,7 @@ static PyObject* protocol_widget_get_file(PyRemminaProtocolWidget* self, PyObjec
 static PyObject* protocol_widget_emit_signal(PyRemminaProtocolWidget* self, PyObject* var_signal)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!var_signal)
 	{
@@ -434,7 +434,7 @@ static PyObject* protocol_widget_emit_signal(PyRemminaProtocolWidget* self, PyOb
 static PyObject* protocol_widget_register_hostkey(PyRemminaProtocolWidget* self, PyObject* var_widget)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!var_widget)
 	{
@@ -450,7 +450,7 @@ static PyObject* protocol_widget_register_hostkey(PyRemminaProtocolWidget* self,
 static PyObject* protocol_widget_start_direct_tunnel(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	gint default_port;
 	gboolean port_plus;
@@ -475,7 +475,7 @@ static PyObject* protocol_widget_start_direct_tunnel(PyRemminaProtocolWidget* se
 static PyObject* protocol_widget_start_reverse_tunnel(PyRemminaProtocolWidget* self, PyObject* var_local_port)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!PyLong_Check(var_local_port))
 	{
@@ -503,7 +503,7 @@ static gboolean xport_tunnel_init(RemminaProtocolWidget* gp, gint remotedisplay,
 static PyObject* protocol_widget_start_xport_tunnel(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_start_xport_tunnel(self->gp, xport_tunnel_init));
 }
@@ -511,7 +511,7 @@ static PyObject* protocol_widget_start_xport_tunnel(PyRemminaProtocolWidget* sel
 static PyObject* protocol_widget_set_display(PyRemminaProtocolWidget* self, PyObject* var_display)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!var_display)
 	{
@@ -533,7 +533,7 @@ static PyObject* protocol_widget_set_display(PyRemminaProtocolWidget* self, PyOb
 static PyObject* protocol_widget_signal_connection_closed(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_signal_connection_closed(self->gp);
 	return Py_None;
@@ -542,7 +542,7 @@ static PyObject* protocol_widget_signal_connection_closed(PyRemminaProtocolWidge
 static PyObject* protocol_widget_signal_connection_opened(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_signal_connection_opened(self->gp);
 	return Py_None;
@@ -551,7 +551,7 @@ static PyObject* protocol_widget_signal_connection_opened(PyRemminaProtocolWidge
 static PyObject* protocol_widget_update_align(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_update_align(self->gp);
 	return Py_None;
@@ -560,7 +560,7 @@ static PyObject* protocol_widget_update_align(PyRemminaProtocolWidget* self, PyO
 static PyObject* protocol_widget_unlock_dynres(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_unlock_dynres(self->gp);
 	return Py_None;
@@ -569,7 +569,7 @@ static PyObject* protocol_widget_unlock_dynres(PyRemminaProtocolWidget* self, Py
 static PyObject* protocol_widget_desktop_resize(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_desktop_resize(self->gp);
 	return Py_None;
@@ -578,7 +578,7 @@ static PyObject* protocol_widget_desktop_resize(PyRemminaProtocolWidget* self, P
 static PyObject* protocol_widget_panel_new_certificate(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 	gchar* subject, * issuer, * fingerprint;
 
 	if (PyArg_ParseTuple(args, "sss", &subject, &issuer, &fingerprint))
@@ -596,7 +596,7 @@ static PyObject* protocol_widget_panel_new_certificate(PyRemminaProtocolWidget* 
 static PyObject* protocol_widget_panel_changed_certificate(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 	gchar* subject, * issuer, * new_fingerprint, * old_fingerprint;
 
 	if (PyArg_ParseTuple(args, "sss", &subject, &issuer, &new_fingerprint, &old_fingerprint))
@@ -614,7 +614,7 @@ static PyObject* protocol_widget_panel_changed_certificate(PyRemminaProtocolWidg
 static PyObject* protocol_widget_get_username(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_username(self->gp));
 }
@@ -622,7 +622,7 @@ static PyObject* protocol_widget_get_username(PyRemminaProtocolWidget* self, PyO
 static PyObject* protocol_widget_get_password(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_password(self->gp));
 }
@@ -630,7 +630,7 @@ static PyObject* protocol_widget_get_password(PyRemminaProtocolWidget* self, PyO
 static PyObject* protocol_widget_get_domain(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_domain(self->gp));
 }
@@ -638,7 +638,7 @@ static PyObject* protocol_widget_get_domain(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_get_savepassword(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("p", python_wrapper_get_service()->protocol_widget_get_savepassword(self->gp));
 }
@@ -646,7 +646,7 @@ static PyObject* protocol_widget_get_savepassword(PyRemminaProtocolWidget* self,
 static PyObject* protocol_widget_panel_authx509(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("i", python_wrapper_get_service()->protocol_widget_panel_authx509(self->gp));
 }
@@ -654,7 +654,7 @@ static PyObject* protocol_widget_panel_authx509(PyRemminaProtocolWidget* self, P
 static PyObject* protocol_widget_get_cacert(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_cacert(self->gp));
 }
@@ -662,7 +662,7 @@ static PyObject* protocol_widget_get_cacert(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_get_cacrl(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_cacrl(self->gp));
 }
@@ -670,7 +670,7 @@ static PyObject* protocol_widget_get_cacrl(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_get_clientcert(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_clientcert(self->gp));
 }
@@ -678,7 +678,7 @@ static PyObject* protocol_widget_get_clientcert(PyRemminaProtocolWidget* self, P
 static PyObject* protocol_widget_get_clientkey(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	return Py_BuildValue("s", python_wrapper_get_service()->protocol_widget_get_clientkey(self->gp));
 }
@@ -686,7 +686,7 @@ static PyObject* protocol_widget_get_clientkey(PyRemminaProtocolWidget* self, Py
 static PyObject* protocol_widget_save_cred(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_save_cred(self->gp);
 	return Py_None;
@@ -695,7 +695,7 @@ static PyObject* protocol_widget_save_cred(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_panel_show_listen(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 	gint port = 0;
 
 	if (PyArg_ParseTuple(args, "i", &port))
@@ -713,7 +713,7 @@ static PyObject* protocol_widget_panel_show_listen(PyRemminaProtocolWidget* self
 static PyObject* protocol_widget_panel_show_retry(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_panel_show_retry(self->gp);
 	return Py_None;
@@ -722,7 +722,7 @@ static PyObject* protocol_widget_panel_show_retry(PyRemminaProtocolWidget* self,
 static PyObject* protocol_widget_panel_show(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_panel_show(self->gp);
 	return Py_None;
@@ -731,7 +731,7 @@ static PyObject* protocol_widget_panel_show(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_panel_hide(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_panel_hide(self->gp);
 	return Py_None;
@@ -740,7 +740,7 @@ static PyObject* protocol_widget_panel_hide(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_ssh_exec(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 	gboolean wait;
 	gchar* cmd;
 
@@ -771,7 +771,7 @@ static void _on_destroy_callback_wrapper(RemminaProtocolWidget* gp)
 static PyObject* protocol_widget_chat_open(PyRemminaProtocolWidget* self, PyObject* var_name)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	if (!PyUnicode_Check(var_name))
 	{
@@ -789,7 +789,7 @@ static PyObject* protocol_widget_chat_open(PyRemminaProtocolWidget* self, PyObje
 static PyObject* protocol_widget_chat_close(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 
 	python_wrapper_get_service()->protocol_widget_panel_hide(self->gp);
 	return Py_None;
@@ -798,7 +798,7 @@ static PyObject* protocol_widget_chat_close(PyRemminaProtocolWidget* self, PyObj
 static PyObject* protocol_widget_chat_receive(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 	gchar* text;
 
 	if (PyArg_ParseTuple(args, "s", &text))
@@ -817,7 +817,7 @@ static PyObject* protocol_widget_chat_receive(PyRemminaProtocolWidget* self, PyO
 static PyObject* protocol_widget_send_keys_signals(PyRemminaProtocolWidget* self, PyObject* args)
 {
 	TRACE_CALL(__func__);
-	SELF_CHECK();
+	SELF_CHECK()
 	guint* keyvals;
 	int length;
 	GdkEventType event_type;

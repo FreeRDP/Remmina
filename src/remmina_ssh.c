@@ -155,7 +155,7 @@ static int remmina_ssh_x11_get_proto(const char *display, char **_proto, char **
 static void remmina_ssh_set_nodelay(int fd);
 static int remmina_ssh_connect_local_xsocket_path(const char *pathname);
 static int remmina_ssh_connect_local_xsocket(int display_number);
-static int remmina_ssh_x11_connect_display();
+static int remmina_ssh_x11_connect_display(void);
 
 // Send data to channel
 static int remmina_ssh_cp_to_ch_cb(int fd, int revents, void *userdata);
@@ -391,7 +391,7 @@ remmina_ssh_connect_local_xsocket(int display_number)
 }
 
 static int
-remmina_ssh_x11_connect_display()
+remmina_ssh_x11_connect_display(void)
 {
 	TRACE_CALL(__func__);
 
@@ -1670,7 +1670,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	return ret;
 }
 
-void
+static void
 remmina_ssh_log_callback(ssh_session session, int priority, const char *message, void *userdata)
 {
 	TRACE_CALL(__func__);
@@ -3238,7 +3238,7 @@ remmina_ssh_shell_free(RemminaSSHShell *shell)
 		g_free(shell->run_line);
 		shell->run_line = NULL;
 	}
-	/* It’s not necessary to close shell->slave since the other end (vte) will close it */;
+	/* It’s not necessary to close shell->slave since the other end (vte) will close it */
 	remmina_ssh_free(REMMINA_SSH(shell));
 }
 

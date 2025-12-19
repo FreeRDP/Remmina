@@ -138,13 +138,13 @@ void remmina_masterthread_exec_and_wait(RemminaMTExecData *d)
 	pthread_cond_destroy(&d->pt_cond);
 }
 
-void remmina_masterthread_exec_save_main_thread_id()
+void remmina_masterthread_exec_save_main_thread_id(void)
 {
 	/* To be called from main thread at startup */
 	gMainThreadID = pthread_self();
 }
 
-gboolean remmina_masterthread_exec_is_main_thread()
+gboolean remmina_masterthread_exec_is_main_thread(void)
 {
 	return pthread_equal(gMainThreadID, pthread_self()) != 0;
 }

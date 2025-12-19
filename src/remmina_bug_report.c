@@ -228,7 +228,7 @@ void remmina_bug_report_dialog_on_action_submit(GSimpleAction *action, GVariant 
 	json_node_unref(bug_report_data);
 }
 
-JsonNode *remmina_bug_report_get_all()
+JsonNode *remmina_bug_report_get_all(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b_inner, *b_outer; // holds entire JSON blob

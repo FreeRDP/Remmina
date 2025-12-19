@@ -208,7 +208,7 @@ gboolean remmina_network_monitor_status (RemminaMonitor *rm_monitor)
 }
 
 
-RemminaMonitor *remmina_network_monitor_new ()
+RemminaMonitor *remmina_network_monitor_new (void)
 {
 	TRACE_CALL(__func__);
 

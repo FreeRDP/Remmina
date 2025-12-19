@@ -244,7 +244,7 @@ static void remmina_protocol_widget_init(RemminaProtocolWidget *gp)
 	g_signal_connect(G_OBJECT(gp), "destroy", G_CALLBACK(remmina_protocol_widget_destroy), NULL);
 }
 
-void remmina_protocol_widget_open_connection_real(gpointer data)
+static void remmina_protocol_widget_open_connection_real(gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
@@ -634,7 +634,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
  * get from remmina_protocol_widget_send_clipboard
  * Probably we don't need the replacement table.
  */
-void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gchar *clip_text, gpointer data)
+static void remmina_protocol_widget_send_clip_strokes(GtkClipboard *clipboard, const gchar *clip_text, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);

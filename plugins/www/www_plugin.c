@@ -73,7 +73,7 @@ typedef struct _RemminaPluginWWWData {
 
 RemminaPluginService *remmina_plugin_service = NULL;
 
-void remmina_plugin_www_download_started(WebKitWebContext *context,
+static void remmina_plugin_www_download_started(WebKitWebContext *context,
 					 WebKitDownload *download, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -171,7 +171,7 @@ void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtoc
 	}
 }
 
-void remmina_plugin_www_on_create(WebKitWebView *webview, WebKitNavigationAction *a, RemminaProtocolWidget *gp)
+static void remmina_plugin_www_on_create(WebKitWebView *webview, WebKitNavigationAction *a, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	REMMINA_PLUGIN_DEBUG("New web-view");
@@ -296,7 +296,7 @@ gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, Remm
 	WebKitResponsePolicyDecision *response_decision =
 		WEBKIT_RESPONSE_POLICY_DECISION(decision);
 	WebKitURIResponse *response =
-		webkit_response_policy_decision_get_response(response_decision);;
+		webkit_response_policy_decision_get_response(response_decision);
 	const gchar *request_uri = webkit_uri_response_get_uri(response);
 
 	WebKitURIRequest *request;
@@ -963,7 +963,9 @@ static RemminaProtocolPlugin remmina_plugin =
 	NULL                                    // RCW unmap event
 };
 
-G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service);
+
+gboolean remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL(__func__);
 	remmina_plugin_service = service;

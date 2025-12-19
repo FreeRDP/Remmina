@@ -45,7 +45,7 @@ JsonNode *remmina_info_stats_get_os_info(void);
 JsonNode *remmina_info_stats_get_python(void);
 JsonNode *remmina_info_stats_get_uid(void);
 gboolean  remmina_info_show_response(gpointer user_data);
-gpointer remmina_info_stats_collector();
+gpointer remmina_info_stats_collector(void);
 gboolean remmina_info_periodic_check(gpointer user_data);
 void remmina_info_schedule(void);
 

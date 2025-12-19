@@ -75,7 +75,7 @@ static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 	return TRUE;
 }
 
-const gchar* remmina_exec_get_build_config(void)
+static const gchar* remmina_exec_get_build_config(void)
 {
 	static const gchar build_config[] =
 	    "Build configuration: " BUILD_CONFIG "\n"
@@ -86,7 +86,7 @@ const gchar* remmina_exec_get_build_config(void)
 	return build_config;
 }
 
-void remmina_exec_exitremmina()
+void remmina_exec_exitremmina(void)
 {
 	TRACE_CALL(__func__);
 
@@ -120,7 +120,7 @@ static gboolean disable_rcw_delete_confirm_cb(GtkWidget *widget, gpointer data)
 	return TRUE;
 }
 
-void remmina_exec_exitremmina_one_confirm()
+void remmina_exec_exitremmina_one_confirm(void)
 {
 	TRACE_CALL(__func__);
 	if (remmina_widget_pool_count() >1 || !remmina_main_get_window()) {

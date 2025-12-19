@@ -57,7 +57,7 @@ void python_wrapper_entry_init(void)
 	TRACE_CALL(__func__);
 }
 
-void python_wrapper_entry_entry_func_wrapper(RemminaEntryPlugin* instance)
+static void python_wrapper_entry_entry_func_wrapper(RemminaEntryPlugin* instance)
 {
 	TRACE_CALL(__func__);
 

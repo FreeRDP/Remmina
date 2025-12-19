@@ -182,5 +182,15 @@ GtkWidget *remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
 GtkWidget *remmina_pref_dialog_get_dialog(void);
 void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable *editable, RemminaPrefDialog *dialog);
 void remmina_pref_dialog_on_action_close(GSimpleAction *action, GVariant *param, gpointer data);
+void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog);
+void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data);
+void remmina_pref_dialog_vte_font_on_toggled(GtkSwitch *widget, RemminaPrefDialog *dialog);
+void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data);
+void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog);
+void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data);
+void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data);
+void remmina_pref_on_color_scheme_removed(GtkWidget *widget, gpointer user_data);
+void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user_data);
+void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_data);
 
 G_END_DECLS

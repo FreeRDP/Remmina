@@ -189,8 +189,9 @@ gboolean python_wrapper_load(RemminaLanguageWrapperPlugin* plugin, const char* n
 }
 
 
-G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
-{
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service);
+
+gboolean remmina_plugin_entry(RemminaPluginService *service) {
 	TRACE_CALL(__func__);
 	python_wrapper_set_service(service);
 

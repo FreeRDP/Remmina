@@ -69,7 +69,7 @@ G_GNUC_CONST;
 
 G_DEFINE_TYPE(RemminaLogWindow, remmina_log_window, GTK_TYPE_WINDOW)
 
-void remmina_log_stats()
+static void remmina_log_stats(void)
 {
 	TRACE_CALL(__func__);
 	JsonNode *n;

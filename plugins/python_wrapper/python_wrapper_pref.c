@@ -55,7 +55,7 @@ void python_wrapper_pref_init(void)
 /**
  * @brief
  */
-GtkWidget* python_wrapper_pref_get_pref_body_wrapper(RemminaPrefPlugin* instance)
+static GtkWidget* python_wrapper_pref_get_pref_body_wrapper(RemminaPrefPlugin* instance)
 {
 	TRACE_CALL(__func__);
 

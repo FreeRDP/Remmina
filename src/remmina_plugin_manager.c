@@ -166,7 +166,7 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 	return TRUE;
 }
 
-gboolean remmina_gtksocket_available()
+gboolean remmina_gtksocket_available(void)
 {
 	GdkDisplayManager* dm;
 	GdkDisplay* d;
@@ -327,7 +327,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_main_add_network_status,
 };
 
-const char *get_filename_ext(const char *filename) {
+static const char *get_filename_ext(const char *filename) {
 	const char* last = strrchr(filename, '/');
     const char *dot = strrchr(last, '.');
     if(!dot || dot == filename) return "";
@@ -348,7 +348,7 @@ static gint compare_secret_plugin_init_order(gconstpointer a, gconstpointer b)
 	return 0;
 }
 
-gchar* remmina_plugin_manager_create_alt_plugin_dir()
+static gchar* remmina_plugin_manager_create_alt_plugin_dir(void)
 {
 	gchar *plugin_dir;
 	plugin_dir = g_build_path("/", g_get_user_config_dir(), "remmina", "plugins", NULL);
@@ -368,7 +368,7 @@ gchar* remmina_plugin_manager_create_alt_plugin_dir()
 }
 
 
-void remmina_plugin_manager_load_plugins(GPtrArray *plugin_dirs, int array_size, gboolean reload)
+static void remmina_plugin_manager_load_plugins(GPtrArray *plugin_dirs, int array_size, gboolean reload)
 {
 	TRACE_CALL(__func__);
 	GDir *dir;
@@ -492,7 +492,7 @@ void remmina_plugin_manager_load_plugins(GPtrArray *plugin_dirs, int array_size,
 	g_ptr_array_free(alternative_language_plugins, TRUE);
 }
 
-void remmina_plugin_manager_init()
+void remmina_plugin_manager_init(void)
 {
 	TRACE_CALL(__func__);
 
@@ -533,7 +533,7 @@ void remmina_plugin_manager_init()
  * @returns NULL if there is an error creating the json builder object. Otherwise, return the JsonNode object with the plugin data.
  *
  */
-JsonNode *remmina_plugin_manager_get_installed_plugins()
+JsonNode *remmina_plugin_manager_get_installed_plugins(void)
 {
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
@@ -563,7 +563,7 @@ JsonNode *remmina_plugin_manager_get_installed_plugins()
 	}
 }
 
-gboolean remmina_plugin_manager_is_python_wrapper_installed()
+static gboolean remmina_plugin_manager_is_python_wrapper_installed(void)
 {
 	gchar* name = "Python Wrapper";
 	RemminaPlugin *plugin;
@@ -584,7 +584,7 @@ gboolean remmina_plugin_manager_is_python_wrapper_installed()
  * @returns NULL if there is an error creating the json builder object. Otherwise, return the JsonNode object with the plugin data.
  *
  */
-JsonNode *remmina_plugin_manager_plugin_stats_get_all()
+JsonNode *remmina_plugin_manager_plugin_stats_get_all(void)
 {
 	JsonNode *n;
 	gchar *unenc_p, *enc_p, *uid;
@@ -740,7 +740,7 @@ static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugi
 	return FALSE;
 }
 
-void remmina_plugin_manager_show_stdout()
+void remmina_plugin_manager_show_stdout(void)
 {
 	TRACE_CALL(__func__);
 	g_print("%-20s%-16s%-64s%-10s\n", "NAME", "TYPE", "DESCRIPTION", "PLUGIN AND LIBRARY VERSION");
@@ -772,7 +772,7 @@ static gboolean remmina_plugin_manager_show_for_each_available(RemminaPlugin *pl
 	return FALSE;
 }
 
-void result_dialog_cleanup(GtkDialog * dialog, gint response_id, gpointer user_data)
+static void result_dialog_cleanup(GtkDialog * dialog, gint response_id, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
@@ -782,7 +782,7 @@ void result_dialog_cleanup(GtkDialog * dialog, gint response_id, gpointer user_d
 	gtk_widget_set_visible(remmina_plugin_signal_data->spinner, FALSE);
 }
 
-void remmina_plugin_manager_download_result_dialog(GtkDialog * dialog, gchar * message)
+static void remmina_plugin_manager_download_result_dialog(GtkDialog * dialog, gchar * message)
 {
 	TRACE_CALL(__func__);
 	GtkWidget *child_dialog, *content_area, *label;
@@ -924,7 +924,7 @@ GFile* remmina_create_plugin_file(const gchar* plugin_name, const gchar* plugin_
 	return plugin_file;
 }
 
-gchar* remmina_plugin_manager_get_selected_plugin_list_str(GArray *selected_plugins)
+static gchar* remmina_plugin_manager_get_selected_plugin_list_str(GArray *selected_plugins)
 {
 	gchar *plugin_list = NULL;
 
@@ -1191,7 +1191,7 @@ gboolean remmina_plugin_manager_download_plugins(gpointer user_data)
  * Creates request to download selected plugins from the server
  *
  */
-void remmina_plugin_manager_plugin_request(GArray *selected_plugins)
+static void remmina_plugin_manager_plugin_request(GArray *selected_plugins)
 {
 	TRACE_CALL(__func__);
 	gchar *formdata, *encdata, *plugin_list, *uid;
@@ -1284,7 +1284,7 @@ gboolean remmina_plugin_manager_verify_duplicate_plugins(RemminaPlugin *availabl
 }
 
 
-void* remmina_plugin_manager_get_available_plugins()
+void* remmina_plugin_manager_get_available_plugins(void)
 {
 	TRACE_CALL(__func__);
 

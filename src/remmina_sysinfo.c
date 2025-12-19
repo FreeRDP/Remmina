@@ -42,7 +42,7 @@
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_sysinfo.h"
 
-gboolean remmina_sysinfo_is_appindicator_available()
+gboolean remmina_sysinfo_is_appindicator_available(void)
 {
 	/* Check if we have an appindicator available (which uses
 	 * DBUS KDE StatusNotifier)
@@ -83,7 +83,7 @@ gboolean remmina_sysinfo_is_appindicator_available()
  * @return the GNOME Shell version as a string or NULL if error or no GNOME Shell found.
  * @warning The returned string must be freed with g_free.
  */
-gchar *remmina_sysinfo_get_gnome_shell_version()
+gchar *remmina_sysinfo_get_gnome_shell_version(void)
 {
 	TRACE_CALL(__func__);
 	GDBusConnection *con;
@@ -127,7 +127,7 @@ gchar *remmina_sysinfo_get_gnome_shell_version()
  * or \0 if nothing has been found.
  * @warning The returned string must be freed with g_free.
  */
-gchar *remmina_sysinfo_get_wm_name()
+gchar *remmina_sysinfo_get_wm_name(void)
 {
 	TRACE_CALL(__func__);
 	const gchar *xdg_current_desktop;

@@ -84,7 +84,7 @@ static void remmina_message_panel_class_init(RemminaMessagePanelClass *class)
 			G_TYPE_INT);
 }
 
-RemminaMessagePanel *remmina_message_panel_new()
+RemminaMessagePanel *remmina_message_panel_new(void)
 {
 	TRACE_CALL(__func__);
 	RemminaMessagePanelPrivate *priv;

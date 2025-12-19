@@ -311,7 +311,7 @@ PyPlugin* python_wrapper_get_plugin_by_protocol_widget(RemminaProtocolWidget* gp
 	return python_wrapper_get_plugin(name);
 }
 
-void init_pygobject()
+void init_pygobject(void)
 {
 	pygobject_init(-1, -1, -1);
 }

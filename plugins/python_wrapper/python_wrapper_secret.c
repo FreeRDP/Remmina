@@ -48,7 +48,7 @@ void python_wrapper_secret_init(void)
 	TRACE_CALL(__func__);
 }
 
-gboolean python_wrapper_secret_init_wrapper(RemminaSecretPlugin* instance)
+static gboolean python_wrapper_secret_init_wrapper(RemminaSecretPlugin* instance)
 {
 	TRACE_CALL(__func__);
 
@@ -57,7 +57,7 @@ gboolean python_wrapper_secret_init_wrapper(RemminaSecretPlugin* instance)
 	return result == Py_None || result != Py_False;
 }
 
-gboolean python_wrapper_secret_is_service_available_wrapper(RemminaSecretPlugin* instance)
+static gboolean python_wrapper_secret_is_service_available_wrapper(RemminaSecretPlugin* instance)
 {
 	TRACE_CALL(__func__);
 
@@ -66,7 +66,7 @@ gboolean python_wrapper_secret_is_service_available_wrapper(RemminaSecretPlugin*
 	return result == Py_None || result != Py_False;
 }
 
-void
+static void
 python_wrapper_secret_store_password_wrapper(RemminaSecretPlugin* instance, RemminaFile* file, const gchar* key, const gchar* password)
 {
 	TRACE_CALL(__func__);
@@ -76,7 +76,7 @@ python_wrapper_secret_store_password_wrapper(RemminaSecretPlugin* instance, Remm
 		->instance, "store_password", "Oss", (PyObject*)python_wrapper_remmina_file_to_python(file), key, password);
 }
 
-gchar*
+static gchar*
 python_wrapper_secret_get_password_wrapper(RemminaSecretPlugin* instance, RemminaFile* file, const gchar* key)
 {
 	TRACE_CALL(__func__);
@@ -93,7 +93,7 @@ python_wrapper_secret_get_password_wrapper(RemminaSecretPlugin* instance, Remmin
 	return python_wrapper_copy_string_from_python(result, len);
 }
 
-void
+static void
 python_wrapper_secret_delete_password_wrapper(RemminaSecretPlugin* instance, RemminaFile* file, const gchar* key)
 {
 	TRACE_CALL(__func__);

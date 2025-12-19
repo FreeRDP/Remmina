@@ -63,8 +63,8 @@ gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, c
 void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
 void remmina_plugin_manager_show(GtkWindow *parent);
 void remmina_plugin_manager_for_each_plugin_stdout(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
-void remmina_plugin_manager_show_stdout();
-void* remmina_plugin_manager_get_available_plugins();
+void remmina_plugin_manager_show_stdout(void);
+void* remmina_plugin_manager_get_available_plugins(void);
 gboolean remmina_plugin_manager_parse_plugin_list(gpointer user_data);
 gboolean remmina_plugin_manager_download_plugins(gpointer user_data);
 RemminaFilePlugin *remmina_plugin_manager_get_import_file_handler(const gchar *file);
@@ -72,7 +72,7 @@ RemminaFilePlugin *remmina_plugin_manager_get_export_file_handler(RemminaFile *r
 RemminaSecretPlugin *remmina_plugin_manager_get_secret_plugin(void);
 const gchar *remmina_plugin_manager_get_canonical_setting_name(const RemminaProtocolSetting *setting);
 gboolean remmina_plugin_manager_is_encrypted_setting(RemminaProtocolPlugin *pp, const char *setting);
-gboolean remmina_gtksocket_available();
+gboolean remmina_gtksocket_available(void);
 gboolean remmina_plugin_manager_verify_duplicate_plugins(RemminaPlugin *test_plugin);
 void remmina_plugin_manager_toggle_checkbox(GtkCellRendererToggle *cell, gchar *path, GtkListStore *model);
 void remmina_plugin_manager_on_response(GtkDialog *dialog, gint response_id, gpointer user_data);

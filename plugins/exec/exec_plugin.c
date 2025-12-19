@@ -230,7 +230,6 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 			default:
 				gtk_widget_destroy(GTK_WIDGET(dialog));
 				return FALSE;
-				break;
 		}
 		gtk_widget_destroy(GTK_WIDGET(dialog));
 		REMMINA_PLUGIN_DEBUG("[%s] Run Sync", PLUGIN_NAME);
@@ -334,7 +333,9 @@ static RemminaProtocolPlugin remmina_plugin = {
 	NULL                                            // RCW unmap event
 };
 
-G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service);
+
+gboolean remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL(__func__);
 	remmina_plugin_service = service;

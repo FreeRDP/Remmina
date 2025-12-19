@@ -50,7 +50,7 @@
 	(!(ptr) || !*(ptr))
 
 /* Used to send desktop notifications */
-void www_utils_send_notification(const gchar *notification_id,
+static void www_utils_send_notification(const gchar *notification_id,
 				 const gchar *notification_title, const gchar *notification_message)
 {
 	TRACE_CALL(__func__);
@@ -64,7 +64,7 @@ void www_utils_send_notification(const gchar *notification_id,
 	g_object_unref(notification);
 }
 
-gint www_utils_strpos(const gchar *haystack, const gchar *needle)
+static gint www_utils_strpos(const gchar *haystack, const gchar *needle)
 {
 	TRACE_CALL(__func__);
 	const gchar *sub;
@@ -82,7 +82,7 @@ gint www_utils_strpos(const gchar *haystack, const gchar *needle)
 /* end can be -1 for haystack->len.
  * returns: position of found text or -1.
  * (C) Taken from geany */
-gint www_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle)
+static gint www_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle)
 {
 	TRACE_CALL(__func__);
 	gint pos;
@@ -114,7 +114,7 @@ gint www_utils_string_find(GString *haystack, gint start, gint end, const gchar 
  * len can be -1 to replace the remainder of @a str.
  * returns: pos + strlen(replace).
  * (C) Taken from geany */
-gint www_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace)
+static gint www_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace)
 {
 	TRACE_CALL(__func__);
 	g_string_erase(str, pos, len);
@@ -134,7 +134,7 @@ gint www_utils_string_replace(GString *str, gint pos, gint len, const gchar *rep
  *
  * @return Number of replacements made.
  **/
-guint www_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace)
+static guint www_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace)
 {
 	TRACE_CALL(__func__);
 	guint count = 0;
