@@ -8,7 +8,7 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2020, 2021, 2023.
 # J. Lavoie <j.lavoie@net-c.ca>, 2020, 2021.
 # Rob Pearson <rob.dunedin@gmail.com>, 2020.
-# Andi Chandler <andi@gowling.com>, 2020, 2021, 2022, 2023, 2024, 2025.
+# Andi Chandler <andi@gowling.com>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Antenore Gatta <antenore@simbiosi.org>, 2021.
 # My Random Thoughts <weblate@myrandomthoughts.co.uk>, 2022.
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2025-12-21 17:00+0000\n"
+"PO-Revision-Date: 2026-01-03 23:01+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
@@ -1452,6 +1452,11 @@ msgid ""
 "Example: <-l username -p port>\n"
 "<-l user localhost> would not set localhost as there is no flag"
 msgstr ""
+"Overrides all other options\n"
+"All options may not be supported\n"
+"Only accepts flag-argument pairs\n"
+"Example: <-l username -p port>\n"
+"<-l user localhost> would not set localhost as there is no flag"
 
 #: src/remmina_file_editor.c:1559 plugins/rdp/rdp_plugin.c:3286
 msgid "Start-up path"
@@ -1466,24 +1471,20 @@ msgid "SSH private key file"
 msgstr "SSH private key file"
 
 #: src/remmina_file_editor.c:1640
-#, fuzzy
-#| msgid "SSH Proxy Command"
 msgid "SSH Command"
-msgstr "SSH Proxy Command"
+msgstr "SSH Command"
 
 #: src/remmina_file_editor.c:1644
-#, fuzzy
-#| msgid "Startup program"
 msgid "Startup command"
-msgstr "Startup program"
+msgstr "Startup command"
 
 #: src/remmina_file_editor.c:1651
 msgid "Export ssh tunnel settings"
-msgstr ""
+msgstr "Export ssh tunnel settings"
 
 #: src/remmina_file_editor.c:1657
 msgid "Import ssh tunnel settings"
-msgstr ""
+msgstr "Import ssh tunnel settings"
 
 #: src/remmina_file_editor.c:1692
 msgid "Basic"
@@ -1578,17 +1579,14 @@ msgstr "Show ‘About’"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:104
-#, fuzzy
-#| msgid ""
-#| "Connect either to a desktop described in a file (.remmina or a filetype "
-#| "supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
 msgid ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
 "supported by a plugin) or a supported URI (RDP, VNC, SSH, HTTP, HTTPS or "
 "SPICE)"
 msgstr ""
 "Connect either to a desktop described in a file (.remmina or a filetype "
-"supported by a plugin) or a supported URI (RDP, VNC, SSH or SPICE)"
+"supported by a plugin) or a supported URI (RDP, VNC, SSH, HTTP, HTTPS or "
+"SPICE)"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
