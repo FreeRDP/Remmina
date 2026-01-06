@@ -6,15 +6,15 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020, 2021, 2022, 2023.
 # Antenore Gatta <antenore@simbiosi.org>, 2020, 2021.
 # Ricky From Hong Kong <lamricky11@hotmail.com>, 2024.
-# Peter Dave Hello <hsu@peterdavehello.org>, 2024.
+# Peter Dave Hello <hsu@peterdavehello.org>, 2024, 2026.
 # neko0xff <neko_0xff@protonmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2025-08-10 05:01+0000\n"
-"Last-Translator: neko0xff <neko_0xff@protonmail.com>\n"
+"PO-Revision-Date: 2026-01-06 14:01+0000\n"
+"Last-Translator: Peter Dave Hello <hsu@peterdavehello.org>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/remmina/remmina/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_icon.c:143
@@ -2122,7 +2122,7 @@ msgstr "需要 libsodium 版本 >= 1.9.0 才能使用主密碼"
 
 #: src/remmina_pref_dialog.c:915
 msgid "Picking a terminal colouring file replaces the file: "
-msgstr "選擇終端機配色檔案"
+msgstr "選擇終端機配色檔案會取代檔案： "
 
 #: src/remmina_pref_dialog.c:919
 msgid ""
@@ -3038,8 +3038,8 @@ msgid ""
 "You requested a H.264 GFX mode for the server “%s”, but your libfreerdp does "
 "not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使"
-"用非 AVC 的色彩深度設定。"
+"您要求伺服器「%s」使用 H.264 GFX 模式，但您的 libfreerdp 不支援 H.264。請使用"
+"非 AVC 的色彩深度設定。"
 
 #: plugins/rdp/rdp_plugin.c:2646
 #, c-format
@@ -3084,23 +3084,23 @@ msgstr "RemoteFX（32 位元）"
 
 #: plugins/rdp/rdp_plugin.c:3034 plugins/vnc/vnc_plugin.c:2075
 msgid "True colour (32 bpp)"
-msgstr "真彩 (32 bpp)"
+msgstr "全彩（32 位元）"
 
 #: plugins/rdp/rdp_plugin.c:3035
 msgid "True colour (24 bpp)"
-msgstr "真彩 (24 bpp)"
+msgstr "全彩（24 位元）"
 
 #: plugins/rdp/rdp_plugin.c:3036 plugins/vnc/vnc_plugin.c:2076
 msgid "High colour (16 bpp)"
-msgstr "高彩 (16bpp)"
+msgstr "高彩（16 位元）"
 
 #: plugins/rdp/rdp_plugin.c:3037
 msgid "High colour (15 bpp)"
-msgstr "高彩 (15 bpp)"
+msgstr "高彩（15 位元）"
 
 #: plugins/rdp/rdp_plugin.c:3038 plugins/vnc/vnc_plugin.c:2077
 msgid "256 colours (8 bpp)"
-msgstr "256 色 (8 bpp)"
+msgstr "256 色（8 位元）"
 
 #: plugins/rdp/rdp_plugin.c:3059 plugins/rdp/rdp_settings.c:309
 #: plugins/vnc/vnc_plugin.c:2087
@@ -4923,15 +4923,15 @@ msgstr "以明亮的顏色顯示粗體文字"
 
 #: data/ui/remmina_preferences.glade:2350
 msgid "Colour theme"
-msgstr "載入配色"
+msgstr "配色方案"
 
 #: data/ui/remmina_preferences.glade:2361
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://"
-"github.com/mbadolato/iTerm2-Color-Schemes"
+"選擇一個配色檔。預先安裝的配色通常在 /usr/share/remmina/theme 。請參閱 "
+"https://github.com/mbadolato/iTerm2-Color-Schemes 有更多詳細資訊。"
 
 #: data/ui/remmina_preferences.glade:2365
 msgid "Pick a terminal colouring file"
@@ -4955,7 +4955,7 @@ msgstr "明亮的顏色"
 
 #: data/ui/remmina_preferences.glade:2425
 msgid "Pick a light black colour"
-msgstr "選擇亮黑色"
+msgstr "選擇淺黑色"
 
 #: data/ui/remmina_preferences.glade:2439
 msgid "Pick a light red colour"
@@ -4979,7 +4979,7 @@ msgstr "選擇亮洋紅色"
 
 #: data/ui/remmina_preferences.glade:2509
 msgid "Pick a light cyan colour"
-msgstr "選擇亮青綠色"
+msgstr "選擇亮青色"
 
 #: data/ui/remmina_preferences.glade:2523
 msgid "Pick a light white colour"
@@ -5011,7 +5011,7 @@ msgstr "選擇洋紅色"
 
 #: data/ui/remmina_preferences.glade:2621
 msgid "Pick a cyan colour"
-msgstr "選擇青綠色"
+msgstr "選擇青色"
 
 #: data/ui/remmina_preferences.glade:2635
 msgid "Pick a white colour"
@@ -5047,7 +5047,7 @@ msgstr "搜尋文字快速鍵"
 #: data/ui/remmina_preferences.glade:2809
 #: data/ui/remmina_preferences.glade:2824
 msgid "Bold colour"
-msgstr "一般顏色"
+msgstr "粗體顏色"
 
 #: data/ui/remmina_preferences.glade:2838
 #: data/ui/remmina_preferences.glade:2879
