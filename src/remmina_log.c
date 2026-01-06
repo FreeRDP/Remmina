@@ -376,7 +376,7 @@ void _remmina_audit(const gchar *fun, const gchar *fmt, ...)
 	if (remmina_pref_get_boolean("audit"))
 		_remmina_message(buf);
 	else
-		_remmina_debug(fun, buf);
+		_remmina_debug(fun, "%s", buf);
 	g_free(buf);
 	g_free(isodate);
 }
