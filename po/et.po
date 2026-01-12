@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2026-01-11 20:01+0000\n"
+"PO-Revision-Date: 2026-01-12 08:01+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/remmina/remmina/"
 "et/>\n"
@@ -198,7 +198,7 @@ msgstr "UNIX-i sokliga ühendamine ei õnnestunud: %s"
 
 #: src/remmina_public.c:630
 msgid "Please enter format 'widthxheight'."
-msgstr "Palun sisesta vorming 'widthxheight'."
+msgstr "Palun sisesta vormingus „widthxheight„“ (laiusxkõrgus)."
 
 #: src/remmina_public.c:652
 msgid "Change security settings"
@@ -1448,6 +1448,11 @@ msgid ""
 "Example: <-l username -p port>\n"
 "<-l user localhost> would not set localhost as there is no flag"
 msgstr ""
+"Sürjutab kõik muud valikud\n"
+"Kõik valikud ei pruugi olla toetatud\n"
+"Kasutada saad vaid võti-argument paare\n"
+"Näide: <-l username -p port>\n"
+"<-l user localhost> puhul jääb localhost väärtustamata, sest võti on puudu"
 
 #: src/remmina_file_editor.c:1559 plugins/rdp/rdp_plugin.c:3286
 msgid "Start-up path"
@@ -1695,6 +1700,9 @@ msgid ""
 "Enable extra hardening (disable closing confirmation, disable unsafe "
 "shortcut keys, hide tabs, hide search bar)"
 msgstr ""
+"Kasuta täiendavat turvalisuse suurendamist (lülita välja sulgemise "
+"kinnitamine, lülita välja ohtlikud kiirklahvid, peida vahekaardid, peida "
+"otsinguriba)"
 
 #: src/remmina.c:143
 msgid "Disable tray icon"
@@ -1722,39 +1730,7 @@ msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- või protokoll://kasutajanimi:krüptitudsalasõna@host:port"
 
 #: src/remmina.c:448
-#, fuzzy, c-format
-#| msgid ""
-#| "Examples:\n"
-#| "To connect using an existing connection profile, use:\n"
-#| "\n"
-#| "\tremmina -c FILE.remmina\n"
-#| "\n"
-#| "To quick connect using a URI:\n"
-#| "\n"
-#| "\tremmina -c rdp://username@server\n"
-#| "\tremmina -c rdp://domain\\\\username@server\n"
-#| "\tremmina -c vnc://username@server\n"
-#| "\tremmina -c vnc://server?VncUsername=username\n"
-#| "\tremmina -c ssh://user@server\n"
-#| "\tremmina -c spice://server\n"
-#| "\n"
-#| "To quick connect using a URI along with an encrypted password:\n"
-#| "\n"
-#| "\tremmina -c rdp://username:encrypted-password@server\n"
-#| "\tremmina -c vnc://username:encrypted-password@server\n"
-#| "\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
-#| "password\n"
-#| "\n"
-#| "To encrypt a password for use with a URI:\n"
-#| "\n"
-#| "\tremmina --encrypt-password\n"
-#| "\n"
-#| "To update username and password and set a different resolution mode of a "
-#| "Remmina connection profile, use:\n"
-#| "\n"
-#| "\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/"
-#| "FOO.remmina --set-option username --set-option resolution_mode=2 --set-"
-#| "option password\n"
+#, c-format
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -1801,30 +1777,36 @@ msgstr ""
 "\n"
 "Kiirühenduse loomiseks URI abil:\n"
 "\n"
-"\tremmina -c rdp://kasutajanimi@server: remmina -c rdp://"
-"kasutajanimi@server\n"
-"\tremmina -c rdp://domeen\\\\ kasutajanimi@server\n"
-"\tremmina -c vnc://kasutaja@server\n"
+"\tremmina -c rdp://username@server\n"
+"\tremmina -c rdp://domain\\\\username@server\n"
+"\tremmina -c vnc://username@server\n"
 "\tremmina -c vnc://server?VncUsername=username\n"
-"\tremmina -c ssh://kasutaja@server\n"
+"\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
+"\tremmina -c https://example.com\n"
 "\n"
-"Kiireks ühendumiseks, kasutades URI-d koos krüpteeritud parooliga:\n"
+"Kiireks ühendumiseks, kasutades ühenduse nime\n"
+"\n"
+"\tremmina -c ssh://user@server%connection_name\n"
+"\n"
+"Kiireks ühendumiseks, kasutades URI-d koos krüptitud salasõnaga:\n"
 "\n"
 "\tremmina -c rdp://kasutajanimi:krüptitud-salasõna@server\n"
+"\n"
 "\tremmina -c vnc://kasutajanimi:krüptitud-salasõna@server\n"
 "\tremmina -c vnc://server?VncUsername=kasutajanimi\\&VncPassword=krüptitud-"
 "salasõna\n"
 "\n"
-"Salasõna krüptimine kasutamisel URI-s:\n"
+"Salasõna krüptimine kasutamiseks URI-s:\n"
 "\n"
 "\tremmina --encrypt-password\n"
 "\n"
 "Kasutajanime ja salasõna uuendamiseks ning Remmina ühendusprofiili erineva "
 "eraldusrežiimi seadmiseks kasuta:\n"
 "\n"
-"\tremmina --update-profile /ASUKOHT/ONSIIN/FOO.remmina --set-option username "
-"--set-option resolution_mode=2 --set-option password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
@@ -1927,7 +1909,7 @@ msgstr "Keritud täisekraanivaade"
 
 #: src/rcw.c:1558
 msgid "Keep aspect ratio when scaled"
-msgstr "Säilita mõõtkava mõõtmisel küljesuhe"
+msgstr "Säilita suuruse muutmisel küljesuhe"
 
 #: src/rcw.c:1566
 msgid "Fill client window when scaled"
@@ -1957,6 +1939,18 @@ msgid ""
 "to local key-codes won’t be sent to the server.\n"
 "\n"
 msgstr ""
+"HOIATUS: Asetatud tekst saadetakse klahvikoodide jada kujul, nagu see oleks "
+"sisestatud sinu kohalikul klahvistikul.\n"
+"\n"
+"  • Parimate tulemuste saavutamiseks kasuta nii kliendi kui ka serveri jaoks "
+"samu klahvistiku seadistusi.\n"
+"\n"
+"  • Kui kliendi klahvistik erineb serveri klahvistikust, võib vastuvõetud "
+"tekst sisaldada valesid või vigaseid tähemärke.\n"
+"\n"
+"  • Unicode-märgid ja muud erimärgid, mida ei saa tõlkida kohalikeks "
+"klahvikoodideks, jäävad serverisse saatmata.\n"
+"\n"
 
 #: src/rcw.c:2259
 msgid "Turn off scaling to avoid screenshot distortion."
@@ -2077,6 +2071,11 @@ msgid ""
 "https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
 "available-in-a-Wayland-session"
 msgstr ""
+"Waylandi sessioonis ei toimi lisamoodulid, mis kasutavad GtkSocketi klassi.\n"
+"Lisateavet ja võimaliku lahenduse kirjelduse leiad Remmina viki lehelt:\n"
+"\n"
+"https://gitlab.com/Remmina/Remmina/-/wikis/GtkSocket-feature-is-not-"
+"available-in-a-Wayland-session"
 
 #: src/rcw.c:4920
 msgid "Open in web browser"
@@ -2409,6 +2408,8 @@ msgid ""
 "Neither the 'dialog' nor 'treeview' parameters are initialized! At least one "
 "of them must be given."
 msgstr ""
+"Ei „dialog“ ega „treeview“ parameetrid pole valmendatud! Neist vähemalt üks "
+"peab olema olemas."
 
 #: plugins/x2go/x2go_plugin.c:732
 msgid ""
@@ -2486,7 +2487,7 @@ msgstr "Ei „env“ ega „dialog“ parameetrid pole valmendatud."
 
 #: plugins/x2go/x2go_plugin.c:1015
 msgid "GtkTreePath 'path' describes a non-existing row!"
-msgstr ""
+msgstr "GtkTreePath andmestruktuuri „path“ kirjeldab rida, mida pole olemas!"
 
 #: plugins/x2go/x2go_plugin.c:1060 plugins/x2go/x2go_plugin.c:1070
 #: plugins/x2go/x2go_plugin.c:2150
@@ -2578,6 +2579,8 @@ msgid ""
 "Tip: Check the 'Save password' checkbox or manually input your X2Go username "
 "and password in the profile settings to store them for faster logins."
 msgstr ""
+"Soovitus: Tõhusamaks sisselogimiseks märgi märkeruut „Salvesta salasõna“ või "
+"sisesta oma X2Go kasutajanimi ja salasõna profiili seadistustes."
 
 #: plugins/x2go/x2go_plugin.c:1772
 msgid "Enter X2Go credentials"
@@ -3397,7 +3400,7 @@ msgstr "Luba mitme monitori kasutamist"
 
 #: plugins/rdp/rdp_plugin.c:3248
 msgid "Force multi monitor when toggled"
-msgstr ""
+msgstr "Sisse/välja lülitamisel kasuta mitme monitori vaadet"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "Span screen over multiple monitors"
@@ -3679,7 +3682,7 @@ msgstr "Kasuta lüüsi veebisoklit"
 
 #: plugins/rdp/rdp_plugin.c:3333
 msgid "Update framebuffer even when not visible"
-msgstr ""
+msgstr "Uuenda kaadripuhvrit ka siis, kui pilt pole nähtav"
 
 #: plugins/rdp/rdp_plugin.c:3334
 msgid "Allow sending empty password"
@@ -3817,6 +3820,8 @@ msgstr "FreeRDP auth-pkg-list"
 #: plugins/rdp/rdp_settings.c:743
 msgid "Authentication package filter(comma-separated list, use '!' to exclude)"
 msgstr ""
+"Autentimispakettide filter (komadega eraldatud loend, kus ! abil saad "
+"välistada)"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
@@ -4159,6 +4164,12 @@ msgid ""
 "  • 16:9 corresponds roughly to 1.7777, 4:3 corresponds roughly to 1.333\n"
 "  • The default value of 0 does not enforce any aspect ratio"
 msgstr ""
+"Kui dünaamiline resolutsioon on kasutusel, siis lukusta küljesuhe (kuvasuhe)"
+":\n"
+"\n"
+"  • Palun sisesta küljesuhe kümnendarvuna, nt. 1.777\n"
+"  • 16:9 vaste on umbkaudu 1.7777, 4:3 vaste on umbkaudu 1.333\n"
+"  • Vaikimisi väärtus on 0 ja see jätab küljesuhte jõustamata"
 
 #: plugins/vnc/vnc_plugin.c:2116
 msgid ""
@@ -4172,6 +4183,15 @@ msgid ""
 "  • “Best (slowest)” sets encoding to “copyrect zrle ultra zlib hextile "
 "corre rre raw”"
 msgstr ""
+"VNC eelseadistatud kodeerimiskvaliteedi muutmise valikud:\n"
+"\n"
+"  • „Poor (kiireim)“ kodeerimisparameetrid on „copyrect zlib hextile raw“\n"
+"  • „Medium“ kodeerimisparameetrid on „tight zrle ultra copyrect hextile "
+"zlib corre rre raw“\n"
+"  • „Good“ kodeerimisparameetrid on „tight zrle ultra copyrect hextile zlib "
+"corre rre raw“\n"
+"  • „Best (aeglaseim)“ kodeerimisparameetrid on „copyrect zrle ultra zlib "
+"hextile corre rre raw“"
 
 #: plugins/vnc/vnc_plugin.c:2125
 msgid ""
@@ -4179,6 +4199,9 @@ msgid ""
 "  • This timeout controls how long the client will try to contact the server "
 "before dropping the connection"
 msgstr ""
+"VNC ühenduse aegumise kestus sekundites\n"
+"  • Selle väärtusega saad juhtida aega, mille kestel klient proovib "
+"serveriga luua ühendust enne, kui see katkeb"
 
 #: plugins/vnc/vnc_plugin.c:2149
 msgid "Repeater"
@@ -4221,7 +4244,6 @@ msgid "Turn off encryption"
 msgstr "Lülita krüpteerimine välja"
 
 #: plugins/vnc/vnc_plugin.c:2195
-#, fuzzy
 msgid "Close on connection failure"
 msgstr "Sulgemise viga ühendamisel"
 
@@ -4595,7 +4617,7 @@ msgstr "Kui see on toetatud, siis vaikimisi käivita dünaamilise resolutsioonig
 
 #: data/ui/remmina_preferences.glade:917
 msgid "Multimonitor: performs adjustments on the toolbar position"
-msgstr ""
+msgstr "Mitme monitori vaade: kohendab tööriistariba asukohta"
 
 #: data/ui/remmina_preferences.glade:941
 msgid "“Grab all keyboard events” status colour"
@@ -4764,7 +4786,7 @@ msgstr "Kasuta mõne vidina puhul autentimist salajase võtmega"
 
 #: data/ui/remmina_preferences.glade:1921
 msgid "Valid for"
-msgstr "Kehtiv kuni"
+msgstr "Jõus"
 
 #: data/ui/remmina_preferences.glade:1932
 msgid "Number of seconds to keep password valid for"
@@ -4817,6 +4839,14 @@ msgid ""
 "\"Intermediate\" doesn't use as much memory or processing power, and "
 "\"Sensitive\" is more secure, but uses +1 GiB of RAM and many CPU cycles. "
 msgstr ""
+"Remmina kasutab neid krüptimismeetodeid salasõnade salvestamiseks.\n"
+"\n"
+"Kui arvata välja „Weak“, siis kõik muud meetodid on soovitatavad. Vaikimisi "
+"väärtus on „Keystore“, kuna see ühildub KDE/Plasma ja GNOME'iga.\n"
+"\n"
+"„Intermediate“ puhul on mälu- ja protsessorikasutus mõõdukas ja „Sensitive“ "
+"on turvalisem, kuid kasutab 01 GiB muutmälu ja suurendab protsessori "
+"koormust. "
 
 #: data/ui/remmina_preferences.glade:2059
 msgid "Intermediate (+64 MiB RAM)"
