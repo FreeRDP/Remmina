@@ -1601,6 +1601,7 @@ static gboolean remmina_main_quickconnect(void)
 	remmina_file_set_string(remminafile, "server", server);
 	remmina_file_set_string(remminafile, "name", server);
 	remmina_file_set_string(remminafile, "protocol", qcp);
+	remmina_file_set_int(remminafile, "disablepasswordstoring", TRUE);
 	g_free(server);
 	g_free(server_trimmed);
 	g_free(qcp);
