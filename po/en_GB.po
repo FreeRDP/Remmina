@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2026-01-03 23:01+0000\n"
+"PO-Revision-Date: 2026-01-17 23:01+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
 "remmina/remmina/en_GB/>\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.15.2\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #: src/remmina_icon.c:143
@@ -1731,39 +1731,7 @@ msgid "- or protocol://username:encryptedpassword@host:port"
 msgstr "- or protocol://username:encryptedpassword@host:port"
 
 #: src/remmina.c:448
-#, fuzzy, c-format
-#| msgid ""
-#| "Examples:\n"
-#| "To connect using an existing connection profile, use:\n"
-#| "\n"
-#| "\tremmina -c FILE.remmina\n"
-#| "\n"
-#| "To quick connect using a URI:\n"
-#| "\n"
-#| "\tremmina -c rdp://username@server\n"
-#| "\tremmina -c rdp://domain\\\\username@server\n"
-#| "\tremmina -c vnc://username@server\n"
-#| "\tremmina -c vnc://server?VncUsername=username\n"
-#| "\tremmina -c ssh://user@server\n"
-#| "\tremmina -c spice://server\n"
-#| "\n"
-#| "To quick connect using a URI along with an encrypted password:\n"
-#| "\n"
-#| "\tremmina -c rdp://username:encrypted-password@server\n"
-#| "\tremmina -c vnc://username:encrypted-password@server\n"
-#| "\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
-#| "password\n"
-#| "\n"
-#| "To encrypt a password for use with a URI:\n"
-#| "\n"
-#| "\tremmina --encrypt-password\n"
-#| "\n"
-#| "To update username and password and set a different resolution mode of a "
-#| "Remmina connection profile, use:\n"
-#| "\n"
-#| "\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/"
-#| "FOO.remmina --set-option username --set-option resolution_mode=2 --set-"
-#| "option password\n"
+#, c-format
 msgid ""
 "Examples:\n"
 "To connect using an existing connection profile, use:\n"
@@ -1808,7 +1776,7 @@ msgstr ""
 "\n"
 "\tremmina -c FILE.remmina\n"
 "\n"
-"To quick connect using a URI:\n"
+"To quickly connect using a URI:\n"
 "\n"
 "\tremmina -c rdp://username@server\n"
 "\tremmina -c rdp://domain\\\\username@server\n"
@@ -1816,10 +1784,16 @@ msgstr ""
 "\tremmina -c vnc://server?VncUsername=username\n"
 "\tremmina -c ssh://user@server\n"
 "\tremmina -c spice://server\n"
+"\tremmina -c https://example.com\n"
 "\n"
-"To quick connect using a URI along with an encrypted password:\n"
+"To quickly connect and name the connection\n"
+"\n"
+"\tremmina -c ssh://user@server%connection_name\n"
+"\n"
+"To quickly connect using a URI along with an encrypted password:\n"
 "\n"
 "\tremmina -c rdp://username:encrypted-password@server\n"
+"\n"
 "\tremmina -c vnc://username:encrypted-password@server\n"
 "\tremmina -c vnc://server?VncUsername=username\\&VncPassword=encrypted-"
 "password\n"
@@ -1828,12 +1802,12 @@ msgstr ""
 "\n"
 "\tremmina --encrypt-password\n"
 "\n"
-"To update username and password and set a different resolution mode of a "
+"To update the username and password and set a different resolution mode of a "
 "Remmina connection profile, use:\n"
 "\n"
-"\techo \"username\\napassword\" | remmina --update-profile /PATH/TO/"
-"FOO.remmina --set-option username --set-option resolution_mode=2 --set-"
-"option password\n"
+"\techo \"username\\n"
+"apassword\" | remmina --update-profile /PATH/TO/FOO.remmina --set-option "
+"username --set-option resolution_mode=2 --set-option password\n"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:176
@@ -2024,10 +1998,8 @@ msgid "Toggle scaled mode"
 msgstr "Toggle scaled mode"
 
 #: src/rcw.c:2586
-#, fuzzy
-#| msgid "View-only mode"
 msgid "View only mode"
-msgstr "View-only mode"
+msgstr "View only mode"
 
 #: src/rcw.c:2627 data/ui/remmina_preferences.glade:1271
 msgid "Switch tab pages"
@@ -2059,10 +2031,8 @@ msgid "Minimize window"
 msgstr "Minimize window"
 
 #: src/rcw.c:2701
-#, fuzzy
-#| msgid "Connect"
 msgid "Reconnect"
-msgstr "Connect"
+msgstr "Reconnect"
 
 #: src/rcw.c:2709 data/ui/remmina_preferences.glade:1410
 msgid "Disconnect"
@@ -2247,10 +2217,8 @@ msgid "Share folder"
 msgstr "Share folder"
 
 #: plugins/spice/spice_plugin.c:727
-#, fuzzy
-#| msgid "Proxy URL"
 msgid "Proxy"
-msgstr "Proxy URL"
+msgstr "Proxy"
 
 #: plugins/spice/spice_plugin.c:728 plugins/rdp/rdp_plugin.c:3290
 msgid "USB device redirection"
@@ -2305,13 +2273,11 @@ msgstr "SPICE - Simple Protocol for Independent Computing Environments"
 
 #: plugins/spice/spice_plugin.c:803
 msgid "SPICE vv file"
-msgstr ""
+msgstr "SPICE vv file"
 
 #: plugins/spice/spice_plugin.c:895
-#, fuzzy
-#| msgid "Export connection in Windows .rdp file format"
 msgid "Export connection in virt-viewer .vv file format"
-msgstr "Export connection in Windows .rdp file format"
+msgstr "Export connection in virt-viewer .vv file format"
 
 #: plugins/x2go/x2go_plugin.c:71
 #, c-format
@@ -2503,24 +2469,19 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:948
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i"
 msgstr ""
-"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i"
+"An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i"
 
 #: plugins/x2go/x2go_plugin.c:955
-#, fuzzy, c-format
-#| msgid ""
-#| "An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
-#| "Error: '%s'"
+#, c-format
 msgid ""
 "An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 msgstr ""
-"An unknown error occured while trying to start PyHoca-CLI. Exit code: %i. "
+"An unknown error occurred while trying to start PyHoca-CLI. Exit code: %i. "
 "Error: '%s'"
 
 #: plugins/x2go/x2go_plugin.c:999
@@ -2550,8 +2511,6 @@ msgstr ""
 "%s"
 
 #: plugins/x2go/x2go_plugin.c:1235
-#, fuzzy
-#| msgid "An error occured."
 msgid "An error occurred."
 msgstr "An error occurred."
 
@@ -2968,10 +2927,8 @@ msgid "Disconnected from %s via RDP"
 msgstr "Disconnected from %s via RDP"
 
 #: plugins/rdp/rdp_plugin.c:2556
-#, fuzzy
-#| msgid "Could not authenticate using SSH certificate. %s"
 msgid "Could not authenticate using smartcard."
-msgstr "Could not authenticate using SSH certificate. %s"
+msgstr "Could not authenticate using smartcard."
 
 #: plugins/rdp/rdp_plugin.c:2566
 #, c-format
@@ -3037,10 +2994,9 @@ msgstr ""
 "Change user password before connecting."
 
 #: plugins/rdp/rdp_plugin.c:2614
-#, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server “%s”."
+#, c-format
 msgid "Failed to connect to the RDP server “%s”."
-msgstr "Cannot connect to the RDP server ‘%s’."
+msgstr "Failed to connect to the RDP server “%s”."
 
 #: plugins/rdp/rdp_plugin.c:2617
 #, c-format
@@ -3236,18 +3192,16 @@ msgid "Every 10 min"
 msgstr "Every 10 min"
 
 #: plugins/rdp/rdp_plugin.c:3114
-#, fuzzy
-#| msgid "Every 3 min"
 msgid "Every 30 sec"
-msgstr "Every 3 min"
+msgstr "Every 30 sec"
 
 #: plugins/rdp/rdp_plugin.c:3124
 msgid "ALT_L + Tab"
-msgstr ""
+msgstr "ALT_L + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3125
 msgid "Win + Tab"
-msgstr ""
+msgstr "Win + Tab"
 
 #: plugins/rdp/rdp_plugin.c:3140
 msgid "0 — Windows 7 compatible"
@@ -3421,16 +3375,12 @@ msgid "Restricted admin mode password hash"
 msgstr "Restricted admin mode password hash"
 
 #: plugins/rdp/rdp_plugin.c:3243
-#, fuzzy
-#| msgid "Share a smart card"
 msgid "Use a smartcard for logon"
-msgstr "Share a smart card"
+msgstr "Use a smartcard for logon"
 
 #: plugins/rdp/rdp_plugin.c:3244
-#, fuzzy
-#| msgid "Enter RDP SmartCard PIN"
 msgid "Smartcard PIN"
-msgstr "Enter RDP SmartCard PIN"
+msgstr "Smartcard PIN"
 
 #: plugins/rdp/rdp_plugin.c:3245
 msgid "Left-handed mouse support"
@@ -3451,7 +3401,7 @@ msgstr "Enable multi monitor"
 
 #: plugins/rdp/rdp_plugin.c:3248
 msgid "Force multi monitor when toggled"
-msgstr ""
+msgstr "Force multi-monitor when toggled"
 
 #: plugins/rdp/rdp_plugin.c:3249
 msgid "Span screen over multiple monitors"
@@ -3631,16 +3581,12 @@ msgid "Move mouse when connection is idle"
 msgstr "Move mouse when connection is idle"
 
 #: plugins/rdp/rdp_plugin.c:3302
-#, fuzzy
-#| msgid "Move mouse when connection is idle"
 msgid "Press keys when connection is idle"
-msgstr "Move mouse when connection is idle"
+msgstr "Move the mouse when the connection is idle"
 
 #: plugins/rdp/rdp_plugin.c:3303
-#, fuzzy
-#| msgid "Desktop orientation"
 msgid "Keys combination"
-msgstr "Desktop orientation"
+msgstr "Keys combination"
 
 #: plugins/rdp/rdp_plugin.c:3305
 msgid "Attempt to connect in assistance mode"
@@ -3651,10 +3597,8 @@ msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgstr "Prefer IPv6 AAAA record over IPv4 A record"
 
 #: plugins/rdp/rdp_plugin.c:3308
-#, fuzzy
-#| msgid "Prefer IPv6 AAAA record over IPv4 A record"
 msgid "Force preferred IPv4 A record or IPv6 AAAA record"
-msgstr "Prefer IPv6 AAAA record over IPv4 A record"
+msgstr "Force preferred IPv4 A record or IPv6 AAAA record"
 
 #: plugins/rdp/rdp_plugin.c:3310
 msgid "Share printers"
@@ -3742,7 +3686,7 @@ msgstr "Update framebuffer even when not visible"
 
 #: plugins/rdp/rdp_plugin.c:3334
 msgid "Allow sending empty password"
-msgstr ""
+msgstr "Allow sending empty password"
 
 #: plugins/rdp/rdp_plugin.c:3360
 msgid "RDP - Remote Desktop Protocol"
@@ -3864,18 +3808,16 @@ msgid "General settings"
 msgstr "General settings"
 
 #: plugins/rdp/rdp_settings.c:723
-#, fuzzy
-#| msgid "Edit settings"
 msgid "Auth settings"
-msgstr "Edit settings"
+msgstr "Auth settings"
 
 #: plugins/rdp/rdp_settings.c:730
 msgid "FreeRDP auth-pkg-list"
-msgstr ""
+msgstr "FreeRDP auth-pkg-list"
 
 #: plugins/rdp/rdp_settings.c:743
 msgid "Authentication package filter(comma-separated list, use '!' to exclude)"
-msgstr ""
+msgstr "Authentication package filter(comma-separated list, use '!' to exclude)"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello, World!"
@@ -4249,6 +4191,9 @@ msgid ""
 "  • This timeout controls how long the client will try to contact the server "
 "before dropping the connection"
 msgstr ""
+"VNC timeout length in seconds\n"
+"  • This timeout controls how long the client will try to contact the server "
+"before dropping the connection"
 
 #: plugins/vnc/vnc_plugin.c:2149
 msgid "Repeater"
@@ -4263,14 +4208,12 @@ msgid "Override pre-set VNC encodings"
 msgstr "Override pre-set VNC encodings"
 
 #: plugins/vnc/vnc_plugin.c:2182
-#, fuzzy
-#| msgid "Dynamic resolution enforced aspec ratio"
 msgid "Dynamic resolution enforced aspect ratio"
 msgstr "Dynamic resolution enforced aspect ratio"
 
 #: plugins/vnc/vnc_plugin.c:2184
 msgid "TCP_USER_TIMEOUT length (seconds)"
-msgstr ""
+msgstr "TCP_USER_TIMEOUT length (seconds)"
 
 #: plugins/vnc/vnc_plugin.c:2186
 msgid "Force tight encoding"
@@ -4293,10 +4236,8 @@ msgid "Turn off encryption"
 msgstr "Use TLS encryption"
 
 #: plugins/vnc/vnc_plugin.c:2195
-#, fuzzy
-#| msgid "Create new connection profile"
 msgid "Close on connection failure"
-msgstr "Create new connection profile"
+msgstr "Close on connection failure"
 
 #: plugins/vnc/vnc_plugin.c:2207
 msgid "Open Chat…"
@@ -4468,11 +4409,6 @@ msgid "Screenshot filenames"
 msgstr "Screenshot filenames"
 
 #: data/ui/remmina_preferences.glade:282
-#, fuzzy
-#| msgid ""
-#| "%p Profile name\n"
-#| "%h Server name/IP\n"
-#| "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -4480,7 +4416,7 @@ msgid ""
 msgstr ""
 "%p Profile name\n"
 "%h Server name/IP\n"
-"%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
+"%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)"
 
 #: data/ui/remmina_preferences.glade:300
 msgid ""
@@ -4520,14 +4456,6 @@ msgstr "Template for profile filenames"
 
 #. Placeholders used to name a Remmina connection profile
 #: data/ui/remmina_preferences.glade:381
-#, fuzzy
-#| msgid ""
-#| "%G Name of group (slashes \\/ are converted to dashes -)\n"
-#| "%P Protocol name\n"
-#| "%N Connection name\n"
-#| "%h Hostname/IP\n"
-#| "\n"
-#| "\n"
 msgid ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
@@ -4537,9 +4465,7 @@ msgstr ""
 "%G Name of group (slashes \\/ are converted to dashes -)\n"
 "%P Protocol name\n"
 "%N Connection name\n"
-"%h Hostname/IP\n"
-"\n"
-"\n"
+"%h Hostname/IP "
 
 #: data/ui/remmina_preferences.glade:400
 msgid "Only save generated screenshots, don't copy them to clipboard."
@@ -4634,17 +4560,15 @@ msgstr "Hidden"
 
 #: data/ui/remmina_preferences.glade:761
 msgid "Minimal"
-msgstr ""
+msgstr "Minimal"
 
 #: data/ui/remmina_preferences.glade:777
 msgid "Fullscreen toolbar visibility"
 msgstr "Fullscreen toolbar visibility"
 
 #: data/ui/remmina_preferences.glade:792
-#, fuzzy
-#| msgid "Fullscreen toolbar visibility"
 msgid "Fullscreen toolbar delay (in seconds)"
-msgstr "Fullscreen toolbar visibility"
+msgstr "Fullscreen toolbar delay (in seconds)"
 
 #: data/ui/remmina_preferences.glade:816
 msgid "Hide the search bar shown in the main window"
@@ -4672,19 +4596,19 @@ msgstr "Add a column displaying any notes associated with a connection."
 
 #: data/ui/remmina_preferences.glade:866
 msgid "Display message prompts on the left side of the screen"
-msgstr ""
+msgstr "Display message prompts on the left side of the screen"
 
 #: data/ui/remmina_preferences.glade:883
 msgid "If supported, launch in fullscreen by default"
-msgstr ""
+msgstr "If supported, launch in fullscreen by default"
 
 #: data/ui/remmina_preferences.glade:900
 msgid "If supported, launch with dynamic resolution by default"
-msgstr ""
+msgstr "If supported, launch with dynamic resolution by default"
 
 #: data/ui/remmina_preferences.glade:917
 msgid "Multimonitor: performs adjustments on the toolbar position"
-msgstr ""
+msgstr "Multimonitor: performs adjustments on the toolbar position"
 
 #: data/ui/remmina_preferences.glade:941
 msgid "“Grab all keyboard events” status colour"
@@ -4998,16 +4922,12 @@ msgid "Pick a terminal colouring file"
 msgstr "Pick a terminal colouring file"
 
 #: data/ui/remmina_preferences.glade:2382
-#, fuzzy
-#| msgid "Colour theme"
 msgid "Remove colour theme"
-msgstr "Colour theme"
+msgstr "Remove colour theme"
 
 #: data/ui/remmina_preferences.glade:2396
-#, fuzzy
-#| msgid "_Remove"
 msgid "Remove"
-msgstr "_Remove"
+msgstr "Remove"
 
 #: data/ui/remmina_preferences.glade:2411
 msgid "Bright colours"
