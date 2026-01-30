@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2025-12-10 23:08+0900\n"
-"PO-Revision-Date: 2026-01-29 08:18+0000\n"
+"PO-Revision-Date: 2026-01-30 06:10+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
 "sv/>\n"
@@ -175,7 +175,7 @@ msgstr ""
 #: src/remmina_exec.c:529
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr "Plugin %s är inte registrerat."
+msgstr "Insticksmodulen %s är inte registrerad."
 
 #: src/remmina_applet_menu_item.c:125
 msgid "Discovered"
@@ -1165,7 +1165,7 @@ msgstr "Server"
 #: src/remmina_protocol_widget.c:2164
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr "Installera först protokollplugin %s."
+msgstr "Installera först insticksmodulen för %s-protokollet."
 
 #: src/remmina_main.c:768
 msgid "The latest successful connection attempt, or a pre-computed date"
@@ -1587,9 +1587,9 @@ msgid ""
 "supported by a plugin) or a supported URI (RDP, VNC, SSH, HTTP, HTTPS or "
 "SPICE)"
 msgstr ""
-"Anslut antingen till en stationär dator som beskrivs i en fil (.remmina "
-"eller en filtyp som stöds av ett plugin) eller en URI som stöds (RDP, VNC, "
-"SSH, HTTP, HTTPS eller SPICE)"
+"Anslut antingen till ett skrivbord som beskrivs i en fil (.remmina eller en "
+"filtyp som stöds av en insticksmodul) eller en URI som stöds (RDP, VNC, SSH, "
+"HTTP, HTTPS eller SPICE)"
 
 #: src/remmina.c:104 src/remmina.c:106 src/remmina.c:108
 msgid "FILE"
@@ -1601,8 +1601,8 @@ msgid ""
 "Connect to a desktop described in a file (.remmina or a filetype supported "
 "by a plugin)"
 msgstr ""
-"Anslut till en stationär dator som beskrivs i en fil (.remmina eller en "
-"filtyp som stöds av ett plugin-program)"
+"Anslut till ett skrivbord som beskrivs i en fil (.remmina eller en filtyp "
+"som stöds av en insticksmodul)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:108
@@ -1611,7 +1611,7 @@ msgid ""
 "by plugin)"
 msgstr ""
 "Redigera skrivbordsanslutning som beskrivs i filen (.remmina eller en filtyp "
-"som stöds av plugin)"
+"som stöds av insticksmodul)"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:111
@@ -1668,7 +1668,7 @@ msgstr "Visa applikationsversionen"
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:132
 msgid "Show version of the application and its plugins"
-msgstr "Visa version av applikationen och dess plugins"
+msgstr "Visa version av applikationen och dess insticksmoduler"
 
 #. TRANSLATORS: Shown in terminal. Do not use characters that may be not supported on a terminal
 #: src/remmina.c:134
@@ -2063,7 +2063,7 @@ msgid ""
 "Warning: This plugin requires GtkSocket, but this feature is unavailable in "
 "a Wayland session."
 msgstr ""
-"Varning: Detta plugin kräver GtkSocket, men denna funktion är inte "
+"Varning: Denna insticksmodul kräver GtkSocket, men denna funktion är inte "
 "tillgänglig i en Wayland-session."
 
 #. TRANSLATORS: This should be a link to the Remmina wiki page:
@@ -2894,7 +2894,7 @@ msgstr "Din privata nyckel"
 
 #: plugins/x2go/x2go_plugin.c:3387
 msgid "X2Go plugin loaded."
-msgstr "X2Go-plugin laddad."
+msgstr "X2Go-insticksmodul inläst."
 
 #: plugins/x2go/x2go_plugin.h:43
 msgid "X2Go - Launch an X2Go session"
@@ -3876,7 +3876,7 @@ msgstr "Avsluta process vid frånkoppling"
 
 #: plugins/gvnc/gvnc_plugin_config.h:40
 msgid "Remmina VNC plugin for GNOME and KVM"
-msgstr "Remmina VNC-plugin för GNOME och KVM"
+msgstr "Remmina VNC-insticksmodul för GNOME och KVM"
 
 #: plugins/gvnc/gvnc_plugin.c:461
 #, c-format
@@ -4014,7 +4014,7 @@ msgstr "Stäng av fjärrvärd"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina web-browser plugin"
-msgstr "Remmina webbläsarplugin"
+msgstr "Remmina-insticksmodul för webbläsare"
 
 #: plugins/www/www_plugin.c:99
 msgid "File downloaded"
@@ -4058,7 +4058,7 @@ msgstr "Aktivera rumslig navigering"
 
 #: plugins/www/www_plugin.c:922
 msgid "Turn on plugin support"
-msgstr "Aktivera plugin-stöd"
+msgstr "Aktivera insticksmodulstöd"
 
 #: plugins/www/www_plugin.c:923
 msgid "Turn on WebGL support"
@@ -4078,11 +4078,11 @@ msgstr "Aktivera Web Inspector"
 
 #: plugins/vnc/vnc_plugin.h:42
 msgid "Remmina VNC Plugin"
-msgstr "Remmina VNC-plugin"
+msgstr "Remmina VNC-insticksmodul"
 
 #: plugins/vnc/vnc_plugin.h:47
 msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC-lyssnarplugin"
+msgstr "Remmina-insticksmodul för VNC-lyssnare"
 
 #: plugins/vnc/vnc_plugin.c:796
 msgid "Enter VNC password"
